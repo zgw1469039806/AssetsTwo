@@ -15,7 +15,6 @@ public class indexTextController {
     @RequestMapping(value = "/text")
     public String text()
     {
-        String a = "1";
         return "success";
     }
 
