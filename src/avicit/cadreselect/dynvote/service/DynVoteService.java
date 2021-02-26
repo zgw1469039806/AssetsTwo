@@ -3,6 +3,8 @@ package avicit.cadreselect.dynvote.service;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
+
+import avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +40,8 @@ public class DynVoteService implements Serializable {
 
 	@Autowired
 	private DynVoteDAO dynVoteDAO;
-	
+
+	//region 后台接口
 	/**
 	* 查询（分页）
 	* @param queryReqBean 分页
@@ -278,5 +281,23 @@ public class DynVoteService implements Serializable {
 			throw new DaoException(e.getMessage(), e);
 		}
 	}
+
+	//endregion
+
+	//region web接口
+
+	//region 根据扫码id查询投票信息
+	/**
+	 * 根据扫码id查询投票信息
+	 * @param id : 标识
+	 * @return
+	 */
+	public QueryVoteByIdDTO queryVoteById(String id) {
+		QueryVoteByIdDTO dto = dynVoteDAO.queryVoteById(id);
+		return dto;
+	}
+	//endregion
+
+	//endregion
 }
 
