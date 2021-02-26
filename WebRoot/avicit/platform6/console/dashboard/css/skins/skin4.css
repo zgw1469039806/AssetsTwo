@@ -1,0 +1,88 @@
+.header {
+	color:#66747e;
+	height: 41px!important;
+	background: #FFF;
+	border-top:3px solid #2e88af;
+	border-bottom:1px solid #d3d7da;
+}
+.header .logo {
+	color:#66747e;
+}
+.navbar .mark {
+	border-bottom-color:#51acd3;
+	border-top-color:#51acd3;
+}
+.navbar a {
+	color:#66747e;
+}
+.navList {
+	background: #51acd3;
+}
+.layout-split-west {
+    border-color: #59a2c3;
+}
+.navList li i {
+	color:#1a6e92;
+}
+.navList li.on, .navList li:hover {
+	color:#FFF;
+	background: #2e88af;
+}
+
+.navList li.on i, .navList li:hover i {
+	color:#FFF;
+}
+
+.toolbar .search input[type="text"] {
+	background: #e9ebf2;
+	color:#6b7983;
+}
+
+.toolbar .search .head-search {
+	color:#6b7983;
+	background: #e9ebf2;
+}
+
+.toolbar .iconbtn li {
+	color:#9e9e9e;
+}
+
+.toolbar .iconbtn li:hover {
+	text-shadow:  0 0 10px #9e9e9e;
+}
+
+.iconbtn .subMenu {
+	border:1px solid #9e9e9e;
+	-webikt-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.25);
+}
+.iconbtn .subMenu:before {
+	border-color:#9e9e9e;
+	border-left-color: transparent;
+    border-right-color: transparent;
+    z-index: 1;
+}
+.iconbtn .subMenu:after {
+	content: ' ';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    margin-left: -6px;
+    border-color: #FFF;
+    border-width: 6px;
+    border-top-width: 0;
+    border-style: solid;
+    border-bottom-style: solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    z-index: 2;
+}
+.iconbtn .subMenu > li {
+	color:#9e9e9e;
+	text-shadow:  none;
+}
+.iconbtn .subMenu > li:hover {
+	background: #9e9e9e;
+	color:#FFF;
+	text-shadow:  none;
+}

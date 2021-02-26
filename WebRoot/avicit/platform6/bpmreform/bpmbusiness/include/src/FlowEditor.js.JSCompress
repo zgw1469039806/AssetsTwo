@@ -1,0 +1,34 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="FlowEditor.js">
+    <auto value="1" />
+    <sourcefile path=".\DefaultForm.js" />
+    <sourcefile path=".\FlowModel.js" />
+    <sourcefile path=".\FlowUploader.js" />
+    <sourcefile path=".\buttons\BpmButton.js" />
+    <sourcefile path=".\buttons\BpmAdduser.js" />
+    <sourcefile path=".\buttons\BpmFocus.js" />
+    <sourcefile path=".\buttons\BpmGlobalend.js" />
+    <sourcefile path=".\buttons\BpmGlobalidea.js" />
+    <sourcefile path=".\buttons\BpmGlobaljump.js" />
+    <sourcefile path=".\buttons\BpmGlobalresume.js" />
+    <sourcefile path=".\buttons\BpmGlobalsuspend.js" />
+    <sourcefile path=".\buttons\BpmRetreat.js" />
+    <sourcefile path=".\buttons\BpmSave.js" />
+    <sourcefile path=".\buttons\BpmStepuserdefined.js" />
+    <sourcefile path=".\buttons\BpmSubmit.js" />
+    <sourcefile path=".\buttons\BpmSupersede.js" />
+    <sourcefile path=".\buttons\BpmPresstodo.js" />
+    <sourcefile path=".\buttons\BpmSupplement.js" />
+    <sourcefile path=".\buttons\BpmTaskreader.js" />
+    <sourcefile path=".\buttons\BpmTransmit.js" />
+    <sourcefile path=".\buttons\BpmWithdraw.js" />
+    <sourcefile path=".\buttons\BpmRelationflow.js" />
+    <sourcefile path=".\buttons\BpmStartsubflow.js" />
+    <sourcefile path=".\buttons\BpmRelationparentflow.js" />
+    <sourcefile path=".\buttons\BpmWithdrawassignee.js" />
+    <sourcefile path="..\..\..\bpmdesigner\picture\FlowPic.js" />
+    <sourcefile path="..\..\..\bpmdesigner\picture\FlowTracks.js" />
+    <sourcefile path=".\buttons\BpmActor.js" />
+    <sourcefile path=".\FlowEditor.src.js" />
+</combinefile>
+</jscompress>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>设置</title>
+    <link rel="stylesheet" href="../../../layui.css">
+
+    <style>
+        .clear {
+            zoom: 1;
+        }
+
+        .clear:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .layui-form-label {
+            position: relative;
+            float: left;
+            display: block;
+            padding: 9px 5px;
+            width: 56px;
+            font-weight: normal;
+            line-height: 20px;
+            text-align: right;
+        }
+
+        ul#chat_view .layim-chat-user img {
+            position: absolute;
+            top: 4px;
+        }
+
+        ul#chat_view .layim-chat-user cite {
+            position: absolute;
+            left: 45px;
+            top: 0px;
+            width: 150px;
+            line-height: 24px;
+            font-size: 12px;
+            white-space: nowrap;
+            color: #999;
+            text-align: left;
+            font-style: normal;
+        }
+
+        p.layim-chat-peer {
+            width: 145px;
+            font-size: 15px;
+            font-weight: bold;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        p.layim-chat-time {
+            width: 145px;
+            display: inline-block;
+        }
+
+        ul#chat_view li.chat-history {
+            min-height: 48px;
+        }
+
+        li.selected {
+            background-color: #ddedff;
+        }
+
+        .layim-chat-other {
+            top: 0;
+            left: 0;
+        }
+
+        #chat_view li.layim-null {
+            height: 20px;
+            line-height: 20px;
+            padding: 0;
+            font-size: 14px;
+            color: #999;
+            background-color: white;
+            text-align: center;
+            cursor: default;
+        }
+
+        #chat-history-list li.layim-null {
+            height: 20px;
+            line-height: 20px;
+            padding: 0;
+            font-size: 14px;
+            color: #999;
+            background-color: white;
+            text-align: center;
+            cursor: default;
+        }
+
+        .layim-chat-text span.highlight {
+            color: yellow;
+        }
+
+        dl.layui-anim-upbit {
+            top: 32px;
+        }
+
+        dl.layui-anim layui-anim-upbit > dd {
+            line-height: 32px;
+        }
+
+        input.layui-unselect {
+            height: 32px;
+        }
+
+        .layui-inline .layui-input-inline input {
+            height: 32px;
+            line-height: 32px;
+            padding-left: 6px
+        }
+
+        .layui-inline .layui-input-inline {
+            margin-right: 2px;
+            width: 170px;
+            margin-top: 3px;
+        }
+
+        /*.layui-inline .input-date-range{
+            width: 180px;
+        }
+        .layui-inline .input-search-content{
+            width: 120px;
+        }
+        .layui-inline .input-search-kind{
+            width: 152px;
+        }*/
+        .layui-inline .btn-search {
+            position: absolute;
+            float : right;
+            width: 60px;
+            right: 5px;
+        }
+
+        .layui-inline .btn-search input {
+            padding-left: 13px;
+        }
+
+        .chat-history-result {
+            height: 508px;
+            padding: 0px 0px 5px 0px;
+            border-top: 1px solid #ddedff;
+        }
+
+        .chat-history-result .layim-chat-main {
+            padding: 5px 5px 5px 5px;
+            overflow-y: auto;
+            display: inline-block;
+            height: 98%;
+        }
+
+        .chat-history-result .layim-chat-main-left {
+            border-right: 2px solid #ddedff;
+            width: 25%;
+        }
+
+        .chat-history-result .layim-chat-main-right {
+            width: 71%;
+        }
+
+        .layim-tool-msgbox .layer-anim-05 {
+            left: 125px;
+            top: -2px;
+        }
+
+        span.add_condition {
+            cursor: pointer;
+        }
+
+        span.condition_more {
+            cursor: pointer;
+        }
+
+        span.condition_more .layui-icon {
+            font-size: 28px;
+        }
+
+        .user-room-condition .show_condition_more {
+            display: none;
+            width: 32px;
+        }
+
+        span.add_condition .layui-icon {
+            font-size: 28px;
+        }
+
+        div.user-room-condition {
+            border: 1px solid #ddedff;
+            display: block;
+            margin-left: 7px;
+            min-height: 46px;
+            min-width: 764px;
+            display: none;
+        }
+
+        div.user-room-condition .user-rooms {
+            width: 686px;
+        }
+
+        div.user-room-condition .add_condition_btn {
+            width: 47px;
+            height: 40px;
+        }
+
+        #userRoomConditionIds li {
+            width: 116px;
+            height: 20px;
+            line-height: 20px;
+            margin: 0 6px;
+            display: inline-block;
+        }
+
+        #userRoomConditionIds p.group-friend-item{
+            width: 116px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        li.layim-friend {
+            background-color: #dbf0da;
+        }
+
+        li.layim-group {
+            background-color: #e0ffff;
+        }
+
+        #userRoomConditionIds .layui-icon {
+            position: relative;
+            float: right;
+            cursor: pointer;
+            top: -24px;
+            right: -4px;
+        }
+
+        div.layim-chat-user{
+            width: 98%;
+        }
+
+        ul .layim-chat-mine .layim-chat-user {
+            width: 98%;
+        }
+
+        i.show-prev-next {
+            position: relative;
+            display: none;
+            font-size: 10px;
+            font-style: italic;
+            color: royalblue;
+            cursor: pointer;
+            top: 6px;
+            z-index: 99;
+        }
+
+        i.show-prev-next-left {
+            float: left;
+            left: 6px;
+        }
+
+        i.show-prev-next-right {
+            float: right;
+            right: 20px;
+        }
+
+        li.hover {
+            background-color: #fff0d2;
+        }
+
+        li.shown-prev-next {
+            background-color: #ffe8a1;
+        }
+
+        img.profile  {
+            cursor: pointer;
+        }
+
+        .layui-form-item .layui-inline {
+            width: 788px;
+        }
+
+        .search-kind-all {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layui-form">
+    <div class="layui-form-item">
+        <div class="layui-inline" style="margin-bottom:0px;">
+            <label class="date-range-label layui-form-label">日期范围</label>
+            <div class="layui-input-inline input-date-range" style="width:87px;" >
+                <input class="date-range-input layui-input" id="LAY_demorange_s"  type="text" placeholder="开始时间" readonly="readonly">
+            </div>
+            <div class="layui-input-inline input-date-range" style="width:87px;">
+                <input  class="date-range-input layui-input" id="LAY_demorange_e" type="text"   placeholder="结束时间" readonly="readonly">
+            </div>
+
+            <label class="chat-content-label layui-form-label">内容</label>
+            <div class="layui-input-inline input-search-content">
+                <input class="chat-content-input layui-input" id="chatContent" type="text" placeholder="输入关键字">
+            </div>
+            <label class="chat-content-label layui-form-label search-kind-all" >范围</label>
+            <div class="layui-input-inline input-search-kind search-kind-all">
+                <select id="searchKind" name="searchKind" lay-filter="searchKind" class="form-control input-sm" >
+                    <option value="all" >全部联系人和群组</option>
+                    <option value="other">指定联系人和群组</option>
+                </select>
+            </div>
+            <div class="layui-input-inline btn-search">
+                <input class="layui-btn layui-btn-sm" type="button" id="queryMessages" value="查询">
+            </div>
+            <!--<div class="layui-inline" style="margin: 0;margin-left: 9px;">
+                <div id="pageDiv"></div>
+            </div>-->
+        </div>
+
+        <div class="layui-inline user-room-condition search-kind-all" title="添加联系人和群组">
+            <div class="layui-input-inline add_condition_btn">
+                <span class="add_condition"><i class="layui-icon" title="添加联系人和群组" >&#58964;</i></span>
+            </div>
+            <div class="layui-input-inline user-rooms">
+                <ul id="userRoomConditionIds"></ul>
+            </div>
+            <div class="layui-input-inline show_condition_more">
+                <span class="condition_more"><i class="layui-icon" title="显示联系人和群组" >&#58975;</i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="chat-history-result">
+    <div class="layim-chat-main layim-chat-main-left">
+        <ul id="chat_view"></ul>
+    </div>
+    <div id="chat-history-list" class="layim-chat-main layim-chat-main-right">
+    </div>
+</div>
+
+<textarea title="消息分类模版" id="LAY_category_tpl" style="display:none;">
+{{# layui.each(d.data, function(index, item){
+    if(item.itemCount > 0){ }}
+    <li class="layim-chat-{{ item.peerUser }} chat-history" data-peername="{{ item.peerUser }}" title="{{ item.username }}">
+        <div class="layim-chat-user">
+            <img src="{{ item.avatar }}" class='{{item.status === "offline" ? "layim-list-gray" : ""}}'>
+            <cite>
+                <p class="layim-chat-peer">{{ item.username }}
+                    <span class="layim-tool-msgbox">
+                        <span class="layer-anim-05">{{ item.itemCount >= 100 ? "99+": item.itemCount }}</span>
+                    </span>
+                </p>
+                <p class="layim-chat-time">{{ layui.data.date(item.lastCreatedAt) }}</p>
+            </cite>
+        </div>
+    </li>
+    {{# }
+}); }}
+</textarea>
+
+<textarea title="消息内容模版" id="LAY_tpl" style="display:none;">
+{{# layui.each(d.data, function(index, item){
+      if(layui.layim.isSystemMsg(item.txt)){ }}
+        <div class="layim-chat-system" data-id="{{ item.id }}" data-done="1">
+            <i class="layui-icon">&#xe645;</i><span><i>{{ layui.data.date(item.createdAt) }}</i>{{ layui.data.content(item.txt||"&nbsp") }}
+          </span>
+        </div>
+      {{# } else if(item.fromUser == parent.layui.layim.cache().mine.id){ }}
+        <li class="layim-chat-mine" data-id="{{ item.id }}" data-peeruser="{{ item.peerUser }}"  data-kind="{{ item.kind }}">
+            <div class="layim-chat-user">
+                <i class="show-prev-next show-prev-next-left">查看前后消息</i>
+                <img src="{{ item.avatar }}" class='{{item.status === "offline" ? "layim-list-gray" : ""}}'>
+                <cite><i>{{ layui.data.date(item.createdAt) }}</i>{{ item.username }}</cite>
+            </div>
+            <div class="layim-chat-text">{{ layui.data.content(item.txt) }}
+            </div>
+        </li>
+      {{# } else { }}
+        <li  class="" data-id="{{ item.id }}" data-peeruser="{{ item.peerUser }}"  data-kind="{{ item.kind }}">
+            <div class="layim-chat-user">
+                <img  data-id="{{item.fromUser}}" src="{{ item.avatar }}" class='profile {{item.status === "offline" ? "layim-list-gray" : ""}}' title="点击查看详细信息">
+                <cite>{{ item.username }}<i>{{ layui.data.date(item.createdAt) }}</i></cite>
+                <i class="show-prev-next show-prev-next-right">查看前后消息</i>
+            </div>
+            <div class="layim-chat-text">{{ layui.data.content(item.txt) }}
+            </div>
+        </li>
+  {{# }
+}); }}
+</textarea>
+
+<textarea title="指定联系人和群组列表模版" id="LAY_userRoomCondition" style="display:none;">
+    {{# if(d.data.type == 'group'){ }}
+    <li class="layim-group"  data-type="group"  data-id="{{ d.data.id }}" title="{{d.data.temporary ? '临时会话' : '群组'}}:{{ d.data.groupname }}"><p class="group-friend-item">{{ d.data.groupname }}</p><i class="layui-icon" title="移出">&#4103;</i></li>
+    {{# } else { }}
+        <li class="layim-friend" data-type="friend" data-id="{{ d.data.id }}" title="联系人:{{ d.data.username }}"><p class="group-friend-item">{{ d.data.username }}</p><i class="layui-icon" title="移出">&#4103;</i></li>
+    {{# }}}
+</textarea>
+
+</body>
+<script src="../../../../../strophejs/jquery-2.0.3.min.js"></script>
+<!--<script src="../layui/layui.js"></script>-->
+<script src="../../../../layui.js"></script>
+<script src="../../../../../js/config.js"></script>
+<script src="../../../../../js/api.js"></script>
+<script src="../../../../../js/chat.js"></script>
+<script src="../../../../../js/UIControler.js"></script>
+
+<script>
+
+    layui.use(['form','layim', 'flow', 'element','laydate'], function() {
+        var layim = parent.layim,
+            layer = layui.layer,
+            $ = layui.jquery,
+            flow = layui.flow,
+            laydate = layui.laydate,
+            laytpl = layui.laytpl,
+            form = layui.form(),
+            element = layui.element;
+
+        var startTime=laydate.now();
+        var endTime=laydate.now();
+       $("#LAY_demorange_s").val(startTime);
+        $("#LAY_demorange_e").val(endTime);
+        var initSearchKind = 'all';
+
+
+        var start = {
+            /*min: laydate.now()
+            ,*/max: '2099-06-16'
+            , istoday: true
+            ,choose: function (datas) {
+                startTime = datas;
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+
+        var end = {
+            min: laydate.now()
+            ,max: '2099-06-16'
+            , istoday: true
+            ,btns: ['now', 'confirm']
+            , choose: function (datas) {
+                endTime = datas;
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+
+        document.getElementById('LAY_demorange_s').onclick = function () {
+            start.elem = this;
+            laydate(start);
+            $("#laydate_clear").css("display","none");
+        }
+        document.getElementById('LAY_demorange_e').onclick = function () {
+            end.elem = this;
+            laydate(end);
+            $("#laydate_clear").css("display","none");
+        }
+
+
+        var paramStr = decodeURI(location.search); //获得URL参数。该窗口url会携带会话id和type，?id=c2&type=friend
+        var paramArr = paramStr.split('&');
+        if (paramArr.length == 4) {
+            initSearchKind = 'other';
+        }
+
+        $('body').on('contextmenu', function (event) {
+            event.cancelBubble = true;
+            event.returnValue = false;
+            return false;
+        });
+        $('#searchKind').val(initSearchKind);
+        form.render();
+        form.on('select(searchKind)', function (data) {
+            searchKindChange(data.value);
+            // console.log(data.elem); //得到select原始DOM对象
+            // console.log(data.value); //得到被选中的值
+            // console.log(data.othis); //得到美化后的DOM对象
+        });
+
+
+        $("#queryMessages").on("click", function () {
+            queryMessages();
+        });
+
+        $("ul#chat_view").on("click", 'li', function () {
+            showChatHistory($(this));
+        });
+
+        $("ul#userRoomConditionIds li").on("click", 'i', function () {
+            removeCondition($(this));
+        });
+
+        $(".add_condition").on("click", function () {
+            addCondition();
+        });
+
+        $(".condition_more").on("click", function () {
+            showMoreCondition();
+        });
+
+        $("#chatContent").on('keydown',function(e){
+            if(e.keyCode == '13'){
+                queryMessages();
+            }
+        });
+
+        var queryMessages = function () {
+            var chatContent = $("#chatContent").val().trim();
+            var selectedUserIds = getUserIds();
+            var selectedRoomIds = getRoomIds();
+            var selectedSearchKind = $('#searchKind').val();
+
+            if (selectedSearchKind != 'all' && selectedUserIds.length == 0 && selectedRoomIds.length == 0) {
+                layer.msg('请选择联系人或群组！', function () {
+                    $("#chatContent").focus();
+                });
+                return;
+            }
+
+            if (startTime != "" && endTime != "") {
+                if(startTime>endTime){
+                    layer.msg("开始时间不能晚于结束时间，请重新选择日期！");
+                    return;
+                }
+                var startYM = startTime.substring(0, 7);
+                var endYM = endTime.substring(0, 7);
+                if (startYM != endYM) {
+                    layer.msg("不能跨月份查询历史记录，请重新选择日期！");
+                    return;
+                }
+            }
+            var mask = parent.layer.msg('正在查询，请稍后', {icon: 16, shade: [0.3, '#393D49'], time: -1});
+            $('#queryMessages').attr("disabled", "disabled");
+            //清除上次查询结果
+            $('#chat_view').html('');
+            //$('#groupchat_view').html('');
+            $('ul.chat-history-list-peer li').remove();
+            //$('ul.groupchat-history-list-peer li').remove();
+
+            var rootPath = parent.mylayim.getRootPath();
+            $.ajax({
+                type: "post",
+                url: rootPath + "/im/ImChatHistoryController/getChatHistory"
+                , data: {
+                    searchUser: parent.Chat.currentUser.id,
+                    startDate: startTime,
+                    endDate: endTime,
+                    searchContent: chatContent,
+                    searchKind: selectedSearchKind,
+                    userIds: selectedUserIds.join(','),
+                    roomIds: selectedRoomIds.join(',')
+                },
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    if (result) {
+                        result.chat && $.each(result.chat, function (index, item) {
+                            var peerUser = parent.Chat.getUserInfoById(item.peerUser);
+                            var peerUsername = item.peerUser;
+                            item.status = 'offline';
+                            if (peerUser) {
+                                peerUsername = peerUser.username;
+                                item.status = peerUser.status;
+                            }
+                            item.username = peerUsername;
+
+                            item.avatar = rootPath + CONST_IMAGE_ICON_ROOT_URL.substr(1) + "avatar.jpg";
+                            $.each(item.items, function (j, archive) {
+                                archive.avatar = rootPath + CONST_IMAGE_ICON_ROOT_URL.substr(1) + "avatar.jpg";
+                                if (archive.fromUser == item.peerUser) {
+                                    archive.username = peerUsername;
+                                    archive.status = item.status;
+                                } else {
+                                    archive.status = 'online';
+                                    archive.username = parent.Chat.currentUser.username;
+                                }
+                            });
+                            var htmlList = laytpl(LAY_tpl.value).render({
+                                data: item.items
+                            });
+                            $('.chat-history-list-' + item.peerUser).remove();
+                            var htmlListDiv = $('<ul class="chat-history-list-peer chat-history-list-' + item.peerUser + ' clear "  style="position: relative;display:' + (index == 0 ? 'block' : 'none') + ';"></ul>');
+                            htmlListDiv.append(htmlList);
+                            $('#chat-history-list').append(htmlListDiv);
+                        });
+
+
+                        result.groupchat && $.each(result.groupchat, function (index, item) {
+                            var mucRoom = parent.Chat.getRoomInfoById(item.peerUser);
+                            if (!mucRoom || item.groupDissolved) {
+                                item.username = item.chatname;
+                                item.avatar = rootPath + CONST_IMAGE_ICON_ROOT_URL.substr(1) + "group_dissolved.png"
+                            } else {
+                                item.username = mucRoom.groupname;
+                                item.avatar = rootPath + mucRoom.avatar.substr(1);
+                            }
+                            $.each(item.items, function (j, archive) {
+                                archive.avatar = rootPath + CONST_IMAGE_ICON_ROOT_URL.substr(1) + "avatar.jpg";
+                                var fromUser = parent.Chat.getUserInfoById(archive.fromUser);
+                                if (fromUser) {
+                                    archive.username = fromUser.username;
+                                    archive.status = fromUser.status;
+                                } else {
+                                    archive.status = 'offline';
+                                    archive.username = archive.fromUser;
+                                }
+                            });
+                            var htmlList = laytpl(LAY_tpl.value).render({
+                                data: item.items
+                            });
+                            $('.chat-history-list-' + item.peerUser).remove();
+                            var htmlListDiv = $('<ul class="chat-history-list-peer chat-history-list-' + item.peerUser + ' clear "  style="position: relative;display:' + (result.chat.length == 0 && index == 0 ? 'block' : 'none') + ';"></ul>');
+                            htmlListDiv.append(htmlList);
+                            $('#chat-history-list').append(htmlListDiv);
+                        });
+
+
+                        if (result.chat.length + result.groupchat.length == 0) {
+                            var htmlChat = '<li class="layim-null chat-history">无匹配的数据</li>';
+                            $('#chat-history-list').html(htmlChat);
+                            layer.msg('查询成功,无匹配的历史记录');
+                        } else {
+                            $('#chat-history-list >li.layim-null').remove();
+                            if (result.chat && result.chat.length) {
+                                htmlChat = laytpl(LAY_category_tpl.value).render({
+                                    data: result.chat
+                                });
+                                $('#chat_view').html(htmlChat);
+                            }
+
+                            var htmlGrouphat = '<li class="layim-null chat-history">无匹配的数据</li>';
+                            if (result.groupchat && result.groupchat.length) {
+                                htmlGrouphat = laytpl(LAY_category_tpl.value).render({
+                                    data: result.groupchat
+                                });
+                                $('#chat_view').append(htmlGrouphat);
+                            }
+                        }
+                        //$('#groupchat_view').html(htmlGrouphat);
+
+                        $('#queryMessages').removeAttr("disabled");
+                        $('#chat_view li').eq(0).addClass('selected');
+                        parent.layer.close(mask);
+                    } else {
+                        layer.msg('查询失败，请稍后重试！', function () {
+                            $('#queryMessages').removeAttr("disabled");
+                        });
+                        parent.layer.close(mask);
+                    }
+                    $('.chat-history-list-peer li').hover(function () {
+                        showPrevNext($(this), true);
+                    }, function () {
+                        showPrevNext($(this), false);
+                    });
+                    $('img.profile').off('click').on('click', function () {
+                        showProfile($(this));
+                    });
+                },
+                error: function (e) {
+                    parent.layer.close(mask);
+                    layer.msg("查询失败，请稍后重试！", function () {
+                        $('#queryMessages').removeAttr("disabled");
+                    });
+                }
+            });
+        };
+        var showChatHistory = function (elem) {
+            var peerName = elem.data('peername');
+            $('ul#chat_view .chat-history').removeClass('selected');
+            elem.addClass('selected');
+            if (peerName) {
+                $('#chat-history-list .chat-history-list-peer').hide();
+                $('#chat-history-list .chat-history-list-' + peerName).show();
+            }
+        };
+
+
+        var searchKindChange = function (dataValue) {
+            if(dataValue == 'other'){
+                $('.user-room-condition').show();
+                $('.chat-history-result').css("height", "453px");
+            } else {
+                $('.user-room-condition').hide();
+                $('.chat-history-result').css("height", "508px");
+            }
+        };
+
+        var removeCondition = function (elem) {
+            $(elem).parent().remove();
+        };
+
+        var addCondition = function () {
+            var selectedCnt = $('ul#userRoomConditionIds > li').length;
+            if(selectedCnt >= 10){
+                //$('.show_condition_more').show();
+                parent.layer.msg('指定的查询对象超过最大限制，无法添加');
+            } else {
+                var remainCnt = 10 - selectedCnt;
+                var userIds = getUserIds();
+                var roomIds = getRoomIds();
+                var addingItem = [];
+                parent.Chat.selectFriendOrGroup(function (data) {
+                    if(data && data.length ){
+                        $.each(data, function (index, elem) {
+                            if ($.inArray(elem.id, userIds) == -1 && $.inArray(elem.id, roomIds) == -1) {
+                                addingItem.push(elem);
+                            }
+                        });
+                        if(addingItem.length > remainCnt) {
+                            parent.layer.msg('指定的查询对象超过最大限制，无法添加');
+                        } else {
+                            $.each(addingItem,function (index, elem) {
+                                var html = laytpl(LAY_userRoomCondition.value).render({
+                                    data: elem
+                                });
+                                if(elem.type == 'group'){
+                                    $('#userRoomConditionIds').append(html);
+                                } else {
+                                    $('#userRoomConditionIds').prepend(html);
+                                }
+                            });
+                        }
+                    }
+
+                    $("ul#userRoomConditionIds li").on("click", 'i',function () {
+                        removeCondition($(this));
+                    });
+                });
+            }
+        };
+
+        var showMoreCondition = function () {
+            var divContent = $('.user-rooms').html();
+            parent.layer.open({
+                type: 1
+                , title: '指定的联系人和群组'
+                , shade: [0.3, '#393D49']
+                , shadeClose: false
+                , maxmin: false
+                , area: ['800px', '600px']
+                , skin: 'layui-box layui-layer-border'
+                , id: 'layui-layim-show-user-rooms'
+                , resize: false
+                , content: divContent
+            });
+        };
+
+        var getUserIds = function () {
+            var userIds = [];
+            $.each($('ul#userRoomConditionIds > li'),function (index,elem) {
+                if($(elem).data('type') === 'friend'){
+                    userIds.push($(elem).data('id'))
+                }
+            });
+            return userIds;
+        };
+
+        var getRoomIds = function () {
+            var roomIds = [];
+            if('all' != $('#searchKind').val()) {
+                $.each($('ul#userRoomConditionIds > li'),function (index,elem) {
+                    if($(elem).data('type') === 'group'){
+                        roomIds.push($(elem).data('id'))
+                    }
+                });
+            }
+            return roomIds;
+        };
+
+        var initUserRoomCondition = function (id,type) {
+            var item,html;
+            if(type === 'group'){
+                item = parent.Chat.getRoomInfoById(id);
+            } else {
+                item = parent.Chat.getUserInfoById(id);
+            }
+            if(item) {
+                html = laytpl(LAY_userRoomCondition.value).render({
+                    data: item
+                });
+                $('#userRoomConditionIds').append(html);
+            }
+        };
+
+        var showPrevNext = function (elem,showFlg) {
+            if(!$(elem).data('done')){
+                $(elem).find('i.show-prev-next').show();
+                $(elem).find('i.show-prev-next').off('click').on("click", function () {
+                    queryPrevNext(elem);
+                    $(this).hide();
+                });
+            }
+            if(showFlg){
+                $(elem).addClass('hover');
+            } else {
+                $(elem).removeClass('hover');
+                $(elem).find('i.show-prev-next').hide();
+            }
+        };
+
+        var queryPrevNext = function (elem) {
+          //  var dateArr = $("#datePick").val().split(' - ');
+            var prevId = -1,nextId = -1;
+            var id = $(elem).data('id');
+            var kind = $(elem).data('kind');
+            var peerUser = $(elem).data('peeruser');
+            //var mask = parent.layer.msg('正在查询，请稍后', {icon: 16, shade: [0.3, '#393D49']});
+            if($(elem).prev().length){
+                prevId = $(elem).prev().data('id');
+            }
+            if($(elem).next().length){
+                nextId = $(elem).next().data('id');
+            }
+            var rootPath = parent.mylayim.getRootPath();
+            $.ajax({
+                type: "post",
+                url: rootPath + "/im/ImChatHistoryController/getChatHistoryPrevNext"
+                , data: {
+                    searchUser: parent.Chat.currentUser.id,
+                    startDate: startTime,
+                    endDate: endTime,
+                    kind: kind,
+                    peerUser : peerUser,
+                    id : id,
+                    prevId : prevId,
+                    nextId : nextId
+                } ,
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    var currentUl = $('ul.chat-history-list-' + peerUser );
+                    var selfElem = currentUl.find(' > li[data-id='+id+']');
+                    $(elem).data('done', '1');
+                    $(elem).parent().find('.shown-prev-next').removeClass('shown-prev-next');
+                    $(elem).addClass('shown-prev-next');
+                    if(result){
+                        $.each(result, function (indexI, itemPrevNext) {
+                            $.each(itemPrevNext,function (index,item) {
+                                var peerUsername = peerUser;
+                                item.status = 'offline';
+                                item.peerUser = peerUser;
+                                if(item.fromUser == parent.Chat.currentUser.id){
+                                    item.status = parent.Chat.currentUser.status;
+                                    item.username = parent.Chat.currentUser.username;
+                                } else {
+                                    var fromUserObj = parent.Chat.getUserInfoById(item.fromUser);
+                                    if(fromUserObj){
+                                        peerUsername = fromUserObj.username;
+                                        item.status = fromUserObj.status;
+                                    }
+                                    item.username = peerUsername;
+                                }
+                                item.avatar = rootPath + CONST_IMAGE_ICON_ROOT_URL.substr(1) + "avatar.jpg";
+                            });
+
+                        });
+                        var htmlList = laytpl(LAY_tpl.value).render({
+                            data: result.prev
+                        });
+                        selfElem.before(htmlList);
+
+                        if(result.prev.length == 5) {
+                            currentUl.find(' > li[data-id='+result.prev[0].id+']').hover(function(){
+                                showPrevNext($(this),true);
+                            },function(){
+                                showPrevNext($(this),false);
+                            });
+
+                        }
+
+                        htmlList = laytpl(LAY_tpl.value).render({
+                            data: result.next
+                        });
+                        selfElem.after(htmlList);
+                        if(result.next.length == 5) {
+                            currentUl.find(' > li[data-id='+result.next[result.next.length-1].id+']').hover(function(){
+                                showPrevNext($(this),true);
+                            },function(){
+                                showPrevNext($(this),false);
+                            });
+
+                        }
+
+                        $('img.profile').off('click').on('click', function () {
+                            showProfile($(this));
+                        });
+                        //parent.layer.close(mask);
+                    } else {
+                        layer.msg('查询失败，请稍后重试！',function () {
+                        });
+                        //parent.layer.close(mask);
+                    }
+                },
+                error: function (e) {
+                    //parent.layer.close(mask);
+                    layer.msg("查询失败，请稍后重试！",function () {
+                    });
+                }
+            });
+        };
+
+        var showProfile = function (elem) {
+            var loginName = $(elem).data('id');
+            parent.mylayim.showProfile(loginName);
+        };
+
+        if(initSearchKind === 'other'){
+            var id = paramArr[0].split('=')[1];
+            var type = paramArr[1].split('=')[1];
+            initUserRoomCondition(id,type);
+            //searchKindChange('other');
+            $('.layim-chat-main-left').hide();
+            $('.layim-chat-main-right').css("width","98%");
+        } else {
+            $('.chat-content-label.search-kind-all').show();
+            $('.input-search-kind.search-kind-all').show();
+        }
+        $('#chatContent').focus();
+        setTimeout(function () {
+            $('#queryMessages').click();
+        },500);
+    });
+
+</script>
+</html>

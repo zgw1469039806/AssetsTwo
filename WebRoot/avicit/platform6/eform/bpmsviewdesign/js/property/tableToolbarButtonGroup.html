@@ -1,0 +1,72 @@
+<form>
+	<div class="form-group property-control">
+		<label>按钮组识符</label><input type="text" id="id" name="id"
+									isnull="false" class="form-control input-sm" readonly="readonly" placeholder="表格查询页">
+	</div>
+	<div class="form-group property-control">
+	<label>按钮组名称</label><input type="text" id="name" name="name"
+								  isnull="false" class="form-control input-sm" placeholder="按钮组">
+	</div>
+	<div class="form-group property-control">
+		<label>按钮组图标</label>
+		<div id="iconselect" class="input-group input-group-sm avicselect">
+			<!-- <input type="hidden"  name="icon" id="icon">  -->
+			<input type="text" class="form-control" name="icon" id="icon">
+			<span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+
+    function setIconInfo(data) {
+        $("#icon").val(data.icon);
+        layer.close(lay_select_icon);
+        $("#icon").change();
+    }
+    $(function() {
+        $(".form-control").bind('change', function() {
+            engine.changSave();
+        });
+
+
+        $("#iconselect").bind("click", function() {
+            var contentWidth = 800;
+            var top = $("#iconselect").offset().top + $("#iconselect").outerHeight(true);
+            var left = $("#iconselect").offset().left + $("#iconselect").outerWidth() - contentWidth;
+            var width = $("#iconselect").innerWidth();
+            layer.config({
+                extend: 'skin/layer-bootstrap.css'
+            });
+
+            var selectIconIndex="";
+            if(viewEditor.viewStyle=="bootstrap"){
+                selectIconIndex="static/h5/selectIcon/index.html";
+            }
+            else if(viewEditor.viewStyle=="easyui"){
+                selectIconIndex="avicit/platform6/eform/bpmsviewdesign/easyuicommon/index.html";
+            }
+
+            lay_select_icon = layer.open({
+                type: 2,
+                shift: 5,
+                title: false,
+                scrollbar: false,
+                move: false,
+                area: [contentWidth + 'px', '400px'],
+                offset: [top + 'px', left + 'px'],
+                closeBtn: 0,
+                shadeClose: true,
+                content: selectIconIndex,
+                success: function(layero, index) {
+                    var serachLabel = $('<div class="serachLabel"><span>请选择</span><span class="caret"></span></div>').appendTo(layero);
+                    serachLabel.bind('click', function() {
+                        layer.close(index);
+                    });
+                    serachLabel.css('width', width + 'px');
+                }
+
+            });
+        });
+    })
+
+</script>

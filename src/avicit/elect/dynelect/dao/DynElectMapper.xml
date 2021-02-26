@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.elect.dynelect.dao.DynElectDAO">
+<resultMap id="DynElectDTOMap" type="avicit.elect.dynelect.dto.DynElectDTO">
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="name" column="NAME" jdbcType="VARCHAR" />
+	<result property="status" column="STATUS" jdbcType="VARCHAR" />
+	<result property="agreeRuleNum" column="AGREE_RULE_NUM" jdbcType="DECIMAL" />
+	<result property="shouldInvestNum" column="SHOULD_INVEST_NUM" jdbcType="DECIMAL" />
+	<result property="sceneNum" column="SCENE_NUM" jdbcType="DECIMAL" />
+	<result property="loginNum" column="LOGIN_NUM" jdbcType="DECIMAL" />
+	<result property="actualInvestNum" column="ACTUAL_INVEST_NUM" jdbcType="DECIMAL" />
+	<result property="ruleDesc" column="RULE_DESC" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="att01" column="ATT_01" jdbcType="VARCHAR" />
+	<result property="att02" column="ATT_02" jdbcType="VARCHAR" />
+	<result property="att03" column="ATT_03" jdbcType="VARCHAR" />
+	<result property="att04" column="ATT_04" jdbcType="VARCHAR" />
+	<result property="att05" column="ATT_05" jdbcType="VARCHAR" />
+	<result property="groupId" column="GROUP_ID" jdbcType="VARCHAR" />
+	<result property="att06" column="ATT_06" jdbcType="DECIMAL" />
+	<result property="att07" column="ATT_07" jdbcType="DECIMAL" />
+	<result property="att08" column="ATT_08" jdbcType="DECIMAL" />
+	<result property="att09" column="ATT_09" jdbcType="DECIMAL" />
+	<result property="att10" column="ATT_10" jdbcType="DECIMAL" />
+	<result property="roundNum" column="ROUND_NUM" jdbcType="DECIMAL" />
+	<result property="isShowPersons" column="IS_SHOW_PERSONS" jdbcType="DECIMAL" />
+	<result property="isShowVoteNum" column="IS_SHOW_VOTE_NUM" jdbcType="DECIMAL" />
+	<result property="isShowRanking" column="IS_SHOW_RANKING" jdbcType="DECIMAL" />
+	<result property="scanPlan" column="SCAN_PLAN" jdbcType="DECIMAL" />
+</resultMap>
+<sql id="commonColums">
+	t1.CREATED_BY,
+	t1.LAST_UPDATED_BY,
+	t1.NAME,
+	t1.STATUS,
+	t1.AGREE_RULE_NUM,
+	t1.SHOULD_INVEST_NUM,
+	t1.SCENE_NUM,
+	t1.LOGIN_NUM,
+	t1.ACTUAL_INVEST_NUM,
+	t1.RULE_DESC,
+	t1.CREATION_DATE,
+	t1.VERSION,
+	t1.ID,
+	t1.LAST_UPDATE_DATE,
+	t1.ORG_IDENTITY,
+	t1.LAST_UPDATE_IP,
+	t1.ATT_01,
+	t1.ATT_02,
+	t1.ATT_03,
+	t1.ATT_04,
+	t1.ATT_05,
+	t1.GROUP_ID,
+	t1.ATT_06,
+	t1.ATT_07,
+	t1.ATT_08,
+	t1.ATT_09,
+	t1.ATT_10,
+	t1.ROUND_NUM,
+	t1.IS_SHOW_PERSONS,
+	t1.IS_SHOW_VOTE_NUM,
+	t1.IS_SHOW_RANKING,
+	t1.SCAN_PLAN</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+		and t1.org_identity = #{bean.orgIdentity}
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+    <if test="bean.createdBy != null and bean.createdBy != ''">
+        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+    </if>
+    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+    </if>
+    <if test="bean.name != null and bean.name != ''">
+        and t1.NAME like concat(concat('%',#{bean.name}),'%')
+    </if>
+    <if test="bean.status != null and bean.status != ''">
+        and t1.STATUS = #{bean.status}
+    </if>
+    <if test="bean.agreeRuleNum != null ">
+        and t1.AGREE_RULE_NUM = #{bean.agreeRuleNum}
+    </if>
+    <if test="bean.shouldInvestNum != null ">
+        and t1.SHOULD_INVEST_NUM = #{bean.shouldInvestNum}
+    </if>
+    <if test="bean.sceneNum != null ">
+        and t1.SCENE_NUM = #{bean.sceneNum}
+    </if>
+    <if test="bean.loginNum != null ">
+        and t1.LOGIN_NUM = #{bean.loginNum}
+    </if>
+    <if test="bean.actualInvestNum != null ">
+        and t1.ACTUAL_INVEST_NUM = #{bean.actualInvestNum}
+    </if>
+    <if test="bean.ruleDesc != null and bean.ruleDesc != ''">
+        and t1.RULE_DESC like concat(concat('%',#{bean.ruleDesc}),'%')
+    </if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+    <if test="bean.version != null ">
+        and t1.VERSION = #{bean.version}
+    </if>
+    <if test="bean.id != null and bean.id != ''">
+        and t1.ID like concat(concat('%',#{bean.id}),'%')
+    </if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+    </if>
+    <if test="bean.att01 != null and bean.att01 != ''">
+        and t1.ATT_01 like concat(concat('%',#{bean.att01}),'%')
+    </if>
+    <if test="bean.att02 != null and bean.att02 != ''">
+        and t1.ATT_02 like concat(concat('%',#{bean.att02}),'%')
+    </if>
+    <if test="bean.att03 != null and bean.att03 != ''">
+        and t1.ATT_03 like concat(concat('%',#{bean.att03}),'%')
+    </if>
+    <if test="bean.att04 != null and bean.att04 != ''">
+        and t1.ATT_04 like concat(concat('%',#{bean.att04}),'%')
+    </if>
+    <if test="bean.att05 != null and bean.att05 != ''">
+        and t1.ATT_05 like concat(concat('%',#{bean.att05}),'%')
+    </if>
+	<if test="bean.groupId != null and bean.groupId != ''">
+		and t1.GROUP_ID like concat(concat('%',#{bean.groupId}),'%')
+	</if>
+    <if test="bean.att06 != null ">
+        and t1.ATT_06 = #{bean.att06}
+    </if>
+    <if test="bean.att07 != null ">
+        and t1.ATT_07 = #{bean.att07}
+    </if>
+    <if test="bean.att08 != null ">
+        and t1.ATT_08 = #{bean.att08}
+    </if>
+    <if test="bean.att09 != null ">
+        and t1.ATT_09 = #{bean.att09}
+    </if>
+    <if test="bean.att10 != null ">
+        and t1.ATT_10 = #{bean.att10}
+    </if>
+	<if test="bean.roundNum != null ">
+		and t1.ROUND_NUM = #{bean.roundNum}
+	</if>
+	<if test="bean.isShowPersons != null ">
+		and t1.IS_SHOW_PERSONS = #{bean.isShowPersons}
+	</if>
+	<if test="bean.isShowVoteNum != null ">
+		and t1.IS_SHOW_VOTE_NUM = #{bean.isShowVoteNum}
+	</if>
+	<if test="bean.isShowRanking != null ">
+		and t1.IS_SHOW_RANKING = #{bean.isShowRanking}
+	</if>
+	<if test="bean.scanPlan != null ">
+		and t1.SCAN_PLAN = #{bean.scanPlan}
+	</if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.name != null and bean.name != ''">
+			or t1.NAME like concat(concat('%',#{bean.name}),'%')
+		</if>
+		<if test="bean.status != null and bean.status != ''">
+			or t1.STATUS = #{bean.status}
+		</if>
+		<if test="bean.agreeRuleNum != null and bean.agreeRuleNum != ''">
+			or t1.AGREE_RULE_NUM = #{bean.agreeRuleNum}
+		</if>
+		<if test="bean.shouldInvestNum != null and bean.shouldInvestNum != ''">
+			or t1.SHOULD_INVEST_NUM = #{bean.shouldInvestNum}
+		</if>
+		<if test="bean.sceneNum != null and bean.sceneNum != ''">
+			or t1.SCENE_NUM = #{bean.sceneNum}
+		</if>
+		<if test="bean.loginNum != null and bean.loginNum != ''">
+			or t1.LOGIN_NUM = #{bean.loginNum}
+		</if>
+		<if test="bean.actualInvestNum != null and bean.actualInvestNum != ''">
+			or t1.ACTUAL_INVEST_NUM = #{bean.actualInvestNum}
+		</if>
+		<if test="bean.ruleDesc != null and bean.ruleDesc != ''">
+			or t1.RULE_DESC like concat(concat('%',#{bean.ruleDesc}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.version != null and bean.version != ''">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.att01 != null and bean.att01 != ''">
+			or t1.ATT_01 like concat(concat('%',#{bean.att01}),'%')
+		</if>
+		<if test="bean.att02 != null and bean.att02 != ''">
+			or t1.ATT_02 like concat(concat('%',#{bean.att02}),'%')
+		</if>
+		<if test="bean.att03 != null and bean.att03 != ''">
+			or t1.ATT_03 like concat(concat('%',#{bean.att03}),'%')
+		</if>
+		<if test="bean.att04 != null and bean.att04 != ''">
+			or t1.ATT_04 like concat(concat('%',#{bean.att04}),'%')
+		</if>
+		<if test="bean.att05 != null and bean.att05 != ''">
+			or t1.ATT_05 like concat(concat('%',#{bean.att05}),'%')
+		</if>
+		<if test="bean.groupId != null and bean.groupId != ''">
+			or t1.GROUP_ID like concat(concat('%',#{bean.groupId}),'%')
+		</if>
+		<if test="bean.att06 != null and bean.att06 != ''">
+			or t1.ATT_06 = #{bean.att06}
+		</if>
+		<if test="bean.att07 != null and bean.att07 != ''">
+			or t1.ATT_07 = #{bean.att07}
+		</if>
+		<if test="bean.att08 != null and bean.att08 != ''">
+			or t1.ATT_08 = #{bean.att08}
+		</if>
+		<if test="bean.att09 != null and bean.att09 != ''">
+			or t1.ATT_09 = #{bean.att09}
+		</if>
+		<if test="bean.att10 != null and bean.att10 != ''">
+			or t1.ATT_10 = #{bean.att10}
+		</if>
+		<if test="bean.roundNum != null and bean.roundNum != ''">
+			or t1.ROUND_NUM = #{bean.roundNum}
+		</if>
+		<if test="bean.isShowPersons != null and bean.isShowPersons != ''">
+			or t1.IS_SHOW_PERSONS = #{bean.isShowPersons}
+		</if>
+		<if test="bean.isShowVoteNum != null and bean.isShowVoteNum != ''">
+			or t1.IS_SHOW_VOTE_NUM = #{bean.isShowVoteNum}
+		</if>
+		<if test="bean.isShowRanking != null and bean.isShowRanking != ''">
+			or t1.IS_SHOW_RANKING = #{bean.isShowRanking}
+		</if>
+		<if test="bean.scanPlan != null and bean.scanPlan != ''">
+			or t1.SCAN_PLAN = #{bean.scanPlan}
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="pOrderBy != null and pOrderBy != ''">
+			order by ${pOrderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+<!-- 分页查询 DYN_ELECT -->
+<select id="searchDynElectByPage" parameterType="java.util.Map" resultMap="DynElectDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_ELECT t1   
+<where>
+	<if test="bean != null">
+		<choose>
+			<when test="keyWord != null and keyWord != '' ">
+				<include refid="commonWhereOr"/>
+			</when>
+			<otherwise>
+				<include refid="commonWhereAnd"/>
+			</otherwise>
+		</choose>
+		<include refid="defaultWhereAnd"/>
+	</if>
+</where>
+<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 DYN_ELECT -->
+<select id="searchDynElect" parameterType="java.util.Map" resultMap="DynElectDTOMap">
+	select
+	<include refid="commonColums"/>
+    from DYN_ELECT 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</if>
+	</where>
+</select>
+<!-- 主键查询对象 DYN_ELECT -->
+<select id="findDynElectById" parameterType="java.lang.String" resultMap="DynElectDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_ELECT t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 DYN_ELECT -->
+<insert id="insertDynElect" parameterType="avicit.elect.dynelect.dto.DynElectDTO">
+	insert into DYN_ELECT
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="name != null">
+			NAME,
+		</if>
+		<if test="status != null">
+			STATUS,
+		</if>
+		<if test="agreeRuleNum != null">
+			AGREE_RULE_NUM,
+		</if>
+		<if test="shouldInvestNum != null">
+			SHOULD_INVEST_NUM,
+		</if>
+		<if test="sceneNum != null">
+			SCENE_NUM,
+		</if>
+		<if test="loginNum != null">
+			LOGIN_NUM,
+		</if>
+		<if test="actualInvestNum != null">
+			ACTUAL_INVEST_NUM,
+		</if>
+		<if test="ruleDesc != null">
+			RULE_DESC,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="att01 != null">
+			ATT_01,
+		</if>
+		<if test="att02 != null">
+			ATT_02,
+		</if>
+		<if test="att03 != null">
+			ATT_03,
+		</if>
+		<if test="att04 != null">
+			ATT_04,
+		</if>
+		<if test="att05 != null">
+			ATT_05,
+		</if>
+		<if test="groupId != null">
+			GROUP_ID,
+		</if>
+		<if test="att06 != null">
+			ATT_06,
+		</if>
+		<if test="att07 != null">
+			ATT_07,
+		</if>
+		<if test="att08 != null">
+			ATT_08,
+		</if>
+		<if test="att09 != null">
+			ATT_09,
+		</if>
+		<if test="att10 != null">
+			ATT_10,
+		</if>
+		<if test="roundNum != null">
+			ROUND_NUM,
+		</if>
+		<if test="isShowPersons != null">
+			IS_SHOW_PERSONS,
+		</if>
+		<if test="isShowVoteNum != null">
+			IS_SHOW_VOTE_NUM,
+		</if>
+		<if test="isShowRanking != null">
+			IS_SHOW_RANKING,
+		</if>
+		<if test="scanPlan != null">
+			SCAN_PLAN
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="name != null">
+			#{name,jdbcType = VARCHAR},
+		</if>
+		<if test="status != null">
+			#{status,jdbcType = VARCHAR},
+		</if>
+		<if test="agreeRuleNum != null">
+			#{agreeRuleNum,jdbcType = DECIMAL},
+		</if>
+		<if test="shouldInvestNum != null">
+			#{shouldInvestNum,jdbcType = DECIMAL},
+		</if>
+		<if test="sceneNum != null">
+			#{sceneNum,jdbcType = DECIMAL},
+		</if>
+		<if test="loginNum != null">
+			#{loginNum,jdbcType = DECIMAL},
+		</if>
+		<if test="actualInvestNum != null">
+			#{actualInvestNum,jdbcType = DECIMAL},
+		</if>
+		<if test="ruleDesc != null">
+			#{ruleDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="att01 != null">
+			#{att01,jdbcType = VARCHAR},
+		</if>
+		<if test="att02 != null">
+			#{att02,jdbcType = VARCHAR},
+		</if>
+		<if test="att03 != null">
+			#{att03,jdbcType = VARCHAR},
+		</if>
+		<if test="att04 != null">
+			#{att04,jdbcType = VARCHAR},
+		</if>
+		<if test="att05 != null">
+			#{att05,jdbcType = VARCHAR},
+		</if>
+		<if test="groupId != null">
+			#{groupId,jdbcType = VARCHAR},
+		</if>
+		<if test="att06 != null">
+			#{att06,jdbcType = DECIMAL},
+		</if>
+		<if test="att07 != null">
+			#{att07,jdbcType = DECIMAL},
+		</if>
+		<if test="att08 != null">
+			#{att08,jdbcType = DECIMAL},
+		</if>
+		<if test="att09 != null">
+			#{att09,jdbcType = DECIMAL},
+		</if>
+		<if test="att10 != null">
+			#{att10,jdbcType = DECIMAL},
+		</if>
+		<if test="roundNum != null">
+			#{roundNum,jdbcType = DECIMAL},
+		</if>
+		<if test="isShowPersons != null">
+			#{isShowPersons,jdbcType = DECIMAL},
+		</if>
+		<if test="isShowVoteNum != null">
+			#{isShowVoteNum,jdbcType = DECIMAL},
+		</if>
+		<if test="isShowRanking != null">
+			#{isShowRanking,jdbcType = DECIMAL},
+		</if>
+		<if test="scanPlan != null">
+			#{scanPlan,jdbcType = DECIMAL}
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 DYN_ELECT -->
+<insert id="insertDynElectList" parameterType="java.util.List">
+	insert into DYN_ELECT(
+	CREATED_BY ,
+	LAST_UPDATED_BY ,
+	NAME ,
+	STATUS ,
+	AGREE_RULE_NUM ,
+	SHOULD_INVEST_NUM ,
+	SCENE_NUM ,
+	LOGIN_NUM ,
+	ACTUAL_INVEST_NUM ,
+	RULE_DESC ,
+	CREATION_DATE ,
+	VERSION ,
+	ID ,
+	LAST_UPDATE_DATE ,
+	ORG_IDENTITY ,
+	LAST_UPDATE_IP ,
+	ATT_01 ,
+	ATT_02 ,
+	ATT_03 ,
+	ATT_04 ,
+	ATT_05 ,
+	GROUP_ID,
+	ATT_06 ,
+	ATT_07 ,
+	ATT_08 ,
+	ATT_09 ,
+	ATT_10 ,
+	ROUND_NUM ,
+	IS_SHOW_PERSONS ,
+	IS_SHOW_VOTE_NUM ,
+	IS_SHOW_RANKING,
+	 SCAN_PLAN)
+<foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
+	select
+	#{item.createdBy,jdbcType = VARCHAR} ,
+	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+	#{item.name,jdbcType = VARCHAR} ,
+	#{item.status,jdbcType = VARCHAR} ,
+	#{item.agreeRuleNum,jdbcType = DECIMAL} ,
+	#{item.shouldInvestNum,jdbcType = DECIMAL} ,
+	#{item.sceneNum,jdbcType = DECIMAL} ,
+	#{item.loginNum,jdbcType = DECIMAL} ,
+	#{item.actualInvestNum,jdbcType = DECIMAL} ,
+	#{item.ruleDesc,jdbcType = VARCHAR} ,
+	#{item.creationDate,jdbcType = TIMESTAMP} ,
+	#{item.version,jdbcType = DECIMAL} ,
+	#{item.id,jdbcType = VARCHAR} ,
+	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+	#{item.orgIdentity,jdbcType = VARCHAR} ,
+	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+	#{item.att01,jdbcType = VARCHAR} ,
+	#{item.att02,jdbcType = VARCHAR} ,
+	#{item.att03,jdbcType = VARCHAR} ,
+	#{item.att04,jdbcType = VARCHAR} ,
+	#{item.att05,jdbcType = VARCHAR} ,
+	#{item.groupId,jdbcType = VARCHAR} ,
+	#{item.att06,jdbcType = DECIMAL} ,
+	#{item.att07,jdbcType = DECIMAL} ,
+	#{item.att08,jdbcType = DECIMAL} ,
+	#{item.att09,jdbcType = DECIMAL} ,
+	#{item.att10,jdbcType = DECIMAL},
+	#{item.roundNum,jdbcType = DECIMAL},
+	#{item.isShowPersons,jdbcType = DECIMAL},
+	#{item.isShowVoteNum,jdbcType = DECIMAL},
+	#{item.isShowRanking,jdbcType = DECIMAL},
+	#{item.scanPlan,jdbcType = DECIMAL} from dual
+</foreach>
+</insert>
+<!-- 更新对象 DYN_ELECT -->
+<update id="updateDynElectSensitive" parameterType="avicit.elect.dynelect.dto.DynElectDTO">
+	update DYN_ELECT
+	<set>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="name != null">
+			NAME = #{name,jdbcType = VARCHAR} ,
+		</if>
+		<if test="status != null">
+			STATUS = #{status,jdbcType = VARCHAR} ,
+		</if>
+		<if test="agreeRuleNum != null">
+			AGREE_RULE_NUM = #{agreeRuleNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="shouldInvestNum != null">
+			SHOULD_INVEST_NUM = #{shouldInvestNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="sceneNum != null">
+			SCENE_NUM = #{sceneNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="loginNum != null">
+			LOGIN_NUM = #{loginNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="actualInvestNum != null">
+			ACTUAL_INVEST_NUM = #{actualInvestNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="ruleDesc != null">
+			RULE_DESC = #{ruleDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att01 != null">
+			ATT_01 = #{att01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att02 != null">
+			ATT_02 = #{att02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att03 != null">
+			ATT_03 = #{att03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att04 != null">
+			ATT_04 = #{att04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att05 != null">
+			ATT_05 = #{att05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="groupId != null">
+			GROUP_ID = #{groupId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att06 != null">
+			ATT_06 = #{att06,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att07 != null">
+			ATT_07 = #{att07,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att08 != null">
+			ATT_08 = #{att08,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att09 != null">
+			ATT_09 = #{att09,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att10 != null">
+			ATT_10 = #{att10,jdbcType = DECIMAL} ,
+		</if>
+		<if test="roundNum != null">
+			ROUND_NUM = #{roundNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="isShowPersons != null">
+			IS_SHOW_PERSONS = #{isShowPersons,jdbcType = DECIMAL} ,
+		</if>
+		<if test="isShowVoteNum != null">
+			IS_SHOW_VOTE_NUM = #{isShowVoteNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="isShowRanking != null">
+			IS_SHOW_RANKING = #{isShowRanking,jdbcType = DECIMAL},
+		</if>
+		<if test="scanPlan != null">
+			SCAN_PLAN = #{scanPlan,jdbcType = DECIMAL}
+		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 DYN_ELECT -->
+<update id="updateDynElectAll" parameterType="avicit.elect.dynelect.dto.DynElectDTO">
+	update DYN_ELECT
+	set
+	CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+	LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+	NAME = #{name,jdbcType = VARCHAR} ,
+	STATUS = #{status,jdbcType = VARCHAR} ,
+	AGREE_RULE_NUM = #{agreeRuleNum,jdbcType = DECIMAL} ,
+	SHOULD_INVEST_NUM = #{shouldInvestNum,jdbcType = DECIMAL} ,
+	SCENE_NUM = #{sceneNum,jdbcType = DECIMAL} ,
+	LOGIN_NUM = #{loginNum,jdbcType = DECIMAL} ,
+	ACTUAL_INVEST_NUM = #{actualInvestNum,jdbcType = DECIMAL} ,
+	RULE_DESC = #{ruleDesc,jdbcType = VARCHAR} ,
+	CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+	VERSION = version+1 ,
+	ID = #{id,jdbcType = VARCHAR} ,
+	LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+	LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+	ATT_01 = #{att01,jdbcType = VARCHAR} ,
+	ATT_02 = #{att02,jdbcType = VARCHAR} ,
+	ATT_03 = #{att03,jdbcType = VARCHAR} ,
+	ATT_04 = #{att04,jdbcType = VARCHAR} ,
+	ATT_05 = #{att05,jdbcType = VARCHAR} ,
+	GROUP_ID = #{groupId,jdbcType = VARCHAR} ,
+	ATT_06 = #{att06,jdbcType = DECIMAL} ,
+	ATT_07 = #{att07,jdbcType = DECIMAL} ,
+	ATT_08 = #{att08,jdbcType = DECIMAL} ,
+	ATT_09 = #{att09,jdbcType = DECIMAL} ,
+	ATT_10 = #{att10,jdbcType = DECIMAL} ,
+	ROUND_NUM = #{roundNum,jdbcType = DECIMAL} ,
+	IS_SHOW_PERSONS = #{isShowPersons,jdbcType = DECIMAL} ,
+	IS_SHOW_VOTE_NUM = #{isShowVoteNum,jdbcType = DECIMAL} ,
+	IS_SHOW_RANKING = #{isShowRanking,jdbcType = DECIMAL},
+	SCAN_PLAN = #{scanPlan,jdbcType = DECIMAL} where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   DYN_ELECT -->
+<update id="updateDynElectList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+		update DYN_ELECT
+		set
+		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+		NAME = #{item.name,jdbcType = VARCHAR} ,
+		STATUS = #{item.status,jdbcType = VARCHAR} ,
+		AGREE_RULE_NUM = #{item.agreeRuleNum,jdbcType = DECIMAL} ,
+		SHOULD_INVEST_NUM = #{item.shouldInvestNum,jdbcType = DECIMAL} ,
+		SCENE_NUM = #{item.sceneNum,jdbcType = DECIMAL} ,
+		LOGIN_NUM = #{item.loginNum,jdbcType = DECIMAL} ,
+		ACTUAL_INVEST_NUM = #{item.actualInvestNum,jdbcType = DECIMAL} ,
+		RULE_DESC = #{item.ruleDesc,jdbcType = VARCHAR} ,
+		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+		VERSION = version+1  ,
+		ID = #{item.id,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+		ATT_01 = #{item.att01,jdbcType = VARCHAR} ,
+		ATT_02 = #{item.att02,jdbcType = VARCHAR} ,
+		ATT_03 = #{item.att03,jdbcType = VARCHAR} ,
+		ATT_04 = #{item.att04,jdbcType = VARCHAR} ,
+		ATT_05 = #{item.att05,jdbcType = VARCHAR} ,
+		GROUP_ID = #{item.groupId,jdbcType = VARCHAR} ,
+		ATT_06 = #{item.att06,jdbcType = DECIMAL} ,
+		ATT_07 = #{item.att07,jdbcType = DECIMAL} ,
+		ATT_08 = #{item.att08,jdbcType = DECIMAL} ,
+		ATT_09 = #{item.att09,jdbcType = DECIMAL} ,
+		ATT_10 = #{item.att10,jdbcType = DECIMAL} ,
+		ROUND_NUM = #{item.roundNum,jdbcType = DECIMAL} ,
+		IS_SHOW_PERSONS = #{item.isShowPersons,jdbcType = DECIMAL} ,
+		IS_SHOW_VOTE_NUM = #{item.isShowVoteNum,jdbcType = DECIMAL} ,
+		IS_SHOW_RANKING = #{item.isShowRanking,jdbcType = DECIMAL},
+		SCAN_PLAN = #{item.scanPlan,jdbcType = DECIMAL} where id = #{item.id}
+		and version = #{version}
+	</foreach>
+</update>
+<!-- 主键删除 DYN_ELECT -->
+<delete id="deleteDynElectById" parameterType="java.lang.String">
+	delete from DYN_ELECT  where id = #{id}
+</delete>
+    <!-- 更新对象 DYN_ELECT  實投數 ACTUAL_INVEST_NUM-->
+    <update id="updateDynElectInvestNum" parameterType="java.lang.String">
+	update DYN_ELECT
+	set ACTUAL_INVEST_NUM = (select count (*) from (select NUM_PLATE from DYN_ELECT_LOG where  ELECT_ID= #{id}  GROUP by (NUM_PLATE) ))
+	where id = #{id}
+</update>
+<select id="getCurrentElectDTO" resultMap="DynElectDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_ELECT t1
+	order by t1.ROUND_NUM desc, t1.LAST_UPDATE_DATE desc
+</select>
+<select id="searchDynElectByStatus" resultMap="DynElectDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_ELECT t1
+	where t1.status = '1'
+</select>
+</mapper>

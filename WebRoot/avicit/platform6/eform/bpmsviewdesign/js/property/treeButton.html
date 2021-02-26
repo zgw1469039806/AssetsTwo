@@ -1,0 +1,374 @@
+<form>
+    <div class="form-group property-control">
+        <label>工具栏按钮</label><input type="text" id="id" name="id"
+                                   isnull="false" class="form-control input-sm" placeholder="工具栏按钮" readonly>
+    </div>
+    <div class="form-group property-control">
+        <label>按钮图标</label>
+        <div id="iconselect" class="input-group input-group-sm avicselect">
+            <!-- <input type="hidden"  name="icon" id="icon">  -->
+            <input type="text" class="form-control" name="icon" id="icon" >
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+        </div>
+    </div>
+    <div class="form-group property-control">
+           <input type="hidden" name="unicode" id="unicode" >
+    </div>
+    <div class="form-group property-control">
+        <label>按钮类型</label>
+        <select class="form-control input-sm" name="type" id="type">
+            
+            <option value="add" selected>添加按钮</option>
+            <option value="edit">编辑按钮</option>
+            <option value="delete">删除按钮</option>
+            <option value="customize" >自定义按钮</option>
+        </select>
+    </div>
+    <div class="form-group property-control">
+        <label>按钮名称</label><input type="text" id="name" name="name" value="添加按钮"
+                                  isnull="false" class="form-control input-sm" placeholder="按钮名称">
+    </div>
+    <style>
+	.ms-options-wrap > .ms-options {
+    	position:relative !important;
+	}
+    .expressionDisplay{
+        width:100%;
+        border:1px solid #6497e9;
+        height:165px;
+        background-color: #ffffff;
+        box-shadow:3px 3px 2px #a5c7fe;
+        -moz-box-shadow:3px 3px 2px #a5c7fe;
+        -webkit-box-shadow:3px 3px 2px #a5c7fe;
+        border-bottom-left-radius:5px;
+        border-bottom-right-radius:5px;
+        margin-left:2px;
+        margin-top:-6px;
+        display:none;
+        overflow: auto;
+    }
+	</style>
+    <div id="formselect" class="form-group property-control">
+        <label><i class="required">*</i>表单名称</label>
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" name="formname" id="formname">
+            <input type="hidden" name="formid" id="formid">
+            <span id="formselectbutton" class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+        </div>
+    </div>
+    <div class="form-group property-control" id="formpara">
+        <label>传递树定义参数</label><input type="hidden"  name="formpara"
+                                  isnull="false" class="form-control input-sm">
+        <input type="hidden"  name="formparatype"
+               isnull="false" class="form-control input-sm">
+        <input type="text"  name="formparaname" readonly
+               isnull="false" class="form-control input-sm" placeholder="表单参数">
+        <div id="paratree" class="expressionDisplay">
+            <ul id="exprTree" class="ztree"></ul>
+        </div>
+    </div>
+
+    <div class="form-group property-control" id="beforeevent">
+        <label>前置js事件</label>
+        <textarea class="form-control input-sm" rows="20" title="按钮点击" name="event_before_bt_click" id="event_before_bt_click"></textarea>
+    </div>
+    <div class="form-group property-control" id="afterevent">
+        <label>后置js事件</label>
+        <textarea class="form-control input-sm" rows="20" title="按钮点击" name="event_after_bt_click" id="event_after_bt_click"></textarea>
+    </div>
+    <div class="form-group property-control  hidden-group">
+        <label>按钮点击</label>
+        <textarea class="form-control input-sm" rows="20" title="按钮点击" name="event_reg_bt_click"
+                  id="event_reg_bt_click"></textarea>
+    </div>
+    <div id="tableparadiv"  class="form-group property-control" style="display:none;">
+		<label>传递节点参数</label>
+    	<select id="tablepara" name="tablepara" multiple="multiple" placeholder="请选择传递参数" class="SlectBox 4col active"  style="width:150px" required="required">
+    	</select>
+	</div>
+</form>
+<script src="static/js/platform/eform/jquery.multiselect.js"></script>
+
+<script src="avicit/platform6/eform/bpmsformmanage/select/selectPublishEform/selectPublishEform.js"></script>
+<script type="text/javascript">
+    var lay_select_icon;
+
+    var showFlag = false;
+    var paras = engine.getPara("table,tree");
+
+    var setting = {
+        check: {
+            enable: true,
+            nocheckInherit: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            onCheck: function (event, treeId, treeNode) {
+                var treeObj = $.fn.zTree.getZTreeObj(treeId);
+                var nodes = treeObj.getCheckedNodes(true);
+                var paraname = [];
+                var formpara = [];
+                var paratype = [];
+                for (var i in nodes){
+                    paraname.push(nodes[i].name);
+                    formpara.push(nodes[i].id);
+                    paratype.push(nodes[i].paratype);
+                }
+                $("[name='formparaname']").val(paraname.join(","));
+                $("[name='formparatype']").val(paratype.join(","));
+                $("[name='formpara']").val(formpara.join(","));
+                engine.changSave();
+            }
+        }
+    };
+
+    function setIconInfo(data) {
+        $("#icon").val(data.icon);
+        layer.close(lay_select_icon);
+        $("#icon").change();
+    }
+    $(function () {
+
+        $(document).on("click",function(e) {
+            if (showFlag) {
+
+                var x = e.clientX;
+                var y = e.clientY;
+                if ($("#paratree").length>0) {
+                    var divx1 = $("#paratree").offset().left;
+                    var divy1 = $("#paratree").offset().top - 20;
+                    var divx2 = $("#paratree").offset().left + $("#paratree").outerWidth();
+                    var divy2 = $("#paratree").offset().top + $("#paratree").outerHeight();
+                    if (x < divx1 || x > divx2 || y < divy1 || y > divy2) {
+                        $(".expressionDisplay").hide();
+                        showFlag = false;
+                    }
+                }
+            }
+        });
+        $('[name="formparaname"]').click(function(){
+            initParaTree($("#type").val(),$("[name='formparaname']").val());
+            $(".expressionDisplay").show();
+            showFlag = true;
+        });
+		if($("#type").val() != "edit"){
+            $("#tableparadiv").hide();
+		}
+        $(".form-control").bind('change', function () {
+            engine.changSave();
+        });
+
+        $(".hidden-group").hide();
+
+        $("#iconselect").bind("click", function () {
+            var contentWidth = 800;
+            var top = $("#iconselect").offset().top + $("#iconselect").outerHeight(true);
+            var left = $("#iconselect").offset().left + $("#iconselect").outerWidth() - contentWidth;
+            var width = $("#iconselect").innerWidth();
+            layer.config({
+                extend: 'skin/layer-bootstrap.css'
+            });
+                     
+            var selectIconIndex="";
+            if(viewEditor.viewStyle=="bootstrap"){
+            	selectIconIndex="static/h5/selectIcon/index.html";
+            }
+            else if(viewEditor.viewStyle=="easyui"){
+            	selectIconIndex="avicit/platform6/eform/bpmsviewdesign/easyuicommon/index.html";
+            }
+            
+            lay_select_icon = layer.open({
+                type: 2,
+                shift: 5,
+                title: false,
+                scrollbar: false,
+                move: false,
+                area: [contentWidth + 'px', '400px'],
+                offset: [top + 'px', left + 'px'],
+                closeBtn: 0,
+                shadeClose: true,
+                content: selectIconIndex,
+                success: function (layero, index) {
+                    var serachLabel = $('<div class="serachLabel"><span>请选择</span><span class="caret"></span></div>').appendTo(layero);
+                    serachLabel.bind('click', function () {
+                        layer.close(index);
+                    });
+                    serachLabel.css('width', width + 'px');
+                }
+
+            });
+        });
+
+        var selectPublishEform = new SelectPublishEform("formid", "formname", null, "N", "eform");
+        selectPublishEform.init(function() {
+            engine.changSave();
+        });
+
+        $("#type").change(function () {
+            $("#name").val($(this).find("option:selected").text());
+            initParaTree(this.value,$("[name='formparaname']").val());
+            if (this.value == "customize") {
+                $("#event_reg_bt_click").parents(".form-group:first").css("display", "");
+                $("#tableparadiv").hide();
+                $("#formpara").hide();
+            }
+            else {
+                $("#event_reg_bt_click").val("");
+                $("#event_reg_bt_click").parents(".form-group:first").css("display", "none");
+            }
+
+            if(this.value == "add" || this.value == "edit") {
+                $("#formselect").show();
+                $("#formpara").show();
+                $("#beforeevent").show();
+                $("#afterevent").show();
+            }
+            else {
+                $("#formname").val("");
+                $("#formid").val("");
+                $("#formselect").hide();
+                $("#tableparadiv").hide();
+                $("#formpara").hide();
+                $("#event_before_bt_click").val("");
+                $("#event_after_bt_click").val("");
+                $("#beforeevent").hide();
+                $("#afterevent").hide();
+            }
+            if(this.value == "edit"){
+            	$("#tableparadiv").show();
+    	    	$("#tablepara").css('display', 'none');//显示的时候不这么写下拉框就布局混乱            
+    	    }else if(this.value == "add"){
+                $("#tableparadiv").hide();
+    	    }
+            engine.changSave();
+        });
+    });
+
+
+    function initParaTree(type,formparaname){
+        var zNodes =[];
+        formparaname = formparaname || "";
+        var formarray = formparaname.split(",");
+        for (var para in paras){
+            if (para == "clone"){
+                continue;
+            }
+            var obj = {};
+            obj.name = paras[para]._key;
+            obj.id = paras[para]._key;
+            obj.pId = 0;
+            obj.paratype = '1';
+
+            for (var s in formarray){
+                if (obj.name == formarray[s]){
+                    obj.checked = true;
+                    break;
+                }
+            }
+            zNodes.push(obj);
+        }
+
+
+        $.fn.zTree.init($("#exprTree"), setting, zNodes);
+    }
+
+
+    function initMultiple(tablepara){
+    	$('select[multiple].active.4col').multiselect({
+            columns: 1,
+            placeholder: '请配置传递参数',
+            selectAll: false,
+            maxWidth : 300,
+      	}); 
+    	var tableNode = engine.clickedNode.getParentNode().getParentNode();
+    	var dbid = tableNode.attribute.dbid;
+    	if (dbid){
+    		$.ajax({
+    			 url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+    			 contentType: "application/xml; charset=utf-8",
+    			 type : 'post',
+    			 dataType : 'json',
+    			 async:false,
+    			 success : function(r){
+    				 if (r != null) {
+    					 var list = $.parseJSON(r.data);
+    					 var $colDom = $("select[multiple]");
+    					 $colDom.empty();
+    					 var $option = [];
+    					 var selected = tablepara==null?[]:tablepara.split(",");
+    					 for (var i=0;i<list.length;i++){
+    						/*  var $option = $('<option value="'+list[i].colName+'">'+list[i].colName+'</option>');
+    						 $colDom.append($option);  */
+    						if($.inArray(list[i].colName, selected) > -1){
+    							 $option.push({name : list[i].colName,value : list[i].colName,checked : true});
+    						 }else{
+    							 $option.push({name : list[i].colName,value : list[i].colName,checked : false});
+    						 } 
+    					}
+    				   $colDom.multiselect('loadOptions', $option);
+    					 //$colDom.multiselect("refresh",true);
+
+    				    $colDom.on("change",function(){
+    				    	engine.changSave();
+    					 });
+    				}
+    			 }
+    		});
+    	} 
+    } 
+    
+   /**
+   * 处理多选框赋值问题
+   **/
+   function dealMultiple(treeNode){
+	   initMultiple(treeNode.attribute.tablepara);
+   }
+    /**
+     * 初始化页面方法
+     * @param  {obj} treeNode [左侧树节点属性集合]
+     * @return
+     */
+    self.propertyPageInit = function (treeNode) {
+        initParaTree(treeNode.attribute.type,treeNode.attribute.formparaname);
+    	 if (treeNode.attribute.type == "customize") {
+            $("#event_reg_bt_click").parents(".form-group:first").css("display", "");
+        }
+        else {
+            $("#event_reg_bt_click").parents(".form-group:first").css("display", "none");
+        }
+
+        if(treeNode.attribute.type == "delete" || treeNode.attribute.type == "customize") {
+            $("#formselect").hide();
+            $("#formpara").hide();
+            $("#beforeevent").hide();
+            $("#afterevent").hide();
+        }
+        else {
+            $("#formselect").show();
+            $("#formpara").show();
+            $("#beforeevent").show();
+            $("#afterevent").show();
+        }
+        if (treeNode.attribute.type != "edit") {
+            $("#tableparadiv").hide();
+        }else{
+        	$("#tableparadiv").show();
+	    	$("#tablepara").css('display', 'none');//显示的时候不这么写下拉框就布局混乱          
+        }
+    };
+    self.validateForm = function(form,treeNode){
+    	if((form.type == "add" || form.type == "edit") && (form.formname == null || form.formname == "")){
+      		 layer.msg('表单名称不能为空！',{
+                   icon: 2,
+                   area: ['220px', ''],
+                   closeBtn: 0
+               });
+      		return false;
+      	}
+       	return true;
+    };
+</script>

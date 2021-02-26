@@ -1,0 +1,17 @@
+<form>
+	<div class="form-group property-control">
+		<label>树右键菜单</label><input type="text" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly="readonly" placeholder="树右键菜单">
+	</div>
+	<div class="form-group property-control">
+		<label>右键显隐控制</label>
+		<textarea class="form-control input-sm" rows="20" title="右键显隐控制" name="event_right_click_show" id="event_right_click_show"></textarea>
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+	})
+</script>

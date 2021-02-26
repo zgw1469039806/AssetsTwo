@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>autoFixedForm</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/autofixedForm-bootstrap.css">
+	<style>
+		.demoDiv {
+			width:80%;
+			border:1px solid #000;
+			margin:0 auto;
+			margin-top:10px;
+		}
+		.remove {
+			position: absolute;
+			top:6px;
+			right: 10px;
+			background-color: #000;
+			color:#FFF;
+			cursor: pointer;
+		}
+	</style>
+	<!--[if lte IE 9]>
+	<script src="js/respond.min.js"></script>
+	<script src="js/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="demoDiv">
+		<div id="domform" class="form form-inline">
+			<div class="form-group fixed-form" data-fw="1">
+				<label for="exampleInputName1" title="测试表单一">测试表单一</label>
+				<div class="ipt"><div class="cont"><input type="text" class="form-control" id="exampleInputName1" placeholder="Jane Doe"></div></div>
+				<div class="remove">删除我</div>
+			</div>
+			<div class="form-group fixed-form" data-fw="2">
+				<label for="exampleInputName2" title="测试表单二">测试表单二</label>
+				<div class="ipt"><div class="cont"><input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe"></div></div>
+			</div>
+			<div class="form-group fixed-form" data-fw="1">
+				<label for="exampleInputName3" title="测试表单名字长">测试表单名字长</label>
+				<div class="ipt"><div class="cont"><input type="text" class="form-control" id="exampleInputName3" placeholder="Jane Doe"></div></div>
+				<div class="remove">删除我</div>
+			</div>
+			<div class="form-group fixed-form" data-fw="3">
+				<label for="exampleInputName4" title="表单">表单</label>
+				<div class="ipt"><div class="cont"><input type="text" class="form-control" id="exampleInputName4" placeholder="Jane Doe"></div></div>
+			</div>
+			<div class="form-group fixed-form">
+				<label for="exampleInputName5" title="测试表单五">测试表单五</label>
+				<div class="ipt"><div class="cont"><input type="text" class="form-control" id="exampleInputName5" placeholder="Jane Doe"></div></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.1.9.1.js"></script>
+	<script src="js/jquery.autofixedform.js"></script>
+
+	<script>
+		$(function(){
+			$('#domform').autofixedform();
+		});
+		$(".remove").on('click',function(){
+			$(this).parent().remove();
+		});
+	</script>
+</body>
+</html>

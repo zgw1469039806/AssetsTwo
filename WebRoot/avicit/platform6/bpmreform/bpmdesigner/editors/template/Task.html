@@ -1,0 +1,1960 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="task" class="prop_wrap " style="display:none">
+	<form id="jbxx" class="form-horizontal">
+		<div class="avic-flow-default-theme">
+			<div class="twoTabNav" style="width: 100%">
+				<!-- 标签主体Start -->
+				<ul class="nav-tabs">
+					<li class="active"><a href="javascript:void(0)">基本信息</a></li>
+					<li><a href="javascript:void(0)" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>参与者</a></li>
+					<li><a href="javascript:void(0)">表单</a></li>
+					<li><a href="javascript:void(0)" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>权限</a></li>
+					<li><a href="javascript:void(0)" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>事件</a></li>
+					<li><a href="javascript:void(0)" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>文档</a></li>
+				</ul>
+				<ul class="tab-cont">
+					<li class="active">
+						<div class="demoCont">
+							<div class="base_info ">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>基本</span>
+									</div>
+								</div>
+								<div class="row" style="padding-top:5px;">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">节点名称</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" class="form-control " id="xian_shi_ming_cheng">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="padding-top:5px;">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">逻辑标识</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" class="form-control " id="luo_ji_biao_shi" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="padding-top:5px;">
+									<div class="col-xs-12">
+										<div class="form-group">
+	                                        <label for="" class="col-xs-4 control-label form-process-properties-label">待办标题</label>
+	                                        <div class="col-xs-8 form-process-properties-value">
+	                                            <input id="dai_ban_biao_ti" name="dai_ban_biao_ti" type="hidden">
+	                                            <input type="text" id="formName_biaoTi" name="formName_biaoTi" class="form-control" readonly>
+	                                        </div>
+	                                    </div>
+                                    </div>
+                                </div>
+								<div class="row">
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label for="" class="col-xs-8 control-label form-process-properties-label">移动审批</label>
+											<div class="col-xs-4 ">
+												<label class="checkbox-parent-label"> <input name="task_yi_dong_shen_pi" id="task_yi_dong_shen_pi" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label for="" class="col-xs-8 control-label form-process-properties-label">短信通知</label>
+											<div class="col-xs-4 ">
+												<label class="checkbox-parent-label"> <input name="duan_xin_tong_zhi" id="duan_xin_tong_zhi" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label for="" class="col-xs-8 control-label form-process-properties-label">流程委托</label>
+											<div class="col-xs-4 ">
+												<label class="checkbox-parent-label"> <input name="gong_zuo_yi_jiao" id="gong_zuo_yi_jiao" type="checkbox" value="" checked="true">
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group ">
+											<label for="" class="col-xs-8 control-label form-process-properties-label">密级控制</label>
+											<div class="col-xs-4 ">
+												<label class="checkbox-parent-label"> <input name="mi_ji_kong_zhi" id="mi_ji_kong_zhi" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group hidden" name="mi_ji_bian_liang_show">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">密级变量</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input name="mi_ji_bian_liang" id="mi_ji_bian_liang" type="text" class="form-control" value="\#{secretLevel}">
+											</div>
+										</div>
+									</div>
+								</div>
+								-->
+								<div class="form-group hidden" style='padding-top: 5px;' name="mi_ji_bian_liang_show">
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">密级变量</label>
+                                        <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input type="text" class="form-control" id="mi_ji_bian_liang" name="mi_ji_bian_liang" readonly="">
+                                        </div>
+                                        <div class="col-xs-3 clear-right-padding">
+                                            <button name="button-mi_ji_bian_liang" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                                        </div>
+                                </div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">描述</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<textarea class="form-control" rows="3" name="bei_zhu_xin_xi" id="bei_zhu_xin_xi" class="form-control"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-10 control-label form-process-properties-label">在表单页显示文字跟踪(全局配置优先)</label>
+											<div class="col-xs-2 form-process-properties-value">
+												<label class="checkbox-parent-label">
+													<input id="wen_zi_gen_zong" name="wen_zi_gen_zong" type="checkbox" value="yes">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<c:if test="${iconType == '2'}">
+									<div class="row">
+										<div class="col-xs-6">
+											<button name="xian_shi_tu_pian" type="button" class="btn form-tool-btn btn-sm form-buttion-fix">切换图标</button>
+										</div>
+									</div>
+								</c:if>
+							</div>
+							<div class="base_instance" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>意见</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">必须填写意见</label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-parent-label"> <input id="task_bi_xu_tian_xie_yi_jian" name="task_bi_xu_tian_xie_yi_jian" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+										<c:if test="${ideaBySelf == 'true'}">
+										<div class="form-group">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">自定义意见框</label>
+											<div class="col-xs-8 ">
+												<div class="input-group">
+													<input type="text" class="form-control " id="zi_ding_yi_yi_jian_kuang">
+													<span class="input-group-btn">
+														<button class="btn btn-sm" type="button" id="zi_ding_yi_yi_jian_kuang_but">
+															<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+										</c:if>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">允许强制表态</label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-parent-label"> <input id="task_yun_xu_qiang_zhi_biao_tai" name="task_yun_xu_qiang_zhi_biao_tai" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-group ">
+										<label for="" class="col-xs-4 control-label form-process-properties-label">自定义表态意见</label>
+										<div class="col-xs-5 ">
+											<label class="checkbox-parent-label"> <input id="task_zi_ding_yi_jian" name="task_zi_ding_yi_jian" type="checkbox" value="">
+											</label>
+										</div>
+										<div class="col-xs-3" style="display: none">
+											<button name="addZiDingYiJiang" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">添加</button>
+										</div>
+									</div>
+									<div class="form-group" style="display: none">
+										<table class="table table-hover table-bordered table-fix" name="table_task_zi_ding_yi_jian" id="table_task_zi_ding_yi_jian">
+											<thead>
+											<tr>
+												<td style="width: 60%">意见内容</td>
+												<td style="width: 25%">限定流向</td>
+												<td style="width: 15%">操作</td>
+											</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">意见显示方式</label>
+											<div class="col-xs-8 ">
+												<label class="radio-inline checkbox-parent-label" title="意见显示方式"> <input id="task-yi-jian-xian-shi" name="task-yi-jian-xian-shi" title="意见显示方式" type="radio" value="add" checked="checked">追加
+												</label> <label class="radio-inline checkbox-parent-label" title="意见显示方式"> <input id="task-yi-jian-xian-shi" name="task-yi-jian-xian-shi" title="意见显示方式" type="radio" value="cover">覆盖
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">必填退回意见</label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-parent-label"> <input id="tast_tui_hui_yi_jian" name="tast_tui_hui_yi_jian" type="checkbox" value="" checked>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="base_cuiban" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>催办</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label  class="col-xs-4 control-label form-process-properties-label">催办方式</label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-inline_new  checkbox-parent-label">
+													<input id="task_cuiban_sd" name="task_cuiban_sd" type="checkbox" value=""> 手动
+												</label><label class="checkbox-inline_new  checkbox-parent-label">
+													<input id="task_cuiban_zd" name="task_cuiban_zd" type="checkbox" value=""> 自动
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden"   id="task_cuiban_txfs_div">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label  class="col-xs-4 control-label form-process-properties-label">提醒方式</label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-inline_new  checkbox-parent-label" >
+													<input id="task_cuiban_txfs_dy" name="task_cuiban_txfs_dy" type="checkbox" value=""> 待阅
+												</label>
+												<label class="checkbox-inline_new  checkbox-parent-label" >
+													<input id="task_cuiban_txfs_xt" name="task_cuiban_txfs_xt" type="checkbox" value=""> 系统消息
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden" id="task_cuiban_txfs_div1">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label  class="col-xs-4 control-label form-process-properties-label"> </label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-inline_new  checkbox-parent-label" >
+													<input id="task_cuiban_txfs_yj" name="task_cuiban_txfs_yj" type="checkbox" value=""> 邮件
+												</label>
+												<label class="checkbox-inline_new  checkbox-parent-label">
+													<input id="task_cuiban_txfs_dx" name="task_cuiban_txfs_dx" type="checkbox" value=""> 短信
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden" id="task_cuiban_txfs_div2">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label  class="col-xs-4 control-label form-process-properties-label"> </label>
+											<div class="col-xs-8 ">
+												<label class="checkbox-inline_new  checkbox-parent-label" >
+													<input id="task_cuiban_txfs_zdy" name="task_cuiban_txfs_zdy" type="checkbox" value=""> 自定义方式
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden" style="padding-top:5px;" id="task_cuiban_sxl_div">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">提醒内容实现类</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" class="form-control " id="task_cuiban_sxl">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden" id="task_cuiban_blqx_div" >
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">办理期限</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" id="task_cuiban_blqx" class="num_only" style="width:70px;" value="0"> 工作日
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row hidden" id="task_cuiban_jgsx_div" >
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">警告时限</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" id="task_cuiban_jgsx" class="num_only" style="width:70px;" value="0"> 工作日
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden" id="task_cuiban_cbpl_div" >
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">催办频率</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" id="task_cuiban_cbpl" class="num_only" style="width:70px;" value="0"> 小时
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row hidden" id="task_cuiban_cbcs_div" >
+									<div class="col-xs-12">
+										<div class="form-group ">
+											<label for="" class="col-xs-4 control-label form-process-properties-label">最大催办次数</label>
+											<div class="col-xs-8 form-process-properties-value">
+												<input type="text" id="task_cuiban_cbcs" class="num_only" style="width:70px;" value="0"> 次
+											</div>
+										</div>
+										注：0表示不限制
+									</div>
+								</div>
+							</div>
+							<div class="base_form">
+                                    <div class="row base_info_bar">
+                                        <div class="label form-process-separate-label"><span>KPI设置</span></div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label class="col-xs-4 control-label form-process-properties-label">合理完成时间</label>
+                                         <div class="col-xs-8 form-process-properties-value">
+                                       	  <input type="text" id="kpi_task_reasonable_day" class="num_only" style="width:30px;" value="0"> 日 <input type="text" id="kpi_task_reasonable_hour" class="num_only" style="width:30px;" value="0"> 时
+                                       	  <input type="text" id="kpi_task_reasonable_minute" class="num_only" style="width:30px;" value="0"> 分
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label class="col-xs-4 control-label form-process-properties-label">警告完成时间</label>
+                                         <div class="col-xs-8 form-process-properties-value">
+                                       	  <input type="text" id="kpi_task_warning_day" class="num_only" style="width:30px;" value="0"> 日 <input type="text" id="kpi_task_warning_hour" class="num_only" style="width:30px;" value="0"> 时
+                                       	  <input type="text" id="kpi_task_warning_minute" class="num_only" style="width:30px;" value="0"> 分
+                                        </div>
+                                    </div>
+                             </div>
+                             <div class="base_form" name="shujutongbuDiv" style="display:none;">
+                                    <div class="row base_info_bar">
+                                        <div class="label form-process-separate-label"><span>流程数据同步</span></div>
+                                    </div>
+                                    <div class="form-group">
+										<div class="col-xs-9 col-xs-offset-6">
+											<input type="hidden" id="shujutongbu" name="shujutongbu">
+											<button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-shujutongbu-add">添加</button>
+											<button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-shujutongbu-viewLog">日志</button>
+										</div>
+									</div>
+									<div>
+										<table class="table table-hover table-bordered table-fix" name="table-shujutongbu-value" id="table-shujutongbu-value">
+											<thead>
+												<tr>
+													<td style="width: 0%;display: none;"></td>
+													<td>同步表</td>
+													<td>同步类型</td>
+													<td style="width: 70px;">操作</td>
+												</tr>
+											</thead>
+											<tbody>
+
+											</tbody>
+										</table>
+								</div>
+                             </div>
+			<div class="base_form">
+				<div class="row base_info_bar">
+					<div class="label form-process-separate-label"><span>其他设置</span></div>
+				</div>
+				<div class="form-group ">
+					<label for="" class="col-xs-8 control-label form-process-properties-label">结束后根据子表数据自动发起子流程</label>
+					<div class="col-xs-4 form-process-properties-value">
+						<label class="checkbox-parent-label">
+							<input id="event_auto_start" name="event_auto_start" type="checkbox">
+						</label>
+					</div>
+				</div>
+				<div class="form-group event_auto_start" style="display: none;">
+					<label class="col-xs-4 control-label">默认流程模板</label>
+					<div class="col-xs-5">
+						<input type="text" class="form-control" id="event_auto_start_defaultFlow_text" readonly>
+						<input type="hidden" class="form-control" id="event_auto_start_defaultFlow_id">
+						<input type="hidden" class="form-control" id="event_auto_start_defaultFlow_id2">
+					</div>
+					<div class="col-xs-3 clear-right-padding">
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix" name="event_auto_start_defaultFlow_but">选择</button>
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix event_auto_start_clean_but">清空</button>
+					</div>
+				</div>
+				<div class="form-group event_auto_start" style="display: none;">
+					<label class="col-xs-4 control-label">子表模型</label>
+					<div class="col-xs-5">
+						<input type="text" class="form-control" id="event_auto_start_table_text" readonly>
+						<input type="hidden" class="form-control" id="event_auto_start_table_id">
+						<input type="hidden" class="form-control" id="event_auto_start_table_name">
+					</div>
+					<div class="col-xs-3 clear-right-padding">
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix" name="event_auto_start_table_but">选择</button>
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix event_auto_start_clean_but">清空</button>
+					</div>
+				</div>
+				<div class="form-group event_auto_start" style="display: none;">
+					<label class="col-xs-4 control-label">外键字段</label>
+					<div class="col-xs-5">
+						<input type="text" class="form-control" id="event_auto_start_fk_text" readonly>
+						<input type="hidden" class="form-control" id="event_auto_start_fk_id">
+					</div>
+					<div class="col-xs-3 clear-right-padding">
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix" name="event_auto_start_fk_but">选择</button>
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix event_auto_start_clean_but">清空</button>
+					</div>
+				</div>
+				<div class="form-group event_auto_start" style="display: none;">
+					<label class="col-xs-4 control-label">候选人字段</label>
+					<div class="col-xs-5">
+						<input type="text" class="form-control" id="event_auto_start_user_text" readonly>
+						<input type="hidden" class="form-control" id="event_auto_start_user_id">
+					</div>
+					<div class="col-xs-3 clear-right-padding">
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix" name="event_auto_start_user_but">选择</button>
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix event_auto_start_clean_but">清空</button>
+					</div>
+				</div>
+				<div class="form-group event_auto_start" style="display: none;">
+					<label class="col-xs-4 control-label">流程模板字段</label>
+					<div class="col-xs-5">
+						<input type="text" class="form-control" id="event_auto_start_flow_text" readonly>
+						<input type="hidden" class="form-control" id="event_auto_start_flow_id">
+					</div>
+					<div class="col-xs-3 clear-right-padding">
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix" name="event_auto_start_flow_but">选择</button>
+						<button type="button" class="btn btn-sm form-tool-btn form-buttion-fix event_auto_start_clean_but">清空</button>
+					</div>
+				</div>
+				<!--//TODO 理论上应指定节点，目前快速满足网安项目，先不做太复杂-->
+				<div class="form-group ">
+					<label for="" class="col-xs-6 control-label form-process-properties-label">再次启动时删除子流程</label>
+					<div class="col-xs-6 form-process-properties-value">
+						<label class="checkbox-parent-label">
+							<input id="event_auto_deleteSubProcess" name="event_auto_deleteSubProcess" type="checkbox">
+						</label>
+					</div>
+				</div>
+			</div>
+						</div>
+					</li>
+					<li <c:if test="${isUflow == '2'}">style="display:none"</c:if>>
+						<div class="demoCont">
+							<!-- html : 人工节点-参与者开始 -->
+							<div class="candidate">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>候选人</span>
+									</div>
+								</div>
+								<div class="form-group" style='padding-top: 5px;'>
+									<label for="" class="col-xs-3 col-xs-offset-1   control-label form-process-properties-label" style="text-align: left;padding-left: 4px;width: 64px;">候选人</label>
+									<div class="col-xs-8 form-process-properties-value" id="draft-candidate-container" style="padding-left: 0px;padding-right: 0px;">
+										<input type="hidden" id="draft-candidate-data-field" name="draft-candidate-data-field">
+										<textarea class="form-control" id="draft-candidate-text-field" rows="3" name="draft-candidate-text-field" placeholder="请选择用户" readonly></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-3 col-xs-offset-8 button-fix button-margin-left-fix">
+										<button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-add-candidate">添加</button>
+									</div>
+								</div>
+								<c:if test="${'true' == cfSelectUser}">
+									<div class="form-group" style='padding-top: 5px;'>
+										<label for="" class="col-xs-3 col-xs-offset-1   control-label form-process-properties-label" style="text-align: left;padding-left: 4px;width: 64px;">组织接口</label>
+										<div class="col-xs-8 form-process-properties-value"  style="padding-left: 0px;padding-right: 0px;">
+											<input id="zu_zhi_jie_kou" name="zu_zhi_jie_kou" class="form-control" type="text" value=""/>
+										</div>
+									</div>
+								</c:if>
+								<div class="row">
+									<div class="col-xs-6">
+										<div class="form-group ">
+											<label for="" class="col-xs-9 control-label form-process-properties-label">允许自动选人</label>
+											<div class="col-xs-3 clear-left-padding">
+												<label class="checkbox-parent-label"> <input id="person-automatic-selection" name="person-automatic-selection" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group ">
+											<label for="" class="col-xs-9 control-label form-process-properties-label">允许显示选人框</label>
+											<div class="col-xs-3">
+												<label class="checkbox-parent-label"> <input id="show-selection-box" name="show-selection-box" type="checkbox" value="" checked>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group ">
+											<label for="" class="col-xs-6 control-label form-process-properties-label">分支节点必须选人</label>
+											<div class="col-xs-4">
+												<label class="checkbox-parent-label"> <input id="candidate-necessary" name="candidate-necessary" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group ">
+											<label for="" class="col-xs-9 control-label form-process-properties-label">再次流经本节点自动获取用户</label>
+											<div class="col-xs-3 clear-left-padding">
+												<label class="checkbox-parent-label" style="padding-left: 15px;"> <input id="candidate-auto-polling" name="candidate-auto-polling" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group ">
+											<label for="" class="col-xs-7 control-label form-process-properties-label">组织结构树展开到部门</label>
+											<div class="col-xs-4">
+												<label class="checkbox-parent-label"> <input id="orgTreeOpenToDept" name="orgTreeOpenToDept" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group ">
+											<label for="" class="col-xs-6 control-label form-process-properties-label">组织结构树默认展开</label>
+											<div class="col-xs-4">
+												<label class="checkbox-parent-label"> <input id="orgTreeDefaultOpen" name="orgTreeDefaultOpen" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group ">
+											<label for="" class="col-xs-6 control-label form-process-properties-label">部门树隐藏组织层级</label>
+											<div class="col-xs-4">
+												<label class="checkbox-parent-label"> <input id="deptTreeHideOrg" name="deptTreeHideOrg" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="multiple-task">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>多任务流转方式</span>
+									</div>
+								</div>
+								<div class="form-group" style="padding-top: 5px">
+									<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">处理方式</label>
+									<div class="col-xs-8 form-process-properties-value">
+										<select class="form-control" id="select-human-task-process-mode" name="select-human-task-process-mode">
+											<option value="1">单人处理</option>
+											<option value="2">多人顺序</option>
+											<option value="3">多人任意</option>
+											<option value="4" selected="">多人并行</option>
+										</select>
+									</div>
+								</div>
+								<div class="">
+									<div class="form-group">
+										<div class="col-xs-3 col-xs-offset-1 ">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" checked="checked" value="none"> 全部完成
+											</label>
+										</div>
+										<div class="col-xs-3 ">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" value="number"> 完成个数
+											</label>
+										</div>
+										<div class="col-xs-3 ">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" value="percent"> 完成率
+											</label>
+										</div>
+										<div class="col-xs-3 col-xs-offset-1 ">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" value="role_number"> 角色
+											</label>
+										</div>
+										<div class="col-xs-3 ">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" value="position_number"> 岗位
+											</label>
+										</div>
+										<div class="col-xs-3 ">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" value="group_number"> 群组
+											</label>
+										</div>
+										<div class="col-xs-3 col-xs-offset-1">
+											<label class="form-process-properties-label"> <input id="input-radio-human-task-select-task" name="input-radio-human-task-select-task" type="radio" value="dept_one"> 部门内任意
+											</label>
+										</div>
+									</div>
+									<div class="col-xs-offset-1 ">
+										<div class="hidden">
+											<input id="input-num" name="input-num" style="width:80px" class="hidden" />
+										</div>
+										<div class="hidden">
+											完成个数达到&nbsp; <input id="input-num" name="input-num" style="width:80px" class="num_only" />&nbsp;个,任务流转到下一点
+										</div>
+										<div class="hidden">
+											完成率达到&nbsp; <input id="input-num" name="input-num" style="width:80px" class="num_only" />&nbsp;%,任务流转到下一点
+										</div>
+										<div class="hidden">
+											指定角色：
+											<div class="input-group  input-group-sm">
+												<input type="hidden"  id="dealtype_4_roleId" name="dealtype_4_roleId">
+												<input class="form-control" placeholder="请选择角色" type="text" id="dealtype_4_roleName" name="dealtype_4_roleName" readonly>
+												<span class="input-group-btn">
+													<button class="btn btn-default" type="button" id="dealtype_4_roleBut" ><span class="glyphicon glyphicon-equalizer"></span></button>
+												</span>
+											</div>
+											完成人数达到&nbsp; <input id="input-num" name="input-num" style="width:80px;margin-top:5px;" class="num_only" />&nbsp;个,任务流转到下一点
+										</div>
+										<div class="hidden">
+											指定岗位：
+											<div class="input-group  input-group-sm">
+												<input type="hidden"  id="dealtype_4_positionId" name="dealtype_4_positionId">
+												<input class="form-control" placeholder="请选择岗位" type="text" id="dealtype_4_positionName" name="dealtype_4_positionName" readonly>
+												<span class="input-group-btn">
+													<button class="btn btn-default" type="button" id="dealtype_4_positionBut" ><span class="glyphicon glyphicon-equalizer"></span></button>
+												</span>
+											</div>
+											完成人数达到&nbsp; <input id="input-num" name="input-num" style="width:80px;margin-top:5px;" class="num_only" />&nbsp;个,任务流转到下一点
+										</div>
+										<div class="hidden">
+											指定群组：
+											<div class="input-group  input-group-sm">
+												<input type="hidden"  id="dealtype_4_groupId" name="dealtype_4_groupId">
+												<input class="form-control" placeholder="请选择群组" type="text" id="dealtype_4_groupName" name="dealtype_4_groupName" readonly>
+												<span class="input-group-btn">
+													<button class="btn btn-default" type="button" id="dealtype_4_groupBut" ><span class="glyphicon glyphicon-equalizer"></span></button>
+												</span>
+											</div>
+											完成人数达到&nbsp; <input id="input-num" name="input-num" style="width:80px;margin-top:5px;" class="num_only" />&nbsp;个,任务流转到下一点
+										</div>
+										<div class="hidden">
+										</div>
+									</div>
+									<!--  <div class="form-group ">
+                                            <label for="" class="col-xs-3 control-label form-process-properties-label">允许多选用户</label>
+                                            <div class="col-xs-8">
+                                               <label class="checkbox-parent-label">
+                                                    <input id="input-user-multiple-choose" name="input-user-multiple-choose" type="checkbox" checked>
+                                                </label>
+                                            </div>
+                                        </div> -->
+								</div>
+							</div>
+							<!-- html : 人工节点-参与者结束-->
+						</div></li>
+					<li>
+						<div class="demoCont">
+							<!--     html : 表单开始 -->
+							<div class="row base_info_bar">
+								<div class="label form-process-separate-label">
+									<span>表单配置</span>
+								</div>
+							</div>
+							<ul class="global-start-auth-tab hidden">
+								<li class="active" style="width: 70%;"><label style="float:right;"> <input type="radio" name="input-radio-platform-form" checked value="form" />内部表单
+								</label></li>
+								<li style="width: 30%;"><label style="float:right;"> <input type="radio" name="input-radio-platform-form" value="url" />外部URL
+								</label></li>
+							</ul>
+							<ul class="tab-cont">
+								<li class="active">
+									<div class="form-group" style='padding-top: 5px;     padding-left: 15px;'>
+										<label for="" class="col-xs-3  control-label form-process-properties-label">关联表单</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<input type="hidden" id="task_guan_lian_biao_dan" name="task_guan_lian_biao_dan"> <input type="text" id="task_formName" name="task_formName" class="form-control" readonly>
+										</div>
+									</div>
+								</li>
+								<li class="hidden">
+									<div class="form-group" style='padding-top: 5px;'>
+										<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">外部地址</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<input type="hidden" id="task_wai_bu_url_form" name="task_wai_bu_url_form"> <input type="text" id="task_wai_bu_url" name="task_wai_bu_url" class="form-control" readonly>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div>
+								<div class="form-group " style="padding-left: 15px;">
+									<label for="" class="col-xs-3  control-label form-process-properties-label">Url参数</label>
+									<div class="col-xs-8 form-process-properties-value">
+										<input type="text" id="urlParam" name="urlParam" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="div-formSave-area">
+								<div>
+									<div class="form-group " style="padding-left: 15px;">
+										<label class="col-xs-3 control-label form-process-properties-label" style="text-align: left;letter-spacing: 5px;">可编辑</label>
+										<div class="col-xs-6 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="formSave" type="checkbox" value="">
+											</label>
+										</div>
+										<div class="col-xs-3 form-process-properties-value">
+											<button type="button" class="btn btn-sm" title="重新解析表单" id="refreshForm">
+												<span class="glyphicon glyphicon-refresh"></span>
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="basic-form-save-area hidden">
+									<div class="task-doc-attribute-auth">
+										<div class="row base_info_bar">
+											<div class="label form-process-separate-label">
+												<span>字段权限</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12">
+												<input class="form-control" type="text" id="searchFieldText" name="searchFieldText" placeholder="字段查询" style="width: 200px; margin-left: 10px;"/>
+											</div>
+										</div>
+										<div style="padding-top:5px">
+											<table class="table table-hover table-bordered table-fix" name="table-attr-auth">
+												<thead>
+													<tr>
+														<td>字段属性</td>
+														<td style="width: 22%;white-space: pre-wrap;"><span>可编辑</span><span style="vertical-align: middle;"><input name="formCheckAll" type="checkbox" value=""></span></td>
+														<td style="width: 23%;white-space: pre-wrap;"><span>可显示</span> <span style="vertical-align: middle;"><input name="formAccessibilityCheckAll" type="checkbox" value=""></span></td>
+														<td style="width: 19%;white-space: pre-wrap;"><span>必填</span> <span style="vertical-align: middle;"><input name="formRequiredCheckAll" type="checkbox" value=""></span></td>
+													</tr>
+												</thead>
+												<tbody>
+													<!--  <tr>
+                                                    <td>aaaaaa(字段名称)</td>
+                                                    <td>
+                                                    <input type="hidden" name="tag" value="tag123"/>
+                                                    <input type="hidden" name="tagName" value="属性名称"/>
+                                                    <input type="checkbox" name="isModified"/>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                  <td>aaaaaa(字段名称)</td>
+                                                    <td>
+                                                     <input type="hidden" name="tag" value="tag123"/>
+                                                    <input type="hidden" name="tagName" value="属性名称"/>
+                                                    <input type="checkbox" name="isModified"/></td>
+                                                </tr>
+                                                  <tr>
+                                                	  <td>aaaaaa(字段名称)</td>
+                                                    <td>
+                                                      <input type="hidden" name="tag" value="tag123"/>
+                                                    <input type="hidden" name="tagName" value="属性名称"/>
+                                                    <input type="checkbox" name="isModified"/>
+													</td>
+                                                </tr> -->
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="task-doc-attachment">
+										<div class="row base_info_bar">
+											<div class="label form-process-separate-label">
+												<span>附件权限</span>
+											</div>
+										</div>
+										<div style="padding-top:5px">
+											<table class="table table-hover table-bordered table-fix" name="table-attachment-auth" id="table-attachment-auth">
+												<thead>
+													<tr>
+														<td>附件区域</td>
+														<td style="width: 22%;white-space: pre-wrap;"><span>可增删</span><span style="vertical-align: middle;"><input name="formAttachmentAddCheckAll" type="checkbox" value=""></span></td>
+														<td style="width: 20%;white-space: pre-wrap;"><span>必填</span> <span style="vertical-align: middle;"><input name="formAttachmentRequiredCheckAll" type="checkbox" value=""></span></td>
+														<td style="width: 27%;white-space: pre-wrap;"><span>密级修改</span><span style="vertical-align: middle;"><input name="formAttachmentModifySecretLevelCheckAll" type="checkbox" value=""></span></td>
+													</tr>
+												</thead>
+												<tbody>
+													<!--  <tr>
+                                                    <td>aaaaaa(字段名称)</td>
+                                                    <td>
+                                                    <input type="hidden" name="tag" value="tag123"/>
+                                                    <input type="hidden" name="tagName" value="属性名称"/>
+                                                    <input type="checkbox" name="isModified"/>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                  <td>aaaaaa(字段名称)</td>
+                                                    <td>
+                                                     <input type="hidden" name="tag" value="tag123"/>
+                                                    <input type="hidden" name="tagName" value="属性名称"/>
+                                                    <input type="checkbox" name="isModified"/></td>
+                                                </tr>
+                                                  <tr>
+                                                	  <td>aaaaaa(字段名称)</td>
+                                                    <td>
+                                                      <input type="hidden" name="tag" value="tag123"/>
+                                                    <input type="hidden" name="tagName" value="属性名称"/>
+                                                    <input type="checkbox" name="isModified"/>
+													</td>
+                                                </tr> -->
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="task-doc-attachment">
+										<div class="row base_info_bar">
+											<div class="label form-process-separate-label">
+												<span>字段关联控制</span>
+											</div>
+										</div>
+										<div class="form-group" style='padding-top: 5px;'>
+											<input type="hidden" id="fieldRelationControlConfigValue" name="fieldRelationControlConfigValue">
+											<div class="col-xs-3 col-xs-offset-8 button-fix button-margin-left-fix">
+												<button name="btn-fieldRelationControlConfig" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">配置</button>
+											</div>
+										</div>
+										<div style="padding-top:5px">
+											<table class="table table-hover table-bordered table-fix" name="table-field-relation-control"
+												   style="word-break:break-all;overflow:hidden;" id="table-field-relation-control">
+												<thead>
+												<tr>
+													<td style="width: 50%;white-space: pre-wrap;"><span>控制条件</span></td>
+													<td style="width: 50%;white-space: pre-wrap;">被控制字段</td>
+												</tr>
+												</thead>
+												<tbody>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div style="padding-top:5px">
+								<div class="form-group">
+									<label class="col-sm-4 control-label">附件下载：</label>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-8">
+										<label class="checkbox-inline">
+											<input type="checkbox" id="down_yes" name="down_yes" value="yes" checked> 允许附件下载
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-8">
+										<label class="checkbox-inline">
+											<input type="checkbox" id="down_yes_secret" name="down_yes_secret" value="yes"> 通过密级设置
+										</label>
+									</div>
+								</div>
+								<c:forEach var="secretLevel" items="${secretLevelList }">
+									<div class="form-group down_yes_class" style="display:none;">
+										<div class="col-sm-8 col-sm-offset-1">
+											<label class="checkbox-inline">
+												<input type="checkbox" id="down_yes_secret_${secretLevel.lookupCode }" name="down_yes_secret_${secretLevel.lookupCode }" class="down_yes_secret_class_${secretLevel.lookupCode }" secretLevel="${secretLevel.lookupCode }" value="yes"> 允许<span style="color:red;">${secretLevel.lookupName }</span>附件下载
+											</label>
+											<c:forEach var="userSecretLevel" items="${userSecretLevelList }">
+												<div class="col-sm-9 col-sm-offset-1 down_yes_userSecret_class_${secretLevel.lookupCode }" style="display:none;">
+													<label class="checkbox-inline">
+														<input type="checkbox" id="down_yes_secret_${secretLevel.lookupCode }_${userSecretLevel.lookupCode }" name="down_yes_secret_${secretLevel.lookupCode }_${userSecretLevel.lookupCode }" value="yes"> <span style="">${userSecretLevel.lookupName }</span>
+													</label>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+							<!--     html : 表单结束 -->
+						</div>
+					</li>
+					<li <c:if test="${isUflow == '2'}">style="display:none"</c:if>>
+						<div class="demoCont">
+							<!-- html : 人工节点-权限开始-->
+							<div class="">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>退回</span>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-returnback form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">退回上一步</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_tui_hui_shang_yi_bu" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-returnback hidden" id="div-auth-box-returnback">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-return-draft form-group">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">退回拟稿人</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_tui_hui_ni_gao_ren" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-return-draft hidden" id="div-auth-box-return-draft">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<c:if test="${needReTreatTo == 'true'}">
+								<div>
+									<div class="div-auth-checkbox-return-want form-group">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">任意退回</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_ren_yi_tui_hui" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-return-want hidden" id="div-auth-box-return-want">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<div class="div-auth-checkbox-return-activity form-group">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">跨节点退回</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_kua_jie_dian_tui_hui" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-return-activity hidden" id="div-auth-box-return-activity">
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">节点</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="input_kua_jie_dian_tui_hui_activity" name="input_kua_jie_dian_tui_hui_activity" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-kua_jie_dian_tui_hui_activity" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								</c:if>
+							</div>
+
+							<div class="">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>拿回补发</span>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-retrieve form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="text-align: left;">拿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_liu_cheng_na_hui" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-retrieve hidden" id="div-auth-box-retrieve">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-resign form-group">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="text-align:left;">补&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_liu_cheng_bu_fa" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-resign hidden" id="div-auth-box-retrieve">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>阅知</span>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-fasongyuezhi form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">发送阅知</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_fa_song_yue_zhi" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-fasongyuezhi hidden" id="div-auth-box-fasongyuezhi">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">候选人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<!--<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>-->
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-chaosong form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">抄&nbsp;&nbsp;&nbsp;&nbsp;送</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_chao_song" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-chaosong hidden" id="div-auth-box-chaosong">
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">候选人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>加减签</span>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-jiaqian form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="text-align:left;">加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_liu_cheng_jia_qian" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-jiaqian hidden" id="div-auth-box-jiaqian">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">候选人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-jianqian form-group">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="text-align:left;">减&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_liu_cheng_jian_qian" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-jianqian hidden" id="div-auth-box-jianqian">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>转办</span>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-liuchengweituo form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">流程转办</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_liu_cheng_wei_tuo" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-liuchengweituo hidden" id="div-auth-box-liuchengweituo">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">候选人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label"></label>
+											<div class="col-xs-5 clear-left-right-padding checkbox">
+												<label>
+													<input name="input_liu_cheng_wei_tuo_multi" id="input_liu_cheng_wei_tuo_multi" type="checkbox">允许转办多人
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">JS脚本</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-jScript" name="operator-jScript">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row base_info_bar">
+									<div class="label form-process-separate-label">
+										<span>其他</span>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-peizhixuanren form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">配置选人</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_pei_zhi_xuan_ren" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-peizhixuanren hidden" id="div-auth-box-peizhixuanren">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="div-isSendReaderTodo form-group ">
+									<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">读者需发待阅</label>
+									<div class="col-xs-8 form-process-properties-value" style="padding-left: 20px">
+										<label class="checkbox-parent-label"> <input name="input_isSendReaderTodo" id="input_isSendReaderTodo" type="checkbox" value="">
+										</label>
+									</div>
+								</div>
+								<div>
+									<div class="div-auth-checkbox-morenduzhe form-group ">
+										<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">默认读者</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_morenduzhe" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-morenduzhe hidden" id="div-auth-box-morenduzhe">
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">读者名单</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<div class="div-auth-checkbox-zengjiaduzhe form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">增加读者</label>
+										<div class="col-xs-8 form-process-properties-value">
+											<label class="checkbox-parent-label"> <input name="input_zengjiaduzhe" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-zengjiaduzhe hidden" id="div-auth-box-zengjiaduzhe">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">候选人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+									</div>
+								</div>
+								<c:if test="${IE_67 == 'false'}">
+								<div>
+									<div class="div-auth-checkbox-faqiziliucheng form-group ">
+										<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label" style="letter-spacing:4px">发起子流程</label>
+										<div class="col-xs-8 form-process-properties-value" style="padding-left: 20px;">
+											<label class="checkbox-parent-label"> <input id="input_faqiziliucheng" name="input_faqiziliucheng" type="checkbox" value="">
+											</label>
+										</div>
+									</div>
+									<div class="div-auth-box-faqiziliucheng hidden" id="div-auth-box-faqiziliucheng">
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">操作人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">候选人</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="hidden" id="candidate-data-field" name="candidate-data-field"> <input type="text" class="form-control" id="candidate-text-field" name="candidate-text-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<!--<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">预处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="preprocess-data-field" name="preprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-preprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">后处理</label>
+											<div class="col-xs-5 clear-left-right-padding">
+												<input type="text" class="form-control" id="postprocess-data-field" name="postprocess-data-field" readonly>
+											</div>
+											<div class="col-xs-3 clear-right-padding">
+												<button name="button-auth-postprocess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+											</div>
+										</div>-->
+										<div class="form-group">
+											<label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">别名</label>
+											<div class="col-xs-7 clear-left-right-padding">
+												<input type="text" class="form-control" id="operator-alias" name="operator-alias">
+											</div>
+										</div>
+										<div class="form-group">
+	                                   		<label class="col-xs-offset-2  control-label form-process-properties-label">子流程配置</label>
+	                                   		<div class="col-xs-3 col-xs-offset-9 button-fix button-margin-left-fix">
+			                                   <button name="addSubProcess" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">添加</button>
+			                                   <input type="hidden" id="inputValueSubFlowName" name="inputValueSubFlowName">
+			                                   <input type="hidden" id="inputValueSubFlowId" name="inputValueSubFlowId">
+			                                   <input type="hidden" id="inputTextSubFlowName" name="inputTextSubFlowName">
+			                                </div>
+			                                <div class="col-xs-offset-2">
+			                                   <table class="table table-hover table-bordered table-fix" name="table_subprocess" id="table_subprocess">
+			                                       <thead>
+			                                       <tr>
+			                                           <td style="width: 60%">流程</td>
+			                                           <td style="width: 40%">操作</td>
+			                                       </tr>
+			                                       </thead>
+			                                       <tbody>
+			                                       </tbody>
+			                                   </table>
+			                                </div>
+		                                </div>
+									</div>
+								</div>
+								</c:if>
+
+								<c:forEach var="bpmButtonExt"   items="${bpmButtonExts_task}" varStatus="status">
+									<div>
+										<div class="div-auth-checkbox-${bpmButtonExt.code} form-group ">
+											<div class="col-xs-offset-1 col-xs-10">
+												${bpmButtonExt.dName}
+												<label class="checkbox-parent-label" style="margin-left: 5px;">
+													<input name="${bpmButtonExt.code}_attribute" _type="bpm_but_attribute" _name="${bpmButtonExt.dName}" type="checkbox" value="">
+												</label>
+											</div>
+										</div>
+										<div class="div-auth-box-${bpmButtonExt.code} hidden" id="div-auth-box-${bpmButtonExt.code}">
+											<div class="form-group">
+												<label for="" class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">操作人</label>
+												<div class="col-xs-5 clear-left-right-padding">
+													<input type="hidden" id="operator-data-field" name="operator-data-field"> <input type="text" class="form-control" id="operator-text-field" name="operator-text-field" readonly>
+												</div>
+												<div class="col-xs-3 clear-right-padding">
+													<button name="button-auth-operator" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+							<!-- html : 人工节点-权限结束-->
+						</div></li>
+					<li <c:if test="${isUflow == '2'}">style="display:none"</c:if>>
+						<div class="demoCont">
+							<div class="avic-digital-human-task-event">
+								<div class="form-group ">
+									<label class="col-xs-3 control-label form-process-properties-label">事件选择</label>
+									<div class="col-xs-9 form-process-properties-value">
+										<select class="form-control col-xs-12" name="eventSelect">
+										</select>
+									</div>
+								</div>
+								<div class="form-group ">
+									<label for="" class="col-xs-3 control-label form-process-properties-label"><i class="required">*</i>事件名称</label>
+									<div class="col-xs-9 form-process-properties-value">
+										<input id="input-event-name" name="input-event-name" type="text" class="form-control col-xs-12">
+									</div>
+								</div>
+								<div class="form-group ">
+									<label for="" class="col-xs-3 control-label form-process-properties-label" style="text-align: left;"><i class="required">*</i>事&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件</label>
+									<div class="col-xs-9 form-process-properties-value">
+										<input id="input-event" name="input-event" type="text" class="form-control col-xs-12">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="col-xs-3 control-label form-process-properties-label"><i class="no_required">&nbsp;</i>事件类型</label>
+									<div class="col-xs-9 form-process-properties-value">
+										<select class="form-control" id="select-event-type" name="select-event-type">
+											<option value="start" selected="selected">前置事件</option>
+											<option value="afterStart">启动后事件</option>
+											<option value="end">后置事件</option>
+										</select>
+									</div>
+								</div>
+								<div>
+									<table class="table table-hover table-bordered table-fix" name="constants">
+										<thead>
+											<tr>
+												<td>常量名</td>
+												<td>常量值</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-3 col-xs-offset-9 start-auth-button">
+										<button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-add-event">添加</button>
+										<button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix hidden" name="btn-save-event">保存</button>
+									</div>
+								</div>
+								<div>
+									<table class="table table-hover table-bordered table-fix" name="table-event-value">
+										<thead>
+											<tr>
+												<td style="width: 0%;display: none;"></td>
+												<td>名称</td>
+												<td>事件</td>
+												<td>类型</td>
+												<td>常量</td>
+												<td style="width: 55px;">操作</td>
+											</tr>
+										</thead>
+										<tbody>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div></li>
+					<li <c:if test="${isUflow == '2'}">style="display:none"</c:if>> <!--  html: 人工节点-文档开始 -->
+						<div class="demoCont">
+							<!-- 文档开始  -->
+							<div class="bpm-designer-upload" id="bpm-designer-upload"></div>
+							<!-- 文档结束 -->
+						</div> <!--  html: 人工节点-文档结束 --></li>
+				</ul>
+				<!-- 标签主体End -->
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+
+	function addZiDingYiJiangTr($table, content, outcome, outcome_name) {
+		var $tr = $("<tr></tr>");
+		var $td1 = $("<td></td>");
+		$td1.append(content);
+		$td1.attr("title", content);
+		var $td2 = $("<td></td>");
+		$td2.append(outcome_name);
+		var $hidden_td2 = $("<input type='hidden'>");
+		$hidden_td2.val(outcome);
+		$td2.append($hidden_td2);
+		var $td3 = $("<td><a href='javascript:void(0)'><i class='iconfont icon-delete'></i></a></td>");
+		$td3.find("a").on("click", function () {
+			$(this).parents("tr").remove();
+		});
+		$tr.append($td1).append($td2).append($td3);
+		$table.append($tr);
+	}
+
+	$(function(){
+
+		$("input[name='task_zi_ding_yi_jian']").on("click", function () {
+			if($(this).is(":checked")){
+				$(this).parents(".form-group").siblings().show();
+				$(this).parent().parent().next().show();
+			}else{
+				$(this).parents(".form-group").siblings().hide();
+				$(this).parent().parent().next().hide();
+			}
+		});
+		$("button[name='addZiDingYiJiang']").on("click", function () {
+			var $table =  $(this).parents(".form-group").siblings().find("tbody");
+			layer.open({
+				type : 1,
+				title : "自定义表态意见",
+				area : [ "300px", "400px" ],
+				content : "<form class='container-fluid'>\n" +
+						"  <div class=\"form-group\">\n" +
+						"    <label for=\"yijian_content\">意见内容</label>\n" +
+						"    <textarea class=\"form-control\" id=\"yijian_content\" rows='3' placeholder='必填'></textarea>\n" +
+						"  </div>\n" +
+						"  <div class=\"form-group\">\n" +
+						"    <label for=\"yijian_outcome\">限定流向</label>\n" +
+						"    <select class=\"form-control\" id=\"yijian_outcome\"><option value='0'></option><option value='1'>提交</option><option value='2'>退回</option></select>\n" +
+						"  </div>\n" +
+						"</form>",
+				btn: ['确定', '取消'],
+				yes: function(index, layero){
+					var yijian_content = $("#yijian_content").val();
+					if($.trim(yijian_content) == ""){
+						flowUtils.warning("意见内容不能为空");
+						return;
+					}
+					var yijian_outcome = $("#yijian_outcome").val();
+					var yijian_outcome_name = $("#yijian_outcome option:selected").text();
+					addZiDingYiJiangTr($table, yijian_content, yijian_outcome, yijian_outcome_name);
+					layer.close(index);//查询框关闭
+				}
+			});
+		});
+
+		if(flowUtils.notNull(_processDataSynJs)){
+			$("div[name='shujutongbuDiv']").show();
+		}else{
+			$("div[name='shujutongbuDiv']").hide();
+		}
+
+		$("input[name='event_auto_start']").on("click", function () {
+			if($(this).is(":checked")){
+				$(this).parents(".form-group").siblings(".event_auto_start").show();
+			}else{
+				$(this).parents(".form-group").siblings(".event_auto_start").hide();
+			}
+		});
+
+		$("button[name='event_auto_start_defaultFlow_but']").on("click", function () {
+			var _selfId = $(this).parents(".prop_wrap").attr("id");
+			new SubProcess({dataDomId:_selfId + " #event_auto_start_defaultFlow_id2",showDomId:_selfId+" #event_auto_start_defaultFlow_text", callback:function(data){
+				}, multiple:false, dataDomId2:_selfId+" #event_auto_start_defaultFlow_id"});
+		});
+
+		$("button[name='event_auto_start_table_but']").on("click", function () {
+			var _selfId = $(this).parents(".prop_wrap").attr("id");
+			var selectCreatedDbTable = new SelectCreatedDbTable("a", "b");
+			selectCreatedDbTable.open();
+			window.selectDbCallBack = function(id, name, tablename, treeNode){
+				$("#" + _selfId + " #event_auto_start_table_name").val(tablename);
+				$("#" + _selfId + " #event_auto_start_table_text").val(name);
+				$("#" + _selfId + " #event_auto_start_table_id").val(id);
+			};
+		});
+
+		$("button[name='event_auto_start_fk_but']").on("click", function () {
+			var _selfId = $(this).parents(".prop_wrap").attr("id");
+			var tableId = $(this).parents(".form-group").siblings(".event_auto_start").find("#event_auto_start_table_id").val();
+			if($.trim(tableId) == ""){
+				flowUtils.warning("请先选择子表模型");
+				return;
+			}
+			var selectDbColumnName = new SelectDbColumnName(tableId);
+			selectDbColumnName.init(function (data) {
+				$("#" + _selfId + " #event_auto_start_fk_text").val(data.colComments);
+				$("#" + _selfId + " #event_auto_start_fk_id").val(data.colName);
+			});
+		});
+
+		$("button[name='event_auto_start_user_but']").on("click", function () {
+			var _selfId = $(this).parents(".prop_wrap").attr("id");
+			var tableId = $(this).parents(".form-group").siblings(".event_auto_start").find("#event_auto_start_table_id").val();
+			if($.trim(tableId) == ""){
+				flowUtils.warning("请先选择子表模型");
+				return;
+			}
+			var selectDbColumnName = new SelectDbColumnName(tableId);
+			selectDbColumnName.init(function (data) {
+				$("#" + _selfId + " #event_auto_start_user_text").val(data.colComments);
+				$("#" + _selfId + " #event_auto_start_user_id").val(data.colName);
+			});
+		});
+
+		$("button[name='event_auto_start_flow_but']").on("click", function () {
+			var _selfId = $(this).parents(".prop_wrap").attr("id");
+			var tableId = $(this).parents(".form-group").siblings(".event_auto_start").find("#event_auto_start_table_id").val();
+			if($.trim(tableId) == ""){
+				flowUtils.warning("请先选择子表模型");
+				return;
+			}
+			var selectDbColumnName = new SelectDbColumnName(tableId);
+			selectDbColumnName.init(function (data) {
+				$("#" + _selfId + " #event_auto_start_flow_text").val(data.colComments);
+				$("#" + _selfId + " #event_auto_start_flow_id").val(data.colName);
+			});
+		});
+
+		$(".event_auto_start_clean_but").on("click", function () {
+			$(this).parents(".form-group").find("input").val("");
+		});
+
+		$("input[name='down_yes']").on("click", function(){
+			if(this.checked){
+                $(this).parents("form").find("#down_yes_secret:checked").trigger("click");
+			}
+		});
+		$("input[name='down_yes_secret']").on("click", function(){
+            if(this.checked){
+                $(this).parents("form").find("#down_yes:checked").trigger("click");
+                $(this).parents("form").find(".down_yes_class").show();
+            }else{
+                $(this).parents("form").find(".down_yes_class").hide();
+                $(this).parents("form").find(".down_yes_class input:checked").trigger("click");
+			}
+        });
+
+        $('input[class^=down_yes_secret_class_]').each(function(i, n){
+        	var secretLevel = $(this).attr("secretLevel");
+            $(this).on("click",function(){
+            	if(this.checked){
+            		$(this).parents("form").find(".down_yes_userSecret_class_"+secretLevel).show();
+                }else{
+                	$('input[id^=down_yes_secret_'+secretLevel+'_]').removeAttr("checked");
+                	$(this).parents("form").find(".down_yes_userSecret_class_"+secretLevel).hide();
+
+                }
+            });
+
+        });
+
+        $('#dealtype_4_roleBut').on('click',function(){
+            var _self = this;
+            new H5CommonSelect({type: 'roleSelect', callBack:function(role){
+                    $(_self).parent().prevAll("#dealtype_4_roleId").val(role.roleids);
+                    $(_self).parent().prevAll("#dealtype_4_roleName").val(role.roleNames);
+				}});
+        });
+
+        $('#dealtype_4_positionBut').on('click',function(){
+            var _self = this;
+            new H5CommonSelect({type: 'positionSelect', callBack:function(position){
+                    $(_self).parent().prevAll("#dealtype_4_positionId").val(position.positionids);
+                    $(_self).parent().prevAll("#dealtype_4_positionName").val(position.positionNames);
+				}});
+        });
+
+        $('#dealtype_4_groupBut').on('click',function(){
+            var _self = this;
+            new H5CommonSelect({type: 'groupSelect', callBack:function(group){
+                    $(_self).parent().prevAll("#dealtype_4_groupId").val(group.groupids);
+                    $(_self).parent().prevAll("#dealtype_4_groupName").val(group.groupNames);
+				}});
+        });
+
+        $("#zi_ding_yi_yi_jian_kuang_but").on("click", function () {
+            var formId = $('#' + designerEditor.processKey).find('#guan_lian_biao_dan').val();
+            var dataType = $("#" + designerEditor.myCurCellId).find("#task_guan_lian_biao_dan").attr("data-type");
+            if (flowUtils.notNull(dataType) && dataType !== "global") {
+                formId = $('#' + designerEditor.myCurCellId).find('#task_guan_lian_biao_dan').val();
+            }
+            if(flowUtils.notNull(formId)){
+                avicAjax.ajax({
+                    type : "POST",
+                    data : {
+                        formId : formId
+                    },
+                    url : designerEditor.controlPath + "getFormElementList",
+                    dataType : "json",
+                    success : function(result) {
+                        if(flowUtils.notNull(result.error)){
+                            flowUtils.warning(result.error)
+						}else{
+                            layer.open({
+                                type:  1,
+                                area: [ "800px",  "450px"],
+                                title: "字段选择",
+                                content: "<table id='formElementGrid'></table>",
+                                btn: ['确定', '关闭'],
+                                success : function(layero, index) {
+                                    $("#formElementGrid").jqGrid({
+                                        datastr : JSON.stringify(result.result),
+                                        datatype : "jsonstring",
+                                        colModel : [{
+                                            label : '元素标识',
+                                            name : 'colName',
+                                            key : true,
+                                            align : 'center'
+                                        }, {
+                                            label : '元素名称',
+                                            name : 'colComments',
+                                            align : 'center'
+                                        } ],
+                                        rownumbers : true,
+                                        altRows : true,
+                                        styleUI : 'Bootstrap',
+                                        autowidth : true,
+                                        height : '100%',
+                                        multiselect : false
+                                    });
+                                },
+                                yes: function(index, layero){
+                                    var selectedRowId = $("#formElementGrid").getGridParam("selrow");
+                                    if (selectedRowId != "") {
+                                        var rowData = $("#formElementGrid").getRowData(selectedRowId);
+                                        $('#' + designerEditor.myCurCellId).find('#zi_ding_yi_yi_jian_kuang').val(rowData.colName);
+                                        layer.close(index);
+                                    } else{
+                                        layer.msg("请选择数据");
+                                        return;
+                                    }
+                                }
+                            });
+						}
+                    }
+                });
+			}else{
+                flowUtils.warning("没有关联表单");
+			}
+        });
+
+        var picArr = [];
+        picArr.push("avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_human.png");
+		picArr.push("avicit/platform6/bpmreform/bpmdesigner/editors/images/node/employee02.png");
+		picArr.push("avicit/platform6/bpmreform/bpmdesigner/editors/images/node/leader01.png");
+		picArr.push("avicit/platform6/bpmreform/bpmdesigner/editors/images/node/leader02.png");
+		$("button[name='xian_shi_tu_pian']").on("click", function(){
+			var node = designerEditor.myCellMap.get(designerEditor.myCurCellId);
+			var index = node.picIndex++ % 4;
+			var url = picArr[index];
+			designerEditor.editor.graph.setCellStyles(mxConstants.STYLE_IMAGE, url, [node.getCell()]);
+		});
+
+		$("input[name='searchFieldText']").change(function () {
+			var text = $.trim($(this).val());
+			$(this).parent().parent().next().find("tbody").children().each(function (i, n) {
+				if(text == ''){
+					$(n).show();
+				}else {
+					if($(n).children().eq(0).text().indexOf(text) != -1){
+						$(n).show();
+					}else {
+						$(n).hide();
+					}
+				}
+			});
+		});
+	});
+</script>

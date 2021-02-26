@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#############################################################
+##
+## 	服务器门户外观样式配置文件
+##
+################################# ############################
+-->
+<avicit-config> 
+   <themes-skins> 
+      <type-name>H+</type-name>  
+      <type-key>fixie-oa</type-key>
+      <preview>avicit/platform6/portalie/themes/fixie_oa/images/preview.png</preview>
+      <impl>avicit.platform6.msystem.portal.skins.fixieoa.impl.PortalThemesSkinsFixIeOAImpl</impl>
+      <index-jsp>avicit/platform6/portalie/themes/fixie_oa/jsp/index.jsp</index-jsp>
+      <default>true</default> 
+      <skins>
+      	<skin key="dark-blue" comment="黑蓝" color="#2b3b4b" default="true"/>
+      </skins>
+   </themes-skins>
+   <themes-skins>
+      <type-name>传统</type-name>
+      <type-key>fixie-default</type-key>
+      <preview>avicit/platform6/portalie/themes/fixie_default/images/preview.png</preview>
+      <impl>avicit.platform6.msystem.portal.skins.fixiedef.impl.PortalThemesSkinsFixIeDefaultImpl</impl>
+      <index-jsp>avicit/platform6/portalie/themes/fixie_default/jsp/index.jsp</index-jsp>
+      <default>false</default>
+      <skins>
+      	<skin key="dark" comment="传统-黑" color="#2a303e" default="true"/>
+      </skins>
+   </themes-skins>
+</avicit-config>

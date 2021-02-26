@@ -1,0 +1,25 @@
+input,select,textarea{
+
+    outline-color: invert !important;
+    outline-style: none !important;
+    outline-width: 0px !important;
+    border: none !important;
+    border-style: none !important;
+    text-shadow: none !important;
+    -webkit-appearance: none !important;
+    -webkit-user-select: text !important;
+    outline-color: transparent !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+
+}
+
+textarea{
+    overflow:hidden !important;
+    resize:none !important;
+}
+
+.mce-content-body1{
+    width:210mm !important;
+    margin:0 auto;
+}

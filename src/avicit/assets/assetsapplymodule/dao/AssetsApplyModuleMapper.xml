@@ -1,0 +1,1578 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.assetsapplymodule.dao.AssetsApplyModuleDao">
+
+<resultMap id="AssetsApplyModuleDTOMap" type="avicit.assets.assetsapplymodule.dto.AssetsApplyModuleDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="isContractRelated" column="IS_CONTRACT_RELATED" jdbcType="VARCHAR" />
+		<result property="applyType" column="APPLY_TYPE" jdbcType="VARCHAR" />
+		<result property="applyId" column="APPLY_ID" jdbcType="VARCHAR" />
+		<result property="applyDeviceName" column="APPLY_DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="applyNum" column="APPLY_NUM" jdbcType="DECIMAL" />
+		<result property="applyPrice" column="APPLY_PRICE" jdbcType="DECIMAL" />
+		<result property="applySpec" column="APPLY_SPEC" jdbcType="VARCHAR" />
+		<result property="applyModel" column="APPLY_MODEL" jdbcType="VARCHAR" />
+		<result property="applyManufacturer" column="APPLY_MANUFACTURER" jdbcType="VARCHAR" />
+		<result property="contractId" column="CONTRACT_ID" jdbcType="VARCHAR" />
+		<result property="contractNum" column="CONTRACT_NUM" jdbcType="VARCHAR" />
+		<result property="contractName" column="CONTRACT_NAME" jdbcType="VARCHAR" />
+		<result property="contractTotalPrice" column="CONTRACT_TOTAL_PRICE" jdbcType="VARCHAR" />
+		<result property="contractSupplier" column="CONTRACT_SUPPLIER" jdbcType="VARCHAR" />
+		<result property="contractOperator" column="CONTRACT_OPERATOR" jdbcType="VARCHAR" />
+		<result property="contractDeviceName" column="CONTRACT_DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="contractDeviceNum" column="CONTRACT_DEVICE_NUM" jdbcType="DECIMAL" />
+		<result property="contractDevicePrice" column="CONTRACT_DEVICE_PRICE" jdbcType="DECIMAL" />
+		<result property="contractDeviceTotalPrice" column="CONTRACT_DEVICE_TOTAL_PRICE" jdbcType="DECIMAL" />
+		<result property="contractSpec" column="CONTRACT_SPEC" jdbcType="VARCHAR" />
+		<result property="contractModel" column="CONTRACT_MODEL" jdbcType="VARCHAR" />
+		<result property="contractManufacturer" column="CONTRACT_MANUFACTURER" jdbcType="VARCHAR" />
+		<result property="contractState" column="CONTRACT_STATE" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="TIMESTAMP" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="TIMESTAMP" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL" />
+		<result property="isDerive" column="IS_DERIVE" jdbcType="VARCHAR" />
+		<result property="guaranteePeriod" column="GUARANTEE_PERIOD" jdbcType="TIMESTAMP" />
+</resultMap>
+<!-- 分页查询 ASSETS_APPLY_MODULE -->
+<select id="searchAssetsApplyModuleByPage" parameterType="java.util.Map" resultMap="AssetsApplyModuleDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.is_contract_related            ,
+		t1.apply_type                     ,
+		t1.apply_id                       ,
+		t1.apply_device_name              ,
+		t1.apply_num                      ,
+		t1.apply_price                    ,
+		t1.apply_spec                     ,
+		t1.apply_model                    ,
+		t1.apply_manufacturer             ,
+		t1.contract_id                    ,
+		t1.contract_num                   ,
+		t1.contract_name                  ,
+		t1.contract_total_price           ,
+		t1.contract_supplier              ,
+		t1.contract_operator              ,
+		t1.contract_device_name           ,
+		t1.contract_device_num            ,
+		t1.contract_device_price          ,
+		t1.contract_device_total_price    ,
+		t1.contract_spec                  ,
+		t1.contract_model                 ,
+		t1.contract_manufacturer          ,
+		t1.contract_state                 ,
+		t1.GUARANTEE_PERIOD				  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_derive                      
+	from assets_apply_module 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.isContractRelated != null and bean.isContractRelated != ''">
+				and t1.IS_CONTRACT_RELATED like concat(concat('%',#{bean.isContractRelated}),'%') 
+			</if>
+			<if test="bean.applyType != null and bean.applyType != ''">
+				and t1.APPLY_TYPE like concat(concat('%',#{bean.applyType}),'%') 
+			</if>
+			<if test="bean.applyId != null and bean.applyId != ''">
+				and t1.APPLY_ID like concat(concat('%',#{bean.applyId}),'%') 
+			</if>
+			<if test="bean.applyDeviceName != null and bean.applyDeviceName != ''">
+				and t1.APPLY_DEVICE_NAME like concat(concat('%',#{bean.applyDeviceName}),'%') 
+			</if>
+			<if test="bean.applyNum != null ">
+				and t1.APPLY_NUM like concat(concat('%',#{bean.applyNum}),'%') 
+			</if>
+			<if test="bean.applyPrice != null ">
+				and t1.APPLY_PRICE like concat(concat('%',#{bean.applyPrice}),'%') 
+			</if>
+			<if test="bean.applySpec != null and bean.applySpec != ''">
+				and t1.APPLY_SPEC like concat(concat('%',#{bean.applySpec}),'%') 
+			</if>
+			<if test="bean.applyModel != null and bean.applyModel != ''">
+				and t1.APPLY_MODEL like concat(concat('%',#{bean.applyModel}),'%') 
+			</if>
+			<if test="bean.applyManufacturer != null and bean.applyManufacturer != ''">
+				and t1.APPLY_MANUFACTURER like concat(concat('%',#{bean.applyManufacturer}),'%') 
+			</if>
+			<if test="bean.contractId != null and bean.contractId != ''">
+				and t1.CONTRACT_ID like concat(concat('%',#{bean.contractId}),'%') 
+			</if>
+			<if test="bean.contractNum != null and bean.contractNum != ''">
+				and t1.CONTRACT_NUM like concat(concat('%',#{bean.contractNum}),'%') 
+			</if>
+			<if test="bean.contractName != null and bean.contractName != ''">
+				and t1.CONTRACT_NAME like concat(concat('%',#{bean.contractName}),'%') 
+			</if>
+			<if test="bean.contractTotalPrice != null and bean.contractTotalPrice != ''">
+				and t1.CONTRACT_TOTAL_PRICE like concat(concat('%',#{bean.contractTotalPrice}),'%') 
+			</if>
+			<if test="bean.contractSupplier != null and bean.contractSupplier != ''">
+				and t1.CONTRACT_SUPPLIER like concat(concat('%',#{bean.contractSupplier}),'%') 
+			</if>
+			<if test="bean.contractOperator != null and bean.contractOperator != ''">
+				and t1.CONTRACT_OPERATOR like concat(concat('%',#{bean.contractOperator}),'%') 
+			</if>
+			<if test="bean.contractDeviceName != null and bean.contractDeviceName != ''">
+				and t1.CONTRACT_DEVICE_NAME like concat(concat('%',#{bean.contractDeviceName}),'%') 
+			</if>
+			<if test="bean.contractDeviceNum != null ">
+				and t1.CONTRACT_DEVICE_NUM like concat(concat('%',#{bean.contractDeviceNum}),'%') 
+			</if>
+			<if test="bean.contractDevicePrice != null ">
+				and t1.CONTRACT_DEVICE_PRICE like concat(concat('%',#{bean.contractDevicePrice}),'%') 
+			</if>
+			<if test="bean.contractDeviceTotalPrice != null ">
+				and t1.CONTRACT_DEVICE_TOTAL_PRICE like concat(concat('%',#{bean.contractDeviceTotalPrice}),'%') 
+			</if>
+			<if test="bean.contractSpec != null and bean.contractSpec != ''">
+				and t1.CONTRACT_SPEC like concat(concat('%',#{bean.contractSpec}),'%') 
+			</if>
+			<if test="bean.contractModel != null and bean.contractModel != ''">
+				and t1.CONTRACT_MODEL like concat(concat('%',#{bean.contractModel}),'%') 
+			</if>
+			<if test="bean.contractManufacturer != null and bean.contractManufacturer != ''">
+				and t1.CONTRACT_MANUFACTURER like concat(concat('%',#{bean.contractManufacturer}),'%') 
+			</if>
+			<if test="bean.contractState != null and bean.contractState != ''">
+				and t1.CONTRACT_STATE like concat(concat('%',#{bean.contractState}),'%')
+			</if>
+				<if test="bean.guaranteePeriod != null and bean.guaranteePeriod != ''">
+				and t1.GUARANTEE_PERIOD like concat(concat('%',#{bean.guaranteePeriod}),'%')
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null and bean.attribute16 != ''">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null ">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null ">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null ">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.isDerive != null and bean.isDerive != ''">
+				and t1.IS_DERIVE like concat(concat('%',#{bean.isDerive}),'%') 
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_APPLY_MODULE -->
+<select id="searchAssetsApplyModuleByPageOr" parameterType="java.util.Map" resultMap="AssetsApplyModuleDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.is_contract_related            ,
+		t1.apply_type                     ,
+		t1.apply_id                       ,
+		t1.apply_device_name              ,
+		t1.apply_num                      ,
+		t1.apply_price                    ,
+		t1.apply_spec                     ,
+		t1.apply_model                    ,
+		t1.apply_manufacturer             ,
+		t1.contract_id                    ,
+		t1.contract_num                   ,
+		t1.contract_name                  ,
+		t1.contract_total_price           ,
+		t1.contract_supplier              ,
+		t1.contract_operator              ,
+		t1.contract_device_name           ,
+		t1.contract_device_num            ,
+		t1.contract_device_price          ,
+		t1.contract_device_total_price    ,
+		t1.contract_spec                  ,
+		t1.contract_model                 ,
+		t1.contract_manufacturer          ,
+		t1.contract_state                 ,
+		t1.GUARANTEE_PERIOD				  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_derive                      
+	from assets_apply_module 	t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.isContractRelated != null and bean.isContractRelated != ''">
+				or t1.IS_CONTRACT_RELATED like concat(concat('%',#{bean.isContractRelated}),'%')  
+			</if>
+			<if test="bean.applyType != null and bean.applyType != ''">
+				or t1.APPLY_TYPE like concat(concat('%',#{bean.applyType}),'%')  
+			</if>
+			<if test="bean.applyId != null and bean.applyId != ''">
+				or t1.APPLY_ID like concat(concat('%',#{bean.applyId}),'%')  
+			</if>
+			<if test="bean.applyDeviceName != null and bean.applyDeviceName != ''">
+				or t1.APPLY_DEVICE_NAME like concat(concat('%',#{bean.applyDeviceName}),'%')  
+			</if>
+			<if test="bean.applyNum != null">
+				or t1.APPLY_NUM like concat(concat('%',#{bean.applyNum}),'%')  
+			</if>
+			<if test="bean.applyPrice != null">
+				or t1.APPLY_PRICE like concat(concat('%',#{bean.applyPrice}),'%')  
+			</if>
+			<if test="bean.applySpec != null and bean.applySpec != ''">
+				or t1.APPLY_SPEC like concat(concat('%',#{bean.applySpec}),'%')  
+			</if>
+			<if test="bean.applyModel != null and bean.applyModel != ''">
+				or t1.APPLY_MODEL like concat(concat('%',#{bean.applyModel}),'%')  
+			</if>
+			<if test="bean.applyManufacturer != null and bean.applyManufacturer != ''">
+				or t1.APPLY_MANUFACTURER like concat(concat('%',#{bean.applyManufacturer}),'%')  
+			</if>
+			<if test="bean.contractId != null and bean.contractId != ''">
+				or t1.CONTRACT_ID like concat(concat('%',#{bean.contractId}),'%')  
+			</if>
+			<if test="bean.contractNum != null and bean.contractNum != ''">
+				or t1.CONTRACT_NUM like concat(concat('%',#{bean.contractNum}),'%')  
+			</if>
+			<if test="bean.contractName != null and bean.contractName != ''">
+				or t1.CONTRACT_NAME like concat(concat('%',#{bean.contractName}),'%')  
+			</if>
+			<if test="bean.contractTotalPrice != null and bean.contractTotalPrice != ''">
+				or t1.CONTRACT_TOTAL_PRICE like concat(concat('%',#{bean.contractTotalPrice}),'%')  
+			</if>
+			<if test="bean.contractSupplier != null and bean.contractSupplier != ''">
+				or t1.CONTRACT_SUPPLIER like concat(concat('%',#{bean.contractSupplier}),'%')  
+			</if>
+			<if test="bean.contractOperator != null and bean.contractOperator != ''">
+				or t1.CONTRACT_OPERATOR like concat(concat('%',#{bean.contractOperator}),'%')  
+			</if>
+			<if test="bean.contractDeviceName != null and bean.contractDeviceName != ''">
+				or t1.CONTRACT_DEVICE_NAME like concat(concat('%',#{bean.contractDeviceName}),'%')  
+			</if>
+			<if test="bean.contractDeviceNum != null">
+				or t1.CONTRACT_DEVICE_NUM like concat(concat('%',#{bean.contractDeviceNum}),'%')  
+			</if>
+			<if test="bean.contractDevicePrice != null">
+				or t1.CONTRACT_DEVICE_PRICE like concat(concat('%',#{bean.contractDevicePrice}),'%')  
+			</if>
+			<if test="bean.contractDeviceTotalPrice != null">
+				or t1.CONTRACT_DEVICE_TOTAL_PRICE like concat(concat('%',#{bean.contractDeviceTotalPrice}),'%')  
+			</if>
+			<if test="bean.contractSpec != null and bean.contractSpec != ''">
+				or t1.CONTRACT_SPEC like concat(concat('%',#{bean.contractSpec}),'%')  
+			</if>
+			<if test="bean.contractModel != null and bean.contractModel != ''">
+				or t1.CONTRACT_MODEL like concat(concat('%',#{bean.contractModel}),'%')  
+			</if>
+			<if test="bean.contractManufacturer != null and bean.contractManufacturer != ''">
+				or t1.CONTRACT_MANUFACTURER like concat(concat('%',#{bean.contractManufacturer}),'%')  
+			</if>
+			<if test="bean.contractState != null and bean.contractState != ''">
+				or t1.CONTRACT_STATE like concat(concat('%',#{bean.contractState}),'%')  
+			</if>
+				<if test="bean.guaranteePeriod != null and bean.guaranteePeriod != ''">
+					or t1.GUARANTEE_PERIOD like concat(concat('%',#{bean.guaranteePeriod}),'%')
+				</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null and bean.attribute16 != ''">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.isDerive != null and bean.isDerive != ''">
+				or t1.IS_DERIVE like concat(concat('%',#{bean.isDerive}),'%')  
+			</if>
+			</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_APPLY_MODULE -->
+<select id="searchAssetsApplyModule" parameterType="java.util.Map" resultMap="AssetsApplyModuleDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.is_contract_related            ,
+		t1.apply_type                     ,
+		t1.apply_id                       ,
+		t1.apply_device_name              ,
+		t1.apply_num                      ,
+		t1.apply_price                    ,
+		t1.apply_spec                     ,
+		t1.apply_model                    ,
+		t1.apply_manufacturer             ,
+		t1.contract_id                    ,
+		t1.contract_num                   ,
+		t1.contract_name                  ,
+		t1.contract_total_price           ,
+		t1.contract_supplier              ,
+		t1.contract_operator              ,
+		t1.contract_device_name           ,
+		t1.contract_device_num            ,
+		t1.contract_device_price          ,
+		t1.contract_device_total_price    ,
+		t1.contract_spec                  ,
+		t1.contract_model                 ,
+		t1.contract_manufacturer          ,
+		t1.contract_state                 ,
+		t1.GUARANTEE_PERIOD				  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_derive                      
+	from assets_apply_module 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="isContractRelated != null and isContractRelated != ''">
+				and t1.IS_CONTRACT_RELATED =#{isContractRelated}
+			</if>
+			<if test="applyType != null and applyType != ''">
+				and t1.APPLY_TYPE =#{applyType}
+			</if>
+			<if test="applyId != null and applyId != ''">
+				and t1.APPLY_ID =#{applyId}
+			</if>
+			<if test="applyDeviceName != null and applyDeviceName != ''">
+				and t1.APPLY_DEVICE_NAME =#{applyDeviceName}
+			</if>
+			<if test="applyNum != null">
+				and t1.APPLY_NUM =#{applyNum}
+			</if>
+			<if test="applyPrice != null">
+				and t1.APPLY_PRICE =#{applyPrice}
+			</if>
+			<if test="applySpec != null and applySpec != ''">
+				and t1.APPLY_SPEC =#{applySpec}
+			</if>
+			<if test="applyModel != null and applyModel != ''">
+				and t1.APPLY_MODEL =#{applyModel}
+			</if>
+			<if test="applyManufacturer != null and applyManufacturer != ''">
+				and t1.APPLY_MANUFACTURER =#{applyManufacturer}
+			</if>
+			<if test="contractId != null and contractId != ''">
+				and t1.CONTRACT_ID =#{contractId}
+			</if>
+			<if test="contractNum != null and contractNum != ''">
+				and t1.CONTRACT_NUM =#{contractNum}
+			</if>
+			<if test="contractName != null and contractName != ''">
+				and t1.CONTRACT_NAME =#{contractName}
+			</if>
+			<if test="contractTotalPrice != null and contractTotalPrice != ''">
+				and t1.CONTRACT_TOTAL_PRICE =#{contractTotalPrice}
+			</if>
+			<if test="contractSupplier != null and contractSupplier != ''">
+				and t1.CONTRACT_SUPPLIER =#{contractSupplier}
+			</if>
+			<if test="contractOperator != null and contractOperator != ''">
+				and t1.CONTRACT_OPERATOR =#{contractOperator}
+			</if>
+			<if test="contractDeviceName != null and contractDeviceName != ''">
+				and t1.CONTRACT_DEVICE_NAME =#{contractDeviceName}
+			</if>
+			<if test="contractDeviceNum != null">
+				and t1.CONTRACT_DEVICE_NUM =#{contractDeviceNum}
+			</if>
+			<if test="contractDevicePrice != null">
+				and t1.CONTRACT_DEVICE_PRICE =#{contractDevicePrice}
+			</if>
+			<if test="contractDeviceTotalPrice != null">
+				and t1.CONTRACT_DEVICE_TOTAL_PRICE =#{contractDeviceTotalPrice}
+			</if>
+			<if test="contractSpec != null and contractSpec != ''">
+				and t1.CONTRACT_SPEC =#{contractSpec}
+			</if>
+			<if test="contractModel != null and contractModel != ''">
+				and t1.CONTRACT_MODEL =#{contractModel}
+			</if>
+			<if test="contractManufacturer != null and contractManufacturer != ''">
+				and t1.CONTRACT_MANUFACTURER =#{contractManufacturer}
+			</if>
+			<if test="contractState != null and contractState != ''">
+				and t1.CONTRACT_STATE =#{contractState}
+			</if>
+			<if test="guaranteePeriod != null and guaranteePeriod != ''">
+				and t1.GUARANTEE_PERIOD =#{guaranteePeriod}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null and attribute11 != ''">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null and attribute12 != ''">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null and attribute13 != ''">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null and attribute14 != ''">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null and attribute15 != ''">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null and attribute16 != ''">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="isDerive != null and isDerive != ''">
+				and t1.IS_DERIVE =#{isDerive}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_APPLY_MODULE -->
+<select id="findAssetsApplyModuleById" parameterType="java.util.Map" resultMap="AssetsApplyModuleDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.is_contract_related            ,
+		t1.apply_type                     ,
+		t1.apply_id                       ,
+		t1.apply_device_name              ,
+		t1.apply_num                      ,
+		t1.apply_price                    ,
+		t1.apply_spec                     ,
+		t1.apply_model                    ,
+		t1.apply_manufacturer             ,
+		t1.contract_id                    ,
+		t1.contract_num                   ,
+		t1.contract_name                  ,
+		t1.contract_total_price           ,
+		t1.contract_supplier              ,
+		t1.contract_operator              ,
+		t1.contract_device_name           ,
+		t1.contract_device_num            ,
+		t1.contract_device_price          ,
+		t1.contract_device_total_price    ,
+		t1.contract_spec                  ,
+		t1.contract_model                 ,
+		t1.contract_manufacturer          ,
+		t1.contract_state                 ,
+		t1.GUARANTEE_PERIOD				  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_derive                      
+	from assets_apply_module 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_APPLY_MODULE -->
+<insert id="insertAssetsApplyModule" parameterType="avicit.assets.assetsapplymodule.dto.AssetsApplyModuleDTO">
+	insert into assets_apply_module
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="isContractRelated != null">
+				is_contract_related,
+			</if>
+			<if test="applyType != null">
+				apply_type,
+			</if>
+			<if test="applyId != null">
+				apply_id,
+			</if>
+			<if test="applyDeviceName != null">
+				apply_device_name,
+			</if>
+			<if test="applyNum != null">
+				apply_num,
+			</if>
+			<if test="applyPrice != null">
+				apply_price,
+			</if>
+			<if test="applySpec != null">
+				apply_spec,
+			</if>
+			<if test="applyModel != null">
+				apply_model,
+			</if>
+			<if test="applyManufacturer != null">
+				apply_manufacturer,
+			</if>
+			<if test="contractId != null">
+				contract_id,
+			</if>
+			<if test="contractNum != null">
+				contract_num,
+			</if>
+			<if test="contractName != null">
+				contract_name,
+			</if>
+			<if test="contractTotalPrice != null">
+				contract_total_price,
+			</if>
+			<if test="contractSupplier != null">
+				contract_supplier,
+			</if>
+			<if test="contractOperator != null">
+				contract_operator,
+			</if>
+			<if test="contractDeviceName != null">
+				contract_device_name,
+			</if>
+			<if test="contractDeviceNum != null">
+				contract_device_num,
+			</if>
+			<if test="contractDevicePrice != null">
+				contract_device_price,
+			</if>
+			<if test="contractDeviceTotalPrice != null">
+				contract_device_total_price,
+			</if>
+			<if test="contractSpec != null">
+				contract_spec,
+			</if>
+			<if test="contractModel != null">
+				contract_model,
+			</if>
+			<if test="contractManufacturer != null">
+				contract_manufacturer,
+			</if>
+			<if test="contractState != null">
+				contract_state,
+			</if>
+		<if test="guaranteePeriod != null">
+			GUARANTEE_PERIOD,
+		</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="isDerive != null">
+				is_derive,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="isContractRelated != null">
+				#{isContractRelated,jdbcType=VARCHAR},
+			</if>
+			<if test="applyType != null">
+				#{applyType,jdbcType=VARCHAR},
+			</if>
+			<if test="applyId != null">
+				#{applyId,jdbcType=VARCHAR},
+			</if>
+			<if test="applyDeviceName != null">
+				#{applyDeviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="applyNum != null">
+				#{applyNum,jdbcType=DECIMAL},
+			</if>
+			<if test="applyPrice != null">
+				#{applyPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="applySpec != null">
+				#{applySpec,jdbcType=VARCHAR},
+			</if>
+			<if test="applyModel != null">
+				#{applyModel,jdbcType=VARCHAR},
+			</if>
+			<if test="applyManufacturer != null">
+				#{applyManufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="contractId != null">
+				#{contractId,jdbcType=VARCHAR},
+			</if>
+			<if test="contractNum != null">
+				#{contractNum,jdbcType=VARCHAR},
+			</if>
+			<if test="contractName != null">
+				#{contractName,jdbcType=VARCHAR},
+			</if>
+			<if test="contractTotalPrice != null">
+				#{contractTotalPrice,jdbcType=VARCHAR},
+			</if>
+			<if test="contractSupplier != null">
+				#{contractSupplier,jdbcType=VARCHAR},
+			</if>
+			<if test="contractOperator != null">
+				#{contractOperator,jdbcType=VARCHAR},
+			</if>
+			<if test="contractDeviceName != null">
+				#{contractDeviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="contractDeviceNum != null">
+				#{contractDeviceNum,jdbcType=DECIMAL},
+			</if>
+			<if test="contractDevicePrice != null">
+				#{contractDevicePrice,jdbcType=DECIMAL},
+			</if>
+			<if test="contractDeviceTotalPrice != null">
+				#{contractDeviceTotalPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="contractSpec != null">
+				#{contractSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="contractModel != null">
+				#{contractModel,jdbcType=VARCHAR},
+			</if>
+			<if test="contractManufacturer != null">
+				#{contractManufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="contractState != null">
+				#{contractState,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DATE},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DATE},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="isDerive != null">
+				#{isDerive,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_APPLY_MODULE -->
+<insert id="insertAssetsApplyModuleList" parameterType="java.util.List">
+	insert into assets_apply_module(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			is_contract_related,
+			apply_type,
+			apply_id,
+			apply_device_name,
+			apply_num,
+			apply_price,
+			apply_spec,
+			apply_model,
+			apply_manufacturer,
+			contract_id,
+			contract_num,
+			contract_name,
+			contract_total_price,
+			contract_supplier,
+			contract_operator,
+			contract_device_name,
+			contract_device_num,
+			contract_device_price,
+			contract_device_total_price,
+			contract_spec,
+			contract_model,
+			contract_manufacturer,
+			contract_state,
+		GUARANTEE_PERIOD,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			is_derive)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.isContractRelated,jdbcType=VARCHAR},
+					#{item.applyType,jdbcType=VARCHAR},
+					#{item.applyId,jdbcType=VARCHAR},
+					#{item.applyDeviceName,jdbcType=VARCHAR},
+					#{item.applyNum,jdbcType=DECIMAL},
+					#{item.applyPrice,jdbcType=DECIMAL},
+					#{item.applySpec,jdbcType=VARCHAR},
+					#{item.applyModel,jdbcType=VARCHAR},
+					#{item.applyManufacturer,jdbcType=VARCHAR},
+					#{item.contractId,jdbcType=VARCHAR},
+					#{item.contractNum,jdbcType=VARCHAR},
+					#{item.contractName,jdbcType=VARCHAR},
+					#{item.contractTotalPrice,jdbcType=VARCHAR},
+					#{item.contractSupplier,jdbcType=VARCHAR},
+					#{item.contractOperator,jdbcType=VARCHAR},
+					#{item.contractDeviceName,jdbcType=VARCHAR},
+					#{item.contractDeviceNum,jdbcType=DECIMAL},
+					#{item.contractDevicePrice,jdbcType=DECIMAL},
+					#{item.contractDeviceTotalPrice,jdbcType=DECIMAL},
+					#{item.contractSpec,jdbcType=VARCHAR},
+					#{item.contractModel,jdbcType=VARCHAR},
+					#{item.contractManufacturer,jdbcType=VARCHAR},
+					#{item.contractState,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=VARCHAR},
+					#{item.attribute12,jdbcType=VARCHAR},
+					#{item.attribute13,jdbcType=VARCHAR},
+					#{item.attribute14,jdbcType=VARCHAR},
+					#{item.attribute15,jdbcType=DATE},
+					#{item.attribute16,jdbcType=DATE},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DECIMAL},
+					#{item.attribute19,jdbcType=DECIMAL},
+					#{item.attribute20,jdbcType=DECIMAL},
+					#{item.isDerive,jdbcType=VARCHAR}
+		from dual 
+	</foreach>
+</insert>
+
+<!--解除和合同系统的关联数据-->
+<update id="updateContract" >
+	update assets_apply_module t
+	set t.contract_id=null,
+        t.contract_num=null,
+        t.IS_CONTRACT_RELATED='N'
+    where t.contract_id= #{contractId}
+</update>
+
+<!-- 更新对象 ASSETS_APPLY_MODULE -->
+<update id="updateAssetsApplyModuleSensitive" parameterType="avicit.assets.assetsapplymodule.dto.AssetsApplyModuleDTO">
+	update assets_apply_module 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="isContractRelated != null">
+				is_contract_related            =#{isContractRelated,jdbcType=VARCHAR},
+			</if>
+			<if test="applyType != null">
+				apply_type                     =#{applyType,jdbcType=VARCHAR},
+			</if>
+			<if test="applyId != null">
+				apply_id                       =#{applyId,jdbcType=VARCHAR},
+			</if>
+			<if test="applyDeviceName != null">
+				apply_device_name              =#{applyDeviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="applyNum != null">
+				apply_num                      =#{applyNum,jdbcType=DECIMAL},
+			</if>
+			<if test="applyPrice != null">
+				apply_price                    =#{applyPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="applySpec != null">
+				apply_spec                     =#{applySpec,jdbcType=VARCHAR},
+			</if>
+			<if test="applyModel != null">
+				apply_model                    =#{applyModel,jdbcType=VARCHAR},
+			</if>
+			<if test="applyManufacturer != null">
+				apply_manufacturer             =#{applyManufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="contractId != null">
+				contract_id                    =#{contractId,jdbcType=VARCHAR},
+			</if>
+			<if test="contractNum != null">
+				contract_num                   =#{contractNum,jdbcType=VARCHAR},
+			</if>
+			<if test="contractName != null">
+				contract_name                  =#{contractName,jdbcType=VARCHAR},
+			</if>
+			<if test="contractTotalPrice != null">
+				contract_total_price           =#{contractTotalPrice,jdbcType=VARCHAR},
+			</if>
+			<if test="contractSupplier != null">
+				contract_supplier              =#{contractSupplier,jdbcType=VARCHAR},
+			</if>
+			<if test="contractOperator != null">
+				contract_operator              =#{contractOperator,jdbcType=VARCHAR},
+			</if>
+			<if test="contractDeviceName != null">
+				contract_device_name           =#{contractDeviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="contractDeviceNum != null">
+				contract_device_num            =#{contractDeviceNum,jdbcType=DECIMAL},
+			</if>
+			<if test="contractDevicePrice != null">
+				contract_device_price          =#{contractDevicePrice,jdbcType=DECIMAL},
+			</if>
+			<if test="contractDeviceTotalPrice != null">
+				contract_device_total_price    =#{contractDeviceTotalPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="contractSpec != null">
+				contract_spec                  =#{contractSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="contractModel != null">
+				contract_model                 =#{contractModel,jdbcType=VARCHAR},
+			</if>
+			<if test="contractManufacturer != null">
+				contract_manufacturer          =#{contractManufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="contractState != null">
+				contract_state                 =#{contractState,jdbcType=VARCHAR},
+			</if>
+		<if test="guaranteePeriod != null">
+			GUARANTEE_PERIOD                 =#{guaranteePeriod,jdbcType=VARCHAR},
+		</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DATE},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DATE},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="isDerive != null">
+				is_derive                      =#{isDerive,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where id = #{id}
+	<if test="version != null and version != ''">
+	      and version =#{version}
+	</if>
+</update>
+<!-- 更新对象 ASSETS_APPLY_MODULE -->
+<update id="updateAssetsApplyModuleAll" parameterType="avicit.assets.assetsapplymodule.dto.AssetsApplyModuleDTO">
+	update assets_apply_module 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			is_contract_related            =#{isContractRelated,jdbcType=VARCHAR},
+			apply_type                     =#{applyType,jdbcType=VARCHAR},
+			apply_id                       =#{applyId,jdbcType=VARCHAR},
+			apply_device_name              =#{applyDeviceName,jdbcType=VARCHAR},
+			apply_num                      =#{applyNum,jdbcType=DECIMAL},
+			apply_price                    =#{applyPrice,jdbcType=DECIMAL},
+			apply_spec                     =#{applySpec,jdbcType=VARCHAR},
+			apply_model                    =#{applyModel,jdbcType=VARCHAR},
+			apply_manufacturer             =#{applyManufacturer,jdbcType=VARCHAR},
+			contract_id                    =#{contractId,jdbcType=VARCHAR},
+			contract_num                   =#{contractNum,jdbcType=VARCHAR},
+			contract_name                  =#{contractName,jdbcType=VARCHAR},
+			contract_total_price           =#{contractTotalPrice,jdbcType=VARCHAR},
+			contract_supplier              =#{contractSupplier,jdbcType=VARCHAR},
+			contract_operator              =#{contractOperator,jdbcType=VARCHAR},
+			contract_device_name           =#{contractDeviceName,jdbcType=VARCHAR},
+			contract_device_num            =#{contractDeviceNum,jdbcType=DECIMAL},
+			contract_device_price          =#{contractDevicePrice,jdbcType=DECIMAL},
+			contract_device_total_price    =#{contractDeviceTotalPrice,jdbcType=DECIMAL},
+			contract_spec                  =#{contractSpec,jdbcType=VARCHAR},
+			contract_model                 =#{contractModel,jdbcType=VARCHAR},
+			contract_manufacturer          =#{contractManufacturer,jdbcType=VARCHAR},
+			contract_state                 =#{contractState,jdbcType=VARCHAR},
+			GUARANTEE_PERIOD                 =#{guaranteePeriod,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{attribute15,jdbcType=DATE},
+			attribute_16                   =#{attribute16,jdbcType=DATE},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			is_derive                      =#{isDerive,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_APPLY_MODULE -->
+<update id="updateAssetsApplyModuleList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_apply_module 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			is_contract_related            =#{item.isContractRelated,jdbcType=VARCHAR},
+			apply_type                     =#{item.applyType,jdbcType=VARCHAR},
+			apply_id                       =#{item.applyId,jdbcType=VARCHAR},
+			apply_device_name              =#{item.applyDeviceName,jdbcType=VARCHAR},
+			apply_num                      =#{item.applyNum,jdbcType=DECIMAL},
+			apply_price                    =#{item.applyPrice,jdbcType=DECIMAL},
+			apply_spec                     =#{item.applySpec,jdbcType=VARCHAR},
+			apply_model                    =#{item.applyModel,jdbcType=VARCHAR},
+			apply_manufacturer             =#{item.applyManufacturer,jdbcType=VARCHAR},
+			contract_id                    =#{item.contractId,jdbcType=VARCHAR},
+			contract_num                   =#{item.contractNum,jdbcType=VARCHAR},
+			contract_name                  =#{item.contractName,jdbcType=VARCHAR},
+			contract_total_price           =#{item.contractTotalPrice,jdbcType=VARCHAR},
+			contract_supplier              =#{item.contractSupplier,jdbcType=VARCHAR},
+			contract_operator              =#{item.contractOperator,jdbcType=VARCHAR},
+			contract_device_name           =#{item.contractDeviceName,jdbcType=VARCHAR},
+			contract_device_num            =#{item.contractDeviceNum,jdbcType=DECIMAL},
+			contract_device_price          =#{item.contractDevicePrice,jdbcType=DECIMAL},
+			contract_device_total_price    =#{item.contractDeviceTotalPrice,jdbcType=DECIMAL},
+			contract_spec                  =#{item.contractSpec,jdbcType=VARCHAR},
+			contract_model                 =#{item.contractModel,jdbcType=VARCHAR},
+			contract_manufacturer          =#{item.contractManufacturer,jdbcType=VARCHAR},
+			contract_state                 =#{item.contractState,jdbcType=VARCHAR},
+		GUARANTEE_PERIOD                 =#{item.guaranteePeriod,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{item.attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{item.attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{item.attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{item.attribute15,jdbcType=DATE},
+			attribute_16                   =#{item.attribute16,jdbcType=DATE},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{item.attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{item.attribute20,jdbcType=DECIMAL},
+			is_derive                      =#{item.isDerive,jdbcType=VARCHAR}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_APPLY_MODULE -->
+<delete id="deleteAssetsApplyModuleById" parameterType="java.lang.String">
+		delete from assets_apply_module  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_APPLY_MODULE -->
+<delete id="deleteAssetsApplyModuleList" parameterType="java.util.List">
+		delete from assets_apply_module  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+
+	<!-- 根据申购Id(applyId)获取合同列表 -->
+	<select id="getAssetsApplyModulesByApplyId" parameterType="java.util.Map" resultMap="AssetsApplyModuleDTOMap">
+		select
+			t1.id                             ,
+			t1.created_by                     ,
+			t1.creation_date                  ,
+			t1.last_updated_by                ,
+			t1.last_update_date               ,
+			t1.last_update_ip                 ,
+			t1.version                        ,
+			t1.is_contract_related            ,
+			t1.apply_type                     ,
+			t1.apply_id                       ,
+			t1.apply_device_name              ,
+			t1.apply_num                      ,
+			t1.apply_price                    ,
+			t1.apply_spec                     ,
+			t1.apply_model                    ,
+			t1.apply_manufacturer             ,
+			t1.contract_id                    ,
+			t1.contract_num                   ,
+			t1.contract_name                  ,
+			t1.contract_total_price           ,
+			t1.contract_supplier              ,
+			t1.contract_operator              ,
+			t1.contract_device_name           ,
+			t1.contract_device_num            ,
+			t1.contract_device_price          ,
+			t1.contract_device_total_price    ,
+			t1.contract_spec                  ,
+			t1.contract_model                 ,
+			t1.contract_manufacturer          ,
+			t1.contract_state                 ,
+			t1.GUARANTEE_PERIOD				  ,
+			t1.attribute_01                   ,
+			t1.attribute_02                   ,
+			t1.attribute_03                   ,
+			t1.attribute_04                   ,
+			t1.attribute_05                   ,
+			t1.attribute_06                   ,
+			t1.attribute_07                   ,
+			t1.attribute_08                   ,
+			t1.attribute_09                   ,
+			t1.attribute_10                   ,
+			t1.attribute_11                   ,
+			t1.attribute_12                   ,
+			t1.attribute_13                   ,
+			t1.attribute_14                   ,
+			t1.attribute_15                   ,
+			t1.attribute_16                   ,
+			t1.attribute_17                   ,
+			t1.attribute_18                   ,
+			t1.attribute_19                   ,
+			t1.attribute_20                   ,
+			t1.is_derive
+		from assets_apply_module 	t1
+			where t1.apply_id = #{applyId} and not (t1.is_derive = 'Y')
+	</select>
+</mapper>

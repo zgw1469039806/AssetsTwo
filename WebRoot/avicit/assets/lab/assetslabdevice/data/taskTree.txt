@@ -1,0 +1,140 @@
+﻿[{
+    "UID": "1",
+    "Name": "项目范围规划",
+    "Duration": 8,
+    "Start": "2007-01-01T00:00:00",
+    "Finish": "2007-01-10T00:00:00",
+    "PercentComplete": 0,
+    "Summary": 1,
+    "Critical": 0,
+    "Milestone": 0,
+    "PredecessorLink": [],
+    "children": [{
+        "UID": "2",
+        "Name": "确定项目范围",
+        "Duration": 1,
+        "Start": "2007-01-01T00:00:00",
+        "Finish": "2007-01-01T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": []
+    },
+    {
+        "UID": "3",
+        "Name": "获得项目所需资金",
+        "Duration": 2,
+        "Start": "2007-01-02T00:00:00",
+        "Finish": "2007-01-03T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "2"
+        }]
+    },
+    {
+        "UID": "4",
+        "Name": "定义预备资源",
+        "Duration": 2,
+        "Start": "2007-01-04T00:00:00",
+        "Finish": "2007-01-05T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "3"
+        }]
+    },
+    {
+        "UID": "5",
+        "Name": "获得核心资源",
+        "Duration": 2,
+        "Start": "2007-01-08T00:00:00",
+        "Finish": "2007-01-09T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "4"
+        }]
+    },
+    {
+        "UID": "6",
+        "Name": "完成项目范围规划",
+        "Duration": 0,
+        "Start": "2007-01-10T00:00:00",
+        "Finish": "2007-01-10T00:00:00",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 1,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "5"
+        }]
+    }]
+},
+{
+    "UID": "7",
+    "Name": "分析/软件需求",
+    "Duration": 20,
+    "Start": "2007-01-11T00:00:00",
+    "Finish": "2007-02-07T00:00:00",
+    "PercentComplete": 0,
+    "Summary": 1,
+    "Critical": 0,
+    "Milestone": 0,
+    "PredecessorLink": [],
+    "children": [{
+        "UID": "8",
+        "Name": "行为需求分析",
+        "Duration": 6,
+        "Start": "2007-01-11T00:00:00",
+        "Finish": "2007-01-18T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "6"
+        }]
+    },
+    {
+        "UID": "9",
+        "Name": "起草初步的软件规范",
+        "Duration": 4,
+        "Start": "2007-01-19T00:00:00",
+        "Finish": "2007-01-24T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "8"
+        }]
+    },
+    {
+        "UID": "10",
+        "Name": "制定初步预算",
+        "Duration": 3,
+        "Start": "2007-01-25T00:00:00",
+        "Finish": "2007-01-29T23:23:59",
+        "PercentComplete": 0,
+        "Summary": 0,
+        "Critical": 0,
+        "Milestone": 0,
+        "PredecessorLink": [{
+            "Type": 1,
+            "PredecessorUID": "9"
+        }]
+    }]

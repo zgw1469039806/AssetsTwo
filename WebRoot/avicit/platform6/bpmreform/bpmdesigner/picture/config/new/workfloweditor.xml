@@ -1,0 +1,9 @@
+<mxEditor>
+	<include name="avicit/platform6/bpmreform/bpmdesigner/picture/config/new/wfeditor-commons.xml" />
+	<ui>
+		<add as="graph" element="graph" />
+	</ui>
+	<mxGraph as="graph">
+		<include name="avicit/platform6/bpmreform/bpmdesigner/picture/config/new/wfgraph-commons.xml" />
+	</mxGraph>
+</mxEditor>

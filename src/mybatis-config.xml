@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="logImpl" value="SLF4J"/>
+	</settings>
+	<!--添加模块返回类型-->
+	<typeAliases>
+		<typeAlias alias="SysUser" type="avicit.platform6.api.sysuser.dto.SysUser" />
+
+		<typeAlias alias="SysOrgTl" type="avicit.platform6.api.sysuser.dto.SysOrgTl" />
+
+		<typeAlias alias="SysOrg" type="avicit.platform6.api.sysuser.dto.SysOrg" />
+
+		<typeAlias alias="SysDept" type="avicit.platform6.api.sysuser.dto.SysDept" />
+
+		<typeAlias alias="SysDeptTl" type="avicit.platform6.api.sysuser.dto.SysDeptTl" />
+
+		<typeAlias alias="SysGroup" type="avicit.platform6.api.sysuser.dto.SysGroup" />
+
+		<typeAlias alias="SysGroupTl" type="avicit.platform6.api.sysuser.dto.SysGroupTl" />
+
+		<typeAlias alias="SysPosition" type="avicit.platform6.api.sysuser.dto.SysPosition" />
+
+		<typeAlias alias="SysPositionTl" type="avicit.platform6.api.sysuser.dto.SysPositionTl" />
+
+		<typeAlias alias="SysRole" type="avicit.platform6.api.sysuser.dto.SysRole" />
+
+		<typeAlias alias="SysUserRole" type="avicit.platform6.api.sysuser.dto.SysUserRole" />
+
+		<typeAlias alias="SysUserGroup" type="avicit.platform6.api.sysuser.dto.SysUserGroup" />
+
+		<typeAlias alias="SysUserDeptPosition" type="avicit.platform6.api.sysuser.dto.SysUserDeptPosition" />
+
+	    <typeAlias alias="SysCustomed" type="avicit.platform6.api.customed.dto.Customed" />
+
+	    <typeAlias alias="SysLookupType" type="avicit.platform6.api.syslookup.dto.SysLookupType" />
+
+		<typeAlias alias="SysLookupTypeTl" type="avicit.platform6.api.syslookup.dto.SysLookupTypeTl" />
+
+		<typeAlias alias="SysLookup" type="avicit.platform6.api.syslookup.dto.SysLookup" />
+
+		<typeAlias alias="SysLookupTl" type="avicit.platform6.api.syslookup.dto.SysLookupTl" />
+
+		<typeAlias alias="SysLookupHibearchy" type="avicit.platform6.api.syslookup.dto.SysLookupHibearchy" />
+
+		<typeAlias alias="SysUserLimitIp" type="avicit.platform6.api.sysuserlimitip.dto.SysUserLimitIp" />
+
+		<typeAlias alias="SysProfileOption" type="avicit.platform6.api.sysprofile.dto.SysProfileOption" />
+
+		<typeAlias alias="SysProfileOptionValue" type="avicit.platform6.api.sysprofile.dto.SysProfileOptionValue" />
+
+		<typeAlias alias="SysPasswordTemplet" type="avicit.platform6.api.syspassword.dto.SysPasswordTemplet" />
+
+		<typeAlias alias="SysLanguage" type="avicit.platform6.api.syslanguage.dto.SysLanguage" />
+
+		<typeAlias alias="SysApplication" type="avicit.platform6.api.application.dto.SysApplication" />
+
+		<typeAlias alias="SysPasswordTempletLevel" type="avicit.platform6.api.syspassword.dto.SysPasswordTempletLevel" />
+
+		<typeAlias alias="SysThemesSkins" type="avicit.platform6.api.systhemesskins.dto.SysThemesSkins" />
+
+		<typeAlias alias="MenuTranslator" type="avicit.platform6.api.sysmenu.dto.MenuTranslator" />
+
+		<typeAlias alias="MenuDto" type="avicit.platform6.api.sysmenu.dto.MenuDto" />
+
+		<typeAlias alias="MenuPortletDto" type="avicit.platform6.api.sysmenu.dto.MenuPortletDto" />
+
+		<typeAlias alias="SysPermissionResource" type="avicit.platform6.api.syspermissionresource.dto.SysPermissionResource" />
+
+		<typeAlias alias="SysPermissionAccess" type="avicit.platform6.api.syspermissionresource.dto.SysPermissionAccess" />
+
+	</typeAliases>
+
+	<plugins>
+		<plugin interceptor="avicit.platform6.core.mybatis.shard.plugin.ShardPlugin">
+			<property name="shardingConfig" value="shard-config.xml"/>
+		</plugin>
+
+		<plugin interceptor="avicit.platform6.core.sfn.intercept.SelfDefinedQryInterceptor"></plugin>
+		<plugin interceptor="avicit.platform6.core.mybatis.pagehelper.PageHelper">
+			<property name="offsetAsPageNum" value="true"/>
+			<property name="rowBoundsWithCount" value="true"/>
+			<property name="pageSizeZero" value="true"/>
+			<property name="reasonable" value="true"/>
+		</plugin>
+
+		<plugin interceptor="avicit.platform6.core.mybatis.intercept.MapInterceptor"></plugin>
+		
+		<!-- 行数据拦截器，默认该功能关闭，如项目需要使用，放开即可-->
+		<!-- 
+        	<plugin interceptor="avicit.platform6.msystem.sysdatapermissions.SysDataPermissionsInterceptor"></plugin>
+         -->
+	</plugins>
+
+</configuration>

@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+.dnf-red{
+	color:red;	
+}
+.dnf-blue{
+	color:blue;	
+}
+.dnf-none{
+	display: none;
+}
+.dnf-green{
+	color:green;	
+}

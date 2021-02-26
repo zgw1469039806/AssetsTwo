@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.cadreselect.dyntemitem.dao.DynTemItemDAO">
+<resultMap id="DynTemItemDTOMap" type="avicit.cadreselect.dyntemitem.dto.DynTemItemDTO">
+	<result property="temId" column="TEM_ID" jdbcType="VARCHAR" />
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="tiUserName" column="TI_USER_NAME" jdbcType="VARCHAR" />
+	<result property="tiUserDept" column="TI_USER_DEPT" jdbcType="VARCHAR" />
+	<result property="tiOpinion" column="TI_OPINION" jdbcType="DECIMAL" />
+	<result property="tiShouldInvestNum" column="TI_SHOULD_INVEST_NUM" jdbcType="DECIMAL" />
+	<result property="tiActualInvestNum" column="TI_ACTUAL_INVEST_NUM" jdbcType="DECIMAL" />
+	<result property="tiLoginNum" column="TI_LOGIN_NUM" jdbcType="DECIMAL" />
+	<result property="tiSceneNum" column="TI_SCENE_NUM" jdbcType="DECIMAL" />
+	<result property="tiStartDate" column="TI_START_DATE" jdbcType="TIMESTAMP" />
+	<result property="tiEndDate" column="TI_END_DATE" jdbcType="TIMESTAMP" />
+	<result property="tiState" column="TI_STATE" jdbcType="DECIMAL" />
+	<result property="tiText" column="TI_TEXT" jdbcType="VARCHAR" />
+	<result property="tiUserSex" column="TI_USER_SEX" jdbcType="DECIMAL" />
+	<result property="tiUserPost" column="TI_USER_POST" jdbcType="VARCHAR" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="commonColums">
+	t1.TEM_ID,
+	t1.ID,
+	t1.LAST_UPDATE_DATE,
+	t1.CREATED_BY,
+	t1.CREATION_DATE,
+	t1.VERSION,
+	t1.LAST_UPDATE_IP,
+	t1.LAST_UPDATED_BY,
+	t1.TI_USER_NAME,
+	t1.TI_USER_DEPT,
+	t1.TI_OPINION,
+	t1.TI_SHOULD_INVEST_NUM,
+	t1.TI_ACTUAL_INVEST_NUM,
+	t1.TI_LOGIN_NUM,
+	t1.TI_SCENE_NUM,
+	t1.TI_START_DATE,
+	t1.TI_END_DATE,
+	t1.TI_STATE,
+	t1.TI_TEXT,
+	t1.TI_USER_SEX,
+	t1.TI_USER_POST,
+	t1.ORG_IDENTITY</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+		and t1.org_identity = #{bean.orgIdentity}
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+    <if test="bean.temId != null and bean.temId != ''">
+        and t1.TEM_ID like concat(concat('%',#{bean.temId}),'%')
+    </if>
+    <if test="bean.id != null and bean.id != ''">
+        and t1.ID like concat(concat('%',#{bean.id}),'%')
+    </if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+    <if test="bean.createdBy != null and bean.createdBy != ''">
+        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+    </if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+    <if test="bean.version != null ">
+        and t1.VERSION = #{bean.version}
+    </if>
+    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+    </if>
+    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+    </if>
+    <if test="bean.tiUserName != null and bean.tiUserName != ''">
+        and t1.TI_USER_NAME like concat(concat('%',#{bean.tiUserName}),'%')
+    </if>
+    <if test="bean.tiUserDept != null and bean.tiUserDept != ''">
+        and t1.TI_USER_DEPT like concat(concat('%',#{bean.tiUserDept}),'%')
+    </if>
+    <if test="bean.tiOpinion != null ">
+        and t1.TI_OPINION = #{bean.tiOpinion}
+    </if>
+    <if test="bean.tiShouldInvestNum != null ">
+        and t1.TI_SHOULD_INVEST_NUM = #{bean.tiShouldInvestNum}
+    </if>
+    <if test="bean.tiActualInvestNum != null ">
+        and t1.TI_ACTUAL_INVEST_NUM = #{bean.tiActualInvestNum}
+    </if>
+    <if test="bean.tiLoginNum != null ">
+        and t1.TI_LOGIN_NUM = #{bean.tiLoginNum}
+    </if>
+    <if test="bean.tiSceneNum != null ">
+        and t1.TI_SCENE_NUM = #{bean.tiSceneNum}
+    </if>
+	<if test="bean.tiStartDateBegin != null">
+		and t1.TI_START_DATE &gt;= #{bean.tiStartDateBegin}
+	</if>
+	<if test="bean.tiStartDateEnd != null">
+		and t1.TI_START_DATE &lt;= #{bean.tiStartDateEnd}
+	</if>
+	<if test="bean.tiEndDateBegin != null">
+		and t1.TI_END_DATE &gt;= #{bean.tiEndDateBegin}
+	</if>
+	<if test="bean.tiEndDateEnd != null">
+		and t1.TI_END_DATE &lt;= #{bean.tiEndDateEnd}
+	</if>
+    <if test="bean.tiState != null ">
+        and t1.TI_STATE = #{bean.tiState}
+    </if>
+    <if test="bean.tiText != null and bean.tiText != ''">
+        and t1.TI_TEXT like concat(concat('%',#{bean.tiText}),'%')
+    </if>
+    <if test="bean.tiUserSex != null ">
+        and t1.TI_USER_SEX = #{bean.tiUserSex}
+    </if>
+    <if test="bean.tiUserPost != null and bean.tiUserPost != ''">
+        and t1.TI_USER_POST like concat(concat('%',#{bean.tiUserPost}),'%')
+    </if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.temId != null and bean.temId != ''">
+			or t1.TEM_ID like concat(concat('%',#{bean.temId}),'%')
+		</if>
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.version != null and bean.version != ''">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.tiUserName != null and bean.tiUserName != ''">
+			or t1.TI_USER_NAME like concat(concat('%',#{bean.tiUserName}),'%')
+		</if>
+		<if test="bean.tiUserDept != null and bean.tiUserDept != ''">
+			or t1.TI_USER_DEPT like concat(concat('%',#{bean.tiUserDept}),'%')
+		</if>
+		<if test="bean.tiOpinion != null and bean.tiOpinion != ''">
+			or t1.TI_OPINION = #{bean.tiOpinion}
+		</if>
+		<if test="bean.tiShouldInvestNum != null and bean.tiShouldInvestNum != ''">
+			or t1.TI_SHOULD_INVEST_NUM = #{bean.tiShouldInvestNum}
+		</if>
+		<if test="bean.tiActualInvestNum != null and bean.tiActualInvestNum != ''">
+			or t1.TI_ACTUAL_INVEST_NUM = #{bean.tiActualInvestNum}
+		</if>
+		<if test="bean.tiLoginNum != null and bean.tiLoginNum != ''">
+			or t1.TI_LOGIN_NUM = #{bean.tiLoginNum}
+		</if>
+		<if test="bean.tiSceneNum != null and bean.tiSceneNum != ''">
+			or t1.TI_SCENE_NUM = #{bean.tiSceneNum}
+		</if>
+		<if test="bean.tiStartDateBegin != null">
+			or t1.TI_START_DATE &gt;= #{bean.tiStartDateBegin}
+		</if>
+		<if test="bean.tiStartDateEnd != null">
+			or t1.TI_START_DATE &lt;= #{bean.tiStartDateEnd}
+		</if>
+		<if test="bean.tiEndDateBegin != null">
+			or t1.TI_END_DATE &gt;= #{bean.tiEndDateBegin}
+		</if>
+		<if test="bean.tiEndDateEnd != null">
+			or t1.TI_END_DATE &lt;= #{bean.tiEndDateEnd}
+		</if>
+		<if test="bean.tiState != null and bean.tiState != ''">
+			or t1.TI_STATE = #{bean.tiState}
+		</if>
+		<if test="bean.tiText != null and bean.tiText != ''">
+			or t1.TI_TEXT like concat(concat('%',#{bean.tiText}),'%')
+		</if>
+		<if test="bean.tiUserSex != null and bean.tiUserSex != ''">
+			or t1.TI_USER_SEX = #{bean.tiUserSex}
+		</if>
+		<if test="bean.tiUserPost != null and bean.tiUserPost != ''">
+			or t1.TI_USER_POST like concat(concat('%',#{bean.tiUserPost}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="pOrderBy != null and pOrderBy != ''">
+			order by ${pOrderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+<!-- 分页查询 DYN_TEM_ITEM -->
+<select id="searchDynTemItemByPage" parameterType="java.util.Map" resultMap="DynTemItemDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_TEM_ITEM t1   
+<where>
+	<if test="bean != null">
+		<choose>
+			<when test="keyWord != null and keyWord != '' ">
+				<include refid="commonWhereOr"/>
+			</when>
+			<otherwise>
+				<include refid="commonWhereAnd"/>
+			</otherwise>
+		</choose>
+		<include refid="defaultWhereAnd"/>
+	</if>
+</where>
+<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 DYN_TEM_ITEM -->
+<select id="searchDynTemItem" parameterType="java.util.Map" resultMap="DynTemItemDTOMap">
+	select
+	<include refid="commonColums"/>
+    from DYN_TEM_ITEM 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</if>
+	</where>
+</select>
+<!-- 主键查询对象 DYN_TEM_ITEM -->
+<select id="findDynTemItemById" parameterType="java.lang.String" resultMap="DynTemItemDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_TEM_ITEM t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 DYN_TEM_ITEM -->
+<insert id="insertDynTemItem" parameterType="avicit.cadreselect.dyntemitem.dto.DynTemItemDTO">
+	insert into DYN_TEM_ITEM
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="temId != null">
+			TEM_ID,
+		</if>
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="tiUserName != null">
+			TI_USER_NAME,
+		</if>
+		<if test="tiUserDept != null">
+			TI_USER_DEPT,
+		</if>
+		<if test="tiOpinion != null">
+			TI_OPINION,
+		</if>
+		<if test="tiShouldInvestNum != null">
+			TI_SHOULD_INVEST_NUM,
+		</if>
+		<if test="tiActualInvestNum != null">
+			TI_ACTUAL_INVEST_NUM,
+		</if>
+		<if test="tiLoginNum != null">
+			TI_LOGIN_NUM,
+		</if>
+		<if test="tiSceneNum != null">
+			TI_SCENE_NUM,
+		</if>
+		<if test="tiStartDate != null">
+			TI_START_DATE,
+		</if>
+		<if test="tiEndDate != null">
+			TI_END_DATE,
+		</if>
+		<if test="tiState != null">
+			TI_STATE,
+		</if>
+		<if test="tiText != null">
+			TI_TEXT,
+		</if>
+		<if test="tiUserSex != null">
+			TI_USER_SEX,
+		</if>
+		<if test="tiUserPost != null">
+			TI_USER_POST,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="temId != null">
+			#{temId,jdbcType = VARCHAR},
+		</if>
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="tiUserName != null">
+			#{tiUserName,jdbcType = VARCHAR},
+		</if>
+		<if test="tiUserDept != null">
+			#{tiUserDept,jdbcType = VARCHAR},
+		</if>
+		<if test="tiOpinion != null">
+			#{tiOpinion,jdbcType = DECIMAL},
+		</if>
+		<if test="tiShouldInvestNum != null">
+			#{tiShouldInvestNum,jdbcType = DECIMAL},
+		</if>
+		<if test="tiActualInvestNum != null">
+			#{tiActualInvestNum,jdbcType = DECIMAL},
+		</if>
+		<if test="tiLoginNum != null">
+			#{tiLoginNum,jdbcType = DECIMAL},
+		</if>
+		<if test="tiSceneNum != null">
+			#{tiSceneNum,jdbcType = DECIMAL},
+		</if>
+		<if test="tiStartDate != null">
+			#{tiStartDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="tiEndDate != null">
+			#{tiEndDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="tiState != null">
+			#{tiState,jdbcType = DECIMAL},
+		</if>
+		<if test="tiText != null">
+			#{tiText,jdbcType = VARCHAR},
+		</if>
+		<if test="tiUserSex != null">
+			#{tiUserSex,jdbcType = DECIMAL},
+		</if>
+		<if test="tiUserPost != null">
+			#{tiUserPost,jdbcType = VARCHAR},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 DYN_TEM_ITEM -->
+<insert id="insertDynTemItemList" parameterType="java.util.List">
+	insert into DYN_TEM_ITEM(
+	TEM_ID ,
+	ID ,
+	LAST_UPDATE_DATE ,
+	CREATED_BY ,
+	CREATION_DATE ,
+	VERSION ,
+	LAST_UPDATE_IP ,
+	LAST_UPDATED_BY ,
+	TI_USER_NAME ,
+	TI_USER_DEPT ,
+	TI_OPINION ,
+	TI_SHOULD_INVEST_NUM ,
+	TI_ACTUAL_INVEST_NUM ,
+	TI_LOGIN_NUM ,
+	TI_SCENE_NUM ,
+	TI_START_DATE ,
+	TI_END_DATE ,
+	TI_STATE ,
+	TI_TEXT ,
+	TI_USER_SEX ,
+	TI_USER_POST ,
+	ORG_IDENTITY )
+<foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
+	select
+	#{item.temId,jdbcType = VARCHAR} ,
+	#{item.id,jdbcType = VARCHAR} ,
+	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+	#{item.createdBy,jdbcType = VARCHAR} ,
+	#{item.creationDate,jdbcType = TIMESTAMP} ,
+	#{item.version,jdbcType = DECIMAL} ,
+	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+	#{item.tiUserName,jdbcType = VARCHAR} ,
+	#{item.tiUserDept,jdbcType = VARCHAR} ,
+	#{item.tiOpinion,jdbcType = DECIMAL} ,
+	#{item.tiShouldInvestNum,jdbcType = DECIMAL} ,
+	#{item.tiActualInvestNum,jdbcType = DECIMAL} ,
+	#{item.tiLoginNum,jdbcType = DECIMAL} ,
+	#{item.tiSceneNum,jdbcType = DECIMAL} ,
+	#{item.tiStartDate,jdbcType = TIMESTAMP} ,
+	#{item.tiEndDate,jdbcType = TIMESTAMP} ,
+	#{item.tiState,jdbcType = DECIMAL} ,
+	#{item.tiText,jdbcType = VARCHAR} ,
+	#{item.tiUserSex,jdbcType = DECIMAL} ,
+	#{item.tiUserPost,jdbcType = VARCHAR} ,
+	#{item.orgIdentity,jdbcType = VARCHAR} 	from dual
+</foreach>
+</insert>
+<!-- 更新对象 DYN_TEM_ITEM -->
+<update id="updateDynTemItemSensitive" parameterType="avicit.cadreselect.dyntemitem.dto.DynTemItemDTO">
+	update DYN_TEM_ITEM
+	<set>
+		<if test="temId != null">
+			TEM_ID = #{temId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="tiUserName != null">
+			TI_USER_NAME = #{tiUserName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="tiUserDept != null">
+			TI_USER_DEPT = #{tiUserDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="tiOpinion != null">
+			TI_OPINION = #{tiOpinion,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiShouldInvestNum != null">
+			TI_SHOULD_INVEST_NUM = #{tiShouldInvestNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiActualInvestNum != null">
+			TI_ACTUAL_INVEST_NUM = #{tiActualInvestNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiLoginNum != null">
+			TI_LOGIN_NUM = #{tiLoginNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiSceneNum != null">
+			TI_SCENE_NUM = #{tiSceneNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiStartDate != null">
+			TI_START_DATE = #{tiStartDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="tiEndDate != null">
+			TI_END_DATE = #{tiEndDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="tiState != null">
+			TI_STATE = #{tiState,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiText != null">
+			TI_TEXT = #{tiText,jdbcType = VARCHAR} ,
+		</if>
+		<if test="tiUserSex != null">
+			TI_USER_SEX = #{tiUserSex,jdbcType = DECIMAL} ,
+		</if>
+		<if test="tiUserPost != null">
+			TI_USER_POST = #{tiUserPost,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 DYN_TEM_ITEM -->
+<update id="updateDynTemItemAll" parameterType="avicit.cadreselect.dyntemitem.dto.DynTemItemDTO">
+	update DYN_TEM_ITEM
+	set
+	TEM_ID = #{temId,jdbcType = VARCHAR} ,
+	ID = #{id,jdbcType = VARCHAR} ,
+	LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+	CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+	CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+	VERSION = version+1 ,
+	LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+	LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+	TI_USER_NAME = #{tiUserName,jdbcType = VARCHAR} ,
+	TI_USER_DEPT = #{tiUserDept,jdbcType = VARCHAR} ,
+	TI_OPINION = #{tiOpinion,jdbcType = DECIMAL} ,
+	TI_SHOULD_INVEST_NUM = #{tiShouldInvestNum,jdbcType = DECIMAL} ,
+	TI_ACTUAL_INVEST_NUM = #{tiActualInvestNum,jdbcType = DECIMAL} ,
+	TI_LOGIN_NUM = #{tiLoginNum,jdbcType = DECIMAL} ,
+	TI_SCENE_NUM = #{tiSceneNum,jdbcType = DECIMAL} ,
+	TI_START_DATE = #{tiStartDate,jdbcType = TIMESTAMP} ,
+	TI_END_DATE = #{tiEndDate,jdbcType = TIMESTAMP} ,
+	TI_STATE = #{tiState,jdbcType = DECIMAL} ,
+	TI_TEXT = #{tiText,jdbcType = VARCHAR} ,
+	TI_USER_SEX = #{tiUserSex,jdbcType = DECIMAL} ,
+	TI_USER_POST = #{tiUserPost,jdbcType = VARCHAR} ,
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   DYN_TEM_ITEM -->
+<update id="updateDynTemItemList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+		update DYN_TEM_ITEM
+		set
+		TEM_ID = #{item.temId,jdbcType = VARCHAR} ,
+		ID = #{item.id,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+		VERSION = version+1  ,
+		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+		TI_USER_NAME = #{item.tiUserName,jdbcType = VARCHAR} ,
+		TI_USER_DEPT = #{item.tiUserDept,jdbcType = VARCHAR} ,
+		TI_OPINION = #{item.tiOpinion,jdbcType = DECIMAL} ,
+		TI_SHOULD_INVEST_NUM = #{item.tiShouldInvestNum,jdbcType = DECIMAL} ,
+		TI_ACTUAL_INVEST_NUM = #{item.tiActualInvestNum,jdbcType = DECIMAL} ,
+		TI_LOGIN_NUM = #{item.tiLoginNum,jdbcType = DECIMAL} ,
+		TI_SCENE_NUM = #{item.tiSceneNum,jdbcType = DECIMAL} ,
+		TI_START_DATE = #{item.tiStartDate,jdbcType = TIMESTAMP} ,
+		TI_END_DATE = #{item.tiEndDate,jdbcType = TIMESTAMP} ,
+		TI_STATE = #{item.tiState,jdbcType = DECIMAL} ,
+		TI_TEXT = #{item.tiText,jdbcType = VARCHAR} ,
+		TI_USER_SEX = #{item.tiUserSex,jdbcType = DECIMAL} ,
+		TI_USER_POST = #{item.tiUserPost,jdbcType = VARCHAR} ,
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} 		where id = #{item.id}
+		and version = #{version}
+	</foreach>
+</update>
+<!-- 主键删除 DYN_TEM_ITEM -->
+<delete id="deleteDynTemItemById" parameterType="java.lang.String">
+	delete from DYN_TEM_ITEM  where id = #{id}
+</delete>
+</mapper>

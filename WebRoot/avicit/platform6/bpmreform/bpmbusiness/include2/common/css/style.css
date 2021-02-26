@@ -1,0 +1,985 @@
+/* 清除内外边距 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+    /* structural elements 结构元素 */
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+    /* list elements 列表元素 */
+pre,
+    /* text formatting elements 文本格式元素 */
+fieldset,
+lengend,
+button,
+input,
+textarea,
+    /* form elements 表单元素 */
+th,
+td {
+    /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 设置默认字体 */
+body,
+button,
+input,
+select,
+textarea {
+    /* for ie */
+    /*font: 12px/1 "微软雅黑",Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 "\5fae\8f6f\96c5\9ed1", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+    /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 {
+    font-size: 18px;
+    /* 18px / 12px = 1.5 */
+}
+
+h2 {
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal;
+}
+
+/* 将斜体扶正 */
+code,
+kbd,
+pre,
+samp,
+tt {
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* 统一等宽字体 */
+small {
+    font-size: 12px;
+}
+
+/* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/* 重置列表元素 */
+ul,
+ol {
+    list-style: none;
+}
+
+#main {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 头部样式 start */
+#top-tool {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #D7D7D7;
+}
+
+.top-logo {
+    float: left;
+    position: relative;
+    z-index: 2;
+    height: 50px;
+    width: 70px;
+    text-align: center;
+}
+
+.top-logo .switch {
+    position: absolute;
+    top: 12px;
+    left: 25px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.top-logo .switch:hover {
+    color:#09f;
+}
+
+.top-logo em {
+    height: 26px;
+    width: 26px;
+    display: block;
+    margin-bottom: 2px;
+    background-image: url(../img/buju.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.top-logo em.type2 {
+    background-image: url(../img/file.png);
+}
+
+.top-btns {
+    position: absolute;
+    padding-left: 70px;
+    top: 0;
+    width:auto;
+    max-width: initial!important;
+}
+
+.top-btns li {
+    height: 49px;
+    color: #424B5C;
+    float: left;
+    line-height: 16px;
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    transition: all .3s;
+}
+
+.top-btns .f-btn {
+    padding: 5px 0 6px 0;
+}
+
+.top-btns a {
+    text-decoration: none;
+    color: #424B5C;
+    display: inline-block;
+    padding: 15px 0 15px 10px;
+    line-height: inherit;
+}
+
+.open-list {
+    font-family: "iconfont" !important;
+	color:#969696!important;
+	margin-left:5px;
+	font-style: normal;
+}
+.open-list:before{
+	content: "\e65a";
+}
+#top-tool .top-btns li a:hover .open-list{
+	color:#fff!important;
+}
+.had-sublist .f-btn{
+    padding: 15px 0 16px 10px;
+}
+.had-sublist .sub-list a {
+    width:100%;
+    padding:10px;
+    overflow: hidden;
+    border:0!important;
+}
+.had-sublist .sub-list a span{
+	max-width:110px;
+}
+/*.had-sublist:hover .sub-list {
+    display: block;
+}*/
+.had-sublist .hs-title {
+    width:100%;
+    padding:14px 10px;
+}
+
+.top-btns .sub-list {
+    display: none;
+   /*  width: 100%; */
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    padding: 0;
+    top: 49px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+}
+
+.had-sublist:hover .sub-list {
+    display: block;
+}
+
+.had-sublist.more-list .sub-list.b {
+    position: absolute;
+    display: none;
+    right: 8px;
+    left: inherit;
+    width: auto;
+    width: 130px;
+    border-radius: 3px;
+}
+.had-sublist.more-list:hover .sub-list.b {
+    display: block;
+}
+
+.sub-list .had-sublist span {
+    max-width: 65px;
+    padding: 0 5px;
+}
+
+.sub-list  .open-list {
+    padding: 13px 10px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+
+.had-sublist.more-list .sub-list.b li {
+    width:100%;
+}
+.had-sublist.more-list .sub-list.b em {
+    display: none;
+}
+.had-sublist.more-list .sub-list.b span {
+    line-height: 12px;
+}
+.top-btns .sub-list li {
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    text-align: left;
+    margin-right: 0px!important;
+}
+
+.top-btns li.last span {
+    border: 0;
+}
+
+.top-btns li:hover {
+    background-color: #D7D7D7;
+    color: #fff;
+}
+
+.top-btns li:hover span {
+    border-right: 1px solid #D7D7D7;
+}
+
+.top-btns span {
+    margin: 0;
+    font-size: 12px;
+    max-width: 80px;
+    line-height: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    padding-right: 10px;
+    border-right: 1px solid #C9C9C9;
+}
+
+.top-btns em {
+    position: relative;
+    top: -3px;
+    margin-right: 7px;
+    font-size: 14px;
+}
+
+.had-sublist.more-list {
+    position:static;
+}
+.had-sublist.more-list > a.hs-title{
+	height:30px;
+}
+.had-sublist.more-list .sub-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding:0;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 10px 10px #e2e2e2;
+}
+.had-sublist.more-list .sub-list li {
+    display: inline-block;
+    width: auto;
+    margin-right: 15px;
+    background: #ffffff;
+    border-radius: 0px;
+}
+#top-tool .sub-list .sub-list-li a{
+	height:30px;
+	line-height:24px;
+	padding:3px 12px!important;
+	width: 110px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#top-tool .sub-list.b li a{
+	height:30px;
+	line-height:24px;
+	padding:3px 12px!important;
+}
+
+.top-lock-box{
+    width: 40px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 10px
+}
+.top-lock-box a{
+    color:#424b5c;
+    text-decoration: none;
+}
+.top-lock-icon{
+    height: 25px;
+    position: relative;
+    line-height: 25px;
+    top: 12px;
+    font-size:15px;
+    color:#13c2c2;
+}
+
+.top-unlock-icon{
+    height: 25px;
+    position: relative;
+    line-height: 25px;
+    top: 12px;
+    font-size:15px;
+}
+
+
+
+/* 头部样式 end */
+
+/* 切换tab栏 start */
+.nav-body {
+    padding-top: 84px;
+    background: #eee;
+}
+
+.section-content {
+    height: auto;
+    background: #eee;
+    width: 100%;
+    margin: auto;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.nav-height {
+    position: relative;
+    height: 34px;
+}
+
+#nav-wrap {
+    width: 100%;
+    height: 34px;
+    background: #E8EAED;
+}
+
+.top-head {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #e3e3e3;
+    z-index: 99999;
+    transition:all .3s;
+}
+
+#nav-wrap ul {
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+    padding: 0px 115px 0 75px;
+}
+
+#nav-wrap li {
+    display: inline-block;
+    text-align: left;
+    height: 32px;
+    line-height: 32px;
+    float: left;
+}
+
+#nav-wrap li a {
+    display: block;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #333;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+#nav-wrap li a:hover {
+    color: #4680d1;
+}
+
+#nav-wrap li a.active {
+    border-bottom: 3px solid #4680d1;
+    color: #4680d1;
+}
+
+.nav-role {
+    position: absolute;
+    line-height: 34px;
+    height: 34px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    right: 0;
+    top: 0;
+    color: #333;
+    padding: 0 10px;
+    border-left: 1px solid #D7D7D7;
+    text-align: center;
+}
+
+.nav-role p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.setting-btn {
+    width: 14px;
+    height: 14px;
+    top: 11px;
+    left: 27px;
+    position: absolute;
+    background-image: url(../img/setting.png);
+    cursor: pointer;
+}
+
+.setting-btn:hover {
+    background-image: url(../img/settingOver.png);
+}
+
+.help-panel {
+    display: none;
+    width: 438px;
+    height: 248px;
+    border: 1px solid #eee;
+    overflow: hidden auto;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 0px 12px rgba(121, 121, 121, 1);
+}
+
+.setting-panel {
+    display: none;
+    width: 438px;
+    height: 248px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #eee;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 0px 12px rgba(121, 121, 121, 1);
+}
+
+.p-title {
+    font-size: 14px;
+    padding: 20px;
+    position: relative;
+}
+.p-title span {
+    float:right;
+    font-size: 12px;
+    color: #adadad;
+}
+
+.l-radio {
+    background-image: url(../img/radio-uncheck.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 39px;
+    cursor: pointer;
+}
+
+.l-radio.checked {
+    background-image: url(../img/radio-checked.png);
+}
+
+.p-list-head {
+    padding: 5px 20px;
+    box-sizing: border-box;
+}
+
+.p-list {
+    height: 150px;
+    color: #000;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.plist-table {
+    width: 100%;
+}
+
+.plist-table thead {
+    width: 100%;
+    line-height: 20px;
+}
+
+.plist-table tbody {
+    text-align: center;
+    width: 100%;
+
+}
+
+.plist-table th {
+    text-align: center;
+}
+
+.plist-text tr {
+    line-height: 30px;
+}
+
+.plist-text tr:hover {
+    background-color: #eee;
+}
+
+.plist-text tr td.f {
+    width: 100px;
+}
+
+.plist-text tr td.m {
+    width: 200px;
+}
+
+.plist-text tr td.l {
+    width: 100px;
+}
+
+/* 切换tab栏 end */
+
+/* 内容区 strat */
+.section-title {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 15px;
+    padding-top: 30px;
+}
+
+.section-iframe {
+    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    /*min-height: 314px;*/
+    background: inherit;
+    background-color: #ffffff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e4e4e4;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3490196);
+    padding: 10px;
+}
+
+.section-iframe iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+}
+
+/* 内容区 end */
+
+/* 批示弹窗 start */
+.layer-blue .layui-layer-title {
+    color: #fff !important;
+    background-color: #09f !important;
+}
+
+.layer-blue.layui-layer-page .layui-layer-btn {
+    padding-top: 0 !important;
+    height: 50px !important;
+}
+
+.layer-blue .layui-layer-btn a{
+    height: 32px !important;
+    line-height: 30px !important;
+    font-size: 16px !important;
+    padding: 0 30px !important;
+}
+.layer-blue .layui-layer-btn a.layui-layer-btn0 {
+    float: right !important;
+}
+/* 批示弹窗 end */
+
+/* 流程意见表格START */
+.pslist-table {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    line-height: 25px;
+    border-collapse: collapse;
+    border-color: #eee;
+}
+
+.pslist-table .pttable {
+    border: 1px solid #eee;
+}
+
+.pslist-table .r {
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: left;
+}
+
+.pslist-text {}
+
+/* 流程意见表格END */
+
+.but_lead {
+    /*background-color: #09f;*/
+}
+html{
+    /*background-color: #eee;*/
+    height: 100%;
+}
+/* add by 2020-6-17 */
+/* 复写新版流程页面换肤样式 */
+.top-head .top-logo em{
+	background: none!important;
+	font-family: "iconfont" !important;
+	font-size:24px;
+	color:#c5c5c5 !important;
+}
+.top-head .top-logo em:before {
+    content: "\e635";
+}
+.top-head .top-logo em.type2:before {
+    content: "\e6be";
+}
+.top-unlock-icon i{
+	color:#969696!important;
+}
+
+#top-tool{
+	background: #fff!important;
+}
+#top-tool .top-btns li a{
+	color: #666666!important;
+	background: #fff!important;
+}
+
+#top-tool .top-btns li a em{
+	color: #969696!important;
+	top:-2px!important;
+}
+
+.top-btns{
+	top:9px!important;
+}
+.top-btns li{
+	height:30px!important;
+	margin-right:8px!important;
+}
+.top-btns li:hover{
+	background: none!important;
+}
+.top-btns span{
+	padding-right: 0!important;
+    border-right: 0!important;
+}
+.top-btns a{
+	padding:4px 8px 3px 8px!important;
+	border:1px solid #d9d9d9!important;
+	border-radius: 3px;
+}
+.top-btns li:hover span{
+	border-right:0!important;
+}
+.top-btns .sub-list{
+	top:30px!important;
+}
+#nav-wrap{
+	background: #fff!important;
+}
+.section-title{
+	width: 100%!important;
+	font-size: 16px!important;
+    background: #fff;
+    line-height: 42px!important;
+    height: 42px!important;
+    padding-left: 20px!important;
+    color: #5D6B7E;
+    padding-top:0px!important;
+    margin-bottom:0!important;
+    border-bottom:1px solid #f3f4f9;
+}
+.section-content{
+	background: #f3f4f9!important;
+	padding:20px 20px 0!important;
+}
+.section-iframe{
+	box-shadow:none!important;
+	width:100%!important;
+	border:0px!important;
+}
+.eform-tab .eform-nav-tabs{
+	margin-bottom:5px!important;
+}
+.eform-tab .eform-nav-tabs li{
+	float:left!important;
+}
+.eform-nav-tabs > li > a{
+	border:1px solid #dddddd!important;
+}
+.eform-tab .form_commonTable1{
+	margin:10px auto!important;
+}
+.eform-tab .form-tool-search{
+	margin-bottom:10px!important;
+}
+.eform-tab .form-tool-search{
+	margin-bottom:10px!important;
+}
+.eform-tab .form-tool-search .form-tool-searchicon{
+	top:8px!important;
+}
+.chose-panel .tree-nav-body,
+.checkedbox-list .checked-box:hover,
+.checkedbox-list .checked-box.on{
+	border:1px solid #d9d9d9!important;
+}
+.chose-panel .sub-tree-nav{
+	margin:0px auto -1px!important;
+}
+.sub-tree-nav>ul{
+	margin:0;
+	height:30px;
+}
+.chose-panel .sub-tree-nav li{
+	font-size:12px;
+}
+.had-sublist .hs-title em i.open-list:before{
+	font-family: "iconfont" !important;
+	color:#969696!important;
+	content: "\e65a";
+}
+.checkedbox-list .cb-tool .btns li{
+	font-family: "iconfont" !important;
+	color:#969696!important;
+	background: none;
+}
+.checkedbox-list .cb-tool .btns li.del:before{
+	content: "\e639";
+}
+.checkedbox-list .cb-tool .btns li.clear:before{
+	content: "\e605";
+}
+.chose-panel .tree-nav li{
+	border-right-color: #d9d9d9!important;
+}
+.chose-panel .tree-nav li.on, .chose-panel .tree-nav li:hover {
+    border: 1px solid #d9d9d9!important;
+    border-right-color: #fff!important;
+}
+.opinion-panel .op-tools .often >li{
+    padding: 0 8px!important;
+    line-height: 24px!important;
+    background: #ffffff!important;
+    border: 1px solid #d9d9d9!important;
+    font-size:12px;
+    margin-right: 5px!important;
+}
+.opinion-panel .op-tools .often >li em{
+	font-family: "iconfont" !important;
+	font-size:14px;
+	color:#969696!important;
+	background: none;
+	top:0px!important;
+	margin: 0 3px 0 0!important;
+	left:3px;
+}
+.op-tools .often li em.icon-c-view:before{
+	content: "\e6b4";
+}
+.op-tools .often li em.icon-c-yes:before{
+	content: "\e609";
+}
+.op-tools .often li em.icon-c-no:before{
+	content: "\e639";
+}
+.op-tools .often li em.icon-c-more:before{
+	content: "\e623";
+}
+.opinion-panel .op-edit-box{
+	width:620px!important;
+	margin:0 auto;
+}
+.opinion-panel .op-btns div.like,
+.opinion-panel .op-btns div.setting {
+    line-height: 24px!important;
+    padding: 0 5px!important;
+    border: 1px solid #d9d9d9!important;
+    background:#fff;
+    font-size: 12px!important;
+}
+.opinion-panel .op-btns .like.on{
+	color:inherit!important;
+}
+.opinion-panel .op-tools .often .often-more em{
+	display: none!important;
+}
+.opinion-panel .op-btns em.icon-c-like{
+	font-family: "iconfont" !important;
+	color:#969696!important;
+	background: none;
+	top:0!important;
+	font-size:14px!important;
+}
+.opinion-panel .op-btns em.icon-c-setting{
+    font-family: "iconfont" !important;
+    color:#969696!important;
+    background: none;
+    top:0!important;
+    font-size:14px!important;
+}
+.opinion-panel .op-btns em.icon-c-like:before{
+	content: "\e670";
+}
+.opinion-panel .op-btns em.icon-c-setting:before{
+	content: "\e61f";
+}
+.opinion-panel .op-btns .setting .title-tool em{
+	font-family: "iconfont" !important;
+	color:#969696!important;
+	background: none;
+	left: 7px!important;
+}
+.opinion-panel .setting-detail em.sm-check-all:before{
+	content: "\e683";
+}
+.opinion-panel .setting-detail em.sm-check-all.on:before{
+	content: "\e663";
+}
+.opinion-panel .setting-detail em.clear-all{
+	top: -3px!important;
+}
+.opinion-panel .setting-detail em.clear-all:before{
+	content: "\e605";
+}
+.opinion-panel .setting-detail .sm-checkbox{
+	font-family: "iconfont" !important;
+	color:#969696!important;
+	font-size:14px;
+	background: none!important;
+	font-style: normal!important;
+	top:1px!important;
+}
+.opinion-panel .setting-detail .sm-checkbox:before{
+	content: "\e683";
+}
+.opinion-panel .setting-detail .sm-checkbox.on:before{
+	content: "\e663";
+}
+.often-more ul li{
+	border-radius: 0!important;
+}
+.opinion-panel .op-btns .setting-detail ul{
+	padding:5px 0;
+}
+.opinion-panel .op-btns .setting-detail li{
+	font-size:12px;
+	color:#666666;
+}
+.opinion-panel .op-btns .setting-detail li i{
+	color:#969696;
+}
+.opinion-panel .op-tools{
+	height:36px!important;
+}
+.opinion-panel .op-tools .title{
+	font-size:12px!important;
+	line-height: 36px!important;
+}
+.opinion-panel .often-more{
+	top: -185px!important;
+    left: -10px!important;
+    height: 180px!important;
+}
+.opinion-panel .op-btns .setting-detail{
+	top: -210px!important;
+    height: 200px!important;
+    left: -175px!important;
+}
+.opinion-panel .op-btns .setting-detail .sd-box{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15)!important;
+	height: 200px!important;
+    width: 220px!important;
+}
+.opinion-panel .op-btns .setting-detail ul {
+    height: 160px!important;
+}
+.opinion-panel .often-more ul{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+	width:200px!important;
+	height:180px!important;
+}
+.opinion-panel .often-more li.quikmsg{
+	margin-right:0px!important;
+	float: left;
+	line-height:28px!important;
+}
+.opinion-panel .op-btns .setting .title-tool{
+	padding:0 7px!important;
+}
+.multi-node{
+	padding-top:35px;
+}
+.multi-node .chose-panel .tree-nav {
+    top: -40px;
+    width: 615px;
+    left:20px;
+    border-bottom:1px solid #d9d9d9;
+}
+.multi-node .chose-panel .tree-nav li{
+	margin:0;
+	float:left;
+	border-radius: 0px!important;
+	border:0!important;
+}
+
+.multi-node .chose-panel .tree-nav li.on,
+.multi-node .chose-panel .tree-nav li.on:hover{
+	border:0!important;
+	border-bottom:2px solid #0079fe!important;
+	color:#0079fe;
+	position: relative;
+	top:1px;
+	line-height: 25px;
+}
+.multi-node .chose-panel .tree-nav li:hover{
+	border:0!important;
+	color:#0079fe;
+}

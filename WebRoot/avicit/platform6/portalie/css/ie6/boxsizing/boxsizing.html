@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Box Sizing Behavior (WebFX)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="local/webfxlayout.js"></script>
+</head>
+<body>
+<!-- WebFX Layout Include -->
+<script type="text/javascript">
+
+var articleMenu= new WebFXMenu;
+articleMenu.left  = 384;
+articleMenu.top   = 86;
+articleMenu.width = 140;
+articleMenu.add(new WebFXMenuItem("Box Sizing", "boxsizing.html"));
+articleMenu.add(new WebFXMenuItem("Implementation", "implementation.html"));
+articleMenu.add(new WebFXMenuItem("Demo", "demo.html"));
+articleMenu.add(new WebFXMenuSeparator);
+articleMenu.add(new WebFXMenuItem("Download", "boxsizing.zip"));
+webfxMenuBar.add(new WebFXMenuButton("Article Menu", null, null, articleMenu));
+
+webfxLayout.writeTitle("Box Sizing Behavior");
+webfxLayout.writeMenu();
+webfxLayout.writeDesignedByEdger();
+
+</script>
+<div class="webfx-main-body">
+<!-- end WebFX Layout Includes -->
+
+<!-- http://www.w3.org/TR/css3-box/#the-box-width -->
+
+<p>
+<span class="date">2002-09-26</span>: First public version released.
+</p>
+
+<h2>Introduction</h2>
+
+<p>This behavior allows Internet Explorer 5.0 and up to use the proposed
+CSS3 property,
+<a href="http://www.w3.org/TR/css3-box/#the-box-width">box-sizing</a>.</p>
+
+<h2>Box Model</h2>
+
+<p>Microsoft Internet Explorer 6.0 was the first version of IE for Windows to use the
+correct box model according to the <a href="http://www.w3.org/TR/REC-CSS2/">CSS
+standard</a>. This means that the CSS width property describes the width of the
+content of an element (content width). Previously IE treated the width as the outer width
+(border width) of the element. This means that if you define the width for an element the size will be
+different depending on which browser and version the user is using.</p>
+
+<p>The following relations between the content width and the border width can be
+useful to understand the differences.</p>
+
+<pre>
+BorderWidth = BorderLeftWidth + PaddingLeft +
+   ContentWidth + PaddingRight + BorderRightWidth
+</pre>
+
+<p>So if we have an element with <code>10px</code> padding, <code>5px</code>
+border and we set the width to <code>100px</code> we will get the following:</p>
+
+<pre>
+130px = 5px + 10px + 100px + 10px + 5px
+</pre>
+
+<p>But if we are using an old version of IE we would get the width <code>100px</code>.
+This is a difference of <code>30px</code>; Enough to destroy the most well designed
+user interface.</p>
+
+<p>More information can be found at
+<a href="http://www.w3.org/TR/REC-CSS2/visudet.html#propdef-width">http://www.w3.org/TR/REC-CSS2/visudet.html#propdef-width</a>.</p>
+
+<p>To make it even more complicated IE6 can behave in both the above mentioned
+ways depending on whether the document has a valid doctype declaration. The
+following
+<a href="http://msdn.microsoft.com/library/en-us/dnie60/html/cssenhancements.asp?frame=true#cssenhancements_topic2">article
+from MSDN</a> covers these issues.</p> 
+
+<h2>Box Sizing</h2>
+
+<p>The first browser that really tackled this problem was Internet Explorer 5.0
+for Macintosh. The Mac IE team set out to create a browser to support CSS but they
+also realized the need to be able to be compatible with IE for Windows. Their
+solution was to introduce a CSS property called <code>box-sizing</code>. This
+property can have two different values, <code>border-box</code> and <code>content-box</code>.
+When set to <code>border-box</code> the IE for Window box model is used and otherwise
+the standard box model is used.</p>
+
+<pre>
+selector {
+   box-sizing: border-box;
+}
+</pre>
+
+<p>The Mozilla developers also realized the need for the <code>box-sizing</code>
+property but since Mozilla does not add non standard CSS properties that might
+conflict with future standards they call the property <code>-moz-box-sizing</code>.</p>
+
+<pre>
+selector {
+   -moz-box-sizing: border-box;
+}
+</pre>
+
+<p>Even if the 2 most excellent browsers when it comes to CSS decided to support
+the <code>box-sizing</code> property Microsoft decided that a media bar was a
+more important feature for IE6 even though the developer community kept asking for
+better CSS support.</p>
+
+<h2>The behavior</h2>
+
+<p>Since Microsoft did not want to support the <code>box-sizing</code> property
+and more and more pages needs to work in more than one browser I decided to
+create a behavior that adds support for both the content box and the border box
+models.
+The behavior works in IE5 and up for Windows and it allows you to force elements
+in IE5 to follow the CSS box model or you can use IE 6 with a valid doctype and
+use the border box model.</p>
+
+<pre>
+.border-box {
+   behavior:        url("boxsizing.htc");
+   box-sizing:      border-box;
+   -moz-box-sizing: border-box;
+}
+
+.content-box {
+   behavior:        url("boxsizing.htc");
+   box-sizing:      content-box;
+   -moz-box-sizing: content-box;
+}
+</pre>
+
+<h2>Known Limitations</h2>
+
+<p>The box sizing behavior only works when all lengths are expressed using
+the <code>px</code> unit. This is because Internet Explorer has no way to
+translate between different units. Percentage values are in theory possible to
+support but I've decided to not include these from the beginning. If there is
+a demand for percentage values this might be added.</p>
+
+<p>Usage of <code>currentStyle.boxSizing</code> and
+<code>runtimeStyle.boxSizing</code> should be prevented. If these are used
+and changed outside the behavior file the behavior might behave incorrectly.
+The same problems exists with <code>currentStyle.width</code> and
+<code>runtimeStyle.width</code> (as well as the same for height).</p>
+
+<p>Changes to global style sheets does not update element sizes. This means that
+if the width is changed by changing the rule inside the style sheet the size is
+not updated. The size can be updated by removing the behavior and reapply it or
+changing the <code>style.boxSizing</code> value.</p>
+
+<p>
+<a href="boxsizing.html">Introduction</a><br />
+<a href="implementation.html">Implementation</a><br />
+<a href="demo.html">Demo</a><br />
+<a href="boxsizing.zip">Download</a>
+</p>
+
+<p class="author">Author: Erik Arvidsson</p>
+
+<!-- end webfx-main-body -->
+</div>
+
+</body>
+</html>

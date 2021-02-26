@@ -1,0 +1,149 @@
+<form>
+<div class="form-group property-control">
+	<label>工具栏按钮</label><input type="text" id="id" name="id"
+		isnull="false" class="form-control input-sm" placeholder="工具栏按钮">
+</div>
+<div class="form-group property-control">
+	<label>按钮图标</label>
+		<div id="iconselect" class="input-group input-group-sm avicselect">
+			<!-- <input type="hidden"  name="icon" id="icon">  -->
+			<input type="text" class="form-control" name="icon" id="icon">
+			<span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+		</div>
+</div>
+<div class="form-group property-control">
+	<label><i class="required">*</i>按钮名称</label><input type="text" id="name" name="name"
+		isnull="false" class="form-control input-sm" placeholder="按钮名称">
+</div>
+<div class="form-group property-control">
+	<label>按钮类型</label>
+	<select id="buttontype" name="buttontype" class="form-control input-sm">
+			<option value="1">保存</option>
+			<option value="4">自定义</option>
+	</select>
+</div>
+
+<div class="form-group property-control hidden-group" id="buttonclick">
+	<label>按钮点击</label>
+	<textarea class="form-control input-sm" rows="20" title="按钮点击" name="event_reg_bt_click" id="event_reg_bt_click"></textarea>
+</div>
+<div class="form-group property-control hidden-group" id="beforeevent">
+	<label>前置js事件</label>
+	<textarea class="form-control input-sm" rows="20" title="按钮点击" name="event_before_bt_click" id="event_before_bt_click"></textarea>
+</div>
+<div class="form-group property-control hidden-group" id="afterevent">
+	<label>后置js事件</label>
+	<textarea class="form-control input-sm" rows="20" title="按钮点击" name="event_after_bt_click" id="event_after_bt_click"></textarea>
+</div>
+</form>
+<script src="avicit/platform6/eform/bpmsformmanage/select/selectPublishEform/selectPublishEform.js"></script>
+<script type="text/javascript">
+var lay_select_icon;
+
+function setIconInfo(data) {
+	$("#icon").val(data.icon);
+	layer.close(lay_select_icon);
+	$("#icon").change();
+}
+$(function() {
+	
+	$(".form-control").bind('change', function() {
+		engine.changSave();
+	});
+
+	$(".hidden-group").hide();
+	
+	if($("#buttontype").val() == '1'){//默认按钮类型是保存，默认显示前置和后置事件
+		$("#beforeevent").show();
+		$("#afterevent").show();
+	}
+
+	$("#buttontype").on('change', function() {
+		if ($(this).val() == "4") {
+			$("#formid").val("");
+			$("#buttonclick").show();
+			$("#beforeevent").hide();
+			$("#afterevent").hide();
+			engine.changSave();
+		} else {
+			$("#beforeevent").show();
+			$("#afterevent").show();
+			$("#buttonclick").hide();
+		}
+	});
+
+	$("#iconselect").bind("click", function() {
+		var contentWidth = 800;
+		var top = $("#iconselect").offset().top + $("#iconselect").outerHeight(true);
+		var left = $("#iconselect").offset().left + $("#iconselect").outerWidth() - contentWidth;
+		var width = $("#iconselect").innerWidth();
+		layer.config({
+			extend: 'skin/layer-bootstrap.css'
+		});
+		
+        var selectIconIndex="";
+        if(viewEditor.viewStyle=="bootstrap"){
+        	selectIconIndex="static/h5/selectIcon/index.html";
+        }
+        else if(viewEditor.viewStyle=="easyui"){
+        	selectIconIndex="avicit/platform6/eform/bpmsviewdesign/easyuicommon/index.html";
+        }
+
+		lay_select_icon = layer.open({
+			type: 2,
+			shift: 5,
+			title: false,
+			scrollbar: false,
+			move: false,
+			area: [contentWidth + 'px', '400px'],
+			offset: [top + 'px', left + 'px'],
+			closeBtn: 0,
+			shadeClose: true,
+			content: selectIconIndex,
+			success: function(layero, index) {
+				var serachLabel = $('<div class="serachLabel"><span>请选择</span><span class="caret"></span></div>').appendTo(layero);
+				serachLabel.bind('click', function() {
+					layer.close(index);
+				});
+				serachLabel.css('width', width + 'px');
+			}
+
+		});
+	});
+});
+
+
+/**
+ * 初始化页面方法
+ * @param  {obj} treeNode [左侧树节点属性集合]
+ * @return 
+ */
+self.propertyPageInit = function(treeNode) {
+	if (treeNode.attribute.buttontype == "4") {
+		$("#buttonclick").show();
+		$("#beforeevent").hide();
+		$("#afterevent").hide();
+	} else if (treeNode.attribute.buttontype == "1") {
+		$("#buttonclick").hide();
+		$("#beforeevent").show();
+		$("#afterevent").show();
+	} else {
+		$("#buttonclick").hide();
+		$("#beforeevent").hide();
+		$("#afterevent").hide();
+	}
+
+};
+
+self.validateForm = function(form,treeNode){
+   	if(form.name == null || form.name == ""){
+   		 layer.msg('按钮名称不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+   		return false;
+   	}
+   	return true;
+};
+</script>

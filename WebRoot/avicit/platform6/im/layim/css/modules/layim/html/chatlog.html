@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>聊天记录</title>
+
+    <link rel="stylesheet" href="../../../layui.css">
+
+    <style>
+        body {
+            height: auto;
+        }
+
+        .clear {
+            zoom: 1;
+        }
+
+        .clear:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .layui-laypage span, .layui-laypage a {
+            padding: 0 8px;
+            margin: 0;
+        }
+
+        .layui-laypage {
+            margin: 2px 0 4px 0;
+        }
+
+        .layui-form-label {
+            position: relative;
+            float: left;
+            display: block;
+            padding: 9px 5px;
+            width: 56px;
+            font-weight: normal;
+            line-height: 20px;
+            text-align: right;
+        }
+
+        .layui-inline .layui-input-inline input {
+            height: 32px;
+            line-height: 32px;
+            padding-left: 6px
+        }
+
+        .layui-inline .layui-input-inline {
+            margin-right: 2px;
+            width: 170px;
+            margin-top: 3px;
+        }
+
+        .layui-inline .btn-search {
+            width: 60px;
+            margin-top: 0;
+        }
+
+        .layui-inline .btn-search input {
+            padding-left: 13px;
+        }
+
+        #LAY_view li.chat-history {
+            min-height: 48px;
+            height: 20px;
+            line-height: 20px;
+            padding: 0;
+            font-size: 14px;
+            color: #999;
+            background-color: white;
+            text-align: center;
+            cursor: default;
+        }
+
+        /* #test1 #layui-laypage-1{
+            padding:0;
+            margin:0;
+        } */
+        #LAY_page {
+            background-color: white;
+            top: 0px;
+            position: absolute;
+            height: 44px;
+            line-height: 37px;
+            width: 100%;
+            border-top: solid 1px lightgray;
+        }
+
+        img.profile  {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="LAY_page">
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="date-range-label layui-form-label">日期范围</label>
+                <div class="layui-input-inline">
+                    <input class="date-range-input layui-input" id="datePick" type="text" placeholder="请单击此处选择日期范围" readonly="readonly">
+                </div>
+                <label class="chat-content-label layui-form-label">内容</label>
+                <div class="layui-input-inline input-search-content">
+                    <input class="chat-content-input layui-input" id="chatContent" type="text" placeholder="输入关键字">
+                </div>
+                <div class="layui-input-inline btn-search">
+                    <input class="layui-btn layui-btn-sm" type="button" id="queryMessages" value="查询">
+                </div>
+                <div class="layui-inline" style="margin: 0;margin-left: 9px;">
+                    <div id="test1"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+<div class="layim-chat-main" style='overflow-y:scroll;margin-top: 30px;border-top: 2px solid #ddedff;'>
+    <ul id="LAY_view"></ul>
+</div>
+
+<textarea title="消息模版" id="LAY_tpl" style="display:none;">
+{{# layui.each(d.data, function(index, item){
+      if(layui.layim.isSystemMsg(item.content)){ }}
+        <div class="layim-chat-system">
+            <i class="layui-icon">&#xe645;</i><span><i>{{ layui.data.date(item.timestamp) }}</i>{{ layui.data.content(item.content||"&nbsp") }}
+          </span>
+        </div>
+      {{# } else if(item.id == parent.layui.layim.cache().mine.id){ }}
+        <li class="layim-chat-mine"><div class="layim-chat-user"><img
+                src="{{ item.avatar }}"><cite><i>{{ item.timestamp }}</i>{{ item.username }}</cite></div><div
+                class="layim-chat-text">{{ layui.layim.content(item.content) }}</div></li>
+      {{# } else { }}
+        <li><div class="layim-chat-user"><img data-id="{{item.id}}"
+                src="{{ item.avatar }}" class='profile {{item.status === "offline" ? "layim-list-gray" : ""}}' title="点击查看详细信息"><cite>{{ item.username }}<i>{{ item.timestamp }}</i></cite></div><div
+                class="layim-chat-text">{{ layui.layim.content(item.content) }}</div></li>
+  {{# }
+}); }}
+</textarea>
+
+<!-- 
+上述模版采用了 laytpl 语法，不了解的同学可以去看下文档：http://www.layui.com/doc/modules/laytpl.html
+
+-->
+
+
+<script src="../../../../../strophejs/jquery-2.0.3.min.js"></script>
+<script src="../layui/layui.js"></script>
+<script src="../../../../../js/config.js"></script>
+<script src="../../../../../js/api.js"></script>
+<script src="../../../../../js/chat.js"></script>
+<script src="../../../../../js/UIControler.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var height = $(document).height();
+        $(".layim-chat-main").height(height - 70);
+
+    });
+    window.onresize = function () {
+        var height = $(document).height();
+        $(".layim-chat-main").height(height - 70);
+    }
+</script>
+<script>
+    layui.use(['laydate', 'layim', 'laypage'], function () {
+        var layim = layui.layim
+            , layer = layui.layer
+            , laytpl = layui.laytpl
+            , $ = layui.jquery
+            , laypage = layui.laypage
+            , laydate = layui.laydate;
+        var rootPath = parent.mylayim.getRootPath();
+
+        //开始请求聊天记录
+        var param = decodeURI(location.search); //获得URL参数。该窗口url会携带会话id和type，?id=c2&type=friend
+        var userid = param.split('&')[0].split('=')[1];
+        var type = param.split('&')[1].split('=')[1];
+
+        var endDate = layui.data.date(new Date()).substring(0,10);
+        var startDate = endDate.substring(0,8)+'01';
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#datePick'
+            ,min: '2018-11-01'
+            ,value: startDate + ' - ' + endDate
+            , range: true,
+            btns: ['confirm', 'clear']//
+        });
+
+        var findHistoryMessages = function (page, userid, type) {
+            if ($("#datePick").val().trim()) {
+                var dateArr = $("#datePick").val().split(' - ');
+                var startYM = dateArr[0].substring(0, 7);
+                var endYM = dateArr[1].substring(0, 7);
+                if (startYM != endYM) {
+                    layer.msg("不能跨月份查询历史记录，请重新选择日期！");
+                    return;
+                }
+            }
+            var beer = window.parent.Chat.currentUser.jid.split("@")[0];
+            $.ajax({
+                url: rootPath + "/im/ImChatHistoryController/findImChatHistory"
+                , type: "get"
+                , data: {
+                    datePick: $("#datePick").val(),
+                    chatContent: $("#chatContent").val(),
+                    bare_peer: beer,
+                    username: userid,
+                    page: page,
+                    pageSize: '15',
+                    kind: type
+                }
+                , dataType: 'json'
+                , cache: false
+                , success: function (res) {
+                    var total = res.total;
+                    laypage.render({
+                        elem: 'test1'
+                        , count: total
+                        , curr: page
+                        , layout: ['prev', 'next']
+                        , limit: 15
+                        , groups: 1
+                        , jump: function (obj, first) {
+                            if (!first) {
+                                findHistoryMessages(obj.curr, userid, type);
+                            }
+                        }
+                    });
+
+                    var html = '<li class="layim-null chat-history">无匹配的数据</li>';
+                    if (res.datas && res.datas.length) {
+                        $.each(res.datas, function (index) {
+                            var user = window.parent.Chat.getUserInfoById(res.datas[index].id);
+                            res.datas[index].username = (res.datas[index].username || (user && user.username) || res.datas[index].id);
+                            res.datas[index].avatar = res.datas[index].avatar || (rootPath + ((user && user.avatar.substring(1)) || '/avicit/platform6/im/image/avatar.jpg'));
+                            res.datas[index].status = ((user && user.status) || 'offline');
+                        });
+
+                        html = laytpl(LAY_tpl.value).render({
+                            data: res.datas
+                        });
+                    }
+                    $('#LAY_view').html(html);
+                    $('img.profile').off('click').on('click', function () {
+                        showProfile($(this));
+                    });
+                }, error: function (err, msg) {
+                    window.console && console.log && console.error('LAYIM_DATE_ERROR：' + msg);
+                }
+            });
+        };
+
+        if (type == 'group') {
+            // 是否能查看聊天记录， 解决退出或者被踢出还能查看聊天记录
+            var groupId = userid;
+            userid += '@' + window.parent.Chat.MUC_HOST;
+            window.parent.Chat.mucQueryOccupants(userid, function (res) {
+                if (res.length > 0) {
+                    var userArr = new Array();
+                    $.each(res, function (index) {
+                        userArr.push(res[index].id);
+                    });
+
+                    var beer = window.parent.Chat.currentUser.jid.split("@")[0];
+                    if ($.inArray(beer, userArr) >= 0) {
+                        findHistoryMessages(1, userid, type);
+                        $("#queryMessages").on("click", function () {
+                            findHistoryMessages(1, userid, type);
+                        });
+                    } else {
+                        var html = laytpl(LAY_tpl.value).render({
+                            data: []
+                        });
+                        $('#LAY_view').html(html);
+                    }
+                } else {
+                    var html = laytpl(LAY_tpl.value).render({
+                        data: []
+                    });
+                    $('#LAY_view').html(html);
+                }
+            }, function () {
+            })
+        } else {
+            findHistoryMessages(1, userid, type);
+            $("#queryMessages").on("click", function () {
+                findHistoryMessages(1, userid, type);
+            });
+        }
+
+        var showProfile = function (elem) {
+            var loginName = $(elem).data('id');
+            parent.mylayim.showProfile(loginName);
+        };
+    });
+
+</script>
+</body>
+</html>

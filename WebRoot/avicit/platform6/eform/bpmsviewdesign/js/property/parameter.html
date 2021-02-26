@@ -1,0 +1,61 @@
+<form>
+	<div class="form-group property-control">
+		<label>参数id</label><input type="text" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly placeholder="参数id">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>变量名</label><input type="text" id="name" name="name"
+								 isnull="false" class="form-control input-sm"  placeholder="变量名">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>参数类型</label>
+		<select id="paratype" name="paratype" class="form-control input-sm">
+			<option value="VARCHAR" selected>字符型</option>
+			<option value="DECIMAL">数字型</option>
+			<option value="DATE">日期型</option>
+			<option value="BOOLEAN">布尔型</option>
+		</select>
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>参数值</label><input type="text" id="paravalue" name="paravalue"
+								 isnull="false" class="form-control input-sm"  placeholder="参数值">
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+	})
+
+	self.validateForm = function(form,treeNode){
+		if(form.name == null || form.name == ""){
+			layer.msg('变量名不能为空！',{
+				icon: 2,
+				area: ['220px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		var regEn = /[`~!@#$%^&*()+<>?:{},.\/;'[\]]/im,
+				regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im,
+				regCh = /[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/gi;
+		if(regEn.test(form.name) || regCn.test(form.name) ||regCh.test(form.name)) {
+			layer.msg('变量名不能含有特殊字符或中文！',{
+				icon: 2,
+				area: ['220px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		if(form.paravalue == null || form.paravalue == ""){
+			layer.msg('参数值不能为空！',{
+				icon: 2,
+				area: ['220px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		return true;
+	};
+</script>

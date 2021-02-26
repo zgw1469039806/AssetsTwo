@@ -1,0 +1,399 @@
+@charset "utf-8";
+body,html {
+	margin:0;
+	padding: 0;
+	height: 100%;
+	font-size: 14px;
+	font-family: 'Microsoft YaHei';
+}
+ul {margin:0;padding: 0;}
+
+
+
+/*图标区End*/
+.main {
+
+}
+.main.noright .content{
+	padding-right: 0;
+}
+.main.noright .editFrom{
+	display: none;
+	width : 0px;
+}
+
+.content {
+	height: 100%;
+	position: relative;
+	z-index: 1;
+	width:100%;
+	padding-right:290px;
+}
+
+
+/*右侧表单工具栏样式 Start*/
+.editFrom {
+	width: 290px;
+	float: right;
+	height: 100%;
+	background: #e1e1e1;
+	position: fixed;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+	z-index: 2;
+	right:0;
+}
+.info {
+	color:#333;
+	position: relative;
+	padding:5px 40px 8px 60px;
+	background: #d2d2d2;
+	height: 50px;
+}
+.info .info-title {
+	font-size: 14px;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	overflow : hidden;
+	line-height: 16px;
+}
+.info .info-ico {
+	background: url(../images/info.png) no-repeat;
+	width:29px;
+	height:29px;
+	position: absolute;
+	top:6px;
+	left: 20px;
+}
+.info .info-cont {
+	height: 34px;
+	display: table-cell;
+	vertical-align: middle;
+}
+.info .info-desc {
+	font-size:12px;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	overflow : hidden;
+	margin-top: 4px;
+	line-height: 12px;
+}
+.editFrom .cont {
+	padding:12px;
+}
+
+.textDom {
+	width:266px;
+}
+.titleBar {
+	color:#FFF;
+	padding:10px;
+	position: relative;
+	background: #2fae95;
+	border:1px solid #2fae95;
+}
+.titleBar .title {
+	display: inline-block;
+	width:130px;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	overflow : hidden;
+}
+.titleBar .menu {
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	top: 12px;
+	cursor: pointer;
+	overflow: visible;
+	background: inherit;
+	padding:0 10px 10px 10px;
+	border: 0;
+	color: #FFF;
+}
+.titleBar .menu .submenu {
+	display: none;
+	width:auto;
+	position: absolute;
+	right:0;
+	padding-top:10px;
+	z-index: 2;
+	cursor:pointer;
+}
+
+/*经沟通，项目现场部分客户机器出现使用常用意见时偶尔不能点击的问题，需修改avicit/platform6/bpmreform/bpmcommon/css/editForm.css文件的titleBar .menu:hover .submenu样式的display属性，由block改为inline-block，但同时导致样式不好看，考虑该问题一般不会复现，属部分机器偶发现象，这个改动不回归平台，只做为现场出现该问题的临时解决方案。*/
+.titleBar .menu:hover .submenu {
+	display: block;
+	/*display: inline-block;*/
+}
+.menu .submenu li {
+	height: 22px;
+	list-style: none;
+	padding: 0px 6px;
+	display: block;
+	background: #2fae95;
+	color: #FFF;
+	word-break: keep-all;
+	line-height: 22px;
+	font-size: 12px;
+	border-top: 1px solid #fff;
+	white-space:nowrap;
+}
+.titleBar .showSelt {
+	display: none;
+	position: absolute;
+	text-align: right;
+	right: 35px;
+	font-size: 12px;
+	top: 12px;
+}
+.menu .submenu li:hover {
+	background: #399d89;
+}
+.textDom .textArea {
+	background: #fff;
+	border:1px solid #d1d1d1;
+	border-top:0;
+	position: relative;
+}
+.textArea textarea {
+	padding:5px;
+	margin:0;
+	width:263px;
+	outline: 0;
+	border:0;
+	height: 180px;
+	resize:none;
+	font-size: 12px;
+}
+.textArea .num {
+	font-size: 12px;
+	position: absolute;
+	bottom: 3px;
+	display: inline-block;
+	right: 5px;
+	color: #666;
+	background: #FFF;
+}
+
+.btnBar {
+	height: 28px;
+	margin-top: 13px;
+	position: relative;
+}
+.btnBar .listBtn {
+	color:#FFF;
+	width:81px;
+	padding: 0;
+	border:0;
+	height: 28px;
+	line-height: 28px;
+	font-weight: 100;
+	text-align: center;
+	text-shadow:none;
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background:#30bc25;
+}
+.btnBar .open .listBtn {
+	color:#FFF;
+	background:#30bc25;
+}
+
+.btnBar>div.loc {
+	margin-right: 10px;
+}
+
+.listBtn.red {
+	background: #db1f31;
+}
+.listBtn.grey {
+	float:left;
+	background: #666;
+}
+
+.btnBar .open .listBtn.grey {
+	color:#FFF;
+	background:#666;
+}
+
+.btnBar .listBtn .txt {
+	width: 55px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+
+.btnBar .listBtn i {
+	width: 20px;
+	height: 28px;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	border-left: 1px solid #FFF;
+}
+
+.btnBar .listBtn i:before {
+	content: ' ';
+	width: 0;
+	height: 0;
+	display: block;
+	position: absolute;
+	left: 4px;
+	top: 12px;
+	z-index: 5;
+	border-bottom: 5px transparent dashed;
+	border-left: 5px transparent dashed;
+	border-right: 5px transparent dashed;
+	border-top: 5px #FFF solid;
+	overflow: hidden;
+}
+
+.btnBar .dropdown-menu {
+	position: absolute;
+	top:28px;
+	/* left: 0; */
+	min-width: 80px;
+	z-index: 2;
+	background: #FFF;
+	border:1px solid #cacaca;
+}
+
+.btnBar .dropdown-menu li {
+	color:#454545;
+	list-style: none;
+	line-height: 20px;
+	font-size: 12px;
+	padding:5px 10px;
+	white-space: nowrap;
+}
+.btnBar .dropdown-menu li:hover {
+	background: #f5f5f5;
+	color:#33a3d2;
+}
+.btnBar .dropdown-menu li:hover a {
+	color:#33a3d2;
+}
+.btnBar .dropdown-menu li a {
+	padding: 0;
+}
+.btnBar .dropdown-menu li:hover {
+	color:#33a3d2;
+}
+
+.btnBar .menuBtn {
+	width:75px;
+	height: 28px;
+	line-height: 28px;
+	display: inline-block;
+	color:#454545;
+	background: #f0f0f0;
+	-webit-border-radius: 3px;
+	border-radius: 3px;
+	text-align: center;
+	position: relative;
+}
+.menuBtn i {
+	font-size:12px;
+	color:#4d95df;
+	margin-left: 5px;
+}
+.menuBtn .childMenu {
+	display: none;
+	position: absolute;
+	right: 0;
+	max-height: 300px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	background: #f0f0f0;
+	top: 28px;
+	z-index: 2;
+}
+.menuBtn:hover .childMenu {
+	display: block;
+}
+.menuBtn .childMenu .cm-title {
+	width:75px;
+	height: 13px;
+	float:right;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+}
+.menuBtn .childMenu .cm-body {
+	padding:10px 20px;
+	width:260px;
+	margin-top: 13px;
+	-webkit-border-radius: 3px;
+	-webkit-border-top-right-radius: 0;
+	border-radius: 3px;
+	border-top-right-radius: 0;
+}
+.menuBtn .childMenu .cm-l-title {
+	color:#333;
+	line-height: 14px;
+	border-bottom: 1px solid #bbbbbb;
+	font-size: 14px;
+	text-align: left;
+	padding-bottom: 5px;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	overflow : hidden;
+}
+.menuBtn .childMenu .cm-l-body {
+	padding:10px 0;
+	margin-bottom:10px;
+	text-align: left;
+}
+.menuBtn .childMenu .cm-btn {
+	padding: 8px 5px;
+	margin: 0px 1px 5px 0;
+	background: #2fae95;
+	color: #FFF;
+	cursor: pointer;
+	line-height: 14px;
+	display: inline-block;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-transition:all .3s;
+	transition:all .3s;
+}
+.menuBtn .childMenu .cm-btn:hover {
+	background: #2a9782;
+}
+/*右侧表单工具栏样式 Ends*/
+
+
+.title-info {
+	display:none;
+	position: absolute;
+	right: 0;
+	top:0;
+	height: 50px;
+	width:360px;
+}
+.main.noright .title-info {
+	display:block;
+}
+.title-info .submit-btn {
+	position: absolute;
+	left: 0;
+	top: 10px;
+}
+.title-info .info {
+	display: inline-block;
+	*display: inline;
+	_zoom: 1;
+	width: 290px;
+	position: absolute;
+	right: 0;
+	height: 100%;
+}
+
+.main.noright .avic-tab .btn-bar {
+	right: 20px;
+}

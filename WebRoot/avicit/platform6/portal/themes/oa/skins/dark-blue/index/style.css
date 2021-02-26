@@ -1,0 +1,50 @@
+@charset "utf-8";
+.header .toolbar{
+	background-color: #ffffff;
+}
+.leftAside {
+	background: #2b3b4b;
+	color: #fff;
+}
+.logoDom{
+	background-color: #283746;
+	border-bottom: 1px solid #3e4e5e;
+}
+.hideLeftMenu {
+    color: #465c71;
+}
+.hideLeftMenu:hover {
+	color:#2b3b4b;
+}
+.navList>ul li.on,.navList>ul li:hover {
+	background: #465c71;
+}
+.navList .subList {
+	background: #465c71;
+}
+.navList>ul>li{
+	color: #95b5d6;
+} 
+.navList>ul li:hover{
+	color: #ffffff;
+}
+.navListClone .subList {
+	background: #465c71;
+}
+.navListClone ul li {
+    color: #95b5d6;
+}
+.navListClone ul li:hover {
+    color: #fff;
+}
+.tabs li.tabs-selected a.tabs-inner {
+  background-color: #465c71;
+  color: #FFF;
+}
+.tabs li.tabs-selected a.tabs-inner {
+  border-bottom: 1px solid #465c71;
+}
+.layui-layer-btn .layui-layer-btn0 {
+	background: #2b3b4b !important;
+	border-color: #2b3b4b !important;
+}

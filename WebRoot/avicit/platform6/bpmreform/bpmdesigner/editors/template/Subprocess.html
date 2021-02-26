@@ -1,0 +1,182 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="sub-process" class="prop_wrap" style="display:none">
+	<form id="jbxx" action="" class="form-horizontal">
+	  <div class="avic-flow-default-theme">
+           <div class="twoTabNav" style="width: 100%">
+               <!-- 标签主体Start -->
+               <ul class="nav-tabs">
+                   <li class="active">
+                       <a href="javascript:void(0)">基本信息</a>
+                   </li>
+                    <li>
+                       <a href="javascript:void(0)">流程传参</a>
+                   </li>
+                   <!-- <li>
+                       <a href="javascript:void(0)">事件</a>
+                   </li> -->
+               </ul>
+               <ul class="tab-cont">
+                   <li class="active">
+                       <div class="demoCont">
+                       <!-- html:[开始节点] 基本信息 开始 -->
+                       	<div class="base_info">
+                              <div class="row base_info_bar" >
+                                   <div class="label"><span>基本</span></div>
+                               </div>
+                               <div class="form-group" style='padding-top: 5px;'>
+                                   <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">节点名称</label>
+                                   <div class="col-xs-8 form-process-properties-value">
+                                       <input type="text" class="form-control" id="xian_shi_ming_cheng" name="xian_shi_ming_cheng">
+                                   </div>
+                               </div>
+                               <div class="form-group" style='padding-top: 5px;'>
+                                   <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">逻辑标识</label>
+                                   <div class="col-xs-8 form-process-properties-value">
+                                       <input type="text" class="form-control" id="luo_ji_biao_shi" name="luo_ji_biao_shi" readonly>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group" style='padding-top: 5px;'>
+                               <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">子流程名</label>
+                               <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                   <input type="hidden" id="inputValueSubFlowName" name="inputValueSubFlowName">
+                                   <input type="hidden" id="inputValueSubFlowId" name="inputValueSubFlowId">
+                                   <input type="text" class="form-control" id="inputTextSubFlowName" name="inputTextSubFlowName" readonly="">
+                               </div>
+                               <div class="col-xs-3 clear-right-padding">
+                                   <button name="button-sub-flowname" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-xs-12">
+                                   <div class="form-group ">
+                                       <label for="" class="col-xs-4 control-label form-process-properties-label">是否同步</label>
+                                       <div class="col-xs-7">
+                                           <label class="radio-inline checkbox-parent-label"  title="是否同步"> <input  name="shifoutongbu" title="是否同步" type="radio" value="false" checked="checked">同步</label>
+                                           <label class="radio-inline checkbox-parent-label"  title="是否同步"> <input  name="shifoutongbu" title="是否同步" type="radio" value="true">异步</label>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-xs-10">
+                                   <div class="form-group ">
+                                       <label for="" class="col-xs-6 control-label form-process-properties-label">允许子流程选人</label>
+                                       <div class="col-xs-4">
+                                           <label class="checkbox-parent-label">
+                                               <input id="ziliuchengxuanren" name="ziliuchengxuanren" type="checkbox" value="">
+                                           </label>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row hidden"  name="zidongxuanren-area">
+                               <div class="col-xs-10">
+                                   <div class="form-group ">
+                                       <label for="" class="col-xs-6 control-label form-process-properties-label">允许自动选人</label>
+                                       <div class="col-xs-4">
+                                           <label class="checkbox-parent-label">
+                                               <input id="yunxuzidongxuanren" name="yunxuzidongxuanren" type="checkbox" value="">
+                                           </label>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group hidden" name="zidongxuanren-area">
+                               <label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">候选人</label>
+                               <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                   <input type="hidden"  id="candidate-data-field" name="candidate-data-field">
+                                   <input type="text" class="form-control" id="candidate-text-field"  name="candidate-text-field" readonly>
+                               </div>
+                               <div class="col-xs-3 clear-right-padding">
+                                   <button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                               </div>
+                           </div>
+                           <div class="form-group" style='padding-top: 5px;'>
+                               <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">流转目标</label>
+                               <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                   <input type="hidden" id="inputValueOutCome" name="inputValueOutCome">
+                                   <input type="text" class="form-control" id="inputTextOutCome" name="inputTextOutCome" readonly="">
+                               </div>
+                               <div class="col-xs-3 clear-right-padding">
+                                   <button name="button-OutCome" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                               </div>
+                           </div>
+                           <div class="row"  name="putongliucheng-area">
+                               <div class="col-xs-10">
+                                   <div class="form-group ">
+                                       <label for="" class="col-xs-6 control-label form-process-properties-label">转为普通流程</label>
+                                       <div class="col-xs-4">
+                                           <label class="checkbox-parent-label">
+                                               <input id="putongliucheng" name="putongliucheng" type="checkbox" value="">
+                                           </label>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       <!-- html:[开始节点] 基本信息 结束 -->
+                       </div>
+                   </li>
+                   <li>
+                       <div class="demoCont">                            
+                           <div class="base_info">
+                           	   <div class="form-group" style='padding-top: 5px;'>
+	                               <input type="hidden" id="fieldArgsMainProcessToSub" name="fieldArgsMainProcessToSub">
+	                               <input type="hidden" id="fieldArgsSubProcessToMain" name="fieldArgsSubProcessToMain">
+	                               <div class="col-xs-3 col-xs-offset-8 button-fix button-margin-left-fix">
+	                                   <button name="formFieldParameterConfig" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">配置</button>
+	                               </div>
+                          	   </div>
+                               <div class="row base_info_bar" >
+                                   <div class="label form-process-separate-label"><span>主传子参数</span></div>
+                               </div>
+                               <!-- 
+                               <div class="form-group" >
+                                   <div class="col-xs-3   col-xs-offset-8 " >
+                                       <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="buttonAddParameterIn" >添加</button>
+                                   </div>
+                               </div> -->
+                               <div >
+                                   <table class="table table-hover table-bordered table-fix" name="table-flow-ParameterIn" id="table-flow-ParameterIn">
+                                       <thead>
+                                       <tr>
+                                           <td style="width: 40%">主流程输出参数</td>
+                                           <td style="width: 40%">子流程接收参数</td>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+                           <div class="base_info">
+                               <div class="row base_info_bar" >
+                                   <div class="label form-process-separate-label"><span>子传主参数</span></div>
+                               </div>
+                               <!-- 
+                               <div class="form-group" >
+                                   <div class="col-xs-3   col-xs-offset-8 " >
+                                       <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="buttonAddParameterOut" >添加</button>
+                                   </div>
+                               </div> -->
+                               <div >
+                                   <table class="table table-hover table-bordered table-fix" name="table-flow-ParameterOut" id="table-flow-ParameterOut">
+                                       <thead>
+                                       <tr>
+                                           <td style="width: 40%">子流程输出参数</td>
+                                           <td style="width: 40%">主流程接收参数</td>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+                       </div>
+                   </li>
+               </ul>
+               <!-- 标签主体End -->
+           </div>
+      </div>
+	</form>
+</div>

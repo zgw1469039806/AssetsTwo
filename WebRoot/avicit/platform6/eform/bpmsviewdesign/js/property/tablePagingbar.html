@@ -1,0 +1,56 @@
+<form>
+	<div class="form-group property-control">
+		<label>表格分页</label><input type="text" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly="readonly" placeholder="表格分页">
+			<input type="hidden" name="name" id="name" value="分页栏">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>页数量选项</label><input type="text" id="rowList" name="rowList" value="[20, 50, 100, 200, 500]"
+			isnull="false" class="form-control input-sm" placeholder="页数量选项">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>默认页数量</label><input type="number" id="rowNum" name="rowNum" value="20"
+			isnull="false" class="form-control input-sm" placeholder="默认页数量">
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+	})
+self.validateForm = function(form,treeNode){
+   	if(form.rowList == null || form.rowList == ""){
+   		 layer.msg('页数量选项不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+   		return false;
+   	}else if(form.rowList.indexOf("[") != 0 || form.rowList.indexOf("]") != (form.rowList.length -1)){
+	   	 layer.msg('页数量选项格式不正确，请以[20, 50, 100, 200, 500]形式定义！',{
+	         icon: 2,
+	         area: ['500px', ''],
+	         closeBtn: 0
+	     });
+		return false;
+   	}
+	if(form.rowNum == null || form.rowNum == ""){
+  		 layer.msg('默认页数量不能为空！',{
+               icon: 2,
+               area: ['220px', ''],
+               closeBtn: 0
+           });
+  		return false;
+  	}
+    if(Number(form.rowNum)<1){
+        layer.msg('默认页数量不能小于1！',{
+            icon: 2,
+            area: ['230px', ''],
+            closeBtn: 0
+        });
+        return false;
+    }
+   	return true;
+};
+</script>

@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetsustdtempapplyctmain.dao.AssetsUstdtempapplyCtMainDao">
+
+<resultMap id="AssetsUstdtempapplyCtMainDTOMap" type="avicit.assets.device.assetsustdtempapplyctmain.dto.AssetsUstdtempapplyCtMainDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="author" column="AUTHOR" jdbcType="VARCHAR" />
+		<result property="releasedate" column="RELEASEDATE" jdbcType="TIMESTAMP" />
+		<result property="dept" column="DEPT" jdbcType="VARCHAR" />
+		<result property="tel" column="TEL" jdbcType="VARCHAR" />
+		<result property="collectSelect" column="COLLECT_SELECT" jdbcType="VARCHAR" />
+		<result property="collectYear" column="COLLECT_YEAR" jdbcType="VARCHAR" />
+		<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+		<result property="stdId" column="STD_ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+		<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<select id="searchAssetsUstdtempapplyCtMainByPage" parameterType="java.util.Map" resultMap="AssetsUstdtempapplyCtMainDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.author                         ,
+		t1.releasedate                    ,
+		t1.dept                           ,
+		t1.tel                            ,
+		t1.collect_select                 ,
+		t1.collect_year                   ,
+		t1.org_identity                   ,
+		t1.std_id                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from assets_ustdtempapply_ct_main 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.author != null and bean.author != ''">
+				and t1.AUTHOR like concat(concat('%',#{bean.author}),'%') 
+			</if>
+			<if test="bean.releasedateBegin != null and bean.releasedateBegin != ''">
+				and t1.RELEASEDATE &gt;= #{bean.releasedateBegin}
+			</if>
+			<if test="bean.releasedateEnd != null and bean.releasedateEnd != ''">
+				and t1.RELEASEDATE &lt;= #{bean.releasedateEnd}
+			</if>
+			<if test="bean.dept != null and bean.dept != ''">
+				and t1.DEPT like concat(concat('%',#{bean.dept}),'%') 
+			</if>
+			<if test="bean.tel != null and bean.tel != ''">
+				and t1.TEL like concat(concat('%',#{bean.tel}),'%') 
+			</if>
+			<if test="bean.collectSelect != null and bean.collectSelect != ''">
+				and t1.COLLECT_SELECT like concat(concat('%',#{bean.collectSelect}),'%') 
+			</if>
+			<if test="bean.collectYear != null and bean.collectYear != ''">
+				and t1.COLLECT_YEAR like concat(concat('%',#{bean.collectYear}),'%') 
+			</if>
+			<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+				and t1.ORG_IDENTITY like concat(concat('%',#{bean.orgIdentity}),'%') 
+			</if>
+			<if test="bean.stdId != null and bean.stdId != ''">
+				and t1.STD_ID like concat(concat('%',#{bean.stdId}),'%') 
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+						<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+</if>
+			<if test="org != null and org != ''">
+				and t1.ORG_IDENTITY =#{org}
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<select id="searchAssetsUstdtempapplyCtMainByPageOr" parameterType="java.util.Map" resultMap="AssetsUstdtempapplyCtMainDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.author                         ,
+		t1.releasedate                    ,
+		t1.dept                           ,
+		t1.tel                            ,
+		t1.collect_select                 ,
+		t1.collect_year                   ,
+		t1.org_identity                   ,
+		t1.std_id                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from assets_ustdtempapply_ct_main  t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.author != null and bean.author != ''">
+				or t1.AUTHOR like concat(concat('%',#{bean.author}),'%')  
+			</if>
+			<if test="bean.releasedateBegin != null and bean.releasedateBegin != ''">
+				or t1.RELEASEDATE &gt;= #{bean.releasedateBegin}
+			</if>
+			<if test="bean.releasedateEnd != null and bean.releasedateEnd != ''">
+				or t1.RELEASEDATE &lt;= #{bean.releasedateEnd}
+			</if>
+			<if test="bean.dept != null and bean.dept != ''">
+				or t1.DEPT like concat(concat('%',#{bean.dept}),'%')  
+			</if>
+			<if test="bean.tel != null and bean.tel != ''">
+				or t1.TEL like concat(concat('%',#{bean.tel}),'%')  
+			</if>
+			<if test="bean.collectSelect != null and bean.collectSelect != ''">
+				or t1.COLLECT_SELECT like concat(concat('%',#{bean.collectSelect}),'%')  
+			</if>
+			<if test="bean.collectYear != null and bean.collectYear != ''">
+				or t1.COLLECT_YEAR like concat(concat('%',#{bean.collectYear}),'%')  
+			</if>
+			<if test="bean.stdId != null and bean.stdId != ''">
+				or t1.STD_ID like concat(concat('%',#{bean.stdId}),'%')  
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			</trim>
+			<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+			</if>
+			<if test="org != null and org != ''">
+				and t1.ORG_IDENTITY =#{org}
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<select id="searchAssetsUstdtempapplyCtMain" parameterType="java.util.Map" resultMap="AssetsUstdtempapplyCtMainDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.author                         ,
+		t1.releasedate                    ,
+		t1.dept                           ,
+		t1.tel                            ,
+		t1.collect_select                 ,
+		t1.collect_year                   ,
+		t1.org_identity                   ,
+		t1.std_id                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from assets_ustdtempapply_ct_main 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="author != null and author != ''">
+				and t1.AUTHOR =#{author}
+			</if>
+			<if test="releasedateBegin != null and releasedateBegin != ''">
+				and t1.RELEASEDATE &gt;= #{releasedateBegin}
+			</if>
+			<if test="releasedateEnd != null and releasedateEnd != ''">
+				and t1.RELEASEDATE &lt;= #{releasedateEnd}
+			</if>
+			<if test="dept != null and dept != ''">
+				and t1.DEPT =#{dept}
+			</if>
+			<if test="tel != null and tel != ''">
+				and t1.TEL =#{tel}
+			</if>
+			<if test="collectSelect != null and collectSelect != ''">
+				and t1.COLLECT_SELECT =#{collectSelect}
+			</if>
+			<if test="collectYear != null and collectYear != ''">
+				and t1.COLLECT_YEAR =#{collectYear}
+			</if>
+			<if test="orgIdentity != null and orgIdentity != ''">
+				and t1.ORG_IDENTITY =#{orgIdentity}
+			</if>
+			<if test="stdId != null and stdId != ''">
+				and t1.STD_ID =#{stdId}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="bpmType !=null and bpmType !='' and bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{currUserId}) 
+			</if>
+			<if test="bpmState != null and bpmState !='' and bpmState != 'all'">
+				and v.businessstate_ = #{bpmState}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<select id="findAssetsUstdtempapplyCtMainById" parameterType="java.util.Map" resultMap="AssetsUstdtempapplyCtMainDTOMap">
+	select
+		t1.id                             ,
+		t1.author                         ,
+		t1.releasedate                    ,
+		t1.dept                           ,
+		t1.tel                            ,
+		t1.collect_select                 ,
+		t1.collect_year                   ,
+		t1.org_identity                   ,
+		t1.std_id                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from assets_ustdtempapply_ct_main 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<insert id="insertAssetsUstdtempapplyCtMain" parameterType="avicit.assets.device.assetsustdtempapplyctmain.dto.AssetsUstdtempapplyCtMainDTO">
+	insert into assets_ustdtempapply_ct_main
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="author != null">
+				author,
+			</if>
+			<if test="releasedate != null">
+				releasedate,
+			</if>
+			<if test="dept != null">
+				dept,
+			</if>
+			<if test="tel != null">
+				tel,
+			</if>
+			<if test="collectSelect != null">
+				collect_select,
+			</if>
+			<if test="collectYear != null">
+				collect_year,
+			</if>
+			<if test="orgIdentity != null">
+				org_identity,
+			</if>
+			<if test="stdId != null">
+				std_id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="author != null">
+				#{author,jdbcType=VARCHAR},
+			</if>
+			<if test="releasedate != null">
+				#{releasedate,jdbcType=DATE},
+			</if>
+			<if test="dept != null">
+				#{dept,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="collectSelect != null">
+				#{collectSelect,jdbcType=VARCHAR},
+			</if>
+			<if test="collectYear != null">
+				#{collectYear,jdbcType=VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType=VARCHAR},
+			</if>
+			<if test="stdId != null">
+				#{stdId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<insert id="insertAssetsUstdtempapplyCtMainList" parameterType="java.util.List">
+	insert into assets_ustdtempapply_ct_main(
+			id,
+			author,
+			releasedate,
+			dept,
+			tel,
+			collect_select,
+			collect_year,
+			org_identity,
+			std_id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.author,jdbcType=VARCHAR},
+					#{item.releasedate,jdbcType=DATE},
+					#{item.dept,jdbcType=VARCHAR},
+					#{item.tel,jdbcType=VARCHAR},
+					#{item.collectSelect,jdbcType=VARCHAR},
+					#{item.collectYear,jdbcType=VARCHAR},
+					#{item.orgIdentity,jdbcType=VARCHAR},
+					#{item.stdId,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<update id="updateAssetsUstdtempapplyCtMainSensitive" parameterType="avicit.assets.device.assetsustdtempapplyctmain.dto.AssetsUstdtempapplyCtMainDTO">
+	update assets_ustdtempapply_ct_main 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="author != null">
+				author                         =#{author,jdbcType=VARCHAR},
+			</if>
+			<if test="releasedate != null">
+				releasedate                    =#{releasedate,jdbcType=DATE},
+			</if>
+			<if test="dept != null">
+				dept                           =#{dept,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				tel                            =#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="collectSelect != null">
+				collect_select                 =#{collectSelect,jdbcType=VARCHAR},
+			</if>
+			<if test="collectYear != null">
+				collect_year                   =#{collectYear,jdbcType=VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				org_identity                   =#{orgIdentity,jdbcType=VARCHAR},
+			</if>
+			<if test="stdId != null">
+				std_id                         =#{stdId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<update id="updateAssetsUstdtempapplyCtMainAll" parameterType="avicit.assets.device.assetsustdtempapplyctmain.dto.AssetsUstdtempapplyCtMainDTO">
+	update assets_ustdtempapply_ct_main 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			author                         =#{author,jdbcType=VARCHAR},
+			releasedate                    =#{releasedate,jdbcType=DATE},
+			dept                           =#{dept,jdbcType=VARCHAR},
+			tel                            =#{tel,jdbcType=VARCHAR},
+			collect_select                 =#{collectSelect,jdbcType=VARCHAR},
+			collect_year                   =#{collectYear,jdbcType=VARCHAR},
+			org_identity                   =#{orgIdentity,jdbcType=VARCHAR},
+			std_id                         =#{stdId,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<update id="updateAssetsUstdtempapplyCtMainList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_ustdtempapply_ct_main 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			author                         =#{item.author,jdbcType=VARCHAR},
+			releasedate                    =#{item.releasedate,jdbcType=DATE},
+			dept                           =#{item.dept,jdbcType=VARCHAR},
+			tel                            =#{item.tel,jdbcType=VARCHAR},
+			collect_select                 =#{item.collectSelect,jdbcType=VARCHAR},
+			collect_year                   =#{item.collectYear,jdbcType=VARCHAR},
+			org_identity                   =#{item.orgIdentity,jdbcType=VARCHAR},
+			std_id                         =#{item.stdId,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<delete id="deleteAssetsUstdtempapplyCtMainById" parameterType="java.lang.String">
+		delete from assets_ustdtempapply_ct_main  where  id = #{id}
+</delete>
+<!-- 外键批量删除 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<delete id="deleteAssetsUstdtempapplyCtMainByPid" parameterType="java.lang.String">
+		delete from assets_ustdtempapply_ct_main  where  HEADER_ID = #{headerId}
+</delete>
+<!-- 批量主键删除 ASSETS_USTDTEMPAPPLY_CT_MAIN -->
+<delete id="deleteAssetsUstdtempapplyCtMainList" parameterType="java.util.List">
+		delete from assets_ustdtempapply_ct_main  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

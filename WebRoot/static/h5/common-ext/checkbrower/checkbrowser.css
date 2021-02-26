@@ -1,0 +1,78 @@
+#outdated {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffe1;
+    color:#000;
+    z-index: 999999;
+    padding: 5px 30px 5px 5px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#outdated a {
+/*     color: #66ccff; */
+    font-size: 16px;
+    padding:0 3px;
+}
+#outdated a:hover {
+    color:#FFD700;
+    background-color: #fff;
+}
+
+#outdated p {
+    margin: 0;
+}
+
+#outdated .last {
+    position: absolute;
+    padding: 0 5px;
+    font-size: 20px;
+    right: 0;
+    top: 0;
+    margin: 0;
+}
+#outdated .last a {
+    color:#000;
+}
+
+#outdated .dicon {
+    background-image: url(browsers-bg.png);
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+}
+#outdated .dicon.w {
+    background-image: url(browsers-bg.png);
+}
+
+#outdated .chrome {
+/*     background-position: 0 0; */
+	 background-position: 0 -15px;
+}
+
+#outdated .firefox {
+/*     background-position: -17px 0; */
+	background-position: -17px -15px;
+}
+
+#outdated .safari {
+/*     background-position:-51px 0px */
+	 background-position:-51px -15px
+}
+
+#outdated a:hover .chrome {
+    background-position: 0 -15px;
+}
+
+#outdated a:hover .firefox {
+    background-position: -17px -15px;
+}
+
+#outdated a:hover .safari {
+    background-position:-51px -15px
+}

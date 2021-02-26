@@ -1,0 +1,279 @@
+<form>
+    <div class="form-group property-control">
+        <label>树标识</label><input type="text" id="id" name="id"
+                                 class="form-control input-sm" readonly="readonly" placeholder="树标识">
+    </div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>数据源</label>
+		<div class="input-group input-group-sm" style="display: flex ;width:100%">
+			<input type="text" id="dbname" name="dbname"  style="width:85%;"
+				class="form-control input-sm" placeholder="数据源" readonly>
+				<a href="javascript:void(0)" id="initTreeRoot" class="btn btn-primary form-tool-btn btn-sm" role="button" 
+				 title="初始化">初始化</a>
+				<input type="hidden" id="tablename" name="tablename" class="form-control input-sm">
+				<input type="hidden" id="dbid" name="dbid" class="form-control input-sm">
+		</div>
+	</div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>树名称</label><input type="text" id="name" name="name"
+                                 class="form-control input-sm" placeholder="树名称">
+    </div>
+	<div class="form-group property-control">
+        <label>父ID</label><select id="pid" name="pid"
+                                  class="form-control input-sm col-select"></select>
+    </div>
+    <div class="form-group property-control">
+        <label>节点ID</label><select id="nodeid" name="nodeid"
+                                   class="form-control input-sm col-select"></select>
+    </div>
+    <div class="form-group property-control">
+        <label>节点名称</label><select id="nodename" name="nodename"
+                                   class="form-control input-sm col-select"></select>
+    </div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>根节点值</label><input type="text" id="root" name="root"
+                                  class="form-control input-sm" placeholder="根节点值">
+    </div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>展开层数</label><input type="text" id="level" name="level" value="2"
+                                  class="form-control input-sm" placeholder="展开层数">
+    </div>
+    <div class="form-group property-control">
+        <label>显示查询</label>
+        <select id="isquery" name="isquery" class="form-control input-sm">
+            <option value=""></option>
+            <option value="Y">是</option>
+            <option value="N">否</option>
+        </select>
+    </div>
+    <div class="form-group property-control">
+        <label>按组织过滤数据</label><select id="isorgfilter" name="isorgfilter"
+                                      class="form-control input-sm">
+        <option value="Y">是</option>
+        <option value="N">否</option>
+    </select>
+    </div>
+    <div class="form-group property-control">
+        <label>联动层数</label><input type="text" id="reflevel" name="reflevel"
+                                                           class="form-control input-sm" placeholder="联动层数">
+    </div>
+    <div class="form-group property-control">
+        <label>树事件</label>
+        <select id="evt" name="evt" class="form-control input-sm">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group property-control evt beforeAsync" style="display: none">
+        <label>数据加载前事件</label>
+        <textarea class="form-control input-sm" rows="5" title="数据加载前事件" name="event_init_beforeAsync"
+                  id="event_init_beforeAsync"></textarea>
+    </div>
+    <div class="form-group property-control evt onAsyncSuccess" style="display: none">
+        <label>数据加载完成事件</label>
+        <textarea class="form-control input-sm" rows="5" title="数据加载完成事件" name="event_init_onAsyncSuccess"
+                  id="event_init_onAsyncSuccess"></textarea>
+    </div>
+    <div class="form-group property-control evt onClick" style="display: none">
+        <label>树点击事件</label>
+        <textarea class="form-control input-sm" rows="5" title="树点击事件" name="event_init_onClick"
+                  id="event_init_onClick"></textarea>
+    </div>
+    <div class="form-group property-control evt onExpand" style="display: none">
+        <label>树展开事件</label>
+        <textarea class="form-control input-sm" rows="5" title="加载前处理事件" name="event_init_onExpand"
+                  id="event_init_onExpand"></textarea>
+    </div>
+    <div class="form-group property-control evt onCollapse" style="display: none">
+        <label>树折叠事件</label>
+        <textarea class="form-control input-sm" rows="5" title="加载前处理事件" name="event_init_onCollapse"
+                  id="event_init_onCollapse"></textarea>
+    </div>
+	<div class="form-group property-control evt onDblClick" style="display: none">
+        <label>树双击事件</label>
+        <textarea class="form-control input-sm" rows="5" title="树双击事件" name="event_init_onDblClick"
+                  id="event_init_onDblClick"></textarea>
+    </div>
+    <div class="form-group property-control">
+        <label>显示选择框</label><input type="checkbox" id="checkEnable" name="checkEnable" value="true"
+                                                           class="form-control input-sm" placeholder="显示选择框">
+    </div>
+    <div class="form-group property-control onCheck" style="display: none">
+        <label>复选框选中事件</label>
+        <textarea class="form-control input-sm" rows="5" title="复选框选中事件" name="onCheck"
+                  id="onCheck"></textarea>
+    </div>
+</form>
+<script type="text/javascript">
+    if (viewEditor.viewStyle == "bootstrap") {
+        $("#evt").append('<option value="beforeAsync">beforeAsync(treeId, treeNode)</option>');
+        $("#evt").append('<option value="onAsyncSuccess">onAsyncSuccess(event,treeId,msg)</option>');
+        $("#evt").append('<option value="onClick">onClick(event, treeId, treeNode)</option>');
+        $("#evt").append('<option value="onExpand">onExpand(event, treeId, treeNode)</option>');
+        $("#evt").append('<option value="onCollapse">onCollapse(event, treeId, treeNode)</option>');
+        $("#evt").append('<option value="onDblClick">onDblClick(event, treeId, treeNode)</option>');
+    } else {
+        $("#evt").append('<option value="beforeAsync">onBeforeLoad(node, param)</option>');
+        $("#evt").append('<option value="onClick">onClick(node)</option>');
+        $("#evt").append('<option value="onExpand">onExpand(node)</option>');
+        $("#evt").append('<option value="onCollapse">onCollapse(node)</option>');
+        $("#evt").append('<option value="onDblClick">onDblClick(node)</option>');
+    }
+
+    function loadScriptTag(url) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+    function selectDbCallBack(id, name, tablename) {
+        $("#name").val("树模型(" + name + ")");
+        $("#tablename").val(tablename);
+        avicAjax.ajax({
+            url: 'platform/eform/eformViewInfoController/getDbCol/' + id,
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: true,
+            success: function (r) {
+                if (r != null) {
+                    var list = $.parseJSON(r.data);
+                    var $colDom = $(".col-select");
+                    $colDom.each(function () {
+                        $(this).empty();
+                        for (var i = 0; i < list.length; i++) {
+                            var $option = $('<option value="' + list[i].colName + '">' + list[i].colName + '</option>');
+                            $(this).append($option);
+                        }
+                    });
+                }
+                $("#dbname").trigger("change");
+            }
+        });
+    }
+
+    loadScriptTag("avicit/platform6/db/dbselect/selectCreatedDbTable/selectCreatedDbTable.js");
+
+    $(function () {
+        var selectCreatedDbTable = new SelectCreatedDbTable("dbid", "dbname", "", componentViewId,"-1");
+        selectCreatedDbTable.init();
+
+        $(".form-control").bind('change', function () {
+            if (this.id == 'evt') {
+                var val = $(this).val();
+                $(".evt").css("display", "none");
+                $("." + val).css("display", "block");
+            }else if(this.id == 'checkEnable'){
+                if(this.checked){
+                    $(".onCheck").css("display", "block");
+                }else{
+                    $(".onCheck").css("display", "none");
+                }
+            }
+
+            engine.changSave();
+
+        });
+    });
+
+    self.propertyPageInit = function (treeNode) {
+        if(treeNode.attribute.dbid == ''){
+            treeNode.attribute.dbid = undefined;
+        }
+        var id = treeNode.attribute.dbid;
+        var pid = treeNode.attribute.pid;
+        var nodeid = treeNode.attribute.nodeid;
+        var nodename = treeNode.attribute.nodename;
+        avicAjax.ajax({
+            url: 'platform/eform/eformViewInfoController/getDbCol/' + id,
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: true,
+            success: function (r) {
+                if (r != null) {
+                    var list = $.parseJSON(r.data);
+                    var $colDom = $(".col-select");
+                    $colDom.each(function () {
+                        $(this).empty();
+                        for (var i = 0; i < list.length; i++) {
+                            var $option = $('<option value="' + list[i].colName + '">' + list[i].colName + '</option>');
+                            $(this).append($option);
+                        }
+                    });
+                }
+                $("#pid").val(pid);
+                $("#nodeid").val(nodeid);
+                $("#nodename").val(nodename);
+            }
+        });
+        if (treeNode.attribute.evt != "") {
+            $(".evt").css("display", "none");
+            $("." + treeNode.attribute.evt).css("display", "block");
+        }
+        if (treeNode.attribute.checkEnable == "true") {
+            $(".onCheck").css("display", "block");
+        }
+    };
+
+    $("#initTreeRoot").on('click', function(e) {
+    	if($('#root').val() == null || $('#root').val() === ''
+    			|| $('#pid').val() == null || $('#pid').val() === ''){
+            layer.msg('父ID与根节点值不能为空！', {icon: 2});
+            return;
+    	}
+	   	layer.open({
+   	        type: 2,
+   	        title: '初始化',
+   	        skin: 'bs-modal',
+   	        area: ['60%', '90%'],
+   	        maxmin: false,
+   	        content: 'avicit/platform6/eform/bpmsviewdesign/js/property/initTreeRoot.jsp?dbid='
+   	        		+ $('#dbid').val() + '&pid=' + $('#pid').val() + '&root=' + $('#root').val() + '&tableName=' + $("#tablename").val()
+
+   	    });
+    });
+
+    function closeDialog(type) {
+    	layer.closeAll();
+    	if (type) {
+            layer.msg('操作成功！', {icon: 1});
+        }
+    }
+    
+    self.validateForm = function(form,treeNode){
+       	if(form.dbname == null || form.dbname == ""){
+       		 layer.msg('数据源不能为空！',{
+                    icon: 2,
+                    area: ['220px', ''],
+                    closeBtn: 0
+                });
+       		return false;
+       	}
+    	if(form.name == null || form.name == ""){
+      		 layer.msg('树名称不能为空！',{
+                   icon: 2,
+                   area: ['220px', ''],
+                   closeBtn: 0
+               });
+      		return false;
+      	}
+    	if(form.root == null || form.root == ""){
+     		 layer.msg('根节点值不能为空！',{
+                  icon: 2,
+                  area: ['220px', ''],
+                  closeBtn: 0
+              });
+     		return false;
+     	}
+    	if(form.level == null || form.level == ""){
+     		 layer.msg('展开层数不能为空！',{
+                  icon: 2,
+                  area: ['220px', ''],
+                  closeBtn: 0
+              });
+     		return false;
+     	}
+       	return true;
+    };
+</script>

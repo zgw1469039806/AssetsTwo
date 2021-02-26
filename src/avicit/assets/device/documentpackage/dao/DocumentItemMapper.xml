@@ -1,0 +1,2011 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.documentpackage.dao.DocumentItemDao">
+
+    <resultMap id="DocumentItemDTOMap" type="avicit.assets.device.documentpackage.dto.DocumentItemDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="packageId" column="PACKAGE_ID" jdbcType="VARCHAR"/>
+        <result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR"/>
+        <result property="createdByDept" column="CREATED_BY_DEPT" jdbcType="VARCHAR"/>
+        <result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR"/>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR"/>
+        <result property="documentName" column="DOCUMENT_NAME" jdbcType="VARCHAR"/>
+        <result property="documentType" column="DOCUMENT_TYPE" jdbcType="VARCHAR"/>
+        <result property="documentCategory" column="DOCUMENT_CATEGORY" jdbcType="VARCHAR"/>
+        <result property="lifeStage" column="LIFE_STAGE" jdbcType="VARCHAR"/>
+        <result property="documentAuthor" column="DOCUMENT_AUTHOR" jdbcType="VARCHAR"/>
+        <result property="authorDept" column="AUTHOR_DEPT" jdbcType="VARCHAR"/>
+        <result property="keyWord" column="KEY_WORD" jdbcType="VARCHAR"/>
+        <result property="currentVersion" column="CURRENT_VERSION" jdbcType="VARCHAR"/>
+        <result property="lastVersion" column="LAST_VERSION" jdbcType="VARCHAR"/>
+        <result property="documentState" column="DOCUMENT_STATE" jdbcType="VARCHAR"/>
+        <result property="languageCategory" column="LANGUAGE_CATEGORY" jdbcType="VARCHAR"/>
+        <result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR"/>
+        <result property="documentAbstract" column="DOCUMENT_ABSTRACT" jdbcType="VARCHAR"/>
+        <result property="documentDescribe" column="DOCUMENT_DESCRIBE" jdbcType="VARCHAR"/>
+        <result property="personLiable" column="PERSON_LIABLE" jdbcType="VARCHAR"/>
+        <result property="participants" column="PARTICIPANTS" jdbcType="VARCHAR"/>
+        <result property="documentUpdateBy" column="DOCUMENT_UPDATE_BY" jdbcType="VARCHAR"/>
+        <result property="documentUpdateDate" column="DOCUMENT_UPDATE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="belongProject" column="BELONG_PROJECT" jdbcType="VARCHAR"/>
+        <result property="warehouseCatelog" column="WAREHOUSE_CATELOG" jdbcType="VARCHAR"/>
+        <result property="knowScope" column="KNOW_SCOPE" jdbcType="VARCHAR"/>
+        <result property="documentLabel" column="DOCUMENT_LABEL" jdbcType="VARCHAR"/>
+        <result property="clickCount" column="CLICK_COUNT" jdbcType="DECIMAL"/>
+        <result property="downloadCount" column="DOWNLOAD_COUNT" jdbcType="DECIMAL"/>
+        <result property="commentCount" column="COMMENT_COUNT" jdbcType="DECIMAL"/>
+        <result property="evaluateScore" column="EVALUATE_SCORE" jdbcType="DECIMAL"/>
+        <result property="shareCount" column="SHARE_COUNT" jdbcType="DECIMAL"/>
+        <result property="likedCount" column="LIKED_COUNT" jdbcType="DECIMAL"/>
+        <result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR"/>
+        <result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR"/>
+        <result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR"/>
+        <result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR"/>
+        <result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR"/>
+        <result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR"/>
+        <result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR"/>
+        <result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR"/>
+        <result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR"/>
+        <result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR"/>
+        <result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR"/>
+        <result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR"/>
+        <result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR"/>
+        <result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR"/>
+        <result property="attribute15" column="ATTRIBUTE_15" jdbcType="VARCHAR"/>
+        <result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL"/>
+        <result property="attribute17" column="ATTRIBUTE_17" jdbcType="DECIMAL"/>
+        <result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL"/>
+        <result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL"/>
+        <result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL"/>
+        <result property="attribute21" column="ATTRIBUTE_21" jdbcType="DECIMAL"/>
+        <result property="attribute22" column="ATTRIBUTE_22" jdbcType="DECIMAL"/>
+        <result property="attribute23" column="ATTRIBUTE_23" jdbcType="DECIMAL"/>
+        <result property="attribute24" column="ATTRIBUTE_24" jdbcType="DECIMAL"/>
+        <result property="attribute25" column="ATTRIBUTE_25" jdbcType="DECIMAL"/>
+        <result property="attribute26" column="ATTRIBUTE_26" jdbcType="TIMESTAMP"/>
+        <result property="attribute27" column="ATTRIBUTE_27" jdbcType="TIMESTAMP"/>
+        <result property="attribute28" column="ATTRIBUTE_28" jdbcType="TIMESTAMP"/>
+        <result property="attribute29" column="ATTRIBUTE_29" jdbcType="TIMESTAMP"/>
+        <result property="attribute30" column="ATTRIBUTE_30" jdbcType="TIMESTAMP"/>
+        <result property="documentUrl" column="DOCUMENT_URL" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 根据pid查询对象 DOCUMENT_ITEM -->
+    <select id="findDocumentItemByPid" parameterType="java.util.Map" resultMap="DocumentItemDTOMap">
+		select
+			t1.id                             ,
+			t1.package_id                     ,
+			t1.created_by                     ,
+			t1.created_by_dept                ,
+			t1.creation_date                  ,
+			t1.last_updated_by                ,
+			t1.last_update_date               ,
+			t1.last_update_ip                 ,
+			t1.document_name                  ,
+			t1.document_type                  ,
+			t1.document_category              ,
+			t1.life_stage                     ,
+			t1.document_author                ,
+			t1.author_dept                    ,
+			t1.key_word                       ,
+			t1.current_version                ,
+			t1.last_version                   ,
+			t1.document_state                 ,
+			t1.language_category              ,
+			t1.secret_level                   ,
+			t1.document_abstract              ,
+			t1.document_describe              ,
+			t1.person_liable                  ,
+			t1.participants                   ,
+			t1.document_update_by             ,
+			t1.document_update_date           ,
+			t1.belong_project                 ,
+			t1.warehouse_catelog              ,
+			t1.know_scope                     ,
+			t1.document_label                 ,
+			t1.click_count                    ,
+			t1.download_count                 ,
+			t1.comment_count                  ,
+			t1.evaluate_score                 ,
+			t1.share_count                    ,
+			t1.liked_count                    ,
+			t1.attribute_01                   ,
+			t1.attribute_02                   ,
+			t1.attribute_03                   ,
+			t1.attribute_04                   ,
+			t1.attribute_05                   ,
+			t1.attribute_06                   ,
+			t1.attribute_07                   ,
+			t1.attribute_08                   ,
+			t1.attribute_09                   ,
+			t1.attribute_10                   ,
+			t1.attribute_11                   ,
+			t1.attribute_12                   ,
+			t1.attribute_13                   ,
+			t1.attribute_14                   ,
+			t1.attribute_15                   ,
+			t1.attribute_16                   ,
+			t1.attribute_17                   ,
+			t1.attribute_18                   ,
+			t1.attribute_19                   ,
+			t1.attribute_20                   ,
+			t1.attribute_21                   ,
+			t1.attribute_22                   ,
+			t1.attribute_23                   ,
+			t1.attribute_24                   ,
+			t1.attribute_25                   ,
+			t1.attribute_26                   ,
+			t1.attribute_27                   ,
+			t1.attribute_28                   ,
+			t1.attribute_29                   ,
+			t1.attribute_30                   ,
+			t1.document_url
+		from document_item 	t1
+			where t1.package_id = #{pid}
+	</select>
+
+    <!-- 分页查询 DOCUMENT_ITEM -->
+    <select id="searchDocumentItemByPage" parameterType="java.util.Map" resultMap="DocumentItemDTOMap">
+        select
+        t1.id ,
+        t1.package_id ,
+        t1.created_by ,
+        t1.created_by_dept ,
+        t1.creation_date ,
+        t1.last_updated_by ,
+        t1.last_update_date ,
+        t1.last_update_ip ,
+        t1.document_name ,
+        t1.document_type ,
+        t1.document_category ,
+        t1.life_stage ,
+        t1.document_author ,
+        t1.author_dept ,
+        t1.key_word ,
+        t1.current_version ,
+        t1.last_version ,
+        t1.document_state ,
+        t1.language_category ,
+        t1.secret_level ,
+        t1.document_abstract ,
+        t1.document_describe ,
+        t1.person_liable ,
+        t1.participants ,
+        t1.document_update_by ,
+        t1.document_update_date ,
+        t1.belong_project ,
+        t1.warehouse_catelog ,
+        t1.know_scope ,
+        t1.document_label ,
+        t1.click_count ,
+        t1.download_count ,
+        t1.comment_count ,
+        t1.evaluate_score ,
+        t1.share_count ,
+        t1.liked_count ,
+        t1.attribute_01 ,
+        t1.attribute_02 ,
+        t1.attribute_03 ,
+        t1.attribute_04 ,
+        t1.attribute_05 ,
+        t1.attribute_06 ,
+        t1.attribute_07 ,
+        t1.attribute_08 ,
+        t1.attribute_09 ,
+        t1.attribute_10 ,
+        t1.attribute_11 ,
+        t1.attribute_12 ,
+        t1.attribute_13 ,
+        t1.attribute_14 ,
+        t1.attribute_15 ,
+        t1.attribute_16 ,
+        t1.attribute_17 ,
+        t1.attribute_18 ,
+        t1.attribute_19 ,
+        t1.attribute_20 ,
+        t1.attribute_21 ,
+        t1.attribute_22 ,
+        t1.attribute_23 ,
+        t1.attribute_24 ,
+        t1.attribute_25 ,
+        t1.attribute_26 ,
+        t1.attribute_27 ,
+        t1.attribute_28 ,
+        t1.attribute_29 ,
+        t1.attribute_30 ,
+        t1.document_url
+        from document_item t1
+        <where>
+            <if test="bean != null">
+                <if test="bean.id != null and bean.id != ''">
+                    and t1.ID =#{bean.id}
+                </if>
+                <if test="bean.packageId != null and bean.packageId != ''">
+                    and t1.PACKAGE_ID =#{bean.packageId}
+                </if>
+                <if test="bean.createdBy != null and bean.createdBy != ''">
+                    and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+                </if>
+                <if test="bean.createdByDept != null and bean.createdByDept != ''">
+                    and t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%')
+                </if>
+                <if test="bean.creationDate != null and bean.creationDate != ''">
+                    and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')
+                </if>
+                <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+                    and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+                </if>
+                <if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+                    and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')
+                </if>
+                <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+                    and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+                </if>
+                <if test="bean.documentName != null and bean.documentName != ''">
+                    and t1.DOCUMENT_NAME like concat(concat('%',#{bean.documentName}),'%')
+                </if>
+                <if test="bean.documentType != null and bean.documentType != ''">
+                    and t1.DOCUMENT_TYPE in (#{bean.documentType})
+                </if>
+                <if test="bean.documentCategory != null and bean.documentCategory != ''">
+                    and t1.DOCUMENT_CATEGORY in (#{bean.documentCategory})
+                </if>
+                <if test="bean.lifeStage != null and bean.lifeStage != ''">
+                    and t1.LIFE_STAGE in (#{bean.lifeStage})
+                </if>
+                <if test="bean.documentAuthor != null and bean.documentAuthor != ''">
+                    and t1.DOCUMENT_AUTHOR like concat(concat('%',#{bean.documentAuthor}),'%')
+                </if>
+                <if test="bean.authorDept != null and bean.authorDept != ''">
+                    and t1.AUTHOR_DEPT like concat(concat('%',#{bean.authorDept}),'%')
+                </if>
+                <if test="bean.keyWord != null and bean.keyWord != ''">
+                    and t1.KEY_WORD like concat(concat('%',#{bean.keyWord}),'%')
+                </if>
+                <if test="bean.currentVersion != null and bean.currentVersion != ''">
+                    and t1.CURRENT_VERSION like concat(concat('%',#{bean.currentVersion}),'%')
+                </if>
+                <if test="bean.lastVersion != null and bean.lastVersion != ''">
+                    and t1.LAST_VERSION like concat(concat('%',#{bean.lastVersion}),'%')
+                </if>
+                <if test="bean.documentState != null and bean.documentState != ''">
+                    and t1.DOCUMENT_STATE in (#{bean.documentState})
+                </if>
+                <if test="bean.languageCategory != null and bean.languageCategory != ''">
+                    and t1.LANGUAGE_CATEGORY in (#{bean.languageCategory})
+                </if>
+                <if test="bean.secretLevel != null and bean.secretLevel != ''">
+                    and t1.SECRET_LEVEL in (#{bean.secretLevel})
+                </if>
+                <if test="bean.documentAbstract != null and bean.documentAbstract != ''">
+                    and t1.DOCUMENT_ABSTRACT like concat(concat('%',#{bean.documentAbstract}),'%')
+                </if>
+                <if test="bean.documentDescribe != null and bean.documentDescribe != ''">
+                    and t1.DOCUMENT_DESCRIBE like concat(concat('%',#{bean.documentDescribe}),'%')
+                </if>
+                <if test="bean.personLiable != null and bean.personLiable != ''">
+                    and t1.PERSON_LIABLE like concat(concat('%',#{bean.personLiable}),'%')
+                </if>
+                <if test="bean.participants != null and bean.participants != ''">
+                    and t1.PARTICIPANTS like concat(concat('%',#{bean.participants}),'%')
+                </if>
+                <if test="bean.documentUpdateBy != null and bean.documentUpdateBy != ''">
+                    and t1.DOCUMENT_UPDATE_BY like concat(concat('%',#{bean.documentUpdateBy}),'%')
+                </if>
+                <if test="bean.documentUpdateDateBegin != null and bean.documentUpdateDateBegin != ''">
+                    and t1.DOCUMENT_UPDATE_DATE &gt;= #{bean.documentUpdateDateBegin}
+                </if>
+                <if test="bean.documentUpdateDateEnd != null and bean.documentUpdateDateEnd != ''">
+                    and t1.DOCUMENT_UPDATE_DATE &lt;= #{bean.documentUpdateDateEnd}
+                </if>
+                <if test="bean.belongProject != null and bean.belongProject != ''">
+                    and t1.BELONG_PROJECT like concat(concat('%',#{bean.belongProject}),'%')
+                </if>
+                <if test="bean.warehouseCatelog != null and bean.warehouseCatelog != ''">
+                    and t1.WAREHOUSE_CATELOG like concat(concat('%',#{bean.warehouseCatelog}),'%')
+                </if>
+                <if test="bean.knowScope != null and bean.knowScope != ''">
+                    and t1.KNOW_SCOPE in (#{bean.knowScope})
+                </if>
+                <if test="bean.documentLabel != null and bean.documentLabel != ''">
+                    and t1.DOCUMENT_LABEL like concat(concat('%',#{bean.documentLabel}),'%')
+                </if>
+                <if test="bean.clickCount != null ">
+                    and t1.CLICK_COUNT like concat(concat('%',#{bean.clickCount}),'%')
+                </if>
+                <if test="bean.downloadCount != null ">
+                    and t1.DOWNLOAD_COUNT like concat(concat('%',#{bean.downloadCount}),'%')
+                </if>
+                <if test="bean.commentCount != null ">
+                    and t1.COMMENT_COUNT like concat(concat('%',#{bean.commentCount}),'%')
+                </if>
+                <if test="bean.evaluateScore != null ">
+                    and t1.EVALUATE_SCORE like concat(concat('%',#{bean.evaluateScore}),'%')
+                </if>
+                <if test="bean.shareCount != null ">
+                    and t1.SHARE_COUNT like concat(concat('%',#{bean.shareCount}),'%')
+                </if>
+                <if test="bean.likedCount != null ">
+                    and t1.LIKED_COUNT like concat(concat('%',#{bean.likedCount}),'%')
+                </if>
+                <if test="bean.attribute01 != null and bean.attribute01 != ''">
+                    and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+                </if>
+                <if test="bean.attribute02 != null and bean.attribute02 != ''">
+                    and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+                </if>
+                <if test="bean.attribute03 != null and bean.attribute03 != ''">
+                    and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+                </if>
+                <if test="bean.attribute04 != null and bean.attribute04 != ''">
+                    and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+                </if>
+                <if test="bean.attribute05 != null and bean.attribute05 != ''">
+                    and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+                </if>
+                <if test="bean.attribute06 != null and bean.attribute06 != ''">
+                    and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+                </if>
+                <if test="bean.attribute07 != null and bean.attribute07 != ''">
+                    and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+                </if>
+                <if test="bean.attribute08 != null and bean.attribute08 != ''">
+                    and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+                </if>
+                <if test="bean.attribute09 != null and bean.attribute09 != ''">
+                    and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+                </if>
+                <if test="bean.attribute10 != null and bean.attribute10 != ''">
+                    and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+                </if>
+                <if test="bean.attribute11 != null and bean.attribute11 != ''">
+                    and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')
+                </if>
+                <if test="bean.attribute12 != null and bean.attribute12 != ''">
+                    and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')
+                </if>
+                <if test="bean.attribute13 != null and bean.attribute13 != ''">
+                    and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')
+                </if>
+                <if test="bean.attribute14 != null and bean.attribute14 != ''">
+                    and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')
+                </if>
+                <if test="bean.attribute15 != null and bean.attribute15 != ''">
+                    and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')
+                </if>
+                <if test="bean.attribute16 != null ">
+                    and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')
+                </if>
+                <if test="bean.attribute17 != null ">
+                    and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')
+                </if>
+                <if test="bean.attribute18 != null ">
+                    and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')
+                </if>
+                <if test="bean.attribute19 != null ">
+                    and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')
+                </if>
+                <if test="bean.attribute20 != null ">
+                    and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')
+                </if>
+                <if test="bean.attribute21 != null ">
+                    and t1.ATTRIBUTE_21 like concat(concat('%',#{bean.attribute21}),'%')
+                </if>
+                <if test="bean.attribute22 != null ">
+                    and t1.ATTRIBUTE_22 like concat(concat('%',#{bean.attribute22}),'%')
+                </if>
+                <if test="bean.attribute23 != null ">
+                    and t1.ATTRIBUTE_23 like concat(concat('%',#{bean.attribute23}),'%')
+                </if>
+                <if test="bean.attribute24 != null ">
+                    and t1.ATTRIBUTE_24 like concat(concat('%',#{bean.attribute24}),'%')
+                </if>
+                <if test="bean.attribute25 != null ">
+                    and t1.ATTRIBUTE_25 like concat(concat('%',#{bean.attribute25}),'%')
+                </if>
+                <if test="bean.attribute26 != null and bean.attribute26 != ''">
+                    and t1.ATTRIBUTE_26 like concat(concat('%',#{bean.attribute26}),'%')
+                </if>
+                <if test="bean.attribute27 != null and bean.attribute27 != ''">
+                    and t1.ATTRIBUTE_27 like concat(concat('%',#{bean.attribute27}),'%')
+                </if>
+                <if test="bean.attribute28 != null and bean.attribute28 != ''">
+                    and t1.ATTRIBUTE_28 like concat(concat('%',#{bean.attribute28}),'%')
+                </if>
+                <if test="bean.attribute29 != null and bean.attribute29 != ''">
+                    and t1.ATTRIBUTE_29 like concat(concat('%',#{bean.attribute29}),'%')
+                </if>
+                <if test="bean.attribute30 != null and bean.attribute30 != ''">
+                    and t1.ATTRIBUTE_30 like concat(concat('%',#{bean.attribute30}),'%')
+                </if>
+                <if test="bean.documentUrl != null and bean.documentUrl != ''">
+                    and t1.DOCUMENT_URL like concat(concat('%',#{bean.documentUrl}),'%')
+                </if>
+            </if>
+        </where>
+        <choose>
+            <when test="pOrderBy != null and pOrderBy != ''">
+                order by ${pOrderBy}
+            </when>
+            <otherwise>
+                order by t1.creation_date desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- 分页查询 OrDOCUMENT_ITEM -->
+    <select id="searchDocumentItemByPageOr" parameterType="java.util.Map" resultMap="DocumentItemDTOMap">
+        select
+			t1.id ,
+			t1.package_id ,
+			t1.created_by ,
+			t1.created_by_dept ,
+			t1.creation_date ,
+			t1.last_updated_by ,
+			t1.last_update_date ,
+			t1.last_update_ip ,
+			t1.document_name ,
+			t1.document_type ,
+			t1.document_category ,
+			t1.life_stage ,
+			t1.document_author ,
+			t1.author_dept ,
+			t1.key_word ,
+			t1.current_version ,
+			t1.last_version ,
+			t1.document_state ,
+			t1.language_category ,
+			t1.secret_level ,
+			t1.document_abstract ,
+			t1.document_describe ,
+			t1.person_liable ,
+			t1.participants ,
+			t1.document_update_by ,
+			t1.document_update_date ,
+			t1.belong_project ,
+			t1.warehouse_catelog ,
+			t1.know_scope ,
+			t1.document_label ,
+			t1.click_count ,
+			t1.download_count ,
+			t1.comment_count ,
+			t1.evaluate_score ,
+			t1.share_count ,
+			t1.liked_count ,
+			t1.attribute_01 ,
+			t1.attribute_02 ,
+			t1.attribute_03 ,
+			t1.attribute_04 ,
+			t1.attribute_05 ,
+			t1.attribute_06 ,
+			t1.attribute_07 ,
+			t1.attribute_08 ,
+			t1.attribute_09 ,
+			t1.attribute_10 ,
+			t1.attribute_11 ,
+			t1.attribute_12 ,
+			t1.attribute_13 ,
+			t1.attribute_14 ,
+			t1.attribute_15 ,
+			t1.attribute_16 ,
+			t1.attribute_17 ,
+			t1.attribute_18 ,
+			t1.attribute_19 ,
+			t1.attribute_20 ,
+			t1.attribute_21 ,
+			t1.attribute_22 ,
+			t1.attribute_23 ,
+			t1.attribute_24 ,
+			t1.attribute_25 ,
+			t1.attribute_26 ,
+			t1.attribute_27 ,
+			t1.attribute_28 ,
+			t1.attribute_29 ,
+			t1.attribute_30 ,
+			t1.document_url
+        from (select * from document_item t where t.PACKAGE_ID= #{bean.packageId}) t1
+        <where>
+            <if test="bean != null">
+                <trim prefix="(" suffix=")" prefixOverrides="or">
+                    <if test="bean.id != null and bean.id != ''">
+                        or t1.ID =#{bean.id}
+                    </if>
+                    <if test="bean.createdBy != null and bean.createdBy != ''">
+                        or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+                    </if>
+                    <if test="bean.createdByDept != null and bean.createdByDept != ''">
+                        or t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%')
+                    </if>
+                    <if test="bean.creationDate != null and bean.creationDate != ''">
+                        or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')
+                    </if>
+                    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+                        or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+                    </if>
+                    <if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+                        or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')
+                    </if>
+                    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+                        or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+                    </if>
+                    <if test="bean.documentName != null and bean.documentName != ''">
+                        or t1.DOCUMENT_NAME like concat(concat('%',#{bean.documentName}),'%')
+                    </if>
+                    <if test="bean.documentType != null and bean.documentType != ''">
+                        or t1.DOCUMENT_TYPE like concat(concat('%',#{bean.documentType}),'%')
+                    </if>
+                    <if test="bean.documentCategory != null and bean.documentCategory != ''">
+                        or t1.DOCUMENT_CATEGORY like concat(concat('%',#{bean.documentCategory}),'%')
+                    </if>
+                    <if test="bean.lifeStage != null and bean.lifeStage != ''">
+                        or t1.LIFE_STAGE like concat(concat('%',#{bean.lifeStage}),'%')
+                    </if>
+                    <if test="bean.documentAuthor != null and bean.documentAuthor != ''">
+                        or t1.DOCUMENT_AUTHOR like concat(concat('%',#{bean.documentAuthor}),'%')
+                    </if>
+                    <if test="bean.authorDept != null and bean.authorDept != ''">
+                        or t1.AUTHOR_DEPT like concat(concat('%',#{bean.authorDept}),'%')
+                    </if>
+                    <if test="bean.keyWord != null and bean.keyWord != ''">
+                        or t1.KEY_WORD like concat(concat('%',#{bean.keyWord}),'%')
+                    </if>
+                    <if test="bean.currentVersion != null and bean.currentVersion != ''">
+                        or t1.CURRENT_VERSION like concat(concat('%',#{bean.currentVersion}),'%')
+                    </if>
+                    <if test="bean.lastVersion != null and bean.lastVersion != ''">
+                        or t1.LAST_VERSION like concat(concat('%',#{bean.lastVersion}),'%')
+                    </if>
+                    <if test="bean.documentState != null and bean.documentState != ''">
+                        or t1.DOCUMENT_STATE like concat(concat('%',#{bean.documentState}),'%')
+                    </if>
+                    <if test="bean.languageCategory != null and bean.languageCategory != ''">
+                        or t1.LANGUAGE_CATEGORY like concat(concat('%',#{bean.languageCategory}),'%')
+                    </if>
+                    <if test="bean.secretLevel != null and bean.secretLevel != ''">
+                        or t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')
+                    </if>
+                    <if test="bean.documentAbstract != null and bean.documentAbstract != ''">
+                        or t1.DOCUMENT_ABSTRACT like concat(concat('%',#{bean.documentAbstract}),'%')
+                    </if>
+                    <if test="bean.documentDescribe != null and bean.documentDescribe != ''">
+                        or t1.DOCUMENT_DESCRIBE like concat(concat('%',#{bean.documentDescribe}),'%')
+                    </if>
+                    <if test="bean.personLiable != null and bean.personLiable != ''">
+                        or t1.PERSON_LIABLE like concat(concat('%',#{bean.personLiable}),'%')
+                    </if>
+                    <if test="bean.participants != null and bean.participants != ''">
+                        or t1.PARTICIPANTS like concat(concat('%',#{bean.participants}),'%')
+                    </if>
+                    <if test="bean.documentUpdateBy != null and bean.documentUpdateBy != ''">
+                        or t1.DOCUMENT_UPDATE_BY like concat(concat('%',#{bean.documentUpdateBy}),'%')
+                    </if>
+                    <if test="bean.documentUpdateDateBegin != null and bean.documentUpdateDateBegin != ''">
+                        or t1.DOCUMENT_UPDATE_DATE &gt;= #{bean.documentUpdateDateBegin}
+                    </if>
+                    <if test="bean.documentUpdateDateEnd != null and bean.documentUpdateDateEnd != ''">
+                        or t1.DOCUMENT_UPDATE_DATE &lt;= #{bean.documentUpdateDateEnd}
+                    </if>
+                    <if test="bean.belongProject != null and bean.belongProject != ''">
+                        or t1.BELONG_PROJECT like concat(concat('%',#{bean.belongProject}),'%')
+                    </if>
+                    <if test="bean.warehouseCatelog != null and bean.warehouseCatelog != ''">
+                        or t1.WAREHOUSE_CATELOG like concat(concat('%',#{bean.warehouseCatelog}),'%')
+                    </if>
+                    <if test="bean.knowScope != null and bean.knowScope != ''">
+                        or t1.KNOW_SCOPE like concat(concat('%',#{bean.knowScope}),'%')
+                    </if>
+                    <if test="bean.documentLabel != null and bean.documentLabel != ''">
+                        or t1.DOCUMENT_LABEL like concat(concat('%',#{bean.documentLabel}),'%')
+                    </if>
+                    <if test="bean.clickCount != null">
+                        or t1.CLICK_COUNT like concat(concat('%',#{bean.clickCount}),'%')
+                    </if>
+                    <if test="bean.downloadCount != null">
+                        or t1.DOWNLOAD_COUNT like concat(concat('%',#{bean.downloadCount}),'%')
+                    </if>
+                    <if test="bean.commentCount != null">
+                        or t1.COMMENT_COUNT like concat(concat('%',#{bean.commentCount}),'%')
+                    </if>
+                    <if test="bean.evaluateScore != null">
+                        or t1.EVALUATE_SCORE like concat(concat('%',#{bean.evaluateScore}),'%')
+                    </if>
+                    <if test="bean.shareCount != null">
+                        or t1.SHARE_COUNT like concat(concat('%',#{bean.shareCount}),'%')
+                    </if>
+                    <if test="bean.likedCount != null">
+                        or t1.LIKED_COUNT like concat(concat('%',#{bean.likedCount}),'%')
+                    </if>
+                    <if test="bean.attribute01 != null and bean.attribute01 != ''">
+                        or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+                    </if>
+                    <if test="bean.attribute02 != null and bean.attribute02 != ''">
+                        or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+                    </if>
+                    <if test="bean.attribute03 != null and bean.attribute03 != ''">
+                        or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+                    </if>
+                    <if test="bean.attribute04 != null and bean.attribute04 != ''">
+                        or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+                    </if>
+                    <if test="bean.attribute05 != null and bean.attribute05 != ''">
+                        or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+                    </if>
+                    <if test="bean.attribute06 != null and bean.attribute06 != ''">
+                        or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+                    </if>
+                    <if test="bean.attribute07 != null and bean.attribute07 != ''">
+                        or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+                    </if>
+                    <if test="bean.attribute08 != null and bean.attribute08 != ''">
+                        or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+                    </if>
+                    <if test="bean.attribute09 != null and bean.attribute09 != ''">
+                        or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+                    </if>
+                    <if test="bean.attribute10 != null and bean.attribute10 != ''">
+                        or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+                    </if>
+                    <if test="bean.attribute11 != null and bean.attribute11 != ''">
+                        or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')
+                    </if>
+                    <if test="bean.attribute12 != null and bean.attribute12 != ''">
+                        or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')
+                    </if>
+                    <if test="bean.attribute13 != null and bean.attribute13 != ''">
+                        or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')
+                    </if>
+                    <if test="bean.attribute14 != null and bean.attribute14 != ''">
+                        or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')
+                    </if>
+                    <if test="bean.attribute15 != null and bean.attribute15 != ''">
+                        or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')
+                    </if>
+                    <if test="bean.attribute16 != null">
+                        or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')
+                    </if>
+                    <if test="bean.attribute17 != null">
+                        or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')
+                    </if>
+                    <if test="bean.attribute18 != null">
+                        or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')
+                    </if>
+                    <if test="bean.attribute19 != null">
+                        or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')
+                    </if>
+                    <if test="bean.attribute20 != null">
+                        or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')
+                    </if>
+                    <if test="bean.attribute21 != null">
+                        or t1.ATTRIBUTE_21 like concat(concat('%',#{bean.attribute21}),'%')
+                    </if>
+                    <if test="bean.attribute22 != null">
+                        or t1.ATTRIBUTE_22 like concat(concat('%',#{bean.attribute22}),'%')
+                    </if>
+                    <if test="bean.attribute23 != null">
+                        or t1.ATTRIBUTE_23 like concat(concat('%',#{bean.attribute23}),'%')
+                    </if>
+                    <if test="bean.attribute24 != null">
+                        or t1.ATTRIBUTE_24 like concat(concat('%',#{bean.attribute24}),'%')
+                    </if>
+                    <if test="bean.attribute25 != null">
+                        or t1.ATTRIBUTE_25 like concat(concat('%',#{bean.attribute25}),'%')
+                    </if>
+                    <if test="bean.attribute26 != null and bean.attribute26 != ''">
+                        or t1.ATTRIBUTE_26 like concat(concat('%',#{bean.attribute26}),'%')
+                    </if>
+                    <if test="bean.attribute27 != null and bean.attribute27 != ''">
+                        or t1.ATTRIBUTE_27 like concat(concat('%',#{bean.attribute27}),'%')
+                    </if>
+                    <if test="bean.attribute28 != null and bean.attribute28 != ''">
+                        or t1.ATTRIBUTE_28 like concat(concat('%',#{bean.attribute28}),'%')
+                    </if>
+                    <if test="bean.attribute29 != null and bean.attribute29 != ''">
+                        or t1.ATTRIBUTE_29 like concat(concat('%',#{bean.attribute29}),'%')
+                    </if>
+                    <if test="bean.attribute30 != null and bean.attribute30 != ''">
+                        or t1.ATTRIBUTE_30 like concat(concat('%',#{bean.attribute30}),'%')
+                    </if>
+                    <if test="bean.documentUrl != null and bean.documentUrl != ''">
+                        or t1.DOCUMENT_URL like concat(concat('%',#{bean.documentUrl}),'%')
+                    </if>
+                </trim>
+            </if>
+        </where>
+        <choose>
+            <when test="pOrderBy != null and pOrderBy != ''">
+                order by ${pOrderBy}
+            </when>
+            <otherwise>
+                order by t1.creation_date desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- 查询列表 DOCUMENT_ITEM -->
+    <select id="searchDocumentItem" parameterType="java.util.Map" resultMap="DocumentItemDTOMap">
+        select
+			t1.id ,
+			t1.package_id ,
+			t1.created_by ,
+			t1.created_by_dept ,
+			t1.creation_date ,
+			t1.last_updated_by ,
+			t1.last_update_date ,
+			t1.last_update_ip ,
+			t1.document_name ,
+			t1.document_type ,
+			t1.document_category ,
+			t1.life_stage ,
+			t1.document_author ,
+			t1.author_dept ,
+			t1.key_word ,
+			t1.current_version ,
+			t1.last_version ,
+			t1.document_state ,
+			t1.language_category ,
+			t1.secret_level ,
+			t1.document_abstract ,
+			t1.document_describe ,
+			t1.person_liable ,
+			t1.participants ,
+			t1.document_update_by ,
+			t1.document_update_date ,
+			t1.belong_project ,
+			t1.warehouse_catelog ,
+			t1.know_scope ,
+			t1.document_label ,
+			t1.click_count ,
+			t1.download_count ,
+			t1.comment_count ,
+			t1.evaluate_score ,
+			t1.share_count ,
+			t1.liked_count ,
+			t1.attribute_01 ,
+			t1.attribute_02 ,
+			t1.attribute_03 ,
+			t1.attribute_04 ,
+			t1.attribute_05 ,
+			t1.attribute_06 ,
+			t1.attribute_07 ,
+			t1.attribute_08 ,
+			t1.attribute_09 ,
+			t1.attribute_10 ,
+			t1.attribute_11 ,
+			t1.attribute_12 ,
+			t1.attribute_13 ,
+			t1.attribute_14 ,
+			t1.attribute_15 ,
+			t1.attribute_16 ,
+			t1.attribute_17 ,
+			t1.attribute_18 ,
+			t1.attribute_19 ,
+			t1.attribute_20 ,
+			t1.attribute_21 ,
+			t1.attribute_22 ,
+			t1.attribute_23 ,
+			t1.attribute_24 ,
+			t1.attribute_25 ,
+			t1.attribute_26 ,
+			t1.attribute_27 ,
+			t1.attribute_28 ,
+			t1.attribute_29 ,
+			t1.attribute_30 ,
+			t1.document_url
+        from document_item t1
+        <where>
+            <if test="id != null and id != ''">
+                and t1.ID =#{id}
+            </if>
+            <if test="packageId != null and packageId != ''">
+                and t1.PACKAGE_ID =#{packageId}
+            </if>
+            <if test="createdBy != null and createdBy != ''">
+                and t1.CREATED_BY =#{createdBy}
+            </if>
+            <if test="createdByDept != null and createdByDept != ''">
+                and t1.CREATED_BY_DEPT =#{createdByDept}
+            </if>
+            <if test="creationDate != null and creationDate != ''">
+                and t1.CREATION_DATE =#{creationDate}
+            </if>
+            <if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+                and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+            </if>
+            <if test="lastUpdateDate != null and lastUpdateDate != ''">
+                and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+            </if>
+            <if test="lastUpdateIp != null and lastUpdateIp != ''">
+                and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+            </if>
+            <if test="documentName != null and documentName != ''">
+                and t1.DOCUMENT_NAME =#{documentName}
+            </if>
+            <if test="documentType != null and documentType != ''">
+                and t1.DOCUMENT_TYPE in (#{documentType})
+            </if>
+            <if test="documentCategory != null and documentCategory != ''">
+                and t1.DOCUMENT_CATEGORY in (#{documentCategory})
+            </if>
+            <if test="lifeStage != null and lifeStage != ''">
+                and t1.LIFE_STAGE in (#{lifeStage})
+            </if>
+            <if test="documentAuthor != null and documentAuthor != ''">
+                and t1.DOCUMENT_AUTHOR =#{documentAuthor}
+            </if>
+            <if test="authorDept != null and authorDept != ''">
+                and t1.AUTHOR_DEPT =#{authorDept}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and t1.KEY_WORD =#{keyWord}
+            </if>
+            <if test="currentVersion != null and currentVersion != ''">
+                and t1.CURRENT_VERSION =#{currentVersion}
+            </if>
+            <if test="lastVersion != null and lastVersion != ''">
+                and t1.LAST_VERSION =#{lastVersion}
+            </if>
+            <if test="documentState != null and documentState != ''">
+                and t1.DOCUMENT_STATE in (#{documentState})
+            </if>
+            <if test="languageCategory != null and languageCategory != ''">
+                and t1.LANGUAGE_CATEGORY in (#{languageCategory})
+            </if>
+            <if test="secretLevel != null and secretLevel != ''">
+                and t1.SECRET_LEVEL in (#{secretLevel})
+            </if>
+            <if test="documentAbstract != null and documentAbstract != ''">
+                and t1.DOCUMENT_ABSTRACT =#{documentAbstract}
+            </if>
+            <if test="documentDescribe != null and documentDescribe != ''">
+                and t1.DOCUMENT_DESCRIBE =#{documentDescribe}
+            </if>
+            <if test="personLiable != null and personLiable != ''">
+                and t1.PERSON_LIABLE =#{personLiable}
+            </if>
+            <if test="participants != null and participants != ''">
+                and t1.PARTICIPANTS in (#{participants})
+            </if>
+            <if test="documentUpdateBy != null and documentUpdateBy != ''">
+                and t1.DOCUMENT_UPDATE_BY =#{documentUpdateBy}
+            </if>
+            <if test="documentUpdateDateBegin != null and documentUpdateDateBegin != ''">
+                and t1.DOCUMENT_UPDATE_DATE &gt;= #{documentUpdateDateBegin}
+            </if>
+            <if test="documentUpdateDateEnd != null and documentUpdateDateEnd != ''">
+                and t1.DOCUMENT_UPDATE_DATE &lt;= #{documentUpdateDateEnd}
+            </if>
+            <if test="belongProject != null and belongProject != ''">
+                and t1.BELONG_PROJECT =#{belongProject}
+            </if>
+            <if test="warehouseCatelog != null and warehouseCatelog != ''">
+                and t1.WAREHOUSE_CATELOG =#{warehouseCatelog}
+            </if>
+            <if test="knowScope != null and knowScope != ''">
+                and t1.KNOW_SCOPE in (#{knowScope})
+            </if>
+            <if test="documentLabel != null and documentLabel != ''">
+                and t1.DOCUMENT_LABEL =#{documentLabel}
+            </if>
+            <if test="clickCount != null">
+                and t1.CLICK_COUNT =#{clickCount}
+            </if>
+            <if test="downloadCount != null">
+                and t1.DOWNLOAD_COUNT =#{downloadCount}
+            </if>
+            <if test="commentCount != null">
+                and t1.COMMENT_COUNT =#{commentCount}
+            </if>
+            <if test="evaluateScore != null">
+                and t1.EVALUATE_SCORE =#{evaluateScore}
+            </if>
+            <if test="shareCount != null">
+                and t1.SHARE_COUNT =#{shareCount}
+            </if>
+            <if test="likedCount != null">
+                and t1.LIKED_COUNT =#{likedCount}
+            </if>
+            <if test="attribute01 != null and attribute01 != ''">
+                and t1.ATTRIBUTE_01 =#{attribute01}
+            </if>
+            <if test="attribute02 != null and attribute02 != ''">
+                and t1.ATTRIBUTE_02 =#{attribute02}
+            </if>
+            <if test="attribute03 != null and attribute03 != ''">
+                and t1.ATTRIBUTE_03 =#{attribute03}
+            </if>
+            <if test="attribute04 != null and attribute04 != ''">
+                and t1.ATTRIBUTE_04 =#{attribute04}
+            </if>
+            <if test="attribute05 != null and attribute05 != ''">
+                and t1.ATTRIBUTE_05 =#{attribute05}
+            </if>
+            <if test="attribute06 != null and attribute06 != ''">
+                and t1.ATTRIBUTE_06 =#{attribute06}
+            </if>
+            <if test="attribute07 != null and attribute07 != ''">
+                and t1.ATTRIBUTE_07 =#{attribute07}
+            </if>
+            <if test="attribute08 != null and attribute08 != ''">
+                and t1.ATTRIBUTE_08 =#{attribute08}
+            </if>
+            <if test="attribute09 != null and attribute09 != ''">
+                and t1.ATTRIBUTE_09 =#{attribute09}
+            </if>
+            <if test="attribute10 != null and attribute10 != ''">
+                and t1.ATTRIBUTE_10 =#{attribute10}
+            </if>
+            <if test="attribute11 != null and attribute11 != ''">
+                and t1.ATTRIBUTE_11 =#{attribute11}
+            </if>
+            <if test="attribute12 != null and attribute12 != ''">
+                and t1.ATTRIBUTE_12 =#{attribute12}
+            </if>
+            <if test="attribute13 != null and attribute13 != ''">
+                and t1.ATTRIBUTE_13 =#{attribute13}
+            </if>
+            <if test="attribute14 != null and attribute14 != ''">
+                and t1.ATTRIBUTE_14 =#{attribute14}
+            </if>
+            <if test="attribute15 != null and attribute15 != ''">
+                and t1.ATTRIBUTE_15 =#{attribute15}
+            </if>
+            <if test="attribute16 != null">
+                and t1.ATTRIBUTE_16 =#{attribute16}
+            </if>
+            <if test="attribute17 != null">
+                and t1.ATTRIBUTE_17 =#{attribute17}
+            </if>
+            <if test="attribute18 != null">
+                and t1.ATTRIBUTE_18 =#{attribute18}
+            </if>
+            <if test="attribute19 != null">
+                and t1.ATTRIBUTE_19 =#{attribute19}
+            </if>
+            <if test="attribute20 != null">
+                and t1.ATTRIBUTE_20 =#{attribute20}
+            </if>
+            <if test="attribute21 != null">
+                and t1.ATTRIBUTE_21 =#{attribute21}
+            </if>
+            <if test="attribute22 != null">
+                and t1.ATTRIBUTE_22 =#{attribute22}
+            </if>
+            <if test="attribute23 != null">
+                and t1.ATTRIBUTE_23 =#{attribute23}
+            </if>
+            <if test="attribute24 != null">
+                and t1.ATTRIBUTE_24 =#{attribute24}
+            </if>
+            <if test="attribute25 != null">
+                and t1.ATTRIBUTE_25 =#{attribute25}
+            </if>
+            <if test="attribute26 != null and attribute26 != ''">
+                and t1.ATTRIBUTE_26 =#{attribute26}
+            </if>
+            <if test="attribute27 != null and attribute27 != ''">
+                and t1.ATTRIBUTE_27 =#{attribute27}
+            </if>
+            <if test="attribute28 != null and attribute28 != ''">
+                and t1.ATTRIBUTE_28 =#{attribute28}
+            </if>
+            <if test="attribute29 != null and attribute29 != ''">
+                and t1.ATTRIBUTE_29 =#{attribute29}
+            </if>
+            <if test="attribute30 != null and attribute30 != ''">
+                and t1.ATTRIBUTE_30 =#{attribute30}
+            </if>
+            <if test="documentUrl != null and documentUrl != ''">
+                and t1.DOCUMENT_URL =#{documentUrl}
+            </if>
+        </where>
+    </select>
+
+    <!-- 主键查询对象 DOCUMENT_ITEM -->
+    <select id="findDocumentItemById" parameterType="java.util.Map" resultMap="DocumentItemDTOMap">
+		select
+			t1.id                             ,
+			t1.package_id                     ,
+			t1.created_by                     ,
+			t1.created_by_dept                ,
+			t1.creation_date                  ,
+			t1.last_updated_by                ,
+			t1.last_update_date               ,
+			t1.last_update_ip                 ,
+			t1.document_name                  ,
+			t1.document_type                  ,
+			t1.document_category              ,
+			t1.life_stage                     ,
+			t1.document_author                ,
+			t1.author_dept                    ,
+			t1.key_word                       ,
+			t1.current_version                ,
+			t1.last_version                   ,
+			t1.document_state                 ,
+			t1.language_category              ,
+			t1.secret_level                   ,
+			t1.document_abstract              ,
+			t1.document_describe              ,
+			t1.person_liable                  ,
+			t1.participants                   ,
+			t1.document_update_by             ,
+			t1.document_update_date           ,
+			t1.belong_project                 ,
+			t1.warehouse_catelog              ,
+			t1.know_scope                     ,
+			t1.document_label                 ,
+			t1.click_count                    ,
+			t1.download_count                 ,
+			t1.comment_count                  ,
+			t1.evaluate_score                 ,
+			t1.share_count                    ,
+			t1.liked_count                    ,
+			t1.attribute_01                   ,
+			t1.attribute_02                   ,
+			t1.attribute_03                   ,
+			t1.attribute_04                   ,
+			t1.attribute_05                   ,
+			t1.attribute_06                   ,
+			t1.attribute_07                   ,
+			t1.attribute_08                   ,
+			t1.attribute_09                   ,
+			t1.attribute_10                   ,
+			t1.attribute_11                   ,
+			t1.attribute_12                   ,
+			t1.attribute_13                   ,
+			t1.attribute_14                   ,
+			t1.attribute_15                   ,
+			t1.attribute_16                   ,
+			t1.attribute_17                   ,
+			t1.attribute_18                   ,
+			t1.attribute_19                   ,
+			t1.attribute_20                   ,
+			t1.attribute_21                   ,
+			t1.attribute_22                   ,
+			t1.attribute_23                   ,
+			t1.attribute_24                   ,
+			t1.attribute_25                   ,
+			t1.attribute_26                   ,
+			t1.attribute_27                   ,
+			t1.attribute_28                   ,
+			t1.attribute_29                   ,
+			t1.attribute_30                   ,
+			t1.document_url
+		from document_item 	t1
+			where t1.id = #{id}
+	</select>
+
+    <!-- 新增对象 DOCUMENT_ITEM -->
+    <insert id="insertDocumentItem" parameterType="avicit.assets.device.documentpackage.dto.DocumentItemDTO">
+        insert into document_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="packageId != null">
+                package_id,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="createdByDept != null">
+                created_by_dept,
+            </if>
+            <if test="creationDate != null">
+                creation_date,
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by,
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date,
+            </if>
+            <if test="lastUpdateIp != null">
+                last_update_ip,
+            </if>
+            <if test="documentName != null">
+                document_name,
+            </if>
+            <if test="documentType != null">
+                document_type,
+            </if>
+            <if test="documentCategory != null">
+                document_category,
+            </if>
+            <if test="lifeStage != null">
+                life_stage,
+            </if>
+            <if test="documentAuthor != null">
+                document_author,
+            </if>
+            <if test="authorDept != null">
+                author_dept,
+            </if>
+            <if test="keyWord != null">
+                key_word,
+            </if>
+            <if test="currentVersion != null">
+                current_version,
+            </if>
+            <if test="lastVersion != null">
+                last_version,
+            </if>
+            <if test="documentState != null">
+                document_state,
+            </if>
+            <if test="languageCategory != null">
+                language_category,
+            </if>
+            <if test="secretLevel != null">
+                secret_level,
+            </if>
+            <if test="documentAbstract != null">
+                document_abstract,
+            </if>
+            <if test="documentDescribe != null">
+                document_describe,
+            </if>
+            <if test="personLiable != null">
+                person_liable,
+            </if>
+            <if test="participants != null">
+                participants,
+            </if>
+            <if test="documentUpdateBy != null">
+                document_update_by,
+            </if>
+            <if test="documentUpdateDate != null">
+                document_update_date,
+            </if>
+            <if test="belongProject != null">
+                belong_project,
+            </if>
+            <if test="warehouseCatelog != null">
+                warehouse_catelog,
+            </if>
+            <if test="knowScope != null">
+                know_scope,
+            </if>
+            <if test="documentLabel != null">
+                document_label,
+            </if>
+            <if test="clickCount != null">
+                click_count,
+            </if>
+            <if test="downloadCount != null">
+                download_count,
+            </if>
+            <if test="commentCount != null">
+                comment_count,
+            </if>
+            <if test="evaluateScore != null">
+                evaluate_score,
+            </if>
+            <if test="shareCount != null">
+                share_count,
+            </if>
+            <if test="likedCount != null">
+                liked_count,
+            </if>
+            <if test="attribute01 != null">
+                attribute_01,
+            </if>
+            <if test="attribute02 != null">
+                attribute_02,
+            </if>
+            <if test="attribute03 != null">
+                attribute_03,
+            </if>
+            <if test="attribute04 != null">
+                attribute_04,
+            </if>
+            <if test="attribute05 != null">
+                attribute_05,
+            </if>
+            <if test="attribute06 != null">
+                attribute_06,
+            </if>
+            <if test="attribute07 != null">
+                attribute_07,
+            </if>
+            <if test="attribute08 != null">
+                attribute_08,
+            </if>
+            <if test="attribute09 != null">
+                attribute_09,
+            </if>
+            <if test="attribute10 != null">
+                attribute_10,
+            </if>
+            <if test="attribute11 != null">
+                attribute_11,
+            </if>
+            <if test="attribute12 != null">
+                attribute_12,
+            </if>
+            <if test="attribute13 != null">
+                attribute_13,
+            </if>
+            <if test="attribute14 != null">
+                attribute_14,
+            </if>
+            <if test="attribute15 != null">
+                attribute_15,
+            </if>
+            <if test="attribute16 != null">
+                attribute_16,
+            </if>
+            <if test="attribute17 != null">
+                attribute_17,
+            </if>
+            <if test="attribute18 != null">
+                attribute_18,
+            </if>
+            <if test="attribute19 != null">
+                attribute_19,
+            </if>
+            <if test="attribute20 != null">
+                attribute_20,
+            </if>
+            <if test="attribute21 != null">
+                attribute_21,
+            </if>
+            <if test="attribute22 != null">
+                attribute_22,
+            </if>
+            <if test="attribute23 != null">
+                attribute_23,
+            </if>
+            <if test="attribute24 != null">
+                attribute_24,
+            </if>
+            <if test="attribute25 != null">
+                attribute_25,
+            </if>
+            <if test="attribute26 != null">
+                attribute_26,
+            </if>
+            <if test="attribute27 != null">
+                attribute_27,
+            </if>
+            <if test="attribute28 != null">
+                attribute_28,
+            </if>
+            <if test="attribute29 != null">
+                attribute_29,
+            </if>
+            <if test="attribute30 != null">
+                attribute_30,
+            </if>
+            <if test="documentUrl != null">
+                document_url,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="packageId != null">
+                #{packageId,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createdByDept != null">
+                #{createdByDept,jdbcType=VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                #{creationDate},
+            </if>
+            <if test="lastUpdatedBy != null">
+                #{lastUpdatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate},
+            </if>
+            <if test="lastUpdateIp != null">
+                #{lastUpdateIp,jdbcType=VARCHAR},
+            </if>
+            <if test="documentName != null">
+                #{documentName,jdbcType=VARCHAR},
+            </if>
+            <if test="documentType != null">
+                #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="documentCategory != null">
+                #{documentCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="lifeStage != null">
+                #{lifeStage,jdbcType=VARCHAR},
+            </if>
+            <if test="documentAuthor != null">
+                #{documentAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="authorDept != null">
+                #{authorDept,jdbcType=VARCHAR},
+            </if>
+            <if test="keyWord != null">
+                #{keyWord,jdbcType=VARCHAR},
+            </if>
+            <if test="currentVersion != null">
+                #{currentVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="lastVersion != null">
+                #{lastVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="documentState != null">
+                #{documentState,jdbcType=VARCHAR},
+            </if>
+            <if test="languageCategory != null">
+                #{languageCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="secretLevel != null">
+                #{secretLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="documentAbstract != null">
+                #{documentAbstract,jdbcType=VARCHAR},
+            </if>
+            <if test="documentDescribe != null">
+                #{documentDescribe,jdbcType=VARCHAR},
+            </if>
+            <if test="personLiable != null">
+                #{personLiable,jdbcType=VARCHAR},
+            </if>
+            <if test="participants != null">
+                #{participants,jdbcType=VARCHAR},
+            </if>
+            <if test="documentUpdateBy != null">
+                #{documentUpdateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="documentUpdateDate != null">
+                #{documentUpdateDate,jdbcType=DATE},
+            </if>
+            <if test="belongProject != null">
+                #{belongProject,jdbcType=VARCHAR},
+            </if>
+            <if test="warehouseCatelog != null">
+                #{warehouseCatelog,jdbcType=VARCHAR},
+            </if>
+            <if test="knowScope != null">
+                #{knowScope,jdbcType=VARCHAR},
+            </if>
+            <if test="documentLabel != null">
+                #{documentLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="clickCount != null">
+                #{clickCount,jdbcType=DECIMAL},
+            </if>
+            <if test="downloadCount != null">
+                #{downloadCount,jdbcType=DECIMAL},
+            </if>
+            <if test="commentCount != null">
+                #{commentCount,jdbcType=DECIMAL},
+            </if>
+            <if test="evaluateScore != null">
+                #{evaluateScore,jdbcType=DECIMAL},
+            </if>
+            <if test="shareCount != null">
+                #{shareCount,jdbcType=DECIMAL},
+            </if>
+            <if test="likedCount != null">
+                #{likedCount,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute01 != null">
+                #{attribute01,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute02 != null">
+                #{attribute02,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute03 != null">
+                #{attribute03,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute04 != null">
+                #{attribute04,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute05 != null">
+                #{attribute05,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute06 != null">
+                #{attribute06,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute07 != null">
+                #{attribute07,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute08 != null">
+                #{attribute08,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute09 != null">
+                #{attribute09,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute10 != null">
+                #{attribute10,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute11 != null">
+                #{attribute11,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute12 != null">
+                #{attribute12,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute13 != null">
+                #{attribute13,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute14 != null">
+                #{attribute14,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute15 != null">
+                #{attribute15,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute16 != null">
+                #{attribute16,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute17 != null">
+                #{attribute17,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute18 != null">
+                #{attribute18,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute19 != null">
+                #{attribute19,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute20 != null">
+                #{attribute20,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute21 != null">
+                #{attribute21,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute22 != null">
+                #{attribute22,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute23 != null">
+                #{attribute23,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute24 != null">
+                #{attribute24,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute25 != null">
+                #{attribute25,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute26 != null">
+                #{attribute26,jdbcType=DATE},
+            </if>
+            <if test="attribute27 != null">
+                #{attribute27,jdbcType=DATE},
+            </if>
+            <if test="attribute28 != null">
+                #{attribute28,jdbcType=DATE},
+            </if>
+            <if test="attribute29 != null">
+                #{attribute29,jdbcType=DATE},
+            </if>
+            <if test="attribute30 != null">
+                #{attribute30,jdbcType=DATE},
+            </if>
+            <if test="documentUrl != null">
+                #{documentUrl,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 批量新增对象 DOCUMENT_ITEM -->
+    <insert id="insertDocumentItemList" parameterType="java.util.List">
+        insert into document_item(
+			id,
+			package_id,
+			created_by,
+			created_by_dept,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			document_name,
+			document_type,
+			document_category,
+			life_stage,
+			document_author,
+			author_dept,
+			key_word,
+			current_version,
+			last_version,
+			document_state,
+			language_category,
+			secret_level,
+			document_abstract,
+			document_describe,
+			person_liable,
+			participants,
+			document_update_by,
+			document_update_date,
+			belong_project,
+			warehouse_catelog,
+			know_scope,
+			document_label,
+			click_count,
+			download_count,
+			comment_count,
+			evaluate_score,
+			share_count,
+			liked_count,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			attribute_21,
+			attribute_22,
+			attribute_23,
+			attribute_24,
+			attribute_25,
+			attribute_26,
+			attribute_27,
+			attribute_28,
+			attribute_29,
+			attribute_30,
+			document_url)
+        <foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+            select
+				#{item.id,jdbcType=VARCHAR},
+				#{item.packageId,jdbcType=VARCHAR},
+				#{item.createdBy,jdbcType=VARCHAR},
+				#{item.createdByDept,jdbcType=VARCHAR},
+				#{item.creationDate},
+				#{item.lastUpdatedBy,jdbcType=VARCHAR},
+				#{item.lastUpdateDate},
+				#{item.lastUpdateIp,jdbcType=VARCHAR},
+				#{item.documentName,jdbcType=VARCHAR},
+				#{item.documentType,jdbcType=VARCHAR},
+				#{item.documentCategory,jdbcType=VARCHAR},
+				#{item.lifeStage,jdbcType=VARCHAR},
+				#{item.documentAuthor,jdbcType=VARCHAR},
+				#{item.authorDept,jdbcType=VARCHAR},
+				#{item.keyWord,jdbcType=VARCHAR},
+				#{item.currentVersion,jdbcType=VARCHAR},
+				#{item.lastVersion,jdbcType=VARCHAR},
+				#{item.documentState,jdbcType=VARCHAR},
+				#{item.languageCategory,jdbcType=VARCHAR},
+				#{item.secretLevel,jdbcType=VARCHAR},
+				#{item.documentAbstract,jdbcType=VARCHAR},
+				#{item.documentDescribe,jdbcType=VARCHAR},
+				#{item.personLiable,jdbcType=VARCHAR},
+				#{item.participants,jdbcType=VARCHAR},
+				#{item.documentUpdateBy,jdbcType=VARCHAR},
+				#{item.documentUpdateDate,jdbcType=DATE},
+				#{item.belongProject,jdbcType=VARCHAR},
+				#{item.warehouseCatelog,jdbcType=VARCHAR},
+				#{item.knowScope,jdbcType=VARCHAR},
+				#{item.documentLabel,jdbcType=VARCHAR},
+				#{item.clickCount,jdbcType=DECIMAL},
+				#{item.downloadCount,jdbcType=DECIMAL},
+				#{item.commentCount,jdbcType=DECIMAL},
+				#{item.evaluateScore,jdbcType=DECIMAL},
+				#{item.shareCount,jdbcType=DECIMAL},
+				#{item.likedCount,jdbcType=DECIMAL},
+				#{item.attribute01,jdbcType=VARCHAR},
+				#{item.attribute02,jdbcType=VARCHAR},
+				#{item.attribute03,jdbcType=VARCHAR},
+				#{item.attribute04,jdbcType=VARCHAR},
+				#{item.attribute05,jdbcType=VARCHAR},
+				#{item.attribute06,jdbcType=VARCHAR},
+				#{item.attribute07,jdbcType=VARCHAR},
+				#{item.attribute08,jdbcType=VARCHAR},
+				#{item.attribute09,jdbcType=VARCHAR},
+				#{item.attribute10,jdbcType=VARCHAR},
+				#{item.attribute11,jdbcType=VARCHAR},
+				#{item.attribute12,jdbcType=VARCHAR},
+				#{item.attribute13,jdbcType=VARCHAR},
+				#{item.attribute14,jdbcType=VARCHAR},
+				#{item.attribute15,jdbcType=VARCHAR},
+				#{item.attribute16,jdbcType=DECIMAL},
+				#{item.attribute17,jdbcType=DECIMAL},
+				#{item.attribute18,jdbcType=DECIMAL},
+				#{item.attribute19,jdbcType=DECIMAL},
+				#{item.attribute20,jdbcType=DECIMAL},
+				#{item.attribute21,jdbcType=DECIMAL},
+				#{item.attribute22,jdbcType=DECIMAL},
+				#{item.attribute23,jdbcType=DECIMAL},
+				#{item.attribute24,jdbcType=DECIMAL},
+				#{item.attribute25,jdbcType=DECIMAL},
+				#{item.attribute26,jdbcType=DATE},
+				#{item.attribute27,jdbcType=DATE},
+				#{item.attribute28,jdbcType=DATE},
+				#{item.attribute29,jdbcType=DATE},
+				#{item.attribute30,jdbcType=DATE},
+				#{item.documentUrl,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+    </insert>
+
+    <!-- 更新对象 DOCUMENT_ITEM -->
+    <update id="updateDocumentItemSensitive" parameterType="avicit.assets.device.documentpackage.dto.DocumentItemDTO">
+        update document_item
+        <set>
+            <if test="id != null">
+                id =#{id,jdbcType=VARCHAR},
+            </if>
+            <if test="packageId != null">
+                package_id =#{packageId,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                created_by =#{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createdByDept != null">
+                created_by_dept =#{createdByDept,jdbcType=VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                creation_date =#{creationDate,jdbcType=DATE},
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by =#{lastUpdatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date =#{lastUpdateDate,jdbcType=DATE},
+            </if>
+            <if test="lastUpdateIp != null">
+                last_update_ip =#{lastUpdateIp,jdbcType=VARCHAR},
+            </if>
+            <if test="documentName != null">
+                document_name =#{documentName,jdbcType=VARCHAR},
+            </if>
+            <if test="documentType != null">
+                document_type =#{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="documentCategory != null">
+                document_category =#{documentCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="lifeStage != null">
+                life_stage =#{lifeStage,jdbcType=VARCHAR},
+            </if>
+            <if test="documentAuthor != null">
+                document_author =#{documentAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="authorDept != null">
+                author_dept =#{authorDept,jdbcType=VARCHAR},
+            </if>
+            <if test="keyWord != null">
+                key_word =#{keyWord,jdbcType=VARCHAR},
+            </if>
+            <if test="currentVersion != null">
+                current_version =#{currentVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="lastVersion != null">
+                last_version =#{lastVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="documentState != null">
+                document_state =#{documentState,jdbcType=VARCHAR},
+            </if>
+            <if test="languageCategory != null">
+                language_category =#{languageCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="secretLevel != null">
+                secret_level =#{secretLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="documentAbstract != null">
+                document_abstract =#{documentAbstract,jdbcType=VARCHAR},
+            </if>
+            <if test="documentDescribe != null">
+                document_describe =#{documentDescribe,jdbcType=VARCHAR},
+            </if>
+            <if test="personLiable != null">
+                person_liable =#{personLiable,jdbcType=VARCHAR},
+            </if>
+            <if test="participants != null">
+                participants =#{participants,jdbcType=VARCHAR},
+            </if>
+            <if test="documentUpdateBy != null">
+                document_update_by =#{documentUpdateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="documentUpdateDate != null">
+                document_update_date =#{documentUpdateDate,jdbcType=DATE},
+            </if>
+            <if test="belongProject != null">
+                belong_project =#{belongProject,jdbcType=VARCHAR},
+            </if>
+            <if test="warehouseCatelog != null">
+                warehouse_catelog =#{warehouseCatelog,jdbcType=VARCHAR},
+            </if>
+            <if test="knowScope != null">
+                know_scope =#{knowScope,jdbcType=VARCHAR},
+            </if>
+            <if test="documentLabel != null">
+                document_label =#{documentLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="clickCount != null">
+                click_count =#{clickCount,jdbcType=DECIMAL},
+            </if>
+            <if test="downloadCount != null">
+                download_count =#{downloadCount,jdbcType=DECIMAL},
+            </if>
+            <if test="commentCount != null">
+                comment_count =#{commentCount,jdbcType=DECIMAL},
+            </if>
+            <if test="evaluateScore != null">
+                evaluate_score =#{evaluateScore,jdbcType=DECIMAL},
+            </if>
+            <if test="shareCount != null">
+                share_count =#{shareCount,jdbcType=DECIMAL},
+            </if>
+            <if test="likedCount != null">
+                liked_count =#{likedCount,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute01 != null">
+                attribute_01 =#{attribute01,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute02 != null">
+                attribute_02 =#{attribute02,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute03 != null">
+                attribute_03 =#{attribute03,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute04 != null">
+                attribute_04 =#{attribute04,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute05 != null">
+                attribute_05 =#{attribute05,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute06 != null">
+                attribute_06 =#{attribute06,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute07 != null">
+                attribute_07 =#{attribute07,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute08 != null">
+                attribute_08 =#{attribute08,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute09 != null">
+                attribute_09 =#{attribute09,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute10 != null">
+                attribute_10 =#{attribute10,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute11 != null">
+                attribute_11 =#{attribute11,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute12 != null">
+                attribute_12 =#{attribute12,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute13 != null">
+                attribute_13 =#{attribute13,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute14 != null">
+                attribute_14 =#{attribute14,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute15 != null">
+                attribute_15 =#{attribute15,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute16 != null">
+                attribute_16 =#{attribute16,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute17 != null">
+                attribute_17 =#{attribute17,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute18 != null">
+                attribute_18 =#{attribute18,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute19 != null">
+                attribute_19 =#{attribute19,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute20 != null">
+                attribute_20 =#{attribute20,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute21 != null">
+                attribute_21 =#{attribute21,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute22 != null">
+                attribute_22 =#{attribute22,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute23 != null">
+                attribute_23 =#{attribute23,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute24 != null">
+                attribute_24 =#{attribute24,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute25 != null">
+                attribute_25 =#{attribute25,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute26 != null">
+                attribute_26 =#{attribute26,jdbcType=DATE},
+            </if>
+            <if test="attribute27 != null">
+                attribute_27 =#{attribute27,jdbcType=DATE},
+            </if>
+            <if test="attribute28 != null">
+                attribute_28 =#{attribute28,jdbcType=DATE},
+            </if>
+            <if test="attribute29 != null">
+                attribute_29 =#{attribute29,jdbcType=DATE},
+            </if>
+            <if test="attribute30 != null">
+                attribute_30 =#{attribute30,jdbcType=DATE},
+            </if>
+            <if test="documentUrl != null">
+                document_url =#{documentUrl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 更新对象 DOCUMENT_ITEM -->
+    <update id="updateDocumentItemAll" parameterType="avicit.assets.device.documentpackage.dto.DocumentItemDTO">
+		update document_item
+			set
+				id                             =#{id,jdbcType=VARCHAR},
+				package_id                     =#{packageId,jdbcType=VARCHAR},
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+				created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+				creation_date                  =#{creationDate},
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+				last_update_date               =#{lastUpdateDate},
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+				document_name                  =#{documentName,jdbcType=VARCHAR},
+				document_type                  =#{documentType,jdbcType=VARCHAR},
+				document_category              =#{documentCategory,jdbcType=VARCHAR},
+				life_stage                     =#{lifeStage,jdbcType=VARCHAR},
+				document_author                =#{documentAuthor,jdbcType=VARCHAR},
+				author_dept                    =#{authorDept,jdbcType=VARCHAR},
+				key_word                       =#{keyWord,jdbcType=VARCHAR},
+				current_version                =#{currentVersion,jdbcType=VARCHAR},
+				last_version                   =#{lastVersion,jdbcType=VARCHAR},
+				document_state                 =#{documentState,jdbcType=VARCHAR},
+				language_category              =#{languageCategory,jdbcType=VARCHAR},
+				secret_level                   =#{secretLevel,jdbcType=VARCHAR},
+				document_abstract              =#{documentAbstract,jdbcType=VARCHAR},
+				document_describe              =#{documentDescribe,jdbcType=VARCHAR},
+				person_liable                  =#{personLiable,jdbcType=VARCHAR},
+				participants                   =#{participants,jdbcType=VARCHAR},
+				document_update_by             =#{documentUpdateBy,jdbcType=VARCHAR},
+				document_update_date           =#{documentUpdateDate,jdbcType=DATE},
+				belong_project                 =#{belongProject,jdbcType=VARCHAR},
+				warehouse_catelog              =#{warehouseCatelog,jdbcType=VARCHAR},
+				know_scope                     =#{knowScope,jdbcType=VARCHAR},
+				document_label                 =#{documentLabel,jdbcType=VARCHAR},
+				click_count                    =#{clickCount,jdbcType=DECIMAL},
+				download_count                 =#{downloadCount,jdbcType=DECIMAL},
+				comment_count                  =#{commentCount,jdbcType=DECIMAL},
+				evaluate_score                 =#{evaluateScore,jdbcType=DECIMAL},
+				share_count                    =#{shareCount,jdbcType=DECIMAL},
+				liked_count                    =#{likedCount,jdbcType=DECIMAL},
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+				attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+				attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+				attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+				attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+				attribute_15                   =#{attribute15,jdbcType=VARCHAR},
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+				attribute_17                   =#{attribute17,jdbcType=DECIMAL},
+				attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+				attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+				attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+				attribute_21                   =#{attribute21,jdbcType=DECIMAL},
+				attribute_22                   =#{attribute22,jdbcType=DECIMAL},
+				attribute_23                   =#{attribute23,jdbcType=DECIMAL},
+				attribute_24                   =#{attribute24,jdbcType=DECIMAL},
+				attribute_25                   =#{attribute25,jdbcType=DECIMAL},
+				attribute_26                   =#{attribute26,jdbcType=DATE},
+				attribute_27                   =#{attribute27,jdbcType=DATE},
+				attribute_28                   =#{attribute28,jdbcType=DATE},
+				attribute_29                   =#{attribute29,jdbcType=DATE},
+				attribute_30                   =#{attribute30,jdbcType=DATE},
+				document_url                   =#{documentUrl,jdbcType=VARCHAR}
+		where id = #{id} and version =#{version}
+	</update>
+
+    <!-- 批量更新对象   DOCUMENT_ITEM -->
+    <update id="updateDocumentItemList" parameterType="java.util.List">
+        <foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+            update document_item
+            set
+				id =#{item.id,jdbcType=VARCHAR},
+				package_id =#{item.packageId,jdbcType=VARCHAR},
+				created_by =#{item.createdBy,jdbcType=VARCHAR},
+				created_by_dept =#{item.createdByDept,jdbcType=VARCHAR},
+				creation_date =#{item.creationDate},
+				last_updated_by =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+				last_update_date =#{item.lastUpdateDate},
+				last_update_ip =#{item.lastUpdateIp,jdbcType=VARCHAR},
+				document_name =#{item.documentName,jdbcType=VARCHAR},
+				document_type =#{item.documentType,jdbcType=VARCHAR},
+				document_category =#{item.documentCategory,jdbcType=VARCHAR},
+				life_stage =#{item.lifeStage,jdbcType=VARCHAR},
+				document_author =#{item.documentAuthor,jdbcType=VARCHAR},
+				author_dept =#{item.authorDept,jdbcType=VARCHAR},
+				key_word =#{item.keyWord,jdbcType=VARCHAR},
+				current_version =#{item.currentVersion,jdbcType=VARCHAR},
+				last_version =#{item.lastVersion,jdbcType=VARCHAR},
+				document_state =#{item.documentState,jdbcType=VARCHAR},
+				language_category =#{item.languageCategory,jdbcType=VARCHAR},
+				secret_level =#{item.secretLevel,jdbcType=VARCHAR},
+				document_abstract =#{item.documentAbstract,jdbcType=VARCHAR},
+				document_describe =#{item.documentDescribe,jdbcType=VARCHAR},
+				person_liable =#{item.personLiable,jdbcType=VARCHAR},
+				participants =#{item.participants,jdbcType=VARCHAR},
+				document_update_by =#{item.documentUpdateBy,jdbcType=VARCHAR},
+				document_update_date =#{item.documentUpdateDate,jdbcType=DATE},
+				belong_project =#{item.belongProject,jdbcType=VARCHAR},
+				warehouse_catelog =#{item.warehouseCatelog,jdbcType=VARCHAR},
+				know_scope =#{item.knowScope,jdbcType=VARCHAR},
+				document_label =#{item.documentLabel,jdbcType=VARCHAR},
+				click_count =#{item.clickCount,jdbcType=DECIMAL},
+				download_count =#{item.downloadCount,jdbcType=DECIMAL},
+				comment_count =#{item.commentCount,jdbcType=DECIMAL},
+				evaluate_score =#{item.evaluateScore,jdbcType=DECIMAL},
+				share_count =#{item.shareCount,jdbcType=DECIMAL},
+				liked_count =#{item.likedCount,jdbcType=DECIMAL},
+				attribute_01 =#{item.attribute01,jdbcType=VARCHAR},
+				attribute_02 =#{item.attribute02,jdbcType=VARCHAR},
+				attribute_03 =#{item.attribute03,jdbcType=VARCHAR},
+				attribute_04 =#{item.attribute04,jdbcType=VARCHAR},
+				attribute_05 =#{item.attribute05,jdbcType=VARCHAR},
+				attribute_06 =#{item.attribute06,jdbcType=VARCHAR},
+				attribute_07 =#{item.attribute07,jdbcType=VARCHAR},
+				attribute_08 =#{item.attribute08,jdbcType=VARCHAR},
+				attribute_09 =#{item.attribute09,jdbcType=VARCHAR},
+				attribute_10 =#{item.attribute10,jdbcType=VARCHAR},
+				attribute_11 =#{item.attribute11,jdbcType=VARCHAR},
+				attribute_12 =#{item.attribute12,jdbcType=VARCHAR},
+				attribute_13 =#{item.attribute13,jdbcType=VARCHAR},
+				attribute_14 =#{item.attribute14,jdbcType=VARCHAR},
+				attribute_15 =#{item.attribute15,jdbcType=VARCHAR},
+				attribute_16 =#{item.attribute16,jdbcType=DECIMAL},
+				attribute_17 =#{item.attribute17,jdbcType=DECIMAL},
+				attribute_18 =#{item.attribute18,jdbcType=DECIMAL},
+				attribute_19 =#{item.attribute19,jdbcType=DECIMAL},
+				attribute_20 =#{item.attribute20,jdbcType=DECIMAL},
+				attribute_21 =#{item.attribute21,jdbcType=DECIMAL},
+				attribute_22 =#{item.attribute22,jdbcType=DECIMAL},
+				attribute_23 =#{item.attribute23,jdbcType=DECIMAL},
+				attribute_24 =#{item.attribute24,jdbcType=DECIMAL},
+				attribute_25 =#{item.attribute25,jdbcType=DECIMAL},
+				attribute_26 =#{item.attribute26,jdbcType=DATE},
+				attribute_27 =#{item.attribute27,jdbcType=DATE},
+				attribute_28 =#{item.attribute28,jdbcType=DATE},
+				attribute_29 =#{item.attribute29,jdbcType=DATE},
+				attribute_30 =#{item.attribute30,jdbcType=DATE},
+				document_url =#{item.documentUrl,jdbcType=VARCHAR}
+            where id = #{item.id} and version =#{item.version};
+        </foreach>
+    </update>
+
+    <!-- 主键删除 DOCUMENT_ITEM -->
+    <delete id="deleteDocumentItemById" parameterType="java.lang.String">
+		delete from document_item  where  id = #{id}
+	</delete>
+
+    <!-- 外键批量删除 DOCUMENT_ITEM -->
+    <delete id="deleteDocumentItemByPid" parameterType="java.lang.String">
+		delete from document_item  where  PACKAGE_ID = #{packageId}
+	</delete>
+
+    <!-- 批量主键删除 DOCUMENT_ITEM -->
+    <delete id="deleteDocumentItemList" parameterType="java.util.List">
+        delete from document_item t1
+        <where>
+            <foreach item="idItem" collection="list" open="(" separator="or" close=")">
+                t1.id = #{idItem}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

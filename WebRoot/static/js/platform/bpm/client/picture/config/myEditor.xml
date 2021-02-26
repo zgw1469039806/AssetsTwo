@@ -1,0 +1,126 @@
+<mxEditor>
+	<ui>
+		<add as="graph" element="graph" />
+	</ui>
+	<Array as="templates">
+		<add as="start">
+			<mxCell value="开始" tagName="start" vertex="1" style="image;image=static/js/platform/designer/images/48/start_event_empty.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="end">
+			<mxCell value="结束" tagName="end" vertex="1" style="image;image=static/js/platform/designer/images/48/end_event_terminate.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="task">
+			<mxCell value="task" tagName="task" vertex="1" style="image;image=static/js/platform/designer/images/48/task_human.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="java">
+			<mxCell value="java" tagName="java" vertex="1" style="image;image=static/js/platform/designer/images/48/task_java.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="sql">
+			<mxCell value="sql" tagName="sql" vertex="1" style="image;image=static/js/platform/designer/images/48/task_sql.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="ws">
+			<mxCell value="ws" tagName="ws" vertex="1" style="image;image=static/js/platform/designer/images/48/task_webservice.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="state">
+			<mxCell value="state" tagName="state" vertex="1" style="image;image=static/js/platform/designer/images/48/task_wait.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="fork">
+			<mxCell value="fork" tagName="fork" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_fork.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="join">
+			<mxCell value="join" tagName="join" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_join.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="decision">
+			<mxCell value="exclusive" tagName="decision" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_exclusive.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="sub-process">
+			<mxCell value="Subprocess" tagName="sub-process" vertex="1" style="image;image=static/js/platform/designer/images/48/task_subprocess.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="foreach">
+			<mxCell value="foreach" tagName="foreach" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_foreach.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="jms">
+			<mxCell value="jms" tagName="jms" vertex="1" style="image;image=static/js/platform/designer/images/48/task_jms.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="custom">
+			<mxCell value="custom" tagName="custom" vertex="1" style="image;image=static/js/platform/designer/images/48/task_custom.png;">
+				<mxGeometry as="geometry" width="55" height="50" />
+			</mxCell>
+		</add>
+		<add as="text">
+			<mxCell tagName="text" vertex="1" style="text" connectable="0">
+				<mxGeometry as="geometry" width="80" height="20"/>
+			</mxCell>
+		</add>
+	</Array>
+	<mxGraph as="graph">
+		<mxStylesheet as="stylesheet">
+			<add as="defaultVertex" extend="defaultVertex">
+				<add as="fillColor" value="#adc5ff" />
+				<add as="gradientColor" value="#7d85df" />
+				<add as="strokeColor" value="#5d65df" />
+				<add as="fontSize" value="12" />
+				<add as="fontColor" value="#1d258f" />
+				<add as="fontFamily" value="Verdana" />
+			</add>
+			<add as="defaultEdge" extend="defaultEdge">
+				<add as="labelBackgroundColor" value="white" />
+				<add as="rounded" value="1" />
+				<add as="edgeStyle" value="elbowEdgeStyle" />
+				<!-- 颜色加深，可回归平台-->
+				<add as="strokeColor" value="black" />
+				<add as="fontSize" value="11" />
+				<add as="fontColor" value="#1d258f" />
+				<add as="fontFamily" value="Verdana" />
+			</add>
+			<add as="image">
+				<add as="shape" value="image" />
+				<add as="perimeter" value="rectanglePerimeter" />
+				<add as="fontSize" value="12" />
+				<add as="verticalAlign" value="top" />
+				<add as="verticalLabelPosition" value="bottom" />
+				<add as="resizable" value="0" />
+			</add>
+			<add as="text">
+				<add as="shape" value="rectangle"/>
+				<add as="perimeter" value="rectanglePerimeter"/>
+				<add as="fontSize" value="12"/>
+				<add as="align" value="left"/>
+				<add as="verticalAlign" value="top"/>
+				<add as="shadow" value="0"/>
+				<add as="strokeColor" value="none"/>
+				<add as="fillColor" value="none"/>
+				<add as="gradientColor" value="none"/>
+			</add>
+		</mxStylesheet>
+		<mxGraphModel as="model">
+
+		</mxGraphModel>
+	</mxGraph>
+</mxEditor>

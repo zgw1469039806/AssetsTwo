@@ -1,0 +1,57 @@
+<form>
+	<div class="form-group property-control">
+		<input type="hidden" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly="readonly" >
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>起始列</label>
+		<div id="identifier-ctrl"  class="input-group input-group-sm avicselect">
+			<input type="text" class="form-control avicselect-act" readonly="readonly" name="startcolName" id="startcolName">
+			<input type="hidden" class="form-control avicselect-act" readonly="readonly" name="startcol" id="startcol">
+			<span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+			<div class="avicselect-list"></div>
+		</div>
+	</div>
+	<div class="form-group property-control">
+		<label>表头名称</label>
+		<input type="text" id="name" name="name"
+			   class="form-control input-sm" >
+	</div>
+
+	<div class="form-group property-control">
+		<label>合并列数量</label>
+		<input type="text" id="mergecount" name="mergecount"
+			   class="form-control input-sm"  >
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+
+		var ColDatas = engine.getCol(engine.clickedNode.getParentNode().getParentNode().getParentNode().id);
+		$("#identifier-ctrl").avicselect2({
+			findDom:$("#thisForm"),
+			type : 1,
+			showkey:'_value',
+			data : ColDatas,
+			height: '200px',
+			tpl : '<ul>'
+					+ '<@for ( var index in this ) {@>'
+					+ '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>'
+					+ '<@}@>' + '</ul>',
+			success:function(obj){
+				$("#startcolName").val(obj.data[1].value);
+				$("#startcol").val(obj.data[0].value);
+				$("#startcolName").change();
+			}
+		});
+
+
+		$(".form-control").bind('change', function() {
+			if ($(this).attr("name") == "level"){
+
+				$("#name").val($(this).find("option:selected").text());
+			}
+			engine.changSave();
+		});
+	})
+</script>

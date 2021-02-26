@@ -1,0 +1,378 @@
+<form>
+    <div class="form-group property-control">
+        <label>树标识</label><input type="text" id="id" name="id"
+                                 class="form-control input-sm" readonly="readonly" placeholder="树标识">
+    </div>
+	<div  class="form-group property-control wuli">
+		<label><i class="required">*</i>存储模型名称</label>
+		<div class="input-group input-group-sm" style="display:flex;width:100%;">
+			<input type="text" id="dbname" name="dbname"  class="form-control input-sm" placeholder="请选择一个存储模型" style="width:84%">
+			<a href="javascript:void(0)" id="creatTableModel" class="btn btn-primary form-tool-btn btn-sm" role="button" title="生成列模型">生成列模型</a>
+			<input type="hidden" name="dbid" id="dbid" />
+			<input type="hidden" name="tablename" id="tablename" />
+		</div>
+	</div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>树名称</label><input type="text" id="name" name="name"
+                                 class="form-control input-sm" placeholder="树名称">
+    </div>
+	<div class="form-group property-control">
+        <label>父ID</label><select id="pid" name="pid"
+                                  class="form-control input-sm col-select"></select>
+    </div>
+    <div class="form-group property-control">
+        <label>节点ID</label><select id="nodeid" name="nodeid"
+                                   class="form-control input-sm col-select"></select>
+    </div>
+    <div class="form-group property-control">
+        <label>展开字段</label><select id="expandname" name="expandname"
+                                   class="form-control input-sm col-select"></select>
+    </div>
+    <!--<div class="form-group property-control">
+        <label>排序字段</label><select id="ordername" name="ordername"
+                                   class="form-control input-sm col-select"></select>
+    </div> -->
+    <div class="form-group property-control">
+        <label><i class="required">*</i>根节点值</label><input type="text" id="root" name="root"
+                                  class="form-control input-sm" placeholder="根节点值">
+    </div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>展开层数</label><input type="text" id="level" name="level" value="2"
+                                  class="form-control input-sm" placeholder="展开层数">
+    </div>
+    <!-- <div class="form-group property-control">
+		<label>显示行号</label><select id="showRowNum" name="showRowNum"
+								   class="form-control input-sm"><option value="Y">是</option><option value="N" selected>否</option></select>
+	</div>
+	-->
+	<div class="form-group property-control">
+		<label>列宽自适应</label><select id="colFit" name="colFit"
+								   class="form-control input-sm"><option value="Y">是</option><option value="N">否</option></select>
+	</div>
+    <div class="form-group property-control">
+		<label>关联流程</label><select id="isbpm" name="isbpm" 
+			class="form-control input-sm"><option value="Y">是</option><option value="N" selected>否</option></select>
+	</div>
+	<div  class="form-group property-control formselect">
+		<label><i class="required">*</i>流程表单</label>			
+		<div id="bpmformselect" class="input-group input-group-sm">
+			<input type="text" class="form-control" name="formname" id="formname">
+			<input type="hidden" name="formid" id="formid" />
+			<input type="hidden" name="formcode" id="formcode" />
+			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+		</div>
+	</div>
+    <!-- <div class="form-group property-control">
+        <label>显示查询</label>
+        <select id="isquery" name="isquery" class="form-control input-sm">
+            <option value=""></option>
+            <option value="Y">是</option>
+            <option value="N">否</option>
+        </select>
+    </div> -->
+    <div class="form-group property-control">
+        <label>是否多选</label>
+        <select id="isMul" name="ismultiple" value="N" class="form-control input-sm">
+            <option value="N">否</option>
+            <option value="Y">是</option>
+        </select>
+    </div>
+    <div class="form-group property-control">
+        <label>按组织过滤数据</label><select id="isorgfilter" name="isorgfilter"
+                                      class="form-control input-sm">
+        <option value="Y">是</option>
+        <option value="N">否</option>
+    </select>
+    </div>
+    <div class="form-group property-control">
+        <label>树事件</label>
+        <select id="evt" name="evt" class="form-control input-sm">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group property-control evt loadComplete" style="display: none">
+        <label>数据加载后事件</label>
+        <textarea class="form-control input-sm" rows="5" title="行点击事件" name="event_init_loadComplete"
+                  id="event_init_loadComplete"></textarea>
+    </div>
+    <div class="form-group property-control evt onSelectRow" style="display: none">
+        <label>树点击事件</label>
+        <textarea class="form-control input-sm" rows="5" title="树点击事件" name="event_init_onSelectRow"
+                  id="event_init_onSelectRow"></textarea>
+    </div>
+    <div class="form-group property-control evt onExpand" style="display: none">
+        <label>树展开事件</label>
+        <textarea class="form-control input-sm" rows="5" title="树展开事件" name="event_init_onExpand"
+                  id="event_init_onExpand"></textarea>
+    </div>
+    <div class="form-group property-control evt onCollapse" style="display: none">
+        <label>树折叠事件</label>
+        <textarea class="form-control input-sm" rows="5" title="树折叠事件" name="event_init_onCollapse"
+                  id="event_init_onCollapse"></textarea>
+    </div>
+</form>
+<script src="avicit/platform6/eform/bpmsformmanage/select/selectPublishEform/selectPublishEform.js"></script>
+<script src="avicit/platform6/db/dbselect/selectCreatedDbTable/selectCreatedDbTable.js"></script>
+<script src="avicit/platform6/bpmreform/bpmbusiness/workhand/js/BpmModuleSelect.js"></script>
+<script type="text/javascript">
+    var tablePageParam = {dbChangeFlag:false};
+    if (viewEditor.viewStyle == "bootstrap") {
+        $("#evt").append('<option value="loadComplete">loadComplete()</option>');
+        $("#evt").append('<option value="onSelectRow">onSelectRow(rowid,status)</option>');
+        $("#evt").append('<option value="onExpand">onExpand(rc)</option>');
+        $("#evt").append('<option value="onCollapse">onCollapse(rc)</option>');
+        //$("#evt").append('<option value="onDblClick">onDblClick(event, treeId, treeNode)</option>');
+    } else {
+        $("#evt").append('<option value="loadComplete">loadComplete()</option>');
+        $("#evt").append('<option value="onSelectRow">onSelectRow(rowid,status)</option>');
+        $("#evt").append('<option value="onExpand">onExpand(rc)</option>');
+        $("#evt").append('<option value="onCollapse">onCollapse(rc)</option>');
+        //$("#evt").append('<option value="onDblClick">onDblClick(node)</option>');
+    }
+
+    function loadScriptTag(url) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+    function selectDbCallBack(id, name, tablename) {
+        $("#name").val("树型表格模型(" + name + ")");
+        $("#tablename").val(tablename);
+        avicAjax.ajax({
+            url: 'platform/eform/eformViewInfoController/getDbCol/' + id,
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: true,
+            success: function (r) {
+                if (r != null) {
+                    var list = $.parseJSON(r.data);
+                    var $colDom = $(".col-select");
+                    $colDom.each(function () {
+                        $(this).empty();
+                        for (var i = 0; i < list.length; i++) {
+                            var $option = $('<option value="' + list[i].colName + '">' + list[i].colName + '</option>');
+                            $(this).append($option);
+                        }
+                    });
+                }
+                $("#dbname").trigger("change");
+            }
+        });
+    }
+
+    loadScriptTag("avicit/platform6/db/dbselect/selectCreatedDbTable/selectCreatedDbTable.js");
+
+    $(function () {
+        var selectCreatedDbTable = new SelectCreatedDbTable("dbid", "dbname", "", componentViewId,"-1");
+        selectCreatedDbTable.init();
+		
+        $(".formselect").css("display","none");
+        $(".flowselect").css("display","none");
+        
+        $(".form-control").bind('change', function () {
+            if (this.id == 'evt') {
+                var val = $(this).val();
+                $(".evt").css("display", "none");
+                $("." + val).css("display", "block");
+            }
+
+            
+            if(this.id == 'isbpm') {
+                if ($(this).val() == "Y") {
+                    $(".formselect").css("display", "block");
+                    $(".flowselect").css("display","block");
+                }else{
+                    $(".formselect").css("display", "none");
+                    $(".flowselect").css("display","none");
+				}
+            }
+            engine.changSave();
+
+        });
+        
+        var selectPublishEform = new SelectPublishEform("formid", "formname", null, "Y", "");
+		selectPublishEform.init(function(data) {
+			var formcode = data.treeNode.attribute.formCode;
+			$("#formcode").val(formcode);
+			engine.changSave();
+		});
+      //添加流程选择框
+        new BpmModuleSelect("flowid", "flowname", function(data){
+            $("#flowid").val(data.ids);
+            $("#flowname").val(data.texts);
+            engine.changSave();
+        },undefined, $("#flowid"),$("#flowname"));
+      
+        $("#creatTableModel").on('click', function(e) {
+        	var dbid = $("#dbid").val();
+        	var isbpm = $("#isbpm").val();
+        	var id = $("#id").val();
+        	if (!dbid){
+        		layer.msg('请先选择存储模型！', {
+        			  icon: 7,
+        			  area: ['400px', ''], //宽高
+        			  closeBtn: 0
+  	      		});
+          		return false;
+        	}
+
+        	/* var node = engine.viewTree.getNodeByParam("type", "tableColModel", engine.clickedNode);
+        	if(node != null && node.children.length > 0 ){
+        		layer.alert('已经存在列模型！', {
+      			  icon: 7,
+      			  area: ['400px', ''], //宽高
+      			  closeBtn: 0
+	      		});
+        		return false;
+        	} */
+            var node = engine.viewTree.getNodeByParam("id","tableColModel",engine.clickedNode);
+            if (node != null) {
+                if (tablePageParam.dbChangeFlag) {
+                    engine.viewTree.removeChildNodes(node);
+                    tablePageParam.dbChangeFlag = false;
+                }
+            }
+            var coldata = engine.getCol($("#id").val());
+        	$.ajax({
+      			 url: './eform/eformViewInfoController/creatTableModel/' + dbid + '/'+ isbpm+'/'+id,
+      			 type : 'post',
+      			data : {data:JSON.stringify(coldata)},
+      			 dataType : 'json',
+      			 async: true,
+      			 success : function(r){
+      				if (r != null) {
+      					if (node != null){
+      						engine.viewTree.addNodes(node, $.parseJSON(r.data).children);
+      					}else{
+      						engine.viewTree.addNodes(engine.clickedNode, $.parseJSON(r.data));
+      					}
+      					
+      				}
+      			 }
+   	   		});
+        });
+    });
+
+    self.propertyPageInit = function (treeNode) {
+        if(treeNode.attribute.dbid == ''){
+            treeNode.attribute.dbid = undefined;
+        }
+        var id = treeNode.attribute.dbid;
+        var pid = treeNode.attribute.pid;
+        var nodeid = treeNode.attribute.nodeid;
+        var nodename = treeNode.attribute.nodename;
+        var expandname = treeNode.attribute.expandname;
+        var ordername = treeNode.attribute.ordername;
+        var isbpm = treeNode.attribute.isbpm;
+        
+        var formname = treeNode.attribute.formname;
+        var formid = treeNode.attribute.formid;
+        var formcode = treeNode.attribute.formcode;
+        var showRowNum = treeNode.attribute.showRowNum;
+        var colFit = treeNode.attribute.colFit;
+        avicAjax.ajax({
+            url: 'platform/eform/eformViewInfoController/getDbCol/' + id,
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: true,
+            success: function (r) {
+                if (r != null) {
+                    var list = $.parseJSON(r.data);
+                    var $colDom = $(".col-select");
+                    $colDom.each(function () {
+                        $(this).empty();
+                        for (var i = 0; i < list.length; i++) {
+                            var $option = $('<option value="' + list[i].colName + '">' + list[i].colName + '</option>');
+                            $(this).append($option);
+                        }
+                    });
+                }
+                $("#pid").val(pid);
+                $("#nodeid").val(nodeid);
+                $("#nodename").val(nodename);
+                $("#expandname").val(expandname);
+                $("#ordername").val(ordername);
+                $("#isbpm").val(isbpm);
+                $("#formname").val(formname);
+                $("#formid").val(formid);
+                $("#formcode").val(formcode);
+                $("#showRowNum").val(showRowNum);
+                $("#colFit").val(colFit);
+            }
+        });
+        if (treeNode.attribute.evt != "") {
+            $(".evt").css("display", "none");
+            $("." + treeNode.attribute.evt).css("display", "block");
+        }
+        
+        if (treeNode.attribute.isbpm == "Y"){
+			$(".formselect").css("display","block");
+            $(".flowselect").css("display","block");
+		}
+    };
+
+    $("#initTreeRoot").on('click', function(e) {
+    	if($('#root').val() == null || $('#root').val() === ''
+    			|| $('#pid').val() == null || $('#pid').val() === ''){
+            layer.msg('父ID与根节点值不能为空！', {icon: 2});
+            return;
+    	}
+	   	layer.open({
+   	        type: 2,
+   	        title: '初始化',
+   	        skin: 'bs-modal',
+   	        area: ['60%', '90%'],
+   	        maxmin: false,
+   	        content: 'avicit/platform6/eform/bpmsviewdesign/js/property/initTreeRoot.jsp?dbid='
+   	        		+ $('#dbid').val() + '&pid=' + $('#pid').val() + '&root=' + $('#root').val() + '&tableName=' + $("#tablename").val()
+
+   	    });
+    });
+
+    function closeDialog(type) {
+    	layer.closeAll();
+    	if (type) {
+            layer.msg('操作成功！', {icon: 1});
+        }
+    }
+    
+    self.validateForm = function(form,treeNode){
+       	if(form.dbname == null || form.dbname == ""){
+       		 layer.msg('数据源不能为空！',{
+                    icon: 2,
+                    area: ['220px', ''],
+                    closeBtn: 0
+                });
+       		return false;
+       	}
+    	if(form.name == null || form.name == ""){
+      		 layer.msg('树名称不能为空！',{
+                   icon: 2,
+                   area: ['220px', ''],
+                   closeBtn: 0
+               });
+      		return false;
+      	}
+    	if(form.root == null || form.root == ""){
+     		 layer.msg('根节点值不能为空！',{
+                  icon: 2,
+                  area: ['220px', ''],
+                  closeBtn: 0
+              });
+     		return false;
+     	}
+    	if(form.level == null || form.level == ""){
+     		 layer.msg('展开层数不能为空！',{
+                  icon: 2,
+                  area: ['220px', ''],
+                  closeBtn: 0
+              });
+     		return false;
+     	}
+       	return true;
+    };
+</script>

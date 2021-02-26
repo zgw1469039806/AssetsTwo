@@ -1,0 +1,188 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0; margin:0;}
+li{list-style:none;}
+a{text-decoration:none;}
+img{vertical-align:middle; border:0;}
+
+#hisContent{
+    padding-left: 7px;
+}
+
+.leftList{background:#f0f0f0; border-right:1px solid #c6c8cc;height: 100%;}
+.listUl{padding:8px 0; background:url(images/ulBg.jpg) repeat-x;}
+.listUl li{height:33px; line-height:35px; font-size:14px; padding-left:32px; overflow:hidden}
+.listUl li span{float:left;}
+.listUl li a{color:#000;}
+span.icon{background:url(images/icon.png) no-repeat; display:block; width:22px; height:22px; margin-right:10px; margin-top:6px;}
+span.icon01{background-position:0 0;}
+span.icon02{background-position:0 -22px;}
+span.icon03{background-position:0 -44px;}
+span.icon04{background-position:0 -88px;}
+span.icon05{background-position:0 -200px;}
+span.icon06{background-position:0 -66px;}
+span.icon07{background-position:0 -176px;}
+span.icon08{background-position:0 -131px;}
+span.icon09{background-position:0 -152px;}
+span.icon10{background-position:0 -109px;}
+
+.listUl li.hover,.listUl li.active{font-weight:bold; background:url(images/liBg.jpg) repeat-x}
+.listUl li.hover span.icon01,.listUl li.active span.icon01{background-position:-23px 0;}
+.listUl li.hover span.icon02,.listUl li.active span.icon02{background-position:-23px -22px;}
+.listUl li.hover span.icon03,.listUl li.active span.icon03{background-position:-23px -44px;}
+.listUl li.hover span.icon04,.listUl li.active span.icon04{background-position:-23px -88px;}
+.listUl li.hover span.icon05,.listUl li.active span.icon05{background-position:-23px -200px;}
+.listUl li.hover span.icon06,.listUl li.active span.icon06{background-position:-23px -66px;}
+.listUl li.hover span.icon07,.listUl li.active span.icon07{background-position:-23px -176px;}
+.listUl li.hover span.icon08,.listUl li.active span.icon08{background-position:-23px -131px;}
+.listUl li.hover span.icon09,.listUl li.active span.icon09{background-position:-23px -152px;}
+.listUl li.hover span.icon10,.listUl li.active span.icon10{background-position:-23px -109px;}
+
+.progressBar{margin-top:100px; padding:0 28px 50px;}
+.barBg{height:6px; background:#c6cfda;}
+.barBg span{background:#74c709; display:block; height:6px;}
+.progressBar p{height:24px; line-height:24px; font-size:14px; color:#666}
+.progressBar p span{font-weight:bold;}
+.progressBar p a{float:right; color:#0066cc}
+
+.sure{
+	background: url(images/btn_icon_17d92fd.gif) -0px -512px;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+.cancel{
+    background: url(images/btn_icon_17d92fd.gif) -27px -512px;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 0 0px 2px;
+    cursor: pointer;
+}
+.dirIcon{
+	background: url(images/listIcon_ca26f6a.png) 0 -30px no-repeat;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.fileIcon{
+	background: url(images/listIcon_ca26f6a.png) 0 0 no-repeat;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+
+.imgIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -0px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.pdfIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -30px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.wordIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -60px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.excelIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -90px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.txtIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -120px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.pptIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -150px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.videoIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -210px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.rarIcon{
+	background-image: url(images/listIcon_82b617a.png);
+    background-position: -240px 0;
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+
+.dirTitle{
+	vertical-align: top;
+	color:#333;
+	cursor: pointer;
+}
+.dirTitle:hover{
+	text-decoration:underline;
+}
+
+.fileTitle{
+	vertical-align: top;
+	color:#333;
+	cursor: pointer;
+}
+
+
+
+.navigation{
+	font-size:12px;
+	color:#666; 
+	line-height:24px; 
+	padding:0 20px 0 0; 
+}
+.navigation p{float:right;}
+.navigation a{margin:0 5px; color:#0066cc}
+.navigation span{margin:0 5px;}
+.share-detail-title{
+	padding-left: 10px;
+}
+
+.share-detail-title h2{
+	color: #333;
+    padding-top: 5px;
+    float: left;
+    font-size: 14px;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.shared-detail-subtitle{
+	vertical-align: middle;
+	color:#333;
+}
+.share-time{
+	padding-left:20px;
+	font: 12px/1.5 tahoma,arial,"宋体";
+    color: #666;
+}
+    

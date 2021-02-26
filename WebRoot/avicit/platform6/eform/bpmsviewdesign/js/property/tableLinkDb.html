@@ -1,0 +1,219 @@
+<form>
+
+	<div class="form-group property-control">
+		<label>关联标识符</label>
+		<input type="text" id="id" name="id"
+			   readonly="readonly" class="form-control input-sm" placeholder="表格标识符"/>
+	</div>
+	<div  class="form-group property-control wuli">
+		<label><i class="required">*</i>存储模型名称</label>
+		<div class="input-group input-group-sm" style="display:flex;width:100%;">
+			<input type="text" id="refdb" name="refdb"  class="form-control input-sm" placeholder="请选择一个存储模型" style="width:84%">
+			<a href="javascript:void(0)" id="creatTableModel" class="btn btn-primary form-tool-btn btn-sm" role="button" title="生成列模型">生成列模型</a>
+			<input type="hidden" name="dbid" id="dbid" />
+		</div>
+	</div>
+
+	<div  class="form-group property-control wuli">
+		<label>存储名称</label>
+		<input type="text" class="form-control input-sm" name="name" id="name" placeholder="请填写存储名称">
+	</div>
+
+	<div  class="form-group property-control wuli">
+		<label><i class="required">*</i>存储编码</label>
+		<input type="text" class="form-control input-sm" name="code" id="code" placeholder="请填写存储编码">
+		<p>此编码用于生成该存储对应的列模型的前缀</p>
+	</div>
+
+
+	<div class="form-group property-control">
+		<label><i class="required">*</i>连接方式</label>
+		<select id="linktype" name="linktype"  class="form-control input-sm">
+			<option value="1">inner join</option>
+			<option value="2">left join</option>
+			<option value="3">right join</option>
+		</select>
+	</div>
+
+	<div id="div_dictionary_area" class="showhidearea">
+		<input type="hidden" name="colnames" id="colnames"/>
+		<div class="form-group property-control">
+			<label class="control-label"><i class="required">*</i>选择字段</label>
+			<a title="选择字段" id="propertyBtn" style="line-height: 2"><i
+					class="fa fa-fw fa-lg fa-pencil-square-o"></i></a>
+		</div>
+	</div>
+
+
+</form>
+<script src="avicit/platform6/db/dbselect/selectCreatedDbTable/selectCreatedDbTable.js"></script>
+
+<style type="text/css">
+	.property-control label{
+		white-space: pre-wrap!important;
+		text-align: center;
+	}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+
+		var selectCreatedDbTable = new SelectCreatedDbTable("dbid", "refdb","",componentViewId,"-1");
+		selectCreatedDbTable.init(function(data){
+			$("#name").val(data.name);
+			$("#refdb").val(data.tablename);
+			engine.changSave();
+		});
+
+
+		$("#propertyBtn").click(function () {
+			var dbid = $("#dbid").val();
+			if (dbid == null ||dbid == "" || dbid == undefined ){
+				layer.msg('请先选择存储模型！', {
+					icon: 7,
+					area: ['400px', ''], //宽高
+					closeBtn: 0
+				});
+				return false;
+			}
+			linkagedialog = top.layer.open({
+				type: 2,
+				title: '选择列',
+				skin: 'bs-modal',
+				area: ['45%', '85%'],
+				maxmin: false,
+				content: "avicit/platform6/eform/bpmsviewdesign/dbLinkSelectCol.jsp?dbid="+dbid,
+				btn: ['确定', '取消'],
+				success: function(layero,index){
+					var iframeWin = layero.find('iframe')[0].contentWindow;
+					var o = {colnames:$("#colnames").val()};
+					iframeWin.init(o);
+				},
+				yes: function(index, layero){
+					var iframeWin = layero.find('iframe')[0].contentWindow;
+					var objDatas = iframeWin.getSelectRowData();
+					var colnames = "";
+					for(var i in objDatas){
+						colnames += objDatas[i].colName+",";
+					}
+					if (colnames!=""){
+						$("#colnames").val(colnames);
+						engine.changSave();
+					}
+
+					top.layer.close(index);
+
+				},
+				no: function(index, layero){
+					layero.close(index);
+				}
+			});
+		});
+
+
+		$("#creatTableModel").on('click', function(e) {
+			var dbid = $("#dbid").val();
+			var id = engine.getParent(engine.clickedNode,"table,treeGrid").id;
+			var colnames = $("#colnames").val();
+			var code = $("#code").val();
+			if (!dbid){
+				layer.msg('请先选择存储模型！', {
+					icon: 7,
+					area: ['400px', ''], //宽高
+					closeBtn: 0
+				});
+				return false;
+			}
+
+			if (!colnames){
+				layer.msg('请先选择字段！', {
+					icon: 7,
+					area: ['400px', ''], //宽高
+					closeBtn: 0
+				});
+				return false;
+			}
+
+			/* var node = engine.viewTree.getNodeByParam("type", "tableColModel", engine.clickedNode);
+            if(node != null && node.children.length > 0 ){
+                layer.alert('已经存在列模型！', {
+                    icon: 7,
+                    area: ['400px', ''], //宽高
+                    closeBtn: 0
+                  });
+                return false;
+            } */
+			var node = engine.viewTree.getNodeByParam("type","tableColModel",engine.getParent(engine.clickedNode,"table,treeGrid"));
+			var coldata = engine.getCol(id);
+			$.ajax({
+				url: './eform/eformViewInfoController/creatOuterTableCol/' + dbid ,
+				type : 'post',
+				data : {data:JSON.stringify(coldata),colnames:colnames,code:code},
+				dataType : 'json',
+				async: true,
+				success : function(r){
+					if (r != null) {
+
+						if (node != null){
+
+
+							engine.viewTree.addNodes(node, $.parseJSON(r.data).children);
+						}else{
+							engine.viewTree.addNodes(engine.clickedNode, $.parseJSON(r.data));
+						}
+
+					}
+				}
+			});
+		});
+	});
+
+	self.validateForm = function(form,treeNode){
+		if(form.refdb == null || form.refdb == ""){
+			layer.msg('存储模型名称不能为空！',{
+				icon: 2,
+				area: ['300px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+
+		if(form.code == null || form.code == ""){
+			layer.msg('存储模编码不能为空！',{
+				icon: 2,
+				area: ['300px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}else if (form.code.toUpperCase() == "T1"){
+			layer.msg('存储模编码不能为t1！',{
+				icon: 2,
+				area: ['300px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+
+		var patten =/^[a-zA-Z]\w{0,31}$/; //正则
+		if(!patten.test(form.code)) {  //如果没有匹配到，那么就错误
+			layer.msg('存储模编码只能为英文或数字，且不能以数字打头！',{
+				icon: 2,
+				area: ['300px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+
+		if(form.colnames == null || form.colnames == ""){
+			layer.msg('选择字段不能为空！',{
+				icon: 2,
+				area: ['300px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		return true;
+	};
+</script>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.cadreselect.dynperson.dao.DynPersonDAO">
+<resultMap id="DynPersonDTOMap" type="avicit.cadreselect.dynperson.dto.DynPersonDTO">
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="perName" column="PER_NAME" jdbcType="VARCHAR" />
+	<result property="perDept" column="PER_DEPT" jdbcType="VARCHAR" />
+	<result property="perSex" column="PER_SEX" jdbcType="DECIMAL" />
+	<result property="perBirth" column="PER_BIRTH" jdbcType="VARCHAR" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="commonColums">
+	t1.ID,
+	t1.LAST_UPDATE_DATE,
+	t1.CREATED_BY,
+	t1.CREATION_DATE,
+	t1.VERSION,
+	t1.LAST_UPDATE_IP,
+	t1.LAST_UPDATED_BY,
+	t1.PER_NAME,
+	t1.PER_DEPT,
+	t1.PER_SEX,
+	t1.PER_BIRTH,
+	t1.ORG_IDENTITY</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+		and t1.org_identity = #{bean.orgIdentity}
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+    <if test="bean.id != null and bean.id != ''">
+        and t1.ID like concat(concat('%',#{bean.id}),'%')
+    </if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+    <if test="bean.createdBy != null and bean.createdBy != ''">
+        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+    </if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+    <if test="bean.version != null ">
+        and t1.VERSION = #{bean.version}
+    </if>
+    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+    </if>
+    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+    </if>
+    <if test="bean.perName != null and bean.perName != ''">
+        and t1.PER_NAME like concat(concat('%',#{bean.perName}),'%')
+    </if>
+    <if test="bean.perDept != null and bean.perDept != ''">
+        and t1.PER_DEPT like concat(concat('%',#{bean.perDept}),'%')
+    </if>
+    <if test="bean.perSex != null ">
+        and t1.PER_SEX = #{bean.perSex}
+    </if>
+    <if test="bean.perBirth != null and bean.perBirth != ''">
+        and t1.PER_BIRTH like concat(concat('%',#{bean.perBirth}),'%')
+    </if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.version != null and bean.version != ''">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.perName != null and bean.perName != ''">
+			or t1.PER_NAME like concat(concat('%',#{bean.perName}),'%')
+		</if>
+		<if test="bean.perDept != null and bean.perDept != ''">
+			or t1.PER_DEPT like concat(concat('%',#{bean.perDept}),'%')
+		</if>
+		<if test="bean.perSex != null and bean.perSex != ''">
+			or t1.PER_SEX = #{bean.perSex}
+		</if>
+		<if test="bean.perBirth != null and bean.perBirth != ''">
+			or t1.PER_BIRTH like concat(concat('%',#{bean.perBirth}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="pOrderBy != null and pOrderBy != ''">
+			order by ${pOrderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+<!-- 分页查询 DYN_PERSON -->
+<select id="searchDynPersonByPage" parameterType="java.util.Map" resultMap="DynPersonDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_PERSON t1   
+<where>
+	<if test="bean != null">
+		<choose>
+			<when test="keyWord != null and keyWord != '' ">
+				<include refid="commonWhereOr"/>
+			</when>
+			<otherwise>
+				<include refid="commonWhereAnd"/>
+			</otherwise>
+		</choose>
+		<include refid="defaultWhereAnd"/>
+	</if>
+</where>
+<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 DYN_PERSON -->
+<select id="searchDynPerson" parameterType="java.util.Map" resultMap="DynPersonDTOMap">
+	select
+	<include refid="commonColums"/>
+    from DYN_PERSON 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</if>
+	</where>
+</select>
+<!-- 主键查询对象 DYN_PERSON -->
+<select id="findDynPersonById" parameterType="java.lang.String" resultMap="DynPersonDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_PERSON t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 DYN_PERSON -->
+<insert id="insertDynPerson" parameterType="avicit.cadreselect.dynperson.dto.DynPersonDTO">
+	insert into DYN_PERSON
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="perName != null">
+			PER_NAME,
+		</if>
+		<if test="perDept != null">
+			PER_DEPT,
+		</if>
+		<if test="perSex != null">
+			PER_SEX,
+		</if>
+		<if test="perBirth != null">
+			PER_BIRTH,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="perName != null">
+			#{perName,jdbcType = VARCHAR},
+		</if>
+		<if test="perDept != null">
+			#{perDept,jdbcType = VARCHAR},
+		</if>
+		<if test="perSex != null">
+			#{perSex,jdbcType = DECIMAL},
+		</if>
+		<if test="perBirth != null">
+			#{perBirth,jdbcType = VARCHAR},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 DYN_PERSON -->
+<insert id="insertDynPersonList" parameterType="java.util.List">
+	insert into DYN_PERSON(
+	ID ,
+	LAST_UPDATE_DATE ,
+	CREATED_BY ,
+	CREATION_DATE ,
+	VERSION ,
+	LAST_UPDATE_IP ,
+	LAST_UPDATED_BY ,
+	PER_NAME ,
+	PER_DEPT ,
+	PER_SEX ,
+	PER_BIRTH ,
+	ORG_IDENTITY )
+<foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
+	select
+	#{item.id,jdbcType = VARCHAR} ,
+	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+	#{item.createdBy,jdbcType = VARCHAR} ,
+	#{item.creationDate,jdbcType = TIMESTAMP} ,
+	#{item.version,jdbcType = DECIMAL} ,
+	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+	#{item.perName,jdbcType = VARCHAR} ,
+	#{item.perDept,jdbcType = VARCHAR} ,
+	#{item.perSex,jdbcType = DECIMAL} ,
+	#{item.perBirth,jdbcType = VARCHAR} ,
+	#{item.orgIdentity,jdbcType = VARCHAR} 	from dual
+</foreach>
+</insert>
+<!-- 更新对象 DYN_PERSON -->
+<update id="updateDynPersonSensitive" parameterType="avicit.cadreselect.dynperson.dto.DynPersonDTO">
+	update DYN_PERSON
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="perName != null">
+			PER_NAME = #{perName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="perDept != null">
+			PER_DEPT = #{perDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="perSex != null">
+			PER_SEX = #{perSex,jdbcType = DECIMAL} ,
+		</if>
+		<if test="perBirth != null">
+			PER_BIRTH = #{perBirth,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 DYN_PERSON -->
+<update id="updateDynPersonAll" parameterType="avicit.cadreselect.dynperson.dto.DynPersonDTO">
+	update DYN_PERSON
+	set
+	ID = #{id,jdbcType = VARCHAR} ,
+	LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+	CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+	CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+	VERSION = version+1 ,
+	LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+	LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+	PER_NAME = #{perName,jdbcType = VARCHAR} ,
+	PER_DEPT = #{perDept,jdbcType = VARCHAR} ,
+	PER_SEX = #{perSex,jdbcType = DECIMAL} ,
+	PER_BIRTH = #{perBirth,jdbcType = VARCHAR} ,
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   DYN_PERSON -->
+<update id="updateDynPersonList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+		update DYN_PERSON
+		set
+		ID = #{item.id,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+		VERSION = version+1  ,
+		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+		PER_NAME = #{item.perName,jdbcType = VARCHAR} ,
+		PER_DEPT = #{item.perDept,jdbcType = VARCHAR} ,
+		PER_SEX = #{item.perSex,jdbcType = DECIMAL} ,
+		PER_BIRTH = #{item.perBirth,jdbcType = VARCHAR} ,
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} 		where id = #{item.id}
+		and version = #{version}
+	</foreach>
+</update>
+<!-- 主键删除 DYN_PERSON -->
+<delete id="deleteDynPersonById" parameterType="java.lang.String">
+	delete from DYN_PERSON  where id = #{id}
+</delete>
+</mapper>

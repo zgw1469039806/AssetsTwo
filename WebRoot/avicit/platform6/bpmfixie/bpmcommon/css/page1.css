@@ -1,0 +1,31 @@
+.newsTable {
+	color: #454545;
+    text-align: center;
+    font-size: 14px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0px 14px;
+}
+
+.newsTable a {
+	color:#454545;
+	text-decoration: none;
+}
+.newsTable a:hover {
+	text-decoration: none;
+}
+
+.newsTable td {
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	overflow : hidden;
+}
+
+.newsTable .redFlag {
+	color:#ff0000;
+}
+
+.newsTable a.btn {
+	color:#0080ff;
+	text-decoration: none!important;
+}

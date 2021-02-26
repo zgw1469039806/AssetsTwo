@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Box Sizing Behavior (WebFX)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="local/webfxlayout.js"></script>
+</head>
+<body>
+<!-- WebFX Layout Include -->
+<script type="text/javascript">
+
+var articleMenu= new WebFXMenu;
+articleMenu.left  = 384;
+articleMenu.top   = 86;
+articleMenu.width = 140;
+articleMenu.add(new WebFXMenuItem("Box Sizing", "boxsizing.html"));articleMenu.add(new WebFXMenuItem("Implementation", "implementation.html"));
+articleMenu.add(new WebFXMenuItem("Demo", "demo.html"));
+articleMenu.add(new WebFXMenuSeparator);
+articleMenu.add(new WebFXMenuItem("Download", "boxsizing.zip"));
+webfxMenuBar.add(new WebFXMenuButton("Article Menu", null, null, articleMenu));
+
+webfxLayout.writeTitle("Box Sizing Behavior");
+webfxLayout.writeMenu();
+webfxLayout.writeDesignedByEdger();
+
+</script>
+<div class="webfx-main-body">
+<!-- end WebFX Layout Includes -->
+
+<h2>Implementation</h2>
+<h3>Style Properties</h3>
+<p>The implementation uses the three different style collection objects. Belowis a short description of these and how they can be used.</p><h4>style</h4><p>This property directly reflects the inline style attribute as well as stylechanges set using scripting in the normal fashion.</p><pre>&lt;element style="width: 100px" /&gt;element.style.width = "100px";</pre><h4>currentStyle</h4><p><code>currentStyle</code> returns the current cascaded value for the CSSproperty. If no inline style attribute is present then global style sheetsdictate the value for this. Properties in this collection are read only.</p><pre>&lt;style type="text/css"&gt;#my-element {   width: 100px;}&lt;/style&gt;&lt;script type="text/javascript"&gt;// this will alert "100px"alert(document.getElementById("my-element").currentStyle.width);&lt;/script&gt;</pre><h4>runtimeStyle</h4><p>Setting the runtime style has the highest priority so this allows you toset the CSS value without changing the inline attribute or the global stylesheet. This is very similar to the<a href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113/css.html#CSS-DocumentCSS-getOverrideStyle">overridestyle in the DOM Level 2 Style</a> which allows you to override all the stylesprovided by the document and external style sheets.</p><h2>Setting the Size</h2><p>The methods that set the width and height are pretty simple. We just add orsubtract the padding and borders depending on the box model to use.</p><pre>function setBorderBoxWidth(n) {
+   element.runtimeStyle.width = Math.max(0, n - getBorderLeftWidth() -
+      getPaddingLeft() - getPaddingRight() - getBorderRightWidth()) + "px";
+}function setContentBoxWidth(n) {
+   element.runtimeStyle.width = Math.max(0, n + getBorderLeftWidth() +
+      getPaddingLeft() + getPaddingRight() + getBorderRightWidth()) + "px";
+}
+</pre><p>The getters for the padding and borders just return the numerical value ofthe respective <code>currentStyle</code> property.</p><pre>function getBorderWidth(sSide) {
+   if (element.currentStyle["border" + sSide + "Style"] == "none")
+      return 0;
+   var n = parseInt(element.currentStyle["border" + sSide + "Width"]);
+   return n || 0;
+}</pre><p>Notice here how we return <code>0</code> if the border style is set to<code>none</code>. Also notice how the <code>||</code> operator is used. Thevalue <code>NaN</code> is treated as <code>false</code> so the secondexpression is returned whenever the <code>parsInt</code> fails.</p><h2>Finding the Box Model</h2><p>First we find the box model used by Internet Explorer by default. This canbe found by checking the <code>document.compatMode</code>.</p><pre>function getDocumentBoxSizing() {
+   if (doc.compatMode == null || doc.compatMode == "BackCompat")
+      return "border-box";
+   return "content-box"
+}</pre><p>Once we start to setting the <code>box-sizing</code> on the element it gets a bitcomplicated to find the value for this. Internet Explorer allows custom CSSproperties but they are not treated exactly like built in properties. For exampleif we use <code>box-sizing</code> in a style block we need to use<code>currentStyle["box-sizing"]</code> but if the user has set the propertyusing script with <code>style.boxSizing</code> we will have to use<code>boxSizing</code> instead. The next problem is that if we set the propertyto <code>""</code> we expect the global value to be used instead. The next problem isthat the <code>currenStyle</code> property is not updated fast enough. Thisgives the following (ugly) code to find the <code>box-sizing</code>.</p><pre>function getBoxSizing() {
+   var s = element.style;
+   var cs = element.currentStyle
+
+   if (typeof s.boxSizing != "undefined" &amp;&amp; s.boxSizing != "")
+      return s.boxSizing;
+   if (typeof s["box-sizing"] != "undefined" &amp;&amp; s["box-sizing"] != "")
+      return s["box-sizing"];
+   if (typeof cs.boxSizing != "undefined" &amp;&amp; cs.boxSizing != "")
+      return cs.boxSizing;
+   if (typeof cs["box-sizing"] != "undefined" &amp;&amp; cs["box-sizing"] != "")
+      return cs["box-sizing"];
+   return getDocumentBoxSizing();
+}</pre><h2>Updating the Size</h2><p>The size needs to be updated at load as well as when the CSS changes. Atconstruction we just call <code>updateBorderBoxWidth</code> and<code>updateBorderBoxHeight</code> but we also add an event listener to the<code>propertychange</code> event. This allows us to update the size when the<code>style</code> or <code>className</code> changes.</p><pre>function updateBorderBoxWidth() {
+   element.runtimeStyle.width = "";
+   if (getDocumentBoxSizing() == getBoxSizing())
+      return;
+   var csw = element.currentStyle.width;
+   if (csw != "auto" &amp;&amp; csw.indexOf("px") != -1) {
+      if (getBoxSizing() == "border-box")
+         setBorderBoxWidth(parseInt(csw));
+      else
+         setContentBoxWidth(parseInt(csw));
+   }
+}</pre><p>Notice here that we reset the <code>runtimeStyle</code>. This is done sothat we can find the <code>runtimeStyle</code> that the user has set.</p><pre>function checkPropertyChange() {
+   var pn = event.propertyName;
+   var undef;
+
+   if (pn == "style.boxSizing" &amp;&amp; element.style.boxSizing == "") {
+      element.style.removeAttribute("boxSizing");
+      element.runtimeStyle.boxSizing = undef;   }
+
+   switch (pn) {
+      case "style.width":
+      case "style.borderLeftWidth":
+      case "style.borderLeftStyle":
+      case "style.borderRightWidth":
+      case "style.borderRightStyle":
+      case "style.paddingLeft":
+      case "style.paddingRight":
+         updateBorderBoxWidth();
+         break;
+
+   case "style.height":
+   case "style.borderTopWidth":
+   case "style.borderTopStyle":
+   case "style.borderBottomWidth":
+   case "style.borderBottomStyle":
+   case "style.paddingTop":
+   case "style.paddingBottom":
+      updateBorderBoxHeight();
+      break;
+
+   case "className":
+   case "style.boxSizing":
+      updateBorderBoxWidth();
+      updateBorderBoxHeight();
+      break;
+   }
+}</pre><p>Notice here that in case the <code>boxSizing</code> is set to <code>""</code>we invalidate that property as good as possible.</p>
+<p>
+<a href="boxsizing.html">Introduction</a><br /><a href="implementation.html">Implementation</a><br />
+<a href="demo.html">Demo</a><br /><a href="boxsizing.zip">Download</a>
+</p>
+
+<p class="author">Author: Erik Arvidsson</p>
+
+<!-- end webfx-main-body -->
+</div>
+
+</body>
+</html>

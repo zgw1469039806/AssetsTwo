@@ -1,0 +1,87 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "strophe-plugins",
+        "scope": null,
+        "escapedName": "strophe-plugins",
+        "name": "strophe-plugins",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/zhijielee/Development/code/im_pc/IM_API/WebContent/strophejs-1.2.14"
+    ]
+  ],
+  "_from": "strophe-plugins@latest",
+  "_id": "strophe-plugins@0.1.3",
+  "_inCache": true,
+  "_location": "/strophe-plugins",
+  "_nodeVersion": "4.4.4",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/strophe-plugins-0.1.3.tgz_1465202808962_0.9733060237485915"
+  },
+  "_npmUser": {
+    "name": "flosse",
+    "email": "mail@markus-kohlhase.de"
+  },
+  "_npmVersion": "2.15.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "strophe-plugins",
+    "scope": null,
+    "escapedName": "strophe-plugins",
+    "name": "strophe-plugins",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/strophe-plugins/-/strophe-plugins-0.1.3.tgz",
+  "_shasum": "d161f2091931b4247214576a7df436dbb8bce659",
+  "_shrinkwrap": null,
+  "_spec": "strophe-plugins",
+  "_where": "/Users/zhijielee/Development/code/im_pc/IM_API/WebContent/strophejs-1.2.14",
+  "author": {
+    "name": "Markus Kohlhase"
+  },
+  "bugs": {
+    "url": "https://github.com/flosse/npm-strophe-plugins/issues"
+  },
+  "dependencies": {},
+  "description": "Plugins for strophejs",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "d161f2091931b4247214576a7df436dbb8bce659",
+    "tarball": "https://registry.npmjs.org/strophe-plugins/-/strophe-plugins-0.1.3.tgz"
+  },
+  "gitHead": "05e0587f0971f20ac642ea26659b5a86dccf38a9",
+  "homepage": "https://github.com/flosse/npm-strophe-plugins",
+  "keywords": [
+    "xmpp",
+    "strophe",
+    "jabber",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "flosse",
+      "email": "mail@markus-kohlhase.de"
+    }
+  ],
+  "name": "strophe-plugins",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flosse/npm-strophe-plugins.git"
+  },
+  "scripts": {},
+  "version": "0.1.3"
+}

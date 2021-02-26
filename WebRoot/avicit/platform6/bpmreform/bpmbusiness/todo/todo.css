@@ -1,0 +1,146 @@
+.rmain {
+    position: absolute;
+    bottom: 20px;
+    right: 5px;
+}
+
+.rmain a {
+    display: block;
+    height: 16px;
+    width: 16px;
+    margin: 13px 0 0 0;
+    z-index: 999;
+}
+
+.fjpages {
+    background: url(images/top.gif) no-repeat;
+}
+
+.fjpagex {
+    background: url(images/next.gif) no-repeat;
+}
+
+.content-empty:after, .content-empty:before {
+    content: "" !important;
+}
+
+.icon_more {
+    background: url("avicit/platform6/bpmreform/bpmbusiness/todo/images/more.png") no-repeat center;
+}
+
+.icon_more:hover {
+    background: url("avicit/platform6/bpmreform/bpmbusiness/todo/images/more_hover.png") no-repeat center;
+}
+
+.icon_refresh {
+    background: url("avicit/platform6/bpmreform/bpmbusiness/todo/images/refresh.png") no-repeat center;
+}
+
+.icon_refresh:hover {
+    background: url("avicit/platform6/bpmreform/bpmbusiness/todo/images/refresh_hover.png") no-repeat center;
+}
+
+.icon_refresh, .icon_more {
+    float: right;
+    height: 28px;
+    width: 28px;
+    display: block;
+    cursor: pointer;
+    margin: 2px 4px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: normal;
+    color: #686868;
+}
+
+.title-box {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #F0F2F4;
+    padding: 0 14px;
+}
+
+.title-box .title-text a {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #98A5BA;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+}
+
+em.figure {
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 4px;
+    background: none;
+    font-size: 16px;
+    color: inherit;
+    margin: 0;
+    font-weight: normal;
+    font-family: "微软雅黑";
+}
+
+.title-text a.active {
+    color: #3d4d65;
+    border: 0;
+}
+
+.db-table tr {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.db-table td {
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #98A5BA;
+    font-size: 12px;
+}
+
+.title {
+    width: 200px/0;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+a.link-title {
+    font-size: 14px;
+    color: #3d4d65;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+    text-align: left;
+    padding-left: 14px;
+    display: block;
+}
+
+.db-table {
+    margin: 0;
+    width: 100%;
+}
+
+.db-table tr:hover {
+    background: #f3f4f9;
+}
+
+.content-body {
+    padding: 10px;
+}
+.retreat {
+	background: url(images/retreat.png) no-repeat;
+	padding-left: 18px;
+}

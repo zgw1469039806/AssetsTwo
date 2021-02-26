@@ -1,0 +1,25 @@
+<form id="thisForm">
+	<div class="form-group property-control">
+		<label>流程查询标识</label>
+		<input type="text" id="id" name="id" readonly="readonly"
+			class="form-control input-sm" value="workFlowSelect" placeholder="流程查询标识">
+	</div>
+	<input type="hidden" id="name" name="name"
+		   isnull="false" class="form-control input-sm" readonly="readonly">
+	<div class="form-group property-control">
+		<label>初始查询</label><select id="initsearch" name="initsearch" 
+			class="form-control input-sm">
+			<option value="all" selected="selected">全部</option>
+			<option value="nostart">未发起</option>
+    		<option value="start">拟稿中</option>
+    		<option value="active">流转中</option>
+    		<option value="ended">已完成</option>
+	</div>
+</form>
+<script type="text/javascript">
+$(function() {
+	$(".form-control").bind('change', function() {
+		engine.changSave();
+	});
+});
+</script>

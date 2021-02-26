@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>代码框</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../../../static/h5/jquery/jquery-1.9.1.js"></script>
+    <script src="../../../../static/js/platform/eform/tinymce/tinymce.min.js"></script>
+</head>
+
+<body>
+
+
+<textarea id="eventEditTextarea"></textarea>
+
+<script>
+    tinymce.init({
+        selector: '#eventEditTextarea',
+        // branding: false,
+        height: $(window).height() - 130,
+        language: 'zh_CN',
+        skin: 'lightgray',
+        theme: 'modern',
+        table_responsive_width:true,
+        verify_html: false,
+        resize:false,
+        disable_resize:false,
+        plugins: [
+            'advlist lists charmap print hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars',
+            'insertdatetime table contextmenu directionality',
+            'textcolor link colorpicker textpattern codesample toc'
+        ],
+        plugin_preview_width: 1000,
+        plugin_preview_height: 550,
+        auto_focus: 'eventEditTextarea',
+        content_css:'richtexteditor.css',
+        // toolbar_items_size: 'small',
+        toolbar: 'fontselect fontsizeselect forecolor backcolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent'
+
+    });
+    function getEditorValue(){
+        return tinymce.activeEditor.getContent();
+    }
+
+    function setEditorValue(value){
+        tinymce.activeEditor.setContent(value);
+    }
+
+</script>
+
+</body>
+</html>

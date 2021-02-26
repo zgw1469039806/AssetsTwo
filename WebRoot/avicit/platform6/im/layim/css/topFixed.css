@@ -1,0 +1,90 @@
+a:focus{outline:none;}
+
+@font-face {font-family: "aviciconfixed";
+  src: url('iconfont/iconfont.eot?t=1502947235293'); /* IE9*/
+  src: url('iconfont/iconfont.eot?t=1502947235293#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont/iconfont.woff?t=1502947235293') format('woff'), /* chrome, firefox */
+  url('iconfont/iconfont.ttf?t=1502947235293') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont/iconfont.svg?t=1502947235293#aviciconfixed') format('svg'); /* iOS 4.1- */
+}
+/*layout弹出框调整Start*/
+.layui-layer-title {
+	background-color: #fff!important;
+    color: #525252!important;
+    font-weight: bold;
+    line-height: 35px!important;
+    height: 35px!important;
+    border-bottom: 1px solid #2fad95!important;
+}
+.layui-layer-setwin {
+	top:6px!important;
+}
+.layui-layer-setwin a {
+	color:#6b6b6b;
+}
+.layui-layer-setwin a:hover {
+	text-decoration: none;
+}
+.layui-layer-setwin .layui-layer-min cite {
+	display: none;
+}
+.layui-layer-min:before { font-family:"aviciconfixed" !important;content: "\e663"; }
+.layui-layer-max {background: none!important;}
+.layui-layer-max:before { font-family:"aviciconfixed" !important;content: "\e660"; }
+.layui-layer-close {
+	font-size: 16px;
+	background: none!important;
+}
+.layui-layer-close:before { font-family:"aviciconfixed" !important;content: "\e669";	font-size: 20px;}
+
+.layui-layer.bs-modal .layui-layer-btn a {padding:0 15px!important;}
+
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0 {
+	background: #2fad95;
+	border-color: #2fad95;
+}
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0:hover {
+	background: #178c76;
+	border-color: #178c76;
+}
+.panel-header {
+	color:#454545;
+	background: #efefef;
+}
+.layui-layer-btn .layui-layer-btn0,.layui-layer-btn1,.layui-layer-btn2 {
+	font-size: 14px;
+	color:#FFF;
+	height: 28px;
+	text-align: center;
+	min-width:78px;
+	margin:1px 0;
+	padding:0 10px;
+	line-height: 26px!important;
+	margin-right: 5px;
+	background:#2fad95;
+	border-color:#2fad95;
+	-webkit-transition:all .3s;
+	transition:all .3s;
+	text-shadow:none;
+}
+.layui-layer-btn .layui-layer-btn0:hover,.form-tool-btn:focus {
+	height: 28px;
+	color:#FFF;
+	padding:0 10px;
+	line-height: 26px;
+	background:#178c76;
+	text-shadow:none;
+	border-color:#178c76;
+}
+.layui-layer-btn1,.layui-layer-btn2 {
+	background-color: #a9a9a9!important;
+	border:1px solid #a9a9a9!important;
+	color:#FFF!important;
+}
+.layui-layer-btn1:hover,.layui-layer-btn2:hover {
+	background-color: #666666!important;
+	border:1px solid #a9a9a9!important;
+	color:#FFF!important;
+}
+
+/*layout弹出框调整End*/

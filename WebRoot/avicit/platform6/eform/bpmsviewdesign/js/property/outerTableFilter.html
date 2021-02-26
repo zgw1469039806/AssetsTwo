@@ -1,0 +1,240 @@
+<form id="thisForm">
+
+
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>条件列</label>
+        <select id="columnName" name="columnName" isnull="false" class="form-control input-sm">
+        </select>
+    </div>
+
+    <div class="form-group property-control">
+        <label>列中文名称</label>
+        <input type="text" id="name" name="name"
+               class="form-control input-sm" readonly="true">
+        <input type="hidden" id="colType" name="colType" class="form-control input-sm">
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>逻辑运算符</label>
+        <select id="opttype" name="opttype" isnull="false" class="form-control input-sm">
+            <option value=""></option>
+            <option value="=">等于</option>
+            <option value="!=">不等于</option>
+            <option value="dayu">大于</option>
+            <option value="dayu=">大于等于</option>
+            <option value="xiaoyu">小于</option>
+            <option value="xiaoyu=">小于等于</option>
+        </select>
+    </div>
+
+    <div class="form-group property-control" id="filtertypeselect" style="display: none">
+        <label><i class="required">*</i>条件值来源</label>
+        <select id="filtervaluetype" name="filtervaluetype" isnull="false" class="form-control input-sm">
+
+            <option value="2" selected>表格参数</option>
+            <option value="1">关联存储</option>
+        </select>
+    </div>
+
+
+<div id="dbselect" style="display: none">
+    <div class="form-group property-control" >
+        <label><i class="required">*</i>选择存储</label>
+        <div id="identifier-ctrldb" class="input-group input-group-sm avicselect">
+            <input type="text" class="form-control avicselect-act" readonly="readonly" name="compname" id="compname">
+            <input type="hidden" class="form-control" readonly="readonly" name="compid" id="compid">
+            <input type="hidden" class="form-control" readonly="readonly" name="dbid" id="dbid">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+            <div class="avicselect-list"></div>
+        </div>
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>关联字段</label>
+        <select id="selectcol" name="selectcol" isnull="false" class="form-control input-sm">
+        </select>
+    </div>
+</div>
+
+    <div id="filtervaluearea">
+    <div class="form-group property-control" >
+        <label><i class="required">*</i>条件值</label>
+        <div id="identifier-ctrl" class="input-group input-group-sm avicselect">
+            <input type="text" class="form-control avicselect-act" readonly="readonly" name="filtervalue" id="filtervalue">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+            <div class="avicselect-list"></div>
+        </div>
+    </div>
+
+    <div class="form-group property-control">
+        <label>是否逃逸</label>
+        <select id="escape" name="escape" isnull="false" class="form-control input-sm">
+            <option value="N">否</option>
+            <option value="Y">是</option>
+        </select>
+    </div>
+    </div>
+</form>
+<script type="text/javascript">
+    var colList = null;
+    $(function() {
+        var tableNode = engine.getParent(engine.clickedNode.getParentNode().getParentNode(),"table,tree,treeGrid,dataList");
+        var dbid = tableNode.attribute.dbid;
+        var tableLinkDbNode = engine.getParent(engine.clickedNode,"tableLinkDb");
+        if (tableLinkDbNode !=null && tableLinkDbNode!=undefined){
+            setColumnSelect(tableLinkDbNode.attribute.dbid,"columnName");
+        }else{
+            setColumnSelect(dbid,"columnName");
+        }
+
+
+        $(".form-control").change(function () {
+            for (var i = 0; i < colList.length; i++) {
+                if(colList[i].colName == $("#columnName").val()){
+                    $("#name").val(colList[i].colComments);
+                    $("#colType").val(colList[i].colType);
+                }
+            }
+            engine.changSave();
+        });
+
+        var tableLinkNode = engine.getParent(engine.clickedNode,"tableLink");
+        if (tableLinkNode !=null && tableLinkNode!=undefined){
+
+
+            $("#filtertypeselect").show();
+            //$("#dbselect").show();
+            $("#filtervaluetype").on("change",function(){
+                if (this.value === "1"){
+                    $("#dbselect").show()
+                    $("#filtervaluearea").hide();
+                }else if (this.value === "2"){
+                    $("#dbselect").hide()
+                    $("#filtervaluearea").show();
+                }
+            });
+            var links = tableLinkNode.children;
+            var maincomDatas = [{_key:tableNode.id,_value:"主存储",_refdb:dbid}];
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].id != tableLinkDbNode.id) {
+                    var data = {};
+                    data._key = links[i].id;
+                    data._value = links[i].name;
+                    data._refdb = links[i].attribute.dbid;
+                    maincomDatas.push(data);
+                }
+            }
+            $("#identifier-ctrldb").avicselect2({
+                findDom: $("#thisForm"),
+                type: 1,
+                showkey: '_value',
+                data: maincomDatas,
+                height: '100px',
+                tpl: '<ul>' + '<@for ( var index in this ) {@>' + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>' + '<@}@>' + '</ul>',
+                success: function(obj) {
+                    $("#compid").val(obj.data[0].value);
+                    $("#compname").val(obj.data[1].value);
+                    $("#dbid").val(obj.data[2].value);
+                    $("#selectcol").val("");
+                    setColumnSelect(obj.data[2].value,"selectcol",false);
+                    engine.changSave();
+                }
+            });
+        }
+
+
+    });
+
+
+
+
+
+
+    var ColDatas = engine.getPara("table,tree,treeGrid,dataList");
+    $("#identifier-ctrl").avicselect2({
+        findDom:$("#thisForm"),
+        type : 1,
+        showkey:'_value',
+        remote:false,
+        data : ColDatas,
+        height: '200px',
+        format:"_value",
+        tpl : '<ul>'
+            + '<@for ( var index in this ) {@>'
+            + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>'
+            + '<@}@>' + '</ul>',
+        success:function(obj){
+            $("#filtervalue").val(obj.data[1].value);
+            $("#filtervalue").change();
+        }
+    });
+
+    self.propertyPageInit = function (treeNode) {
+        var dbid = engine.getParent(treeNode, "table,tree,treeGrid,dataList,tableLinkDb").attribute.dbid;
+        if (treeNode.attribute.hasOwnProperty("dbid") && treeNode.attribute.dbid != "") {
+            var sdbid = treeNode.attribute.dbid;
+            setColumnSelect(sdbid, "selectcol",false);
+        }
+
+        setColumnSelect(dbid, "columnName");
+
+        if (treeNode.attribute.hasOwnProperty("filtervaluetype")) {
+            if (treeNode.attribute.filtervaluetype=== "1"){
+                $("#dbselect").show()
+                $("#filtervaluearea").hide();
+            } else if (treeNode.attribute.filtervaluetype === "2") {
+                $("#dbselect").hide()
+                $("#filtervaluearea").show();
+            }
+        }
+    };
+
+    /**
+     * 设置列名称选项值
+     * */
+    function setColumnSelect(dbid,domid,flag){
+        if (flag == undefined){
+            flag = true;
+        }
+        avicAjax.ajax({
+            url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: false,
+            success: function (r) {
+                if (r != null) {
+                    var collist = $.parseJSON(r.data);
+                    if (flag) {
+                        colList = $.parseJSON(r.data);
+                    }
+                    var $colDom = $("#"+domid);
+                    $colDom.each(function () {
+                        $(this).empty();
+                        $(this).append($('<option value=""></option>'));
+                        for (var i = 0; i < collist.length; i++) {
+                            var $option = $('<option value="' + collist[i].colName + '">' + collist[i].colName + '</option>');
+                            $(this).append($option);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    self.validateForm = function(form,treeNode){
+
+        if((form.filtervaluetype != "1")&&(form.filtervalue == null || form.filtervalue == "")){
+            layer.msg('条件值不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+        return true;
+    };
+
+</script>
+</html>

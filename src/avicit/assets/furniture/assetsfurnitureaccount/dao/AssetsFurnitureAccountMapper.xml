@@ -1,0 +1,2438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.furniture.assetsfurnitureaccount.dao.AssetsFurnitureAccountDao">
+
+<resultMap id="AssetsFurnitureAccountDTOMap" type="avicit.assets.furniture.assetsfurnitureaccount.dto.AssetsFurnitureAccountDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="assetId" column="ASSET_ID" jdbcType="VARCHAR" />
+		<result property="furnitureName" column="FURNITURE_NAME" jdbcType="VARCHAR" />
+		<result property="furnitureCategory" column="FURNITURE_CATEGORY" jdbcType="VARCHAR" />
+		<result property="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+		<result property="ownerDept" column="OWNER_DEPT" jdbcType="VARCHAR" />
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="userDept" column="USER_DEPT" jdbcType="VARCHAR" />
+		<result property="manufacturerId" column="MANUFACTURER_ID" jdbcType="VARCHAR" />
+		<result property="furnitureSpec" column="FURNITURE_SPEC" jdbcType="VARCHAR" />
+		<result property="createdDate" column="CREATED_DATE" jdbcType="TIMESTAMP" />
+		<result property="positionId" column="POSITION_ID" jdbcType="VARCHAR" />
+		<result property="guaranteeDate" column="GUARANTEE_DATE" jdbcType="TIMESTAMP" />
+		<result property="contractNum" column="CONTRACT_NUM" jdbcType="VARCHAR" />
+		<result property="applyNum" column="APPLY_NUM" jdbcType="VARCHAR" />
+		<result property="checkNum" column="CHECK_NUM" jdbcType="VARCHAR" />
+		<result property="isFixedAssets" column="IS_FIXED_ASSETS" jdbcType="VARCHAR" />
+		<result property="assetsFinanceType" column="ASSETS_FINANCE_TYPE" jdbcType="VARCHAR" />
+		<result property="assetsSource" column="ASSETS_SOURCE" jdbcType="VARCHAR" />
+		<result property="assetsFinanceState" column="ASSETS_FINANCE_STATE" jdbcType="VARCHAR" />
+		<result property="financeEntryDate" column="FINANCE_ENTRY_DATE" jdbcType="TIMESTAMP" />
+		<result property="originalValue" column="ORIGINAL_VALUE" jdbcType="DECIMAL" />
+		<result property="totalDepreciation" column="TOTAL_DEPRECIATION" jdbcType="DECIMAL" />
+		<result property="depreciationMethod" column="DEPRECIATION_METHOD" jdbcType="VARCHAR" />
+		<result property="depreciationYear" column="DEPRECIATION_YEAR" jdbcType="DECIMAL" />
+		<result property="netSalvageRate" column="NET_SALVAGE_RATE" jdbcType="DECIMAL" />
+		<result property="netSalvage" column="NET_SALVAGE" jdbcType="DECIMAL" />
+		<result property="monthDepreciationRate" column="MONTH_DEPRECIATION_RATE" jdbcType="DECIMAL" />
+		<result property="monthDepreciation" column="MONTH_DEPRECIATION" jdbcType="DECIMAL" />
+		<result property="yearDepreciationRate" column="YEAR_DEPRECIATION_RATE" jdbcType="DECIMAL" />
+		<result property="yearDepreciation" column="YEAR_DEPRECIATION" jdbcType="DECIMAL" />
+		<result property="netValue" column="NET_VALUE" jdbcType="DECIMAL" />
+		<result property="monthCount" column="MONTH_COUNT" jdbcType="DECIMAL" />
+		<result property="monthRemain" column="MONTH_REMAIN" jdbcType="DECIMAL" />
+		<result property="instituteOrCompany" column="INSTITUTE_OR_COMPANY" jdbcType="VARCHAR" />
+		<result property="indexInfo" column="INDEX_INFO" jdbcType="VARCHAR" />
+		<result property="isTransFixed" column="IS_TRANS_FIXED" jdbcType="VARCHAR" />
+		<result property="proofNum" column="PROOF_NUM" jdbcType="VARCHAR" />
+		<result property="isInWorkflow" column="IS_IN_WORKFLOW" jdbcType="VARCHAR" />
+		<result property="furniturePhoto" column="FURNITURE_PHOTO" jdbcType="VARCHAR" />
+		<result property="furnitureState" column="FURNITURE_STATE" jdbcType="VARCHAR" />
+		<result property="parentId" column="PARENT_ID" jdbcType="VARCHAR" />
+		<result property="parentName" column="PARENT_NAME" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="VARCHAR" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="DECIMAL" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL" />
+		<result property="attribute21" column="ATTRIBUTE_21" jdbcType="DECIMAL" />
+		<result property="attribute22" column="ATTRIBUTE_22" jdbcType="DECIMAL" />
+		<result property="attribute23" column="ATTRIBUTE_23" jdbcType="DECIMAL" />
+		<result property="attribute24" column="ATTRIBUTE_24" jdbcType="DECIMAL" />
+		<result property="attribute25" column="ATTRIBUTE_25" jdbcType="DECIMAL" />
+		<result property="attribute26" column="ATTRIBUTE_26" jdbcType="TIMESTAMP" />
+		<result property="attribute27" column="ATTRIBUTE_27" jdbcType="TIMESTAMP" />
+		<result property="attribute28" column="ATTRIBUTE_28" jdbcType="TIMESTAMP" />
+		<result property="attribute29" column="ATTRIBUTE_29" jdbcType="TIMESTAMP" />
+		<result property="attribute30" column="ATTRIBUTE_30" jdbcType="TIMESTAMP" />
+		<result property="guaranteePeriod" column="GUARANTEE_PERIOD" jdbcType="DECIMAL" />
+		<result property="unitPrice" column="UNIT_PRICE" jdbcType="DECIMAL" />
+
+</resultMap>
+<!-- 分页查询 ASSETS_FURNITURE_ACCOUNT -->
+<select id="searchAssetsFurnitureAccountByPage" parameterType="java.util.Map" resultMap="AssetsFurnitureAccountDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.asset_id                       ,
+		t1.furniture_name                 ,
+		t1.furniture_category             ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.user_id                        ,
+		t1.user_dept                      ,
+		t1.manufacturer_id                ,
+		t1.furniture_spec                 ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.guarantee_date                 ,
+		t1.contract_num                   ,
+		t1.apply_num                      ,
+		t1.check_num                      ,
+		t1.is_fixed_assets                ,
+		t1.assets_finance_type            ,
+		t1.assets_source                  ,
+		t1.assets_finance_state           ,
+		t1.finance_entry_date             ,
+		t1.original_value                 ,
+		t1.total_depreciation             ,
+		t1.depreciation_method            ,
+		t1.depreciation_year              ,
+		t1.net_salvage_rate               ,
+		t1.net_salvage                    ,
+		t1.month_depreciation_rate        ,
+		t1.month_depreciation             ,
+		t1.year_depreciation_rate         ,
+		t1.year_depreciation              ,
+		t1.net_value                      ,
+		t1.month_count                    ,
+		t1.month_remain                   ,
+		t1.institute_or_company           ,
+		t1.index_info                     ,
+		t1.is_trans_fixed                 ,
+		t1.proof_num                      ,
+		t1.is_in_workflow                 ,
+		t1.furniture_photo                ,
+		t1.furniture_state                ,
+		t1.parent_id                      ,
+		t1.parent_name                    ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   ,
+		t1.guarantee_period				  ,
+		t1.unit_price
+	from assets_furniture_account 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%') 
+			</if>
+			<if test="bean.assetId != null and bean.assetId != ''">
+				and t1.ASSET_ID like concat(concat('%',#{bean.assetId}),'%') 
+			</if>
+			<if test="bean.furnitureName != null and bean.furnitureName != ''">
+				and t1.FURNITURE_NAME like concat(concat('%',#{bean.furnitureName}),'%') 
+			</if>
+			<if test="bean.furnitureCategory != null and bean.furnitureCategory != ''">
+				and t1.FURNITURE_CATEGORY like concat(concat('%',#{bean.furnitureCategory}),'%') 
+			</if>
+			<if test="bean.ownerId != null and bean.ownerId != ''">
+				and t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%') 
+			</if>
+			<if test="bean.ownerDept != null and bean.ownerDept != ''">
+				and t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%') 
+			</if>
+			<if test="bean.userId != null and bean.userId != ''">
+				and t1.USER_ID like concat(concat('%',#{bean.userId}),'%') 
+			</if>
+			<if test="bean.userDept != null and bean.userDept != ''">
+				and t1.USER_DEPT like concat(concat('%',#{bean.userDept}),'%') 
+			</if>
+			<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+				and t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%') 
+			</if>
+			<if test="bean.furnitureSpec != null and bean.furnitureSpec != ''">
+				and t1.FURNITURE_SPEC like concat(concat('%',#{bean.furnitureSpec}),'%') 
+			</if>
+			<if test="bean.createdDateBegin != null and bean.createdDateBegin != ''">
+				and t1.CREATED_DATE &gt;= #{bean.createdDateBegin}
+			</if>
+			<if test="bean.createdDateEnd != null and bean.createdDateEnd != ''">
+				and t1.CREATED_DATE &lt;= #{bean.createdDateEnd}
+			</if>
+			<if test="bean.positionId != null and bean.positionId != ''">
+				and t1.POSITION_ID like concat(concat('%',#{bean.positionId}),'%') 
+			</if>
+			<if test="bean.guaranteeDateBegin != null and bean.guaranteeDateBegin != ''">
+				and t1.GUARANTEE_DATE &gt;= #{bean.guaranteeDateBegin}
+			</if>
+			<if test="bean.guaranteeDateEnd != null and bean.guaranteeDateEnd != ''">
+				and t1.GUARANTEE_DATE &lt;= #{bean.guaranteeDateEnd}
+			</if>
+			<if test="bean.contractNum != null and bean.contractNum != ''">
+				and t1.CONTRACT_NUM like concat(concat('%',#{bean.contractNum}),'%') 
+			</if>
+			<if test="bean.applyNum != null and bean.applyNum != ''">
+				and t1.APPLY_NUM like concat(concat('%',#{bean.applyNum}),'%') 
+			</if>
+			<if test="bean.checkNum != null and bean.checkNum != ''">
+				and t1.CHECK_NUM like concat(concat('%',#{bean.checkNum}),'%') 
+			</if>
+			<if test="bean.isFixedAssets != null and bean.isFixedAssets != ''">
+				and t1.IS_FIXED_ASSETS like concat(concat('%',#{bean.isFixedAssets}),'%') 
+			</if>
+			<if test="bean.assetsFinanceType != null and bean.assetsFinanceType != ''">
+				and t1.ASSETS_FINANCE_TYPE like concat(concat('%',#{bean.assetsFinanceType}),'%') 
+			</if>
+			<if test="bean.assetsSource != null and bean.assetsSource != ''">
+				and t1.ASSETS_SOURCE like concat(concat('%',#{bean.assetsSource}),'%') 
+			</if>
+			<if test="bean.assetsFinanceState != null and bean.assetsFinanceState != ''">
+				and t1.ASSETS_FINANCE_STATE like concat(concat('%',#{bean.assetsFinanceState}),'%') 
+			</if>
+			<if test="bean.financeEntryDateBegin != null and bean.financeEntryDateBegin != ''">
+				and t1.FINANCE_ENTRY_DATE &gt;= #{bean.financeEntryDateBegin}
+			</if>
+			<if test="bean.financeEntryDateEnd != null and bean.financeEntryDateEnd != ''">
+				and t1.FINANCE_ENTRY_DATE &lt;= #{bean.financeEntryDateEnd}
+			</if>
+			<if test="bean.originalValue != null ">
+				and t1.ORIGINAL_VALUE like concat(concat('%',#{bean.originalValue}),'%') 
+			</if>
+			<if test="bean.totalDepreciation != null ">
+				and t1.TOTAL_DEPRECIATION like concat(concat('%',#{bean.totalDepreciation}),'%') 
+			</if>
+			<if test="bean.depreciationMethod != null and bean.depreciationMethod != ''">
+				and t1.DEPRECIATION_METHOD like concat(concat('%',#{bean.depreciationMethod}),'%') 
+			</if>
+			<if test="bean.depreciationYear != null ">
+				and t1.DEPRECIATION_YEAR like concat(concat('%',#{bean.depreciationYear}),'%') 
+			</if>
+			<if test="bean.netSalvageRate != null ">
+				and t1.NET_SALVAGE_RATE like concat(concat('%',#{bean.netSalvageRate}),'%') 
+			</if>
+			<if test="bean.netSalvage != null ">
+				and t1.NET_SALVAGE like concat(concat('%',#{bean.netSalvage}),'%') 
+			</if>
+			<if test="bean.monthDepreciationRate != null ">
+				and t1.MONTH_DEPRECIATION_RATE like concat(concat('%',#{bean.monthDepreciationRate}),'%') 
+			</if>
+			<if test="bean.monthDepreciation != null ">
+				and t1.MONTH_DEPRECIATION like concat(concat('%',#{bean.monthDepreciation}),'%') 
+			</if>
+			<if test="bean.yearDepreciationRate != null ">
+				and t1.YEAR_DEPRECIATION_RATE like concat(concat('%',#{bean.yearDepreciationRate}),'%') 
+			</if>
+			<if test="bean.yearDepreciation != null ">
+				and t1.YEAR_DEPRECIATION like concat(concat('%',#{bean.yearDepreciation}),'%') 
+			</if>
+			<if test="bean.netValue != null ">
+				and t1.NET_VALUE like concat(concat('%',#{bean.netValue}),'%') 
+			</if>
+			<if test="bean.monthCount != null ">
+				and t1.MONTH_COUNT like concat(concat('%',#{bean.monthCount}),'%') 
+			</if>
+			<if test="bean.monthRemain != null ">
+				and t1.MONTH_REMAIN like concat(concat('%',#{bean.monthRemain}),'%') 
+			</if>
+			<if test="bean.instituteOrCompany != null and bean.instituteOrCompany != ''">
+				and t1.INSTITUTE_OR_COMPANY like concat(concat('%',#{bean.instituteOrCompany}),'%') 
+			</if>
+			<if test="bean.indexInfo != null and bean.indexInfo != ''">
+				and t1.INDEX_INFO like concat(concat('%',#{bean.indexInfo}),'%') 
+			</if>
+			<if test="bean.isTransFixed != null and bean.isTransFixed != ''">
+				and t1.IS_TRANS_FIXED like concat(concat('%',#{bean.isTransFixed}),'%') 
+			</if>
+			<if test="bean.proofNum != null and bean.proofNum != ''">
+				and t1.PROOF_NUM like concat(concat('%',#{bean.proofNum}),'%') 
+			</if>
+			<if test="bean.isInWorkflow != null and bean.isInWorkflow != ''">
+				and t1.IS_IN_WORKFLOW like concat(concat('%',#{bean.isInWorkflow}),'%') 
+			</if>
+			<if test="bean.furniturePhoto != null and bean.furniturePhoto != ''">
+				and t1.FURNITURE_PHOTO like concat(concat('%',#{bean.furniturePhoto}),'%') 
+			</if>
+			<if test="bean.furnitureState != null and bean.furnitureState != ''">
+				and t1.FURNITURE_STATE like concat(concat('%',#{bean.furnitureState}),'%') 
+			</if>
+			<if test="bean.parentId != null and bean.parentId != ''">
+				and t1.PARENT_ID like concat(concat('%',#{bean.parentId}),'%') 
+			</if>
+			<if test="bean.parentName != null and bean.parentName != ''">
+				and t1.PARENT_NAME like concat(concat('%',#{bean.parentName}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null ">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null ">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null ">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null ">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null ">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.attribute21 != null ">
+				and t1.ATTRIBUTE_21 like concat(concat('%',#{bean.attribute21}),'%') 
+			</if>
+			<if test="bean.attribute22 != null ">
+				and t1.ATTRIBUTE_22 like concat(concat('%',#{bean.attribute22}),'%') 
+			</if>
+			<if test="bean.attribute23 != null ">
+				and t1.ATTRIBUTE_23 like concat(concat('%',#{bean.attribute23}),'%') 
+			</if>
+			<if test="bean.attribute24 != null ">
+				and t1.ATTRIBUTE_24 like concat(concat('%',#{bean.attribute24}),'%') 
+			</if>
+			<if test="bean.attribute25 != null ">
+				and t1.ATTRIBUTE_25 like concat(concat('%',#{bean.attribute25}),'%') 
+			</if>
+			<if test="bean.attribute26 != null and bean.attribute26 != ''">
+				and t1.ATTRIBUTE_26 like concat(concat('%',#{bean.attribute26}),'%') 
+			</if>
+			<if test="bean.attribute27 != null and bean.attribute27 != ''">
+				and t1.ATTRIBUTE_27 like concat(concat('%',#{bean.attribute27}),'%') 
+			</if>
+			<if test="bean.attribute28 != null and bean.attribute28 != ''">
+				and t1.ATTRIBUTE_28 like concat(concat('%',#{bean.attribute28}),'%') 
+			</if>
+			<if test="bean.attribute29 != null and bean.attribute29 != ''">
+				and t1.ATTRIBUTE_29 like concat(concat('%',#{bean.attribute29}),'%') 
+			</if>
+			<if test="bean.attribute30 != null and bean.attribute30 != ''">
+				and t1.ATTRIBUTE_30 like concat(concat('%',#{bean.attribute30}),'%') 
+			</if>
+			<if test="bean.guaranteePeriod != null ">
+				and t1.GUARANTEE_PERIOD like concat(concat('%',#{bean.guaranteePeriod}),'%')
+			</if>
+			<if test="bean.unitPrice != null ">
+				and t1.UNIT_PRICE like concat(concat('%',#{bean.unitPrice}),'%')
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_FURNITURE_ACCOUNT -->
+<select id="searchAssetsFurnitureAccountByPageOr" parameterType="java.util.Map" resultMap="AssetsFurnitureAccountDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.asset_id                       ,
+		t1.furniture_name                 ,
+		t1.furniture_category             ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.user_id                        ,
+		t1.user_dept                      ,
+		t1.manufacturer_id                ,
+		t1.furniture_spec                 ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.guarantee_date                 ,
+		t1.contract_num                   ,
+		t1.apply_num                      ,
+		t1.check_num                      ,
+		t1.is_fixed_assets                ,
+		t1.assets_finance_type            ,
+		t1.assets_source                  ,
+		t1.assets_finance_state           ,
+		t1.finance_entry_date             ,
+		t1.original_value                 ,
+		t1.total_depreciation             ,
+		t1.depreciation_method            ,
+		t1.depreciation_year              ,
+		t1.net_salvage_rate               ,
+		t1.net_salvage                    ,
+		t1.month_depreciation_rate        ,
+		t1.month_depreciation             ,
+		t1.year_depreciation_rate         ,
+		t1.year_depreciation              ,
+		t1.net_value                      ,
+		t1.month_count                    ,
+		t1.month_remain                   ,
+		t1.institute_or_company           ,
+		t1.index_info                     ,
+		t1.is_trans_fixed                 ,
+		t1.proof_num                      ,
+		t1.is_in_workflow                 ,
+		t1.furniture_photo                ,
+		t1.furniture_state                ,
+		t1.parent_id                      ,
+		t1.parent_name                    ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   ,
+		t1.guarantee_period				  ,
+		t1.unit_price
+	from assets_furniture_account 	t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')  
+			</if>
+			<if test="bean.assetId != null and bean.assetId != ''">
+				or t1.ASSET_ID like concat(concat('%',#{bean.assetId}),'%')  
+			</if>
+			<if test="bean.furnitureName != null and bean.furnitureName != ''">
+				or t1.FURNITURE_NAME like concat(concat('%',#{bean.furnitureName}),'%')  
+			</if>
+			<if test="bean.furnitureCategory != null and bean.furnitureCategory != ''">
+				or t1.FURNITURE_CATEGORY like concat(concat('%',#{bean.furnitureCategory}),'%')  
+			</if>
+			<if test="bean.ownerId != null and bean.ownerId != ''">
+				or t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%')  
+			</if>
+			<if test="bean.ownerDept != null and bean.ownerDept != ''">
+				or t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%')  
+			</if>
+			<if test="bean.userId != null and bean.userId != ''">
+				or t1.USER_ID like concat(concat('%',#{bean.userId}),'%')  
+			</if>
+			<if test="bean.userDept != null and bean.userDept != ''">
+				or t1.USER_DEPT like concat(concat('%',#{bean.userDept}),'%')  
+			</if>
+			<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+				or t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%')  
+			</if>
+			<if test="bean.furnitureSpec != null and bean.furnitureSpec != ''">
+				or t1.FURNITURE_SPEC like concat(concat('%',#{bean.furnitureSpec}),'%')  
+			</if>
+			<if test="bean.createdDateBegin != null and bean.createdDateBegin != ''">
+				or t1.CREATED_DATE &gt;= #{bean.createdDateBegin}
+			</if>
+			<if test="bean.createdDateEnd != null and bean.createdDateEnd != ''">
+				or t1.CREATED_DATE &lt;= #{bean.createdDateEnd}
+			</if>
+			<if test="bean.positionId != null and bean.positionId != ''">
+				or t1.POSITION_ID like concat(concat('%',#{bean.positionId}),'%')  
+			</if>
+			<if test="bean.guaranteeDateBegin != null and bean.guaranteeDateBegin != ''">
+				or t1.GUARANTEE_DATE &gt;= #{bean.guaranteeDateBegin}
+			</if>
+			<if test="bean.guaranteeDateEnd != null and bean.guaranteeDateEnd != ''">
+				or t1.GUARANTEE_DATE &lt;= #{bean.guaranteeDateEnd}
+			</if>
+			<if test="bean.contractNum != null and bean.contractNum != ''">
+				or t1.CONTRACT_NUM like concat(concat('%',#{bean.contractNum}),'%')  
+			</if>
+			<if test="bean.applyNum != null and bean.applyNum != ''">
+				or t1.APPLY_NUM like concat(concat('%',#{bean.applyNum}),'%')  
+			</if>
+			<if test="bean.checkNum != null and bean.checkNum != ''">
+				or t1.CHECK_NUM like concat(concat('%',#{bean.checkNum}),'%')  
+			</if>
+			<if test="bean.isFixedAssets != null and bean.isFixedAssets != ''">
+				or t1.IS_FIXED_ASSETS like concat(concat('%',#{bean.isFixedAssets}),'%')  
+			</if>
+			<if test="bean.assetsFinanceType != null and bean.assetsFinanceType != ''">
+				or t1.ASSETS_FINANCE_TYPE like concat(concat('%',#{bean.assetsFinanceType}),'%')  
+			</if>
+			<if test="bean.assetsSource != null and bean.assetsSource != ''">
+				or t1.ASSETS_SOURCE like concat(concat('%',#{bean.assetsSource}),'%')  
+			</if>
+			<if test="bean.assetsFinanceState != null and bean.assetsFinanceState != ''">
+				or t1.ASSETS_FINANCE_STATE like concat(concat('%',#{bean.assetsFinanceState}),'%')  
+			</if>
+			<if test="bean.financeEntryDateBegin != null and bean.financeEntryDateBegin != ''">
+				or t1.FINANCE_ENTRY_DATE &gt;= #{bean.financeEntryDateBegin}
+			</if>
+			<if test="bean.financeEntryDateEnd != null and bean.financeEntryDateEnd != ''">
+				or t1.FINANCE_ENTRY_DATE &lt;= #{bean.financeEntryDateEnd}
+			</if>
+			<if test="bean.originalValue != null">
+				or t1.ORIGINAL_VALUE like concat(concat('%',#{bean.originalValue}),'%')  
+			</if>
+			<if test="bean.totalDepreciation != null">
+				or t1.TOTAL_DEPRECIATION like concat(concat('%',#{bean.totalDepreciation}),'%')  
+			</if>
+			<if test="bean.depreciationMethod != null and bean.depreciationMethod != ''">
+				or t1.DEPRECIATION_METHOD like concat(concat('%',#{bean.depreciationMethod}),'%')  
+			</if>
+			<if test="bean.depreciationYear != null">
+				or t1.DEPRECIATION_YEAR like concat(concat('%',#{bean.depreciationYear}),'%')  
+			</if>
+			<if test="bean.netSalvageRate != null">
+				or t1.NET_SALVAGE_RATE like concat(concat('%',#{bean.netSalvageRate}),'%')  
+			</if>
+			<if test="bean.netSalvage != null">
+				or t1.NET_SALVAGE like concat(concat('%',#{bean.netSalvage}),'%')  
+			</if>
+			<if test="bean.monthDepreciationRate != null">
+				or t1.MONTH_DEPRECIATION_RATE like concat(concat('%',#{bean.monthDepreciationRate}),'%')  
+			</if>
+			<if test="bean.monthDepreciation != null">
+				or t1.MONTH_DEPRECIATION like concat(concat('%',#{bean.monthDepreciation}),'%')  
+			</if>
+			<if test="bean.yearDepreciationRate != null">
+				or t1.YEAR_DEPRECIATION_RATE like concat(concat('%',#{bean.yearDepreciationRate}),'%')  
+			</if>
+			<if test="bean.yearDepreciation != null">
+				or t1.YEAR_DEPRECIATION like concat(concat('%',#{bean.yearDepreciation}),'%')  
+			</if>
+			<if test="bean.netValue != null">
+				or t1.NET_VALUE like concat(concat('%',#{bean.netValue}),'%')  
+			</if>
+			<if test="bean.monthCount != null">
+				or t1.MONTH_COUNT like concat(concat('%',#{bean.monthCount}),'%')  
+			</if>
+			<if test="bean.monthRemain != null">
+				or t1.MONTH_REMAIN like concat(concat('%',#{bean.monthRemain}),'%')  
+			</if>
+			<if test="bean.instituteOrCompany != null and bean.instituteOrCompany != ''">
+				or t1.INSTITUTE_OR_COMPANY like concat(concat('%',#{bean.instituteOrCompany}),'%')  
+			</if>
+			<if test="bean.indexInfo != null and bean.indexInfo != ''">
+				or t1.INDEX_INFO like concat(concat('%',#{bean.indexInfo}),'%')  
+			</if>
+			<if test="bean.isTransFixed != null and bean.isTransFixed != ''">
+				or t1.IS_TRANS_FIXED like concat(concat('%',#{bean.isTransFixed}),'%')  
+			</if>
+			<if test="bean.proofNum != null and bean.proofNum != ''">
+				or t1.PROOF_NUM like concat(concat('%',#{bean.proofNum}),'%')  
+			</if>
+			<if test="bean.isInWorkflow != null and bean.isInWorkflow != ''">
+				or t1.IS_IN_WORKFLOW like concat(concat('%',#{bean.isInWorkflow}),'%')  
+			</if>
+			<if test="bean.furniturePhoto != null and bean.furniturePhoto != ''">
+				or t1.FURNITURE_PHOTO like concat(concat('%',#{bean.furniturePhoto}),'%')  
+			</if>
+			<if test="bean.furnitureState != null and bean.furnitureState != ''">
+				or t1.FURNITURE_STATE like concat(concat('%',#{bean.furnitureState}),'%')  
+			</if>
+			<if test="bean.parentId != null and bean.parentId != ''">
+				or t1.PARENT_ID like concat(concat('%',#{bean.parentId}),'%')  
+			</if>
+			<if test="bean.parentName != null and bean.parentName != ''">
+				or t1.PARENT_NAME like concat(concat('%',#{bean.parentName}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.attribute21 != null">
+				or t1.ATTRIBUTE_21 like concat(concat('%',#{bean.attribute21}),'%')  
+			</if>
+			<if test="bean.attribute22 != null">
+				or t1.ATTRIBUTE_22 like concat(concat('%',#{bean.attribute22}),'%')  
+			</if>
+			<if test="bean.attribute23 != null">
+				or t1.ATTRIBUTE_23 like concat(concat('%',#{bean.attribute23}),'%')  
+			</if>
+			<if test="bean.attribute24 != null">
+				or t1.ATTRIBUTE_24 like concat(concat('%',#{bean.attribute24}),'%')  
+			</if>
+			<if test="bean.attribute25 != null">
+				or t1.ATTRIBUTE_25 like concat(concat('%',#{bean.attribute25}),'%')  
+			</if>
+			<if test="bean.attribute26 != null and bean.attribute26 != ''">
+				or t1.ATTRIBUTE_26 like concat(concat('%',#{bean.attribute26}),'%')  
+			</if>
+			<if test="bean.attribute27 != null and bean.attribute27 != ''">
+				or t1.ATTRIBUTE_27 like concat(concat('%',#{bean.attribute27}),'%')  
+			</if>
+			<if test="bean.attribute28 != null and bean.attribute28 != ''">
+				or t1.ATTRIBUTE_28 like concat(concat('%',#{bean.attribute28}),'%')  
+			</if>
+			<if test="bean.attribute29 != null and bean.attribute29 != ''">
+				or t1.ATTRIBUTE_29 like concat(concat('%',#{bean.attribute29}),'%')  
+			</if>
+			<if test="bean.attribute30 != null and bean.attribute30 != ''">
+				or t1.ATTRIBUTE_30 like concat(concat('%',#{bean.attribute30}),'%')  
+			</if>
+			<if test="bean.guaranteePeriod != null">
+				or t1.GUARANTEE_PERIOD like concat(concat('%',#{bean.guaranteePeriod}),'%')
+			</if>
+			<if test="bean.unitPrice != null">
+				or t1.UNIT_PRICE like concat(concat('%',#{bean.unitPrice}),'%')
+			</if>
+			</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_FURNITURE_ACCOUNT -->
+<select id="searchAssetsFurnitureAccount" parameterType="java.util.Map" resultMap="AssetsFurnitureAccountDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.asset_id                       ,
+		t1.furniture_name                 ,
+		t1.furniture_category             ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.user_id                        ,
+		t1.user_dept                      ,
+		t1.manufacturer_id                ,
+		t1.furniture_spec                 ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.guarantee_date                 ,
+		t1.contract_num                   ,
+		t1.apply_num                      ,
+		t1.check_num                      ,
+		t1.is_fixed_assets                ,
+		t1.assets_finance_type            ,
+		t1.assets_source                  ,
+		t1.assets_finance_state           ,
+		t1.finance_entry_date             ,
+		t1.original_value                 ,
+		t1.total_depreciation             ,
+		t1.depreciation_method            ,
+		t1.depreciation_year              ,
+		t1.net_salvage_rate               ,
+		t1.net_salvage                    ,
+		t1.month_depreciation_rate        ,
+		t1.month_depreciation             ,
+		t1.year_depreciation_rate         ,
+		t1.year_depreciation              ,
+		t1.net_value                      ,
+		t1.month_count                    ,
+		t1.month_remain                   ,
+		t1.institute_or_company           ,
+		t1.index_info                     ,
+		t1.is_trans_fixed                 ,
+		t1.proof_num                      ,
+		t1.is_in_workflow                 ,
+		t1.furniture_photo                ,
+		t1.furniture_state                ,
+		t1.parent_id                      ,
+		t1.parent_name                    ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   ,
+		t1.guarantee_period				  ,
+		t1.unit_price
+	from assets_furniture_account 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="assetId != null and assetId != ''">
+				and t1.ASSET_ID =#{assetId}
+			</if>
+			<if test="furnitureName != null and furnitureName != ''">
+				and t1.FURNITURE_NAME =#{furnitureName}
+			</if>
+			<if test="furnitureCategory != null and furnitureCategory != ''">
+				and t1.FURNITURE_CATEGORY =#{furnitureCategory}
+			</if>
+			<if test="ownerId != null and ownerId != ''">
+				and t1.OWNER_ID =#{ownerId}
+			</if>
+			<if test="ownerDept != null and ownerDept != ''">
+				and t1.OWNER_DEPT =#{ownerDept}
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID =#{userId}
+			</if>
+			<if test="userDept != null and userDept != ''">
+				and t1.USER_DEPT =#{userDept}
+			</if>
+			<if test="manufacturerId != null and manufacturerId != ''">
+				and t1.MANUFACTURER_ID =#{manufacturerId}
+			</if>
+			<if test="furnitureSpec != null and furnitureSpec != ''">
+				and t1.FURNITURE_SPEC =#{furnitureSpec}
+			</if>
+			<if test="createdDateBegin != null and createdDateBegin != ''">
+				and t1.CREATED_DATE &gt;= #{createdDateBegin}
+			</if>
+			<if test="createdDateEnd != null and createdDateEnd != ''">
+				and t1.CREATED_DATE &lt;= #{createdDateEnd}
+			</if>
+			<if test="positionId != null and positionId != ''">
+				and t1.POSITION_ID =#{positionId}
+			</if>
+			<if test="guaranteeDateBegin != null and guaranteeDateBegin != ''">
+				and t1.GUARANTEE_DATE &gt;= #{guaranteeDateBegin}
+			</if>
+			<if test="guaranteeDateEnd != null and guaranteeDateEnd != ''">
+				and t1.GUARANTEE_DATE &lt;= #{guaranteeDateEnd}
+			</if>
+			<if test="contractNum != null and contractNum != ''">
+				and t1.CONTRACT_NUM =#{contractNum}
+			</if>
+			<if test="applyNum != null and applyNum != ''">
+				and t1.APPLY_NUM =#{applyNum}
+			</if>
+			<if test="checkNum != null and checkNum != ''">
+				and t1.CHECK_NUM =#{checkNum}
+			</if>
+			<if test="isFixedAssets != null and isFixedAssets != ''">
+				and t1.IS_FIXED_ASSETS =#{isFixedAssets}
+			</if>
+			<if test="assetsFinanceType != null and assetsFinanceType != ''">
+				and t1.ASSETS_FINANCE_TYPE =#{assetsFinanceType}
+			</if>
+			<if test="assetsSource != null and assetsSource != ''">
+				and t1.ASSETS_SOURCE =#{assetsSource}
+			</if>
+			<if test="assetsFinanceState != null and assetsFinanceState != ''">
+				and t1.ASSETS_FINANCE_STATE =#{assetsFinanceState}
+			</if>
+			<if test="financeEntryDateBegin != null and financeEntryDateBegin != ''">
+				and t1.FINANCE_ENTRY_DATE &gt;= #{financeEntryDateBegin}
+			</if>
+			<if test="financeEntryDateEnd != null and financeEntryDateEnd != ''">
+				and t1.FINANCE_ENTRY_DATE &lt;= #{financeEntryDateEnd}
+			</if>
+			<if test="originalValue != null">
+				and t1.ORIGINAL_VALUE =#{originalValue}
+			</if>
+			<if test="totalDepreciation != null">
+				and t1.TOTAL_DEPRECIATION =#{totalDepreciation}
+			</if>
+			<if test="depreciationMethod != null and depreciationMethod != ''">
+				and t1.DEPRECIATION_METHOD =#{depreciationMethod}
+			</if>
+			<if test="depreciationYear != null">
+				and t1.DEPRECIATION_YEAR =#{depreciationYear}
+			</if>
+			<if test="netSalvageRate != null">
+				and t1.NET_SALVAGE_RATE =#{netSalvageRate}
+			</if>
+			<if test="netSalvage != null">
+				and t1.NET_SALVAGE =#{netSalvage}
+			</if>
+			<if test="monthDepreciationRate != null">
+				and t1.MONTH_DEPRECIATION_RATE =#{monthDepreciationRate}
+			</if>
+			<if test="monthDepreciation != null">
+				and t1.MONTH_DEPRECIATION =#{monthDepreciation}
+			</if>
+			<if test="yearDepreciationRate != null">
+				and t1.YEAR_DEPRECIATION_RATE =#{yearDepreciationRate}
+			</if>
+			<if test="yearDepreciation != null">
+				and t1.YEAR_DEPRECIATION =#{yearDepreciation}
+			</if>
+			<if test="netValue != null">
+				and t1.NET_VALUE =#{netValue}
+			</if>
+			<if test="monthCount != null">
+				and t1.MONTH_COUNT =#{monthCount}
+			</if>
+			<if test="monthRemain != null">
+				and t1.MONTH_REMAIN =#{monthRemain}
+			</if>
+			<if test="instituteOrCompany != null and instituteOrCompany != ''">
+				and t1.INSTITUTE_OR_COMPANY =#{instituteOrCompany}
+			</if>
+			<if test="indexInfo != null and indexInfo != ''">
+				and t1.INDEX_INFO =#{indexInfo}
+			</if>
+			<if test="isTransFixed != null and isTransFixed != ''">
+				and t1.IS_TRANS_FIXED =#{isTransFixed}
+			</if>
+			<if test="proofNum != null and proofNum != ''">
+				and t1.PROOF_NUM =#{proofNum}
+			</if>
+			<if test="isInWorkflow != null and isInWorkflow != ''">
+				and t1.IS_IN_WORKFLOW =#{isInWorkflow}
+			</if>
+			<if test="furniturePhoto != null and furniturePhoto != ''">
+				and t1.FURNITURE_PHOTO =#{furniturePhoto}
+			</if>
+			<if test="furnitureState != null and furnitureState != ''">
+				and t1.FURNITURE_STATE =#{furnitureState}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and t1.PARENT_ID =#{parentId}
+			</if>
+			<if test="parentName != null and parentName != ''">
+				and t1.PARENT_NAME =#{parentName}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null and attribute11 != ''">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null and attribute12 != ''">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null and attribute13 != ''">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null and attribute14 != ''">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null and attribute15 != ''">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="attribute21 != null">
+				and t1.ATTRIBUTE_21 =#{attribute21}
+			</if>
+			<if test="attribute22 != null">
+				and t1.ATTRIBUTE_22 =#{attribute22}
+			</if>
+			<if test="attribute23 != null">
+				and t1.ATTRIBUTE_23 =#{attribute23}
+			</if>
+			<if test="attribute24 != null">
+				and t1.ATTRIBUTE_24 =#{attribute24}
+			</if>
+			<if test="attribute25 != null">
+				and t1.ATTRIBUTE_25 =#{attribute25}
+			</if>
+			<if test="attribute26 != null and attribute26 != ''">
+				and t1.ATTRIBUTE_26 =#{attribute26}
+			</if>
+			<if test="attribute27 != null and attribute27 != ''">
+				and t1.ATTRIBUTE_27 =#{attribute27}
+			</if>
+			<if test="attribute28 != null and attribute28 != ''">
+				and t1.ATTRIBUTE_28 =#{attribute28}
+			</if>
+			<if test="attribute29 != null and attribute29 != ''">
+				and t1.ATTRIBUTE_29 =#{attribute29}
+			</if>
+			<if test="attribute30 != null and attribute30 != ''">
+				and t1.ATTRIBUTE_30 =#{attribute30}
+			</if>
+			<if test="guaranteePeriod != null">
+				and t1.GUARANTEE_PERIOD =#{guaranteePeriod}
+			</if>
+			<if test="unitPrice != null">
+				and t1.UNIT_PRICE =#{unitPrice}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_FURNITURE_ACCOUNT -->
+<select id="findAssetsFurnitureAccountById" parameterType="java.util.Map" resultMap="AssetsFurnitureAccountDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.asset_id                       ,
+		t1.furniture_name                 ,
+		t1.furniture_category             ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.user_id                        ,
+		t1.user_dept                      ,
+		t1.manufacturer_id                ,
+		t1.furniture_spec                 ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.guarantee_date                 ,
+		t1.contract_num                   ,
+		t1.apply_num                      ,
+		t1.check_num                      ,
+		t1.is_fixed_assets                ,
+		t1.assets_finance_type            ,
+		t1.assets_source                  ,
+		t1.assets_finance_state           ,
+		t1.finance_entry_date             ,
+		t1.original_value                 ,
+		t1.total_depreciation             ,
+		t1.depreciation_method            ,
+		t1.depreciation_year              ,
+		t1.net_salvage_rate               ,
+		t1.net_salvage                    ,
+		t1.month_depreciation_rate        ,
+		t1.month_depreciation             ,
+		t1.year_depreciation_rate         ,
+		t1.year_depreciation              ,
+		t1.net_value                      ,
+		t1.month_count                    ,
+		t1.month_remain                   ,
+		t1.institute_or_company           ,
+		t1.index_info                     ,
+		t1.is_trans_fixed                 ,
+		t1.proof_num                      ,
+		t1.is_in_workflow                 ,
+		t1.furniture_photo                ,
+		t1.furniture_state                ,
+		t1.parent_id                      ,
+		t1.parent_name                    ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   ,
+		t1.guarantee_period				  ,
+		t1.unit_price
+	from assets_furniture_account 	t1
+		where t1.id = #{id}
+</select>
+
+<!-- 统一编号查询对象 ASSETS_FURNITURE_ACCOUNT -->
+<select id="findAssetsFurnitureAccountByUnifiedId" parameterType="java.util.Map" resultMap="AssetsFurnitureAccountDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.asset_id                       ,
+		t1.furniture_name                 ,
+		t1.furniture_category             ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.user_id                        ,
+		t1.user_dept                      ,
+		t1.manufacturer_id                ,
+		t1.furniture_spec                 ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.guarantee_date                 ,
+		t1.contract_num                   ,
+		t1.apply_num                      ,
+		t1.check_num                      ,
+		t1.is_fixed_assets                ,
+		t1.assets_finance_type            ,
+		t1.assets_source                  ,
+		t1.assets_finance_state           ,
+		t1.finance_entry_date             ,
+		t1.original_value                 ,
+		t1.total_depreciation             ,
+		t1.depreciation_method            ,
+		t1.depreciation_year              ,
+		t1.net_salvage_rate               ,
+		t1.net_salvage                    ,
+		t1.month_depreciation_rate        ,
+		t1.month_depreciation             ,
+		t1.year_depreciation_rate         ,
+		t1.year_depreciation              ,
+		t1.net_value                      ,
+		t1.month_count                    ,
+		t1.month_remain                   ,
+		t1.institute_or_company           ,
+		t1.index_info                     ,
+		t1.is_trans_fixed                 ,
+		t1.proof_num                      ,
+		t1.is_in_workflow                 ,
+		t1.furniture_photo                ,
+		t1.furniture_state                ,
+		t1.parent_id                      ,
+		t1.parent_name                    ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   ,
+		t1.guarantee_period				  ,
+		t1.unit_price
+	from assets_furniture_account 	t1
+		where t1.unified_id = #{unifiedId}
+</select>
+
+<!-- 新增对象 ASSETS_FURNITURE_ACCOUNT -->
+<insert id="insertAssetsFurnitureAccount" parameterType="avicit.assets.furniture.assetsfurnitureaccount.dto.AssetsFurnitureAccountDTO">
+	insert into assets_furniture_account
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="assetId != null">
+				asset_id,
+			</if>
+			<if test="furnitureName != null">
+				furniture_name,
+			</if>
+			<if test="furnitureCategory != null">
+				furniture_category,
+			</if>
+			<if test="ownerId != null">
+				owner_id,
+			</if>
+			<if test="ownerDept != null">
+				owner_dept,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userDept != null">
+				user_dept,
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id,
+			</if>
+			<if test="furnitureSpec != null">
+				furniture_spec,
+			</if>
+			<if test="createdDate != null">
+				created_date,
+			</if>
+			<if test="positionId != null">
+				position_id,
+			</if>
+			<if test="guaranteeDate != null">
+				guarantee_date,
+			</if>
+			<if test="contractNum != null">
+				contract_num,
+			</if>
+			<if test="applyNum != null">
+				apply_num,
+			</if>
+			<if test="checkNum != null">
+				check_num,
+			</if>
+			<if test="isFixedAssets != null">
+				is_fixed_assets,
+			</if>
+			<if test="assetsFinanceType != null">
+				assets_finance_type,
+			</if>
+			<if test="assetsSource != null">
+				assets_source,
+			</if>
+			<if test="assetsFinanceState != null">
+				assets_finance_state,
+			</if>
+			<if test="financeEntryDate != null">
+				finance_entry_date,
+			</if>
+			<if test="originalValue != null">
+				original_value,
+			</if>
+			<if test="totalDepreciation != null">
+				total_depreciation,
+			</if>
+			<if test="depreciationMethod != null">
+				depreciation_method,
+			</if>
+			<if test="depreciationYear != null">
+				depreciation_year,
+			</if>
+			<if test="netSalvageRate != null">
+				net_salvage_rate,
+			</if>
+			<if test="netSalvage != null">
+				net_salvage,
+			</if>
+			<if test="monthDepreciationRate != null">
+				month_depreciation_rate,
+			</if>
+			<if test="monthDepreciation != null">
+				month_depreciation,
+			</if>
+			<if test="yearDepreciationRate != null">
+				year_depreciation_rate,
+			</if>
+			<if test="yearDepreciation != null">
+				year_depreciation,
+			</if>
+			<if test="netValue != null">
+				net_value,
+			</if>
+			<if test="monthCount != null">
+				month_count,
+			</if>
+			<if test="monthRemain != null">
+				month_remain,
+			</if>
+			<if test="instituteOrCompany != null">
+				institute_or_company,
+			</if>
+			<if test="indexInfo != null">
+				index_info,
+			</if>
+			<if test="isTransFixed != null">
+				is_trans_fixed,
+			</if>
+			<if test="proofNum != null">
+				proof_num,
+			</if>
+			<if test="isInWorkflow != null">
+				is_in_workflow,
+			</if>
+			<if test="furniturePhoto != null">
+				furniture_photo,
+			</if>
+			<if test="furnitureState != null">
+				furniture_state,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="parentName != null">
+				parent_name,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="attribute21 != null">
+				attribute_21,
+			</if>
+			<if test="attribute22 != null">
+				attribute_22,
+			</if>
+			<if test="attribute23 != null">
+				attribute_23,
+			</if>
+			<if test="attribute24 != null">
+				attribute_24,
+			</if>
+			<if test="attribute25 != null">
+				attribute_25,
+			</if>
+			<if test="attribute26 != null">
+				attribute_26,
+			</if>
+			<if test="attribute27 != null">
+				attribute_27,
+			</if>
+			<if test="attribute28 != null">
+				attribute_28,
+			</if>
+			<if test="attribute29 != null">
+				attribute_29,
+			</if>
+			<if test="attribute30 != null">
+				attribute_30,
+			</if>
+			<if test="guaranteePeriod != null">
+				guarantee_Period,
+			</if>
+			<if test="unitPrice != null">
+				unit_price,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="assetId != null">
+				#{assetId,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureName != null">
+				#{furnitureName,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureCategory != null">
+				#{furnitureCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userDept != null">
+				#{userDept,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureSpec != null">
+				#{furnitureSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="createdDate != null">
+				#{createdDate,jdbcType=DATE},
+			</if>
+			<if test="positionId != null">
+				#{positionId,jdbcType=VARCHAR},
+			</if>
+			<if test="guaranteeDate != null">
+				#{guaranteeDate,jdbcType=DATE},
+			</if>
+			<if test="contractNum != null">
+				#{contractNum,jdbcType=VARCHAR},
+			</if>
+			<if test="applyNum != null">
+				#{applyNum,jdbcType=VARCHAR},
+			</if>
+			<if test="checkNum != null">
+				#{checkNum,jdbcType=VARCHAR},
+			</if>
+			<if test="isFixedAssets != null">
+				#{isFixedAssets,jdbcType=VARCHAR},
+			</if>
+			<if test="assetsFinanceType != null">
+				#{assetsFinanceType,jdbcType=VARCHAR},
+			</if>
+			<if test="assetsSource != null">
+				#{assetsSource,jdbcType=VARCHAR},
+			</if>
+			<if test="assetsFinanceState != null">
+				#{assetsFinanceState,jdbcType=VARCHAR},
+			</if>
+			<if test="financeEntryDate != null">
+				#{financeEntryDate,jdbcType=DATE},
+			</if>
+			<if test="originalValue != null">
+				#{originalValue,jdbcType=DECIMAL},
+			</if>
+			<if test="totalDepreciation != null">
+				#{totalDepreciation,jdbcType=DECIMAL},
+			</if>
+			<if test="depreciationMethod != null">
+				#{depreciationMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="depreciationYear != null">
+				#{depreciationYear,jdbcType=DECIMAL},
+			</if>
+			<if test="netSalvageRate != null">
+				#{netSalvageRate,jdbcType=DECIMAL},
+			</if>
+			<if test="netSalvage != null">
+				#{netSalvage,jdbcType=DECIMAL},
+			</if>
+			<if test="monthDepreciationRate != null">
+				#{monthDepreciationRate,jdbcType=DECIMAL},
+			</if>
+			<if test="monthDepreciation != null">
+				#{monthDepreciation,jdbcType=DECIMAL},
+			</if>
+			<if test="yearDepreciationRate != null">
+				#{yearDepreciationRate,jdbcType=DECIMAL},
+			</if>
+			<if test="yearDepreciation != null">
+				#{yearDepreciation,jdbcType=DECIMAL},
+			</if>
+			<if test="netValue != null">
+				#{netValue,jdbcType=DECIMAL},
+			</if>
+			<if test="monthCount != null">
+				#{monthCount,jdbcType=DECIMAL},
+			</if>
+			<if test="monthRemain != null">
+				#{monthRemain,jdbcType=DECIMAL},
+			</if>
+			<if test="instituteOrCompany != null">
+				#{instituteOrCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="indexInfo != null">
+				#{indexInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="isTransFixed != null">
+				#{isTransFixed,jdbcType=VARCHAR},
+			</if>
+			<if test="proofNum != null">
+				#{proofNum,jdbcType=VARCHAR},
+			</if>
+			<if test="isInWorkflow != null">
+				#{isInWorkflow,jdbcType=VARCHAR},
+			</if>
+			<if test="furniturePhoto != null">
+				#{furniturePhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureState != null">
+				#{furnitureState,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="parentName != null">
+				#{parentName,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute21 != null">
+				#{attribute21,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute22 != null">
+				#{attribute22,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute23 != null">
+				#{attribute23,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute24 != null">
+				#{attribute24,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute25 != null">
+				#{attribute25,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute26 != null">
+				#{attribute26,jdbcType=DATE},
+			</if>
+			<if test="attribute27 != null">
+				#{attribute27,jdbcType=DATE},
+			</if>
+			<if test="attribute28 != null">
+				#{attribute28,jdbcType=DATE},
+			</if>
+			<if test="attribute29 != null">
+				#{attribute29,jdbcType=DATE},
+			</if>
+			<if test="attribute30 != null">
+				#{attribute30,jdbcType=DATE},
+			</if>
+			<if test="guaranteePeriod != null">
+				#{guaranteePeriod,jdbcType=DECIMAL},
+			</if>
+			<if test="unitPrice != null">
+				#{unitPrice,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_FURNITURE_ACCOUNT -->
+<insert id="insertAssetsFurnitureAccountList" parameterType="java.util.List">
+	insert into assets_furniture_account(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			unified_id,
+			asset_id,
+			furniture_name,
+			furniture_category,
+			owner_id,
+			owner_dept,
+			user_id,
+			user_dept,
+			manufacturer_id,
+			furniture_spec,
+			created_date,
+			position_id,
+			guarantee_date,
+			contract_num,
+			apply_num,
+			check_num,
+			is_fixed_assets,
+			assets_finance_type,
+			assets_source,
+			assets_finance_state,
+			finance_entry_date,
+			original_value,
+			total_depreciation,
+			depreciation_method,
+			depreciation_year,
+			net_salvage_rate,
+			net_salvage,
+			month_depreciation_rate,
+			month_depreciation,
+			year_depreciation_rate,
+			year_depreciation,
+			net_value,
+			month_count,
+			month_remain,
+			institute_or_company,
+			index_info,
+			is_trans_fixed,
+			proof_num,
+			is_in_workflow,
+			furniture_photo,
+			furniture_state,
+			parent_id,
+			parent_name,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			attribute_21,
+			attribute_22,
+			attribute_23,
+			attribute_24,
+			attribute_25,
+			attribute_26,
+			attribute_27,
+			attribute_28,
+			attribute_29,
+			attribute_30,
+			guaranteePeriod,
+			unitPrice)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.unifiedId,jdbcType=VARCHAR},
+					#{item.assetId,jdbcType=VARCHAR},
+					#{item.furnitureName,jdbcType=VARCHAR},
+					#{item.furnitureCategory,jdbcType=VARCHAR},
+					#{item.ownerId,jdbcType=VARCHAR},
+					#{item.ownerDept,jdbcType=VARCHAR},
+					#{item.userId,jdbcType=VARCHAR},
+					#{item.userDept,jdbcType=VARCHAR},
+					#{item.manufacturerId,jdbcType=VARCHAR},
+					#{item.furnitureSpec,jdbcType=VARCHAR},
+					#{item.createdDate,jdbcType=DATE},
+					#{item.positionId,jdbcType=VARCHAR},
+					#{item.guaranteeDate,jdbcType=DATE},
+					#{item.contractNum,jdbcType=VARCHAR},
+					#{item.applyNum,jdbcType=VARCHAR},
+					#{item.checkNum,jdbcType=VARCHAR},
+					#{item.isFixedAssets,jdbcType=VARCHAR},
+					#{item.assetsFinanceType,jdbcType=VARCHAR},
+					#{item.assetsSource,jdbcType=VARCHAR},
+					#{item.assetsFinanceState,jdbcType=VARCHAR},
+					#{item.financeEntryDate,jdbcType=DATE},
+					#{item.originalValue,jdbcType=DECIMAL},
+					#{item.totalDepreciation,jdbcType=DECIMAL},
+					#{item.depreciationMethod,jdbcType=VARCHAR},
+					#{item.depreciationYear,jdbcType=DECIMAL},
+					#{item.netSalvageRate,jdbcType=DECIMAL},
+					#{item.netSalvage,jdbcType=DECIMAL},
+					#{item.monthDepreciationRate,jdbcType=DECIMAL},
+					#{item.monthDepreciation,jdbcType=DECIMAL},
+					#{item.yearDepreciationRate,jdbcType=DECIMAL},
+					#{item.yearDepreciation,jdbcType=DECIMAL},
+					#{item.netValue,jdbcType=DECIMAL},
+					#{item.monthCount,jdbcType=DECIMAL},
+					#{item.monthRemain,jdbcType=DECIMAL},
+					#{item.instituteOrCompany,jdbcType=VARCHAR},
+					#{item.indexInfo,jdbcType=VARCHAR},
+					#{item.isTransFixed,jdbcType=VARCHAR},
+					#{item.proofNum,jdbcType=VARCHAR},
+					#{item.isInWorkflow,jdbcType=VARCHAR},
+					#{item.furniturePhoto,jdbcType=VARCHAR},
+					#{item.furnitureState,jdbcType=VARCHAR},
+					#{item.parentId,jdbcType=VARCHAR},
+					#{item.parentName,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=VARCHAR},
+					#{item.attribute12,jdbcType=VARCHAR},
+					#{item.attribute13,jdbcType=VARCHAR},
+					#{item.attribute14,jdbcType=VARCHAR},
+					#{item.attribute15,jdbcType=VARCHAR},
+					#{item.attribute16,jdbcType=DECIMAL},
+					#{item.attribute17,jdbcType=DECIMAL},
+					#{item.attribute18,jdbcType=DECIMAL},
+					#{item.attribute19,jdbcType=DECIMAL},
+					#{item.attribute20,jdbcType=DECIMAL},
+					#{item.attribute21,jdbcType=DECIMAL},
+					#{item.attribute22,jdbcType=DECIMAL},
+					#{item.attribute23,jdbcType=DECIMAL},
+					#{item.attribute24,jdbcType=DECIMAL},
+					#{item.attribute25,jdbcType=DECIMAL},
+					#{item.attribute26,jdbcType=DATE},
+					#{item.attribute27,jdbcType=DATE},
+					#{item.attribute28,jdbcType=DATE},
+					#{item.attribute29,jdbcType=DATE},
+					#{item.attribute30,jdbcType=DATE},
+					#{item.guaranteePeriod,jdbcType=DECIMAL},
+					#{item.unitPrice,jdbcType=DECIMAL}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_FURNITURE_ACCOUNT -->
+<update id="updateAssetsFurnitureAccountSensitive" parameterType="avicit.assets.furniture.assetsfurnitureaccount.dto.AssetsFurnitureAccountDTO">
+	update assets_furniture_account 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="assetId != null">
+				asset_id                       =#{assetId,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureName != null">
+				furniture_name                 =#{furnitureName,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureCategory != null">
+				furniture_category             =#{furnitureCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				user_id                        =#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userDept != null">
+				user_dept                      =#{userDept,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureSpec != null">
+				furniture_spec                 =#{furnitureSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="createdDate != null">
+				created_date                   =#{createdDate,jdbcType=DATE},
+			</if>
+			<if test="positionId != null">
+				position_id                    =#{positionId,jdbcType=VARCHAR},
+			</if>
+			<if test="guaranteeDate != null">
+				guarantee_date                 =#{guaranteeDate,jdbcType=DATE},
+			</if>
+			<if test="contractNum != null">
+				contract_num                   =#{contractNum,jdbcType=VARCHAR},
+			</if>
+			<if test="applyNum != null">
+				apply_num                      =#{applyNum,jdbcType=VARCHAR},
+			</if>
+			<if test="checkNum != null">
+				check_num                      =#{checkNum,jdbcType=VARCHAR},
+			</if>
+			<if test="isFixedAssets != null">
+				is_fixed_assets                =#{isFixedAssets,jdbcType=VARCHAR},
+			</if>
+			<if test="assetsFinanceType != null">
+				assets_finance_type            =#{assetsFinanceType,jdbcType=VARCHAR},
+			</if>
+			<if test="assetsSource != null">
+				assets_source                  =#{assetsSource,jdbcType=VARCHAR},
+			</if>
+			<if test="assetsFinanceState != null">
+				assets_finance_state           =#{assetsFinanceState,jdbcType=VARCHAR},
+			</if>
+			<if test="financeEntryDate != null">
+				finance_entry_date             =#{financeEntryDate,jdbcType=DATE},
+			</if>
+			<if test="originalValue != null">
+				original_value                 =#{originalValue,jdbcType=DECIMAL},
+			</if>
+			<if test="totalDepreciation != null">
+				total_depreciation             =#{totalDepreciation,jdbcType=DECIMAL},
+			</if>
+			<if test="depreciationMethod != null">
+				depreciation_method            =#{depreciationMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="depreciationYear != null">
+				depreciation_year              =#{depreciationYear,jdbcType=DECIMAL},
+			</if>
+			<if test="netSalvageRate != null">
+				net_salvage_rate               =#{netSalvageRate,jdbcType=DECIMAL},
+			</if>
+			<if test="netSalvage != null">
+				net_salvage                    =#{netSalvage,jdbcType=DECIMAL},
+			</if>
+			<if test="monthDepreciationRate != null">
+				month_depreciation_rate        =#{monthDepreciationRate,jdbcType=DECIMAL},
+			</if>
+			<if test="monthDepreciation != null">
+				month_depreciation             =#{monthDepreciation,jdbcType=DECIMAL},
+			</if>
+			<if test="yearDepreciationRate != null">
+				year_depreciation_rate         =#{yearDepreciationRate,jdbcType=DECIMAL},
+			</if>
+			<if test="yearDepreciation != null">
+				year_depreciation              =#{yearDepreciation,jdbcType=DECIMAL},
+			</if>
+			<if test="netValue != null">
+				net_value                      =#{netValue,jdbcType=DECIMAL},
+			</if>
+			<if test="monthCount != null">
+				month_count                    =#{monthCount,jdbcType=DECIMAL},
+			</if>
+			<if test="monthRemain != null">
+				month_remain                   =#{monthRemain,jdbcType=DECIMAL},
+			</if>
+			<if test="instituteOrCompany != null">
+				institute_or_company           =#{instituteOrCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="indexInfo != null">
+				index_info                     =#{indexInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="isTransFixed != null">
+				is_trans_fixed                 =#{isTransFixed,jdbcType=VARCHAR},
+			</if>
+			<if test="proofNum != null">
+				proof_num                      =#{proofNum,jdbcType=VARCHAR},
+			</if>
+			<if test="isInWorkflow != null">
+				is_in_workflow                 =#{isInWorkflow,jdbcType=VARCHAR},
+			</if>
+			<if test="furniturePhoto != null">
+				furniture_photo                =#{furniturePhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="furnitureState != null">
+				furniture_state                =#{furnitureState,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id                      =#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="parentName != null">
+				parent_name                    =#{parentName,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute21 != null">
+				attribute_21                   =#{attribute21,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute22 != null">
+				attribute_22                   =#{attribute22,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute23 != null">
+				attribute_23                   =#{attribute23,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute24 != null">
+				attribute_24                   =#{attribute24,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute25 != null">
+				attribute_25                   =#{attribute25,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute26 != null">
+				attribute_26                   =#{attribute26,jdbcType=DATE},
+			</if>
+			<if test="attribute27 != null">
+				attribute_27                   =#{attribute27,jdbcType=DATE},
+			</if>
+			<if test="attribute28 != null">
+				attribute_28                   =#{attribute28,jdbcType=DATE},
+			</if>
+			<if test="attribute29 != null">
+				attribute_29                   =#{attribute29,jdbcType=DATE},
+			</if>
+			<if test="attribute30 != null">
+				attribute_30                   =#{attribute30,jdbcType=DATE},
+			</if>
+			<if test="guaranteePeriod != null">
+				guarantee_period               =#{guaranteePeriod,jdbcType=DECIMAL},
+			</if>
+			<if test="unitPrice != null">
+				unit_price                     =#{unitPrice,jdbcType=DECIMAL},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_FURNITURE_ACCOUNT -->
+<update id="updateAssetsFurnitureAccountAll" parameterType="avicit.assets.furniture.assetsfurnitureaccount.dto.AssetsFurnitureAccountDTO">
+	update assets_furniture_account 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			asset_id                       =#{assetId,jdbcType=VARCHAR},
+			furniture_name                 =#{furnitureName,jdbcType=VARCHAR},
+			furniture_category             =#{furnitureCategory,jdbcType=VARCHAR},
+			owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			user_id                        =#{userId,jdbcType=VARCHAR},
+			user_dept                      =#{userDept,jdbcType=VARCHAR},
+			manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			furniture_spec                 =#{furnitureSpec,jdbcType=VARCHAR},
+			created_date                   =#{createdDate,jdbcType=DATE},
+			position_id                    =#{positionId,jdbcType=VARCHAR},
+			guarantee_date                 =#{guaranteeDate,jdbcType=DATE},
+			contract_num                   =#{contractNum,jdbcType=VARCHAR},
+			apply_num                      =#{applyNum,jdbcType=VARCHAR},
+			check_num                      =#{checkNum,jdbcType=VARCHAR},
+			is_fixed_assets                =#{isFixedAssets,jdbcType=VARCHAR},
+			assets_finance_type            =#{assetsFinanceType,jdbcType=VARCHAR},
+			assets_source                  =#{assetsSource,jdbcType=VARCHAR},
+			assets_finance_state           =#{assetsFinanceState,jdbcType=VARCHAR},
+			finance_entry_date             =#{financeEntryDate,jdbcType=DATE},
+			original_value                 =#{originalValue,jdbcType=DECIMAL},
+			total_depreciation             =#{totalDepreciation,jdbcType=DECIMAL},
+			depreciation_method            =#{depreciationMethod,jdbcType=VARCHAR},
+			depreciation_year              =#{depreciationYear,jdbcType=DECIMAL},
+			net_salvage_rate               =#{netSalvageRate,jdbcType=DECIMAL},
+			net_salvage                    =#{netSalvage,jdbcType=DECIMAL},
+			month_depreciation_rate        =#{monthDepreciationRate,jdbcType=DECIMAL},
+			month_depreciation             =#{monthDepreciation,jdbcType=DECIMAL},
+			year_depreciation_rate         =#{yearDepreciationRate,jdbcType=DECIMAL},
+			year_depreciation              =#{yearDepreciation,jdbcType=DECIMAL},
+			net_value                      =#{netValue,jdbcType=DECIMAL},
+			month_count                    =#{monthCount,jdbcType=DECIMAL},
+			month_remain                   =#{monthRemain,jdbcType=DECIMAL},
+			institute_or_company           =#{instituteOrCompany,jdbcType=VARCHAR},
+			index_info                     =#{indexInfo,jdbcType=VARCHAR},
+			is_trans_fixed                 =#{isTransFixed,jdbcType=VARCHAR},
+			proof_num                      =#{proofNum,jdbcType=VARCHAR},
+			is_in_workflow                 =#{isInWorkflow,jdbcType=VARCHAR},
+			furniture_photo                =#{furniturePhoto,jdbcType=VARCHAR},
+			furniture_state                =#{furnitureState,jdbcType=VARCHAR},
+			parent_id                      =#{parentId,jdbcType=VARCHAR},
+			parent_name                    =#{parentName,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{attribute15,jdbcType=VARCHAR},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DECIMAL},
+			attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			attribute_21                   =#{attribute21,jdbcType=DECIMAL},
+			attribute_22                   =#{attribute22,jdbcType=DECIMAL},
+			attribute_23                   =#{attribute23,jdbcType=DECIMAL},
+			attribute_24                   =#{attribute24,jdbcType=DECIMAL},
+			attribute_25                   =#{attribute25,jdbcType=DECIMAL},
+			attribute_26                   =#{attribute26,jdbcType=DATE},
+			attribute_27                   =#{attribute27,jdbcType=DATE},
+			attribute_28                   =#{attribute28,jdbcType=DATE},
+			attribute_29                   =#{attribute29,jdbcType=DATE},
+			attribute_30                   =#{attribute30,jdbcType=DATE},
+			guarantee_period               =#{guaranteePeriod,jdbcType=DECIMAL},
+			unit_price                     =#{unitPrice,jdbcType=DECIMAL}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_FURNITURE_ACCOUNT -->
+<update id="updateAssetsFurnitureAccountList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_furniture_account 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			asset_id                       =#{item.assetId,jdbcType=VARCHAR},
+			furniture_name                 =#{item.furnitureName,jdbcType=VARCHAR},
+			furniture_category             =#{item.furnitureCategory,jdbcType=VARCHAR},
+			owner_id                       =#{item.ownerId,jdbcType=VARCHAR},
+			owner_dept                     =#{item.ownerDept,jdbcType=VARCHAR},
+			user_id                        =#{item.userId,jdbcType=VARCHAR},
+			user_dept                      =#{item.userDept,jdbcType=VARCHAR},
+			manufacturer_id                =#{item.manufacturerId,jdbcType=VARCHAR},
+			furniture_spec                 =#{item.furnitureSpec,jdbcType=VARCHAR},
+			created_date                   =#{item.createdDate,jdbcType=DATE},
+			position_id                    =#{item.positionId,jdbcType=VARCHAR},
+			guarantee_date                 =#{item.guaranteeDate,jdbcType=DATE},
+			contract_num                   =#{item.contractNum,jdbcType=VARCHAR},
+			apply_num                      =#{item.applyNum,jdbcType=VARCHAR},
+			check_num                      =#{item.checkNum,jdbcType=VARCHAR},
+			is_fixed_assets                =#{item.isFixedAssets,jdbcType=VARCHAR},
+			assets_finance_type            =#{item.assetsFinanceType,jdbcType=VARCHAR},
+			assets_source                  =#{item.assetsSource,jdbcType=VARCHAR},
+			assets_finance_state           =#{item.assetsFinanceState,jdbcType=VARCHAR},
+			finance_entry_date             =#{item.financeEntryDate,jdbcType=DATE},
+			original_value                 =#{item.originalValue,jdbcType=DECIMAL},
+			total_depreciation             =#{item.totalDepreciation,jdbcType=DECIMAL},
+			depreciation_method            =#{item.depreciationMethod,jdbcType=VARCHAR},
+			depreciation_year              =#{item.depreciationYear,jdbcType=DECIMAL},
+			net_salvage_rate               =#{item.netSalvageRate,jdbcType=DECIMAL},
+			net_salvage                    =#{item.netSalvage,jdbcType=DECIMAL},
+			month_depreciation_rate        =#{item.monthDepreciationRate,jdbcType=DECIMAL},
+			month_depreciation             =#{item.monthDepreciation,jdbcType=DECIMAL},
+			year_depreciation_rate         =#{item.yearDepreciationRate,jdbcType=DECIMAL},
+			year_depreciation              =#{item.yearDepreciation,jdbcType=DECIMAL},
+			net_value                      =#{item.netValue,jdbcType=DECIMAL},
+			month_count                    =#{item.monthCount,jdbcType=DECIMAL},
+			month_remain                   =#{item.monthRemain,jdbcType=DECIMAL},
+			institute_or_company           =#{item.instituteOrCompany,jdbcType=VARCHAR},
+			index_info                     =#{item.indexInfo,jdbcType=VARCHAR},
+			is_trans_fixed                 =#{item.isTransFixed,jdbcType=VARCHAR},
+			proof_num                      =#{item.proofNum,jdbcType=VARCHAR},
+			is_in_workflow                 =#{item.isInWorkflow,jdbcType=VARCHAR},
+			furniture_photo                =#{item.furniturePhoto,jdbcType=VARCHAR},
+			furniture_state                =#{item.furnitureState,jdbcType=VARCHAR},
+			parent_id                      =#{item.parentId,jdbcType=VARCHAR},
+			parent_name                    =#{item.parentName,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{item.attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{item.attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{item.attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{item.attribute15,jdbcType=VARCHAR},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DECIMAL},
+			attribute_18                   =#{item.attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{item.attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{item.attribute20,jdbcType=DECIMAL},
+			attribute_21                   =#{item.attribute21,jdbcType=DECIMAL},
+			attribute_22                   =#{item.attribute22,jdbcType=DECIMAL},
+			attribute_23                   =#{item.attribute23,jdbcType=DECIMAL},
+			attribute_24                   =#{item.attribute24,jdbcType=DECIMAL},
+			attribute_25                   =#{item.attribute25,jdbcType=DECIMAL},
+			attribute_26                   =#{item.attribute26,jdbcType=DATE},
+			attribute_27                   =#{item.attribute27,jdbcType=DATE},
+			attribute_28                   =#{item.attribute28,jdbcType=DATE},
+			attribute_29                   =#{item.attribute29,jdbcType=DATE},
+			attribute_30                   =#{item.attribute30,jdbcType=DATE},
+			guarantee_period               =#{item.guaranteePeriod,jdbcType=DECIMAL},
+			unit_price                     =#{item.unitPrice,jdbcType=DECIMAL}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_FURNITURE_ACCOUNT -->
+<delete id="deleteAssetsFurnitureAccountById" parameterType="java.lang.String">
+		delete from assets_furniture_account  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_FURNITURE_ACCOUNT -->
+<delete id="deleteAssetsFurnitureAccountList" parameterType="java.util.List">
+		delete from assets_furniture_account  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

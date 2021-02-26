@@ -1,0 +1,359 @@
+.org-name, .app-name, .dept-name {
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #cdcdcd;
+    font-style: normal;
+}
+
+.checkbox-title-single {
+    padding-left: 0;
+    position: absolute;
+    float: left;
+    left: 20px;
+}
+
+.toolbar .toolbar-left {
+    margin: 0;
+}
+
+.checkbox-title-multi {
+    padding-left: 8px;
+    vertical-align: middle;
+}
+
+input[type=checkbox], input[type=radio] {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 14px;
+}
+
+#selectedDeleteAll {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    color: #888;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.selected-check-all {
+    padding-left: 4px;
+}
+
+.title-desc {
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+}
+
+.table-bordered, .table-bordered td, .table-bordered th {
+    border: 0 !important;
+}
+
+.form-tool-search {
+    width: 166px;
+}
+.form-tool-search {
+    min-width: 166px\0 !important;
+}
+.form-tool-search.app-select {
+    width: 96px;
+    min-width: 96px\0 !important;
+}
+#jqGridPager_right .ui-paging-info {
+    display: none;
+}
+
+#jqGrid tr.ui-priority-secondary {
+    background: #FFFFFF;
+}
+#jqGridSelected tr.ui-priority-secondary {
+    background: #FFFFFF;
+}
+
+.toolbar-left.selected-check-all,
+.toolbar-right.role-delete-all,
+.toolbar-right.position-delete-all,
+.toolbar-right.group-delete-all {
+    padding-top: 6px;
+}
+
+.selected-op-col {
+    position: relative;
+}
+
+.ui-jqgrid-btable tr td:hover {
+    cursor: pointer;
+}
+
+.icon-drag {
+    cursor: move;
+    position: absolute;
+    top: 9px;
+    left: 0;
+    font-size: 14px;
+}
+
+.icon-close {
+    cursor: pointer;
+    position: absolute;
+    top: 9px;
+    left: 24px;
+    font-size: 13px;
+}
+
+.ui-jqgrid .ui-jqgrid-btjqGrid_cbable tbody tr.jqgrow td, .ui-jqgrid .ui-jqgrid-htable thead th {
+    height: 32px;
+    line-height: 16px;
+}
+
+.ui-jqgrid .ui-jqgrid-btable tbody tr.jqgrow td:first-child {
+    padding-left: 8px !important;
+    padding-top: 8px;
+    overflow: hidden;
+}
+
+.layout-panel-west {
+    border-right: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+#jqGrid_title {
+    padding-left: 0 !important;
+}
+
+#jqGrid_title.active {
+    background: #fff !important;
+}
+
+.layout-panel-center {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.ui-jqgrid .ui-jqgrid-view {
+    border: 0;
+}
+
+.form-tool-search {
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+}
+
+.ui-jqgrid-labels input[type=checkbox], .ui-jqgrid td input[type=checkbox] {
+    vertical-align: top;
+    display: inline-block;
+    margin: 3px 0 0 0 !important;
+}
+
+.ui-jqgrid-labels {
+    background: none;
+}
+
+.select2-container {
+    margin-left: 6px;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    height: 30px;
+}
+
+.toolbar .toolbar-right {
+    height: 30px;
+}
+
+.toolbar {
+    padding: 10px 0;
+}
+
+#jqGrid_cb {
+    text-align: center !important;
+    width: 37px !important;
+}
+
+#selectedCheckAll {
+    margin-left: 10px;
+}
+
+.ui-jqgrid tr {
+    border-radius: 4px;
+    overflow: hidden;
+}
+#jqGrid.table > tbody > tr.active > td{
+    background: #f5f5f5;
+}
+#jqGrid_cb.active, .jqgrow.success td {
+    background: #ffffff !important;
+}
+
+#jqGridSelected.table > tbody > tr.active > td {
+    background: #e5f3ff !important;
+}
+
+#jqGridPager_left {
+    padding: 8px 0;
+}
+
+.ui-jqgrid .ui-pg-button .ui-separator {
+    display: none;
+}
+
+.ui-jqgrid .ui-jqgrid-hdiv {
+    border: 0;
+}
+
+input.ui-pg-input.form-control {
+    text-align: center;
+    width: 34px;
+    height: 22px;
+    margin: 0 4px;
+}
+
+.ui-jqgrid .ui-pager-control .ui-pager-table td {
+    margin-top: 2px;
+    padding: 0 4px;
+    line-height: 22px;
+}
+
+.ui-jqgrid .ui-pg-selbox {
+    height: 22px;
+    line-height: 22px;
+    padding: 0;
+}
+.ui-jqgrid .ui-jqgrid-bdiv{
+    height: 280px;
+    overflow-x: hidden;
+}
+.ui-jqgrid .ui-jqgrid-btable, .ui-jqgrid-bdiv, .ui-jqgrid, .ui-jqgrid-view, .ui-jqgrid-hdiv {
+    width: 100% !important;
+}
+
+.icon-drag {
+    display: none !important;
+}
+
+.icon-close {
+    display: none !important;
+}
+
+.jqgrow.active .icon-drag, .jqgrow.active .icon-close {
+    display: inline-block !important;
+}
+
+.ui-jqgrid .ui-jqgrid-htable .ui-th-div {
+    font-size: 12px;
+}
+
+.ui-jqgrid .ui-jqgrid-pager, .ui-jqgrid .ui-jqgrid-toppager {
+    border: 0;
+}
+
+.thumbnail {
+    width: 100%;
+    border: 1px solid #eaeaea;
+    box-shadow: none;
+    padding: 6px 6px 2px 6px;
+    border-radius: unset;
+    margin: 0 0 10px;
+}
+.userPhoto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+}
+.thumbnail .img {
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center center;
+    margin: 0 auto;
+    border: none;
+}
+.userinfo {
+    width: 100%;
+    margin: 0 auto;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden
+}
+
+.ztree li span.button.chk {
+    font-size: 14px;
+    top: 3px;
+}
+
+.ztree li a > span.button {
+    font-size: 14px;
+    margin: 9px 6px 8px 4px;
+}
+
+.ztree li a {
+    padding: 4px 40px 4px 45px;
+}
+.ztree li a.curSelectedNode {
+    padding: 4px 40px 4px 45px;
+}
+
+.ztree li span.button.switch.center_close,
+.ztree li span.button.switch.bottom_close,
+.ztree li span.button.switch.root_close ,
+.ztree li span.button.switch.roots_close {
+    top: 4px;
+}
+
+.ztree li span.button.switch.center_open,
+.ztree li span.button.switch.bottom_open,
+.ztree li span.button.switch.root_open,
+.ztree li span.button.switch.roots_open {
+    top: 2px;
+}
+
+.userviewkads:nth-child(even) {
+    background: #ffffff;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    padding: 7px;
+}
+.unselected-div{
+    width: 100px;
+    margin: 60px auto;
+}
+.unselected-div img{
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+.unselected-div-title{
+    text-align: center;
+    display: block;
+    color: #cecece;
+    margin: -10px 0 0 6px;
+    font-size: 14px;
+}
+ul.nav.nav-pills {
+    margin-top: 10px;
+}
+.nav > li > a {
+    padding: 7px 15px 7px!important;
+    border: 1px solid #dedede;
+    background: #f6f6f6;
+    border-radius: 4px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: none;
+    color: #0079fe;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    border-bottom: 0;
+    color: #0079fe!important;
+    background: #ffffff!important;
+    font-weight: normal;
+    border-radius: 4px;
+}

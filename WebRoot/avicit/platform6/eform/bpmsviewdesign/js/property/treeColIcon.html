@@ -1,0 +1,151 @@
+<form>
+    <div class="form-group property-control">
+        <label>图标id</label><input type="text" id="id" name="id"
+                                   isnull="false" class="form-control input-sm" placeholder="图标id" readonly>
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>图标选择</label>
+        <div id="iconselect" class="input-group input-group-sm avicselect">
+            <!-- <input type="hidden"  name="icon" id="icon">  -->
+            <input type="text" class="form-control" name="icon" id="icon">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+        </div>
+    </div>
+
+
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>图标分组</label>
+        <select id="icongroup" name="icongroup" isnull="false" class="form-control input-sm">
+            <option value="level">按层级</option>
+            <!--            <option value="col">按字段值</option>-->
+        </select>
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>层级</label>
+        <select id="level" name="level" isnull="false" class="form-control input-sm">
+            <option value="0">第一层</option>
+            <option value="1">第二层</option>
+            <option value="2">第三层</option>
+            <option value="3">第四层</option>
+            <option value="4">第五层</option>
+        </select>
+    </div>
+
+<!--    <div class="form-group property-control">-->
+<!--        <label><i class="required">*</i>列名称</label>-->
+<!--        <select id="columnName" name="columnName" isnull="false" class="form-control input-sm">-->
+<!--        </select>-->
+<!--    </div>-->
+
+    <div class="form-group property-control">
+        <label>名称</label>
+        <input type="text" id="name" name="name"
+               class="form-control input-sm" readonly="true" value="第一层">
+        <input type="hidden" id="colType" name="colType" class="form-control input-sm" >
+    </div>
+
+    <div class="form-group property-control">
+        <label>优先级</label>
+        <input type="text" id="iconindex" name="iconindex"
+               class="form-control input-sm">
+    </div>
+</form>
+<script type="text/javascript">
+    var colList = null;
+    var lay_select_icon;
+    function setIconInfo(data) {
+        $("#icon").val(data.icon);
+        layer.close(lay_select_icon);
+        $("#icon").change();
+    }
+    $(function() {
+
+        $(".form-control").bind('change', function() {
+            if ($(this).attr("name") == "level"){
+
+                $("#name").val($(this).find("option:selected").text());
+            }
+            engine.changSave();
+        });
+
+        $(".avicselect-act").bind("click", function() {
+            var contentWidth = 800;
+            var top = $("#iconselect").offset().top + $("#iconselect").outerHeight(true);
+            var left = $("#iconselect").offset().left + $("#iconselect").outerWidth() - contentWidth;
+            var width = $("#iconselect").innerWidth();
+            layer.config({
+                extend: 'skin/layer-bootstrap.css'
+            });
+
+            var selectIconIndex="";
+            if(viewEditor.viewStyle=="bootstrap"){
+                selectIconIndex="static/h5/selectIcon/index.html";
+            }
+            else if(viewEditor.viewStyle=="easyui"){
+                selectIconIndex="avicit/platform6/eform/bpmsviewdesign/easyuicommon/index.html";
+            }
+
+            lay_select_icon = layer.open({
+                type: 2,
+                shift: 5,
+                title: false,
+                scrollbar: false,
+                move: false,
+                area: [contentWidth + 'px', '400px'],
+                offset: [top + 'px', left + 'px'],
+                closeBtn: 0,
+                shadeClose: true,
+                content: selectIconIndex,
+                success: function(layero, index) {
+                    var serachLabel = $('<div class="serachLabel"><span>请选择</span><span class="caret"></span></div>').appendTo(layero);
+                    serachLabel.bind('click', function() {
+                        layer.close(index);
+                    });
+                    serachLabel.css('width', width + 'px');
+                }
+
+            });
+        });
+
+    });
+
+    self.propertyPageInit = function(treeNode) {
+    }
+
+    self.validateForm = function(form,treeNode){
+
+        if(form.icon == null || form.icon == ""){
+            layer.msg('图标选择不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        if(form.icongroup == null || form.icongroup == ""){
+            layer.msg('图标分组不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        if((form.icongroup != null && form.icongroup != "")&&(form.level == null || form.level == "")){
+            layer.msg('层级不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        return true;
+    };
+
+</script>
+</html>

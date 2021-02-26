@@ -1,0 +1,201 @@
+<form id="div_ud_function">
+	<style>
+		.expressionDisplay{
+			width:100%;
+			border:1px solid #6497e9;
+			height:165px;
+			background-color: #ffffff;
+			box-shadow:3px 3px 2px #a5c7fe;
+			-moz-box-shadow:3px 3px 2px #a5c7fe;
+			-webkit-box-shadow:3px 3px 2px #a5c7fe;
+			border-bottom-left-radius:5px;
+			border-bottom-right-radius:5px;
+			margin-left:2px;
+			margin-top:-6px;
+			display:none;
+			overflow: auto;
+		}
+	</style>
+<!-- <div class="form-group property-control">
+	<label>显示位置</label>
+	<select id="range" name="range" readonly="readonly" class="form-control input-sm">
+		<option value=""></option>
+		<option value="openwindow">弹出</option>
+		<option value="north">上</option>
+		<option value="south">下</option>
+		<option value="west">左</option>
+		<option value="east">右</option>
+		<option value="center">中</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>显示比例</label>
+	<input type="text" id="showpercentage" name="showpercentage"
+		 class="form-control input-sm" placeholder="显示比例"/>
+</div> -->
+<div class="form-group property-control">
+	<label>表单id</label><input type="text" id="id" name="id"
+		isnull="false" class="form-control input-sm" placeholder="表单id" readonly>
+</div>
+
+<div  class="form-group property-control">
+	<label><i class="required">*</i>关联表单</label>			
+	<div id="LookupTypeSelect" class="input-group input-group-sm">
+		<input type="text" class="form-control" name="formname" id="formname">
+		<input type="hidden" name="formid" id="formid" />
+		<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+	</div>
+</div>
+<div class="form-group property-control">
+	<label><i class="required">*</i>表单名称</label><input type="text" id="name" name="name"
+		isnull="false" class="form-control input-sm" placeholder="表单名称">
+</div>
+	<div class="form-group property-control" id="formpara">
+		<label>传递参数</label><input type="hidden"  name="formpara"
+								  isnull="false" class="form-control input-sm">
+		<input type="hidden"  name="formparatype"
+			   isnull="false" class="form-control input-sm">
+		<input type="text"  name="formparaname" readonly
+			   isnull="false" class="form-control input-sm" placeholder="传递参数">
+		<div id="paratree" class="expressionDisplay">
+			<ul id="exprTree" class="ztree"></ul>
+		</div>
+	</div>
+<!-- <div class="form-group property-control">
+	<label>使用表单按钮</label>
+	<select id="isuseformbt" name="isuseformbt" class="form-control input-sm">
+			<option value="Y">是</option>
+			<option value="N">否</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>表单事件</label>
+	<textarea class="form-control input-sm" rows="20" title="其他" name="event_declare_gbfuntion" id="event_declare_formfuntion"></textarea>
+</div> -->
+
+</form>
+<script src="avicit/platform6/eform/bpmsformmanage/select/selectPublishEform/selectPublishEform.js"></script>
+<script type="text/javascript">
+	var paras = engine.getPara("form");
+	var showFlag = false;
+	var setting = {
+		check: {
+			enable: true,
+			nocheckInherit: true
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		},
+		callback: {
+			onCheck: function (event, treeId, treeNode) {
+				var treeObj = $.fn.zTree.getZTreeObj(treeId);
+				var nodes = treeObj.getCheckedNodes(true);
+				var paraname = [];
+				var formpara = [];
+				var paratype = [];
+				for (var i in nodes){
+					paraname.push(nodes[i].name);
+					formpara.push(nodes[i].id);
+					paratype.push(nodes[i].paratype);
+				}
+				$("[name='formparaname']").val(paraname.join(","));
+				$("[name='formparatype']").val(paratype.join(","));
+				$("[name='formpara']").val(formpara.join(","));
+				engine.changSave();
+			}
+		}
+	};
+
+	$(document).on("click",function(e) {
+		if (showFlag) {
+
+			var x = e.clientX;
+			var y = e.clientY;
+			if ($("#paratree").length>0) {
+				var divx1 = $("#paratree").offset().left;
+				var divy1 = $("#paratree").offset().top - 20;
+				var divx2 = $("#paratree").offset().left + $("#paratree").outerWidth();
+				var divy2 = $("#paratree").offset().top + $("#paratree").outerHeight();
+				if (x < divx1 || x > divx2 || y < divy1 || y > divy2) {
+					$(".expressionDisplay").hide();
+					showFlag = false;
+				}
+			}
+		}
+	});
+	$('[name="formparaname"]').click(function(){
+		initParaTree('1',$("[name='formparaname']").val());
+		$(".expressionDisplay").show();
+		showFlag = true;
+	});
+
+
+$(function(){
+	$(".form-control").bind('change', function(){
+		engine.changSave();
+    });
+	
+	var selectPublishEform = new SelectPublishEform("formid", "formname", null, "N", "eform");
+		selectPublishEform.init(function(data) {
+			var name = $("#name").val();
+			if (!name.length>0){
+				$("#name").val(data.name);
+			}
+			engine.changSave();
+	});
+
+});
+
+	function initParaTree(type,formparaname){
+		var zNodes =[];
+		formparaname = formparaname || "";
+		var formarray = formparaname.split(",");
+		for (var para in paras){
+			if (para == "clone"){
+				continue;
+			}
+			var obj = {};
+			obj.name = paras[para]._key;
+			obj.id = paras[para]._key;
+			obj.pId = 0;
+			obj.paratype = '1';
+
+			for (var s in formarray){
+				if (obj.name == formarray[s]){
+					obj.checked = true;
+					break;
+				}
+			}
+			zNodes.push(obj);
+		}
+
+
+		$.fn.zTree.init($("#exprTree"), setting, zNodes);
+	}
+
+	self.propertyPageInit = function(treeNode) {
+		initParaTree(treeNode.attribute.buttontype, treeNode.attribute.formparaname);
+	}
+
+self.validateForm = function(form,treeNode){
+   	if(form.formid == null || form.formid == ""){
+   		 layer.msg('关联表单不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+   		return false;
+   	}
+	if(form.name == null || form.name == ""){
+  		 layer.msg('表单名称不能为空！',{
+               icon: 2,
+               area: ['220px', ''],
+               closeBtn: 0
+           });
+  		return false;
+  	}
+   	return true;
+};
+</script>

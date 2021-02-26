@@ -1,0 +1,104 @@
+<mxGraph allowDanglingEdges="0" multigraph="0" dropEnabled="1" cellsEditable="0" cellsDisconnectable="1">
+	<add as="convertValueToString">
+		function(cell)
+		{
+		return cell.getAttribute('label');
+		}
+	</add>
+	<mxGraphModel as="model">
+		<add as="valueForCellChanged"><![CDATA[
+			function(cell, value)
+			{
+				var previous = null;
+				
+				if (isNaN(value.nodeType))
+				{
+					previous = cell.getAttribute('label');
+					cell.setAttribute('label', value);
+				}
+				else
+				{
+					previous = cell.value;
+					cell.value = value;
+				}
+				
+				return previous;
+			}
+		]]></add>
+		<root>
+			<Workflow id="0">
+				<mxCell />
+			</Workflow>
+			<Layer id="1">
+				<mxCell parent="0" />
+			</Layer>
+		</root>
+	</mxGraphModel>
+	<mxStylesheet as="stylesheet">
+		<add as="defaultVertex">
+			<add as="shape" value="label" />
+			<add as="perimeter" value="rectanglePerimeter" />
+			<!-- <add as="labelBackgroundColor" value="white" /> -->
+			<add as="fontSize" value="10" />
+			<add as="align" value="center" />
+			<add as="verticalAlign" value="middle" />
+			<add as="strokeColor" value="black" />
+		</add>
+		<add as="defaultEdge">
+			<add as="shape" value="connector" />
+			<add as="labelBackgroundColor" value="white" />
+			<add as="rounded" value="1" />
+			<add as="edgeStyle" value="elbowEdgeStyle" />
+			<add as="endArrow" value="classic" />
+			<add as="fontSize" value="10" />
+			<add as="fontFamily" value="Microsoft YaHei" />
+			<add as="align" value="center" />
+			<add as="verticalAlign" value="middle" />
+			<add as="strokeColor" value="black" />
+		</add>
+		<add as="swimlane1">
+			<add as="shape" value="swimlane" />
+			<add as="fontSize" value="14" />
+			<add as="startSize" value="30" />
+			<add as="horizontal" value="0" />
+			<add as="verticalAlign" value="top" />
+			<add as="fontColor" value="#333333" />
+			<add as="fontFamily" value="Microsoft YaHei" />
+		<!-- 	<add as="swimlaneFillColor" value="#dddddd" /> -->
+			<add as="labelBackgroundColor" value="none" />
+		</add>
+		<add as="swimlane2">
+			<add as="shape" value="swimlane" />
+			<add as="fontSize" value="14" />
+			<add as="startSize" value="30" />
+			<add as="horizontal" value="1" />
+			<add as="verticalAlign" value="top" />
+			<add as="fontColor" value="#333333" />
+			<add as="fontFamily" value="Microsoft YaHei" />
+	<!-- 		<add as="swimlaneFillColor" value="#dddddd" /> -->
+			<add as="labelBackgroundColor" value="none" />
+		</add>
+		<add as="symbol">
+			<add as="shape" value="image" />
+			<add as="perimeter" value="rectanglePerimeter" />
+			<!-- <add as="labelBackgroundColor" value="white" /> -->
+			<add as="fontSize" value="10" />
+			<add as="fontFamily" value="Microsoft YaHei" />
+			<add as="align" value="center" />
+			<add as="verticalAlign" value="top" />
+			<add as="verticalLabelPosition" value="bottom" />
+			<add as="resizable" value="0" />
+		</add>
+		<add as="text">
+			<add as="shape" value="rectangle"/>
+			<add as="perimeter" value="rectanglePerimeter"/>
+			<add as="fontSize" value="12"/>
+			<add as="align" value="left"/>
+			<add as="verticalAlign" value="top"/>
+			<add as="shadow" value="0"/>
+			<add as="strokeColor" value="none"/>
+			<add as="fillColor" value="none"/>
+			<add as="gradientColor" value="none"/>
+		</add>
+	</mxStylesheet>
+</mxGraph>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="avicit.platform6.core.exception.handler.CustomSimpleMappingExceptionResolver">
+        <property name="defaultStatusCode" value="500"/>
+        <property name="defaultErrorView" value="error/global"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error/global</prop>
+                <prop key="java.lang.RuntimeException">error/global</prop>
+                <prop key="java.io.FileNotFoundException">error/file-error</prop>
+            </props>
+        </property>
+        <property name="exceptionMappingCodePrompt">
+            <map>
+                <entry key="java.lang.ArithmeticException" value="运算条件异常" />
+                <entry key="java.lang.RuntimeException" value="运行时异常" />
+                <entry key="java.io.FileNotFoundException" value="找不到系统文件" />
+                <entry key="java.sql.SQLException" value="数据库执行异常域连接失败" />
+                <entry key="org.springframework.dao.DataAccessException" value="数据库异常，操作失败，请查看日志" />
+                <entry key="java.lang.NullPointerException" value="空指针异常，操作失败，请查看日志" />
+            </map>
+        </property>
+    </bean>
+
+</beans>

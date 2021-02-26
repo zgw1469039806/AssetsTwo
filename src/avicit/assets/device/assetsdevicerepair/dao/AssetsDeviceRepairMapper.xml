@@ -1,0 +1,1734 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetsdevicerepair.dao.AssetsDeviceRepairDao">
+
+<resultMap id="AssetsDeviceRepairDTOMap" type="avicit.assets.device.assetsdevicerepair.dto.AssetsDeviceRepairDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="procId" column="VERSION" jdbcType="VARCHAR" />
+		<result property="applicantId" column="APPLICANT_ID" jdbcType="VARCHAR" />
+		<result property="applicantDepart" column="APPLICANT_DEPART" jdbcType="VARCHAR" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="formState" column="FORM_STATE" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="deviceCategory" column="DEVICE_CATEGORY" jdbcType="VARCHAR" />
+		<result property="deviceSpec" column="DEVICE_SPEC" jdbcType="VARCHAR" />
+		<result property="deviceModel" column="DEVICE_MODEL" jdbcType="VARCHAR" />
+		<result property="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+		<result property="ownerDept" column="OWNER_DEPT" jdbcType="VARCHAR" />
+		<result property="contact" column="CONTACT" jdbcType="VARCHAR" />
+		<result property="position" column="POSITION" jdbcType="VARCHAR" />
+		<result property="manufacturer" column="MANUFACTURER" jdbcType="VARCHAR" />
+		<result property="isPc" column="IS_PC" jdbcType="VARCHAR" />
+		<result property="isTestDevice" column="IS_TEST_DEVICE" jdbcType="VARCHAR" />
+		<result property="isMetering" column="IS_METERING" jdbcType="VARCHAR" />
+		<result property="repairDept" column="REPAIR_DEPT" jdbcType="VARCHAR" />
+		<result property="failureDesc" column="FAILURE_DESC" jdbcType="VARCHAR" />
+		<result property="repairDesc" column="REPAIR_DESC" jdbcType="VARCHAR" />
+		<result property="repairFinishTime" column="REPAIR_FINISH_TIME" jdbcType="TIMESTAMP" />
+		<result property="finishAck" column="FINISH_ACK" jdbcType="VARCHAR" />
+		<result property="repairQuality" column="REPAIR_QUALITY" jdbcType="VARCHAR" />
+		<result property="failureAnalysisId" column="FAILURE_ANALYSIS_ID" jdbcType="VARCHAR" />
+		<result property="failureAnalysisDesc" column="FAILURE_ANALYSIS_DESC" jdbcType="VARCHAR" />
+		<result property="serviceAttitude" column="SERVICE_ATTITUDE" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="DECIMAL" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="DECIMAL" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="DECIMAL" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="DECIMAL" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="DECIMAL" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="TIMESTAMP" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="TIMESTAMP" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="TIMESTAMP" />
+		<result property="repairProgress" column="REPAIR_PROGRESS" jdbcType="VARCHAR" />
+		<result property="repairPlanStaff" column="REPAIR_PLAN_STAFF" jdbcType="VARCHAR" />
+		<result property="repairStaff" column="REPAIR_STAFF" jdbcType="VARCHAR" />
+		<result property="meterPlanStaff" column="METER_PLAN_STAFF" jdbcType="VARCHAR" />
+		<result property="hasExtraExpense" column="HAS_EXTRA_EXPENSE" jdbcType="VARCHAR" />
+		<result property="extraExpenseExplain" column="EXTRA_EXPENSE_EXPLAIN" jdbcType="VARCHAR" />
+		<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+		<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 ASSETS_DEVICE_REPAIR -->
+<select id="searchAssetsDeviceRepairByPage" parameterType="java.util.Map" resultMap="AssetsDeviceRepairDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_id						  ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.unified_id                     ,
+		t1.form_state                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.contact                        ,
+		t1.position                       ,
+		t1.manufacturer                   ,
+		t1.is_pc                          ,
+		t1.is_test_device                 ,
+		t1.is_metering                    ,
+		t1.repair_dept                    ,
+		t1.failure_desc                   ,
+		t1.repair_desc                    ,
+		t1.repair_finish_time             ,
+		t1.finish_ack                     ,
+		t1.repair_quality                 ,
+		t1.failure_analysis_id            ,
+		t1.failure_analysis_desc          ,
+		t1.service_attitude               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.repair_progress                ,
+		t1.repair_plan_staff              ,
+		t1.repair_staff                   ,
+		t1.meter_plan_staff               ,
+		t1.has_extra_expense              ,
+		t1.extra_expense_explain          
+	from assets_device_repair 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.procId != null and bean.procId != ''">
+				and t1.PROC_ID like concat(concat('%',#{bean.procId}),'%')
+			</if>
+			<if test="bean.applicantId != null and bean.applicantId != ''">
+				and t1.APPLICANT_ID like concat(concat('%',#{bean.applicantId}),'%') 
+			</if>
+			<if test="bean.applicantDepart != null and bean.applicantDepart != ''">
+				and t1.APPLICANT_DEPART like concat(concat('%',#{bean.applicantDepart}),'%') 
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%') 
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				and t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%') 
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%') 
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				and t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%') 
+			</if>
+			<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+				and t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%') 
+			</if>
+			<if test="bean.deviceModel != null and bean.deviceModel != ''">
+				and t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%') 
+			</if>
+			<if test="bean.ownerId != null and bean.ownerId != ''">
+				and t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%') 
+			</if>
+			<if test="bean.ownerDept != null and bean.ownerDept != ''">
+				and t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%') 
+			</if>
+			<if test="bean.contact != null and bean.contact != ''">
+				and t1.CONTACT like concat(concat('%',#{bean.contact}),'%') 
+			</if>
+			<if test="bean.position != null and bean.position != ''">
+				and t1.POSITION like concat(concat('%',#{bean.position}),'%') 
+			</if>
+			<if test="bean.manufacturer != null and bean.manufacturer != ''">
+				and t1.MANUFACTURER like concat(concat('%',#{bean.manufacturer}),'%') 
+			</if>
+			<if test="bean.isPc != null and bean.isPc != ''">
+				and t1.IS_PC like concat(concat('%',#{bean.isPc}),'%') 
+			</if>
+			<if test="bean.isTestDevice != null and bean.isTestDevice != ''">
+				and t1.IS_TEST_DEVICE like concat(concat('%',#{bean.isTestDevice}),'%') 
+			</if>
+			<if test="bean.isMetering != null and bean.isMetering != ''">
+				and t1.IS_METERING like concat(concat('%',#{bean.isMetering}),'%') 
+			</if>
+			<if test="bean.repairDept != null and bean.repairDept != ''">
+				and t1.REPAIR_DEPT like concat(concat('%',#{bean.repairDept}),'%') 
+			</if>
+			<if test="bean.failureDesc != null and bean.failureDesc != ''">
+				and t1.FAILURE_DESC like concat(concat('%',#{bean.failureDesc}),'%') 
+			</if>
+			<if test="bean.repairDesc != null and bean.repairDesc != ''">
+				and t1.REPAIR_DESC like concat(concat('%',#{bean.repairDesc}),'%') 
+			</if>
+			<if test="bean.repairFinishTimeBegin != null and bean.repairFinishTimeBegin != ''">
+				and t1.REPAIR_FINISH_TIME &gt;= #{bean.repairFinishTimeBegin}
+			</if>
+			<if test="bean.repairFinishTimeEnd != null and bean.repairFinishTimeEnd != ''">
+				and t1.REPAIR_FINISH_TIME &lt;= #{bean.repairFinishTimeEnd}
+			</if>
+			<if test="bean.finishAck != null and bean.finishAck != ''">
+				and t1.FINISH_ACK like concat(concat('%',#{bean.finishAck}),'%') 
+			</if>
+			<if test="bean.repairQuality != null and bean.repairQuality != ''">
+				and t1.REPAIR_QUALITY like concat(concat('%',#{bean.repairQuality}),'%') 
+			</if>
+			<if test="bean.failureAnalysisId != null and bean.failureAnalysisId != ''">
+				and t1.FAILURE_ANALYSIS_ID like concat(concat('%',#{bean.failureAnalysisId}),'%') 
+			</if>
+			<if test="bean.failureAnalysisDesc != null and bean.failureAnalysisDesc != ''">
+				and t1.FAILURE_ANALYSIS_DESC like concat(concat('%',#{bean.failureAnalysisDesc}),'%') 
+			</if>
+			<if test="bean.serviceAttitude != null and bean.serviceAttitude != ''">
+				and t1.SERVICE_ATTITUDE like concat(concat('%',#{bean.serviceAttitude}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null ">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null ">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null ">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null ">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null ">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null ">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.repairProgress != null and bean.repairProgress != ''">
+				and t1.REPAIR_PROGRESS like concat(concat('%',#{bean.repairProgress}),'%') 
+			</if>
+			<if test="bean.repairPlanStaff != null and bean.repairPlanStaff != ''">
+				and t1.REPAIR_PLAN_STAFF like concat(concat('%',#{bean.repairPlanStaff}),'%') 
+			</if>
+			<if test="bean.repairStaff != null and bean.repairStaff != ''">
+				and t1.REPAIR_STAFF like concat(concat('%',#{bean.repairStaff}),'%') 
+			</if>
+			<if test="bean.meterPlanStaff != null and bean.meterPlanStaff != ''">
+				and t1.METER_PLAN_STAFF like concat(concat('%',#{bean.meterPlanStaff}),'%') 
+			</if>
+			<if test="bean.hasExtraExpense != null and bean.hasExtraExpense != ''">
+				and t1.HAS_EXTRA_EXPENSE like concat(concat('%',#{bean.hasExtraExpense}),'%') 
+			</if>
+			<if test="bean.extraExpenseExplain != null and bean.extraExpenseExplain != ''">
+				and t1.EXTRA_EXPENSE_EXPLAIN like concat(concat('%',#{bean.extraExpenseExplain}),'%') 
+			</if>
+						<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_DEVICE_REPAIR -->
+<select id="searchAssetsDeviceRepairByPageOr" parameterType="java.util.Map" resultMap="AssetsDeviceRepairDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_id						  ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.unified_id                     ,
+		t1.form_state                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.contact                        ,
+		t1.position                       ,
+		t1.manufacturer                   ,
+		t1.is_pc                          ,
+		t1.is_test_device                 ,
+		t1.is_metering                    ,
+		t1.repair_dept                    ,
+		t1.failure_desc                   ,
+		t1.repair_desc                    ,
+		t1.repair_finish_time             ,
+		t1.finish_ack                     ,
+		t1.repair_quality                 ,
+		t1.failure_analysis_id            ,
+		t1.failure_analysis_desc          ,
+		t1.service_attitude               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.repair_progress                ,
+		t1.repair_plan_staff              ,
+		t1.repair_staff                   ,
+		t1.meter_plan_staff               ,
+		t1.has_extra_expense              ,
+		t1.extra_expense_explain          
+	from assets_device_repair  t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.procId != null and bean.procId != ''">
+				or t1.PROC_ID like concat(concat('%',#{bean.procId}),'%')
+			</if>
+			<if test="bean.applicantId != null and bean.applicantId != ''">
+				or t1.APPLICANT_ID like concat(concat('%',#{bean.applicantId}),'%')  
+			</if>
+			<if test="bean.applicantDepart != null and bean.applicantDepart != ''">
+				or t1.APPLICANT_DEPART like concat(concat('%',#{bean.applicantDepart}),'%')  
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')  
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				or t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%')  
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')  
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				or t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%')  
+			</if>
+			<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+				or t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%')  
+			</if>
+			<if test="bean.deviceModel != null and bean.deviceModel != ''">
+				or t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%')  
+			</if>
+			<if test="bean.ownerId != null and bean.ownerId != ''">
+				or t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%')  
+			</if>
+			<if test="bean.ownerDept != null and bean.ownerDept != ''">
+				or t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%')  
+			</if>
+			<if test="bean.contact != null and bean.contact != ''">
+				or t1.CONTACT like concat(concat('%',#{bean.contact}),'%')  
+			</if>
+			<if test="bean.position != null and bean.position != ''">
+				or t1.POSITION like concat(concat('%',#{bean.position}),'%')  
+			</if>
+			<if test="bean.manufacturer != null and bean.manufacturer != ''">
+				or t1.MANUFACTURER like concat(concat('%',#{bean.manufacturer}),'%')  
+			</if>
+			<if test="bean.isPc != null and bean.isPc != ''">
+				or t1.IS_PC like concat(concat('%',#{bean.isPc}),'%')  
+			</if>
+			<if test="bean.isTestDevice != null and bean.isTestDevice != ''">
+				or t1.IS_TEST_DEVICE like concat(concat('%',#{bean.isTestDevice}),'%')  
+			</if>
+			<if test="bean.isMetering != null and bean.isMetering != ''">
+				or t1.IS_METERING like concat(concat('%',#{bean.isMetering}),'%')  
+			</if>
+			<if test="bean.repairDept != null and bean.repairDept != ''">
+				or t1.REPAIR_DEPT like concat(concat('%',#{bean.repairDept}),'%')  
+			</if>
+			<if test="bean.failureDesc != null and bean.failureDesc != ''">
+				or t1.FAILURE_DESC like concat(concat('%',#{bean.failureDesc}),'%')  
+			</if>
+			<if test="bean.repairDesc != null and bean.repairDesc != ''">
+				or t1.REPAIR_DESC like concat(concat('%',#{bean.repairDesc}),'%')  
+			</if>
+			<if test="bean.repairFinishTimeBegin != null and bean.repairFinishTimeBegin != ''">
+				or t1.REPAIR_FINISH_TIME &gt;= #{bean.repairFinishTimeBegin}
+			</if>
+			<if test="bean.repairFinishTimeEnd != null and bean.repairFinishTimeEnd != ''">
+				or t1.REPAIR_FINISH_TIME &lt;= #{bean.repairFinishTimeEnd}
+			</if>
+			<if test="bean.finishAck != null and bean.finishAck != ''">
+				or t1.FINISH_ACK like concat(concat('%',#{bean.finishAck}),'%')  
+			</if>
+			<if test="bean.repairQuality != null and bean.repairQuality != ''">
+				or t1.REPAIR_QUALITY like concat(concat('%',#{bean.repairQuality}),'%')  
+			</if>
+			<if test="bean.failureAnalysisId != null and bean.failureAnalysisId != ''">
+				or t1.FAILURE_ANALYSIS_ID like concat(concat('%',#{bean.failureAnalysisId}),'%')  
+			</if>
+			<if test="bean.failureAnalysisDesc != null and bean.failureAnalysisDesc != ''">
+				or t1.FAILURE_ANALYSIS_DESC like concat(concat('%',#{bean.failureAnalysisDesc}),'%')  
+			</if>
+			<if test="bean.serviceAttitude != null and bean.serviceAttitude != ''">
+				or t1.SERVICE_ATTITUDE like concat(concat('%',#{bean.serviceAttitude}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.repairProgress != null and bean.repairProgress != ''">
+				or t1.REPAIR_PROGRESS like concat(concat('%',#{bean.repairProgress}),'%')  
+			</if>
+			<if test="bean.repairPlanStaff != null and bean.repairPlanStaff != ''">
+				or t1.REPAIR_PLAN_STAFF like concat(concat('%',#{bean.repairPlanStaff}),'%')  
+			</if>
+			<if test="bean.repairStaff != null and bean.repairStaff != ''">
+				or t1.REPAIR_STAFF like concat(concat('%',#{bean.repairStaff}),'%')  
+			</if>
+			<if test="bean.meterPlanStaff != null and bean.meterPlanStaff != ''">
+				or t1.METER_PLAN_STAFF like concat(concat('%',#{bean.meterPlanStaff}),'%')  
+			</if>
+			<if test="bean.hasExtraExpense != null and bean.hasExtraExpense != ''">
+				or t1.HAS_EXTRA_EXPENSE like concat(concat('%',#{bean.hasExtraExpense}),'%')  
+			</if>
+			<if test="bean.extraExpenseExplain != null and bean.extraExpenseExplain != ''">
+				or t1.EXTRA_EXPENSE_EXPLAIN like concat(concat('%',#{bean.extraExpenseExplain}),'%')  
+			</if>
+			</trim>
+			<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_DEVICE_REPAIR -->
+<select id="searchAssetsDeviceRepair" parameterType="java.util.Map" resultMap="AssetsDeviceRepairDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_id						  ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.unified_id                     ,
+		t1.form_state                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.contact                        ,
+		t1.position                       ,
+		t1.manufacturer                   ,
+		t1.is_pc                          ,
+		t1.is_test_device                 ,
+		t1.is_metering                    ,
+		t1.repair_dept                    ,
+		t1.failure_desc                   ,
+		t1.repair_desc                    ,
+		t1.repair_finish_time             ,
+		t1.finish_ack                     ,
+		t1.repair_quality                 ,
+		t1.failure_analysis_id            ,
+		t1.failure_analysis_desc          ,
+		t1.service_attitude               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.repair_progress                ,
+		t1.repair_plan_staff              ,
+		t1.repair_staff                   ,
+		t1.meter_plan_staff               ,
+		t1.has_extra_expense              ,
+		t1.extra_expense_explain          
+	from assets_device_repair 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="procId != null">
+				and t1.PROC_ID =#{procId}
+			</if>
+			<if test="applicantId != null and applicantId != ''">
+				and t1.APPLICANT_ID =#{applicantId}
+			</if>
+			<if test="applicantDepart != null and applicantDepart != ''">
+				and t1.APPLICANT_DEPART =#{applicantDepart}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="formState != null and formState != ''">
+				and t1.FORM_STATE =#{formState}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="deviceCategory != null and deviceCategory != ''">
+				and t1.DEVICE_CATEGORY =#{deviceCategory}
+			</if>
+			<if test="deviceSpec != null and deviceSpec != ''">
+				and t1.DEVICE_SPEC =#{deviceSpec}
+			</if>
+			<if test="deviceModel != null and deviceModel != ''">
+				and t1.DEVICE_MODEL =#{deviceModel}
+			</if>
+			<if test="ownerId != null and ownerId != ''">
+				and t1.OWNER_ID =#{ownerId}
+			</if>
+			<if test="ownerDept != null and ownerDept != ''">
+				and t1.OWNER_DEPT =#{ownerDept}
+			</if>
+			<if test="contact != null and contact != ''">
+				and t1.CONTACT =#{contact}
+			</if>
+			<if test="position != null and position != ''">
+				and t1.POSITION =#{position}
+			</if>
+			<if test="manufacturer != null and manufacturer != ''">
+				and t1.MANUFACTURER =#{manufacturer}
+			</if>
+			<if test="isPc != null and isPc != ''">
+				and t1.IS_PC =#{isPc}
+			</if>
+			<if test="isTestDevice != null and isTestDevice != ''">
+				and t1.IS_TEST_DEVICE =#{isTestDevice}
+			</if>
+			<if test="isMetering != null and isMetering != ''">
+				and t1.IS_METERING =#{isMetering}
+			</if>
+			<if test="repairDept != null and repairDept != ''">
+				and t1.REPAIR_DEPT =#{repairDept}
+			</if>
+			<if test="failureDesc != null and failureDesc != ''">
+				and t1.FAILURE_DESC =#{failureDesc}
+			</if>
+			<if test="repairDesc != null and repairDesc != ''">
+				and t1.REPAIR_DESC =#{repairDesc}
+			</if>
+			<if test="repairFinishTimeBegin != null and repairFinishTimeBegin != ''">
+				and t1.REPAIR_FINISH_TIME &gt;= #{repairFinishTimeBegin}
+			</if>
+			<if test="repairFinishTimeEnd != null and repairFinishTimeEnd != ''">
+				and t1.REPAIR_FINISH_TIME &lt;= #{repairFinishTimeEnd}
+			</if>
+			<if test="finishAck != null and finishAck != ''">
+				and t1.FINISH_ACK =#{finishAck}
+			</if>
+			<if test="repairQuality != null and repairQuality != ''">
+				and t1.REPAIR_QUALITY =#{repairQuality}
+			</if>
+			<if test="failureAnalysisId != null and failureAnalysisId != ''">
+				and t1.FAILURE_ANALYSIS_ID =#{failureAnalysisId}
+			</if>
+			<if test="failureAnalysisDesc != null and failureAnalysisDesc != ''">
+				and t1.FAILURE_ANALYSIS_DESC =#{failureAnalysisDesc}
+			</if>
+			<if test="serviceAttitude != null and serviceAttitude != ''">
+				and t1.SERVICE_ATTITUDE =#{serviceAttitude}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null and attribute18 != ''">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null and attribute19 != ''">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null and attribute20 != ''">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="repairProgress != null and repairProgress != ''">
+				and t1.REPAIR_PROGRESS =#{repairProgress}
+			</if>
+			<if test="repairPlanStaff != null and repairPlanStaff != ''">
+				and t1.REPAIR_PLAN_STAFF =#{repairPlanStaff}
+			</if>
+			<if test="repairStaff != null and repairStaff != ''">
+				and t1.REPAIR_STAFF =#{repairStaff}
+			</if>
+			<if test="meterPlanStaff != null and meterPlanStaff != ''">
+				and t1.METER_PLAN_STAFF =#{meterPlanStaff}
+			</if>
+			<if test="hasExtraExpense != null and hasExtraExpense != ''">
+				and t1.HAS_EXTRA_EXPENSE =#{hasExtraExpense}
+			</if>
+			<if test="extraExpenseExplain != null and extraExpenseExplain != ''">
+				and t1.EXTRA_EXPENSE_EXPLAIN =#{extraExpenseExplain}
+			</if>
+			<if test="bpmType !=null and bpmType !='' and bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{currUserId}) 
+			</if>
+			<if test="bpmState != null and bpmState !='' and bpmState != 'all'">
+				and v.businessstate_ = #{bpmState}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_DEVICE_REPAIR -->
+<select id="findAssetsDeviceRepairById" parameterType="java.util.Map" resultMap="AssetsDeviceRepairDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_id						  ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.unified_id                     ,
+		t1.form_state                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.contact                        ,
+		t1.position                       ,
+		t1.manufacturer                   ,
+		t1.is_pc                          ,
+		t1.is_test_device                 ,
+		t1.is_metering                    ,
+		t1.repair_dept                    ,
+		t1.failure_desc                   ,
+		t1.repair_desc                    ,
+		t1.repair_finish_time             ,
+		t1.finish_ack                     ,
+		t1.repair_quality                 ,
+		t1.failure_analysis_id            ,
+		t1.failure_analysis_desc          ,
+		t1.service_attitude               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.repair_progress                ,
+		t1.repair_plan_staff              ,
+		t1.repair_staff                   ,
+		t1.meter_plan_staff               ,
+		t1.has_extra_expense              ,
+		t1.extra_expense_explain          
+	from assets_device_repair 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_DEVICE_REPAIR -->
+<insert id="insertAssetsDeviceRepair" parameterType="avicit.assets.device.assetsdevicerepair.dto.AssetsDeviceRepairDTO">
+	insert into assets_device_repair
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="procId != null">
+				proc_id,
+			</if>
+			<if test="applicantId != null">
+				applicant_id,
+			</if>
+			<if test="applicantDepart != null">
+				applicant_depart,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="formState != null">
+				form_state,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="deviceCategory != null">
+				device_category,
+			</if>
+			<if test="deviceSpec != null">
+				device_spec,
+			</if>
+			<if test="deviceModel != null">
+				device_model,
+			</if>
+			<if test="ownerId != null">
+				owner_id,
+			</if>
+			<if test="ownerDept != null">
+				owner_dept,
+			</if>
+			<if test="contact != null">
+				contact,
+			</if>
+			<if test="position != null">
+				position,
+			</if>
+			<if test="manufacturer != null">
+				manufacturer,
+			</if>
+			<if test="isPc != null">
+				is_pc,
+			</if>
+			<if test="isTestDevice != null">
+				is_test_device,
+			</if>
+			<if test="isMetering != null">
+				is_metering,
+			</if>
+			<if test="repairDept != null">
+				repair_dept,
+			</if>
+			<if test="failureDesc != null">
+				failure_desc,
+			</if>
+			<if test="repairDesc != null">
+				repair_desc,
+			</if>
+			<if test="repairFinishTime != null">
+				repair_finish_time,
+			</if>
+			<if test="finishAck != null">
+				finish_ack,
+			</if>
+			<if test="repairQuality != null">
+				repair_quality,
+			</if>
+			<if test="failureAnalysisId != null">
+				failure_analysis_id,
+			</if>
+			<if test="failureAnalysisDesc != null">
+				failure_analysis_desc,
+			</if>
+			<if test="serviceAttitude != null">
+				service_attitude,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="repairProgress != null">
+				repair_progress,
+			</if>
+			<if test="repairPlanStaff != null">
+				repair_plan_staff,
+			</if>
+			<if test="repairStaff != null">
+				repair_staff,
+			</if>
+			<if test="meterPlanStaff != null">
+				meter_plan_staff,
+			</if>
+			<if test="hasExtraExpense != null">
+				has_extra_expense,
+			</if>
+			<if test="extraExpenseExplain != null">
+				extra_expense_explain,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="procId != null">
+				#{procId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantId != null">
+				#{applicantId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantDepart != null">
+				#{applicantDepart,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategory != null">
+				#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="contact != null">
+				#{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				#{position,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturer != null">
+				#{manufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="isPc != null">
+				#{isPc,jdbcType=VARCHAR},
+			</if>
+			<if test="isTestDevice != null">
+				#{isTestDevice,jdbcType=VARCHAR},
+			</if>
+			<if test="isMetering != null">
+				#{isMetering,jdbcType=VARCHAR},
+			</if>
+			<if test="repairDept != null">
+				#{repairDept,jdbcType=VARCHAR},
+			</if>
+			<if test="failureDesc != null">
+				#{failureDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="repairDesc != null">
+				#{repairDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="repairFinishTime != null">
+				#{repairFinishTime,jdbcType=DATE},
+			</if>
+			<if test="finishAck != null">
+				#{finishAck,jdbcType=VARCHAR},
+			</if>
+			<if test="repairQuality != null">
+				#{repairQuality,jdbcType=VARCHAR},
+			</if>
+			<if test="failureAnalysisId != null">
+				#{failureAnalysisId,jdbcType=VARCHAR},
+			</if>
+			<if test="failureAnalysisDesc != null">
+				#{failureAnalysisDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceAttitude != null">
+				#{serviceAttitude,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DATE},
+			</if>
+			<if test="repairProgress != null">
+				#{repairProgress,jdbcType=VARCHAR},
+			</if>
+			<if test="repairPlanStaff != null">
+				#{repairPlanStaff,jdbcType=VARCHAR},
+			</if>
+			<if test="repairStaff != null">
+				#{repairStaff,jdbcType=VARCHAR},
+			</if>
+			<if test="meterPlanStaff != null">
+				#{meterPlanStaff,jdbcType=VARCHAR},
+			</if>
+			<if test="hasExtraExpense != null">
+				#{hasExtraExpense,jdbcType=VARCHAR},
+			</if>
+			<if test="extraExpenseExplain != null">
+				#{extraExpenseExplain,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_DEVICE_REPAIR -->
+<insert id="insertAssetsDeviceRepairList" parameterType="java.util.List">
+	insert into assets_device_repair(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			proc_id,
+			applicant_id,
+			applicant_depart,
+			unified_id,
+			form_state,
+			device_name,
+			device_category,
+			device_spec,
+			device_model,
+			owner_id,
+			owner_dept,
+			contact,
+			position,
+			manufacturer,
+			is_pc,
+			is_test_device,
+			is_metering,
+			repair_dept,
+			failure_desc,
+			repair_desc,
+			repair_finish_time,
+			finish_ack,
+			repair_quality,
+			failure_analysis_id,
+			failure_analysis_desc,
+			service_attitude,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			repair_progress,
+			repair_plan_staff,
+			repair_staff,
+			meter_plan_staff,
+			has_extra_expense,
+			extra_expense_explain)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.procId,jdbcType=VARCHAR},
+					#{item.applicantId,jdbcType=VARCHAR},
+					#{item.applicantDepart,jdbcType=VARCHAR},
+					#{item.unifiedId,jdbcType=VARCHAR},
+					#{item.formState,jdbcType=VARCHAR},
+					#{item.deviceName,jdbcType=VARCHAR},
+					#{item.deviceCategory,jdbcType=VARCHAR},
+					#{item.deviceSpec,jdbcType=VARCHAR},
+					#{item.deviceModel,jdbcType=VARCHAR},
+					#{item.ownerId,jdbcType=VARCHAR},
+					#{item.ownerDept,jdbcType=VARCHAR},
+					#{item.contact,jdbcType=VARCHAR},
+					#{item.position,jdbcType=VARCHAR},
+					#{item.manufacturer,jdbcType=VARCHAR},
+					#{item.isPc,jdbcType=VARCHAR},
+					#{item.isTestDevice,jdbcType=VARCHAR},
+					#{item.isMetering,jdbcType=VARCHAR},
+					#{item.repairDept,jdbcType=VARCHAR},
+					#{item.failureDesc,jdbcType=VARCHAR},
+					#{item.repairDesc,jdbcType=VARCHAR},
+					#{item.repairFinishTime,jdbcType=DATE},
+					#{item.finishAck,jdbcType=VARCHAR},
+					#{item.repairQuality,jdbcType=VARCHAR},
+					#{item.failureAnalysisId,jdbcType=VARCHAR},
+					#{item.failureAnalysisDesc,jdbcType=VARCHAR},
+					#{item.serviceAttitude,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=DECIMAL},
+					#{item.attribute12,jdbcType=DECIMAL},
+					#{item.attribute13,jdbcType=DECIMAL},
+					#{item.attribute14,jdbcType=DECIMAL},
+					#{item.attribute15,jdbcType=DECIMAL},
+					#{item.attribute16,jdbcType=DECIMAL},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DATE},
+					#{item.attribute19,jdbcType=DATE},
+					#{item.attribute20,jdbcType=DATE},
+					#{item.repairProgress,jdbcType=VARCHAR},
+					#{item.repairPlanStaff,jdbcType=VARCHAR},
+					#{item.repairStaff,jdbcType=VARCHAR},
+					#{item.meterPlanStaff,jdbcType=VARCHAR},
+					#{item.hasExtraExpense,jdbcType=VARCHAR},
+					#{item.extraExpenseExplain,jdbcType=VARCHAR}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_DEVICE_REPAIR -->
+<update id="updateAssetsDeviceRepairSensitive" parameterType="avicit.assets.device.assetsdevicerepair.dto.AssetsDeviceRepairDTO">
+	update assets_device_repair 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="procId != null">
+				proc_id                   =#{procId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantId != null">
+				applicant_id                   =#{applicantId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantDepart != null">
+				applicant_depart               =#{applicantDepart,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				form_state                     =#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategory != null">
+				device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="contact != null">
+				contact                        =#{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				position                       =#{position,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturer != null">
+				manufacturer                   =#{manufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="isPc != null">
+				is_pc                          =#{isPc,jdbcType=VARCHAR},
+			</if>
+			<if test="isTestDevice != null">
+				is_test_device                 =#{isTestDevice,jdbcType=VARCHAR},
+			</if>
+			<if test="isMetering != null">
+				is_metering                    =#{isMetering,jdbcType=VARCHAR},
+			</if>
+			<if test="repairDept != null">
+				repair_dept                    =#{repairDept,jdbcType=VARCHAR},
+			</if>
+			<if test="failureDesc != null">
+				failure_desc                   =#{failureDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="repairDesc != null">
+				repair_desc                    =#{repairDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="repairFinishTime != null">
+				repair_finish_time             =#{repairFinishTime,jdbcType=DATE},
+			</if>
+			<if test="finishAck != null">
+				finish_ack                     =#{finishAck,jdbcType=VARCHAR},
+			</if>
+			<if test="repairQuality != null">
+				repair_quality                 =#{repairQuality,jdbcType=VARCHAR},
+			</if>
+			<if test="failureAnalysisId != null">
+				failure_analysis_id            =#{failureAnalysisId,jdbcType=VARCHAR},
+			</if>
+			<if test="failureAnalysisDesc != null">
+				failure_analysis_desc          =#{failureAnalysisDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceAttitude != null">
+				service_attitude               =#{serviceAttitude,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DATE},
+			</if>
+			<if test="repairProgress != null">
+				repair_progress                =#{repairProgress,jdbcType=VARCHAR},
+			</if>
+			<if test="repairPlanStaff != null">
+				repair_plan_staff              =#{repairPlanStaff,jdbcType=VARCHAR},
+			</if>
+			<if test="repairStaff != null">
+				repair_staff                   =#{repairStaff,jdbcType=VARCHAR},
+			</if>
+			<if test="meterPlanStaff != null">
+				meter_plan_staff               =#{meterPlanStaff,jdbcType=VARCHAR},
+			</if>
+			<if test="hasExtraExpense != null">
+				has_extra_expense              =#{hasExtraExpense,jdbcType=VARCHAR},
+			</if>
+			<if test="extraExpenseExplain != null">
+				extra_expense_explain          =#{extraExpenseExplain,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_DEVICE_REPAIR -->
+<update id="updateAssetsDeviceRepairAll" parameterType="avicit.assets.device.assetsdevicerepair.dto.AssetsDeviceRepairDTO">
+	update assets_device_repair 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			proc_id						   =#{procId,jdbcType=VARCHAR},
+			applicant_id                   =#{applicantId,jdbcType=VARCHAR},
+			applicant_depart               =#{applicantDepart,jdbcType=VARCHAR},
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			form_state                     =#{formState,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			contact                        =#{contact,jdbcType=VARCHAR},
+			position                       =#{position,jdbcType=VARCHAR},
+			manufacturer                   =#{manufacturer,jdbcType=VARCHAR},
+			is_pc                          =#{isPc,jdbcType=VARCHAR},
+			is_test_device                 =#{isTestDevice,jdbcType=VARCHAR},
+			is_metering                    =#{isMetering,jdbcType=VARCHAR},
+			repair_dept                    =#{repairDept,jdbcType=VARCHAR},
+			failure_desc                   =#{failureDesc,jdbcType=VARCHAR},
+			repair_desc                    =#{repairDesc,jdbcType=VARCHAR},
+			repair_finish_time             =#{repairFinishTime,jdbcType=DATE},
+			finish_ack                     =#{finishAck,jdbcType=VARCHAR},
+			repair_quality                 =#{repairQuality,jdbcType=VARCHAR},
+			failure_analysis_id            =#{failureAnalysisId,jdbcType=VARCHAR},
+			failure_analysis_desc          =#{failureAnalysisDesc,jdbcType=VARCHAR},
+			service_attitude               =#{serviceAttitude,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DATE},
+			attribute_19                   =#{attribute19,jdbcType=DATE},
+			attribute_20                   =#{attribute20,jdbcType=DATE},
+			repair_progress                =#{repairProgress,jdbcType=VARCHAR},
+			repair_plan_staff              =#{repairPlanStaff,jdbcType=VARCHAR},
+			repair_staff                   =#{repairStaff,jdbcType=VARCHAR},
+			meter_plan_staff               =#{meterPlanStaff,jdbcType=VARCHAR},
+			has_extra_expense              =#{hasExtraExpense,jdbcType=VARCHAR},
+			extra_expense_explain          =#{extraExpenseExplain,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_DEVICE_REPAIR -->
+<update id="updateAssetsDeviceRepairList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_device_repair 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			proc_id						   =#{item.procId,jdbcType=VARCHAR},
+			applicant_id                   =#{item.applicantId,jdbcType=VARCHAR},
+			applicant_depart               =#{item.applicantDepart,jdbcType=VARCHAR},
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			form_state                     =#{item.formState,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			device_category                =#{item.deviceCategory,jdbcType=VARCHAR},
+			device_spec                    =#{item.deviceSpec,jdbcType=VARCHAR},
+			device_model                   =#{item.deviceModel,jdbcType=VARCHAR},
+			owner_id                       =#{item.ownerId,jdbcType=VARCHAR},
+			owner_dept                     =#{item.ownerDept,jdbcType=VARCHAR},
+			contact                        =#{item.contact,jdbcType=VARCHAR},
+			position                       =#{item.position,jdbcType=VARCHAR},
+			manufacturer                   =#{item.manufacturer,jdbcType=VARCHAR},
+			is_pc                          =#{item.isPc,jdbcType=VARCHAR},
+			is_test_device                 =#{item.isTestDevice,jdbcType=VARCHAR},
+			is_metering                    =#{item.isMetering,jdbcType=VARCHAR},
+			repair_dept                    =#{item.repairDept,jdbcType=VARCHAR},
+			failure_desc                   =#{item.failureDesc,jdbcType=VARCHAR},
+			repair_desc                    =#{item.repairDesc,jdbcType=VARCHAR},
+			repair_finish_time             =#{item.repairFinishTime,jdbcType=DATE},
+			finish_ack                     =#{item.finishAck,jdbcType=VARCHAR},
+			repair_quality                 =#{item.repairQuality,jdbcType=VARCHAR},
+			failure_analysis_id            =#{item.failureAnalysisId,jdbcType=VARCHAR},
+			failure_analysis_desc          =#{item.failureAnalysisDesc,jdbcType=VARCHAR},
+			service_attitude               =#{item.serviceAttitude,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{item.attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{item.attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{item.attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{item.attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DATE},
+			attribute_19                   =#{item.attribute19,jdbcType=DATE},
+			attribute_20                   =#{item.attribute20,jdbcType=DATE},
+			repair_progress                =#{item.repairProgress,jdbcType=VARCHAR},
+			repair_plan_staff              =#{item.repairPlanStaff,jdbcType=VARCHAR},
+			repair_staff                   =#{item.repairStaff,jdbcType=VARCHAR},
+			meter_plan_staff               =#{item.meterPlanStaff,jdbcType=VARCHAR},
+			has_extra_expense              =#{item.hasExtraExpense,jdbcType=VARCHAR},
+			extra_expense_explain          =#{item.extraExpenseExplain,jdbcType=VARCHAR}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_DEVICE_REPAIR -->
+<delete id="deleteAssetsDeviceRepairById" parameterType="java.lang.String">
+		delete from assets_device_repair  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_DEVICE_REPAIR -->
+<delete id="deleteAssetsDeviceRepairList" parameterType="java.util.List">
+		delete from assets_device_repair  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

@@ -1,0 +1,9 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="allflow.css">
+    <css_fixedrelativeurl value="1" />
+    <auto value="1" />
+    <sourcefile path=".\avictabs.css" />
+    <sourcefile path=".\editForm.css" />
+    <sourcefile path=".\workflow.css" />
+</combinefile>
+</jscompress>

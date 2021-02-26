@@ -1,0 +1,332 @@
+/*流程步骤 start*/
+.ystep {
+  padding:0 0px;
+  width: 100%!important;
+  height: 100%!important;
+  border-bottom: 1px solid #0079fe!important;
+}
+.ystep-container {
+  display: inline-block;
+  position: relative;
+  color: #000;
+  width: 100%;
+  padding: 0 5% 0 18%;
+}
+.ystep-container ul {
+  list-style: none;
+}
+.ystep-container ul,.ystep-container li,.ystep-container p {
+  margin: 0;
+  padding: 0;
+}
+
+.ystep-lg {
+  height: 60px;
+  width: 100%;
+}
+
+.ystep-lg .ystep-container-steps {
+  position: absolute;
+  top: 2px;
+  width: 80%;
+  cursor: pointer;
+  z-index: 10;
+}
+.ystep-lg li {
+  float: left;
+  width: 20%;
+  height: 60px;
+  margin-right: 5%;
+}
+
+.ystep-lg .ystep-progress {
+  width: 80%;
+  height: 3px;
+  position: absolute;
+  top: 33px;
+  left: 18%;
+  float: left;
+  overflow: hidden;
+}
+.ystep-lg .ystep-progress-bar {
+  width: 75%;
+  height: 3px;
+  background: #e4e4e4;
+  display: inline-block;
+  float: left;
+}
+.ystep-lg .ystep-progress-highlight {
+  height: 3px;
+  display: block;
+}
+
+.ystep-green .ystep-step-done {
+   color: #0079fe;
+   font-size: 14px;
+ }
+.ystep-green .ystep-step-done div {
+  background-color: #0079fe;
+  font-size: 14px;
+}
+.ystep-green .ystep-step-undone {
+  color: #9c9a9b;
+  font-size: 14px;
+}
+.ystep-green .ystep-step-undone div{
+  background-color: #9c9a9b;
+}
+.ystep-green .ystep-step-active {
+  color: #006bfc;
+  font-size: 14px;
+}
+.ystep-green .ystep-step-active div{
+  background-color: #006bfc;
+}
+.ystep-green .ystep-progress-highlight {
+  background-color: #0079fe;
+}
+
+.ystep-step-circle{
+  width: 25px;
+  height: 25px;
+  border-radius: 14px;
+  /*behavior: url(static/h5/bootstrap-treeview/css/PIE.htc);*/
+  background-color: #0079fe;
+  color: #FFF;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 2px;
+}
+/*流程步骤 end*/
+
+/*左右列表 start*/
+.list-select{
+  width: 80%;
+  height: 420px;
+  margin: 10px auto 0px auto;
+}
+/*-------标题样式------*/
+.list-select .list-title{
+  width: 100%;
+}
+/*-------列表主体样式--------*/
+.list-select .list-body{
+  width: 100%;
+  height: 85%;
+  margin-left: 7%;
+  margin-top: 5px;
+  overflow: hidden;
+}
+.list-body > div.item-div{
+  float: left;
+  width: 40%!important;
+  height: 100%!important;
+}
+.item-div > span{
+  font-size: 14px;
+  margin-left: 45%;
+}
+.item-div > span>i{
+  color: #0079fe;
+  font-size: 16px;
+}
+.list-body .left-box, .list-body .right-box{
+  display: block;
+  overflow-x:hidden;
+  /*width: 100%!important;*/
+  /*margin: 0px 10px 0px 10px;*/
+  border: 1px solid #e4e4e4;
+  border-radius: 3px;
+  padding: 0px;
+  background: #fff;
+  height: 90%!important;
+}
+.list-body .center-box{
+  display: block;
+  float: left;
+  width: 65px;
+  height: 85%;
+  padding-top:80px;
+  margin: 0px 10px;
+}
+
+/*-------列表项样式-------*/
+.list-body .item{
+  display: block;
+  text-align: left;
+}
+.list-body .item:hover{
+  background-color: #F5F5F5;
+}
+.list-body .item a {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px 5px 20px;
+  min-width: 100%;
+  width: 100px;
+  white-space: nowrap;
+  text-decoration:none;
+}
+
+.list-body .item a i{
+  display: inline-block;
+  color: #0079fe;
+  font-size: 16px;
+  vertical-align:middle;
+}
+.list-body .item a span{
+  display:inline-block;
+  color: #454545;
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  padding-left:5px;
+  width: 65%;
+  vertical-align:middle;
+
+}
+.list-body .selected-item{
+  background-color: #e1efeb;
+}
+.list-body .selected-item:hover{
+  background-color: #e1efeb;
+}
+.list-body .selected-item a i{
+  color: #454545;
+}
+
+/*------中间选择按钮样式-------*/
+.list-body .center-box > a{
+  min-width: 65px!important;
+  margin: 10px auto;
+  padding: 0px!important;
+  /*color: #9c9a9b;*/
+  /*background: #fff;*/
+  /*border: 1px solid #e4e4e4;*/
+  /*font-size: 12px;*/
+
+}
+/*.list-body .center-box > a:hover{*/
+  /*background: #2fad95;*/
+  /*color:#FFF;*/
+  /*cursor: pointer;*/
+/*}*/
+/*左右列表 end*/
+
+
+/*step2*/
+.data-source , .setting-rule{
+  width: 50%;
+  height: 420px;
+  margin: 10px auto 0px auto;
+}
+
+.data-source .data-source-display{
+  display: none;
+}
+/*.data-source a{*/
+  /*min-width: 50px;*/
+  /*!*color: #9c9a9b;*!*/
+  /*!*background: #fff;*!*/
+  /*!*border: 1px solid #e4e4e4;*!*/
+  /*!*font-size: 12px;*!*/
+  /*border-radius: 3px;*/
+  /*margin: 10px auto;*/
+/*}*/
+
+.form_commonTable{
+  font-size: 14px;
+  margin: 0!important;
+}
+.form_commonTable tr{
+  height: 50px;
+  line-height: 40px;
+}
+/*step3*/
+
+
+/*step4*/
+.confirm-rule{
+  width: 65%;
+  height: 270px;
+  margin: 80px auto auto auto;
+}
+.migrate-content h3{
+  text-align: center;
+}
+.database{
+  overflow:hidden;
+}
+.source, .target{;
+  float: left;
+  width: 15%;
+  height: 130px;
+}
+.source{
+  margin: 30px 25% 30px 12%;
+}
+.target{
+  margin: 30px 5% 30px 25%;
+}
+.databaseModel{
+  position: relative;
+}
+.databaseModel .cylinder {
+  width: 80px;
+  height: 130px;
+  background: #e4e4e4;
+  border:1px solid #9c9a9b;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  -webkit-border-radius: 100px / 50px;
+  -moz-border-radius: 100px / 50px;
+  border-radius: 100px / 50px;
+  behavior: url(static/h5/bootstrap-treeview/css/PIE.htc);
+}
+.databaseModel .ovals {
+  width: 80px;
+  height: 35px;
+  position: absolute;
+  background: #e4e4e4;
+  border:1px solid #9c9a9b;
+  left: 0px;
+  top: 0px;
+  -webkit-border-radius: 50px 50px 0 0;
+  -moz-border-radius: 50px 50px 0 0;
+  border-radius: 100px / 50px;
+  behavior: url(static/h5/bootstrap-treeview/css/PIE.htc);
+}
+.databaseModel .content {
+  font-size: 12px;
+  position: absolute;
+  width: 80px;
+  left: 0px;
+  top: 60px;
+  text-align: center;
+}
+.process-bar{
+  width: 0px;
+  height: 10px;
+  background: #0079fe;
+  position: absolute;
+  top: 63px;
+  left: 80px;
+}
+.triangle {
+  left: 80px;
+  top: 55px;
+  position: absolute;
+  border-top: 13px solid transparent;
+  border-left: 20px solid #0079fe;
+  border-bottom: 13px solid transparent;
+}
+
+
+.error{
+  background:#FFF7FA!important;
+  border:1px solid #CE7979!important;
+  color:#F00;
+}

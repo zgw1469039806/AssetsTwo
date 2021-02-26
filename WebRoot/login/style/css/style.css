@@ -1,0 +1,210 @@
+html{
+	margin: 0;
+}
+body {
+	margin: 0;
+	background: #f3f4f9;
+}
+li {
+	list-style: none;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix {
+	zoom: 1
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+* {
+	font-family: "微软雅黑";
+}
+.bg{
+	text-align: center;
+	position: relative;
+}
+.icon{
+    position: absolute;
+    left: 50%;
+    top: 160px;
+    margin-left: -28px;
+}
+.icon span{
+	font-size: 36px;
+	color: #C0C3D3;
+	 margin-left: -18px;
+}
+.error_tit{
+	font-size: 24px;
+	color: #7D899D;
+	margin: 10px;
+	text-align: center;
+}
+.back_home{
+	display: block;
+	width: 110px;
+	height: 32px;
+	text-align: center;
+	line-height: 32px;
+	text-decoration: none;
+	color: #fff;
+	background: #297CE6;
+	border-radius:4px ;
+	margin: 20px auto;
+}
+.error_box{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -220px;
+	margin-top: -175px;
+}
+.function_error{
+	position: inherit;
+	margin: 0;
+	margin: 40px;
+}
+.function_error_a{
+	display: block;
+	width: 200px;
+	text-align: center;
+	background: #E1E4ED;
+	border-radius:4px 4px 0 0 ;
+	line-height: 32px;
+	text-decoration: none;
+	color: #7D899D;
+	margin-bottom: -1px;
+}
+.error_text{
+	border: 1px solid #e8e8e8;
+	background: #fff;
+	margin-top: -1px;
+}
+.error_text_open{
+	height: 360px;
+	overflow-y: auto;
+}
+.error_p{
+	padding: 0 10px;
+	color: #7D899D;
+	font-size: 14px;
+}
+.error_p span{
+	color: red;
+}
+ @media only screen and (max-width:1000px ) {
+	.error_box{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -130px;
+	margin-top: -90px;
+	}
+	.bg>img{
+		width: 260px;
+	}
+	.icon{
+    position: absolute;
+    left: 50%;
+    top: 94px;
+    margin-left: -20px;
+	}
+ .icon>img{
+    	 width: 24px;
+    }
+    .error_tit{
+    	font-size: 16px;
+    	font-weight:300 ;
+    }
+    .back_home{
+    	display: none;
+    }
+    .function_error{
+    	position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -130px;
+		margin-top: -90px;
+    }
+	.error_p,.function_error_btn,.error_text{
+		display: none;
+	}
+	.icon span {
+    margin-left: -10px;
+    font-size: 24px;
+}
+} 
+/* IE8下专用 */
+    .ie8.error_box{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -130px;
+	margin-top: -90px;
+	}
+	.ie8 .bg>img{
+		width: 260px;
+	}
+	.ie8 .icon{
+    position: absolute;
+    left: 50%;
+    top: 94px;
+    margin-left: -20px;
+	}
+ .ie8 .icon>img{
+    	 width: 24px;
+    }
+    .ie8 .error_tit{
+    	font-size: 16px;
+    	font-weight:300 ;
+    }
+    .ie8 .back_home{
+    	display: none;
+    }
+    .ie8 .function_error{
+    	position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -130px;
+		margin-top: -90px;
+    }
+	.ie8 .error_p,.ie8 .function_error_btn,.ie8 .error_text{
+		display: none;
+	}
+	.ie8 .icon span {
+    margin-left: -10px;
+    font-size: 24px;
+}
+
+
+/* 谷歌美化滚动条 */
+*::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+*::-webkit-scrollbar-track {
+	background: #f3f4f9;
+	border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb {
+	background: #c8d2e0;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover {
+	background: #333;
+}
+*::-webkit-scrollbar-corner {
+	background: #c8d2e0;
+}

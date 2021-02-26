@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+.headerLogoDom{
+	width: 240px;
+	margin-top: 5px;
+  margin-left: 10px;
+  float:left;
+}
+.logo{
+	float:left;	
+}
+.title{
+	float:right;
+	color: #ffffff;
+    font-size: 22px;
+    margin-top: 10px;
+}
+.headerConfigDom{
+	width:400px;
+	float:right;
+	color: #ffffff;
+	font-size: 14px;
+	margin-top: 15px;
+}
+.headerConfigDom table{
+	width:98%;
+}
+.headerConfigDom table td{
+	width:30%;
+}

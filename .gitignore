@@ -1,0 +1,9 @@
+/WebRoot/WEB-INF/classes
+*.log
+*.class
+/target
+.idea/
+*.iml
+/out
+.run/
+build/

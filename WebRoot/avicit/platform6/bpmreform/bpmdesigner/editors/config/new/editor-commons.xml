@@ -1,0 +1,29 @@
+<mxEditor>
+	<ui>
+		<resource basename="avicit/platform6/bpmreform/bpmdesigner/editors/resources/app" />
+	</ui>
+	<mxDefaultPopupMenu as="popupHandler">
+		<add as="删除  Del" action="delete" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/delete.gif" if="cell" />
+		<add as="对齐" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/fit.gif" if="ncells">
+			<add as="左右居中  Ctrl+向左箭头" action="alignCellsCenter" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/aligncenter.gif" if="ncells" />
+			<add as="上下居中  Ctrl+向上箭头" action="alignCellsMiddle" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/alignmiddle.gif" if="ncells" />
+		</add>
+		<add as="左右间距相等 " action="comWidth" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/center.gif" if="ncells" />
+		<add as="上下间距相等 " action="comHeight" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/center.gif" if="ncells" />
+		<add as="泳道自动布局 " action="autoLayout" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/swimlane.gif" />
+		<add as="虚线" action="changeDottedLine" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/connect.gif" if="isEdgeSolidLine" />
+		<add as="实线" action="changeSolidLine" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/connect.gif" if="isEdgeDottedLine" />
+		<add as="直线" action="changeEdgeStyle1" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/fillcolor.gif" if="isEdgeNotStraight" />
+		<add as="曲线" action="changeEdgeStyle2" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/fillcolor.gif" if="isEdgeStraight" />
+		<add as="清空拐点" action="clearWaypoints" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/delete.gif" if="isEdgeStraight" />
+		<add as="增加拐点" action="addWayPoint" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/fit.gif" if="canAddPoint" />
+		<condition name="isEdgeStraight">isEdgeStraight</condition>
+		<condition name="isEdgeNotStraight">isEdgeNotStraight</condition>
+		<condition name="canAddPoint">canAddPoint</condition>
+		<condition name="isEdgeSolidLine">isEdgeSolidLine</condition>
+		<condition name="isEdgeDottedLine">isEdgeDottedLine</condition>
+	</mxDefaultPopupMenu>
+	<include name="avicit/platform6/bpmreform/bpmdesigner/editors/config/new/keyhandler-commons.xml" />
+	<Array as="actions">
+	</Array>
+</mxEditor>

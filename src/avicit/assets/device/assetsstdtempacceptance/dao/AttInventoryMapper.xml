@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetsstdtempacceptance.dao.AttInventoryDao">
+
+<resultMap id="AttInventoryDTOMap" type="avicit.assets.device.assetsstdtempacceptance.dto.AttInventoryDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="deviceModel" column="DEVICE_MODEL" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="deviceCategory" column="DEVICE_CATEGORY" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="deviceSpec" column="DEVICE_SPEC" jdbcType="VARCHAR" />
+		<result property="deviceNum" column="DEVICE_NUM" jdbcType="VARCHAR" />
+		<result property="fkSubColId" column="FK_SUB_COL_ID" jdbcType="VARCHAR" />
+		<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 根据pid查询对象 ATT_INVENTORY -->
+<select id="findAttInventoryByPid" parameterType="java.util.Map" resultMap="AttInventoryDTOMap">
+	select
+		t1.id                             ,
+		t1.device_model                   ,
+		t1.device_name                    ,
+		t1.last_update_date               ,
+		t1.creation_date                  ,
+		t1.device_category                ,
+		t1.created_by                     ,
+		t1.version                        ,
+		t1.last_updated_by                ,
+		t1.last_update_ip                 ,
+		t1.device_spec                    ,
+		t1.device_num                     ,
+		t1.fk_sub_col_id                  ,
+		t1.org_identity                   
+	from att_inventory 	t1
+		where t1.fk_sub_col_id = #{pid}
+</select>
+<!-- 分页查询 ATT_INVENTORY -->
+<select id="searchAttInventoryByPage" parameterType="java.util.Map" resultMap="AttInventoryDTOMap">
+	select
+		t1.id                             ,
+		t1.device_model                   ,
+		t1.device_name                    ,
+		t1.last_update_date               ,
+		t1.creation_date                  ,
+		t1.device_category                ,
+		t1.created_by                     ,
+		t1.version                        ,
+		t1.last_updated_by                ,
+		t1.last_update_ip                 ,
+		t1.device_spec                    ,
+		t1.device_num                     ,
+		t1.fk_sub_col_id                  ,
+		t1.org_identity                   
+	from att_inventory 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.deviceModel != null and bean.deviceModel != ''">
+				and t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%') 
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				and t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%') 
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+				and t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%') 
+			</if>
+			<if test="bean.deviceNum != null and bean.deviceNum != ''">
+				and t1.DEVICE_NUM like concat(concat('%',#{bean.deviceNum}),'%') 
+			</if>
+			<if test="bean.fkSubColId != null and bean.fkSubColId != ''">
+				and t1.FK_SUB_COL_ID =#{bean.fkSubColId}
+			</if>
+			<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+				and t1.ORG_IDENTITY like concat(concat('%',#{bean.orgIdentity}),'%') 
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrATT_INVENTORY -->
+<select id="searchAttInventoryByPageOr" parameterType="java.util.Map" resultMap="AttInventoryDTOMap">
+	select
+		t1.id                             ,
+		t1.device_model                   ,
+		t1.device_name                    ,
+		t1.last_update_date               ,
+		t1.creation_date                  ,
+		t1.device_category                ,
+		t1.created_by                     ,
+		t1.version                        ,
+		t1.last_updated_by                ,
+		t1.last_update_ip                 ,
+		t1.device_spec                    ,
+		t1.device_num                     ,
+		t1.fk_sub_col_id                  ,
+		t1.org_identity                   
+	from  (select * from att_inventory t where t.FK_SUB_COL_ID= #{bean.fkSubColId})  t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.deviceModel != null and bean.deviceModel != ''">
+				or t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%')  
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				or t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%')  
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+				or t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%')  
+			</if>
+			<if test="bean.deviceNum != null and bean.deviceNum != ''">
+				or t1.DEVICE_NUM like concat(concat('%',#{bean.deviceNum}),'%')  
+			</if>
+													</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ATT_INVENTORY -->
+<select id="searchAttInventory" parameterType="java.util.Map" resultMap="AttInventoryDTOMap">
+	select
+		t1.id                             ,
+		t1.device_model                   ,
+		t1.device_name                    ,
+		t1.last_update_date               ,
+		t1.creation_date                  ,
+		t1.device_category                ,
+		t1.created_by                     ,
+		t1.version                        ,
+		t1.last_updated_by                ,
+		t1.last_update_ip                 ,
+		t1.device_spec                    ,
+		t1.device_num                     ,
+		t1.fk_sub_col_id                  ,
+		t1.org_identity                   
+	from att_inventory 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="deviceModel != null and deviceModel != ''">
+				and t1.DEVICE_MODEL =#{deviceModel}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="deviceCategory != null and deviceCategory != ''">
+				and t1.DEVICE_CATEGORY =#{deviceCategory}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="deviceSpec != null and deviceSpec != ''">
+				and t1.DEVICE_SPEC =#{deviceSpec}
+			</if>
+			<if test="deviceNum != null and deviceNum != ''">
+				and t1.DEVICE_NUM =#{deviceNum}
+			</if>
+			<if test="fkSubColId != null and fkSubColId != ''">
+				and t1.FK_SUB_COL_ID =#{fkSubColId}
+			</if>
+			<if test="orgIdentity != null and orgIdentity != ''">
+				and t1.ORG_IDENTITY =#{orgIdentity}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ATT_INVENTORY -->
+<select id="findAttInventoryById" parameterType="java.util.Map" resultMap="AttInventoryDTOMap">
+	select
+		t1.id                             ,
+		t1.device_model                   ,
+		t1.device_name                    ,
+		t1.last_update_date               ,
+		t1.creation_date                  ,
+		t1.device_category                ,
+		t1.created_by                     ,
+		t1.version                        ,
+		t1.last_updated_by                ,
+		t1.last_update_ip                 ,
+		t1.device_spec                    ,
+		t1.device_num                     ,
+		t1.fk_sub_col_id                  ,
+		t1.org_identity                   
+	from att_inventory 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ATT_INVENTORY -->
+<insert id="insertAttInventory" parameterType="avicit.assets.device.assetsstdtempacceptance.dto.AttInventoryDTO">
+	insert into att_inventory
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="deviceModel != null">
+				device_model,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="deviceCategory != null">
+				device_category,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="deviceSpec != null">
+				device_spec,
+			</if>
+			<if test="deviceNum != null">
+				device_num,
+			</if>
+			<if test="fkSubColId != null">
+				fk_sub_col_id,
+			</if>
+			<if test="orgIdentity != null">
+				org_identity,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="deviceCategory != null">
+				#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceNum != null">
+				#{deviceNum,jdbcType=VARCHAR},
+			</if>
+			<if test="fkSubColId != null">
+				#{fkSubColId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ATT_INVENTORY -->
+<insert id="insertAttInventoryList" parameterType="java.util.List">
+	insert into att_inventory(
+			id,
+			device_model,
+			device_name,
+			last_update_date,
+			creation_date,
+			device_category,
+			created_by,
+			version,
+			last_updated_by,
+			last_update_ip,
+			device_spec,
+			device_num,
+			fk_sub_col_id,
+			org_identity)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.deviceModel,jdbcType=VARCHAR},
+					#{item.deviceName,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.creationDate},
+					#{item.deviceCategory,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.deviceSpec,jdbcType=VARCHAR},
+					#{item.deviceNum,jdbcType=VARCHAR},
+					#{item.fkSubColId,jdbcType=VARCHAR},
+					#{item.orgIdentity,jdbcType=VARCHAR}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ATT_INVENTORY -->
+<update id="updateAttInventorySensitive" parameterType="avicit.assets.device.assetsstdtempacceptance.dto.AttInventoryDTO">
+	update att_inventory 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="deviceCategory != null">
+				device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceNum != null">
+				device_num                     =#{deviceNum,jdbcType=VARCHAR},
+			</if>
+			<if test="fkSubColId != null">
+				fk_sub_col_id                  =#{fkSubColId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				org_identity                   =#{orgIdentity,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ATT_INVENTORY -->
+<update id="updateAttInventoryAll" parameterType="avicit.assets.device.assetsstdtempacceptance.dto.AttInventoryDTO">
+	update att_inventory 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			creation_date                  =#{creationDate},
+			device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			version                        =version+1,
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			device_num                     =#{deviceNum,jdbcType=VARCHAR},
+			fk_sub_col_id                  =#{fkSubColId,jdbcType=VARCHAR},
+			org_identity                   =#{orgIdentity,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ATT_INVENTORY -->
+<update id="updateAttInventoryList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update att_inventory 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			device_model                   =#{item.deviceModel,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			creation_date                  =#{item.creationDate},
+			device_category                =#{item.deviceCategory,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			version                        =version+1,
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			device_spec                    =#{item.deviceSpec,jdbcType=VARCHAR},
+			device_num                     =#{item.deviceNum,jdbcType=VARCHAR},
+			fk_sub_col_id                  =#{item.fkSubColId,jdbcType=VARCHAR},
+			org_identity                   =#{item.orgIdentity,jdbcType=VARCHAR}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ATT_INVENTORY -->
+<delete id="deleteAttInventoryById" parameterType="java.lang.String">
+		delete from att_inventory  where  id = #{id}
+</delete>
+<!-- 外键批量删除 ATT_INVENTORY -->
+<delete id="deleteAttInventoryByPid" parameterType="java.lang.String">
+		delete from att_inventory  where  FK_SUB_COL_ID = #{fkSubColId}
+</delete>
+<!-- 批量主键删除 ATT_INVENTORY -->
+<delete id="deleteAttInventoryList" parameterType="java.util.List">
+		delete from att_inventory  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

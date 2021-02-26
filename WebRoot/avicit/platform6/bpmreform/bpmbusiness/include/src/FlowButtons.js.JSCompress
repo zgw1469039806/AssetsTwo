@@ -1,0 +1,17 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="FlowButtons.js">
+    <auto value="1" />
+    <sourcefile path=".\DefaultForm.js" />
+    <sourcefile path=".\FlowModel.js" />
+    <sourcefile path=".\buttons\BpmButton.js" />
+    <sourcefile path=".\buttons\BpmAdduser.js" />
+    <sourcefile path=".\buttons\BpmGlobaljump.js" />
+    <sourcefile path=".\buttons\BpmRetreat.js" />
+    <sourcefile path=".\buttons\BpmSubmit.js" />
+    <sourcefile path=".\buttons\BpmActor.js" />
+    <sourcefile path=".\buttons\BpmTaskreader.js" />
+    <sourcefile path=".\buttons\BpmRelationflow.js" />
+    <sourcefile path=".\buttons\BpmTransmit.js" />
+    <sourcefile path=".\FlowButtons.src.js" />
+</combinefile>
+</jscompress>

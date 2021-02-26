@@ -1,0 +1,52 @@
+.time-line {}
+.time-line .t-dom {}
+.time-line .t-title {
+	display: inline-block;
+    position: relative;
+    left: 57px;
+    text-align: center;
+    width: 100px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.time-line .t-body {
+	background: url('../img/line.png') repeat-y 105px;
+}
+.t-body ul {
+	padding-left: 10px;
+    margin: 0;
+}
+.time-line .t-body li {
+	list-style: none;
+}
+.t-body .l,.t-body .p,.t-body .r {
+	display: inline-block;
+	word-wrap: break-word;
+    vertical-align: top;
+}
+.t-body .l {
+	width: 80px;
+    text-align: center;
+}
+.t-body .p {
+	width:11px;
+	height: 11px;
+	vertical-align: inherit;
+	margin:0 10px;
+	background: url(../img/point.png) no-repeat;
+
+}
+.t-body .r {
+	text-align: left;
+	max-width: 75%;
+}
+.t-body span {
+	margin:0 5px;
+}
+
+@media only screen and (max-width: 960px){
+	.t-body .r {
+		max-width: 65%;
+	}
+}

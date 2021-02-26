@@ -1,0 +1,2256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetsreconacceptance.dao.AssetsReconAcceptanceDao">
+
+<resultMap id="AssetsReconAcceptanceDTOMap" type="avicit.assets.device.assetsreconacceptance.dto.AssetsReconAcceptanceDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="acceptanceNo" column="ACCEPTANCE_NO" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="createdByDept" column="CREATED_BY_DEPT" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="VARCHAR" />
+		<result property="formState" column="FORM_STATE" jdbcType="VARCHAR" />
+		<result property="applyBy" column="APPLY_BY" jdbcType="VARCHAR" />
+		<result property="applyByDept" column="APPLY_BY_DEPT" jdbcType="VARCHAR" />
+		<result property="reconstructionNo" column="RECONSTRUCTION_NO" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+		<result property="manufacturerId" column="MANUFACTURER_ID" jdbcType="VARCHAR" />
+		<result property="competentChiefEngineer" column="COMPETENT_CHIEF_ENGINEER" jdbcType="VARCHAR" />
+		<result property="ownerDept" column="OWNER_DEPT" jdbcType="VARCHAR" />
+		<result property="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+		<result property="ownerTel" column="OWNER_TEL" jdbcType="VARCHAR" />
+		<result property="setsCount" column="SETS_COUNT" jdbcType="DECIMAL" />
+		<result property="unitPrice" column="UNIT_PRICE" jdbcType="DECIMAL" />
+		<result property="projectDirector" column="PROJECT_DIRECTOR" jdbcType="VARCHAR" />
+		<result property="deviceCategory" column="DEVICE_CATEGORY" jdbcType="VARCHAR" />
+		<result property="ifRegularCheck" column="IF_REGULAR_CHECK" jdbcType="VARCHAR" />
+		<result property="ifSpotCheck" column="IF_SPOT_CHECK" jdbcType="VARCHAR" />
+		<result property="ifPrecisionInspection" column="IF_PRECISION_INSPECTION" jdbcType="VARCHAR" />
+		<result property="ifUpkeep" column="IF_UPKEEP" jdbcType="VARCHAR" />
+		<result property="upkeepCycle" column="UPKEEP_CYCLE" jdbcType="DECIMAL" />
+		<result property="upkeepRequirements" column="UPKEEP_REQUIREMENTS" jdbcType="VARCHAR" />
+		<result property="nextUpkeepDate" column="NEXT_UPKEEP_DATE" jdbcType="TIMESTAMP" />
+		<result property="ifMeasure" column="IF_MEASURE" jdbcType="VARCHAR" />
+		<result property="ifInstall" column="IF_INSTALL" jdbcType="VARCHAR" />
+		<result property="ifMeasureOnsite" column="IF_MEASURE_ONSITE" jdbcType="VARCHAR" />
+		<result property="measureIdentify" column="MEASURE_IDENTIFY" jdbcType="VARCHAR" />
+		<result property="measureBy" column="MEASURE_BY" jdbcType="VARCHAR" />
+		<result property="meteringDate" column="METERING_DATE" jdbcType="TIMESTAMP" />
+		<result property="meteringCycle" column="METERING_CYCLE" jdbcType="DECIMAL" />
+		<result property="positionId" column="POSITION_ID" jdbcType="VARCHAR" />
+		<result property="ifHasComputer" column="IF_HAS_COMPUTER" jdbcType="VARCHAR" />
+		<result property="isSafetyProduction" column="IS_SAFETY_PRODUCTION" jdbcType="VARCHAR" />
+		<result property="financialResources" column="FINANCIAL_RESOURCES" jdbcType="VARCHAR" />
+		<result property="belongProject" column="BELONG_PROJECT" jdbcType="VARCHAR" />
+		<result property="projectNo" column="PROJECT_NO" jdbcType="VARCHAR" />
+		<result property="replyName" column="REPLY_NAME" jdbcType="VARCHAR" />
+		<result property="projectApprovalNo" column="PROJECT_APPROVAL_NO" jdbcType="VARCHAR" />
+		<result property="abcCategory" column="ABC_CATEGORY" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="VARCHAR" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="DECIMAL" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL" />
+		<result property="attribute21" column="ATTRIBUTE_21" jdbcType="DECIMAL" />
+		<result property="attribute22" column="ATTRIBUTE_22" jdbcType="DECIMAL" />
+		<result property="attribute23" column="ATTRIBUTE_23" jdbcType="DECIMAL" />
+		<result property="attribute24" column="ATTRIBUTE_24" jdbcType="DECIMAL" />
+		<result property="attribute25" column="ATTRIBUTE_25" jdbcType="DECIMAL" />
+		<result property="attribute26" column="ATTRIBUTE_26" jdbcType="TIMESTAMP" />
+		<result property="attribute27" column="ATTRIBUTE_27" jdbcType="TIMESTAMP" />
+		<result property="attribute28" column="ATTRIBUTE_28" jdbcType="TIMESTAMP" />
+		<result property="attribute29" column="ATTRIBUTE_29" jdbcType="TIMESTAMP" />
+		<result property="attribute30" column="ATTRIBUTE_30" jdbcType="TIMESTAMP" />
+		<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+		<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 ASSETS_RECON_ACCEPTANCE -->
+<select id="searchAssetsReconAcceptanceByPage" parameterType="java.util.Map" resultMap="AssetsReconAcceptanceDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.acceptance_no                  ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state                     ,
+		t1.apply_by                       ,
+		t1.apply_by_dept                  ,
+		t1.reconstruction_no              ,
+		t1.device_name                    ,
+		t1.unified_id                     ,
+		t1.secret_level                   ,
+		t1.manufacturer_id                ,
+		t1.competent_chief_engineer       ,
+		t1.owner_dept                     ,
+		t1.owner_id                       ,
+		t1.owner_tel                      ,
+		t1.sets_count                     ,
+		t1.unit_price                     ,
+		t1.project_director               ,
+		t1.device_category                ,
+		t1.if_regular_check               ,
+		t1.if_spot_check                  ,
+		t1.if_precision_inspection        ,
+		t1.if_upkeep                      ,
+		t1.upkeep_cycle                   ,
+		t1.upkeep_requirements            ,
+		t1.next_upkeep_date               ,
+		t1.if_measure                     ,
+		t1.if_install                     ,
+		t1.if_measure_onsite              ,
+		t1.measure_identify               ,
+		t1.measure_by                     ,
+		t1.metering_date                  ,
+		t1.metering_cycle                 ,
+		t1.position_id                    ,
+		t1.if_has_computer                ,
+		t1.is_safety_production           ,
+		t1.financial_resources            ,
+		t1.belong_project                 ,
+		t1.project_no                     ,
+		t1.reply_name                     ,
+		t1.project_approval_no            ,
+		t1.abc_category                   ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   
+	from assets_recon_acceptance 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.acceptanceNo != null and bean.acceptanceNo != ''">
+				and t1.ACCEPTANCE_NO like concat(concat('%',#{bean.acceptanceNo}),'%') 
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.createdByDept != null and bean.createdByDept != ''">
+				and t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null and bean.version != ''">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				and t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%') 
+			</if>
+			<if test="bean.applyBy != null and bean.applyBy != ''">
+				and t1.APPLY_BY like concat(concat('%',#{bean.applyBy}),'%') 
+			</if>
+			<if test="bean.applyByDept != null and bean.applyByDept != ''">
+				and t1.APPLY_BY_DEPT like concat(concat('%',#{bean.applyByDept}),'%') 
+			</if>
+			<if test="bean.reconstructionNo != null and bean.reconstructionNo != ''">
+				and t1.RECONSTRUCTION_NO like concat(concat('%',#{bean.reconstructionNo}),'%') 
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%') 
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%') 
+			</if>
+			<if test="bean.secretLevel != null and bean.secretLevel != ''">
+				and t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%') 
+			</if>
+			<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+				and t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%') 
+			</if>
+			<if test="bean.competentChiefEngineer != null and bean.competentChiefEngineer != ''">
+				and t1.COMPETENT_CHIEF_ENGINEER like concat(concat('%',#{bean.competentChiefEngineer}),'%') 
+			</if>
+			<if test="bean.ownerDept != null and bean.ownerDept != ''">
+				and t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%') 
+			</if>
+			<if test="bean.ownerId != null and bean.ownerId != ''">
+				and t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%') 
+			</if>
+			<if test="bean.ownerTel != null and bean.ownerTel != ''">
+				and t1.OWNER_TEL like concat(concat('%',#{bean.ownerTel}),'%') 
+			</if>
+			<if test="bean.setsCount != null ">
+				and t1.SETS_COUNT like concat(concat('%',#{bean.setsCount}),'%') 
+			</if>
+			<if test="bean.unitPrice != null ">
+				and t1.UNIT_PRICE like concat(concat('%',#{bean.unitPrice}),'%') 
+			</if>
+			<if test="bean.projectDirector != null and bean.projectDirector != ''">
+				and t1.PROJECT_DIRECTOR like concat(concat('%',#{bean.projectDirector}),'%') 
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				and t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%') 
+			</if>
+			<if test="bean.ifRegularCheck != null and bean.ifRegularCheck != ''">
+				and t1.IF_REGULAR_CHECK like concat(concat('%',#{bean.ifRegularCheck}),'%') 
+			</if>
+			<if test="bean.ifSpotCheck != null and bean.ifSpotCheck != ''">
+				and t1.IF_SPOT_CHECK like concat(concat('%',#{bean.ifSpotCheck}),'%') 
+			</if>
+			<if test="bean.ifPrecisionInspection != null and bean.ifPrecisionInspection != ''">
+				and t1.IF_PRECISION_INSPECTION like concat(concat('%',#{bean.ifPrecisionInspection}),'%') 
+			</if>
+			<if test="bean.ifUpkeep != null and bean.ifUpkeep != ''">
+				and t1.IF_UPKEEP like concat(concat('%',#{bean.ifUpkeep}),'%') 
+			</if>
+			<if test="bean.upkeepCycle != null ">
+				and t1.UPKEEP_CYCLE like concat(concat('%',#{bean.upkeepCycle}),'%') 
+			</if>
+			<if test="bean.upkeepRequirements != null and bean.upkeepRequirements != ''">
+				and t1.UPKEEP_REQUIREMENTS like concat(concat('%',#{bean.upkeepRequirements}),'%') 
+			</if>
+			<if test="bean.nextUpkeepDateBegin != null and bean.nextUpkeepDateBegin != ''">
+				and t1.NEXT_UPKEEP_DATE &gt;= #{bean.nextUpkeepDateBegin}
+			</if>
+			<if test="bean.nextUpkeepDateEnd != null and bean.nextUpkeepDateEnd != ''">
+				and t1.NEXT_UPKEEP_DATE &lt;= #{bean.nextUpkeepDateEnd}
+			</if>
+			<if test="bean.ifMeasure != null and bean.ifMeasure != ''">
+				and t1.IF_MEASURE like concat(concat('%',#{bean.ifMeasure}),'%') 
+			</if>
+			<if test="bean.ifInstall != null and bean.ifInstall != ''">
+				and t1.IF_INSTALL like concat(concat('%',#{bean.ifInstall}),'%') 
+			</if>
+			<if test="bean.ifMeasureOnsite != null and bean.ifMeasureOnsite != ''">
+				and t1.IF_MEASURE_ONSITE like concat(concat('%',#{bean.ifMeasureOnsite}),'%') 
+			</if>
+			<if test="bean.measureIdentify != null and bean.measureIdentify != ''">
+				and t1.MEASURE_IDENTIFY like concat(concat('%',#{bean.measureIdentify}),'%') 
+			</if>
+			<if test="bean.measureBy != null and bean.measureBy != ''">
+				and t1.MEASURE_BY like concat(concat('%',#{bean.measureBy}),'%') 
+			</if>
+			<if test="bean.meteringDateBegin != null and bean.meteringDateBegin != ''">
+				and t1.METERING_DATE &gt;= #{bean.meteringDateBegin}
+			</if>
+			<if test="bean.meteringDateEnd != null and bean.meteringDateEnd != ''">
+				and t1.METERING_DATE &lt;= #{bean.meteringDateEnd}
+			</if>
+			<if test="bean.meteringCycle != null ">
+				and t1.METERING_CYCLE like concat(concat('%',#{bean.meteringCycle}),'%') 
+			</if>
+			<if test="bean.positionId != null and bean.positionId != ''">
+				and t1.POSITION_ID like concat(concat('%',#{bean.positionId}),'%') 
+			</if>
+			<if test="bean.ifHasComputer != null and bean.ifHasComputer != ''">
+				and t1.IF_HAS_COMPUTER like concat(concat('%',#{bean.ifHasComputer}),'%') 
+			</if>
+			<if test="bean.isSafetyProduction != null and bean.isSafetyProduction != ''">
+				and t1.IS_SAFETY_PRODUCTION like concat(concat('%',#{bean.isSafetyProduction}),'%') 
+			</if>
+			<if test="bean.financialResources != null and bean.financialResources != ''">
+				and t1.FINANCIAL_RESOURCES like concat(concat('%',#{bean.financialResources}),'%') 
+			</if>
+			<if test="bean.belongProject != null and bean.belongProject != ''">
+				and t1.BELONG_PROJECT like concat(concat('%',#{bean.belongProject}),'%') 
+			</if>
+			<if test="bean.projectNo != null and bean.projectNo != ''">
+				and t1.PROJECT_NO like concat(concat('%',#{bean.projectNo}),'%') 
+			</if>
+			<if test="bean.replyName != null and bean.replyName != ''">
+				and t1.REPLY_NAME like concat(concat('%',#{bean.replyName}),'%') 
+			</if>
+			<if test="bean.projectApprovalNo != null and bean.projectApprovalNo != ''">
+				and t1.PROJECT_APPROVAL_NO like concat(concat('%',#{bean.projectApprovalNo}),'%') 
+			</if>
+			<if test="bean.abcCategory != null and bean.abcCategory != ''">
+				and t1.ABC_CATEGORY like concat(concat('%',#{bean.abcCategory}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null ">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null ">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null ">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null ">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null ">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.attribute21 != null ">
+				and t1.ATTRIBUTE_21 like concat(concat('%',#{bean.attribute21}),'%') 
+			</if>
+			<if test="bean.attribute22 != null ">
+				and t1.ATTRIBUTE_22 like concat(concat('%',#{bean.attribute22}),'%') 
+			</if>
+			<if test="bean.attribute23 != null ">
+				and t1.ATTRIBUTE_23 like concat(concat('%',#{bean.attribute23}),'%') 
+			</if>
+			<if test="bean.attribute24 != null ">
+				and t1.ATTRIBUTE_24 like concat(concat('%',#{bean.attribute24}),'%') 
+			</if>
+			<if test="bean.attribute25 != null ">
+				and t1.ATTRIBUTE_25 like concat(concat('%',#{bean.attribute25}),'%') 
+			</if>
+			<if test="bean.attribute26 != null and bean.attribute26 != ''">
+				and t1.ATTRIBUTE_26 like concat(concat('%',#{bean.attribute26}),'%') 
+			</if>
+			<if test="bean.attribute27 != null and bean.attribute27 != ''">
+				and t1.ATTRIBUTE_27 like concat(concat('%',#{bean.attribute27}),'%') 
+			</if>
+			<if test="bean.attribute28 != null and bean.attribute28 != ''">
+				and t1.ATTRIBUTE_28 like concat(concat('%',#{bean.attribute28}),'%') 
+			</if>
+			<if test="bean.attribute29 != null and bean.attribute29 != ''">
+				and t1.ATTRIBUTE_29 like concat(concat('%',#{bean.attribute29}),'%') 
+			</if>
+			<if test="bean.attribute30 != null and bean.attribute30 != ''">
+				and t1.ATTRIBUTE_30 like concat(concat('%',#{bean.attribute30}),'%') 
+			</if>
+						<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_RECON_ACCEPTANCE -->
+<select id="searchAssetsReconAcceptanceByPageOr" parameterType="java.util.Map" resultMap="AssetsReconAcceptanceDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.acceptance_no                  ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state                     ,
+		t1.apply_by                       ,
+		t1.apply_by_dept                  ,
+		t1.reconstruction_no              ,
+		t1.device_name                    ,
+		t1.unified_id                     ,
+		t1.secret_level                   ,
+		t1.manufacturer_id                ,
+		t1.competent_chief_engineer       ,
+		t1.owner_dept                     ,
+		t1.owner_id                       ,
+		t1.owner_tel                      ,
+		t1.sets_count                     ,
+		t1.unit_price                     ,
+		t1.project_director               ,
+		t1.device_category                ,
+		t1.if_regular_check               ,
+		t1.if_spot_check                  ,
+		t1.if_precision_inspection        ,
+		t1.if_upkeep                      ,
+		t1.upkeep_cycle                   ,
+		t1.upkeep_requirements            ,
+		t1.next_upkeep_date               ,
+		t1.if_measure                     ,
+		t1.if_install                     ,
+		t1.if_measure_onsite              ,
+		t1.measure_identify               ,
+		t1.measure_by                     ,
+		t1.metering_date                  ,
+		t1.metering_cycle                 ,
+		t1.position_id                    ,
+		t1.if_has_computer                ,
+		t1.is_safety_production           ,
+		t1.financial_resources            ,
+		t1.belong_project                 ,
+		t1.project_no                     ,
+		t1.reply_name                     ,
+		t1.project_approval_no            ,
+		t1.abc_category                   ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   
+	from assets_recon_acceptance  t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.acceptanceNo != null and bean.acceptanceNo != ''">
+				or t1.ACCEPTANCE_NO like concat(concat('%',#{bean.acceptanceNo}),'%')  
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.createdByDept != null and bean.createdByDept != ''">
+				or t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null and bean.version != ''">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				or t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%')  
+			</if>
+			<if test="bean.applyBy != null and bean.applyBy != ''">
+				or t1.APPLY_BY like concat(concat('%',#{bean.applyBy}),'%')  
+			</if>
+			<if test="bean.applyByDept != null and bean.applyByDept != ''">
+				or t1.APPLY_BY_DEPT like concat(concat('%',#{bean.applyByDept}),'%')  
+			</if>
+			<if test="bean.reconstructionNo != null and bean.reconstructionNo != ''">
+				or t1.RECONSTRUCTION_NO like concat(concat('%',#{bean.reconstructionNo}),'%')  
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')  
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')  
+			</if>
+			<if test="bean.secretLevel != null and bean.secretLevel != ''">
+				or t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')  
+			</if>
+			<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+				or t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%')  
+			</if>
+			<if test="bean.competentChiefEngineer != null and bean.competentChiefEngineer != ''">
+				or t1.COMPETENT_CHIEF_ENGINEER like concat(concat('%',#{bean.competentChiefEngineer}),'%')  
+			</if>
+			<if test="bean.ownerDept != null and bean.ownerDept != ''">
+				or t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%')  
+			</if>
+			<if test="bean.ownerId != null and bean.ownerId != ''">
+				or t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%')  
+			</if>
+			<if test="bean.ownerTel != null and bean.ownerTel != ''">
+				or t1.OWNER_TEL like concat(concat('%',#{bean.ownerTel}),'%')  
+			</if>
+			<if test="bean.setsCount != null">
+				or t1.SETS_COUNT like concat(concat('%',#{bean.setsCount}),'%')  
+			</if>
+			<if test="bean.unitPrice != null">
+				or t1.UNIT_PRICE like concat(concat('%',#{bean.unitPrice}),'%')  
+			</if>
+			<if test="bean.projectDirector != null and bean.projectDirector != ''">
+				or t1.PROJECT_DIRECTOR like concat(concat('%',#{bean.projectDirector}),'%')  
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				or t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%')  
+			</if>
+			<if test="bean.ifRegularCheck != null and bean.ifRegularCheck != ''">
+				or t1.IF_REGULAR_CHECK like concat(concat('%',#{bean.ifRegularCheck}),'%')  
+			</if>
+			<if test="bean.ifSpotCheck != null and bean.ifSpotCheck != ''">
+				or t1.IF_SPOT_CHECK like concat(concat('%',#{bean.ifSpotCheck}),'%')  
+			</if>
+			<if test="bean.ifPrecisionInspection != null and bean.ifPrecisionInspection != ''">
+				or t1.IF_PRECISION_INSPECTION like concat(concat('%',#{bean.ifPrecisionInspection}),'%')  
+			</if>
+			<if test="bean.ifUpkeep != null and bean.ifUpkeep != ''">
+				or t1.IF_UPKEEP like concat(concat('%',#{bean.ifUpkeep}),'%')  
+			</if>
+			<if test="bean.upkeepCycle != null">
+				or t1.UPKEEP_CYCLE like concat(concat('%',#{bean.upkeepCycle}),'%')  
+			</if>
+			<if test="bean.upkeepRequirements != null and bean.upkeepRequirements != ''">
+				or t1.UPKEEP_REQUIREMENTS like concat(concat('%',#{bean.upkeepRequirements}),'%')  
+			</if>
+			<if test="bean.nextUpkeepDateBegin != null and bean.nextUpkeepDateBegin != ''">
+				or t1.NEXT_UPKEEP_DATE &gt;= #{bean.nextUpkeepDateBegin}
+			</if>
+			<if test="bean.nextUpkeepDateEnd != null and bean.nextUpkeepDateEnd != ''">
+				or t1.NEXT_UPKEEP_DATE &lt;= #{bean.nextUpkeepDateEnd}
+			</if>
+			<if test="bean.ifMeasure != null and bean.ifMeasure != ''">
+				or t1.IF_MEASURE like concat(concat('%',#{bean.ifMeasure}),'%')  
+			</if>
+			<if test="bean.ifInstall != null and bean.ifInstall != ''">
+				or t1.IF_INSTALL like concat(concat('%',#{bean.ifInstall}),'%')  
+			</if>
+			<if test="bean.ifMeasureOnsite != null and bean.ifMeasureOnsite != ''">
+				or t1.IF_MEASURE_ONSITE like concat(concat('%',#{bean.ifMeasureOnsite}),'%')  
+			</if>
+			<if test="bean.measureIdentify != null and bean.measureIdentify != ''">
+				or t1.MEASURE_IDENTIFY like concat(concat('%',#{bean.measureIdentify}),'%')  
+			</if>
+			<if test="bean.measureBy != null and bean.measureBy != ''">
+				or t1.MEASURE_BY like concat(concat('%',#{bean.measureBy}),'%')  
+			</if>
+			<if test="bean.meteringDateBegin != null and bean.meteringDateBegin != ''">
+				or t1.METERING_DATE &gt;= #{bean.meteringDateBegin}
+			</if>
+			<if test="bean.meteringDateEnd != null and bean.meteringDateEnd != ''">
+				or t1.METERING_DATE &lt;= #{bean.meteringDateEnd}
+			</if>
+			<if test="bean.meteringCycle != null">
+				or t1.METERING_CYCLE like concat(concat('%',#{bean.meteringCycle}),'%')  
+			</if>
+			<if test="bean.positionId != null and bean.positionId != ''">
+				or t1.POSITION_ID like concat(concat('%',#{bean.positionId}),'%')  
+			</if>
+			<if test="bean.ifHasComputer != null and bean.ifHasComputer != ''">
+				or t1.IF_HAS_COMPUTER like concat(concat('%',#{bean.ifHasComputer}),'%')  
+			</if>
+			<if test="bean.isSafetyProduction != null and bean.isSafetyProduction != ''">
+				or t1.IS_SAFETY_PRODUCTION like concat(concat('%',#{bean.isSafetyProduction}),'%')  
+			</if>
+			<if test="bean.financialResources != null and bean.financialResources != ''">
+				or t1.FINANCIAL_RESOURCES like concat(concat('%',#{bean.financialResources}),'%')  
+			</if>
+			<if test="bean.belongProject != null and bean.belongProject != ''">
+				or t1.BELONG_PROJECT like concat(concat('%',#{bean.belongProject}),'%')  
+			</if>
+			<if test="bean.projectNo != null and bean.projectNo != ''">
+				or t1.PROJECT_NO like concat(concat('%',#{bean.projectNo}),'%')  
+			</if>
+			<if test="bean.replyName != null and bean.replyName != ''">
+				or t1.REPLY_NAME like concat(concat('%',#{bean.replyName}),'%')  
+			</if>
+			<if test="bean.projectApprovalNo != null and bean.projectApprovalNo != ''">
+				or t1.PROJECT_APPROVAL_NO like concat(concat('%',#{bean.projectApprovalNo}),'%')  
+			</if>
+			<if test="bean.abcCategory != null and bean.abcCategory != ''">
+				or t1.ABC_CATEGORY like concat(concat('%',#{bean.abcCategory}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.attribute21 != null">
+				or t1.ATTRIBUTE_21 like concat(concat('%',#{bean.attribute21}),'%')  
+			</if>
+			<if test="bean.attribute22 != null">
+				or t1.ATTRIBUTE_22 like concat(concat('%',#{bean.attribute22}),'%')  
+			</if>
+			<if test="bean.attribute23 != null">
+				or t1.ATTRIBUTE_23 like concat(concat('%',#{bean.attribute23}),'%')  
+			</if>
+			<if test="bean.attribute24 != null">
+				or t1.ATTRIBUTE_24 like concat(concat('%',#{bean.attribute24}),'%')  
+			</if>
+			<if test="bean.attribute25 != null">
+				or t1.ATTRIBUTE_25 like concat(concat('%',#{bean.attribute25}),'%')  
+			</if>
+			<if test="bean.attribute26 != null and bean.attribute26 != ''">
+				or t1.ATTRIBUTE_26 like concat(concat('%',#{bean.attribute26}),'%')  
+			</if>
+			<if test="bean.attribute27 != null and bean.attribute27 != ''">
+				or t1.ATTRIBUTE_27 like concat(concat('%',#{bean.attribute27}),'%')  
+			</if>
+			<if test="bean.attribute28 != null and bean.attribute28 != ''">
+				or t1.ATTRIBUTE_28 like concat(concat('%',#{bean.attribute28}),'%')  
+			</if>
+			<if test="bean.attribute29 != null and bean.attribute29 != ''">
+				or t1.ATTRIBUTE_29 like concat(concat('%',#{bean.attribute29}),'%')  
+			</if>
+			<if test="bean.attribute30 != null and bean.attribute30 != ''">
+				or t1.ATTRIBUTE_30 like concat(concat('%',#{bean.attribute30}),'%')  
+			</if>
+			</trim>
+			<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_RECON_ACCEPTANCE -->
+<select id="searchAssetsReconAcceptance" parameterType="java.util.Map" resultMap="AssetsReconAcceptanceDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.acceptance_no                  ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state                     ,
+		t1.apply_by                       ,
+		t1.apply_by_dept                  ,
+		t1.reconstruction_no              ,
+		t1.device_name                    ,
+		t1.unified_id                     ,
+		t1.secret_level                   ,
+		t1.manufacturer_id                ,
+		t1.competent_chief_engineer       ,
+		t1.owner_dept                     ,
+		t1.owner_id                       ,
+		t1.owner_tel                      ,
+		t1.sets_count                     ,
+		t1.unit_price                     ,
+		t1.project_director               ,
+		t1.device_category                ,
+		t1.if_regular_check               ,
+		t1.if_spot_check                  ,
+		t1.if_precision_inspection        ,
+		t1.if_upkeep                      ,
+		t1.upkeep_cycle                   ,
+		t1.upkeep_requirements            ,
+		t1.next_upkeep_date               ,
+		t1.if_measure                     ,
+		t1.if_install                     ,
+		t1.if_measure_onsite              ,
+		t1.measure_identify               ,
+		t1.measure_by                     ,
+		t1.metering_date                  ,
+		t1.metering_cycle                 ,
+		t1.position_id                    ,
+		t1.if_has_computer                ,
+		t1.is_safety_production           ,
+		t1.financial_resources            ,
+		t1.belong_project                 ,
+		t1.project_no                     ,
+		t1.reply_name                     ,
+		t1.project_approval_no            ,
+		t1.abc_category                   ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   
+	from assets_recon_acceptance 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="acceptanceNo != null and acceptanceNo != ''">
+				and t1.ACCEPTANCE_NO =#{acceptanceNo}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="createdByDept != null and createdByDept != ''">
+				and t1.CREATED_BY_DEPT =#{createdByDept}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="formState != null and formState != ''">
+				and t1.FORM_STATE =#{formState}
+			</if>
+			<if test="applyBy != null and applyBy != ''">
+				and t1.APPLY_BY =#{applyBy}
+			</if>
+			<if test="applyByDept != null and applyByDept != ''">
+				and t1.APPLY_BY_DEPT =#{applyByDept}
+			</if>
+			<if test="reconstructionNo != null and reconstructionNo != ''">
+				and t1.RECONSTRUCTION_NO =#{reconstructionNo}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="secretLevel != null and secretLevel != ''">
+				and t1.SECRET_LEVEL =#{secretLevel}
+			</if>
+			<if test="manufacturerId != null and manufacturerId != ''">
+				and t1.MANUFACTURER_ID =#{manufacturerId}
+			</if>
+			<if test="competentChiefEngineer != null and competentChiefEngineer != ''">
+				and t1.COMPETENT_CHIEF_ENGINEER =#{competentChiefEngineer}
+			</if>
+			<if test="ownerDept != null and ownerDept != ''">
+				and t1.OWNER_DEPT =#{ownerDept}
+			</if>
+			<if test="ownerId != null and ownerId != ''">
+				and t1.OWNER_ID =#{ownerId}
+			</if>
+			<if test="ownerTel != null and ownerTel != ''">
+				and t1.OWNER_TEL =#{ownerTel}
+			</if>
+			<if test="setsCount != null">
+				and t1.SETS_COUNT =#{setsCount}
+			</if>
+			<if test="unitPrice != null">
+				and t1.UNIT_PRICE =#{unitPrice}
+			</if>
+			<if test="projectDirector != null and projectDirector != ''">
+				and t1.PROJECT_DIRECTOR =#{projectDirector}
+			</if>
+			<if test="deviceCategory != null and deviceCategory != ''">
+				and t1.DEVICE_CATEGORY =#{deviceCategory}
+			</if>
+			<if test="ifRegularCheck != null and ifRegularCheck != ''">
+				and t1.IF_REGULAR_CHECK =#{ifRegularCheck}
+			</if>
+			<if test="ifSpotCheck != null and ifSpotCheck != ''">
+				and t1.IF_SPOT_CHECK =#{ifSpotCheck}
+			</if>
+			<if test="ifPrecisionInspection != null and ifPrecisionInspection != ''">
+				and t1.IF_PRECISION_INSPECTION =#{ifPrecisionInspection}
+			</if>
+			<if test="ifUpkeep != null and ifUpkeep != ''">
+				and t1.IF_UPKEEP =#{ifUpkeep}
+			</if>
+			<if test="upkeepCycle != null">
+				and t1.UPKEEP_CYCLE =#{upkeepCycle}
+			</if>
+			<if test="upkeepRequirements != null and upkeepRequirements != ''">
+				and t1.UPKEEP_REQUIREMENTS =#{upkeepRequirements}
+			</if>
+			<if test="nextUpkeepDateBegin != null and nextUpkeepDateBegin != ''">
+				and t1.NEXT_UPKEEP_DATE &gt;= #{nextUpkeepDateBegin}
+			</if>
+			<if test="nextUpkeepDateEnd != null and nextUpkeepDateEnd != ''">
+				and t1.NEXT_UPKEEP_DATE &lt;= #{nextUpkeepDateEnd}
+			</if>
+			<if test="ifMeasure != null and ifMeasure != ''">
+				and t1.IF_MEASURE =#{ifMeasure}
+			</if>
+			<if test="ifInstall != null and ifInstall != ''">
+				and t1.IF_INSTALL =#{ifInstall}
+			</if>
+			<if test="ifMeasureOnsite != null and ifMeasureOnsite != ''">
+				and t1.IF_MEASURE_ONSITE =#{ifMeasureOnsite}
+			</if>
+			<if test="measureIdentify != null and measureIdentify != ''">
+				and t1.MEASURE_IDENTIFY =#{measureIdentify}
+			</if>
+			<if test="measureBy != null and measureBy != ''">
+				and t1.MEASURE_BY =#{measureBy}
+			</if>
+			<if test="meteringDateBegin != null and meteringDateBegin != ''">
+				and t1.METERING_DATE &gt;= #{meteringDateBegin}
+			</if>
+			<if test="meteringDateEnd != null and meteringDateEnd != ''">
+				and t1.METERING_DATE &lt;= #{meteringDateEnd}
+			</if>
+			<if test="meteringCycle != null">
+				and t1.METERING_CYCLE =#{meteringCycle}
+			</if>
+			<if test="positionId != null and positionId != ''">
+				and t1.POSITION_ID =#{positionId}
+			</if>
+			<if test="ifHasComputer != null and ifHasComputer != ''">
+				and t1.IF_HAS_COMPUTER =#{ifHasComputer}
+			</if>
+			<if test="isSafetyProduction != null and isSafetyProduction != ''">
+				and t1.IS_SAFETY_PRODUCTION =#{isSafetyProduction}
+			</if>
+			<if test="financialResources != null and financialResources != ''">
+				and t1.FINANCIAL_RESOURCES =#{financialResources}
+			</if>
+			<if test="belongProject != null and belongProject != ''">
+				and t1.BELONG_PROJECT =#{belongProject}
+			</if>
+			<if test="projectNo != null and projectNo != ''">
+				and t1.PROJECT_NO =#{projectNo}
+			</if>
+			<if test="replyName != null and replyName != ''">
+				and t1.REPLY_NAME =#{replyName}
+			</if>
+			<if test="projectApprovalNo != null and projectApprovalNo != ''">
+				and t1.PROJECT_APPROVAL_NO =#{projectApprovalNo}
+			</if>
+			<if test="abcCategory != null and abcCategory != ''">
+				and t1.ABC_CATEGORY =#{abcCategory}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null and attribute11 != ''">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null and attribute12 != ''">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null and attribute13 != ''">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null and attribute14 != ''">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null and attribute15 != ''">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="attribute21 != null">
+				and t1.ATTRIBUTE_21 =#{attribute21}
+			</if>
+			<if test="attribute22 != null">
+				and t1.ATTRIBUTE_22 =#{attribute22}
+			</if>
+			<if test="attribute23 != null">
+				and t1.ATTRIBUTE_23 =#{attribute23}
+			</if>
+			<if test="attribute24 != null">
+				and t1.ATTRIBUTE_24 =#{attribute24}
+			</if>
+			<if test="attribute25 != null">
+				and t1.ATTRIBUTE_25 =#{attribute25}
+			</if>
+			<if test="attribute26 != null and attribute26 != ''">
+				and t1.ATTRIBUTE_26 =#{attribute26}
+			</if>
+			<if test="attribute27 != null and attribute27 != ''">
+				and t1.ATTRIBUTE_27 =#{attribute27}
+			</if>
+			<if test="attribute28 != null and attribute28 != ''">
+				and t1.ATTRIBUTE_28 =#{attribute28}
+			</if>
+			<if test="attribute29 != null and attribute29 != ''">
+				and t1.ATTRIBUTE_29 =#{attribute29}
+			</if>
+			<if test="attribute30 != null and attribute30 != ''">
+				and t1.ATTRIBUTE_30 =#{attribute30}
+			</if>
+			<if test="bpmType !=null and bpmType !='' and bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{currUserId}) 
+			</if>
+			<if test="bpmState != null and bpmState !='' and bpmState != 'all'">
+				and v.businessstate_ = #{bpmState}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_RECON_ACCEPTANCE -->
+<select id="findAssetsReconAcceptanceById" parameterType="java.util.Map" resultMap="AssetsReconAcceptanceDTOMap">
+	select
+		t1.id                             ,
+		t1.acceptance_no                  ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state                     ,
+		t1.apply_by                       ,
+		t1.apply_by_dept                  ,
+		t1.reconstruction_no              ,
+		t1.device_name                    ,
+		t1.unified_id                     ,
+		t1.secret_level                   ,
+		t1.manufacturer_id                ,
+		t1.competent_chief_engineer       ,
+		t1.owner_dept                     ,
+		t1.owner_id                       ,
+		t1.owner_tel                      ,
+		t1.sets_count                     ,
+		t1.unit_price                     ,
+		t1.project_director               ,
+		t1.device_category                ,
+		t1.if_regular_check               ,
+		t1.if_spot_check                  ,
+		t1.if_precision_inspection        ,
+		t1.if_upkeep                      ,
+		t1.upkeep_cycle                   ,
+		t1.upkeep_requirements            ,
+		t1.next_upkeep_date               ,
+		t1.if_measure                     ,
+		t1.if_install                     ,
+		t1.if_measure_onsite              ,
+		t1.measure_identify               ,
+		t1.measure_by                     ,
+		t1.metering_date                  ,
+		t1.metering_cycle                 ,
+		t1.position_id                    ,
+		t1.if_has_computer                ,
+		t1.is_safety_production           ,
+		t1.financial_resources            ,
+		t1.belong_project                 ,
+		t1.project_no                     ,
+		t1.reply_name                     ,
+		t1.project_approval_no            ,
+		t1.abc_category                   ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.attribute_21                   ,
+		t1.attribute_22                   ,
+		t1.attribute_23                   ,
+		t1.attribute_24                   ,
+		t1.attribute_25                   ,
+		t1.attribute_26                   ,
+		t1.attribute_27                   ,
+		t1.attribute_28                   ,
+		t1.attribute_29                   ,
+		t1.attribute_30                   
+	from assets_recon_acceptance 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_RECON_ACCEPTANCE -->
+<insert id="insertAssetsReconAcceptance" parameterType="avicit.assets.device.assetsreconacceptance.dto.AssetsReconAcceptanceDTO">
+	insert into assets_recon_acceptance
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="acceptanceNo != null">
+				acceptance_no,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="createdByDept != null">
+				created_by_dept,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="formState != null">
+				form_state,
+			</if>
+			<if test="applyBy != null">
+				apply_by,
+			</if>
+			<if test="applyByDept != null">
+				apply_by_dept,
+			</if>
+			<if test="reconstructionNo != null">
+				reconstruction_no,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="secretLevel != null">
+				secret_level,
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id,
+			</if>
+			<if test="competentChiefEngineer != null">
+				competent_chief_engineer,
+			</if>
+			<if test="ownerDept != null">
+				owner_dept,
+			</if>
+			<if test="ownerId != null">
+				owner_id,
+			</if>
+			<if test="ownerTel != null">
+				owner_tel,
+			</if>
+			<if test="setsCount != null">
+				sets_count,
+			</if>
+			<if test="unitPrice != null">
+				unit_price,
+			</if>
+			<if test="projectDirector != null">
+				project_director,
+			</if>
+			<if test="deviceCategory != null">
+				device_category,
+			</if>
+			<if test="ifRegularCheck != null">
+				if_regular_check,
+			</if>
+			<if test="ifSpotCheck != null">
+				if_spot_check,
+			</if>
+			<if test="ifPrecisionInspection != null">
+				if_precision_inspection,
+			</if>
+			<if test="ifUpkeep != null">
+				if_upkeep,
+			</if>
+			<if test="upkeepCycle != null">
+				upkeep_cycle,
+			</if>
+			<if test="upkeepRequirements != null">
+				upkeep_requirements,
+			</if>
+			<if test="nextUpkeepDate != null">
+				next_upkeep_date,
+			</if>
+			<if test="ifMeasure != null">
+				if_measure,
+			</if>
+			<if test="ifInstall != null">
+				if_install,
+			</if>
+			<if test="ifMeasureOnsite != null">
+				if_measure_onsite,
+			</if>
+			<if test="measureIdentify != null">
+				measure_identify,
+			</if>
+			<if test="measureBy != null">
+				measure_by,
+			</if>
+			<if test="meteringDate != null">
+				metering_date,
+			</if>
+			<if test="meteringCycle != null">
+				metering_cycle,
+			</if>
+			<if test="positionId != null">
+				position_id,
+			</if>
+			<if test="ifHasComputer != null">
+				if_has_computer,
+			</if>
+			<if test="isSafetyProduction != null">
+				is_safety_production,
+			</if>
+			<if test="financialResources != null">
+				financial_resources,
+			</if>
+			<if test="belongProject != null">
+				belong_project,
+			</if>
+			<if test="projectNo != null">
+				project_no,
+			</if>
+			<if test="replyName != null">
+				reply_name,
+			</if>
+			<if test="projectApprovalNo != null">
+				project_approval_no,
+			</if>
+			<if test="abcCategory != null">
+				abc_category,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="attribute21 != null">
+				attribute_21,
+			</if>
+			<if test="attribute22 != null">
+				attribute_22,
+			</if>
+			<if test="attribute23 != null">
+				attribute_23,
+			</if>
+			<if test="attribute24 != null">
+				attribute_24,
+			</if>
+			<if test="attribute25 != null">
+				attribute_25,
+			</if>
+			<if test="attribute26 != null">
+				attribute_26,
+			</if>
+			<if test="attribute27 != null">
+				attribute_27,
+			</if>
+			<if test="attribute28 != null">
+				attribute_28,
+			</if>
+			<if test="attribute29 != null">
+				attribute_29,
+			</if>
+			<if test="attribute30 != null">
+				attribute_30,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="acceptanceNo != null">
+				#{acceptanceNo,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDept != null">
+				#{createdByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="applyBy != null">
+				#{applyBy,jdbcType=VARCHAR},
+			</if>
+			<if test="applyByDept != null">
+				#{applyByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="reconstructionNo != null">
+				#{reconstructionNo,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="secretLevel != null">
+				#{secretLevel,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="competentChiefEngineer != null">
+				#{competentChiefEngineer,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerTel != null">
+				#{ownerTel,jdbcType=VARCHAR},
+			</if>
+			<if test="setsCount != null">
+				#{setsCount,jdbcType=DECIMAL},
+			</if>
+			<if test="unitPrice != null">
+				#{unitPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="projectDirector != null">
+				#{projectDirector,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategory != null">
+				#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="ifRegularCheck != null">
+				#{ifRegularCheck,jdbcType=VARCHAR},
+			</if>
+			<if test="ifSpotCheck != null">
+				#{ifSpotCheck,jdbcType=VARCHAR},
+			</if>
+			<if test="ifPrecisionInspection != null">
+				#{ifPrecisionInspection,jdbcType=VARCHAR},
+			</if>
+			<if test="ifUpkeep != null">
+				#{ifUpkeep,jdbcType=VARCHAR},
+			</if>
+			<if test="upkeepCycle != null">
+				#{upkeepCycle,jdbcType=DECIMAL},
+			</if>
+			<if test="upkeepRequirements != null">
+				#{upkeepRequirements,jdbcType=VARCHAR},
+			</if>
+			<if test="nextUpkeepDate != null">
+				#{nextUpkeepDate,jdbcType=DATE},
+			</if>
+			<if test="ifMeasure != null">
+				#{ifMeasure,jdbcType=VARCHAR},
+			</if>
+			<if test="ifInstall != null">
+				#{ifInstall,jdbcType=VARCHAR},
+			</if>
+			<if test="ifMeasureOnsite != null">
+				#{ifMeasureOnsite,jdbcType=VARCHAR},
+			</if>
+			<if test="measureIdentify != null">
+				#{measureIdentify,jdbcType=VARCHAR},
+			</if>
+			<if test="measureBy != null">
+				#{measureBy,jdbcType=VARCHAR},
+			</if>
+			<if test="meteringDate != null">
+				#{meteringDate,jdbcType=DATE},
+			</if>
+			<if test="meteringCycle != null">
+				#{meteringCycle,jdbcType=DECIMAL},
+			</if>
+			<if test="positionId != null">
+				#{positionId,jdbcType=VARCHAR},
+			</if>
+			<if test="ifHasComputer != null">
+				#{ifHasComputer,jdbcType=VARCHAR},
+			</if>
+			<if test="isSafetyProduction != null">
+				#{isSafetyProduction,jdbcType=VARCHAR},
+			</if>
+			<if test="financialResources != null">
+				#{financialResources,jdbcType=VARCHAR},
+			</if>
+			<if test="belongProject != null">
+				#{belongProject,jdbcType=VARCHAR},
+			</if>
+			<if test="projectNo != null">
+				#{projectNo,jdbcType=VARCHAR},
+			</if>
+			<if test="replyName != null">
+				#{replyName,jdbcType=VARCHAR},
+			</if>
+			<if test="projectApprovalNo != null">
+				#{projectApprovalNo,jdbcType=VARCHAR},
+			</if>
+			<if test="abcCategory != null">
+				#{abcCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute21 != null">
+				#{attribute21,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute22 != null">
+				#{attribute22,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute23 != null">
+				#{attribute23,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute24 != null">
+				#{attribute24,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute25 != null">
+				#{attribute25,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute26 != null">
+				#{attribute26,jdbcType=DATE},
+			</if>
+			<if test="attribute27 != null">
+				#{attribute27,jdbcType=DATE},
+			</if>
+			<if test="attribute28 != null">
+				#{attribute28,jdbcType=DATE},
+			</if>
+			<if test="attribute29 != null">
+				#{attribute29,jdbcType=DATE},
+			</if>
+			<if test="attribute30 != null">
+				#{attribute30,jdbcType=DATE},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_RECON_ACCEPTANCE -->
+<insert id="insertAssetsReconAcceptanceList" parameterType="java.util.List">
+	insert into assets_recon_acceptance(
+			id,
+			acceptance_no,
+			created_by,
+			created_by_dept,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			form_state,
+			apply_by,
+			apply_by_dept,
+			reconstruction_no,
+			device_name,
+			unified_id,
+			secret_level,
+			manufacturer_id,
+			competent_chief_engineer,
+			owner_dept,
+			owner_id,
+			owner_tel,
+			sets_count,
+			unit_price,
+			project_director,
+			device_category,
+			if_regular_check,
+			if_spot_check,
+			if_precision_inspection,
+			if_upkeep,
+			upkeep_cycle,
+			upkeep_requirements,
+			next_upkeep_date,
+			if_measure,
+			if_install,
+			if_measure_onsite,
+			measure_identify,
+			measure_by,
+			metering_date,
+			metering_cycle,
+			position_id,
+			if_has_computer,
+			is_safety_production,
+			financial_resources,
+			belong_project,
+			project_no,
+			reply_name,
+			project_approval_no,
+			abc_category,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			attribute_21,
+			attribute_22,
+			attribute_23,
+			attribute_24,
+			attribute_25,
+			attribute_26,
+			attribute_27,
+			attribute_28,
+			attribute_29,
+			attribute_30)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.acceptanceNo,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.createdByDept,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=VARCHAR},
+					#{item.formState,jdbcType=VARCHAR},
+					#{item.applyBy,jdbcType=VARCHAR},
+					#{item.applyByDept,jdbcType=VARCHAR},
+					#{item.reconstructionNo,jdbcType=VARCHAR},
+					#{item.deviceName,jdbcType=VARCHAR},
+					#{item.unifiedId,jdbcType=VARCHAR},
+					#{item.secretLevel,jdbcType=VARCHAR},
+					#{item.manufacturerId,jdbcType=VARCHAR},
+					#{item.competentChiefEngineer,jdbcType=VARCHAR},
+					#{item.ownerDept,jdbcType=VARCHAR},
+					#{item.ownerId,jdbcType=VARCHAR},
+					#{item.ownerTel,jdbcType=VARCHAR},
+					#{item.setsCount,jdbcType=DECIMAL},
+					#{item.unitPrice,jdbcType=DECIMAL},
+					#{item.projectDirector,jdbcType=VARCHAR},
+					#{item.deviceCategory,jdbcType=VARCHAR},
+					#{item.ifRegularCheck,jdbcType=VARCHAR},
+					#{item.ifSpotCheck,jdbcType=VARCHAR},
+					#{item.ifPrecisionInspection,jdbcType=VARCHAR},
+					#{item.ifUpkeep,jdbcType=VARCHAR},
+					#{item.upkeepCycle,jdbcType=DECIMAL},
+					#{item.upkeepRequirements,jdbcType=VARCHAR},
+					#{item.nextUpkeepDate,jdbcType=DATE},
+					#{item.ifMeasure,jdbcType=VARCHAR},
+					#{item.ifInstall,jdbcType=VARCHAR},
+					#{item.ifMeasureOnsite,jdbcType=VARCHAR},
+					#{item.measureIdentify,jdbcType=VARCHAR},
+					#{item.measureBy,jdbcType=VARCHAR},
+					#{item.meteringDate,jdbcType=DATE},
+					#{item.meteringCycle,jdbcType=DECIMAL},
+					#{item.positionId,jdbcType=VARCHAR},
+					#{item.ifHasComputer,jdbcType=VARCHAR},
+					#{item.isSafetyProduction,jdbcType=VARCHAR},
+					#{item.financialResources,jdbcType=VARCHAR},
+					#{item.belongProject,jdbcType=VARCHAR},
+					#{item.projectNo,jdbcType=VARCHAR},
+					#{item.replyName,jdbcType=VARCHAR},
+					#{item.projectApprovalNo,jdbcType=VARCHAR},
+					#{item.abcCategory,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=VARCHAR},
+					#{item.attribute12,jdbcType=VARCHAR},
+					#{item.attribute13,jdbcType=VARCHAR},
+					#{item.attribute14,jdbcType=VARCHAR},
+					#{item.attribute15,jdbcType=VARCHAR},
+					#{item.attribute16,jdbcType=DECIMAL},
+					#{item.attribute17,jdbcType=DECIMAL},
+					#{item.attribute18,jdbcType=DECIMAL},
+					#{item.attribute19,jdbcType=DECIMAL},
+					#{item.attribute20,jdbcType=DECIMAL},
+					#{item.attribute21,jdbcType=DECIMAL},
+					#{item.attribute22,jdbcType=DECIMAL},
+					#{item.attribute23,jdbcType=DECIMAL},
+					#{item.attribute24,jdbcType=DECIMAL},
+					#{item.attribute25,jdbcType=DECIMAL},
+					#{item.attribute26,jdbcType=DATE},
+					#{item.attribute27,jdbcType=DATE},
+					#{item.attribute28,jdbcType=DATE},
+					#{item.attribute29,jdbcType=DATE},
+					#{item.attribute30,jdbcType=DATE}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_RECON_ACCEPTANCE -->
+<update id="updateAssetsReconAcceptanceSensitive" parameterType="avicit.assets.device.assetsreconacceptance.dto.AssetsReconAcceptanceDTO">
+	update assets_recon_acceptance 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="acceptanceNo != null">
+				acceptance_no                  =#{acceptanceNo,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDept != null">
+				created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="formState != null">
+				form_state                     =#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="applyBy != null">
+				apply_by                       =#{applyBy,jdbcType=VARCHAR},
+			</if>
+			<if test="applyByDept != null">
+				apply_by_dept                  =#{applyByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="reconstructionNo != null">
+				reconstruction_no              =#{reconstructionNo,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="secretLevel != null">
+				secret_level                   =#{secretLevel,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="competentChiefEngineer != null">
+				competent_chief_engineer       =#{competentChiefEngineer,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerTel != null">
+				owner_tel                      =#{ownerTel,jdbcType=VARCHAR},
+			</if>
+			<if test="setsCount != null">
+				sets_count                     =#{setsCount,jdbcType=DECIMAL},
+			</if>
+			<if test="unitPrice != null">
+				unit_price                     =#{unitPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="projectDirector != null">
+				project_director               =#{projectDirector,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategory != null">
+				device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="ifRegularCheck != null">
+				if_regular_check               =#{ifRegularCheck,jdbcType=VARCHAR},
+			</if>
+			<if test="ifSpotCheck != null">
+				if_spot_check                  =#{ifSpotCheck,jdbcType=VARCHAR},
+			</if>
+			<if test="ifPrecisionInspection != null">
+				if_precision_inspection        =#{ifPrecisionInspection,jdbcType=VARCHAR},
+			</if>
+			<if test="ifUpkeep != null">
+				if_upkeep                      =#{ifUpkeep,jdbcType=VARCHAR},
+			</if>
+			<if test="upkeepCycle != null">
+				upkeep_cycle                   =#{upkeepCycle,jdbcType=DECIMAL},
+			</if>
+			<if test="upkeepRequirements != null">
+				upkeep_requirements            =#{upkeepRequirements,jdbcType=VARCHAR},
+			</if>
+			<if test="nextUpkeepDate != null">
+				next_upkeep_date               =#{nextUpkeepDate,jdbcType=DATE},
+			</if>
+			<if test="ifMeasure != null">
+				if_measure                     =#{ifMeasure,jdbcType=VARCHAR},
+			</if>
+			<if test="ifInstall != null">
+				if_install                     =#{ifInstall,jdbcType=VARCHAR},
+			</if>
+			<if test="ifMeasureOnsite != null">
+				if_measure_onsite              =#{ifMeasureOnsite,jdbcType=VARCHAR},
+			</if>
+			<if test="measureIdentify != null">
+				measure_identify               =#{measureIdentify,jdbcType=VARCHAR},
+			</if>
+			<if test="measureBy != null">
+				measure_by                     =#{measureBy,jdbcType=VARCHAR},
+			</if>
+			<if test="meteringDate != null">
+				metering_date                  =#{meteringDate,jdbcType=DATE},
+			</if>
+			<if test="meteringCycle != null">
+				metering_cycle                 =#{meteringCycle,jdbcType=DECIMAL},
+			</if>
+			<if test="positionId != null">
+				position_id                    =#{positionId,jdbcType=VARCHAR},
+			</if>
+			<if test="ifHasComputer != null">
+				if_has_computer                =#{ifHasComputer,jdbcType=VARCHAR},
+			</if>
+			<if test="isSafetyProduction != null">
+				is_safety_production           =#{isSafetyProduction,jdbcType=VARCHAR},
+			</if>
+			<if test="financialResources != null">
+				financial_resources            =#{financialResources,jdbcType=VARCHAR},
+			</if>
+			<if test="belongProject != null">
+				belong_project                 =#{belongProject,jdbcType=VARCHAR},
+			</if>
+			<if test="projectNo != null">
+				project_no                     =#{projectNo,jdbcType=VARCHAR},
+			</if>
+			<if test="replyName != null">
+				reply_name                     =#{replyName,jdbcType=VARCHAR},
+			</if>
+			<if test="projectApprovalNo != null">
+				project_approval_no            =#{projectApprovalNo,jdbcType=VARCHAR},
+			</if>
+			<if test="abcCategory != null">
+				abc_category                   =#{abcCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute21 != null">
+				attribute_21                   =#{attribute21,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute22 != null">
+				attribute_22                   =#{attribute22,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute23 != null">
+				attribute_23                   =#{attribute23,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute24 != null">
+				attribute_24                   =#{attribute24,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute25 != null">
+				attribute_25                   =#{attribute25,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute26 != null">
+				attribute_26                   =#{attribute26,jdbcType=DATE},
+			</if>
+			<if test="attribute27 != null">
+				attribute_27                   =#{attribute27,jdbcType=DATE},
+			</if>
+			<if test="attribute28 != null">
+				attribute_28                   =#{attribute28,jdbcType=DATE},
+			</if>
+			<if test="attribute29 != null">
+				attribute_29                   =#{attribute29,jdbcType=DATE},
+			</if>
+			<if test="attribute30 != null">
+				attribute_30                   =#{attribute30,jdbcType=DATE},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_RECON_ACCEPTANCE -->
+<update id="updateAssetsReconAcceptanceAll" parameterType="avicit.assets.device.assetsreconacceptance.dto.AssetsReconAcceptanceDTO">
+	update assets_recon_acceptance 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			acceptance_no                  =#{acceptanceNo,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			form_state                     =#{formState,jdbcType=VARCHAR},
+			apply_by                       =#{applyBy,jdbcType=VARCHAR},
+			apply_by_dept                  =#{applyByDept,jdbcType=VARCHAR},
+			reconstruction_no              =#{reconstructionNo,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			secret_level                   =#{secretLevel,jdbcType=VARCHAR},
+			manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			competent_chief_engineer       =#{competentChiefEngineer,jdbcType=VARCHAR},
+			owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			owner_tel                      =#{ownerTel,jdbcType=VARCHAR},
+			sets_count                     =#{setsCount,jdbcType=DECIMAL},
+			unit_price                     =#{unitPrice,jdbcType=DECIMAL},
+			project_director               =#{projectDirector,jdbcType=VARCHAR},
+			device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			if_regular_check               =#{ifRegularCheck,jdbcType=VARCHAR},
+			if_spot_check                  =#{ifSpotCheck,jdbcType=VARCHAR},
+			if_precision_inspection        =#{ifPrecisionInspection,jdbcType=VARCHAR},
+			if_upkeep                      =#{ifUpkeep,jdbcType=VARCHAR},
+			upkeep_cycle                   =#{upkeepCycle,jdbcType=DECIMAL},
+			upkeep_requirements            =#{upkeepRequirements,jdbcType=VARCHAR},
+			next_upkeep_date               =#{nextUpkeepDate,jdbcType=DATE},
+			if_measure                     =#{ifMeasure,jdbcType=VARCHAR},
+			if_install                     =#{ifInstall,jdbcType=VARCHAR},
+			if_measure_onsite              =#{ifMeasureOnsite,jdbcType=VARCHAR},
+			measure_identify               =#{measureIdentify,jdbcType=VARCHAR},
+			measure_by                     =#{measureBy,jdbcType=VARCHAR},
+			metering_date                  =#{meteringDate,jdbcType=DATE},
+			metering_cycle                 =#{meteringCycle,jdbcType=DECIMAL},
+			position_id                    =#{positionId,jdbcType=VARCHAR},
+			if_has_computer                =#{ifHasComputer,jdbcType=VARCHAR},
+			is_safety_production           =#{isSafetyProduction,jdbcType=VARCHAR},
+			financial_resources            =#{financialResources,jdbcType=VARCHAR},
+			belong_project                 =#{belongProject,jdbcType=VARCHAR},
+			project_no                     =#{projectNo,jdbcType=VARCHAR},
+			reply_name                     =#{replyName,jdbcType=VARCHAR},
+			project_approval_no            =#{projectApprovalNo,jdbcType=VARCHAR},
+			abc_category                   =#{abcCategory,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{attribute15,jdbcType=VARCHAR},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DECIMAL},
+			attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			attribute_21                   =#{attribute21,jdbcType=DECIMAL},
+			attribute_22                   =#{attribute22,jdbcType=DECIMAL},
+			attribute_23                   =#{attribute23,jdbcType=DECIMAL},
+			attribute_24                   =#{attribute24,jdbcType=DECIMAL},
+			attribute_25                   =#{attribute25,jdbcType=DECIMAL},
+			attribute_26                   =#{attribute26,jdbcType=DATE},
+			attribute_27                   =#{attribute27,jdbcType=DATE},
+			attribute_28                   =#{attribute28,jdbcType=DATE},
+			attribute_29                   =#{attribute29,jdbcType=DATE},
+			attribute_30                   =#{attribute30,jdbcType=DATE}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_RECON_ACCEPTANCE -->
+<update id="updateAssetsReconAcceptanceList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_recon_acceptance 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			acceptance_no                  =#{item.acceptanceNo,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			created_by_dept                =#{item.createdByDept,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			form_state                     =#{item.formState,jdbcType=VARCHAR},
+			apply_by                       =#{item.applyBy,jdbcType=VARCHAR},
+			apply_by_dept                  =#{item.applyByDept,jdbcType=VARCHAR},
+			reconstruction_no              =#{item.reconstructionNo,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			secret_level                   =#{item.secretLevel,jdbcType=VARCHAR},
+			manufacturer_id                =#{item.manufacturerId,jdbcType=VARCHAR},
+			competent_chief_engineer       =#{item.competentChiefEngineer,jdbcType=VARCHAR},
+			owner_dept                     =#{item.ownerDept,jdbcType=VARCHAR},
+			owner_id                       =#{item.ownerId,jdbcType=VARCHAR},
+			owner_tel                      =#{item.ownerTel,jdbcType=VARCHAR},
+			sets_count                     =#{item.setsCount,jdbcType=DECIMAL},
+			unit_price                     =#{item.unitPrice,jdbcType=DECIMAL},
+			project_director               =#{item.projectDirector,jdbcType=VARCHAR},
+			device_category                =#{item.deviceCategory,jdbcType=VARCHAR},
+			if_regular_check               =#{item.ifRegularCheck,jdbcType=VARCHAR},
+			if_spot_check                  =#{item.ifSpotCheck,jdbcType=VARCHAR},
+			if_precision_inspection        =#{item.ifPrecisionInspection,jdbcType=VARCHAR},
+			if_upkeep                      =#{item.ifUpkeep,jdbcType=VARCHAR},
+			upkeep_cycle                   =#{item.upkeepCycle,jdbcType=DECIMAL},
+			upkeep_requirements            =#{item.upkeepRequirements,jdbcType=VARCHAR},
+			next_upkeep_date               =#{item.nextUpkeepDate,jdbcType=DATE},
+			if_measure                     =#{item.ifMeasure,jdbcType=VARCHAR},
+			if_install                     =#{item.ifInstall,jdbcType=VARCHAR},
+			if_measure_onsite              =#{item.ifMeasureOnsite,jdbcType=VARCHAR},
+			measure_identify               =#{item.measureIdentify,jdbcType=VARCHAR},
+			measure_by                     =#{item.measureBy,jdbcType=VARCHAR},
+			metering_date                  =#{item.meteringDate,jdbcType=DATE},
+			metering_cycle                 =#{item.meteringCycle,jdbcType=DECIMAL},
+			position_id                    =#{item.positionId,jdbcType=VARCHAR},
+			if_has_computer                =#{item.ifHasComputer,jdbcType=VARCHAR},
+			is_safety_production           =#{item.isSafetyProduction,jdbcType=VARCHAR},
+			financial_resources            =#{item.financialResources,jdbcType=VARCHAR},
+			belong_project                 =#{item.belongProject,jdbcType=VARCHAR},
+			project_no                     =#{item.projectNo,jdbcType=VARCHAR},
+			reply_name                     =#{item.replyName,jdbcType=VARCHAR},
+			project_approval_no            =#{item.projectApprovalNo,jdbcType=VARCHAR},
+			abc_category                   =#{item.abcCategory,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{item.attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{item.attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{item.attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{item.attribute15,jdbcType=VARCHAR},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DECIMAL},
+			attribute_18                   =#{item.attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{item.attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{item.attribute20,jdbcType=DECIMAL},
+			attribute_21                   =#{item.attribute21,jdbcType=DECIMAL},
+			attribute_22                   =#{item.attribute22,jdbcType=DECIMAL},
+			attribute_23                   =#{item.attribute23,jdbcType=DECIMAL},
+			attribute_24                   =#{item.attribute24,jdbcType=DECIMAL},
+			attribute_25                   =#{item.attribute25,jdbcType=DECIMAL},
+			attribute_26                   =#{item.attribute26,jdbcType=DATE},
+			attribute_27                   =#{item.attribute27,jdbcType=DATE},
+			attribute_28                   =#{item.attribute28,jdbcType=DATE},
+			attribute_29                   =#{item.attribute29,jdbcType=DATE},
+			attribute_30                   =#{item.attribute30,jdbcType=DATE}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_RECON_ACCEPTANCE -->
+<delete id="deleteAssetsReconAcceptanceById" parameterType="java.lang.String">
+		delete from assets_recon_acceptance  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_RECON_ACCEPTANCE -->
+<delete id="deleteAssetsReconAcceptanceList" parameterType="java.util.List">
+		delete from assets_recon_acceptance  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

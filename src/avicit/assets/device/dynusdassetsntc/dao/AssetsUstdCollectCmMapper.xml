@@ -1,0 +1,2045 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.dynusdassetsntc.dao.AssetsUstdCollectCmDao">
+
+<resultMap id="AssetsUstdCollectCmDTOMap" type="avicit.assets.device.dynusdassetsntc.dto.AssetsUstdCollectCmDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="stdIdCm" column="STD_ID_CM" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="createdByDept" column="CREATED_BY_DEPT" jdbcType="VARCHAR" />
+		<result property="createdByTelCm" column="CREATED_BY_TEL_CM" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="formStateCm" column="FORM_STATE_CM" jdbcType="VARCHAR" />
+		<result property="deviceNameCm" column="DEVICE_NAME_CM" jdbcType="VARCHAR" />
+		<result property="deviceCategoryCm" column="DEVICE_CATEGORY_CM" jdbcType="VARCHAR" />
+		<result property="manufactureUnitCm" column="MANUFACTURE_UNIT_CM" jdbcType="VARCHAR" />
+		<result property="subjectCodeCm" column="SUBJECT_CODE_CM" jdbcType="VARCHAR" />
+		<result property="competentAuthorityCm" column="COMPETENT_AUTHORITY_CM" jdbcType="VARCHAR" />
+		<result property="modelDirectorCm" column="MODEL_DIRECTOR_CM" jdbcType="VARCHAR" />
+		<result property="competentLeaderCm" column="COMPETENT_LEADER_CM" jdbcType="VARCHAR" />
+		<result property="applyReasonPurposeCm" column="APPLY_REASON_PURPOSE_CM" jdbcType="VARCHAR" />
+		<result property="orignEquipSituationCm" column="ORIGN_EQUIP_SITUATION_CM" jdbcType="VARCHAR" />
+		<result property="efficiencySituationCm" column="EFFICIENCY_SITUATION_CM" jdbcType="VARCHAR" />
+		<result property="developmentContentCm" column="DEVELOPMENT_CONTENT_CM" jdbcType="VARCHAR" />
+		<result property="technicalIndexCm" column="TECHNICAL_INDEX_CM" jdbcType="VARCHAR" />
+		<result property="developmentCycleCm" column="DEVELOPMENT_CYCLE_CM" jdbcType="VARCHAR" />
+		<result property="isNeedInstallCm" column="IS_NEED_INSTALL_CM" jdbcType="VARCHAR" />
+		<result property="positionIdCm" column="POSITION_ID_CM" jdbcType="VARCHAR" />
+		<result property="serviceVoltageCm" column="SERVICE_VOLTAGE_CM" jdbcType="VARCHAR" />
+		<result property="isHumidityNeedCm" column="IS_HUMIDITY_NEED_CM" jdbcType="VARCHAR" />
+		<result property="humidityNeedCm" column="HUMIDITY_NEED_CM" jdbcType="VARCHAR" />
+		<result property="isWaterNeedCm" column="IS_WATER_NEED_CM" jdbcType="VARCHAR" />
+		<result property="waterNeedCm" column="WATER_NEED_CM" jdbcType="VARCHAR" />
+		<result property="isGasNeedCm" column="IS_GAS_NEED_CM" jdbcType="VARCHAR" />
+		<result property="gasNeedCm" column="GAS_NEED_CM" jdbcType="VARCHAR" />
+		<result property="isLetCm" column="IS_LET_CM" jdbcType="VARCHAR" />
+		<result property="letNeedCm" column="LET_NEED_CM" jdbcType="VARCHAR" />
+		<result property="isOtherNeedCm" column="IS_OTHER_NEED_CM" jdbcType="VARCHAR" />
+		<result property="otherNeedCm" column="OTHER_NEED_CM" jdbcType="VARCHAR" />
+		<result property="isAboveConditionsCm" column="IS_ABOVE_CONDITIONS_CM" jdbcType="VARCHAR" />
+		<result property="isMeteringCm" column="IS_METERING_CM" jdbcType="VARCHAR" />
+		<result property="meteringRequirementCm" column="METERING_REQUIREMENT_CM" jdbcType="VARCHAR" />
+		<result property="financialEstimateCm" column="FINANCIAL_ESTIMATE_CM" jdbcType="DECIMAL" />
+		<result property="financialResourcesCm" column="FINANCIAL_RESOURCES_CM" jdbcType="VARCHAR" />
+		<result property="belongProjectCm" column="BELONG_PROJECT_CM" jdbcType="VARCHAR" />
+		<result property="projectNoCm" column="PROJECT_NO_CM" jdbcType="VARCHAR" />
+		<result property="replyNameCm" column="REPLY_NAME_CM" jdbcType="VARCHAR" />
+		<result property="approvalFormNumberCm" column="APPROVAL_FORM_NUMBER_CM" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="TIMESTAMP" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="TIMESTAMP" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL" />
+		<result property="isTestDeviceCm" column="IS_TEST_DEVICE_CM" jdbcType="VARCHAR" />
+		<result property="competentDeviceLeaderCm" column="COMPETENT_DEVICE_LEADER_CM" jdbcType="VARCHAR" />
+		<result property="headerIdCm" column="HEADER_ID_CM" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 根据pid查询对象 ASSETS_USTD_COLLECT_CM -->
+<select id="findAssetsUstdCollectCmByPid" parameterType="java.util.Map" resultMap="AssetsUstdCollectCmDTOMap">
+	select
+		t1.id                             ,
+		t1.std_id_cm                      ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.created_by_tel_cm              ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state_cm                  ,
+		t1.device_name_cm                 ,
+		t1.device_category_cm             ,
+		t1.manufacture_unit_cm            ,
+		t1.subject_code_cm                ,
+		t1.competent_authority_cm         ,
+		t1.model_director_cm              ,
+		t1.competent_leader_cm            ,
+		t1.apply_reason_purpose_cm        ,
+		t1.orign_equip_situation_cm       ,
+		t1.efficiency_situation_cm        ,
+		t1.development_content_cm         ,
+		t1.technical_index_cm             ,
+		t1.development_cycle_cm           ,
+		t1.is_need_install_cm             ,
+		t1.position_id_cm                 ,
+		t1.service_voltage_cm             ,
+		t1.is_humidity_need_cm            ,
+		t1.humidity_need_cm               ,
+		t1.is_water_need_cm               ,
+		t1.water_need_cm                  ,
+		t1.is_gas_need_cm                 ,
+		t1.gas_need_cm                    ,
+		t1.is_let_cm                      ,
+		t1.let_need_cm                    ,
+		t1.is_other_need_cm               ,
+		t1.other_need_cm                  ,
+		t1.is_above_conditions_cm         ,
+		t1.is_metering_cm                 ,
+		t1.metering_requirement_cm        ,
+		t1.financial_estimate_cm          ,
+		t1.financial_resources_cm         ,
+		t1.belong_project_cm              ,
+		t1.project_no_cm                  ,
+		t1.reply_name_cm                  ,
+		t1.approval_form_number_cm        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_test_device_cm              ,
+		t1.competent_device_leader_cm     ,
+		t1.header_id_cm                   
+	from assets_ustd_collect_cm 	t1
+		where t1.header_id_cm = #{pid}
+</select>
+<!-- 分页查询 ASSETS_USTD_COLLECT_CM -->
+<select id="searchAssetsUstdCollectCmByPage" parameterType="java.util.Map" resultMap="AssetsUstdCollectCmDTOMap">
+	select
+		t1.id                             ,
+		t1.std_id_cm                      ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.created_by_tel_cm              ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state_cm                  ,
+		t1.device_name_cm                 ,
+		t1.device_category_cm             ,
+		t1.manufacture_unit_cm            ,
+		t1.subject_code_cm                ,
+		t1.competent_authority_cm         ,
+		t1.model_director_cm              ,
+		t1.competent_leader_cm            ,
+		t1.apply_reason_purpose_cm        ,
+		t1.orign_equip_situation_cm       ,
+		t1.efficiency_situation_cm        ,
+		t1.development_content_cm         ,
+		t1.technical_index_cm             ,
+		t1.development_cycle_cm           ,
+		t1.is_need_install_cm             ,
+		t1.position_id_cm                 ,
+		t1.service_voltage_cm             ,
+		t1.is_humidity_need_cm            ,
+		t1.humidity_need_cm               ,
+		t1.is_water_need_cm               ,
+		t1.water_need_cm                  ,
+		t1.is_gas_need_cm                 ,
+		t1.gas_need_cm                    ,
+		t1.is_let_cm                      ,
+		t1.let_need_cm                    ,
+		t1.is_other_need_cm               ,
+		t1.other_need_cm                  ,
+		t1.is_above_conditions_cm         ,
+		t1.is_metering_cm                 ,
+		t1.metering_requirement_cm        ,
+		t1.financial_estimate_cm          ,
+		t1.financial_resources_cm         ,
+		t1.belong_project_cm              ,
+		t1.project_no_cm                  ,
+		t1.reply_name_cm                  ,
+		t1.approval_form_number_cm        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_test_device_cm              ,
+		t1.competent_device_leader_cm     ,
+		t1.header_id_cm                   
+	from assets_ustd_collect_cm 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.stdIdCm != null and bean.stdIdCm != ''">
+				and t1.STD_ID_CM like concat(concat('%',#{bean.stdIdCm}),'%') 
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.createdByDept != null and bean.createdByDept != ''">
+				and t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%') 
+			</if>
+			<if test="bean.createdByTelCm != null and bean.createdByTelCm != ''">
+				and t1.CREATED_BY_TEL_CM like concat(concat('%',#{bean.createdByTelCm}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.formStateCm != null and bean.formStateCm != ''">
+				and t1.FORM_STATE_CM like concat(concat('%',#{bean.formStateCm}),'%') 
+			</if>
+			<if test="bean.deviceNameCm != null and bean.deviceNameCm != ''">
+				and t1.DEVICE_NAME_CM like concat(concat('%',#{bean.deviceNameCm}),'%') 
+			</if>
+			<if test="bean.deviceCategoryCm != null and bean.deviceCategoryCm != ''">
+				and t1.DEVICE_CATEGORY_CM like concat(concat('%',#{bean.deviceCategoryCm}),'%') 
+			</if>
+			<if test="bean.manufactureUnitCm != null and bean.manufactureUnitCm != ''">
+				and t1.MANUFACTURE_UNIT_CM like concat(concat('%',#{bean.manufactureUnitCm}),'%') 
+			</if>
+			<if test="bean.subjectCodeCm != null and bean.subjectCodeCm != ''">
+				and t1.SUBJECT_CODE_CM like concat(concat('%',#{bean.subjectCodeCm}),'%') 
+			</if>
+			<if test="bean.competentAuthorityCm != null and bean.competentAuthorityCm != ''">
+				and t1.COMPETENT_AUTHORITY_CM like concat(concat('%',#{bean.competentAuthorityCm}),'%') 
+			</if>
+			<if test="bean.modelDirectorCm != null and bean.modelDirectorCm != ''">
+				and t1.MODEL_DIRECTOR_CM like concat(concat('%',#{bean.modelDirectorCm}),'%') 
+			</if>
+			<if test="bean.competentLeaderCm != null and bean.competentLeaderCm != ''">
+				and t1.COMPETENT_LEADER_CM like concat(concat('%',#{bean.competentLeaderCm}),'%') 
+			</if>
+			<if test="bean.applyReasonPurposeCm != null and bean.applyReasonPurposeCm != ''">
+				and t1.APPLY_REASON_PURPOSE_CM like concat(concat('%',#{bean.applyReasonPurposeCm}),'%') 
+			</if>
+			<if test="bean.orignEquipSituationCm != null and bean.orignEquipSituationCm != ''">
+				and t1.ORIGN_EQUIP_SITUATION_CM like concat(concat('%',#{bean.orignEquipSituationCm}),'%') 
+			</if>
+			<if test="bean.efficiencySituationCm != null and bean.efficiencySituationCm != ''">
+				and t1.EFFICIENCY_SITUATION_CM like concat(concat('%',#{bean.efficiencySituationCm}),'%') 
+			</if>
+			<if test="bean.developmentContentCm != null and bean.developmentContentCm != ''">
+				and t1.DEVELOPMENT_CONTENT_CM like concat(concat('%',#{bean.developmentContentCm}),'%') 
+			</if>
+			<if test="bean.technicalIndexCm != null and bean.technicalIndexCm != ''">
+				and t1.TECHNICAL_INDEX_CM like concat(concat('%',#{bean.technicalIndexCm}),'%') 
+			</if>
+			<if test="bean.developmentCycleCm != null and bean.developmentCycleCm != ''">
+				and t1.DEVELOPMENT_CYCLE_CM like concat(concat('%',#{bean.developmentCycleCm}),'%') 
+			</if>
+			<if test="bean.isNeedInstallCm != null and bean.isNeedInstallCm != ''">
+				and t1.IS_NEED_INSTALL_CM like concat(concat('%',#{bean.isNeedInstallCm}),'%') 
+			</if>
+			<if test="bean.positionIdCm != null and bean.positionIdCm != ''">
+				and t1.POSITION_ID_CM like concat(concat('%',#{bean.positionIdCm}),'%') 
+			</if>
+			<if test="bean.serviceVoltageCm != null and bean.serviceVoltageCm != ''">
+				and t1.SERVICE_VOLTAGE_CM like concat(concat('%',#{bean.serviceVoltageCm}),'%') 
+			</if>
+			<if test="bean.isHumidityNeedCm != null and bean.isHumidityNeedCm != ''">
+				and t1.IS_HUMIDITY_NEED_CM like concat(concat('%',#{bean.isHumidityNeedCm}),'%') 
+			</if>
+			<if test="bean.humidityNeedCm != null and bean.humidityNeedCm != ''">
+				and t1.HUMIDITY_NEED_CM like concat(concat('%',#{bean.humidityNeedCm}),'%') 
+			</if>
+			<if test="bean.isWaterNeedCm != null and bean.isWaterNeedCm != ''">
+				and t1.IS_WATER_NEED_CM like concat(concat('%',#{bean.isWaterNeedCm}),'%') 
+			</if>
+			<if test="bean.waterNeedCm != null and bean.waterNeedCm != ''">
+				and t1.WATER_NEED_CM like concat(concat('%',#{bean.waterNeedCm}),'%') 
+			</if>
+			<if test="bean.isGasNeedCm != null and bean.isGasNeedCm != ''">
+				and t1.IS_GAS_NEED_CM like concat(concat('%',#{bean.isGasNeedCm}),'%') 
+			</if>
+			<if test="bean.gasNeedCm != null and bean.gasNeedCm != ''">
+				and t1.GAS_NEED_CM like concat(concat('%',#{bean.gasNeedCm}),'%') 
+			</if>
+			<if test="bean.isLetCm != null and bean.isLetCm != ''">
+				and t1.IS_LET_CM like concat(concat('%',#{bean.isLetCm}),'%') 
+			</if>
+			<if test="bean.letNeedCm != null and bean.letNeedCm != ''">
+				and t1.LET_NEED_CM like concat(concat('%',#{bean.letNeedCm}),'%') 
+			</if>
+			<if test="bean.isOtherNeedCm != null and bean.isOtherNeedCm != ''">
+				and t1.IS_OTHER_NEED_CM like concat(concat('%',#{bean.isOtherNeedCm}),'%') 
+			</if>
+			<if test="bean.otherNeedCm != null and bean.otherNeedCm != ''">
+				and t1.OTHER_NEED_CM like concat(concat('%',#{bean.otherNeedCm}),'%') 
+			</if>
+			<if test="bean.isAboveConditionsCm != null and bean.isAboveConditionsCm != ''">
+				and t1.IS_ABOVE_CONDITIONS_CM like concat(concat('%',#{bean.isAboveConditionsCm}),'%') 
+			</if>
+			<if test="bean.isMeteringCm != null and bean.isMeteringCm != ''">
+				and t1.IS_METERING_CM like concat(concat('%',#{bean.isMeteringCm}),'%') 
+			</if>
+			<if test="bean.meteringRequirementCm != null and bean.meteringRequirementCm != ''">
+				and t1.METERING_REQUIREMENT_CM like concat(concat('%',#{bean.meteringRequirementCm}),'%') 
+			</if>
+			<if test="bean.financialEstimateCm != null ">
+				and t1.FINANCIAL_ESTIMATE_CM like concat(concat('%',#{bean.financialEstimateCm}),'%') 
+			</if>
+			<if test="bean.financialResourcesCm != null and bean.financialResourcesCm != ''">
+				and t1.FINANCIAL_RESOURCES_CM like concat(concat('%',#{bean.financialResourcesCm}),'%') 
+			</if>
+			<if test="bean.belongProjectCm != null and bean.belongProjectCm != ''">
+				and t1.BELONG_PROJECT_CM like concat(concat('%',#{bean.belongProjectCm}),'%') 
+			</if>
+			<if test="bean.projectNoCm != null and bean.projectNoCm != ''">
+				and t1.PROJECT_NO_CM like concat(concat('%',#{bean.projectNoCm}),'%') 
+			</if>
+			<if test="bean.replyNameCm != null and bean.replyNameCm != ''">
+				and t1.REPLY_NAME_CM like concat(concat('%',#{bean.replyNameCm}),'%') 
+			</if>
+			<if test="bean.approvalFormNumberCm != null and bean.approvalFormNumberCm != ''">
+				and t1.APPROVAL_FORM_NUMBER_CM like concat(concat('%',#{bean.approvalFormNumberCm}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null and bean.attribute16 != ''">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null ">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null ">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null ">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.isTestDeviceCm != null and bean.isTestDeviceCm != ''">
+				and t1.IS_TEST_DEVICE_CM like concat(concat('%',#{bean.isTestDeviceCm}),'%') 
+			</if>
+			<if test="bean.competentDeviceLeaderCm != null and bean.competentDeviceLeaderCm != ''">
+				and t1.COMPETENT_DEVICE_LEADER_CM like concat(concat('%',#{bean.competentDeviceLeaderCm}),'%') 
+			</if>
+			<if test="bean.headerIdCm != null and bean.headerIdCm != ''">
+				and t1.HEADER_ID_CM =#{bean.headerIdCm}
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_USTD_COLLECT_CM -->
+<select id="searchAssetsUstdCollectCmByPageOr" parameterType="java.util.Map" resultMap="AssetsUstdCollectCmDTOMap">
+	select
+		t1.id                             ,
+		t1.std_id_cm                      ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.created_by_tel_cm              ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state_cm                  ,
+		t1.device_name_cm                 ,
+		t1.device_category_cm             ,
+		t1.manufacture_unit_cm            ,
+		t1.subject_code_cm                ,
+		t1.competent_authority_cm         ,
+		t1.model_director_cm              ,
+		t1.competent_leader_cm            ,
+		t1.apply_reason_purpose_cm        ,
+		t1.orign_equip_situation_cm       ,
+		t1.efficiency_situation_cm        ,
+		t1.development_content_cm         ,
+		t1.technical_index_cm             ,
+		t1.development_cycle_cm           ,
+		t1.is_need_install_cm             ,
+		t1.position_id_cm                 ,
+		t1.service_voltage_cm             ,
+		t1.is_humidity_need_cm            ,
+		t1.humidity_need_cm               ,
+		t1.is_water_need_cm               ,
+		t1.water_need_cm                  ,
+		t1.is_gas_need_cm                 ,
+		t1.gas_need_cm                    ,
+		t1.is_let_cm                      ,
+		t1.let_need_cm                    ,
+		t1.is_other_need_cm               ,
+		t1.other_need_cm                  ,
+		t1.is_above_conditions_cm         ,
+		t1.is_metering_cm                 ,
+		t1.metering_requirement_cm        ,
+		t1.financial_estimate_cm          ,
+		t1.financial_resources_cm         ,
+		t1.belong_project_cm              ,
+		t1.project_no_cm                  ,
+		t1.reply_name_cm                  ,
+		t1.approval_form_number_cm        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_test_device_cm              ,
+		t1.competent_device_leader_cm     ,
+		t1.header_id_cm                   
+	from  (select * from assets_ustd_collect_cm t where t.HEADER_ID_CM= #{bean.headerIdCm})  t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.stdIdCm != null and bean.stdIdCm != ''">
+				or t1.STD_ID_CM like concat(concat('%',#{bean.stdIdCm}),'%')  
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.createdByDept != null and bean.createdByDept != ''">
+				or t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%')  
+			</if>
+			<if test="bean.createdByTelCm != null and bean.createdByTelCm != ''">
+				or t1.CREATED_BY_TEL_CM like concat(concat('%',#{bean.createdByTelCm}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.formStateCm != null and bean.formStateCm != ''">
+				or t1.FORM_STATE_CM like concat(concat('%',#{bean.formStateCm}),'%')  
+			</if>
+			<if test="bean.deviceNameCm != null and bean.deviceNameCm != ''">
+				or t1.DEVICE_NAME_CM like concat(concat('%',#{bean.deviceNameCm}),'%')  
+			</if>
+			<if test="bean.deviceCategoryCm != null and bean.deviceCategoryCm != ''">
+				or t1.DEVICE_CATEGORY_CM like concat(concat('%',#{bean.deviceCategoryCm}),'%')  
+			</if>
+			<if test="bean.manufactureUnitCm != null and bean.manufactureUnitCm != ''">
+				or t1.MANUFACTURE_UNIT_CM like concat(concat('%',#{bean.manufactureUnitCm}),'%')  
+			</if>
+			<if test="bean.subjectCodeCm != null and bean.subjectCodeCm != ''">
+				or t1.SUBJECT_CODE_CM like concat(concat('%',#{bean.subjectCodeCm}),'%')  
+			</if>
+			<if test="bean.competentAuthorityCm != null and bean.competentAuthorityCm != ''">
+				or t1.COMPETENT_AUTHORITY_CM like concat(concat('%',#{bean.competentAuthorityCm}),'%')  
+			</if>
+			<if test="bean.modelDirectorCm != null and bean.modelDirectorCm != ''">
+				or t1.MODEL_DIRECTOR_CM like concat(concat('%',#{bean.modelDirectorCm}),'%')  
+			</if>
+			<if test="bean.competentLeaderCm != null and bean.competentLeaderCm != ''">
+				or t1.COMPETENT_LEADER_CM like concat(concat('%',#{bean.competentLeaderCm}),'%')  
+			</if>
+			<if test="bean.applyReasonPurposeCm != null and bean.applyReasonPurposeCm != ''">
+				or t1.APPLY_REASON_PURPOSE_CM like concat(concat('%',#{bean.applyReasonPurposeCm}),'%')  
+			</if>
+			<if test="bean.orignEquipSituationCm != null and bean.orignEquipSituationCm != ''">
+				or t1.ORIGN_EQUIP_SITUATION_CM like concat(concat('%',#{bean.orignEquipSituationCm}),'%')  
+			</if>
+			<if test="bean.efficiencySituationCm != null and bean.efficiencySituationCm != ''">
+				or t1.EFFICIENCY_SITUATION_CM like concat(concat('%',#{bean.efficiencySituationCm}),'%')  
+			</if>
+			<if test="bean.developmentContentCm != null and bean.developmentContentCm != ''">
+				or t1.DEVELOPMENT_CONTENT_CM like concat(concat('%',#{bean.developmentContentCm}),'%')  
+			</if>
+			<if test="bean.technicalIndexCm != null and bean.technicalIndexCm != ''">
+				or t1.TECHNICAL_INDEX_CM like concat(concat('%',#{bean.technicalIndexCm}),'%')  
+			</if>
+			<if test="bean.developmentCycleCm != null and bean.developmentCycleCm != ''">
+				or t1.DEVELOPMENT_CYCLE_CM like concat(concat('%',#{bean.developmentCycleCm}),'%')  
+			</if>
+			<if test="bean.isNeedInstallCm != null and bean.isNeedInstallCm != ''">
+				or t1.IS_NEED_INSTALL_CM like concat(concat('%',#{bean.isNeedInstallCm}),'%')  
+			</if>
+			<if test="bean.positionIdCm != null and bean.positionIdCm != ''">
+				or t1.POSITION_ID_CM like concat(concat('%',#{bean.positionIdCm}),'%')  
+			</if>
+			<if test="bean.serviceVoltageCm != null and bean.serviceVoltageCm != ''">
+				or t1.SERVICE_VOLTAGE_CM like concat(concat('%',#{bean.serviceVoltageCm}),'%')  
+			</if>
+			<if test="bean.isHumidityNeedCm != null and bean.isHumidityNeedCm != ''">
+				or t1.IS_HUMIDITY_NEED_CM like concat(concat('%',#{bean.isHumidityNeedCm}),'%')  
+			</if>
+			<if test="bean.humidityNeedCm != null and bean.humidityNeedCm != ''">
+				or t1.HUMIDITY_NEED_CM like concat(concat('%',#{bean.humidityNeedCm}),'%')  
+			</if>
+			<if test="bean.isWaterNeedCm != null and bean.isWaterNeedCm != ''">
+				or t1.IS_WATER_NEED_CM like concat(concat('%',#{bean.isWaterNeedCm}),'%')  
+			</if>
+			<if test="bean.waterNeedCm != null and bean.waterNeedCm != ''">
+				or t1.WATER_NEED_CM like concat(concat('%',#{bean.waterNeedCm}),'%')  
+			</if>
+			<if test="bean.isGasNeedCm != null and bean.isGasNeedCm != ''">
+				or t1.IS_GAS_NEED_CM like concat(concat('%',#{bean.isGasNeedCm}),'%')  
+			</if>
+			<if test="bean.gasNeedCm != null and bean.gasNeedCm != ''">
+				or t1.GAS_NEED_CM like concat(concat('%',#{bean.gasNeedCm}),'%')  
+			</if>
+			<if test="bean.isLetCm != null and bean.isLetCm != ''">
+				or t1.IS_LET_CM like concat(concat('%',#{bean.isLetCm}),'%')  
+			</if>
+			<if test="bean.letNeedCm != null and bean.letNeedCm != ''">
+				or t1.LET_NEED_CM like concat(concat('%',#{bean.letNeedCm}),'%')  
+			</if>
+			<if test="bean.isOtherNeedCm != null and bean.isOtherNeedCm != ''">
+				or t1.IS_OTHER_NEED_CM like concat(concat('%',#{bean.isOtherNeedCm}),'%')  
+			</if>
+			<if test="bean.otherNeedCm != null and bean.otherNeedCm != ''">
+				or t1.OTHER_NEED_CM like concat(concat('%',#{bean.otherNeedCm}),'%')  
+			</if>
+			<if test="bean.isAboveConditionsCm != null and bean.isAboveConditionsCm != ''">
+				or t1.IS_ABOVE_CONDITIONS_CM like concat(concat('%',#{bean.isAboveConditionsCm}),'%')  
+			</if>
+			<if test="bean.isMeteringCm != null and bean.isMeteringCm != ''">
+				or t1.IS_METERING_CM like concat(concat('%',#{bean.isMeteringCm}),'%')  
+			</if>
+			<if test="bean.meteringRequirementCm != null and bean.meteringRequirementCm != ''">
+				or t1.METERING_REQUIREMENT_CM like concat(concat('%',#{bean.meteringRequirementCm}),'%')  
+			</if>
+			<if test="bean.financialEstimateCm != null">
+				or t1.FINANCIAL_ESTIMATE_CM like concat(concat('%',#{bean.financialEstimateCm}),'%')  
+			</if>
+			<if test="bean.financialResourcesCm != null and bean.financialResourcesCm != ''">
+				or t1.FINANCIAL_RESOURCES_CM like concat(concat('%',#{bean.financialResourcesCm}),'%')  
+			</if>
+			<if test="bean.belongProjectCm != null and bean.belongProjectCm != ''">
+				or t1.BELONG_PROJECT_CM like concat(concat('%',#{bean.belongProjectCm}),'%')  
+			</if>
+			<if test="bean.projectNoCm != null and bean.projectNoCm != ''">
+				or t1.PROJECT_NO_CM like concat(concat('%',#{bean.projectNoCm}),'%')  
+			</if>
+			<if test="bean.replyNameCm != null and bean.replyNameCm != ''">
+				or t1.REPLY_NAME_CM like concat(concat('%',#{bean.replyNameCm}),'%')  
+			</if>
+			<if test="bean.approvalFormNumberCm != null and bean.approvalFormNumberCm != ''">
+				or t1.APPROVAL_FORM_NUMBER_CM like concat(concat('%',#{bean.approvalFormNumberCm}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null and bean.attribute16 != ''">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.isTestDeviceCm != null and bean.isTestDeviceCm != ''">
+				or t1.IS_TEST_DEVICE_CM like concat(concat('%',#{bean.isTestDeviceCm}),'%')  
+			</if>
+			<if test="bean.competentDeviceLeaderCm != null and bean.competentDeviceLeaderCm != ''">
+				or t1.COMPETENT_DEVICE_LEADER_CM like concat(concat('%',#{bean.competentDeviceLeaderCm}),'%')  
+			</if>
+													</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_USTD_COLLECT_CM -->
+<select id="searchAssetsUstdCollectCm" parameterType="java.util.Map" resultMap="AssetsUstdCollectCmDTOMap">
+	select
+		t1.id                             ,
+		t1.std_id_cm                      ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.created_by_tel_cm              ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state_cm                  ,
+		t1.device_name_cm                 ,
+		t1.device_category_cm             ,
+		t1.manufacture_unit_cm            ,
+		t1.subject_code_cm                ,
+		t1.competent_authority_cm         ,
+		t1.model_director_cm              ,
+		t1.competent_leader_cm            ,
+		t1.apply_reason_purpose_cm        ,
+		t1.orign_equip_situation_cm       ,
+		t1.efficiency_situation_cm        ,
+		t1.development_content_cm         ,
+		t1.technical_index_cm             ,
+		t1.development_cycle_cm           ,
+		t1.is_need_install_cm             ,
+		t1.position_id_cm                 ,
+		t1.service_voltage_cm             ,
+		t1.is_humidity_need_cm            ,
+		t1.humidity_need_cm               ,
+		t1.is_water_need_cm               ,
+		t1.water_need_cm                  ,
+		t1.is_gas_need_cm                 ,
+		t1.gas_need_cm                    ,
+		t1.is_let_cm                      ,
+		t1.let_need_cm                    ,
+		t1.is_other_need_cm               ,
+		t1.other_need_cm                  ,
+		t1.is_above_conditions_cm         ,
+		t1.is_metering_cm                 ,
+		t1.metering_requirement_cm        ,
+		t1.financial_estimate_cm          ,
+		t1.financial_resources_cm         ,
+		t1.belong_project_cm              ,
+		t1.project_no_cm                  ,
+		t1.reply_name_cm                  ,
+		t1.approval_form_number_cm        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_test_device_cm              ,
+		t1.competent_device_leader_cm     ,
+		t1.header_id_cm                   
+	from assets_ustd_collect_cm 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="stdIdCm != null and stdIdCm != ''">
+				and t1.STD_ID_CM =#{stdIdCm}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="createdByDept != null and createdByDept != ''">
+				and t1.CREATED_BY_DEPT =#{createdByDept}
+			</if>
+			<if test="createdByTelCm != null and createdByTelCm != ''">
+				and t1.CREATED_BY_TEL_CM =#{createdByTelCm}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="formStateCm != null and formStateCm != ''">
+				and t1.FORM_STATE_CM =#{formStateCm}
+			</if>
+			<if test="deviceNameCm != null and deviceNameCm != ''">
+				and t1.DEVICE_NAME_CM =#{deviceNameCm}
+			</if>
+			<if test="deviceCategoryCm != null and deviceCategoryCm != ''">
+				and t1.DEVICE_CATEGORY_CM =#{deviceCategoryCm}
+			</if>
+			<if test="manufactureUnitCm != null and manufactureUnitCm != ''">
+				and t1.MANUFACTURE_UNIT_CM =#{manufactureUnitCm}
+			</if>
+			<if test="subjectCodeCm != null and subjectCodeCm != ''">
+				and t1.SUBJECT_CODE_CM =#{subjectCodeCm}
+			</if>
+			<if test="competentAuthorityCm != null and competentAuthorityCm != ''">
+				and t1.COMPETENT_AUTHORITY_CM =#{competentAuthorityCm}
+			</if>
+			<if test="modelDirectorCm != null and modelDirectorCm != ''">
+				and t1.MODEL_DIRECTOR_CM =#{modelDirectorCm}
+			</if>
+			<if test="competentLeaderCm != null and competentLeaderCm != ''">
+				and t1.COMPETENT_LEADER_CM =#{competentLeaderCm}
+			</if>
+			<if test="applyReasonPurposeCm != null and applyReasonPurposeCm != ''">
+				and t1.APPLY_REASON_PURPOSE_CM =#{applyReasonPurposeCm}
+			</if>
+			<if test="orignEquipSituationCm != null and orignEquipSituationCm != ''">
+				and t1.ORIGN_EQUIP_SITUATION_CM =#{orignEquipSituationCm}
+			</if>
+			<if test="efficiencySituationCm != null and efficiencySituationCm != ''">
+				and t1.EFFICIENCY_SITUATION_CM =#{efficiencySituationCm}
+			</if>
+			<if test="developmentContentCm != null and developmentContentCm != ''">
+				and t1.DEVELOPMENT_CONTENT_CM =#{developmentContentCm}
+			</if>
+			<if test="technicalIndexCm != null and technicalIndexCm != ''">
+				and t1.TECHNICAL_INDEX_CM =#{technicalIndexCm}
+			</if>
+			<if test="developmentCycleCm != null and developmentCycleCm != ''">
+				and t1.DEVELOPMENT_CYCLE_CM =#{developmentCycleCm}
+			</if>
+			<if test="isNeedInstallCm != null and isNeedInstallCm != ''">
+				and t1.IS_NEED_INSTALL_CM =#{isNeedInstallCm}
+			</if>
+			<if test="positionIdCm != null and positionIdCm != ''">
+				and t1.POSITION_ID_CM =#{positionIdCm}
+			</if>
+			<if test="serviceVoltageCm != null and serviceVoltageCm != ''">
+				and t1.SERVICE_VOLTAGE_CM =#{serviceVoltageCm}
+			</if>
+			<if test="isHumidityNeedCm != null and isHumidityNeedCm != ''">
+				and t1.IS_HUMIDITY_NEED_CM =#{isHumidityNeedCm}
+			</if>
+			<if test="humidityNeedCm != null and humidityNeedCm != ''">
+				and t1.HUMIDITY_NEED_CM =#{humidityNeedCm}
+			</if>
+			<if test="isWaterNeedCm != null and isWaterNeedCm != ''">
+				and t1.IS_WATER_NEED_CM =#{isWaterNeedCm}
+			</if>
+			<if test="waterNeedCm != null and waterNeedCm != ''">
+				and t1.WATER_NEED_CM =#{waterNeedCm}
+			</if>
+			<if test="isGasNeedCm != null and isGasNeedCm != ''">
+				and t1.IS_GAS_NEED_CM =#{isGasNeedCm}
+			</if>
+			<if test="gasNeedCm != null and gasNeedCm != ''">
+				and t1.GAS_NEED_CM =#{gasNeedCm}
+			</if>
+			<if test="isLetCm != null and isLetCm != ''">
+				and t1.IS_LET_CM =#{isLetCm}
+			</if>
+			<if test="letNeedCm != null and letNeedCm != ''">
+				and t1.LET_NEED_CM =#{letNeedCm}
+			</if>
+			<if test="isOtherNeedCm != null and isOtherNeedCm != ''">
+				and t1.IS_OTHER_NEED_CM =#{isOtherNeedCm}
+			</if>
+			<if test="otherNeedCm != null and otherNeedCm != ''">
+				and t1.OTHER_NEED_CM =#{otherNeedCm}
+			</if>
+			<if test="isAboveConditionsCm != null and isAboveConditionsCm != ''">
+				and t1.IS_ABOVE_CONDITIONS_CM =#{isAboveConditionsCm}
+			</if>
+			<if test="isMeteringCm != null and isMeteringCm != ''">
+				and t1.IS_METERING_CM =#{isMeteringCm}
+			</if>
+			<if test="meteringRequirementCm != null and meteringRequirementCm != ''">
+				and t1.METERING_REQUIREMENT_CM =#{meteringRequirementCm}
+			</if>
+			<if test="financialEstimateCm != null">
+				and t1.FINANCIAL_ESTIMATE_CM =#{financialEstimateCm}
+			</if>
+			<if test="financialResourcesCm != null and financialResourcesCm != ''">
+				and t1.FINANCIAL_RESOURCES_CM =#{financialResourcesCm}
+			</if>
+			<if test="belongProjectCm != null and belongProjectCm != ''">
+				and t1.BELONG_PROJECT_CM =#{belongProjectCm}
+			</if>
+			<if test="projectNoCm != null and projectNoCm != ''">
+				and t1.PROJECT_NO_CM =#{projectNoCm}
+			</if>
+			<if test="replyNameCm != null and replyNameCm != ''">
+				and t1.REPLY_NAME_CM =#{replyNameCm}
+			</if>
+			<if test="approvalFormNumberCm != null and approvalFormNumberCm != ''">
+				and t1.APPROVAL_FORM_NUMBER_CM =#{approvalFormNumberCm}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null and attribute11 != ''">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null and attribute12 != ''">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null and attribute13 != ''">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null and attribute14 != ''">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null and attribute15 != ''">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null and attribute16 != ''">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="isTestDeviceCm != null and isTestDeviceCm != ''">
+				and t1.IS_TEST_DEVICE_CM =#{isTestDeviceCm}
+			</if>
+			<if test="competentDeviceLeaderCm != null and competentDeviceLeaderCm != ''">
+				and t1.COMPETENT_DEVICE_LEADER_CM =#{competentDeviceLeaderCm}
+			</if>
+			<if test="headerIdCm != null and headerIdCm != ''">
+				and t1.HEADER_ID_CM =#{headerIdCm}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_USTD_COLLECT_CM -->
+<select id="findAssetsUstdCollectCmById" parameterType="java.util.Map" resultMap="AssetsUstdCollectCmDTOMap">
+	select
+		t1.id                             ,
+		t1.std_id_cm                      ,
+		t1.created_by                     ,
+		t1.created_by_dept                ,
+		t1.created_by_tel_cm              ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.form_state_cm                  ,
+		t1.device_name_cm                 ,
+		t1.device_category_cm             ,
+		t1.manufacture_unit_cm            ,
+		t1.subject_code_cm                ,
+		t1.competent_authority_cm         ,
+		t1.model_director_cm              ,
+		t1.competent_leader_cm            ,
+		t1.apply_reason_purpose_cm        ,
+		t1.orign_equip_situation_cm       ,
+		t1.efficiency_situation_cm        ,
+		t1.development_content_cm         ,
+		t1.technical_index_cm             ,
+		t1.development_cycle_cm           ,
+		t1.is_need_install_cm             ,
+		t1.position_id_cm                 ,
+		t1.service_voltage_cm             ,
+		t1.is_humidity_need_cm            ,
+		t1.humidity_need_cm               ,
+		t1.is_water_need_cm               ,
+		t1.water_need_cm                  ,
+		t1.is_gas_need_cm                 ,
+		t1.gas_need_cm                    ,
+		t1.is_let_cm                      ,
+		t1.let_need_cm                    ,
+		t1.is_other_need_cm               ,
+		t1.other_need_cm                  ,
+		t1.is_above_conditions_cm         ,
+		t1.is_metering_cm                 ,
+		t1.metering_requirement_cm        ,
+		t1.financial_estimate_cm          ,
+		t1.financial_resources_cm         ,
+		t1.belong_project_cm              ,
+		t1.project_no_cm                  ,
+		t1.reply_name_cm                  ,
+		t1.approval_form_number_cm        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.is_test_device_cm              ,
+		t1.competent_device_leader_cm     ,
+		t1.header_id_cm                   
+	from assets_ustd_collect_cm 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_USTD_COLLECT_CM -->
+<insert id="insertAssetsUstdCollectCm" parameterType="avicit.assets.device.dynusdassetsntc.dto.AssetsUstdCollectCmDTO">
+	insert into assets_ustd_collect_cm
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="stdIdCm != null">
+				std_id_cm,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="createdByDept != null">
+				created_by_dept,
+			</if>
+			<if test="createdByTelCm != null">
+				created_by_tel_cm,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="formStateCm != null">
+				form_state_cm,
+			</if>
+			<if test="deviceNameCm != null">
+				device_name_cm,
+			</if>
+			<if test="deviceCategoryCm != null">
+				device_category_cm,
+			</if>
+			<if test="manufactureUnitCm != null">
+				manufacture_unit_cm,
+			</if>
+			<if test="subjectCodeCm != null">
+				subject_code_cm,
+			</if>
+			<if test="competentAuthorityCm != null">
+				competent_authority_cm,
+			</if>
+			<if test="modelDirectorCm != null">
+				model_director_cm,
+			</if>
+			<if test="competentLeaderCm != null">
+				competent_leader_cm,
+			</if>
+			<if test="applyReasonPurposeCm != null">
+				apply_reason_purpose_cm,
+			</if>
+			<if test="orignEquipSituationCm != null">
+				orign_equip_situation_cm,
+			</if>
+			<if test="efficiencySituationCm != null">
+				efficiency_situation_cm,
+			</if>
+			<if test="developmentContentCm != null">
+				development_content_cm,
+			</if>
+			<if test="technicalIndexCm != null">
+				technical_index_cm,
+			</if>
+			<if test="developmentCycleCm != null">
+				development_cycle_cm,
+			</if>
+			<if test="isNeedInstallCm != null">
+				is_need_install_cm,
+			</if>
+			<if test="positionIdCm != null">
+				position_id_cm,
+			</if>
+			<if test="serviceVoltageCm != null">
+				service_voltage_cm,
+			</if>
+			<if test="isHumidityNeedCm != null">
+				is_humidity_need_cm,
+			</if>
+			<if test="humidityNeedCm != null">
+				humidity_need_cm,
+			</if>
+			<if test="isWaterNeedCm != null">
+				is_water_need_cm,
+			</if>
+			<if test="waterNeedCm != null">
+				water_need_cm,
+			</if>
+			<if test="isGasNeedCm != null">
+				is_gas_need_cm,
+			</if>
+			<if test="gasNeedCm != null">
+				gas_need_cm,
+			</if>
+			<if test="isLetCm != null">
+				is_let_cm,
+			</if>
+			<if test="letNeedCm != null">
+				let_need_cm,
+			</if>
+			<if test="isOtherNeedCm != null">
+				is_other_need_cm,
+			</if>
+			<if test="otherNeedCm != null">
+				other_need_cm,
+			</if>
+			<if test="isAboveConditionsCm != null">
+				is_above_conditions_cm,
+			</if>
+			<if test="isMeteringCm != null">
+				is_metering_cm,
+			</if>
+			<if test="meteringRequirementCm != null">
+				metering_requirement_cm,
+			</if>
+			<if test="financialEstimateCm != null">
+				financial_estimate_cm,
+			</if>
+			<if test="financialResourcesCm != null">
+				financial_resources_cm,
+			</if>
+			<if test="belongProjectCm != null">
+				belong_project_cm,
+			</if>
+			<if test="projectNoCm != null">
+				project_no_cm,
+			</if>
+			<if test="replyNameCm != null">
+				reply_name_cm,
+			</if>
+			<if test="approvalFormNumberCm != null">
+				approval_form_number_cm,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="isTestDeviceCm != null">
+				is_test_device_cm,
+			</if>
+			<if test="competentDeviceLeaderCm != null">
+				competent_device_leader_cm,
+			</if>
+			<if test="headerIdCm != null">
+				header_id_cm,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="stdIdCm != null">
+				#{stdIdCm,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDept != null">
+				#{createdByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByTelCm != null">
+				#{createdByTelCm,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="formStateCm != null">
+				#{formStateCm,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceNameCm != null">
+				#{deviceNameCm,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategoryCm != null">
+				#{deviceCategoryCm,jdbcType=VARCHAR},
+			</if>
+			<if test="manufactureUnitCm != null">
+				#{manufactureUnitCm,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectCodeCm != null">
+				#{subjectCodeCm,jdbcType=VARCHAR},
+			</if>
+			<if test="competentAuthorityCm != null">
+				#{competentAuthorityCm,jdbcType=VARCHAR},
+			</if>
+			<if test="modelDirectorCm != null">
+				#{modelDirectorCm,jdbcType=VARCHAR},
+			</if>
+			<if test="competentLeaderCm != null">
+				#{competentLeaderCm,jdbcType=VARCHAR},
+			</if>
+			<if test="applyReasonPurposeCm != null">
+				#{applyReasonPurposeCm,jdbcType=VARCHAR},
+			</if>
+			<if test="orignEquipSituationCm != null">
+				#{orignEquipSituationCm,jdbcType=VARCHAR},
+			</if>
+			<if test="efficiencySituationCm != null">
+				#{efficiencySituationCm,jdbcType=VARCHAR},
+			</if>
+			<if test="developmentContentCm != null">
+				#{developmentContentCm,jdbcType=VARCHAR},
+			</if>
+			<if test="technicalIndexCm != null">
+				#{technicalIndexCm,jdbcType=VARCHAR},
+			</if>
+			<if test="developmentCycleCm != null">
+				#{developmentCycleCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isNeedInstallCm != null">
+				#{isNeedInstallCm,jdbcType=VARCHAR},
+			</if>
+			<if test="positionIdCm != null">
+				#{positionIdCm,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceVoltageCm != null">
+				#{serviceVoltageCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isHumidityNeedCm != null">
+				#{isHumidityNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="humidityNeedCm != null">
+				#{humidityNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isWaterNeedCm != null">
+				#{isWaterNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="waterNeedCm != null">
+				#{waterNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isGasNeedCm != null">
+				#{isGasNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="gasNeedCm != null">
+				#{gasNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isLetCm != null">
+				#{isLetCm,jdbcType=VARCHAR},
+			</if>
+			<if test="letNeedCm != null">
+				#{letNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isOtherNeedCm != null">
+				#{isOtherNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="otherNeedCm != null">
+				#{otherNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isAboveConditionsCm != null">
+				#{isAboveConditionsCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isMeteringCm != null">
+				#{isMeteringCm,jdbcType=VARCHAR},
+			</if>
+			<if test="meteringRequirementCm != null">
+				#{meteringRequirementCm,jdbcType=VARCHAR},
+			</if>
+			<if test="financialEstimateCm != null">
+				#{financialEstimateCm,jdbcType=DECIMAL},
+			</if>
+			<if test="financialResourcesCm != null">
+				#{financialResourcesCm,jdbcType=VARCHAR},
+			</if>
+			<if test="belongProjectCm != null">
+				#{belongProjectCm,jdbcType=VARCHAR},
+			</if>
+			<if test="projectNoCm != null">
+				#{projectNoCm,jdbcType=VARCHAR},
+			</if>
+			<if test="replyNameCm != null">
+				#{replyNameCm,jdbcType=VARCHAR},
+			</if>
+			<if test="approvalFormNumberCm != null">
+				#{approvalFormNumberCm,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DATE},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DATE},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="isTestDeviceCm != null">
+				#{isTestDeviceCm,jdbcType=VARCHAR},
+			</if>
+			<if test="competentDeviceLeaderCm != null">
+				#{competentDeviceLeaderCm,jdbcType=VARCHAR},
+			</if>
+			<if test="headerIdCm != null">
+				#{headerIdCm,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_USTD_COLLECT_CM -->
+<insert id="insertAssetsUstdCollectCmList" parameterType="java.util.List">
+	insert into assets_ustd_collect_cm(
+			id,
+			std_id_cm,
+			created_by,
+			created_by_dept,
+			created_by_tel_cm,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			form_state_cm,
+			device_name_cm,
+			device_category_cm,
+			manufacture_unit_cm,
+			subject_code_cm,
+			competent_authority_cm,
+			model_director_cm,
+			competent_leader_cm,
+			apply_reason_purpose_cm,
+			orign_equip_situation_cm,
+			efficiency_situation_cm,
+			development_content_cm,
+			technical_index_cm,
+			development_cycle_cm,
+			is_need_install_cm,
+			position_id_cm,
+			service_voltage_cm,
+			is_humidity_need_cm,
+			humidity_need_cm,
+			is_water_need_cm,
+			water_need_cm,
+			is_gas_need_cm,
+			gas_need_cm,
+			is_let_cm,
+			let_need_cm,
+			is_other_need_cm,
+			other_need_cm,
+			is_above_conditions_cm,
+			is_metering_cm,
+			metering_requirement_cm,
+			financial_estimate_cm,
+			financial_resources_cm,
+			belong_project_cm,
+			project_no_cm,
+			reply_name_cm,
+			approval_form_number_cm,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			is_test_device_cm,
+			competent_device_leader_cm,
+			header_id_cm)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.stdIdCm,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.createdByDept,jdbcType=VARCHAR},
+					#{item.createdByTelCm,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.formStateCm,jdbcType=VARCHAR},
+					#{item.deviceNameCm,jdbcType=VARCHAR},
+					#{item.deviceCategoryCm,jdbcType=VARCHAR},
+					#{item.manufactureUnitCm,jdbcType=VARCHAR},
+					#{item.subjectCodeCm,jdbcType=VARCHAR},
+					#{item.competentAuthorityCm,jdbcType=VARCHAR},
+					#{item.modelDirectorCm,jdbcType=VARCHAR},
+					#{item.competentLeaderCm,jdbcType=VARCHAR},
+					#{item.applyReasonPurposeCm,jdbcType=VARCHAR},
+					#{item.orignEquipSituationCm,jdbcType=VARCHAR},
+					#{item.efficiencySituationCm,jdbcType=VARCHAR},
+					#{item.developmentContentCm,jdbcType=VARCHAR},
+					#{item.technicalIndexCm,jdbcType=VARCHAR},
+					#{item.developmentCycleCm,jdbcType=VARCHAR},
+					#{item.isNeedInstallCm,jdbcType=VARCHAR},
+					#{item.positionIdCm,jdbcType=VARCHAR},
+					#{item.serviceVoltageCm,jdbcType=VARCHAR},
+					#{item.isHumidityNeedCm,jdbcType=VARCHAR},
+					#{item.humidityNeedCm,jdbcType=VARCHAR},
+					#{item.isWaterNeedCm,jdbcType=VARCHAR},
+					#{item.waterNeedCm,jdbcType=VARCHAR},
+					#{item.isGasNeedCm,jdbcType=VARCHAR},
+					#{item.gasNeedCm,jdbcType=VARCHAR},
+					#{item.isLetCm,jdbcType=VARCHAR},
+					#{item.letNeedCm,jdbcType=VARCHAR},
+					#{item.isOtherNeedCm,jdbcType=VARCHAR},
+					#{item.otherNeedCm,jdbcType=VARCHAR},
+					#{item.isAboveConditionsCm,jdbcType=VARCHAR},
+					#{item.isMeteringCm,jdbcType=VARCHAR},
+					#{item.meteringRequirementCm,jdbcType=VARCHAR},
+					#{item.financialEstimateCm,jdbcType=DECIMAL},
+					#{item.financialResourcesCm,jdbcType=VARCHAR},
+					#{item.belongProjectCm,jdbcType=VARCHAR},
+					#{item.projectNoCm,jdbcType=VARCHAR},
+					#{item.replyNameCm,jdbcType=VARCHAR},
+					#{item.approvalFormNumberCm,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=VARCHAR},
+					#{item.attribute12,jdbcType=VARCHAR},
+					#{item.attribute13,jdbcType=VARCHAR},
+					#{item.attribute14,jdbcType=VARCHAR},
+					#{item.attribute15,jdbcType=DATE},
+					#{item.attribute16,jdbcType=DATE},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DECIMAL},
+					#{item.attribute19,jdbcType=DECIMAL},
+					#{item.attribute20,jdbcType=DECIMAL},
+					#{item.isTestDeviceCm,jdbcType=VARCHAR},
+					#{item.competentDeviceLeaderCm,jdbcType=VARCHAR},
+					#{item.headerIdCm,jdbcType=VARCHAR}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_USTD_COLLECT_CM -->
+<update id="updateAssetsUstdCollectCmSensitive" parameterType="avicit.assets.device.dynusdassetsntc.dto.AssetsUstdCollectCmDTO">
+	update assets_ustd_collect_cm 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="stdIdCm != null">
+				std_id_cm                      =#{stdIdCm,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDept != null">
+				created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByTelCm != null">
+				created_by_tel_cm              =#{createdByTelCm,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="formStateCm != null">
+				form_state_cm                  =#{formStateCm,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceNameCm != null">
+				device_name_cm                 =#{deviceNameCm,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategoryCm != null">
+				device_category_cm             =#{deviceCategoryCm,jdbcType=VARCHAR},
+			</if>
+			<if test="manufactureUnitCm != null">
+				manufacture_unit_cm            =#{manufactureUnitCm,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectCodeCm != null">
+				subject_code_cm                =#{subjectCodeCm,jdbcType=VARCHAR},
+			</if>
+			<if test="competentAuthorityCm != null">
+				competent_authority_cm         =#{competentAuthorityCm,jdbcType=VARCHAR},
+			</if>
+			<if test="modelDirectorCm != null">
+				model_director_cm              =#{modelDirectorCm,jdbcType=VARCHAR},
+			</if>
+			<if test="competentLeaderCm != null">
+				competent_leader_cm            =#{competentLeaderCm,jdbcType=VARCHAR},
+			</if>
+			<if test="applyReasonPurposeCm != null">
+				apply_reason_purpose_cm        =#{applyReasonPurposeCm,jdbcType=VARCHAR},
+			</if>
+			<if test="orignEquipSituationCm != null">
+				orign_equip_situation_cm       =#{orignEquipSituationCm,jdbcType=VARCHAR},
+			</if>
+			<if test="efficiencySituationCm != null">
+				efficiency_situation_cm        =#{efficiencySituationCm,jdbcType=VARCHAR},
+			</if>
+			<if test="developmentContentCm != null">
+				development_content_cm         =#{developmentContentCm,jdbcType=VARCHAR},
+			</if>
+			<if test="technicalIndexCm != null">
+				technical_index_cm             =#{technicalIndexCm,jdbcType=VARCHAR},
+			</if>
+			<if test="developmentCycleCm != null">
+				development_cycle_cm           =#{developmentCycleCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isNeedInstallCm != null">
+				is_need_install_cm             =#{isNeedInstallCm,jdbcType=VARCHAR},
+			</if>
+			<if test="positionIdCm != null">
+				position_id_cm                 =#{positionIdCm,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceVoltageCm != null">
+				service_voltage_cm             =#{serviceVoltageCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isHumidityNeedCm != null">
+				is_humidity_need_cm            =#{isHumidityNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="humidityNeedCm != null">
+				humidity_need_cm               =#{humidityNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isWaterNeedCm != null">
+				is_water_need_cm               =#{isWaterNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="waterNeedCm != null">
+				water_need_cm                  =#{waterNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isGasNeedCm != null">
+				is_gas_need_cm                 =#{isGasNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="gasNeedCm != null">
+				gas_need_cm                    =#{gasNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isLetCm != null">
+				is_let_cm                      =#{isLetCm,jdbcType=VARCHAR},
+			</if>
+			<if test="letNeedCm != null">
+				let_need_cm                    =#{letNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isOtherNeedCm != null">
+				is_other_need_cm               =#{isOtherNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="otherNeedCm != null">
+				other_need_cm                  =#{otherNeedCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isAboveConditionsCm != null">
+				is_above_conditions_cm         =#{isAboveConditionsCm,jdbcType=VARCHAR},
+			</if>
+			<if test="isMeteringCm != null">
+				is_metering_cm                 =#{isMeteringCm,jdbcType=VARCHAR},
+			</if>
+			<if test="meteringRequirementCm != null">
+				metering_requirement_cm        =#{meteringRequirementCm,jdbcType=VARCHAR},
+			</if>
+			<if test="financialEstimateCm != null">
+				financial_estimate_cm          =#{financialEstimateCm,jdbcType=DECIMAL},
+			</if>
+			<if test="financialResourcesCm != null">
+				financial_resources_cm         =#{financialResourcesCm,jdbcType=VARCHAR},
+			</if>
+			<if test="belongProjectCm != null">
+				belong_project_cm              =#{belongProjectCm,jdbcType=VARCHAR},
+			</if>
+			<if test="projectNoCm != null">
+				project_no_cm                  =#{projectNoCm,jdbcType=VARCHAR},
+			</if>
+			<if test="replyNameCm != null">
+				reply_name_cm                  =#{replyNameCm,jdbcType=VARCHAR},
+			</if>
+			<if test="approvalFormNumberCm != null">
+				approval_form_number_cm        =#{approvalFormNumberCm,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DATE},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DATE},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="isTestDeviceCm != null">
+				is_test_device_cm              =#{isTestDeviceCm,jdbcType=VARCHAR},
+			</if>
+			<if test="competentDeviceLeaderCm != null">
+				competent_device_leader_cm     =#{competentDeviceLeaderCm,jdbcType=VARCHAR},
+			</if>
+			<if test="headerIdCm != null">
+				header_id_cm                   =#{headerIdCm,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_USTD_COLLECT_CM -->
+<update id="updateAssetsUstdCollectCmAll" parameterType="avicit.assets.device.dynusdassetsntc.dto.AssetsUstdCollectCmDTO">
+	update assets_ustd_collect_cm 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			std_id_cm                      =#{stdIdCm,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+			created_by_tel_cm              =#{createdByTelCm,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			form_state_cm                  =#{formStateCm,jdbcType=VARCHAR},
+			device_name_cm                 =#{deviceNameCm,jdbcType=VARCHAR},
+			device_category_cm             =#{deviceCategoryCm,jdbcType=VARCHAR},
+			manufacture_unit_cm            =#{manufactureUnitCm,jdbcType=VARCHAR},
+			subject_code_cm                =#{subjectCodeCm,jdbcType=VARCHAR},
+			competent_authority_cm         =#{competentAuthorityCm,jdbcType=VARCHAR},
+			model_director_cm              =#{modelDirectorCm,jdbcType=VARCHAR},
+			competent_leader_cm            =#{competentLeaderCm,jdbcType=VARCHAR},
+			apply_reason_purpose_cm        =#{applyReasonPurposeCm,jdbcType=VARCHAR},
+			orign_equip_situation_cm       =#{orignEquipSituationCm,jdbcType=VARCHAR},
+			efficiency_situation_cm        =#{efficiencySituationCm,jdbcType=VARCHAR},
+			development_content_cm         =#{developmentContentCm,jdbcType=VARCHAR},
+			technical_index_cm             =#{technicalIndexCm,jdbcType=VARCHAR},
+			development_cycle_cm           =#{developmentCycleCm,jdbcType=VARCHAR},
+			is_need_install_cm             =#{isNeedInstallCm,jdbcType=VARCHAR},
+			position_id_cm                 =#{positionIdCm,jdbcType=VARCHAR},
+			service_voltage_cm             =#{serviceVoltageCm,jdbcType=VARCHAR},
+			is_humidity_need_cm            =#{isHumidityNeedCm,jdbcType=VARCHAR},
+			humidity_need_cm               =#{humidityNeedCm,jdbcType=VARCHAR},
+			is_water_need_cm               =#{isWaterNeedCm,jdbcType=VARCHAR},
+			water_need_cm                  =#{waterNeedCm,jdbcType=VARCHAR},
+			is_gas_need_cm                 =#{isGasNeedCm,jdbcType=VARCHAR},
+			gas_need_cm                    =#{gasNeedCm,jdbcType=VARCHAR},
+			is_let_cm                      =#{isLetCm,jdbcType=VARCHAR},
+			let_need_cm                    =#{letNeedCm,jdbcType=VARCHAR},
+			is_other_need_cm               =#{isOtherNeedCm,jdbcType=VARCHAR},
+			other_need_cm                  =#{otherNeedCm,jdbcType=VARCHAR},
+			is_above_conditions_cm         =#{isAboveConditionsCm,jdbcType=VARCHAR},
+			is_metering_cm                 =#{isMeteringCm,jdbcType=VARCHAR},
+			metering_requirement_cm        =#{meteringRequirementCm,jdbcType=VARCHAR},
+			financial_estimate_cm          =#{financialEstimateCm,jdbcType=DECIMAL},
+			financial_resources_cm         =#{financialResourcesCm,jdbcType=VARCHAR},
+			belong_project_cm              =#{belongProjectCm,jdbcType=VARCHAR},
+			project_no_cm                  =#{projectNoCm,jdbcType=VARCHAR},
+			reply_name_cm                  =#{replyNameCm,jdbcType=VARCHAR},
+			approval_form_number_cm        =#{approvalFormNumberCm,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{attribute15,jdbcType=DATE},
+			attribute_16                   =#{attribute16,jdbcType=DATE},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			is_test_device_cm              =#{isTestDeviceCm,jdbcType=VARCHAR},
+			competent_device_leader_cm     =#{competentDeviceLeaderCm,jdbcType=VARCHAR},
+			header_id_cm                   =#{headerIdCm,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_USTD_COLLECT_CM -->
+<update id="updateAssetsUstdCollectCmList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_ustd_collect_cm 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			std_id_cm                      =#{item.stdIdCm,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			created_by_dept                =#{item.createdByDept,jdbcType=VARCHAR},
+			created_by_tel_cm              =#{item.createdByTelCm,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			form_state_cm                  =#{item.formStateCm,jdbcType=VARCHAR},
+			device_name_cm                 =#{item.deviceNameCm,jdbcType=VARCHAR},
+			device_category_cm             =#{item.deviceCategoryCm,jdbcType=VARCHAR},
+			manufacture_unit_cm            =#{item.manufactureUnitCm,jdbcType=VARCHAR},
+			subject_code_cm                =#{item.subjectCodeCm,jdbcType=VARCHAR},
+			competent_authority_cm         =#{item.competentAuthorityCm,jdbcType=VARCHAR},
+			model_director_cm              =#{item.modelDirectorCm,jdbcType=VARCHAR},
+			competent_leader_cm            =#{item.competentLeaderCm,jdbcType=VARCHAR},
+			apply_reason_purpose_cm        =#{item.applyReasonPurposeCm,jdbcType=VARCHAR},
+			orign_equip_situation_cm       =#{item.orignEquipSituationCm,jdbcType=VARCHAR},
+			efficiency_situation_cm        =#{item.efficiencySituationCm,jdbcType=VARCHAR},
+			development_content_cm         =#{item.developmentContentCm,jdbcType=VARCHAR},
+			technical_index_cm             =#{item.technicalIndexCm,jdbcType=VARCHAR},
+			development_cycle_cm           =#{item.developmentCycleCm,jdbcType=VARCHAR},
+			is_need_install_cm             =#{item.isNeedInstallCm,jdbcType=VARCHAR},
+			position_id_cm                 =#{item.positionIdCm,jdbcType=VARCHAR},
+			service_voltage_cm             =#{item.serviceVoltageCm,jdbcType=VARCHAR},
+			is_humidity_need_cm            =#{item.isHumidityNeedCm,jdbcType=VARCHAR},
+			humidity_need_cm               =#{item.humidityNeedCm,jdbcType=VARCHAR},
+			is_water_need_cm               =#{item.isWaterNeedCm,jdbcType=VARCHAR},
+			water_need_cm                  =#{item.waterNeedCm,jdbcType=VARCHAR},
+			is_gas_need_cm                 =#{item.isGasNeedCm,jdbcType=VARCHAR},
+			gas_need_cm                    =#{item.gasNeedCm,jdbcType=VARCHAR},
+			is_let_cm                      =#{item.isLetCm,jdbcType=VARCHAR},
+			let_need_cm                    =#{item.letNeedCm,jdbcType=VARCHAR},
+			is_other_need_cm               =#{item.isOtherNeedCm,jdbcType=VARCHAR},
+			other_need_cm                  =#{item.otherNeedCm,jdbcType=VARCHAR},
+			is_above_conditions_cm         =#{item.isAboveConditionsCm,jdbcType=VARCHAR},
+			is_metering_cm                 =#{item.isMeteringCm,jdbcType=VARCHAR},
+			metering_requirement_cm        =#{item.meteringRequirementCm,jdbcType=VARCHAR},
+			financial_estimate_cm          =#{item.financialEstimateCm,jdbcType=DECIMAL},
+			financial_resources_cm         =#{item.financialResourcesCm,jdbcType=VARCHAR},
+			belong_project_cm              =#{item.belongProjectCm,jdbcType=VARCHAR},
+			project_no_cm                  =#{item.projectNoCm,jdbcType=VARCHAR},
+			reply_name_cm                  =#{item.replyNameCm,jdbcType=VARCHAR},
+			approval_form_number_cm        =#{item.approvalFormNumberCm,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{item.attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{item.attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{item.attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{item.attribute15,jdbcType=DATE},
+			attribute_16                   =#{item.attribute16,jdbcType=DATE},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{item.attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{item.attribute20,jdbcType=DECIMAL},
+			is_test_device_cm              =#{item.isTestDeviceCm,jdbcType=VARCHAR},
+			competent_device_leader_cm     =#{item.competentDeviceLeaderCm,jdbcType=VARCHAR},
+			header_id_cm                   =#{item.headerIdCm,jdbcType=VARCHAR}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_USTD_COLLECT_CM -->
+<delete id="deleteAssetsUstdCollectCmById" parameterType="java.lang.String">
+		delete from assets_ustd_collect_cm  where  id = #{id}
+</delete>
+<!-- 外键批量删除 ASSETS_USTD_COLLECT_CM -->
+<delete id="deleteAssetsUstdCollectCmByPid" parameterType="java.lang.String">
+		delete from assets_ustd_collect_cm  where  HEADER_ID_CM = #{headerIdCm}
+</delete>
+<!-- 批量主键删除 ASSETS_USTD_COLLECT_CM -->
+<delete id="deleteAssetsUstdCollectCmList" parameterType="java.util.List">
+		delete from assets_ustd_collect_cm  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

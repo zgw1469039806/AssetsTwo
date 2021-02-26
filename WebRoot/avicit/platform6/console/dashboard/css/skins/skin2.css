@@ -1,0 +1,38 @@
+.header {
+	background: #2583cc;
+}
+.header .logo {
+	background: #2583cc;
+}
+.toolbar .search .head-search {
+	color:#5f6676;
+}
+
+.navList .subList li:hover,.navList .subList li.on {
+	background: #2583cc;
+}
+
+.iconbtn .subMenu > li {
+	color:#2583cc;
+	text-shadow:  none;
+}
+.iconbtn .subMenu > li:hover {
+	background: #2583cc;
+	color:#FFF;
+	text-shadow: none;
+}
+
+.dropdown>li:hover,.dropdown>li.on {
+	background-color:#145ea6;
+}
+.navbar .dropdown-menu {
+	background-color:#145ea6;
+}
+
+.tabs li.tabs-selected a.tabs-inner {
+	background: #145ea6;
+}
+
+.navbar .dropdown-menu>ul {
+	border-color:#c6d2de;
+}

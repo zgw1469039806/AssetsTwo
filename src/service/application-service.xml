@@ -1,0 +1,23 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:avic="http://www.avic-digital.com/schema/beans"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.avic-digital.com/schema/beans http://www.avic-digital.com/schema/beans/avic.xsd">
+
+    <!-- 应用信息，用于记录关系 -->
+    <avic:application name="系统管理服务" code="msystem" desc="系统管理服务"/>
+
+    <!-- 注册中心信息 -->
+    <avic:registry address="zookeeper://10.216.38.184:2181" check="false" />
+    <!-- 提供的服务请求协议信息 -->
+    <avic:protocol name="http://"  port="10001" />
+
+    <!-- 自定义提供的服务默认值 -->
+    <avic:provider timeout="6000" retries="0" >
+
+    </avic:provider>
+
+
+
+
+</beans>   

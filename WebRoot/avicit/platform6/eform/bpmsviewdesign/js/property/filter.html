@@ -1,0 +1,208 @@
+<form id="thisForm">
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>条件列</label>
+        <div id="identifier-ctrl1" class="input-group input-group-sm avicselect">
+        <select id="columnName" name="columnName" isnull="false" class="form-control input-sm">
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group property-control">
+        <label>列中文名称</label>
+        <input type="text" id="name" name="name"
+               class="form-control input-sm" readonly="true">
+        <input type="hidden" id="colType" name="colType" class="form-control input-sm">
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>逻辑运算符</label>
+        <select id="opttype" name="opttype" isnull="false" class="form-control input-sm">
+            <option value=""></option>
+            <option value="=">等于</option>
+            <option value="!=">不等于</option>
+            <option value="dayu">大于</option>
+            <option value="dayu=">大于等于</option>
+            <option value="xiaoyu">小于</option>
+            <option value="xiaoyu=">小于等于</option>
+            <option value="like">包含</option>
+        </select>
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>条件值</label>
+        <div id="identifier-ctrl" class="input-group input-group-sm avicselect">
+            <input type="text" class="form-control avicselect-act" readonly="readonly" name="filtervalue" id="filtervalue">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+            <div class="avicselect-list"></div>
+        </div>
+    </div>
+
+    <div class="form-group property-control">
+        <label>是否逃逸</label>
+        <select id="escape" name="escape" isnull="false" class="form-control input-sm">
+            <option value="N">否</option>
+            <option value="Y">是</option>
+        </select>
+    </div>
+</form>
+<script type="text/javascript">
+    var colList = null;
+    var tableNode = engine.getParent(engine.clickedNode.getParentNode().getParentNode(),"table,tree,treeGrid,dataList");
+    $(function() {
+
+        var dbid = tableNode.attribute.dbid;
+        setColumnSelect(dbid,tableNode);
+        $(".form-control").change(function () {
+            if (colList!=null) {
+                for (var i = 0; i < colList.length; i++) {
+                    if (colList[i].colName == $("#columnName").val()) {
+                        $("#name").val(colList[i].colComments);
+                        $("#colType").val(colList[i].colType);
+                    }
+                }
+            }
+            engine.changSave();
+        });
+
+    });
+
+    var ColDatas = engine.getPara("table,tree,treeGrid,dataList");
+    $("#identifier-ctrl").avicselect2({
+        findDom:$("#thisForm"),
+        type : 1,
+        showkey:'_value',
+        remote:false,
+        data : ColDatas,
+        height: '200px',
+        format:"_value",
+        tpl : '<ul>'
+            + '<@for ( var index in this ) {@>'
+            + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>'
+            + '<@}@>' + '</ul>',
+        success:function(obj){
+            $("#filtervalue").val(obj.data[1].value);
+            $("#filtervalue").change();
+        }
+    });
+
+    self.propertyPageInit = function (treeNode) {
+        var dbid = engine.getParent(treeNode.getParentNode().getParentNode(),"table,tree,treeGrid,dataList").attribute.dbid;
+        setColumnSelect(dbid,tableNode);
+    };
+
+    /**
+     * 设置列名称选项值
+     * */
+    function setColumnSelect(dbid,node){
+        if (node.type === "table") {
+            $("#identifier-ctrl1").empty();
+            $("#identifier-ctrl1").append('<input type="text" class="form-control avicselect-act" readonly="readonly" name="columnName" id="columnName">\n' +
+                '            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>\n' +
+                '            <div class="avicselect-list"></div>');
+            var ColDatas1 = engine.getCol(node.id);
+            $("#identifier-ctrl1").avicselect2({
+                findDom: $("#thisForm"),
+                type: 1,
+                showkey: '_value',
+                remote: false,
+                data: ColDatas1,
+                height: '200px',
+                format: "_value",
+                tpl: '<ul>'
+                    + '<@for ( var index in this ) {@>'
+                    + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>'
+                    + '<@}@>' + '</ul>',
+                success: function (obj) {
+                    $("#name").val(obj.data[2].value.name);
+                    $("#columnName").val(obj.data[0].value);
+                    $("#colType").val(obj.data[2].value.db_filed_type);
+                    $("#colType").change();
+                }
+            });
+        }else {
+
+
+            avicAjax.ajax({
+                url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+                contentType: "application/xml; charset=utf-8",
+                type: 'post',
+                dataType: 'json',
+                async: false,
+                success: function (r) {
+                    if (r != null) {
+                        colList = $.parseJSON(r.data);
+                        var $colDom = $("#columnName");
+                        $colDom.each(function () {
+                            $(this).empty();
+                            $(this).append($('<option value=""></option>'));
+                            for (var i = 0; i < colList.length; i++) {
+                                var $option = $('<option value="' + colList[i].colName + '">' + colList[i].colName + '</option>');
+                                $(this).append($option);
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    self.validateForm = function(form,treeNode){
+
+        if(form.filtervalue == null || form.filtervalue == ""){
+            layer.msg('条件值不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        // if(form.sorttype == null || form.sorttype == ""){
+        //     layer.msg('排序类型不能为空！',{
+        //         icon: 2,
+        //         area: ['220px', ''],
+        //         closeBtn: 0
+        //     });
+        //     return false;
+        // }
+        //
+        // if(form.columnName == null || form.columnName == ""){
+        //     layer.msg('列名称不能为空！',{
+        //         icon: 2,
+        //         area: ['220px', ''],
+        //         closeBtn: 0
+        //     });
+        //     return false;
+        // }
+        //
+        // if(form.orderindex == null || form.orderindex == ""){
+        //     layer.msg('数据排序不能为空！',{
+        //         icon: 2,
+        //         area: ['220px', ''],
+        //         closeBtn: 0
+        //     });
+        //     return false;
+        // }
+        //
+        // var node = treeNode.getParentNode();
+        // var childrenA = node.children;
+        // var ob = {};
+        // for(var i=0; i<childrenA.length; i++){
+        //     var temp = childrenA[i].attribute.columnName;
+        //     if(ob.hasOwnProperty(temp)){
+        //         layer.msg('列名称[' + childrenA[i].attribute.name + ']已设置过排序类型！',{
+        //             icon: 2,
+        //             area: ['370px', ''],
+        //             closeBtn: 0
+        //         });
+        //         return false;
+        //     }else{
+        //         ob[temp] = 1;
+        //     }
+        // }
+        return true;
+    };
+
+</script>
+</html>

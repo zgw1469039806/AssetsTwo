@@ -1,0 +1,25 @@
+.header {
+	background: #0074c5;
+}
+
+.navList {
+	background: #004c81;
+}
+
+.navList li.on, .navList li:hover {
+	background: #0065ac;
+}
+
+.navList li.on i, .navList li:hover i {
+	color:#c1cbd7;
+}
+
+.iconbtn .subMenu > li {
+	color:#0074c5;
+	text-shadow:  none;
+}
+.iconbtn .subMenu > li:hover {
+	background: #0074c5;
+	color:#FFF;
+	text-shadow:  none;
+}

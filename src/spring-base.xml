@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-lazy-init="false">
+
+	<description>Spring入口配置文件</description> 
+	 
+	<bean id="propertyConfigurer" class="avicit.platform6.core.spring.EncryptPropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:/platform6.properties</value>
+				<value>classpath*:/jdbc.properties</value>
+				<value>classpath*:/quartz.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 平台数据源连接设置 -->
+    <import resource="classpath*:spring-hibernate.xml" />
+    
+    <!-- 平台API实现 -->
+    <import resource="classpath*:spring-api.xml" />
+
+	<!-- redis设置 -->
+    <import resource="classpath*:spring-redis.xml" />
+
+    <import resource="classpath*:/spring-shiro.xml" />
+    
+    <import resource="classpath*:/spring-common.xml" />
+
+	<import resource="classpath*:/configuration/spring/spring-assembly-*.xml" />
+	
+    <import resource="classpath*:avicit/**/configuration/spring-module.xml" />
+     
+    <import resource="classpath*:spring-mybatis.xml" />
+    
+    <import resource="classpath*:spring-webservice.xml" />
+
+	<!--<import resource="classpath*:spring-product-mq.xml" />-->
+	<!--<import resource="classpath*:spring-consumer-mq.xml" />-->
+
+
+</beans>

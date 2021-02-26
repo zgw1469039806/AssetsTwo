@@ -1,0 +1,136 @@
+<form>
+<div class="form-group property-control">
+	<label>转化源列标识符</label><input type="text" id="srcId" name="srcId" isnull="false"
+		class="form-control input-sm" placeholder="转化源列标识符">
+</div>
+<div class="form-group property-control">
+	<label>列标识符</label><input type="text" id="id" name="id" isnull="false"
+		class="form-control input-sm" placeholder="列标识符">
+</div>
+<div class="form-group property-control">
+	<label>列名称</label><input type="text" id="name" name="name"
+		isnull="false" class="form-control input-sm" placeholder="列名称">
+</div>
+<div class="form-group property-control">
+	<label>列宽度</label>
+	<div class="input-group input-group-sm spinner" data-trigger="spinner">
+		<input type="text" class="form-control" id="width" name="width" 
+			isnull="false" data-min="0" data-max="999999999999" data-step="1"
+			data-precision="0"> <span class="input-group-addon">
+			<a href="javascript:;" class="spin-up" data-spin="up"><i
+				class="glyphicon glyphicon-triangle-top"></i></a> <a
+			href="javascript:;" class="spin-down" data-spin="down"><i
+				class="glyphicon glyphicon-triangle-bottom"></i></a>
+		</span>
+	</div>
+</div>
+<div class="form-group property-control">
+	<label>对齐方式</label>
+	<select id="align" name="align" isnull="false" class="form-control input-sm">
+		<option value="left">左对齐</option>
+		<option value="center">居中对齐</option>
+		<option value="right">右对齐</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>列显隐</label>
+	<select id="hidden" name="hidden" isnull="false" class="form-control input-sm">
+		<option value="false">显示</option>
+	    <option value="true">隐藏</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>格式化</label>
+		<select id="format" name="format" isnull="false" class="form-control input-sm">
+		</select>
+</div>
+<div class="form-group property-control" id="div_ud_function" style="display:none">
+	<label>自定义函数名称</label><input type="text" id="ud_function" name="ud_function"
+		isnull="false" class="form-control input-sm" placeholder="自定义函数名称">
+</div>
+<div class="form-group property-control">
+	<label>转换类型</label>
+	<select id="transform" name="transform" class="form-control input-sm">
+		<option value=""></option>
+		<option value="userid">用户ID转名称</option>
+		<option value="usercode">用户编码转名称</option>
+	    <option value="deptid">部门ID转名称</option>
+	    <option value="deptcode">部门编码转名称</option>
+	    <option value="positionid">岗位ID转名称</option>
+	    <option value="positioncode">部门编码转名称</option>
+	    <option value="roleid">角色ID转名称</option>
+	    <option value="rolecode">部门编码转名称</option>
+	    <option value="groupid">群组ID转名称</option>
+	    <option value="groupcode">群组编码名称</option>
+	    <option value="lookup">通用代码</option>
+	    <option value="userdefined">自定义转换</option>
+	</select>
+</div>
+<div id="div_ud_function2" class="form-group property-control" style="display:none">
+	<label>通用代码值</label>			
+	<div id="LookupTypeSelect" class="input-group input-group-sm avicselect">
+		<input type="hidden"  name="LookupType" id="LookupType">
+		<input type="text" class="form-control" name="LookupTypeName" id="LookupTypeName">
+		<span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+		<div class="avicselect-list"></div>
+	</div>
+</div>
+<div id="div_ud_function3" class="form-group property-control" style="display:none">
+	<label>自定义转换类</label><input type="text" id="userdefinedclass" name="userdefinedclass" isnull="false" class="form-control input-sm" placeholder="自定义转换类">
+</div>
+</form>
+<script type="text/javascript">
+$(function(){
+	$(".form-control").bind('change', function(){
+		if(this.id == 'format' && $(this).val() == "function"){
+			$("#div_ud_function").css("display","block");
+		}else{
+			$("#div_ud_function").css("display","none");
+		}
+		if(this.id == 'transform' && $(this).val() == "lookup"){
+			$("#div_ud_function2").css("display","block");
+			$("#div_ud_function3").css("display","none");
+		}else if(this.id == 'transform' && $(this).val() == "userdefined"){
+			$("#div_ud_function3").css("display","block");
+			$("#div_ud_function2").css("display","none");
+		}else{
+			$("#div_ud_function3").css("display","none");
+			$("#div_ud_function2").css("display","none");
+		}
+		engine.changSave();
+    });
+	
+});
+self.propertyPageInit = function(treeNode){
+	if(treeNode.attribute.db_filed_type == "NUMBER"){
+		$("#format").append("<option value=''></option>");
+		$("#format").append("<option value='###,###'>###,###</option>");
+		$("#format").append("<option value='###,###.##'>###,###.##</option>");
+		$("#format").append("<option value='###,###.####'>###,###.####</option>");
+		
+		$("#align option[value='right']").attr("selected",true);
+	}else if(treeNode.attribute.db_filed_type == "DATE"){
+		$("#format").append("<option value='yyyy-mm-dd'>yyyy-mm-dd</option>");
+		$("#format").append("<option value='yyyy-mm-dd 24h:mi:ss'>yyyy-mm-dd 24h:mi</option>");
+		
+		$("#align option[value=\"center\"]").attr("selected",true);
+	}else if(treeNode.attribute.db_filed_type == "VARCHAR2"){
+		$("#format").append("<option value=''></option>");
+	}else{
+		$("#format").append("<option value=''></option>");
+	}
+	$("#format").append("<option value='function'>自定义函数</option>");
+	
+	$("#format").val(treeNode.attribute.format);
+	
+	if(treeNode.attribute.format == "function"){
+		$("#div_ud_function").css("display","block");
+	}
+	if(treeNode.attribute.transform == "lookup"){
+		$("#div_ud_function2").css("display","block");
+	}
+	if(treeNode.attribute.transform == "userdefined"){
+		$("#div_ud_function3").css("display","block");
+	}
+};
+</script>

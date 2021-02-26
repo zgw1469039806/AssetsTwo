@@ -1,0 +1,43 @@
+<form>
+	<div class="form-group property-control">
+		<label>参数域id</label><input type="text" id="id" name="id"
+								   isnull="false" class="form-control input-sm" readonly placeholder="参数域id">
+		<input type="hidden" id="name" name="name"
+			   isnull="false" class="form-control input-sm"  value="参数域">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>参数域变量名</label><input type="text" id="paraareaid" name="paraareaid"
+								   isnull="false" class="form-control input-sm"  placeholder="参数域变量">
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+	})
+
+	self.validateForm = function(form,treeNode){
+
+		if(form.paraareaid == null || form.paraareaid == ""){
+			layer.msg('参数域变量不能为空！',{
+				icon: 2,
+				area: ['220px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		var regEn = /[`~!@#$%^&*()+<>?:{},.\/;'[\]]/im,
+				regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im,
+				regCh = /[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/gi;
+		if(regEn.test(form.paraareaid) || regCn.test(form.paraareaid) ||regCh.test(form.paraareaid)) {
+			layer.msg('参数域变量名不能含有特殊字符或中文！',{
+				icon: 2,
+				area: ['220px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		return true;
+	};
+</script>

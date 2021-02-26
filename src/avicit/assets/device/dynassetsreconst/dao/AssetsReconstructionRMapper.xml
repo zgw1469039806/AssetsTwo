@@ -1,0 +1,1494 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.dynassetsreconst.dao.AssetsReconstructionRDao">
+
+<resultMap id="AssetsReconstructionRDTOMap" type="avicit.assets.device.dynassetsreconst.dto.AssetsReconstructionRDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="reconstructionIdR" column="RECONSTRUCTION_ID_R" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="createdByDeptR" column="CREATED_BY_DEPT_R" jdbcType="VARCHAR" />
+		<result property="formStateR" column="FORM_STATE_R" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="ownerDeptR" column="OWNER_DEPT_R" jdbcType="VARCHAR" />
+		<result property="ownerIdR" column="OWNER_ID_R" jdbcType="VARCHAR" />
+		<result property="ownerTelR" column="OWNER_TEL_R" jdbcType="VARCHAR" />
+		<result property="deviceNameR" column="DEVICE_NAME_R" jdbcType="VARCHAR" />
+		<result property="secretLevelR" column="SECRET_LEVEL_R" jdbcType="VARCHAR" />
+		<result property="unifiedIdR" column="UNIFIED_ID_R" jdbcType="VARCHAR" />
+		<result property="deviceModelR" column="DEVICE_MODEL_R" jdbcType="VARCHAR" />
+		<result property="deviceSpecR" column="DEVICE_SPEC_R" jdbcType="VARCHAR" />
+		<result property="manufacturerIdR" column="MANUFACTURER_ID_R" jdbcType="VARCHAR" />
+		<result property="likaDateR" column="LIKA_DATE_R" jdbcType="TIMESTAMP" />
+		<result property="originalValueR" column="ORIGINAL_VALUE_R" jdbcType="DECIMAL" />
+		<result property="existingPerformanceR" column="EXISTING_PERFORMANCE_R" jdbcType="VARCHAR" />
+		<result property="reformingReasonR" column="REFORMING_REASON_R" jdbcType="VARCHAR" />
+		<result property="afterPerformanceR" column="AFTER_PERFORMANCE_R" jdbcType="VARCHAR" />
+		<result property="transformWayR" column="TRANSFORM_WAY_R" jdbcType="VARCHAR" />
+		<result property="budgetR" column="BUDGET_R" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="TIMESTAMP" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="TIMESTAMP" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL" />
+		<result property="netValueR" column="NET_VALUE_R" jdbcType="DECIMAL" />
+		<result property="deviceCategoryR" column="DEVICE_CATEGORY_R" jdbcType="VARCHAR" />
+		<result property="createdByPersonR" column="CREATED_BY_PERSON_R" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 根据pid查询对象 ASSETS_RECONSTRUCTION_R -->
+<select id="findAssetsReconstructionRByPid" parameterType="java.util.Map" resultMap="AssetsReconstructionRDTOMap">
+	select
+		t1.id                             ,
+		t1.reconstruction_id_r            ,
+		t1.created_by                     ,
+		t1.created_by_dept_r              ,
+		t1.form_state_r                   ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.owner_dept_r                   ,
+		t1.owner_id_r                     ,
+		t1.owner_tel_r                    ,
+		t1.device_name_r                  ,
+		t1.secret_level_r                 ,
+		t1.unified_id_r                   ,
+		t1.device_model_r                 ,
+		t1.device_spec_r                  ,
+		t1.manufacturer_id_r              ,
+		t1.lika_date_r                    ,
+		t1.original_value_r               ,
+		t1.existing_performance_r         ,
+		t1.reforming_reason_r             ,
+		t1.after_performance_r            ,
+		t1.transform_way_r                ,
+		t1.budget_r                       ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.net_value_r                    ,
+		t1.device_category_r              ,
+		t1.created_by_person_r            
+	from assets_reconstruction_r 	t1
+		where t1.attribute_01 = #{pid}
+</select>
+<!-- 分页查询 ASSETS_RECONSTRUCTION_R -->
+<select id="searchAssetsReconstructionRByPage" parameterType="java.util.Map" resultMap="AssetsReconstructionRDTOMap">
+	select
+		t1.id                             ,
+		t1.reconstruction_id_r            ,
+		t1.created_by                     ,
+		t1.created_by_dept_r              ,
+		t1.form_state_r                   ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.owner_dept_r                   ,
+		t1.owner_id_r                     ,
+		t1.owner_tel_r                    ,
+		t1.device_name_r                  ,
+		t1.secret_level_r                 ,
+		t1.unified_id_r                   ,
+		t1.device_model_r                 ,
+		t1.device_spec_r                  ,
+		t1.manufacturer_id_r              ,
+		t1.lika_date_r                    ,
+		t1.original_value_r               ,
+		t1.existing_performance_r         ,
+		t1.reforming_reason_r             ,
+		t1.after_performance_r            ,
+		t1.transform_way_r                ,
+		t1.budget_r                       ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.net_value_r                    ,
+		t1.device_category_r              ,
+		t1.created_by_person_r            
+	from assets_reconstruction_r 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.reconstructionIdR != null and bean.reconstructionIdR != ''">
+				and t1.RECONSTRUCTION_ID_R like concat(concat('%',#{bean.reconstructionIdR}),'%') 
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.createdByDeptR != null and bean.createdByDeptR != ''">
+				and t1.CREATED_BY_DEPT_R like concat(concat('%',#{bean.createdByDeptR}),'%') 
+			</if>
+			<if test="bean.formStateR != null and bean.formStateR != ''">
+				and t1.FORM_STATE_R like concat(concat('%',#{bean.formStateR}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.ownerDeptR != null and bean.ownerDeptR != ''">
+				and t1.OWNER_DEPT_R like concat(concat('%',#{bean.ownerDeptR}),'%') 
+			</if>
+			<if test="bean.ownerIdR != null and bean.ownerIdR != ''">
+				and t1.OWNER_ID_R like concat(concat('%',#{bean.ownerIdR}),'%') 
+			</if>
+			<if test="bean.ownerTelR != null and bean.ownerTelR != ''">
+				and t1.OWNER_TEL_R like concat(concat('%',#{bean.ownerTelR}),'%') 
+			</if>
+			<if test="bean.deviceNameR != null and bean.deviceNameR != ''">
+				and t1.DEVICE_NAME_R like concat(concat('%',#{bean.deviceNameR}),'%') 
+			</if>
+			<if test="bean.secretLevelR != null and bean.secretLevelR != ''">
+				and t1.SECRET_LEVEL_R like concat(concat('%',#{bean.secretLevelR}),'%') 
+			</if>
+			<if test="bean.unifiedIdR != null and bean.unifiedIdR != ''">
+				and t1.UNIFIED_ID_R like concat(concat('%',#{bean.unifiedIdR}),'%') 
+			</if>
+			<if test="bean.deviceModelR != null and bean.deviceModelR != ''">
+				and t1.DEVICE_MODEL_R like concat(concat('%',#{bean.deviceModelR}),'%') 
+			</if>
+			<if test="bean.deviceSpecR != null and bean.deviceSpecR != ''">
+				and t1.DEVICE_SPEC_R like concat(concat('%',#{bean.deviceSpecR}),'%') 
+			</if>
+			<if test="bean.manufacturerIdR != null and bean.manufacturerIdR != ''">
+				and t1.MANUFACTURER_ID_R like concat(concat('%',#{bean.manufacturerIdR}),'%') 
+			</if>
+			<if test="bean.likaDateRBegin != null and bean.likaDateRBegin != ''">
+				and t1.LIKA_DATE_R &gt;= #{bean.likaDateRBegin}
+			</if>
+			<if test="bean.likaDateREnd != null and bean.likaDateREnd != ''">
+				and t1.LIKA_DATE_R &lt;= #{bean.likaDateREnd}
+			</if>
+			<if test="bean.originalValueR != null ">
+				and t1.ORIGINAL_VALUE_R like concat(concat('%',#{bean.originalValueR}),'%') 
+			</if>
+			<if test="bean.existingPerformanceR != null and bean.existingPerformanceR != ''">
+				and t1.EXISTING_PERFORMANCE_R like concat(concat('%',#{bean.existingPerformanceR}),'%') 
+			</if>
+			<if test="bean.reformingReasonR != null and bean.reformingReasonR != ''">
+				and t1.REFORMING_REASON_R like concat(concat('%',#{bean.reformingReasonR}),'%') 
+			</if>
+			<if test="bean.afterPerformanceR != null and bean.afterPerformanceR != ''">
+				and t1.AFTER_PERFORMANCE_R like concat(concat('%',#{bean.afterPerformanceR}),'%') 
+			</if>
+			<if test="bean.transformWayR != null and bean.transformWayR != ''">
+				and t1.TRANSFORM_WAY_R like concat(concat('%',#{bean.transformWayR}),'%') 
+			</if>
+			<if test="bean.budgetR != null and bean.budgetR != ''">
+				and t1.BUDGET_R like concat(concat('%',#{bean.budgetR}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{bean.attribute01}
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null and bean.attribute16 != ''">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null ">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null ">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null ">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.netValueR != null ">
+				and t1.NET_VALUE_R like concat(concat('%',#{bean.netValueR}),'%') 
+			</if>
+			<if test="bean.deviceCategoryR != null and bean.deviceCategoryR != ''">
+				and t1.DEVICE_CATEGORY_R like concat(concat('%',#{bean.deviceCategoryR}),'%') 
+			</if>
+			<if test="bean.createdByPersonR != null and bean.createdByPersonR != ''">
+				and t1.CREATED_BY_PERSON_R like concat(concat('%',#{bean.createdByPersonR}),'%') 
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_RECONSTRUCTION_R -->
+<select id="searchAssetsReconstructionRByPageOr" parameterType="java.util.Map" resultMap="AssetsReconstructionRDTOMap">
+	select
+		t1.id                             ,
+		t1.reconstruction_id_r            ,
+		t1.created_by                     ,
+		t1.created_by_dept_r              ,
+		t1.form_state_r                   ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.owner_dept_r                   ,
+		t1.owner_id_r                     ,
+		t1.owner_tel_r                    ,
+		t1.device_name_r                  ,
+		t1.secret_level_r                 ,
+		t1.unified_id_r                   ,
+		t1.device_model_r                 ,
+		t1.device_spec_r                  ,
+		t1.manufacturer_id_r              ,
+		t1.lika_date_r                    ,
+		t1.original_value_r               ,
+		t1.existing_performance_r         ,
+		t1.reforming_reason_r             ,
+		t1.after_performance_r            ,
+		t1.transform_way_r                ,
+		t1.budget_r                       ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.net_value_r                    ,
+		t1.device_category_r              ,
+		t1.created_by_person_r            
+	from  (select * from assets_reconstruction_r t where t.ATTRIBUTE_01= #{bean.attribute01})  t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.reconstructionIdR != null and bean.reconstructionIdR != ''">
+				or t1.RECONSTRUCTION_ID_R like concat(concat('%',#{bean.reconstructionIdR}),'%')  
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.createdByDeptR != null and bean.createdByDeptR != ''">
+				or t1.CREATED_BY_DEPT_R like concat(concat('%',#{bean.createdByDeptR}),'%')  
+			</if>
+			<if test="bean.formStateR != null and bean.formStateR != ''">
+				or t1.FORM_STATE_R like concat(concat('%',#{bean.formStateR}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.ownerDeptR != null and bean.ownerDeptR != ''">
+				or t1.OWNER_DEPT_R like concat(concat('%',#{bean.ownerDeptR}),'%')  
+			</if>
+			<if test="bean.ownerIdR != null and bean.ownerIdR != ''">
+				or t1.OWNER_ID_R like concat(concat('%',#{bean.ownerIdR}),'%')  
+			</if>
+			<if test="bean.ownerTelR != null and bean.ownerTelR != ''">
+				or t1.OWNER_TEL_R like concat(concat('%',#{bean.ownerTelR}),'%')  
+			</if>
+			<if test="bean.deviceNameR != null and bean.deviceNameR != ''">
+				or t1.DEVICE_NAME_R like concat(concat('%',#{bean.deviceNameR}),'%')  
+			</if>
+			<if test="bean.secretLevelR != null and bean.secretLevelR != ''">
+				or t1.SECRET_LEVEL_R like concat(concat('%',#{bean.secretLevelR}),'%')  
+			</if>
+			<if test="bean.unifiedIdR != null and bean.unifiedIdR != ''">
+				or t1.UNIFIED_ID_R like concat(concat('%',#{bean.unifiedIdR}),'%')  
+			</if>
+			<if test="bean.deviceModelR != null and bean.deviceModelR != ''">
+				or t1.DEVICE_MODEL_R like concat(concat('%',#{bean.deviceModelR}),'%')  
+			</if>
+			<if test="bean.deviceSpecR != null and bean.deviceSpecR != ''">
+				or t1.DEVICE_SPEC_R like concat(concat('%',#{bean.deviceSpecR}),'%')  
+			</if>
+			<if test="bean.manufacturerIdR != null and bean.manufacturerIdR != ''">
+				or t1.MANUFACTURER_ID_R like concat(concat('%',#{bean.manufacturerIdR}),'%')  
+			</if>
+			<if test="bean.likaDateRBegin != null and bean.likaDateRBegin != ''">
+				or t1.LIKA_DATE_R &gt;= #{bean.likaDateRBegin}
+			</if>
+			<if test="bean.likaDateREnd != null and bean.likaDateREnd != ''">
+				or t1.LIKA_DATE_R &lt;= #{bean.likaDateREnd}
+			</if>
+			<if test="bean.originalValueR != null">
+				or t1.ORIGINAL_VALUE_R like concat(concat('%',#{bean.originalValueR}),'%')  
+			</if>
+			<if test="bean.existingPerformanceR != null and bean.existingPerformanceR != ''">
+				or t1.EXISTING_PERFORMANCE_R like concat(concat('%',#{bean.existingPerformanceR}),'%')  
+			</if>
+			<if test="bean.reformingReasonR != null and bean.reformingReasonR != ''">
+				or t1.REFORMING_REASON_R like concat(concat('%',#{bean.reformingReasonR}),'%')  
+			</if>
+			<if test="bean.afterPerformanceR != null and bean.afterPerformanceR != ''">
+				or t1.AFTER_PERFORMANCE_R like concat(concat('%',#{bean.afterPerformanceR}),'%')  
+			</if>
+			<if test="bean.transformWayR != null and bean.transformWayR != ''">
+				or t1.TRANSFORM_WAY_R like concat(concat('%',#{bean.transformWayR}),'%')  
+			</if>
+			<if test="bean.budgetR != null and bean.budgetR != ''">
+				or t1.BUDGET_R like concat(concat('%',#{bean.budgetR}),'%')  
+			</if>
+													<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null and bean.attribute11 != ''">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null and bean.attribute12 != ''">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null and bean.attribute13 != ''">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null and bean.attribute14 != ''">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null and bean.attribute15 != ''">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null and bean.attribute16 != ''">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.netValueR != null">
+				or t1.NET_VALUE_R like concat(concat('%',#{bean.netValueR}),'%')  
+			</if>
+			<if test="bean.deviceCategoryR != null and bean.deviceCategoryR != ''">
+				or t1.DEVICE_CATEGORY_R like concat(concat('%',#{bean.deviceCategoryR}),'%')  
+			</if>
+			<if test="bean.createdByPersonR != null and bean.createdByPersonR != ''">
+				or t1.CREATED_BY_PERSON_R like concat(concat('%',#{bean.createdByPersonR}),'%')  
+			</if>
+			</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_RECONSTRUCTION_R -->
+<select id="searchAssetsReconstructionR" parameterType="java.util.Map" resultMap="AssetsReconstructionRDTOMap">
+	select
+		t1.id                             ,
+		t1.reconstruction_id_r            ,
+		t1.created_by                     ,
+		t1.created_by_dept_r              ,
+		t1.form_state_r                   ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.owner_dept_r                   ,
+		t1.owner_id_r                     ,
+		t1.owner_tel_r                    ,
+		t1.device_name_r                  ,
+		t1.secret_level_r                 ,
+		t1.unified_id_r                   ,
+		t1.device_model_r                 ,
+		t1.device_spec_r                  ,
+		t1.manufacturer_id_r              ,
+		t1.lika_date_r                    ,
+		t1.original_value_r               ,
+		t1.existing_performance_r         ,
+		t1.reforming_reason_r             ,
+		t1.after_performance_r            ,
+		t1.transform_way_r                ,
+		t1.budget_r                       ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.net_value_r                    ,
+		t1.device_category_r              ,
+		t1.created_by_person_r            
+	from assets_reconstruction_r 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="reconstructionIdR != null and reconstructionIdR != ''">
+				and t1.RECONSTRUCTION_ID_R =#{reconstructionIdR}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="createdByDeptR != null and createdByDeptR != ''">
+				and t1.CREATED_BY_DEPT_R =#{createdByDeptR}
+			</if>
+			<if test="formStateR != null and formStateR != ''">
+				and t1.FORM_STATE_R =#{formStateR}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="ownerDeptR != null and ownerDeptR != ''">
+				and t1.OWNER_DEPT_R =#{ownerDeptR}
+			</if>
+			<if test="ownerIdR != null and ownerIdR != ''">
+				and t1.OWNER_ID_R =#{ownerIdR}
+			</if>
+			<if test="ownerTelR != null and ownerTelR != ''">
+				and t1.OWNER_TEL_R =#{ownerTelR}
+			</if>
+			<if test="deviceNameR != null and deviceNameR != ''">
+				and t1.DEVICE_NAME_R =#{deviceNameR}
+			</if>
+			<if test="secretLevelR != null and secretLevelR != ''">
+				and t1.SECRET_LEVEL_R =#{secretLevelR}
+			</if>
+			<if test="unifiedIdR != null and unifiedIdR != ''">
+				and t1.UNIFIED_ID_R =#{unifiedIdR}
+			</if>
+			<if test="deviceModelR != null and deviceModelR != ''">
+				and t1.DEVICE_MODEL_R =#{deviceModelR}
+			</if>
+			<if test="deviceSpecR != null and deviceSpecR != ''">
+				and t1.DEVICE_SPEC_R =#{deviceSpecR}
+			</if>
+			<if test="manufacturerIdR != null and manufacturerIdR != ''">
+				and t1.MANUFACTURER_ID_R =#{manufacturerIdR}
+			</if>
+			<if test="likaDateRBegin != null and likaDateRBegin != ''">
+				and t1.LIKA_DATE_R &gt;= #{likaDateRBegin}
+			</if>
+			<if test="likaDateREnd != null and likaDateREnd != ''">
+				and t1.LIKA_DATE_R &lt;= #{likaDateREnd}
+			</if>
+			<if test="originalValueR != null">
+				and t1.ORIGINAL_VALUE_R =#{originalValueR}
+			</if>
+			<if test="existingPerformanceR != null and existingPerformanceR != ''">
+				and t1.EXISTING_PERFORMANCE_R =#{existingPerformanceR}
+			</if>
+			<if test="reformingReasonR != null and reformingReasonR != ''">
+				and t1.REFORMING_REASON_R =#{reformingReasonR}
+			</if>
+			<if test="afterPerformanceR != null and afterPerformanceR != ''">
+				and t1.AFTER_PERFORMANCE_R =#{afterPerformanceR}
+			</if>
+			<if test="transformWayR != null and transformWayR != ''">
+				and t1.TRANSFORM_WAY_R =#{transformWayR}
+			</if>
+			<if test="budgetR != null and budgetR != ''">
+				and t1.BUDGET_R =#{budgetR}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null and attribute11 != ''">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null and attribute12 != ''">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null and attribute13 != ''">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null and attribute14 != ''">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null and attribute15 != ''">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null and attribute16 != ''">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="netValueR != null">
+				and t1.NET_VALUE_R =#{netValueR}
+			</if>
+			<if test="deviceCategoryR != null and deviceCategoryR != ''">
+				and t1.DEVICE_CATEGORY_R =#{deviceCategoryR}
+			</if>
+			<if test="createdByPersonR != null and createdByPersonR != ''">
+				and t1.CREATED_BY_PERSON_R =#{createdByPersonR}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_RECONSTRUCTION_R -->
+<select id="findAssetsReconstructionRById" parameterType="java.util.Map" resultMap="AssetsReconstructionRDTOMap">
+	select
+		t1.id                             ,
+		t1.reconstruction_id_r            ,
+		t1.created_by                     ,
+		t1.created_by_dept_r              ,
+		t1.form_state_r                   ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.owner_dept_r                   ,
+		t1.owner_id_r                     ,
+		t1.owner_tel_r                    ,
+		t1.device_name_r                  ,
+		t1.secret_level_r                 ,
+		t1.unified_id_r                   ,
+		t1.device_model_r                 ,
+		t1.device_spec_r                  ,
+		t1.manufacturer_id_r              ,
+		t1.lika_date_r                    ,
+		t1.original_value_r               ,
+		t1.existing_performance_r         ,
+		t1.reforming_reason_r             ,
+		t1.after_performance_r            ,
+		t1.transform_way_r                ,
+		t1.budget_r                       ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.net_value_r                    ,
+		t1.device_category_r              ,
+		t1.created_by_person_r            
+	from assets_reconstruction_r 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_RECONSTRUCTION_R -->
+<insert id="insertAssetsReconstructionR" parameterType="avicit.assets.device.dynassetsreconst.dto.AssetsReconstructionRDTO">
+	insert into assets_reconstruction_r
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="reconstructionIdR != null">
+				reconstruction_id_r,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="createdByDeptR != null">
+				created_by_dept_r,
+			</if>
+			<if test="formStateR != null">
+				form_state_r,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="ownerDeptR != null">
+				owner_dept_r,
+			</if>
+			<if test="ownerIdR != null">
+				owner_id_r,
+			</if>
+			<if test="ownerTelR != null">
+				owner_tel_r,
+			</if>
+			<if test="deviceNameR != null">
+				device_name_r,
+			</if>
+			<if test="secretLevelR != null">
+				secret_level_r,
+			</if>
+			<if test="unifiedIdR != null">
+				unified_id_r,
+			</if>
+			<if test="deviceModelR != null">
+				device_model_r,
+			</if>
+			<if test="deviceSpecR != null">
+				device_spec_r,
+			</if>
+			<if test="manufacturerIdR != null">
+				manufacturer_id_r,
+			</if>
+			<if test="likaDateR != null">
+				lika_date_r,
+			</if>
+			<if test="originalValueR != null">
+				original_value_r,
+			</if>
+			<if test="existingPerformanceR != null">
+				existing_performance_r,
+			</if>
+			<if test="reformingReasonR != null">
+				reforming_reason_r,
+			</if>
+			<if test="afterPerformanceR != null">
+				after_performance_r,
+			</if>
+			<if test="transformWayR != null">
+				transform_way_r,
+			</if>
+			<if test="budgetR != null">
+				budget_r,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="netValueR != null">
+				net_value_r,
+			</if>
+			<if test="deviceCategoryR != null">
+				device_category_r,
+			</if>
+			<if test="createdByPersonR != null">
+				created_by_person_r,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="reconstructionIdR != null">
+				#{reconstructionIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDeptR != null">
+				#{createdByDeptR,jdbcType=VARCHAR},
+			</if>
+			<if test="formStateR != null">
+				#{formStateR,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="ownerDeptR != null">
+				#{ownerDeptR,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerIdR != null">
+				#{ownerIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerTelR != null">
+				#{ownerTelR,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceNameR != null">
+				#{deviceNameR,jdbcType=VARCHAR},
+			</if>
+			<if test="secretLevelR != null">
+				#{secretLevelR,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedIdR != null">
+				#{unifiedIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModelR != null">
+				#{deviceModelR,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpecR != null">
+				#{deviceSpecR,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerIdR != null">
+				#{manufacturerIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="likaDateR != null">
+				#{likaDateR,jdbcType=DATE},
+			</if>
+			<if test="originalValueR != null">
+				#{originalValueR,jdbcType=DECIMAL},
+			</if>
+			<if test="existingPerformanceR != null">
+				#{existingPerformanceR,jdbcType=VARCHAR},
+			</if>
+			<if test="reformingReasonR != null">
+				#{reformingReasonR,jdbcType=VARCHAR},
+			</if>
+			<if test="afterPerformanceR != null">
+				#{afterPerformanceR,jdbcType=VARCHAR},
+			</if>
+			<if test="transformWayR != null">
+				#{transformWayR,jdbcType=VARCHAR},
+			</if>
+			<if test="budgetR != null">
+				#{budgetR,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DATE},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DATE},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="netValueR != null">
+				#{netValueR,jdbcType=DECIMAL},
+			</if>
+			<if test="deviceCategoryR != null">
+				#{deviceCategoryR,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByPersonR != null">
+				#{createdByPersonR,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_RECONSTRUCTION_R -->
+<insert id="insertAssetsReconstructionRList" parameterType="java.util.List">
+	insert into assets_reconstruction_r(
+			id,
+			reconstruction_id_r,
+			created_by,
+			created_by_dept_r,
+			form_state_r,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			owner_dept_r,
+			owner_id_r,
+			owner_tel_r,
+			device_name_r,
+			secret_level_r,
+			unified_id_r,
+			device_model_r,
+			device_spec_r,
+			manufacturer_id_r,
+			lika_date_r,
+			original_value_r,
+			existing_performance_r,
+			reforming_reason_r,
+			after_performance_r,
+			transform_way_r,
+			budget_r,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			net_value_r,
+			device_category_r,
+			created_by_person_r)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.reconstructionIdR,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.createdByDeptR,jdbcType=VARCHAR},
+					#{item.formStateR,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.ownerDeptR,jdbcType=VARCHAR},
+					#{item.ownerIdR,jdbcType=VARCHAR},
+					#{item.ownerTelR,jdbcType=VARCHAR},
+					#{item.deviceNameR,jdbcType=VARCHAR},
+					#{item.secretLevelR,jdbcType=VARCHAR},
+					#{item.unifiedIdR,jdbcType=VARCHAR},
+					#{item.deviceModelR,jdbcType=VARCHAR},
+					#{item.deviceSpecR,jdbcType=VARCHAR},
+					#{item.manufacturerIdR,jdbcType=VARCHAR},
+					#{item.likaDateR,jdbcType=DATE},
+					#{item.originalValueR,jdbcType=DECIMAL},
+					#{item.existingPerformanceR,jdbcType=VARCHAR},
+					#{item.reformingReasonR,jdbcType=VARCHAR},
+					#{item.afterPerformanceR,jdbcType=VARCHAR},
+					#{item.transformWayR,jdbcType=VARCHAR},
+					#{item.budgetR,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=VARCHAR},
+					#{item.attribute12,jdbcType=VARCHAR},
+					#{item.attribute13,jdbcType=VARCHAR},
+					#{item.attribute14,jdbcType=VARCHAR},
+					#{item.attribute15,jdbcType=DATE},
+					#{item.attribute16,jdbcType=DATE},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DECIMAL},
+					#{item.attribute19,jdbcType=DECIMAL},
+					#{item.attribute20,jdbcType=DECIMAL},
+					#{item.netValueR,jdbcType=DECIMAL},
+					#{item.deviceCategoryR,jdbcType=VARCHAR},
+					#{item.createdByPersonR,jdbcType=VARCHAR}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_RECONSTRUCTION_R -->
+<update id="updateAssetsReconstructionRSensitive" parameterType="avicit.assets.device.dynassetsreconst.dto.AssetsReconstructionRDTO">
+	update assets_reconstruction_r 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="reconstructionIdR != null">
+				reconstruction_id_r            =#{reconstructionIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDeptR != null">
+				created_by_dept_r              =#{createdByDeptR,jdbcType=VARCHAR},
+			</if>
+			<if test="formStateR != null">
+				form_state_r                   =#{formStateR,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="ownerDeptR != null">
+				owner_dept_r                   =#{ownerDeptR,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerIdR != null">
+				owner_id_r                     =#{ownerIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerTelR != null">
+				owner_tel_r                    =#{ownerTelR,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceNameR != null">
+				device_name_r                  =#{deviceNameR,jdbcType=VARCHAR},
+			</if>
+			<if test="secretLevelR != null">
+				secret_level_r                 =#{secretLevelR,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedIdR != null">
+				unified_id_r                   =#{unifiedIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModelR != null">
+				device_model_r                 =#{deviceModelR,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpecR != null">
+				device_spec_r                  =#{deviceSpecR,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerIdR != null">
+				manufacturer_id_r              =#{manufacturerIdR,jdbcType=VARCHAR},
+			</if>
+			<if test="likaDateR != null">
+				lika_date_r                    =#{likaDateR,jdbcType=DATE},
+			</if>
+			<if test="originalValueR != null">
+				original_value_r               =#{originalValueR,jdbcType=DECIMAL},
+			</if>
+			<if test="existingPerformanceR != null">
+				existing_performance_r         =#{existingPerformanceR,jdbcType=VARCHAR},
+			</if>
+			<if test="reformingReasonR != null">
+				reforming_reason_r             =#{reformingReasonR,jdbcType=VARCHAR},
+			</if>
+			<if test="afterPerformanceR != null">
+				after_performance_r            =#{afterPerformanceR,jdbcType=VARCHAR},
+			</if>
+			<if test="transformWayR != null">
+				transform_way_r                =#{transformWayR,jdbcType=VARCHAR},
+			</if>
+			<if test="budgetR != null">
+				budget_r                       =#{budgetR,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DATE},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DATE},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			</if>
+			<if test="netValueR != null">
+				net_value_r                    =#{netValueR,jdbcType=DECIMAL},
+			</if>
+			<if test="deviceCategoryR != null">
+				device_category_r              =#{deviceCategoryR,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByPersonR != null">
+				created_by_person_r            =#{createdByPersonR,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_RECONSTRUCTION_R -->
+<update id="updateAssetsReconstructionRAll" parameterType="avicit.assets.device.dynassetsreconst.dto.AssetsReconstructionRDTO">
+	update assets_reconstruction_r 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			reconstruction_id_r            =#{reconstructionIdR,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			created_by_dept_r              =#{createdByDeptR,jdbcType=VARCHAR},
+			form_state_r                   =#{formStateR,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			owner_dept_r                   =#{ownerDeptR,jdbcType=VARCHAR},
+			owner_id_r                     =#{ownerIdR,jdbcType=VARCHAR},
+			owner_tel_r                    =#{ownerTelR,jdbcType=VARCHAR},
+			device_name_r                  =#{deviceNameR,jdbcType=VARCHAR},
+			secret_level_r                 =#{secretLevelR,jdbcType=VARCHAR},
+			unified_id_r                   =#{unifiedIdR,jdbcType=VARCHAR},
+			device_model_r                 =#{deviceModelR,jdbcType=VARCHAR},
+			device_spec_r                  =#{deviceSpecR,jdbcType=VARCHAR},
+			manufacturer_id_r              =#{manufacturerIdR,jdbcType=VARCHAR},
+			lika_date_r                    =#{likaDateR,jdbcType=DATE},
+			original_value_r               =#{originalValueR,jdbcType=DECIMAL},
+			existing_performance_r         =#{existingPerformanceR,jdbcType=VARCHAR},
+			reforming_reason_r             =#{reformingReasonR,jdbcType=VARCHAR},
+			after_performance_r            =#{afterPerformanceR,jdbcType=VARCHAR},
+			transform_way_r                =#{transformWayR,jdbcType=VARCHAR},
+			budget_r                       =#{budgetR,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{attribute15,jdbcType=DATE},
+			attribute_16                   =#{attribute16,jdbcType=DATE},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{attribute20,jdbcType=DECIMAL},
+			net_value_r                    =#{netValueR,jdbcType=DECIMAL},
+			device_category_r              =#{deviceCategoryR,jdbcType=VARCHAR},
+			created_by_person_r            =#{createdByPersonR,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_RECONSTRUCTION_R -->
+<update id="updateAssetsReconstructionRList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_reconstruction_r 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			reconstruction_id_r            =#{item.reconstructionIdR,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			created_by_dept_r              =#{item.createdByDeptR,jdbcType=VARCHAR},
+			form_state_r                   =#{item.formStateR,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			owner_dept_r                   =#{item.ownerDeptR,jdbcType=VARCHAR},
+			owner_id_r                     =#{item.ownerIdR,jdbcType=VARCHAR},
+			owner_tel_r                    =#{item.ownerTelR,jdbcType=VARCHAR},
+			device_name_r                  =#{item.deviceNameR,jdbcType=VARCHAR},
+			secret_level_r                 =#{item.secretLevelR,jdbcType=VARCHAR},
+			unified_id_r                   =#{item.unifiedIdR,jdbcType=VARCHAR},
+			device_model_r                 =#{item.deviceModelR,jdbcType=VARCHAR},
+			device_spec_r                  =#{item.deviceSpecR,jdbcType=VARCHAR},
+			manufacturer_id_r              =#{item.manufacturerIdR,jdbcType=VARCHAR},
+			lika_date_r                    =#{item.likaDateR,jdbcType=DATE},
+			original_value_r               =#{item.originalValueR,jdbcType=DECIMAL},
+			existing_performance_r         =#{item.existingPerformanceR,jdbcType=VARCHAR},
+			reforming_reason_r             =#{item.reformingReasonR,jdbcType=VARCHAR},
+			after_performance_r            =#{item.afterPerformanceR,jdbcType=VARCHAR},
+			transform_way_r                =#{item.transformWayR,jdbcType=VARCHAR},
+			budget_r                       =#{item.budgetR,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=VARCHAR},
+			attribute_12                   =#{item.attribute12,jdbcType=VARCHAR},
+			attribute_13                   =#{item.attribute13,jdbcType=VARCHAR},
+			attribute_14                   =#{item.attribute14,jdbcType=VARCHAR},
+			attribute_15                   =#{item.attribute15,jdbcType=DATE},
+			attribute_16                   =#{item.attribute16,jdbcType=DATE},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DECIMAL},
+			attribute_19                   =#{item.attribute19,jdbcType=DECIMAL},
+			attribute_20                   =#{item.attribute20,jdbcType=DECIMAL},
+			net_value_r                    =#{item.netValueR,jdbcType=DECIMAL},
+			device_category_r              =#{item.deviceCategoryR,jdbcType=VARCHAR},
+			created_by_person_r            =#{item.createdByPersonR,jdbcType=VARCHAR}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_RECONSTRUCTION_R -->
+<delete id="deleteAssetsReconstructionRById" parameterType="java.lang.String">
+		delete from assets_reconstruction_r  where  id = #{id}
+</delete>
+<!-- 外键批量删除 ASSETS_RECONSTRUCTION_R -->
+<delete id="deleteAssetsReconstructionRByPid" parameterType="java.lang.String">
+		delete from assets_reconstruction_r  where  ATTRIBUTE_01 = #{attribute01}
+</delete>
+<!-- 批量主键删除 ASSETS_RECONSTRUCTION_R -->
+<delete id="deleteAssetsReconstructionRList" parameterType="java.util.List">
+		delete from assets_reconstruction_r  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<tag>
+		<name>dn</name>
+		<tag-class>avicit.platform6.extdata.tag.DyncTag</tag-class>
+		<body-content>JSP</body-content>
+		<description></description>
+		<attribute>
+			<name>moduleId</name>
+			<required>true</required>
+			<description>该模块表名称</description>
+		</attribute>
+		<attribute>
+			<name>dyncid</name>
+			<required>true</required>
+			<description>标签唯一标示，一遍放在缓存，加快性能</description>
+		</attribute>
+		<attribute>
+			<name>tagType</name>
+			<required>true</required>
+			<description>标签类型，可能用于列表、查询条件、表单等</description>
+		</attribute>
+		<attribute>
+			<name>columnCount</name>
+			<required>false</required>
+			<description>一行展示多少列(任务单模块使用)</description>
+		</attribute>
+	</tag>
+</taglib>

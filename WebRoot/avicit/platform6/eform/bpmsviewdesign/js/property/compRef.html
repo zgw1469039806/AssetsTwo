@@ -1,0 +1,355 @@
+	<style>
+		.ms-options-wrap > .ms-options {
+    		position:relative !important;
+		}
+	</style>
+<form id="div_ud_function">
+    <div class="form-group property-control">
+        <label>关系别名</label>
+        <input type="text" id="name" name="name" isnull="false" class="form-control input-sm">
+        <input type="hidden" id="id" name="id" isnull="false" class="form-control input-sm">
+    </div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>主组件</label> 
+        <div id="identifier-ctrl" class="input-group input-group-sm avicselect">
+            <input type="text" class="form-control avicselect-act" readonly="readonly" name="miancompname" id="miancompname">
+            <input type="hidden" class="form-control" readonly="readonly" name="miancompid" id="miancompid">
+            <input type="hidden" class="form-control" readonly="readonly" name="miancomptype" id="miancomptype">
+            <input type="hidden" id="keyfiled" name="keyfiled">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+            <div class="avicselect-list"></div>
+        </div>
+    </div>
+    <!-- <div class="form-group property-control">
+	<label>主键标识符</label><input type="text" id="mianpkfiled" name="mianpkfiled"
+		isnull="false" class="form-control input-sm">
+</div> -->
+    <div class="form-group property-control">
+        <label><i class="required">*</i>子组件</label>
+        <div id="sub-ctrl" class="input-group input-group-sm avicselect">
+            <input type="text" class="form-control avicselect-act" readonly="readonly" name="subcompname" id="subcompname">
+            <input type="hidden" class="form-control" readonly="readonly" name="subcompid" id="subcompid">
+            <input type="hidden" class="form-control" readonly="readonly" name="subcomptype" id="subcomptype">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+            <div class="avicselect-list"></div>
+        </div>
+    </div>
+    <div class="form-group property-control" id = "subfkfiledarea">
+		<label>外键标识符</label><select id="subfkfiled" name="subfkfiled"
+		 class="form-control input-sm col-select" value="ID"></select>
+	</div>
+	<div class="form-group property-control" id = "setparentarea" style="display:none">
+		<label>是否映射父节点</label>
+        <select id="setparent" name="setparent" class="form-control input-sm"><option value="Y">是</option><option value="N" selected>否</option></select>
+	</div>
+
+    <!-- <div class="form-group property-control">
+        <label>外键标识符</label>
+        <div id="subfk-ctrl" class="input-group input-group-sm avicselect">
+            <input type="text" class="form-control" readonly="readonly" name="subfkfiledname" id="subfkfiledname">
+            <input type="hidden" class="form-control" readonly="readonly" name="subfkfiled" id="subfkfiled">
+            <span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+            <div class="avicselect-list"></div>
+        </div>
+    </div> -->
+    <div id="tableparadiv"  class="form-group property-control" style="display:none">
+		<label>传递参数</label>
+    	<select id="tablepara" name="tablepara" multiple="multiple" placeholder="请选择传递参数" class="SlectBox 4col active"  style="width:150px" required="required">
+    	</select>
+	</div>
+</form>
+<script src="static/js/platform/eform/jquery.multiselect.js"></script>
+<script type="text/javascript">
+function initMultiple(tablepara,miancompid){
+	$('select[multiple].active.4col').multiselect({
+        columns: 1,
+        placeholder: '请配置传递参数',
+        selectAll: false,
+        maxWidth : 300,
+  	});
+    var nowmiancompid = $('#miancompid').val() || miancompid;
+	var dbid = engine.getNode(nowmiancompid).attribute.dbid;
+	//var dbid = engine.clickedNode.getPreNode().attribute.dbid;
+	
+	if (dbid){
+		$.ajax({
+			 url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+			 contentType: "application/xml; charset=utf-8",
+			 type : 'post',
+			 dataType : 'json',
+			 async:false,
+			 success : function(r){
+				 if (r != null) {
+                     var list = $.parseJSON(r.data);
+                     var $colDom = $("select[multiple]");
+					 $colDom.empty();
+					 var $option = [];
+					 var selected = tablepara==null?[]:tablepara.split(",");
+					 for (var i=0;i<list.length;i++){
+						/*  var $option = $('<option value="'+list[i].colName+'">'+list[i].colName+'</option>');
+						 $colDom.append($option);  */
+						if($.inArray(list[i].colName, selected) > -1){
+							 $option.push({name : list[i].colName,value : list[i].colName,checked : true});
+						 }else{
+							 $option.push({name : list[i].colName,value : list[i].colName,checked : false});
+						 } 
+					}
+				   $colDom.multiselect('loadOptions', $option);
+					 //$colDom.multiselect("refresh",true);
+
+				    $colDom.on("change",function(){
+				    	engine.changSave();
+					 });
+				}
+			 }
+		});
+	} 
+}
+
+self.propertyPageInit = function(treeNode) {
+    initMultiple(treeNode.attribute.tablepara,treeNode.attribute.miancompid);
+	var subcompid = treeNode.attribute.subcompid;
+	var subcomptype = treeNode.attribute.subcomptype;
+	var subfkfiled = treeNode.attribute.subfkfiled;
+	var setparent = treeNode.attribute.setparent;
+	var coldatas = [];
+	if (subcomptype == "table" || subcomptype == "treeGrid" || subcomptype == "dataList") {
+		coldatas = engine.getCol(subcompid);
+	}else if(subcomptype == "form"){
+		var data = {};
+				data._key = "ID";
+				data._value = "ID";
+		coldatas.push(data);
+	}
+
+	if(subcomptype == "treeGrid"){
+		$("#setparentarea").show();
+		$("#subparentidarea").show();
+	}
+
+	if(setparent == "Y"){
+		$("#subparentidarea").show();
+	}else{
+		$("#subparentidarea").hide();
+	}
+
+	var $colDom = $("#subfkfiled");
+
+	$colDom.empty();
+	for (var i = 0; i < coldatas.length; i++) {
+		var $option = $('<option value="' + coldatas[i]._key + '">' + coldatas[i]._key + '</option>');
+		var $parentOption = $('<option value="' + coldatas[i]._key + '">' + coldatas[i]._key + '</option>');
+		if (subfkfiled == coldatas[i]._key){
+			$option.attr("selected","selected");
+		}
+		$colDom.append($option);
+	}
+
+	// var coldatas = engine.getCol(treeNode.attribute.subcompid);
+	// 		$("#subfk-ctrl").avicselect({
+	// 			findDom: $("#div_ud_function"),
+	// 			type: 1,
+	// 			showkey: '_value',
+	// 			data: coldatas,
+	// 			height: '200px',
+	// 			tpl: '<ul>' + '<@for ( var index in this ) {@>' + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>' + '<@}@>' + '</ul>',
+	// 			success: function(obj) {
+	// 				$("#subfkfiled").val(obj.data[0].value);
+	// 				$("#subfkfiledname").val(obj.data[1].value);
+	// 				$("#subfkfiledname").change();
+	// 			}
+	// 		});
+	
+	if(subcomptype != 'iframe'){
+    	$("#tableparadiv").hide();
+        $("#subfkfiledarea").show();
+	}else{
+		$("#tableparadiv").show();
+        $("#subfkfiledarea").hide();
+    	$("#tablepara").css('display', 'none');//显示的时候不这么写下拉框就布局混乱
+	}
+};
+$(function() {
+	//initMultiple();
+
+	$(".form-control").bind('change', function() {
+		engine.changSave();
+	});
+
+	$("#setparentarea").bind('change', function(e) {
+		if(e.target.value == "Y"){
+			$("#subparentidarea").show();
+		}else{
+			$("#subparentidarea").hide();
+		}
+	});
+
+	var comps = engine.getCompList();
+	var subcomDatas = [];
+	var maincomDatas = [];
+	for (var i = 0; i < comps.length; i++) {
+		var data = {};
+		data._key = comps[i].id;
+		data._value = comps[i].name;
+		data._type = comps[i].type;
+		if (comps[i].type == "table") {
+			subcomDatas.push(data);
+			maincomDatas.push(data);
+		}
+
+		if (comps[i].type == "tree") {
+			maincomDatas.push(data);
+		}
+
+		if (comps[i].type == "treeGrid") {
+			subcomDatas.push(data);
+			maincomDatas.push(data);
+        }
+
+		if (comps[i].type == "form") {
+			subcomDatas.push(data);
+		}
+
+        if (comps[i].type == "iframe") {
+            subcomDatas.push(data);
+        }
+
+        if (comps[i].type == "dataList") {
+            subcomDatas.push(data);
+            maincomDatas.push(data);
+        }
+
+	}
+
+	$("#identifier-ctrl").avicselect2({
+		findDom: $("#div_ud_function"),
+		type: 1,
+		showkey: '_value',
+		data: maincomDatas,
+		height: '100px',
+		tpl: '<ul>' + '<@for ( var index in this ) {@>' + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>' + '<@}@>' + '</ul>',
+		success: function(obj) {
+			$("#miancompid").val(obj.data[0].value);
+			$("#miancompname").val(obj.data[1].value);
+			$("#miancomptype").val(obj.data[2].value);
+			if (obj.data[2].value == "table" || obj.data[2].value == "treeGrid" || obj.data[2].value == "dataList"){
+				var coldatas = engine.getCol(obj.data[0].value);
+				for(var i=0;i<coldatas.length;i++){
+					if (coldatas[i]._attribute.ispkfiled == 'Y'){
+						$("#keyfiled").val(coldatas[i]._key);
+						break;
+					}
+				}
+			}
+			$("#miancompname").change();
+		}
+	});
+
+	$("#sub-ctrl").avicselect2({
+		findDom: $("#div_ud_function"),
+		type: 1,
+		showkey: '_value',
+		data: subcomDatas,
+		height: '100px',
+		tpl: '<ul>' + '<@for ( var index in this ) {@>' + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>' + '<@}@>' + '</ul>',
+		success: function(obj) {
+			$("#subcompid").val(obj.data[0].value);
+			$("#subcompname").val(obj.data[1].value);
+			$("#subcomptype").val(obj.data[2].value);
+			var coldatas = [];
+			if (obj.data[2].value == "table" || obj.data[2].value == "treeGrid" || obj.data[2].value == "dataList") {
+				coldatas = engine.getCol(obj.data[0].value);
+                $("#subfkfiled").show();
+
+                if(obj.data[2].value == "treeGrid"){
+					$("#setparentarea").show();
+				}else{
+					$("#setparentarea").hide();
+				}
+			} else if (obj.data[2].value == "tree") {
+				var node = engine.getNode(obj.data[0].value);
+				var dbid = node.attribute.dbid;
+				avicAjax.ajax({
+					url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+					contentType: "application/xml; charset=utf-8",
+					type: 'post',
+					dataType: 'json',
+					async: false,
+					success: function(r) {
+						if (r != null) {
+							var list = $.parseJSON(r.data);
+							for (var i = 0; i < list.length; i++) {
+								var data = {};
+								data._key = list[i].colName;
+								data._value = list[i].colComments;
+								coldatas.push(data);
+							}
+						}
+					}
+				});
+                $("#subfkfiled").show();
+			}else if(obj.data[2].value == "form"){
+				var data = {};
+				data._key = "ID";
+				data._value = "ID";
+				coldatas.push(data);
+                $("#subfkfiled").show();
+			}else if(obj.data[2].value == "form"){
+                $("#subfkfiled").hide();
+            }
+			var $colDom = $("#subfkfiled");
+			$colDom.empty();
+			for (var i = 0; i < coldatas.length; i++) {
+				var $option = $('<option value="' + coldatas[i]._key + '">' + coldatas[i]._key + '</option>');
+				$colDom.append($option);
+			}
+			$("#subcompname").change();
+			/*$("#subfk-ctrl").avicselect({
+				findDom: $("#div_ud_function"),
+				type: 1,
+				showkey: '_value',
+				data: coldatas,
+				height: '200px',
+				tpl: '<ul>' + '<@for ( var index in this ) {@>' + '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>' + '<@}@>' + '</ul>',
+				success: function(obj) {
+					$("#subfkfiled").val(obj.data[0].value);
+					$("#subfkfiledname").val(obj.data[1].value);
+					$("#subfkfiledname").change();
+				}
+			});*/
+			
+			if($('#subcomptype').val() != 'iframe'){
+		    	$("#tableparadiv").hide();
+                $("#subfkfiledarea").show();
+			}else{
+				initMultiple();
+		    	$("#tableparadiv").show();
+                $("#subfkfiledarea").hide();
+		    	$("#tablepara").css('display', 'none');//显示的时候不这么写下拉框就布局混乱
+			}
+		}
+	});
+});
+
+
+self.validateForm = function(form,treeNode){
+	if(form.miancompname == null || form.miancompname == ""){
+ 		 layer.msg('主组件不能为空！',{
+              icon: 2,
+              area: ['220px', ''],
+              closeBtn: 0
+          });
+ 		return false;
+ 	}
+	if(form.subcompname == null || form.subcompname == ""){
+		 layer.msg('子组件不能为空！',{
+             icon: 2,
+             area: ['220px', ''],
+             closeBtn: 0
+         });
+		return false;
+	}
+	
+   	return true;
+};
+</script>

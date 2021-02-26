@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.elect.dynelectlog.dao.DynElectLogDAO">
+<resultMap id="DynElectLogDTOMap" type="avicit.elect.dynelectlog.dto.DynElectLogDTO">
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="electId" column="ELECT_ID" jdbcType="VARCHAR" />
+	<result property="electName" column="ELECT_NAME" jdbcType="VARCHAR" />
+	<result property="ruleDesc" column="RULE_DESC" jdbcType="VARCHAR" />
+	<result property="numPlate" column="NUM_PLATE" jdbcType="VARCHAR" />
+	<result property="personId" column="PERSON_ID" jdbcType="VARCHAR" />
+	<result property="personName" column="PERSON_NAME" jdbcType="VARCHAR" />
+	<result property="personDeptName" column="PERSON_DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="att01" column="ATT_01" jdbcType="VARCHAR" />
+	<result property="agreeNum" column="AGREE_NUM" jdbcType="DECIMAL" />
+	<result property="unagreeNum" column="UNAGREE_NUM" jdbcType="DECIMAL" />
+	<result property="giveupNum" column="GIVEUP_NUM" jdbcType="DECIMAL" />
+	<result property="submitDate" column="SUBMIT_DATE" jdbcType="TIMESTAMP" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="att02" column="ATT_02" jdbcType="VARCHAR" />
+	<result property="att03" column="ATT_03" jdbcType="VARCHAR" />
+	<result property="att04" column="ATT_04" jdbcType="VARCHAR" />
+	<result property="att05" column="ATT_05" jdbcType="VARCHAR" />
+	<result property="att06" column="ATT_06" jdbcType="DECIMAL" />
+	<result property="att07" column="ATT_07" jdbcType="DECIMAL" />
+	<result property="att08" column="ATT_08" jdbcType="DECIMAL" />
+	<result property="att09" column="ATT_09" jdbcType="DECIMAL" />
+	<result property="att10" column="ATT_10" jdbcType="DECIMAL" />
+</resultMap>
+<sql id="commonColums">
+	t1.CREATED_BY,
+	t1.CREATION_DATE,
+	t1.LAST_UPDATED_BY,
+	t1.LAST_UPDATE_DATE,
+	t1.ELECT_ID,
+	t1.ELECT_NAME,
+	t1.RULE_DESC,
+	t1.NUM_PLATE,
+	t1.PERSON_ID,
+	t1.PERSON_NAME,
+	t1.PERSON_DEPT_NAME,
+	t1.ATT_01,
+	t1.AGREE_NUM,
+	t1.UNAGREE_NUM,
+	t1.GIVEUP_NUM,
+	t1.SUBMIT_DATE,
+	t1.VERSION,
+	t1.ID,
+	t1.ORG_IDENTITY,
+	t1.LAST_UPDATE_IP,
+	t1.ATT_02,
+	t1.ATT_03,
+	t1.ATT_04,
+	t1.ATT_05,
+	t1.ATT_06,
+	t1.ATT_07,
+	t1.ATT_08,
+	t1.ATT_09,
+	t1.ATT_10</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+		and t1.org_identity = #{bean.orgIdentity}
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+    <if test="bean.createdBy != null and bean.createdBy != ''">
+        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+    </if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+    </if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+    <if test="bean.electId != null and bean.electId != ''">
+        and t1.ELECT_ID like concat(concat('%',#{bean.electId}),'%')
+    </if>
+    <if test="bean.electName != null and bean.electName != ''">
+        and t1.ELECT_NAME like concat(concat('%',#{bean.electName}),'%')
+    </if>
+    <if test="bean.ruleDesc != null and bean.ruleDesc != ''">
+        and t1.RULE_DESC like concat(concat('%',#{bean.ruleDesc}),'%')
+    </if>
+    <if test="bean.numPlate != null ">
+        and t1.NUM_PLATE like concat(concat('%',#{bean.numPlate}),'%')
+    </if>
+    <if test="bean.personId != null and bean.personId != ''">
+        and t1.PERSON_ID like concat(concat('%',#{bean.personId}),'%')
+    </if>
+    <if test="bean.personName != null and bean.personName != ''">
+        and t1.PERSON_NAME like concat(concat('%',#{bean.personName}),'%')
+    </if>
+    <if test="bean.personDeptName != null and bean.personDeptName != ''">
+        and t1.PERSON_DEPT_NAME like concat(concat('%',#{bean.personDeptName}),'%')
+    </if>
+    <if test="bean.att01 != null and bean.att01 != ''">
+        and t1.ATT_01 like concat(concat('%',#{bean.att01}),'%')
+    </if>
+    <if test="bean.agreeNum != null ">
+        and t1.AGREE_NUM = #{bean.agreeNum}
+    </if>
+    <if test="bean.unagreeNum != null ">
+        and t1.UNAGREE_NUM = #{bean.unagreeNum}
+    </if>
+    <if test="bean.giveupNum != null ">
+        and t1.GIVEUP_NUM = #{bean.giveupNum}
+    </if>
+	<if test="bean.submitDateBegin != null">
+		and t1.SUBMIT_DATE &gt;= #{bean.submitDateBegin}
+	</if>
+	<if test="bean.submitDateEnd != null">
+		and t1.SUBMIT_DATE &lt;= #{bean.submitDateEnd}
+	</if>
+    <if test="bean.version != null ">
+        and t1.VERSION = #{bean.version}
+    </if>
+    <if test="bean.id != null and bean.id != ''">
+        and t1.ID like concat(concat('%',#{bean.id}),'%')
+    </if>
+    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+    </if>
+    <if test="bean.att02 != null and bean.att02 != ''">
+        and t1.ATT_02 like concat(concat('%',#{bean.att02}),'%')
+    </if>
+    <if test="bean.att03 != null and bean.att03 != ''">
+        and t1.ATT_03 like concat(concat('%',#{bean.att03}),'%')
+    </if>
+    <if test="bean.att04 != null and bean.att04 != ''">
+        and t1.ATT_04 like concat(concat('%',#{bean.att04}),'%')
+    </if>
+    <if test="bean.att05 != null and bean.att05 != ''">
+        and t1.ATT_05 like concat(concat('%',#{bean.att05}),'%')
+    </if>
+    <if test="bean.att06 != null ">
+        and t1.ATT_06 = #{bean.att06}
+    </if>
+    <if test="bean.att07 != null ">
+        and t1.ATT_07 = #{bean.att07}
+    </if>
+    <if test="bean.att08 != null ">
+        and t1.ATT_08 = #{bean.att08}
+    </if>
+    <if test="bean.att09 != null ">
+        and t1.ATT_09 = #{bean.att09}
+    </if>
+    <if test="bean.att10 != null ">
+        and t1.ATT_10 = #{bean.att10}
+    </if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.electId != null and bean.electId != ''">
+			or t1.ELECT_ID like concat(concat('%',#{bean.electId}),'%')
+		</if>
+		<if test="bean.electName != null and bean.electName != ''">
+			or t1.ELECT_NAME like concat(concat('%',#{bean.electName}),'%')
+		</if>
+		<if test="bean.ruleDesc != null and bean.ruleDesc != ''">
+			or t1.RULE_DESC like concat(concat('%',#{bean.ruleDesc}),'%')
+		</if>
+		<if test="bean.numPlate != null and bean.numPlate != ''">
+			or t1.NUM_PLATE like concat(concat('%',#{bean.numPlate}),'%')
+		</if>
+		<if test="bean.personId != null and bean.personId != ''">
+			or t1.PERSON_ID like concat(concat('%',#{bean.personId}),'%')
+		</if>
+		<if test="bean.personName != null and bean.personName != ''">
+			or t1.PERSON_NAME like concat(concat('%',#{bean.personName}),'%')
+		</if>
+		<if test="bean.personDeptName != null and bean.personDeptName != ''">
+			or t1.PERSON_DEPT_NAME like concat(concat('%',#{bean.personDeptName}),'%')
+		</if>
+		<if test="bean.att01 != null and bean.att01 != ''">
+			or t1.ATT_01 like concat(concat('%',#{bean.att01}),'%')
+		</if>
+		<if test="bean.agreeNum != null and bean.agreeNum != ''">
+			or t1.AGREE_NUM = #{bean.agreeNum}
+		</if>
+		<if test="bean.unagreeNum != null and bean.unagreeNum != ''">
+			or t1.UNAGREE_NUM = #{bean.unagreeNum}
+		</if>
+		<if test="bean.giveupNum != null and bean.giveupNum != ''">
+			or t1.GIVEUP_NUM = #{bean.giveupNum}
+		</if>
+		<if test="bean.submitDateBegin != null">
+			or t1.SUBMIT_DATE &gt;= #{bean.submitDateBegin}
+		</if>
+		<if test="bean.submitDateEnd != null">
+			or t1.SUBMIT_DATE &lt;= #{bean.submitDateEnd}
+		</if>
+		<if test="bean.version != null and bean.version != ''">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.att02 != null and bean.att02 != ''">
+			or t1.ATT_02 like concat(concat('%',#{bean.att02}),'%')
+		</if>
+		<if test="bean.att03 != null and bean.att03 != ''">
+			or t1.ATT_03 like concat(concat('%',#{bean.att03}),'%')
+		</if>
+		<if test="bean.att04 != null and bean.att04 != ''">
+			or t1.ATT_04 like concat(concat('%',#{bean.att04}),'%')
+		</if>
+		<if test="bean.att05 != null and bean.att05 != ''">
+			or t1.ATT_05 like concat(concat('%',#{bean.att05}),'%')
+		</if>
+		<if test="bean.att06 != null and bean.att06 != ''">
+			or t1.ATT_06 = #{bean.att06}
+		</if>
+		<if test="bean.att07 != null and bean.att07 != ''">
+			or t1.ATT_07 = #{bean.att07}
+		</if>
+		<if test="bean.att08 != null and bean.att08 != ''">
+			or t1.ATT_08 = #{bean.att08}
+		</if>
+		<if test="bean.att09 != null and bean.att09 != ''">
+			or t1.ATT_09 = #{bean.att09}
+		</if>
+		<if test="bean.att10 != null and bean.att10 != ''">
+			or t1.ATT_10 = #{bean.att10}
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="pOrderBy != null and pOrderBy != ''">
+			order by ${pOrderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+<!-- 分页查询 DYN_ELECT_LOG -->
+<select id="searchDynElectLogByPage" parameterType="java.util.Map" resultMap="DynElectLogDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_ELECT_LOG t1   
+<where>
+	<if test="bean != null">
+		<choose>
+			<when test="keyWord != null and keyWord != '' ">
+				<include refid="commonWhereOr"/>
+			</when>
+			<otherwise>
+				<include refid="commonWhereAnd"/>
+			</otherwise>
+		</choose>
+		<include refid="defaultWhereAnd"/>
+	</if>
+</where>
+<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 DYN_ELECT_LOG -->
+<select id="searchDynElectLog" parameterType="java.util.Map" resultMap="DynElectLogDTOMap">
+	select
+	<include refid="commonColums"/>
+    from DYN_ELECT_LOG 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</if>
+	</where>
+	order by TO_NUMBER(t1.PERSON_ID)
+</select>
+<!-- 主键查询对象 DYN_ELECT_LOG -->
+<select id="findDynElectLogById" parameterType="java.lang.String" resultMap="DynElectLogDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_ELECT_LOG t1
+	where t1.id = #{id}
+</select>
+<select id="searchByElectId" parameterType="java.lang.String" resultType="integer">
+	SELECT count( * )
+	FROM
+	( SELECT t1.NUM_PLATE FROM DYN_ELECT_LOG t1 WHERE t1.ELECT_ID = #{electId} GROUP BY t1.NUM_PLATE ) t
+</select>
+<!-- 新增对象 DYN_ELECT_LOG -->
+<insert id="insertDynElectLog" parameterType="avicit.elect.dynelectlog.dto.DynElectLogDTO">
+	insert into DYN_ELECT_LOG
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="electId != null">
+			ELECT_ID,
+		</if>
+		<if test="electName != null">
+			ELECT_NAME,
+		</if>
+		<if test="ruleDesc != null">
+			RULE_DESC,
+		</if>
+		<if test="numPlate != null">
+			NUM_PLATE,
+		</if>
+		<if test="personId != null">
+			PERSON_ID,
+		</if>
+		<if test="personName != null">
+			PERSON_NAME,
+		</if>
+		<if test="personDeptName != null">
+			PERSON_DEPT_NAME,
+		</if>
+		<if test="att01 != null">
+			ATT_01,
+		</if>
+		<if test="agreeNum != null">
+			AGREE_NUM,
+		</if>
+		<if test="unagreeNum != null">
+			UNAGREE_NUM,
+		</if>
+		<if test="giveupNum != null">
+			GIVEUP_NUM,
+		</if>
+		<if test="submitDate != null">
+			SUBMIT_DATE,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="att02 != null">
+			ATT_02,
+		</if>
+		<if test="att03 != null">
+			ATT_03,
+		</if>
+		<if test="att04 != null">
+			ATT_04,
+		</if>
+		<if test="att05 != null">
+			ATT_05,
+		</if>
+		<if test="att06 != null">
+			ATT_06,
+		</if>
+		<if test="att07 != null">
+			ATT_07,
+		</if>
+		<if test="att08 != null">
+			ATT_08,
+		</if>
+		<if test="att09 != null">
+			ATT_09,
+		</if>
+		<if test="att10 != null">
+			ATT_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="electId != null">
+			#{electId,jdbcType = VARCHAR},
+		</if>
+		<if test="electName != null">
+			#{electName,jdbcType = VARCHAR},
+		</if>
+		<if test="ruleDesc != null">
+			#{ruleDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="numPlate != null">
+			#{numPlate,jdbcType = VARCHAR},
+		</if>
+		<if test="personId != null">
+			#{personId,jdbcType = VARCHAR},
+		</if>
+		<if test="personName != null">
+			#{personName,jdbcType = VARCHAR},
+		</if>
+		<if test="personDeptName != null">
+			#{personDeptName,jdbcType = VARCHAR},
+		</if>
+		<if test="att01 != null">
+			#{att01,jdbcType = VARCHAR},
+		</if>
+		<if test="agreeNum != null">
+			#{agreeNum,jdbcType = DECIMAL},
+		</if>
+		<if test="unagreeNum != null">
+			#{unagreeNum,jdbcType = DECIMAL},
+		</if>
+		<if test="giveupNum != null">
+			#{giveupNum,jdbcType = DECIMAL},
+		</if>
+		<if test="submitDate != null">
+			#{submitDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="att02 != null">
+			#{att02,jdbcType = VARCHAR},
+		</if>
+		<if test="att03 != null">
+			#{att03,jdbcType = VARCHAR},
+		</if>
+		<if test="att04 != null">
+			#{att04,jdbcType = VARCHAR},
+		</if>
+		<if test="att05 != null">
+			#{att05,jdbcType = VARCHAR},
+		</if>
+		<if test="att06 != null">
+			#{att06,jdbcType = DECIMAL},
+		</if>
+		<if test="att07 != null">
+			#{att07,jdbcType = DECIMAL},
+		</if>
+		<if test="att08 != null">
+			#{att08,jdbcType = DECIMAL},
+		</if>
+		<if test="att09 != null">
+			#{att09,jdbcType = DECIMAL},
+		</if>
+		<if test="att10 != null">
+			#{att10,jdbcType = DECIMAL},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 DYN_ELECT_LOG -->
+<insert id="insertDynElectLogList" parameterType="java.util.List">
+	insert into DYN_ELECT_LOG(
+	CREATED_BY ,
+	CREATION_DATE ,
+	LAST_UPDATED_BY ,
+	LAST_UPDATE_DATE ,
+	ELECT_ID ,
+	ELECT_NAME ,
+	RULE_DESC ,
+	NUM_PLATE ,
+	PERSON_ID ,
+	PERSON_NAME ,
+	PERSON_DEPT_NAME ,
+	ATT_01 ,
+	AGREE_NUM ,
+	UNAGREE_NUM ,
+	GIVEUP_NUM ,
+	SUBMIT_DATE ,
+	VERSION ,
+	ID ,
+	ORG_IDENTITY ,
+	LAST_UPDATE_IP ,
+	ATT_02 ,
+	ATT_03 ,
+	ATT_04 ,
+	ATT_05 ,
+	ATT_06 ,
+	ATT_07 ,
+	ATT_08 ,
+	ATT_09 ,
+	ATT_10 )
+<foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
+	select
+	#{item.createdBy,jdbcType = VARCHAR} ,
+	#{item.creationDate,jdbcType = TIMESTAMP} ,
+	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+	#{item.electId,jdbcType = VARCHAR} ,
+	#{item.electName,jdbcType = VARCHAR} ,
+	#{item.ruleDesc,jdbcType = VARCHAR} ,
+	#{item.numPlate,jdbcType = VARCHAR} ,
+	#{item.personId,jdbcType = VARCHAR} ,
+	#{item.personName,jdbcType = VARCHAR} ,
+	#{item.personDeptName,jdbcType = VARCHAR} ,
+	#{item.att01,jdbcType = VARCHAR} ,
+	#{item.agreeNum,jdbcType = DECIMAL} ,
+	#{item.unagreeNum,jdbcType = DECIMAL} ,
+	#{item.giveupNum,jdbcType = DECIMAL} ,
+	#{item.submitDate,jdbcType = TIMESTAMP} ,
+	#{item.version,jdbcType = DECIMAL} ,
+	#{item.id,jdbcType = VARCHAR} ,
+	#{item.orgIdentity,jdbcType = VARCHAR} ,
+	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+	#{item.att02,jdbcType = VARCHAR} ,
+	#{item.att03,jdbcType = VARCHAR} ,
+	#{item.att04,jdbcType = VARCHAR} ,
+	#{item.att05,jdbcType = VARCHAR} ,
+	#{item.att06,jdbcType = DECIMAL} ,
+	#{item.att07,jdbcType = DECIMAL} ,
+	#{item.att08,jdbcType = DECIMAL} ,
+	#{item.att09,jdbcType = DECIMAL} ,
+	#{item.att10,jdbcType = DECIMAL} 	from dual
+</foreach>
+</insert>
+<!-- 更新对象 DYN_ELECT_LOG -->
+<update id="updateDynElectLogSensitive" parameterType="avicit.elect.dynelectlog.dto.DynElectLogDTO">
+	update DYN_ELECT_LOG
+	<set>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="electId != null">
+			ELECT_ID = #{electId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="electName != null">
+			ELECT_NAME = #{electName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ruleDesc != null">
+			RULE_DESC = #{ruleDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="numPlate != null">
+			NUM_PLATE = #{numPlate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="personId != null">
+			PERSON_ID = #{personId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="personName != null">
+			PERSON_NAME = #{personName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="personDeptName != null">
+			PERSON_DEPT_NAME = #{personDeptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att01 != null">
+			ATT_01 = #{att01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="agreeNum != null">
+			AGREE_NUM = #{agreeNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="unagreeNum != null">
+			UNAGREE_NUM = #{unagreeNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="giveupNum != null">
+			GIVEUP_NUM = #{giveupNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="submitDate != null">
+			SUBMIT_DATE = #{submitDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att02 != null">
+			ATT_02 = #{att02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att03 != null">
+			ATT_03 = #{att03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att04 != null">
+			ATT_04 = #{att04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att05 != null">
+			ATT_05 = #{att05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att06 != null">
+			ATT_06 = #{att06,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att07 != null">
+			ATT_07 = #{att07,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att08 != null">
+			ATT_08 = #{att08,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att09 != null">
+			ATT_09 = #{att09,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att10 != null">
+			ATT_10 = #{att10,jdbcType = DECIMAL} 		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 DYN_ELECT_LOG -->
+<update id="updateDynElectLogAll" parameterType="avicit.elect.dynelectlog.dto.DynElectLogDTO">
+	update DYN_ELECT_LOG
+	set
+	CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+	CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+	LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+	LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+	ELECT_ID = #{electId,jdbcType = VARCHAR} ,
+	ELECT_NAME = #{electName,jdbcType = VARCHAR} ,
+	RULE_DESC = #{ruleDesc,jdbcType = VARCHAR} ,
+	NUM_PLATE = #{numPlate,jdbcType = VARCHAR} ,
+	PERSON_ID = #{personId,jdbcType = VARCHAR} ,
+	PERSON_NAME = #{personName,jdbcType = VARCHAR} ,
+	PERSON_DEPT_NAME = #{personDeptName,jdbcType = VARCHAR} ,
+	ATT_01 = #{att01,jdbcType = VARCHAR} ,
+	AGREE_NUM = #{agreeNum,jdbcType = DECIMAL} ,
+	UNAGREE_NUM = #{unagreeNum,jdbcType = DECIMAL} ,
+	GIVEUP_NUM = #{giveupNum,jdbcType = DECIMAL} ,
+	SUBMIT_DATE = #{submitDate,jdbcType = TIMESTAMP} ,
+	VERSION = version+1 ,
+	ID = #{id,jdbcType = VARCHAR} ,
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+	LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+	ATT_02 = #{att02,jdbcType = VARCHAR} ,
+	ATT_03 = #{att03,jdbcType = VARCHAR} ,
+	ATT_04 = #{att04,jdbcType = VARCHAR} ,
+	ATT_05 = #{att05,jdbcType = VARCHAR} ,
+	ATT_06 = #{att06,jdbcType = DECIMAL} ,
+	ATT_07 = #{att07,jdbcType = DECIMAL} ,
+	ATT_08 = #{att08,jdbcType = DECIMAL} ,
+	ATT_09 = #{att09,jdbcType = DECIMAL} ,
+	ATT_10 = #{att10,jdbcType = DECIMAL} 	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   DYN_ELECT_LOG -->
+<update id="updateDynElectLogList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+		update DYN_ELECT_LOG
+		set
+		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+		ELECT_ID = #{item.electId,jdbcType = VARCHAR} ,
+		ELECT_NAME = #{item.electName,jdbcType = VARCHAR} ,
+		RULE_DESC = #{item.ruleDesc,jdbcType = VARCHAR} ,
+		NUM_PLATE = #{item.numPlate,jdbcType = VARCHAR} ,
+		PERSON_ID = #{item.personId,jdbcType = VARCHAR} ,
+		PERSON_NAME = #{item.personName,jdbcType = VARCHAR} ,
+		PERSON_DEPT_NAME = #{item.personDeptName,jdbcType = VARCHAR} ,
+		ATT_01 = #{item.att01,jdbcType = VARCHAR} ,
+		AGREE_NUM = #{item.agreeNum,jdbcType = DECIMAL} ,
+		UNAGREE_NUM = #{item.unagreeNum,jdbcType = DECIMAL} ,
+		GIVEUP_NUM = #{item.giveupNum,jdbcType = DECIMAL} ,
+		SUBMIT_DATE = #{item.submitDate,jdbcType = TIMESTAMP} ,
+		VERSION = version+1  ,
+		ID = #{item.id,jdbcType = VARCHAR} ,
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+		ATT_02 = #{item.att02,jdbcType = VARCHAR} ,
+		ATT_03 = #{item.att03,jdbcType = VARCHAR} ,
+		ATT_04 = #{item.att04,jdbcType = VARCHAR} ,
+		ATT_05 = #{item.att05,jdbcType = VARCHAR} ,
+		ATT_06 = #{item.att06,jdbcType = DECIMAL} ,
+		ATT_07 = #{item.att07,jdbcType = DECIMAL} ,
+		ATT_08 = #{item.att08,jdbcType = DECIMAL} ,
+		ATT_09 = #{item.att09,jdbcType = DECIMAL} ,
+		ATT_10 = #{item.att10,jdbcType = DECIMAL} 		where id = #{item.id}
+		and version = #{version}
+	</foreach>
+</update>
+<!-- 主键删除 DYN_ELECT_LOG -->
+<delete id="deleteDynElectLogById" parameterType="java.lang.String">
+	delete from DYN_ELECT_LOG  where id = #{id}
+</delete>
+</mapper>

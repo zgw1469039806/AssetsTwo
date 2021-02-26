@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.furniture.assetsfurniturerepairproc.dao.AssetsFurnitureRepairProcDao">
+
+<resultMap id="AssetsFurnitureRepairProcDTOMap" type="avicit.assets.furniture.assetsfurniturerepairproc.dto.AssetsFurnitureRepairProcDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="procName" column="PROC_NAME" jdbcType="VARCHAR" />
+		<result property="procId" column="PROC_ID" jdbcType="VARCHAR" />
+		<result property="formState" column="FORM_STATE" jdbcType="VARCHAR" />
+		<result property="createdByPerson" column="CREATED_BY_PERSON" jdbcType="VARCHAR" />
+		<result property="createdByDept" column="CREATED_BY_DEPT" jdbcType="VARCHAR" />
+		<result property="createdByTel" column="CREATED_BY_TEL" jdbcType="VARCHAR" />
+		<result property="repairReason" column="REPAIR_REASON" jdbcType="VARCHAR" />
+		<result property="repairCondition" column="REPAIR_CONDITION" jdbcType="VARCHAR" />
+		<result property="remarks" column="REMARKS" jdbcType="VARCHAR" />
+		<result property="repairExpenses" column="REPAIR_EXPENSES" jdbcType="DECIMAL" />
+		<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+		<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 ASSETS_FURNITURE_REPAIR_PROC -->
+<select id="searchAssetsFurnitureRepairProcByPage" parameterType="java.util.Map" resultMap="AssetsFurnitureRepairProcDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_name                      ,
+		t1.proc_id                        ,
+		t1.form_state                     ,
+		t1.created_by_person              ,
+		t1.created_by_dept                ,
+		t1.created_by_tel                 ,
+		t1.repair_reason                  ,
+		t1.repair_condition               ,
+		t1.remarks                        ,
+		t1.repair_expenses                
+	from assets_furniture_repair_proc 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.procName != null and bean.procName != ''">
+				and t1.PROC_NAME like concat(concat('%',#{bean.procName}),'%') 
+			</if>
+			<if test="bean.procId != null and bean.procId != ''">
+				and t1.PROC_ID like concat(concat('%',#{bean.procId}),'%') 
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				and t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%') 
+			</if>
+			<if test="bean.createdByPerson != null and bean.createdByPerson != ''">
+				and t1.CREATED_BY_PERSON like concat(concat('%',#{bean.createdByPerson}),'%') 
+			</if>
+			<if test="bean.createdByDept != null and bean.createdByDept != ''">
+				and t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%') 
+			</if>
+			<if test="bean.createdByTel != null and bean.createdByTel != ''">
+				and t1.CREATED_BY_TEL like concat(concat('%',#{bean.createdByTel}),'%') 
+			</if>
+			<if test="bean.repairReason != null and bean.repairReason != ''">
+				and t1.REPAIR_REASON like concat(concat('%',#{bean.repairReason}),'%') 
+			</if>
+			<if test="bean.repairCondition != null and bean.repairCondition != ''">
+				and t1.REPAIR_CONDITION like concat(concat('%',#{bean.repairCondition}),'%') 
+			</if>
+			<if test="bean.remarks != null and bean.remarks != ''">
+				and t1.REMARKS like concat(concat('%',#{bean.remarks}),'%') 
+			</if>
+			<if test="bean.repairExpenses != null ">
+				and t1.REPAIR_EXPENSES like concat(concat('%',#{bean.repairExpenses}),'%') 
+			</if>
+						<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_FURNITURE_REPAIR_PROC -->
+<select id="searchAssetsFurnitureRepairProcByPageOr" parameterType="java.util.Map" resultMap="AssetsFurnitureRepairProcDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_name                      ,
+		t1.proc_id                        ,
+		t1.form_state                     ,
+		t1.created_by_person              ,
+		t1.created_by_dept                ,
+		t1.created_by_tel                 ,
+		t1.repair_reason                  ,
+		t1.repair_condition               ,
+		t1.remarks                        ,
+		t1.repair_expenses                
+	from assets_furniture_repair_proc  t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.procName != null and bean.procName != ''">
+				or t1.PROC_NAME like concat(concat('%',#{bean.procName}),'%')  
+			</if>
+			<if test="bean.procId != null and bean.procId != ''">
+				or t1.PROC_ID like concat(concat('%',#{bean.procId}),'%')  
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				or t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%')  
+			</if>
+			<if test="bean.createdByPerson != null and bean.createdByPerson != ''">
+				or t1.CREATED_BY_PERSON like concat(concat('%',#{bean.createdByPerson}),'%')  
+			</if>
+			<if test="bean.createdByDept != null and bean.createdByDept != ''">
+				or t1.CREATED_BY_DEPT like concat(concat('%',#{bean.createdByDept}),'%')  
+			</if>
+			<if test="bean.createdByTel != null and bean.createdByTel != ''">
+				or t1.CREATED_BY_TEL like concat(concat('%',#{bean.createdByTel}),'%')  
+			</if>
+			<if test="bean.repairReason != null and bean.repairReason != ''">
+				or t1.REPAIR_REASON like concat(concat('%',#{bean.repairReason}),'%')  
+			</if>
+			<if test="bean.repairCondition != null and bean.repairCondition != ''">
+				or t1.REPAIR_CONDITION like concat(concat('%',#{bean.repairCondition}),'%')  
+			</if>
+			<if test="bean.remarks != null and bean.remarks != ''">
+				or t1.REMARKS like concat(concat('%',#{bean.remarks}),'%')  
+			</if>
+			<if test="bean.repairExpenses != null">
+				or t1.REPAIR_EXPENSES like concat(concat('%',#{bean.repairExpenses}),'%')  
+			</if>
+			</trim>
+			<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_FURNITURE_REPAIR_PROC -->
+<select id="searchAssetsFurnitureRepairProc" parameterType="java.util.Map" resultMap="AssetsFurnitureRepairProcDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_name                      ,
+		t1.proc_id                        ,
+		t1.form_state                     ,
+		t1.created_by_person              ,
+		t1.created_by_dept                ,
+		t1.created_by_tel                 ,
+		t1.repair_reason                  ,
+		t1.repair_condition               ,
+		t1.remarks                        ,
+		t1.repair_expenses                
+	from assets_furniture_repair_proc 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="procName != null and procName != ''">
+				and t1.PROC_NAME =#{procName}
+			</if>
+			<if test="procId != null and procId != ''">
+				and t1.PROC_ID =#{procId}
+			</if>
+			<if test="formState != null and formState != ''">
+				and t1.FORM_STATE =#{formState}
+			</if>
+			<if test="createdByPerson != null and createdByPerson != ''">
+				and t1.CREATED_BY_PERSON =#{createdByPerson}
+			</if>
+			<if test="createdByDept != null and createdByDept != ''">
+				and t1.CREATED_BY_DEPT =#{createdByDept}
+			</if>
+			<if test="createdByTel != null and createdByTel != ''">
+				and t1.CREATED_BY_TEL =#{createdByTel}
+			</if>
+			<if test="repairReason != null and repairReason != ''">
+				and t1.REPAIR_REASON =#{repairReason}
+			</if>
+			<if test="repairCondition != null and repairCondition != ''">
+				and t1.REPAIR_CONDITION =#{repairCondition}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and t1.REMARKS =#{remarks}
+			</if>
+			<if test="repairExpenses != null">
+				and t1.REPAIR_EXPENSES =#{repairExpenses}
+			</if>
+			<if test="bpmType !=null and bpmType !='' and bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{currUserId}) 
+			</if>
+			<if test="bpmState != null and bpmState !='' and bpmState != 'all'">
+				and v.businessstate_ = #{bpmState}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_FURNITURE_REPAIR_PROC -->
+<select id="findAssetsFurnitureRepairProcById" parameterType="java.util.Map" resultMap="AssetsFurnitureRepairProcDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.proc_name                      ,
+		t1.proc_id                        ,
+		t1.form_state                     ,
+		t1.created_by_person              ,
+		t1.created_by_dept                ,
+		t1.created_by_tel                 ,
+		t1.repair_reason                  ,
+		t1.repair_condition               ,
+		t1.remarks                        ,
+		t1.repair_expenses                
+	from assets_furniture_repair_proc 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_FURNITURE_REPAIR_PROC -->
+<insert id="insertAssetsFurnitureRepairProc" parameterType="avicit.assets.furniture.assetsfurniturerepairproc.dto.AssetsFurnitureRepairProcDTO">
+	insert into assets_furniture_repair_proc
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="procName != null">
+				proc_name,
+			</if>
+			<if test="procId != null">
+				proc_id,
+			</if>
+			<if test="formState != null">
+				form_state,
+			</if>
+			<if test="createdByPerson != null">
+				created_by_person,
+			</if>
+			<if test="createdByDept != null">
+				created_by_dept,
+			</if>
+			<if test="createdByTel != null">
+				created_by_tel,
+			</if>
+			<if test="repairReason != null">
+				repair_reason,
+			</if>
+			<if test="repairCondition != null">
+				repair_condition,
+			</if>
+			<if test="remarks != null">
+				remarks,
+			</if>
+			<if test="repairExpenses != null">
+				repair_expenses,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="procName != null">
+				#{procName,jdbcType=VARCHAR},
+			</if>
+			<if test="procId != null">
+				#{procId,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByPerson != null">
+				#{createdByPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDept != null">
+				#{createdByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByTel != null">
+				#{createdByTel,jdbcType=VARCHAR},
+			</if>
+			<if test="repairReason != null">
+				#{repairReason,jdbcType=VARCHAR},
+			</if>
+			<if test="repairCondition != null">
+				#{repairCondition,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="repairExpenses != null">
+				#{repairExpenses,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_FURNITURE_REPAIR_PROC -->
+<insert id="insertAssetsFurnitureRepairProcList" parameterType="java.util.List">
+	insert into assets_furniture_repair_proc(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			proc_name,
+			proc_id,
+			form_state,
+			created_by_person,
+			created_by_dept,
+			created_by_tel,
+			repair_reason,
+			repair_condition,
+			remarks,
+			repair_expenses)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.procName,jdbcType=VARCHAR},
+					#{item.procId,jdbcType=VARCHAR},
+					#{item.formState,jdbcType=VARCHAR},
+					#{item.createdByPerson,jdbcType=VARCHAR},
+					#{item.createdByDept,jdbcType=VARCHAR},
+					#{item.createdByTel,jdbcType=VARCHAR},
+					#{item.repairReason,jdbcType=VARCHAR},
+					#{item.repairCondition,jdbcType=VARCHAR},
+					#{item.remarks,jdbcType=VARCHAR},
+					#{item.repairExpenses,jdbcType=DECIMAL}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_FURNITURE_REPAIR_PROC -->
+<update id="updateAssetsFurnitureRepairProcSensitive" parameterType="avicit.assets.furniture.assetsfurniturerepairproc.dto.AssetsFurnitureRepairProcDTO">
+	update assets_furniture_repair_proc 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="procName != null">
+				proc_name                      =#{procName,jdbcType=VARCHAR},
+			</if>
+			<if test="procId != null">
+				proc_id                        =#{procId,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				form_state                     =#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByPerson != null">
+				created_by_person              =#{createdByPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByDept != null">
+				created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+			</if>
+			<if test="createdByTel != null">
+				created_by_tel                 =#{createdByTel,jdbcType=VARCHAR},
+			</if>
+			<if test="repairReason != null">
+				repair_reason                  =#{repairReason,jdbcType=VARCHAR},
+			</if>
+			<if test="repairCondition != null">
+				repair_condition               =#{repairCondition,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				remarks                        =#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="repairExpenses != null">
+				repair_expenses                =#{repairExpenses,jdbcType=DECIMAL},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_FURNITURE_REPAIR_PROC -->
+<update id="updateAssetsFurnitureRepairProcAll" parameterType="avicit.assets.furniture.assetsfurniturerepairproc.dto.AssetsFurnitureRepairProcDTO">
+	update assets_furniture_repair_proc 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			proc_name                      =#{procName,jdbcType=VARCHAR},
+			proc_id                        =#{procId,jdbcType=VARCHAR},
+			form_state                     =#{formState,jdbcType=VARCHAR},
+			created_by_person              =#{createdByPerson,jdbcType=VARCHAR},
+			created_by_dept                =#{createdByDept,jdbcType=VARCHAR},
+			created_by_tel                 =#{createdByTel,jdbcType=VARCHAR},
+			repair_reason                  =#{repairReason,jdbcType=VARCHAR},
+			repair_condition               =#{repairCondition,jdbcType=VARCHAR},
+			remarks                        =#{remarks,jdbcType=VARCHAR},
+			repair_expenses                =#{repairExpenses,jdbcType=DECIMAL}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_FURNITURE_REPAIR_PROC -->
+<update id="updateAssetsFurnitureRepairProcList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_furniture_repair_proc 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			proc_name                      =#{item.procName,jdbcType=VARCHAR},
+			proc_id                        =#{item.procId,jdbcType=VARCHAR},
+			form_state                     =#{item.formState,jdbcType=VARCHAR},
+			created_by_person              =#{item.createdByPerson,jdbcType=VARCHAR},
+			created_by_dept                =#{item.createdByDept,jdbcType=VARCHAR},
+			created_by_tel                 =#{item.createdByTel,jdbcType=VARCHAR},
+			repair_reason                  =#{item.repairReason,jdbcType=VARCHAR},
+			repair_condition               =#{item.repairCondition,jdbcType=VARCHAR},
+			remarks                        =#{item.remarks,jdbcType=VARCHAR},
+			repair_expenses                =#{item.repairExpenses,jdbcType=DECIMAL}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_FURNITURE_REPAIR_PROC -->
+<delete id="deleteAssetsFurnitureRepairProcById" parameterType="java.lang.String">
+		delete from assets_furniture_repair_proc  where  id = #{id}
+</delete>
+<!-- 外键批量删除 ASSETS_FURNITURE_REPAIR_PROC -->
+<delete id="deleteAssetsFurnitureRepairProcByPid" parameterType="java.lang.String">
+		delete from assets_furniture_repair_proc  where  PARENT_ID = #{parentId}
+</delete>
+<!-- 批量主键删除 ASSETS_FURNITURE_REPAIR_PROC -->
+<delete id="deleteAssetsFurnitureRepairProcList" parameterType="java.util.List">
+		delete from assets_furniture_repair_proc  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

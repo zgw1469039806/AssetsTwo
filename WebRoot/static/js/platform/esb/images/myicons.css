@@ -1,0 +1,48 @@
+.myicon-new{
+	background:url('icons/new.gif') no-repeat center center;
+}
+.myicon-open{
+	background:url('icons/open.gif') no-repeat center center;
+}
+.myicon-save{
+	background:url('icons/save.gif') no-repeat center center;
+}
+.myicon-close{
+	background:url('icons/close.gif') no-repeat center center;
+}
+.myicon-align{
+	background:url('icons/align.gif') no-repeat center center;
+}
+.myicon-settings{
+	background:url('icons/settings.gif') no-repeat center center;
+}
+.myicon-panels{
+	background:url('icons/panels.gif') no-repeat center center;
+}
+.myicon-page{
+	background:url('icons/page.gif') no-repeat center center;
+}
+.myicon-flow{
+	background:url('16/flow.png') no-repeat center center;
+}
+.myicon-project{
+	background:url('16/project.png') no-repeat center center;
+}
+.myicon-package{
+	background:url('16/package.gif') no-repeat center center;
+}
+.myicon-jar{
+	background:url('16/jar.gif') no-repeat center center;
+}
+.myicon-lib{
+	background:url('16/lib.gif') no-repeat center center;
+}
+.myicon-src{
+	background:url('16/src.gif') no-repeat center center;
+}
+.myicon-folder{
+	background:url('16/folder.gif') no-repeat center center;
+}
+.myicon-template{
+	background:url('icons/template.png') no-repeat center center;
+}

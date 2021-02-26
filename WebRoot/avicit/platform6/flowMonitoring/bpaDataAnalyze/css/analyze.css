@@ -1,0 +1,292 @@
+/* 分析维度 */
+.font{
+	font-size : 15px;
+	padding-left : 25px;
+	font-family: unset;
+	position:  absolute;
+	top: 18px;
+}
+input#processSelect {
+    position:  absolute;
+    left: 110px;
+    top: 19px;
+}
+div#processText {
+    position:  absolute;
+    left: 130px;
+    top: 20px;
+    font-size: 13px;
+    font-family: unset;
+}
+input#jobsSelect {
+    position:  absolute;
+    left: 180px;
+    top: 19px;
+}
+
+div#jobs {
+    position:  absolute;
+    left: 200px;
+    top: 20px;
+    font-size: 13px;
+}
+
+input#organizationSelect {
+    position:  absolute;
+    left: 250px;
+    top: 19px;
+}
+
+div#organization {
+    position:  absolute;
+    left: 270px;
+    top: 20px;
+    font-size:  13px;
+}
+/* 选择范围 */
+span.choosed {
+    padding-left:  25px;
+    font-size:  15px;
+    font-family:  unset;
+    position:  absolute;
+    top: 82px;
+}
+input#allSelect {
+    position:  absolute;
+    left:  110px;
+    top: 82px;
+}
+
+input#partSelect {
+    position:  absolute;
+    left:  180px;
+    top: 82px;
+}
+
+div#allText {
+    position:  absolute;
+    left:  130px;
+    top: 84px;
+    font-size: 13px;
+    font-family:  unset;
+}
+
+div#partText {
+    position:  absolute;
+    left: 200px;
+    top: 84px;
+    font-size: 13px;
+    font-family:  unset;
+}
+/* 时间范围 */
+span.time {
+    padding-left:  25px;
+    font-size:  15px;
+    font-family: unset;
+    position:  absolute;
+    top: 51px;
+}
+div#now_year {
+    position:  absolute;
+    left: 110px;
+    top: 51px;
+}
+input#customSelect {
+    position:  absolute;
+    right : 15%;
+    /* left: 352px; */
+    top: 51px;
+}
+
+div#custom {
+    position:  absolute;
+    right : 5%;
+    /* left: 368px; */
+    top: 51px;
+    font-size: 14px;
+}
+div#box_div {
+    /* position: absolute; */
+    /* left:0px; */
+    /* top:0px; */
+    min-width: 100%;
+    height: 100%;
+    background:inherit;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing:border-box;
+    border-width:1px;
+    border-style:solid;
+    border-color:rgba(204, 204, 204, 1);
+    border-radius:0px;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}
+div#box {
+    position:  absolute;
+    left: 6%;
+    top: 110px;
+    width: 89%;
+    height: 70%;
+}
+.true{
+    position:  absolute;
+    bottom:  10px;
+    left: 210px;
+    background:  green;
+}
+button#sure {
+    color: #FFF;
+    font-size: 14px;
+    color: #FFF;
+    height: 28px;
+    text-align: center;
+    min-width: 78px;
+    padding: 0 10px;
+    line-height: 26px!important;
+    background: #2fad95!important;
+    border-color: #2fad95!important;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    text-shadow: none;
+ }
+.false {
+    position:  absolute;
+    bottom:  10px;
+    left: 300px;
+}
+button#false {
+    color: #FFF;
+    font-size: 14px;
+    color: #FFF;
+    height: 28px;
+    text-align: center;
+    min-width: 78px;
+    padding: 0 10px;
+    line-height: 26px!important;
+    background: #a9a9a9!important;
+    border-color: #a9a9a9!important;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    text-shadow: none;
+ }
+/*  自定义时间 */
+div#from {
+    position:  absolute;
+    left: 104px;
+    top: 54px;
+    font-size:  13px;
+}
+
+div#fromReach {
+    position:  absolute;
+    left: 124px;
+    top: 51px;
+}
+
+input#fromReach_input {
+    width: 104px;
+    height: 24px;
+}
+
+div#reachText {
+    position: absolute;
+    top: 54px;
+    left: 230px;
+    font-size: 13px;
+}
+
+div#reachInput {
+    position:  absolute;
+    left: 246px;
+    top: 51px;
+}
+
+input#reachInput_input {
+    width: 104px;
+    height:  24px;
+}
+/* 下拉菜单 */
+.layui-input-block {
+    position:  absolute;
+    left: 110px;
+    top: 51px;
+}
+
+select {
+    width: 180px;
+    height: 22px;
+}
+/* 树 */
+ul#treeDemo {
+    position:  absolute;
+    top: -94px;
+}
+/* 吞吐量分析  流程 */
+div#firstContent {
+    background: gainsboro;
+    position:  relative;
+    height: 34px;
+}
+
+div#throughputNode {
+    display: inline-block;
+    width: 64px;
+}
+
+div#throughputFlow {
+    display: inline-block;
+    margin: 5px;
+    padding-left: 22px;
+    width: 64px;
+}
+/* 吞吐量分析  岗位 */
+div#secondContent {
+    background: gainsboro;
+    position:  relative;
+    height: 34px;
+}
+
+div#throughputEmployees {
+    display: inline-block;
+}
+
+div#throughputJobs {
+    display: inline-block;
+    margin: 5px;
+    padding-left: 22px;
+}
+/* 吞吐量分析  组织 */
+div#thirdContent {
+    background: gainsboro;
+    position:  relative;
+    height: 34px;
+}
+
+div#throughputJob {
+    display: inline-block;
+}
+
+div#throughputDepartment {
+    display: inline-block;
+    margin: 5px;
+    padding-left: 22px;
+}
+/* 排名分析  组织 */
+div#thirdContent {
+    background: gainsboro;
+    position:  relative;
+    height: 34px;
+}
+
+div#allJob {
+    display: inline-block;
+    margin: 5px;
+    padding-left: 22px;
+}
+
+div#allDepartment {
+    display: inline-block;
+    margin: 5px;
+    padding-left: 22px;
+}

@@ -1,0 +1,29 @@
+<mxDefaultToolbar>
+	<add as="选择" mode="select" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/select.gif" />
+	<add as="连线" mode="connect" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/connect.gif" />
+	<br />
+	<hr noshade="noshade" />
+	<add as="开始节点" template="start" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/start_event_empty.png" />
+	<add as="结束节点" template="end" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/end_event_terminate.png" />
+	<add as="人工节点" template="task" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_human.png" />
+	<add as="Java节点" template="java" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_java.png" />
+	<add as="SQL节点" template="sql" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_sql.png" />
+	<add as="服务节点" template="ws" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_webservice.png" />
+	<add as="状态节点" template="state" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_wait.png" />
+	<add as="分支节点" template="fork" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/gateway_fork.png" />
+	<add as="合并节点" template="join" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/gateway_join.png" />
+	<!--<add as="rest节点" template="rest" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_rest.png"/>-->
+	<add as="文本" template="text" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/text.png"/>
+	<add as="条件路由" template="decision" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/gateway_exclusive.png" />
+	<br />
+	<hr />
+	<add as="子流程节点" template="sub-process" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_subprocess.png" />
+	<add as="循环节点" template="foreach" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/gateway_foreach.png" />
+	<add as="JMS节点" template="jms" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_jms.png" />
+	<add as="扩展节点" template="custom" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_custom.png" />
+	<add as="规则节点" template="rules" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/task_rule.png" />
+	<add as="条件路由" template="decision" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/gateway_exclusive.png" />
+	<br />
+	<add as="横向泳道" template="swimlane1" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/swimlane.png" />
+	<add as="纵向泳道" template="swimlane2" icon="avicit/platform6/bpmreform/bpmdesigner/editors/images/16/swimlane_v.png" />
+</mxDefaultToolbar>

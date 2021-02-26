@@ -1,0 +1,1491 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetstrackback.dao.AssetsTrackbackDao">
+
+<resultMap id="AssetsTrackbackDTOMap" type="avicit.assets.device.assetstrackback.dto.AssetsTrackbackDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="meteringId" column="METERING_ID" jdbcType="VARCHAR" />
+		<result property="applicantId" column="APPLICANT_ID" jdbcType="VARCHAR" />
+		<result property="applicantDepart" column="APPLICANT_DEPART" jdbcType="VARCHAR" />
+		<result property="deviceUserId" column="DEVICE_USER_ID" jdbcType="VARCHAR" />
+		<result property="deviceUserDept" column="DEVICE_USER_DEPT" jdbcType="VARCHAR" />
+		<result property="formState" column="FORM_STATE" jdbcType="VARCHAR" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="deviceCategory" column="DEVICE_CATEGORY" jdbcType="VARCHAR" />
+		<result property="deviceSpec" column="DEVICE_SPEC" jdbcType="VARCHAR" />
+		<result property="deviceModel" column="DEVICE_MODEL" jdbcType="VARCHAR" />
+		<result property="manufacturerId" column="MANUFACTURER_ID" jdbcType="VARCHAR" />
+		<result property="lastMeteringDate" column="LAST_METERING_DATE" jdbcType="TIMESTAMP" />
+		<result property="meterPerson" column="METER_PERSON" jdbcType="VARCHAR" />
+		<result property="meterConclusion" column="METER_CONCLUSION" jdbcType="VARCHAR" />
+		<result property="deviceMetrics" column="DEVICE_METRICS" jdbcType="VARCHAR" />
+		<result property="calibrationResult" column="CALIBRATION_RESULT" jdbcType="VARCHAR" />
+		<result property="effectAnalyse" column="EFFECT_ANALYSE" jdbcType="VARCHAR" />
+		<result property="qualitySafeOpinion" column="QUALITY_SAFE_OPINION" jdbcType="VARCHAR" />
+		<result property="chiefOpinion" column="CHIEF_OPINION" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="DECIMAL" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="DECIMAL" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="DECIMAL" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="DECIMAL" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="DECIMAL" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="TIMESTAMP" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="TIMESTAMP" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="TIMESTAMP" />
+		<result property="procId" column="PROC_ID" jdbcType="VARCHAR" />
+		<result property="data24" column="DATA_24" jdbcType="VARCHAR" />
+		<result property="hasEffection" column="HAS_EFFECTION" jdbcType="VARCHAR" />
+		<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+		<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 ASSETS_TRACKBACK -->
+<select id="searchAssetsTrackbackByPage" parameterType="java.util.Map" resultMap="AssetsTrackbackDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.metering_id                    ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.device_user_id                 ,
+		t1.device_user_dept               ,
+		t1.form_state                     ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.manufacturer_id                ,
+		t1.last_metering_date             ,
+		t1.meter_person                   ,
+		t1.meter_conclusion               ,
+		t1.device_metrics                 ,
+		t1.calibration_result             ,
+		t1.effect_analyse                 ,
+		t1.quality_safe_opinion           ,
+		t1.chief_opinion                  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.proc_id                        ,
+		t1.data_24                        ,
+		t1.has_effection                  
+	from assets_trackback 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.meteringId != null and bean.meteringId != ''">
+				and t1.METERING_ID like concat(concat('%',#{bean.meteringId}),'%') 
+			</if>
+			<if test="bean.applicantId != null and bean.applicantId != ''">
+				and t1.APPLICANT_ID like concat(concat('%',#{bean.applicantId}),'%') 
+			</if>
+			<if test="bean.applicantDepart != null and bean.applicantDepart != ''">
+				and t1.APPLICANT_DEPART like concat(concat('%',#{bean.applicantDepart}),'%') 
+			</if>
+			<if test="bean.deviceUserId != null and bean.deviceUserId != ''">
+				and t1.DEVICE_USER_ID like concat(concat('%',#{bean.deviceUserId}),'%') 
+			</if>
+			<if test="bean.deviceUserDept != null and bean.deviceUserDept != ''">
+				and t1.DEVICE_USER_DEPT like concat(concat('%',#{bean.deviceUserDept}),'%') 
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				and t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%') 
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%') 
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%') 
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				and t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%') 
+			</if>
+			<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+				and t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%') 
+			</if>
+			<if test="bean.deviceModel != null and bean.deviceModel != ''">
+				and t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%') 
+			</if>
+			<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+				and t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%') 
+			</if>
+			<if test="bean.lastMeteringDateBegin != null and bean.lastMeteringDateBegin != ''">
+				and t1.LAST_METERING_DATE &gt;= #{bean.lastMeteringDateBegin}
+			</if>
+			<if test="bean.lastMeteringDateEnd != null and bean.lastMeteringDateEnd != ''">
+				and t1.LAST_METERING_DATE &lt;= #{bean.lastMeteringDateEnd}
+			</if>
+			<if test="bean.meterPerson != null and bean.meterPerson != ''">
+				and t1.METER_PERSON like concat(concat('%',#{bean.meterPerson}),'%') 
+			</if>
+			<if test="bean.meterConclusion != null and bean.meterConclusion != ''">
+				and t1.METER_CONCLUSION like concat(concat('%',#{bean.meterConclusion}),'%') 
+			</if>
+			<if test="bean.deviceMetrics != null and bean.deviceMetrics != ''">
+				and t1.DEVICE_METRICS like concat(concat('%',#{bean.deviceMetrics}),'%') 
+			</if>
+			<if test="bean.calibrationResult != null and bean.calibrationResult != ''">
+				and t1.CALIBRATION_RESULT like concat(concat('%',#{bean.calibrationResult}),'%') 
+			</if>
+			<if test="bean.effectAnalyse != null and bean.effectAnalyse != ''">
+				and t1.EFFECT_ANALYSE like concat(concat('%',#{bean.effectAnalyse}),'%') 
+			</if>
+			<if test="bean.qualitySafeOpinion != null and bean.qualitySafeOpinion != ''">
+				and t1.QUALITY_SAFE_OPINION like concat(concat('%',#{bean.qualitySafeOpinion}),'%') 
+			</if>
+			<if test="bean.chiefOpinion != null and bean.chiefOpinion != ''">
+				and t1.CHIEF_OPINION like concat(concat('%',#{bean.chiefOpinion}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null ">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null ">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null ">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null ">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null ">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null ">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			<if test="bean.procId != null and bean.procId != ''">
+				and t1.PROC_ID like concat(concat('%',#{bean.procId}),'%') 
+			</if>
+			<if test="bean.data24 != null and bean.data24 != ''">
+				and t1.DATA_24 like concat(concat('%',#{bean.data24}),'%') 
+			</if>
+			<if test="bean.hasEffection != null and bean.hasEffection != ''">
+				and t1.HAS_EFFECTION like concat(concat('%',#{bean.hasEffection}),'%') 
+			</if>
+						<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_TRACKBACK -->
+<select id="searchAssetsTrackbackByPageOr" parameterType="java.util.Map" resultMap="AssetsTrackbackDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.metering_id                    ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.device_user_id                 ,
+		t1.device_user_dept               ,
+		t1.form_state                     ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.manufacturer_id                ,
+		t1.last_metering_date             ,
+		t1.meter_person                   ,
+		t1.meter_conclusion               ,
+		t1.device_metrics                 ,
+		t1.calibration_result             ,
+		t1.effect_analyse                 ,
+		t1.quality_safe_opinion           ,
+		t1.chief_opinion                  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.proc_id                        ,
+		t1.data_24                        ,
+		t1.has_effection                  
+	from assets_trackback  t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.meteringId != null and bean.meteringId != ''">
+				or t1.METERING_ID like concat(concat('%',#{bean.meteringId}),'%')  
+			</if>
+			<if test="bean.applicantId != null and bean.applicantId != ''">
+				or t1.APPLICANT_ID like concat(concat('%',#{bean.applicantId}),'%')  
+			</if>
+			<if test="bean.applicantDepart != null and bean.applicantDepart != ''">
+				or t1.APPLICANT_DEPART like concat(concat('%',#{bean.applicantDepart}),'%')  
+			</if>
+			<if test="bean.deviceUserId != null and bean.deviceUserId != ''">
+				or t1.DEVICE_USER_ID like concat(concat('%',#{bean.deviceUserId}),'%')  
+			</if>
+			<if test="bean.deviceUserDept != null and bean.deviceUserDept != ''">
+				or t1.DEVICE_USER_DEPT like concat(concat('%',#{bean.deviceUserDept}),'%')  
+			</if>
+			<if test="bean.formState != null and bean.formState != ''">
+				or t1.FORM_STATE like concat(concat('%',#{bean.formState}),'%')  
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')  
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')  
+			</if>
+			<if test="bean.deviceCategory != null and bean.deviceCategory != ''">
+				or t1.DEVICE_CATEGORY like concat(concat('%',#{bean.deviceCategory}),'%')  
+			</if>
+			<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+				or t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%')  
+			</if>
+			<if test="bean.deviceModel != null and bean.deviceModel != ''">
+				or t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%')  
+			</if>
+			<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+				or t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%')  
+			</if>
+			<if test="bean.lastMeteringDateBegin != null and bean.lastMeteringDateBegin != ''">
+				or t1.LAST_METERING_DATE &gt;= #{bean.lastMeteringDateBegin}
+			</if>
+			<if test="bean.lastMeteringDateEnd != null and bean.lastMeteringDateEnd != ''">
+				or t1.LAST_METERING_DATE &lt;= #{bean.lastMeteringDateEnd}
+			</if>
+			<if test="bean.meterPerson != null and bean.meterPerson != ''">
+				or t1.METER_PERSON like concat(concat('%',#{bean.meterPerson}),'%')  
+			</if>
+			<if test="bean.meterConclusion != null and bean.meterConclusion != ''">
+				or t1.METER_CONCLUSION like concat(concat('%',#{bean.meterConclusion}),'%')  
+			</if>
+			<if test="bean.deviceMetrics != null and bean.deviceMetrics != ''">
+				or t1.DEVICE_METRICS like concat(concat('%',#{bean.deviceMetrics}),'%')  
+			</if>
+			<if test="bean.calibrationResult != null and bean.calibrationResult != ''">
+				or t1.CALIBRATION_RESULT like concat(concat('%',#{bean.calibrationResult}),'%')  
+			</if>
+			<if test="bean.effectAnalyse != null and bean.effectAnalyse != ''">
+				or t1.EFFECT_ANALYSE like concat(concat('%',#{bean.effectAnalyse}),'%')  
+			</if>
+			<if test="bean.qualitySafeOpinion != null and bean.qualitySafeOpinion != ''">
+				or t1.QUALITY_SAFE_OPINION like concat(concat('%',#{bean.qualitySafeOpinion}),'%')  
+			</if>
+			<if test="bean.chiefOpinion != null and bean.chiefOpinion != ''">
+				or t1.CHIEF_OPINION like concat(concat('%',#{bean.chiefOpinion}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			<if test="bean.procId != null and bean.procId != ''">
+				or t1.PROC_ID like concat(concat('%',#{bean.procId}),'%')  
+			</if>
+			<if test="bean.data24 != null and bean.data24 != ''">
+				or t1.DATA_24 like concat(concat('%',#{bean.data24}),'%')  
+			</if>
+			<if test="bean.hasEffection != null and bean.hasEffection != ''">
+				or t1.HAS_EFFECTION like concat(concat('%',#{bean.hasEffection}),'%')  
+			</if>
+			</trim>
+			<if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) 
+			</if>
+			<if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+				and v.businessstate_ = #{bean.bpmState}
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_TRACKBACK -->
+<select id="searchAssetsTrackback" parameterType="java.util.Map" resultMap="AssetsTrackbackDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.metering_id                    ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.device_user_id                 ,
+		t1.device_user_dept               ,
+		t1.form_state                     ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.manufacturer_id                ,
+		t1.last_metering_date             ,
+		t1.meter_person                   ,
+		t1.meter_conclusion               ,
+		t1.device_metrics                 ,
+		t1.calibration_result             ,
+		t1.effect_analyse                 ,
+		t1.quality_safe_opinion           ,
+		t1.chief_opinion                  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.proc_id                        ,
+		t1.data_24                        ,
+		t1.has_effection                  
+	from assets_trackback 	t1 left join bpm_client_hist_procinst_v v on t1.id = v.formid_ 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="meteringId != null and meteringId != ''">
+				and t1.METERING_ID =#{meteringId}
+			</if>
+			<if test="applicantId != null and applicantId != ''">
+				and t1.APPLICANT_ID =#{applicantId}
+			</if>
+			<if test="applicantDepart != null and applicantDepart != ''">
+				and t1.APPLICANT_DEPART =#{applicantDepart}
+			</if>
+			<if test="deviceUserId != null and deviceUserId != ''">
+				and t1.DEVICE_USER_ID =#{deviceUserId}
+			</if>
+			<if test="deviceUserDept != null and deviceUserDept != ''">
+				and t1.DEVICE_USER_DEPT =#{deviceUserDept}
+			</if>
+			<if test="formState != null and formState != ''">
+				and t1.FORM_STATE =#{formState}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="deviceCategory != null and deviceCategory != ''">
+				and t1.DEVICE_CATEGORY =#{deviceCategory}
+			</if>
+			<if test="deviceSpec != null and deviceSpec != ''">
+				and t1.DEVICE_SPEC =#{deviceSpec}
+			</if>
+			<if test="deviceModel != null and deviceModel != ''">
+				and t1.DEVICE_MODEL =#{deviceModel}
+			</if>
+			<if test="manufacturerId != null and manufacturerId != ''">
+				and t1.MANUFACTURER_ID =#{manufacturerId}
+			</if>
+			<if test="lastMeteringDateBegin != null and lastMeteringDateBegin != ''">
+				and t1.LAST_METERING_DATE &gt;= #{lastMeteringDateBegin}
+			</if>
+			<if test="lastMeteringDateEnd != null and lastMeteringDateEnd != ''">
+				and t1.LAST_METERING_DATE &lt;= #{lastMeteringDateEnd}
+			</if>
+			<if test="meterPerson != null and meterPerson != ''">
+				and t1.METER_PERSON =#{meterPerson}
+			</if>
+			<if test="meterConclusion != null and meterConclusion != ''">
+				and t1.METER_CONCLUSION =#{meterConclusion}
+			</if>
+			<if test="deviceMetrics != null and deviceMetrics != ''">
+				and t1.DEVICE_METRICS =#{deviceMetrics}
+			</if>
+			<if test="calibrationResult != null and calibrationResult != ''">
+				and t1.CALIBRATION_RESULT =#{calibrationResult}
+			</if>
+			<if test="effectAnalyse != null and effectAnalyse != ''">
+				and t1.EFFECT_ANALYSE =#{effectAnalyse}
+			</if>
+			<if test="qualitySafeOpinion != null and qualitySafeOpinion != ''">
+				and t1.QUALITY_SAFE_OPINION =#{qualitySafeOpinion}
+			</if>
+			<if test="chiefOpinion != null and chiefOpinion != ''">
+				and t1.CHIEF_OPINION =#{chiefOpinion}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null and attribute18 != ''">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null and attribute19 != ''">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null and attribute20 != ''">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+			<if test="procId != null and procId != ''">
+				and t1.PROC_ID =#{procId}
+			</if>
+			<if test="data24 != null and data24 != ''">
+				and t1.DATA_24 =#{data24}
+			</if>
+			<if test="hasEffection != null and hasEffection != ''">
+				and t1.HAS_EFFECTION =#{hasEffection}
+			</if>
+			<if test="bpmType !=null and bpmType !='' and bpmType == 'my'">
+				 and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{currUserId}) 
+			</if>
+			<if test="bpmState != null and bpmState !='' and bpmState != 'all'">
+				and v.businessstate_ = #{bpmState}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_TRACKBACK -->
+<select id="findAssetsTrackbackById" parameterType="java.util.Map" resultMap="AssetsTrackbackDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.metering_id                    ,
+		t1.applicant_id                   ,
+		t1.applicant_depart               ,
+		t1.device_user_id                 ,
+		t1.device_user_dept               ,
+		t1.form_state                     ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.device_category                ,
+		t1.device_spec                    ,
+		t1.device_model                   ,
+		t1.manufacturer_id                ,
+		t1.last_metering_date             ,
+		t1.meter_person                   ,
+		t1.meter_conclusion               ,
+		t1.device_metrics                 ,
+		t1.calibration_result             ,
+		t1.effect_analyse                 ,
+		t1.quality_safe_opinion           ,
+		t1.chief_opinion                  ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   ,
+		t1.proc_id                        ,
+		t1.data_24                        ,
+		t1.has_effection                  
+	from assets_trackback 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_TRACKBACK -->
+<insert id="insertAssetsTrackback" parameterType="avicit.assets.device.assetstrackback.dto.AssetsTrackbackDTO">
+	insert into assets_trackback
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="meteringId != null">
+				metering_id,
+			</if>
+			<if test="applicantId != null">
+				applicant_id,
+			</if>
+			<if test="applicantDepart != null">
+				applicant_depart,
+			</if>
+			<if test="deviceUserId != null">
+				device_user_id,
+			</if>
+			<if test="deviceUserDept != null">
+				device_user_dept,
+			</if>
+			<if test="formState != null">
+				form_state,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="deviceCategory != null">
+				device_category,
+			</if>
+			<if test="deviceSpec != null">
+				device_spec,
+			</if>
+			<if test="deviceModel != null">
+				device_model,
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id,
+			</if>
+			<if test="lastMeteringDate != null">
+				last_metering_date,
+			</if>
+			<if test="meterPerson != null">
+				meter_person,
+			</if>
+			<if test="meterConclusion != null">
+				meter_conclusion,
+			</if>
+			<if test="deviceMetrics != null">
+				device_metrics,
+			</if>
+			<if test="calibrationResult != null">
+				calibration_result,
+			</if>
+			<if test="effectAnalyse != null">
+				effect_analyse,
+			</if>
+			<if test="qualitySafeOpinion != null">
+				quality_safe_opinion,
+			</if>
+			<if test="chiefOpinion != null">
+				chief_opinion,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+			<if test="procId != null">
+				proc_id,
+			</if>
+			<if test="data24 != null">
+				data_24,
+			</if>
+			<if test="hasEffection != null">
+				has_effection,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="meteringId != null">
+				#{meteringId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantId != null">
+				#{applicantId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantDepart != null">
+				#{applicantDepart,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceUserId != null">
+				#{deviceUserId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceUserDept != null">
+				#{deviceUserDept,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategory != null">
+				#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="lastMeteringDate != null">
+				#{lastMeteringDate,jdbcType=DATE},
+			</if>
+			<if test="meterPerson != null">
+				#{meterPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="meterConclusion != null">
+				#{meterConclusion,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceMetrics != null">
+				#{deviceMetrics,jdbcType=VARCHAR},
+			</if>
+			<if test="calibrationResult != null">
+				#{calibrationResult,jdbcType=VARCHAR},
+			</if>
+			<if test="effectAnalyse != null">
+				#{effectAnalyse,jdbcType=VARCHAR},
+			</if>
+			<if test="qualitySafeOpinion != null">
+				#{qualitySafeOpinion,jdbcType=VARCHAR},
+			</if>
+			<if test="chiefOpinion != null">
+				#{chiefOpinion,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DATE},
+			</if>
+			<if test="procId != null">
+				#{procId,jdbcType=VARCHAR},
+			</if>
+			<if test="data24 != null">
+				#{data24,jdbcType=VARCHAR},
+			</if>
+			<if test="hasEffection != null">
+				#{hasEffection,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_TRACKBACK -->
+<insert id="insertAssetsTrackbackList" parameterType="java.util.List">
+	insert into assets_trackback(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			metering_id,
+			applicant_id,
+			applicant_depart,
+			device_user_id,
+			device_user_dept,
+			form_state,
+			unified_id,
+			device_name,
+			device_category,
+			device_spec,
+			device_model,
+			manufacturer_id,
+			last_metering_date,
+			meter_person,
+			meter_conclusion,
+			device_metrics,
+			calibration_result,
+			effect_analyse,
+			quality_safe_opinion,
+			chief_opinion,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20,
+			proc_id,
+			data_24,
+			has_effection)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.meteringId,jdbcType=VARCHAR},
+					#{item.applicantId,jdbcType=VARCHAR},
+					#{item.applicantDepart,jdbcType=VARCHAR},
+					#{item.deviceUserId,jdbcType=VARCHAR},
+					#{item.deviceUserDept,jdbcType=VARCHAR},
+					#{item.formState,jdbcType=VARCHAR},
+					#{item.unifiedId,jdbcType=VARCHAR},
+					#{item.deviceName,jdbcType=VARCHAR},
+					#{item.deviceCategory,jdbcType=VARCHAR},
+					#{item.deviceSpec,jdbcType=VARCHAR},
+					#{item.deviceModel,jdbcType=VARCHAR},
+					#{item.manufacturerId,jdbcType=VARCHAR},
+					#{item.lastMeteringDate,jdbcType=DATE},
+					#{item.meterPerson,jdbcType=VARCHAR},
+					#{item.meterConclusion,jdbcType=VARCHAR},
+					#{item.deviceMetrics,jdbcType=VARCHAR},
+					#{item.calibrationResult,jdbcType=VARCHAR},
+					#{item.effectAnalyse,jdbcType=VARCHAR},
+					#{item.qualitySafeOpinion,jdbcType=VARCHAR},
+					#{item.chiefOpinion,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=DECIMAL},
+					#{item.attribute12,jdbcType=DECIMAL},
+					#{item.attribute13,jdbcType=DECIMAL},
+					#{item.attribute14,jdbcType=DECIMAL},
+					#{item.attribute15,jdbcType=DECIMAL},
+					#{item.attribute16,jdbcType=DECIMAL},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DATE},
+					#{item.attribute19,jdbcType=DATE},
+					#{item.attribute20,jdbcType=DATE},
+					#{item.procId,jdbcType=VARCHAR},
+					#{item.data24,jdbcType=VARCHAR},
+					#{item.hasEffection,jdbcType=VARCHAR}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_TRACKBACK -->
+<update id="updateAssetsTrackbackSensitive" parameterType="avicit.assets.device.assetstrackback.dto.AssetsTrackbackDTO">
+	update assets_trackback 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="meteringId != null">
+				metering_id                    =#{meteringId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantId != null">
+				applicant_id                   =#{applicantId,jdbcType=VARCHAR},
+			</if>
+			<if test="applicantDepart != null">
+				applicant_depart               =#{applicantDepart,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceUserId != null">
+				device_user_id                 =#{deviceUserId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceUserDept != null">
+				device_user_dept               =#{deviceUserDept,jdbcType=VARCHAR},
+			</if>
+			<if test="formState != null">
+				form_state                     =#{formState,jdbcType=VARCHAR},
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceCategory != null">
+				device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="lastMeteringDate != null">
+				last_metering_date             =#{lastMeteringDate,jdbcType=DATE},
+			</if>
+			<if test="meterPerson != null">
+				meter_person                   =#{meterPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="meterConclusion != null">
+				meter_conclusion               =#{meterConclusion,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceMetrics != null">
+				device_metrics                 =#{deviceMetrics,jdbcType=VARCHAR},
+			</if>
+			<if test="calibrationResult != null">
+				calibration_result             =#{calibrationResult,jdbcType=VARCHAR},
+			</if>
+			<if test="effectAnalyse != null">
+				effect_analyse                 =#{effectAnalyse,jdbcType=VARCHAR},
+			</if>
+			<if test="qualitySafeOpinion != null">
+				quality_safe_opinion           =#{qualitySafeOpinion,jdbcType=VARCHAR},
+			</if>
+			<if test="chiefOpinion != null">
+				chief_opinion                  =#{chiefOpinion,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DATE},
+			</if>
+			<if test="procId != null">
+				proc_id                        =#{procId,jdbcType=VARCHAR},
+			</if>
+			<if test="data24 != null">
+				data_24                        =#{data24,jdbcType=VARCHAR},
+			</if>
+			<if test="hasEffection != null">
+				has_effection                  =#{hasEffection,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_TRACKBACK -->
+<update id="updateAssetsTrackbackAll" parameterType="avicit.assets.device.assetstrackback.dto.AssetsTrackbackDTO">
+	update assets_trackback 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			metering_id                    =#{meteringId,jdbcType=VARCHAR},
+			applicant_id                   =#{applicantId,jdbcType=VARCHAR},
+			applicant_depart               =#{applicantDepart,jdbcType=VARCHAR},
+			device_user_id                 =#{deviceUserId,jdbcType=VARCHAR},
+			device_user_dept               =#{deviceUserDept,jdbcType=VARCHAR},
+			form_state                     =#{formState,jdbcType=VARCHAR},
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			device_category                =#{deviceCategory,jdbcType=VARCHAR},
+			device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			last_metering_date             =#{lastMeteringDate,jdbcType=DATE},
+			meter_person                   =#{meterPerson,jdbcType=VARCHAR},
+			meter_conclusion               =#{meterConclusion,jdbcType=VARCHAR},
+			device_metrics                 =#{deviceMetrics,jdbcType=VARCHAR},
+			calibration_result             =#{calibrationResult,jdbcType=VARCHAR},
+			effect_analyse                 =#{effectAnalyse,jdbcType=VARCHAR},
+			quality_safe_opinion           =#{qualitySafeOpinion,jdbcType=VARCHAR},
+			chief_opinion                  =#{chiefOpinion,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DATE},
+			attribute_19                   =#{attribute19,jdbcType=DATE},
+			attribute_20                   =#{attribute20,jdbcType=DATE},
+			proc_id                        =#{procId,jdbcType=VARCHAR},
+			data_24                        =#{data24,jdbcType=VARCHAR},
+			has_effection                  =#{hasEffection,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_TRACKBACK -->
+<update id="updateAssetsTrackbackList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_trackback 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			metering_id                    =#{item.meteringId,jdbcType=VARCHAR},
+			applicant_id                   =#{item.applicantId,jdbcType=VARCHAR},
+			applicant_depart               =#{item.applicantDepart,jdbcType=VARCHAR},
+			device_user_id                 =#{item.deviceUserId,jdbcType=VARCHAR},
+			device_user_dept               =#{item.deviceUserDept,jdbcType=VARCHAR},
+			form_state                     =#{item.formState,jdbcType=VARCHAR},
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			device_category                =#{item.deviceCategory,jdbcType=VARCHAR},
+			device_spec                    =#{item.deviceSpec,jdbcType=VARCHAR},
+			device_model                   =#{item.deviceModel,jdbcType=VARCHAR},
+			manufacturer_id                =#{item.manufacturerId,jdbcType=VARCHAR},
+			last_metering_date             =#{item.lastMeteringDate,jdbcType=DATE},
+			meter_person                   =#{item.meterPerson,jdbcType=VARCHAR},
+			meter_conclusion               =#{item.meterConclusion,jdbcType=VARCHAR},
+			device_metrics                 =#{item.deviceMetrics,jdbcType=VARCHAR},
+			calibration_result             =#{item.calibrationResult,jdbcType=VARCHAR},
+			effect_analyse                 =#{item.effectAnalyse,jdbcType=VARCHAR},
+			quality_safe_opinion           =#{item.qualitySafeOpinion,jdbcType=VARCHAR},
+			chief_opinion                  =#{item.chiefOpinion,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{item.attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{item.attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{item.attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{item.attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DATE},
+			attribute_19                   =#{item.attribute19,jdbcType=DATE},
+			attribute_20                   =#{item.attribute20,jdbcType=DATE},
+			proc_id                        =#{item.procId,jdbcType=VARCHAR},
+			data_24                        =#{item.data24,jdbcType=VARCHAR},
+			has_effection                  =#{item.hasEffection,jdbcType=VARCHAR}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_TRACKBACK -->
+<delete id="deleteAssetsTrackbackById" parameterType="java.lang.String">
+		delete from assets_trackback  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_TRACKBACK -->
+<delete id="deleteAssetsTrackbackList" parameterType="java.util.List">
+		delete from assets_trackback  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

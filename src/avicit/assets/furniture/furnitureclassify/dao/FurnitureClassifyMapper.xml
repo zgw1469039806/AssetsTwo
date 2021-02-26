@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.furniture.furnitureclassify.dao.FurnitureClassifyDao">
+
+	<resultMap id="FurnitureClassifyDTOMap" type="avicit.assets.furniture.furnitureclassify.dto.FurnitureClassifyDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="parentid" column="PARENTID" jdbcType="VARCHAR" />
+		<result property="name" column="NAME" jdbcType="VARCHAR" />
+		<result property="itemNum" column="ITEM_NUM" jdbcType="VARCHAR" />
+		<result property="sn" column="SN" jdbcType="DECIMAL" />
+		<result property="fatherNum" column="FATHER_NUM" jdbcType="VARCHAR" />
+		<result property="isvalid" column="ISVALID" jdbcType="VARCHAR" />
+		<result property="treePath" column="TREE_PATH" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="FurnitureClassifyTreeMap" type="avicit.assets.furniture.furnitureclassify.dto.FurnitureClassifyTreeDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="pId" column="PARENTID" jdbcType="VARCHAR" />
+		<result property="name" column="NAME" jdbcType="VARCHAR" />
+		<result property="itemNum" column="ITEM_NUM" jdbcType="VARCHAR" />
+		<result property="treePath" column="TREE_PATH" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 获取国标分类树 -->
+	<select id="getFurnitureClassifyTree" parameterType="java.util.Map" resultMap="FurnitureClassifyTreeMap">
+		select
+		t1.ID                            ,
+		t1.PARENTID                      ,
+		t1.NAME                          ,
+		t1.ITEM_NUM                     ,
+		t1.TREE_PATH
+		from furniture_classify 	t1
+		<where>
+			t1.ISVALID = 'Y'
+			<if test="menuName != null and menuName != ''">
+				and t1.NAME like concat(concat('%',#{menuName}),'%')
+			</if>
+		</where>
+		order by t1.PARENTID, t1.SN asc
+	</select>
+
+	<!-- 根据父节点id获取其排序最后一个直接子节点 -->
+	<select id="getLastChildNodeByPID" parameterType="java.util.Map" resultMap="FurnitureClassifyDTOMap">
+		select
+		t1.id                             ,
+		t1.parentid                       ,
+		t1.name                           ,
+		t1.item_num                       ,
+		t1.sn                             ,
+		t1.father_num                     ,
+		t1.isvalid                        ,
+		t1.tree_path
+		from furniture_classify 	t1
+		<where>
+			t1.ISVALID = 'Y'
+			<if test="parentId != null and parentId != ''">
+				and t1.PARENTID = #{parentId}
+			</if>
+		</where>
+		order by t1.sn desc
+	</select>
+
+	<!-- 根据包节点id获取其下属所有节点，包括包节点 -->
+	<select id="getNodesByPackageNodeId" parameterType="java.util.Map" resultMap="FurnitureClassifyDTOMap">
+		select
+		t1.id                             ,
+		t1.parentid                       ,
+		t1.name                           ,
+		t1.item_num                       ,
+		t1.sn                             ,
+		t1.father_num                     ,
+		t1.isvalid                        ,
+		t1.tree_path
+		from furniture_classify 	t1
+		<where>
+			t1.ISVALID = 'Y'
+			<if test="packageNodeId != null and packageNodeId != ''">
+				and t1.TREE_PATH like concat(concat('%',#{packageNodeId}),'%')
+			</if>
+		</where>
+		order by t1.tree_path ASC
+	</select>
+
+	<!-- 分页查询 Furniture_CLASSIFY -->
+	<select id="searchFurnitureClassifyByPage" parameterType="java.util.Map" resultMap="FurnitureClassifyDTOMap">
+		select
+		t1.id                             ,
+		t1.parentid                       ,
+		t1.name                           ,
+		t1.item_num                       ,
+		t1.sn                             ,
+		t1.father_num                     ,
+		t1.isvalid                        ,
+		t1.tree_path
+		from furniture_classify 	t1
+		<where>
+			<if test="bean != null">
+				<if test="bean.id != null and bean.id != ''">
+					and t1.ID =#{bean.id}
+				</if>
+				<if test="bean.parentid != null and bean.parentid != ''">
+					and t1.PARENTID like concat(concat('%',#{bean.parentid}),'%')
+				</if>
+				<if test="bean.name != null and bean.name != ''">
+					and t1.NAME like concat(concat('%',#{bean.name}),'%')
+				</if>
+				<if test="bean.itemNum != null and bean.itemNum != ''">
+					and t1.ITEM_NUM like concat(concat('%',#{bean.itemNum}),'%')
+				</if>
+				<if test="bean.sn != null ">
+					and t1.SN like concat(concat('%',#{bean.sn}),'%')
+				</if>
+				<if test="bean.fatherNum != null and bean.fatherNum != ''">
+					and t1.FATHER_NUM like concat(concat('%',#{bean.fatherNum}),'%')
+				</if>
+				<if test="bean.isvalid != null and bean.isvalid != ''">
+					and t1.ISVALID like concat(concat('%',#{bean.isvalid}),'%')
+				</if>
+				<if test="bean.treePath != null and bean.treePath != ''">
+					and t1.TREE_PATH like concat(concat('%',#{bean.treePath}),'%')
+				</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}
+			</when>
+			<otherwise>
+				order by t1.PARENTID, t1.sn asc
+			</otherwise>
+		</choose>
+	</select>
+
+	<!-- 分页查询 OrFurniture_CLASSIFY -->
+	<select id="searchFurnitureClassifyByPageOr" parameterType="java.util.Map" resultMap="FurnitureClassifyDTOMap">
+		select
+		t1.id                             ,
+		t1.parentid                       ,
+		t1.name                           ,
+		t1.item_num                       ,
+		t1.sn                             ,
+		t1.father_num                     ,
+		t1.isvalid                        ,
+		t1.tree_path
+		from furniture_classify 	t1
+		<where>
+			<if test="bean != null">
+				<trim prefix="(" suffix=")" prefixOverrides="or">
+					<if test="bean.id != null and bean.id != ''">
+						or t1.ID =#{bean.id}
+					</if>
+					<if test="bean.parentid != null and bean.parentid != ''">
+						or t1.PARENTID like concat(concat('%',#{bean.parentid}),'%')
+					</if>
+					<if test="bean.name != null and bean.name != ''">
+						or t1.NAME like concat(concat('%',#{bean.name}),'%')
+					</if>
+					<if test="bean.itemNum != null and bean.itemNum != ''">
+						or t1.ITEM_NUM like concat(concat('%',#{bean.itemNum}),'%')
+					</if>
+					<if test="bean.sn != null">
+						or t1.SN like concat(concat('%',#{bean.sn}),'%')
+					</if>
+					<if test="bean.fatherNum != null and bean.fatherNum != ''">
+						or t1.FATHER_NUM like concat(concat('%',#{bean.fatherNum}),'%')
+					</if>
+					<if test="bean.isvalid != null and bean.isvalid != ''">
+						or t1.ISVALID like concat(concat('%',#{bean.isvalid}),'%')
+					</if>
+					<if test="bean.treePath != null and bean.treePath != ''">
+						or t1.TREE_PATH like concat(concat('%',#{bean.treePath}),'%')
+					</if>
+				</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}
+			</when>
+			<otherwise>
+				order by t1.PARENTID, t1.sn asc
+			</otherwise>
+		</choose>
+	</select>
+	<!-- 查询列表 Furniture_CLASSIFY -->
+	<select id="searchFurnitureClassify" parameterType="java.util.Map" resultMap="FurnitureClassifyDTOMap">
+		select
+		t1.id                             ,
+		t1.parentid                       ,
+		t1.name                           ,
+		t1.item_num                       ,
+		t1.sn                             ,
+		t1.father_num                     ,
+		t1.isvalid                        ,
+		t1.tree_path
+		from furniture_classify 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="parentid != null and parentid != ''">
+				and t1.PARENTID =#{parentid}
+			</if>
+			<if test="name != null and name != ''">
+				and t1.NAME =#{name}
+			</if>
+			<if test="itemNum != null and itemNum != ''">
+				and t1.ITEM_NUM =#{itemNum}
+			</if>
+			<if test="sn != null">
+				and t1.SN =#{sn}
+			</if>
+			<if test="fatherNum != null and fatherNum != ''">
+				and t1.FATHER_NUM =#{fatherNum}
+			</if>
+			<if test="isvalid != null and isvalid != ''">
+				and t1.ISVALID =#{isvalid}
+			</if>
+			<if test="treePath != null and treePath != ''">
+				and t1.TREE_PATH =#{treePath}
+			</if>
+		</where>
+	</select>
+	<!-- 主键查询对象 Furniture_CLASSIFY -->
+	<select id="findFurnitureClassifyById" parameterType="java.util.Map" resultMap="FurnitureClassifyDTOMap">
+	select
+		t1.id                             ,
+		t1.parentid                       ,
+		t1.name                           ,
+		t1.item_num                       ,
+		t1.sn                             ,
+		t1.father_num                     ,
+		t1.isvalid                        ,
+		t1.tree_path
+	from furniture_classify 	t1
+		where t1.id = #{id}
+</select>
+	<!-- 新增对象 Furniture_CLASSIFY -->
+	<insert id="insertFurnitureClassify" parameterType="avicit.assets.furniture.furnitureclassify.dto.FurnitureClassifyDTO">
+		insert into furniture_classify
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="parentid != null">
+				parentid,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="itemNum != null">
+				item_num,
+			</if>
+			<if test="sn != null">
+				sn,
+			</if>
+			<if test="fatherNum != null">
+				father_num,
+			</if>
+			<if test="isvalid != null">
+				isvalid,
+			</if>
+			<if test="treePath != null">
+				tree_path,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="parentid != null">
+				#{parentid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="itemNum != null">
+				#{itemNum,jdbcType=VARCHAR},
+			</if>
+			<if test="sn != null">
+				#{sn,jdbcType=DECIMAL},
+			</if>
+			<if test="fatherNum != null">
+				#{fatherNum,jdbcType=VARCHAR},
+			</if>
+			<if test="isvalid != null">
+				#{isvalid,jdbcType=VARCHAR},
+			</if>
+			<if test="treePath != null">
+				#{treePath,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<!-- 批量新增对象 Furniture_CLASSIFY -->
+	<insert id="insertFurnitureClassifyList" parameterType="java.util.List">
+		insert into furniture_classify(
+		id,
+		parentid,
+		name,
+		item_num,
+		sn,
+		father_num,
+		isvalid,
+		tree_path)
+		<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+			select
+			#{item.id,jdbcType=VARCHAR},
+			#{item.parentid,jdbcType=VARCHAR},
+			#{item.name,jdbcType=VARCHAR},
+			#{item.itemNum,jdbcType=VARCHAR},
+			#{item.sn,jdbcType=DECIMAL},
+			#{item.fatherNum,jdbcType=VARCHAR},
+			#{item.isvalid,jdbcType=VARCHAR},
+			#{item.treePath,jdbcType=VARCHAR}
+			from dual
+		</foreach>
+	</insert>
+	<!-- 更新对象 Furniture_CLASSIFY -->
+	<update id="updateFurnitureClassifySensitive" parameterType="avicit.assets.furniture.furnitureclassify.dto.FurnitureClassifyDTO">
+		update furniture_classify
+		<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="parentid != null">
+				parentid                       =#{parentid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name                           =#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="itemNum != null">
+				item_num                       =#{itemNum,jdbcType=VARCHAR},
+			</if>
+			<if test="sn != null">
+				sn                             =#{sn,jdbcType=DECIMAL},
+			</if>
+			<if test="fatherNum != null">
+				father_num                     =#{fatherNum,jdbcType=VARCHAR},
+			</if>
+			<if test="isvalid != null">
+				isvalid                        =#{isvalid,jdbcType=VARCHAR},
+			</if>
+			<if test="treePath != null">
+				tree_path                      =#{treePath,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id} and version =#{version}
+	</update>
+	<!-- 更新对象 Furniture_CLASSIFY -->
+	<update id="updateFurnitureClassifyAll" parameterType="avicit.assets.furniture.furnitureclassify.dto.FurnitureClassifyDTO">
+	update furniture_classify
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			parentid                       =#{parentid,jdbcType=VARCHAR},
+			name                           =#{name,jdbcType=VARCHAR},
+			item_num                       =#{itemNum,jdbcType=VARCHAR},
+			sn                             =#{sn,jdbcType=DECIMAL},
+			father_num                     =#{fatherNum,jdbcType=VARCHAR},
+			isvalid                        =#{isvalid,jdbcType=VARCHAR},
+			tree_path                      =#{treePath,jdbcType=VARCHAR}
+	where id = #{id} and version =#{version}
+</update>
+	<!-- 批量更新对象   Furniture_CLASSIFY -->
+	<update id="updateFurnitureClassifyList" parameterType="java.util.List">
+		<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+			update furniture_classify
+			set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			parentid                       =#{item.parentid,jdbcType=VARCHAR},
+			name                           =#{item.name,jdbcType=VARCHAR},
+			item_num                       =#{item.itemNum,jdbcType=VARCHAR},
+			sn                             =#{item.sn,jdbcType=DECIMAL},
+			father_num                     =#{item.fatherNum,jdbcType=VARCHAR},
+			isvalid                        =#{item.isvalid,jdbcType=VARCHAR},
+			tree_path                      =#{item.treePath,jdbcType=VARCHAR}
+			where id = #{item.id} and version =#{item.version};
+		</foreach>
+	</update>
+	<!-- 主键删除 Furniture_CLASSIFY -->
+	<delete id="deleteFurnitureClassifyById" parameterType="java.lang.String">
+		delete from furniture_classify  where  id = #{id}
+</delete>
+	<!-- 批量主键删除 Furniture_CLASSIFY -->
+	<delete id="deleteFurnitureClassifyList" parameterType="java.util.List">
+		delete from furniture_classify  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+	</delete>
+</mapper>

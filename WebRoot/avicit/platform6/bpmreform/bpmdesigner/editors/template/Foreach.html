@@ -1,0 +1,86 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="foreach" class="prop_wrap" style="display:none">
+	<form id="jbxx" action="" class="form-horizontal">
+	  <div class="avic-flow-default-theme">
+                <div class="twoTabNav" style="width: 100%">
+                    <!-- 标签主体Start -->
+                    <ul class="nav-tabs">
+                        <li class="active">
+                            <a href="javascript:void(0)">基本信息</a>
+                        </li>
+                        <!-- <li>
+                            <a href="javascript:void(0)">事件</a>
+                        </li> -->
+                    </ul>
+                    <ul class="tab-cont">
+                        <li class="active">
+                            <div class="demoCont">
+                            <!-- html:[开始节点] 基本信息 开始 -->
+                            	<div class="base_info">
+                                   <div class="row base_info_bar" >
+                                        <div class="label"><span>基本</span></div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">节点名称</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="xian_shi_ming_cheng" name="xian_shi_ming_cheng">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">逻辑标识</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="luo_ji_biao_shi" name="luo_ji_biao_shi" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">变量</label>
+                                        <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input type="hidden" id="inputValueBackVar" name="inputValueBackVar">
+                                            <input type="text" class="form-control" id="inputTextBackVar" name="inputTextBackVar" readonly="">
+                                        </div>
+                                        <div class="col-xs-3 clear-right-padding">
+                                            <button name="button-BackVar" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">必须选人</label>
+                                        <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input id="bixuxuanren" name="bixuxuanren" type="checkbox" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;' name="zidongxuanren-collection">
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">集合</label>
+                                        <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input type="hidden" id="inputValueCollection" name="inputValueCollection">
+                                            <input type="text" class="form-control" id="inputTextCollection" name="inputTextCollection" readonly="">
+                                        </div>
+                                        <div class="col-xs-3 clear-right-padding">
+                                            <button name="button-Collection" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" style='padding-top: 5px;' name="zidongxuanren-area">
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">自动选人</label>
+                                        <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input id="zidongxuanren" name="zidongxuanren" type="checkbox" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden" name="zidongxuanren-area">
+                                        <label class="col-xs-3 col-xs-offset-1  control-label form-process-properties-label">候选人</label>
+                                        <div id="candidate-container" class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input type="hidden"  id="candidate-data-field" name="candidate-data-field">
+                                            <input type="text" class="form-control" id="candidate-text-field"  name="candidate-text-field" readonly>
+                                        </div>
+                                        <div class="col-xs-3 clear-right-padding">
+                                            <button name="button-auth-candidate" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- html:[开始节点] 基本信息 结束 -->
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 标签主体End -->
+                </div>
+            </div>
+	</form>
+</div>

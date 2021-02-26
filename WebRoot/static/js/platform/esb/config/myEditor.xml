@@ -1,0 +1,223 @@
+<mxEditor>
+	<ui>
+		<add as="graph" element="graph" />
+	</ui>
+	<Array as="templates">
+		<add as="http">
+			<mxCell value="HTTP" tagName="http" vertex="1" style="image;image=static/js/platform/esb/images/48/http_request-response.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="logger">
+			<mxCell value="LOGGER" tagName="logger" vertex="1" style="image;image=static/js/platform/esb/images/48/logger.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="setpayload">
+			<mxCell value="SET PAYLOAD" tagName="setpayload" vertex="1" style="image;image=static/js/platform/esb/images/48/setpayload.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="custtrans">
+			<mxCell value="JAVA TRANSFORMER" tagName="custtrans" vertex="1" style="image;image=static/js/platform/esb/images/48/custtrans.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="obj2json">
+			<mxCell value="OBJ2JSON" tagName="obj2json" vertex="1" style="image;image=static/js/platform/esb/images/48/obj2json.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="obj2xml">
+			<mxCell value="OBJ2XML" tagName="obj2xml" vertex="1" style="image;image=static/js/platform/esb/images/48/obj2xml.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="xml2obj">
+			<mxCell value="XML2OBJ" tagName="xml2obj" vertex="1" style="image;image=static/js/platform/esb/images/48/xml2obj.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="json2obj">
+			<mxCell value="JSON2OBJ" tagName="json2obj" vertex="1" style="image;image=static/js/platform/esb/images/48/json2obj.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="cust">
+			<mxCell value="JAVA" tagName="cust" vertex="1" style="image;image=static/js/platform/esb/images/48/cust.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="variable">
+			<mxCell value="VARIALBLE" tagName="variable" vertex="1" style="image;image=static/js/platform/esb/images/48/variable.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="file">
+			<mxCell value="FILE" tagName="file" vertex="1" style="image;image=static/js/platform/esb/images/48/file.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="smtp">
+			<mxCell value="SMTP" tagName="smtp" vertex="1" style="image;image=static/js/platform/esb/images/48/smtp.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="ftp">
+			<mxCell value="FTP" tagName="ftp" vertex="1" style="image;image=static/js/platform/esb/images/48/ftp.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="sftp">
+			<mxCell value="SFTP" tagName="sftp" vertex="1" style="image;image=static/js/platform/esb/images/48/sftp.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="tcp">
+			<mxCell value="TCP" tagName="tcp" vertex="1" style="image;image=static/js/platform/esb/images/48/tcp_request-response.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="database">
+			<mxCell value="DATABASE" tagName="database" vertex="1" style="image;image=static/js/platform/esb/images/48/database_request-response.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="flowref">
+			<mxCell value="FLOW REFERENCE" tagName="flowref" vertex="1" style="image;image=static/js/platform/esb/images/48/flowref.png;">
+				<mxGeometry as="geometry" width="75" height="60" />
+			</mxCell>
+		</add>
+		<add as="choice">
+			<mxCell value="CHOICE" tagName="choice" vertex="1" style="swimlane;strokeColor=#9393FF;fillColor=#9393FF;" banTag=",exception,choiceexception,">
+				<mxGeometry as="geometry" width="150" height="100"/>
+			</mxCell>
+		</add>
+		<add as="scattergather">
+			<mxCell value="PARALLEL PROCESS" tagName="scattergather" vertex="1" style="swimlane;strokeColor=#63B8FF;fillColor=#63B8FF;" banTag=",exception,choiceexception,">
+				<mxGeometry as="geometry" width="150" height="100"/>
+			</mxCell>
+		</add>
+		<add as="exception">
+			<mxCell value="CATCH EXCEPTION" tagName="exception" vertex="1" style="swimlane;strokeColor=#FFAF60;fillColor=#FFAF60;" connectable="0" banTag=",exception,choiceexception,">
+				<mxGeometry as="geometry" width="150" height="100"/>
+			</mxCell>
+		</add>
+		<add as="choiceexception">
+			<mxCell value="CHOICE EXCEPTION" tagName="choiceexception" vertex="1" style="swimlane;strokeColor=#C6A300;fillColor=#C6A300;" connectable="0" allowTag=",exception,">
+				<mxGeometry as="geometry" width="150" height="100"/>
+			</mxCell>
+		</add>
+	</Array>
+	<mxGraph as="graph" dropEnabled="1">
+		<mxStylesheet as="stylesheet">
+			<add as="defaultVertex" extend="defaultVertex">
+				<add as="fillColor" value="#adc5ff" />
+				<add as="gradientColor" value="#7d85df" />
+				<add as="strokeColor" value="#5d65df" />
+				<add as="fontSize" value="12" />
+				<add as="fontColor" value="#1d258f" />
+				<add as="fontFamily" value="Verdana" />
+			</add>
+			<add as="defaultEdge" extend="defaultEdge">
+				<add as="labelBackgroundColor" value="white" />
+				<add as="rounded" value="1" />
+				<add as="edgeStyle" value="elbowEdgeStyle" />
+				<add as="strokeColor" value="#5d65df" />
+				<add as="fontSize" value="11" />
+				<add as="fontColor" value="#1d258f" />
+				<add as="fontFamily" value="Verdana" />
+			</add>
+			<add as="image">
+				<add as="shape" value="image" />
+				<add as="perimeter" value="rectanglePerimeter" />
+				<add as="fontSize" value="12" />
+				<add as="verticalAlign" value="top" />
+				<add as="verticalLabelPosition" value="bottom" />
+				<add as="resizable" value="0" />
+			</add>
+			<add as="swimlane">
+				<add as="shape" value="swimlane"/>
+				<add as="shadow" value="0"/>
+				<add as="startSize" value="23"/>
+				<add as="align" value="center"/>
+				<add as="verticalAlign" value="top"/>
+				<add as="foldable" value="0"/>
+				<add as="gradientColor" value="none" />
+				<add as="fontColor" value="#FFFFFF" />
+			</add>
+		</mxStylesheet>
+		<mxGraphModel as="model">
+			
+		</mxGraphModel>
+	</mxGraph>
+	<!-- 
+	<mxDefaultToolbar as="toolbar">
+		<add as="connect" mode="connect" icon="static/js/platform/esb/images/48/flow_sequence.png" />
+		<add as="http" template="http" icon="static/js/platform/esb/images/48/http.png" />
+		<add as="logger" template="logger" icon="static/js/platform/esb/images/48/logger.png" />
+		<add as="setpayload" template="setpayload" icon="static/js/platform/esb/images/48/setpayload.png" />
+		<add as="custtrans" template="custtrans" icon="static/js/platform/esb/images/48/custtrans.png" />
+		<add as="obj2json" template="obj2json" icon="static/js/platform/esb/images/48/obj2json.png" />
+		<add as="obj2xml" template="obj2xml" icon="static/js/platform/esb/images/48/obj2xml.png" />
+		<add as="xml2obj" template="xml2obj" icon="static/js/platform/esb/images/48/xml2obj.png" />
+		<add as="json2obj" template="json2obj" icon="static/js/platform/esb/images/48/json2obj.png" />
+		<add as="cust" template="cust" icon="static/js/platform/esb/images/48/cust.png" />
+		<add as="variable" template="variable" icon="static/js/platform/esb/images/48/variable.png" />
+		<add as="file" template="file" icon="static/js/platform/esb/images/48/file_cell.png" />
+		<add as="smtp" template="smtp" icon="static/js/platform/esb/images/48/smtp_cell.png" />
+		<add as="ftp" template="ftp" icon="static/js/platform/esb/images/48/ftp_cell.png" />
+		<add as="sftp" template="sftp" icon="static/js/platform/esb/images/48/sftp.png" />
+		<add as="tcp" template="tcp" icon="static/js/platform/esb/images/48/tcp.png" />
+		<add as="database" template="database" icon="static/js/platform/esb/images/48/database.png" />
+		<add as="flowref" template="flowref" icon="static/js/platform/esb/images/48/flowref.png" />
+		<add as="choice" template="choice" icon="static/js/platform/esb/images/48/choice.png" />
+		<add as="scattergather" template="scattergather" icon="static/js/platform/esb/images/48/scattergather.png" />
+		<add as="exception" template="exception" icon="static/js/platform/esb/images/48/exception.png" />
+		<add as="choiceexception" template="choiceexception" icon="static/js/platform/esb/images/48/choiceexception.png" />
+	</mxDefaultToolbar>
+	 -->
+	<mxDefaultPopupMenu as="popupHandler">
+		<add as="删除" action="delete" icon="static/js/platform/esb/images/icons/close.gif" if="cell"/>
+		<add as="对齐" icon="static/js/platform/esb/images/icons/align.gif" if="cell" >
+			<add as="左对齐" action="alignCellsLeft" icon="static/js/platform/esb/images/icons/align.gif" if="cell"/>
+			<add as="右对齐" action="alignCellsRight" icon="static/js/platform/esb/images/icons/align.gif" if="cell"/>
+			<separator/>
+			<add as="上对齐" action="alignCellsTop" icon="static/js/platform/esb/images/icons/align.gif" if="cell"/>
+			<add as="下对齐" action="alignCellsBottom" icon="static/js/platform/esb/images/icons/align.gif" if="cell"/>
+		</add>
+		<add as="格式化" action="formatGraph" icon="static/js/platform/esb/images/icons/align.gif" />
+	</mxDefaultPopupMenu>
+	<Array as="actions">
+		<add as="alignCellsLeft"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("left");
+			}
+		]]></add>
+		<add as="alignCellsRight"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("right");
+			}
+		]]></add>
+		<add as="alignCellsTop"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("top");
+			}
+		]]></add>
+		<add as="alignCellsBottom"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("bottom");
+			}
+		]]></add>
+		<add as="formatGraph"><![CDATA[
+			function (editor)
+			{
+				myAction.formatGraph();
+			}
+		]]></add>
+	</Array>
+</mxEditor>

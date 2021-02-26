@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.usertablemodel.dao.UserTableModelDao">
+
+    <resultMap id="UserTableModelDTOMap" type="avicit.assets.device.usertablemodel.dto.UserTableModelDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="fieldName" column="FIELD_NAME" jdbcType="VARCHAR"/>
+        <result property="fieldIdentify" column="FIELD_IDENTIFY" jdbcType="VARCHAR"/>
+        <result property="fieldModel" column="FIELD_MODEL" jdbcType="VARCHAR"/>
+        <result property="sn" column="SN" jdbcType="DECIMAL"/>
+        <result property="belongTable" column="BELONG_TABLE" jdbcType="VARCHAR"/>
+        <result property="viewName" column="VIEW_NAME" jdbcType="VARCHAR"/>
+        <result property="isValid" column="IS_VALID" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 分页查询 USER_TABLE_MODEL -->
+    <select id="searchUserTableModelByPage" parameterType="java.util.Map" resultMap="UserTableModelDTOMap">
+        select
+        t1.id                             ,
+        t1.user_id                        ,
+        t1.field_name                     ,
+        t1.field_identify                 ,
+        t1.field_model                    ,
+        t1.sn                             ,
+        t1.belong_table                   ,
+        t1.view_name                      ,
+        t1.is_valid
+        from user_table_model t1
+        <where>
+            <if test="bean != null">
+                <if test="bean.id != null and bean.id != ''">
+                    and t1.ID =#{bean.id}
+                </if>
+                <if test="bean.userId != null and bean.userId != ''">
+                    and t1.USER_ID like concat(concat('%',#{bean.userId}),'%')
+                </if>
+                <if test="bean.fieldName != null and bean.fieldName != ''">
+                    and t1.FIELD_NAME like concat(concat('%',#{bean.fieldName}),'%')
+                </if>
+                <if test="bean.fieldIdentify != null and bean.fieldIdentify != ''">
+                    and t1.FIELD_IDENTIFY like concat(concat('%',#{bean.fieldIdentify}),'%')
+                </if>
+                <if test="bean.fieldModel != null and bean.fieldModel != ''">
+                    and t1.FIELD_MODEL like concat(concat('%',#{bean.fieldModel}),'%')
+                </if>
+                <if test="bean.sn != null ">
+                    and t1.SN like concat(concat('%',#{bean.sn}),'%')
+                </if>
+                <if test="bean.belongTable != null and bean.belongTable != ''">
+                    and t1.BELONG_TABLE like concat(concat('%',#{bean.belongTable}),'%')
+                </if>
+                <if test="bean.viewName != null and bean.viewName != ''">
+                    and t1.VIEW_NAME like concat(concat('%',#{bean.viewName}),'%')
+                </if>
+                <if test="bean.isValid != null and bean.isValid != ''">
+                    and t1.IS_VALID like concat(concat('%',#{bean.isValid}),'%')
+                </if>
+            </if>
+        </where>
+        <choose>
+            <when test="pOrderBy != null and pOrderBy != ''">
+                order by ${pOrderBy}
+            </when>
+            <otherwise>
+                order by t1.BELONG_TABLE, t1.VIEW_NAME, t1.SN asc
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- 分页查询 OrUSER_TABLE_MODEL -->
+    <select id="searchUserTableModelByPageOr" parameterType="java.util.Map" resultMap="UserTableModelDTOMap">
+        select
+        t1.id                             ,
+        t1.user_id                        ,
+        t1.field_name                     ,
+        t1.field_identify                 ,
+        t1.field_model                    ,
+        t1.sn                             ,
+        t1.belong_table                   ,
+        t1.view_name                      ,
+        t1.is_valid
+        from user_table_model t1
+        <where>
+            <if test="bean != null">
+                <trim prefix="(" suffix=")" prefixOverrides="or">
+                    <if test="bean.id != null and bean.id != ''">
+                        or t1.ID =#{bean.id}
+                    </if>
+                    <if test="bean.userId != null and bean.userId != ''">
+                        or t1.USER_ID like concat(concat('%',#{bean.userId}),'%')
+                    </if>
+                    <if test="bean.fieldName != null and bean.fieldName != ''">
+                        or t1.FIELD_NAME like concat(concat('%',#{bean.fieldName}),'%')
+                    </if>
+                    <if test="bean.fieldIdentify != null and bean.fieldIdentify != ''">
+                        or t1.FIELD_IDENTIFY like concat(concat('%',#{bean.fieldIdentify}),'%')
+                    </if>
+                    <if test="bean.fieldModel != null and bean.fieldModel != ''">
+                        or t1.FIELD_MODEL like concat(concat('%',#{bean.fieldModel}),'%')
+                    </if>
+                    <if test="bean.sn != null">
+                        or t1.SN like concat(concat('%',#{bean.sn}),'%')
+                    </if>
+                    <if test="bean.belongTable != null and bean.belongTable != ''">
+                        or t1.BELONG_TABLE like concat(concat('%',#{bean.belongTable}),'%')
+                    </if>
+                    <if test="bean.viewName != null and bean.viewName != ''">
+                        or t1.VIEW_NAME like concat(concat('%',#{bean.viewName}),'%')
+                    </if>
+                    <if test="bean.isValid != null and bean.isValid != ''">
+                        or t1.IS_VALID like concat(concat('%',#{bean.isValid}),'%')
+                    </if>
+                </trim>
+            </if>
+        </where>
+        <choose>
+            <when test="pOrderBy != null and pOrderBy != ''">
+                order by ${pOrderBy}
+            </when>
+            <otherwise>
+                order by t1.BELONG_TABLE, t1.VIEW_NAME, t1.SN asc
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- 查询列表 USER_TABLE_MODEL -->
+    <select id="searchUserTableModel" parameterType="java.util.Map" resultMap="UserTableModelDTOMap">
+        select
+            t1.id ,
+            t1.user_id ,
+            t1.field_name ,
+            t1.field_identify ,
+            t1.field_model ,
+            t1.sn ,
+            t1.belong_table ,
+            t1.view_name ,
+            t1.is_valid
+        from user_table_model t1
+        where
+            t1.USER_ID = #{userId} and t1.BELONG_TABLE = #{belongTable} and t1.VIEW_NAME = #{viewName}
+            <if test="isValid != null">
+                and t1.IS_VALID = #{isValid}
+            </if>
+        order by t1.SN asc
+    </select>
+
+    <!-- 主键查询对象 USER_TABLE_MODEL -->
+    <select id="findUserTableModelById" parameterType="java.util.Map" resultMap="UserTableModelDTOMap">
+        select
+            t1.id ,
+            t1.user_id ,
+            t1.field_name ,
+            t1.field_identify ,
+            t1.field_model ,
+            t1.sn ,
+            t1.belong_table ,
+            t1.view_name ,
+            t1.is_valid
+        from user_table_model t1
+            where t1.id = #{id}
+    </select>
+
+    <!-- 新增对象 USER_TABLE_MODEL -->
+    <insert id="insertUserTableModel" parameterType="avicit.assets.device.usertablemodel.dto.UserTableModelDTO">
+        insert into user_table_model
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="fieldName != null">
+                field_name,
+            </if>
+            <if test="fieldIdentify != null">
+                field_identify,
+            </if>
+            <if test="fieldModel != null">
+                field_model,
+            </if>
+            <if test="sn != null">
+                sn,
+            </if>
+            <if test="belongTable != null">
+                belong_table,
+            </if>
+            <if test="viewName != null">
+                view_name,
+            </if>
+            <if test="isValid != null">
+                is_valid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldName != null">
+                #{fieldName,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldIdentify != null">
+                #{fieldIdentify,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldModel != null">
+                #{fieldModel,jdbcType=VARCHAR},
+            </if>
+            <if test="sn != null">
+                #{sn,jdbcType=DECIMAL},
+            </if>
+            <if test="belongTable != null">
+                #{belongTable,jdbcType=VARCHAR},
+            </if>
+            <if test="viewName != null">
+                #{viewName,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                #{isValid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 批量新增对象 USER_TABLE_MODEL -->
+    <insert id="insertUserTableModelList" parameterType="java.util.List">
+        insert into user_table_model(
+            id,
+            user_id,
+            field_name,
+            field_identify,
+            field_model,
+            sn,
+            belong_table,
+            view_name,
+            is_valid
+        )
+        <foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+            select
+            #{item.id,jdbcType=VARCHAR},
+            #{item.userId,jdbcType=VARCHAR},
+            #{item.fieldName,jdbcType=VARCHAR},
+            #{item.fieldIdentify,jdbcType=VARCHAR},
+            #{item.fieldModel,jdbcType=VARCHAR},
+            #{item.sn,jdbcType=DECIMAL},
+            #{item.belongTable,jdbcType=VARCHAR},
+            #{item.viewName,jdbcType=VARCHAR},
+            #{item.isValid,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+    </insert>
+
+    <!-- 主键删除 USER_TABLE_MODEL -->
+    <delete id="deleteUserTableModelById" parameterType="java.lang.String">
+		delete from user_table_model where id = #{id}
+    </delete>
+
+    <!-- 根据“用户id”、“所属表”、“视图名称”批量删除数据 -->
+    <delete id="deleteUserTableModelList" parameterType="java.util.Map">
+        delete from user_table_model t1 where t1.USER_ID = #{userId} and t1.BELONG_TABLE = #{belongTable} and t1.VIEW_NAME = #{viewName}
+    </delete>
+
+    <!-- 查询列表 USER_TABLE_MODEL -->
+    <select id="getUserViewList" parameterType="java.util.Map" resultType="java.lang.String">
+        select DISTINCT t1.view_name
+        from user_table_model t1
+        where t1.USER_ID = #{userId} and t1.BELONG_TABLE = #{belongTable}
+        order by t1.VIEW_NAME asc
+    </select>
+</mapper>

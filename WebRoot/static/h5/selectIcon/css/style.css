@@ -1,0 +1,48 @@
+* {
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"SimSun";
+}
+
+.icon-list {
+	margin-bottom: 10px;
+}
+.clear {
+	display: block;
+	width:100%;
+	height: 1px;
+	clear:both;
+}
+.list-title {
+	font-size: 18px;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #d9d9d9;
+}
+ul {
+	margin:0;
+	padding:0 12px;
+}
+li {
+	color:#666;
+	list-style: none;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 6px 10px;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+}
+li .iconfont{
+	font-size: 18px;
+}
+li:hover {
+	color:#66ccff;
+}
+.avic-icon-lists li .iconfont{
+	font-size: 20px;
+}
+.Ant-Design-lists li .iconfont{
+	font-size: 22px;
+}

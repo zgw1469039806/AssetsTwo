@@ -1,0 +1,128 @@
+a:focus {
+	outline: none;
+}
+
+/*layout弹出框调整Start*/
+.layui-layer-title {
+	background-color: #fff !important;
+	color: #525252 !important;
+	font-weight: bold;
+	line-height: 35px !important;
+	height: 35px !important;
+	border-bottom: 1px solid #e8e8e8 !important;
+}
+
+.index-model .layui-layer-btn {
+	background-color: #fff;
+}
+
+.layui-layer-setwin {
+	top: 8px !important;
+}
+
+.layui-layer-setwin a {
+	color: #6b6b6b;
+}
+
+.layui-layer-setwin a:hover {
+	text-decoration: none;
+}
+
+.layui-layer-setwin .layui-layer-min cite {
+	display: none;
+}
+
+.layui-layer-min:before {
+	font-family: "iconfont" !important;
+	content: "\e615";
+}
+
+.layui-layer-max {
+	background: none !important;
+}
+
+.layui-layer-max:before {
+	font-family: "iconfont" !important;
+	content: "\e614";
+}
+
+.layui-layer-close {
+	font-size: 16px;
+	background-image: none !important;
+}
+
+.layui-layer-close:before {
+	font-family: "iconfont" !important;
+	content: "\e60d";
+	font-size: 12px;
+}
+
+.layui-layer.bs-modal .layui-layer-btn a {
+	padding: 0 6px !important;
+}
+
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0,
+	.layui-layer-btn .layui-layer-btn0 {
+	background: #0066cc!important;
+    color: #FFF!important;
+    border-color: #0066cc!important;
+}
+
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0:hover,
+	.layui-layer-btn .layui-layer-btn0:hover, .form-tool-btn:focus {
+	background: #0f75e1 !important;
+	border-color: #0f75e1 !important;
+	
+}
+
+.panel-header {
+	color: #454545;
+	background: #efefef;
+}
+
+.layui-layer-btn a {
+	border-radius: 3px !important;
+}
+
+.layui-layer-btn .layui-layer-btn0, .layui-layer-btn1, .layui-layer-btn2
+	{
+	font-size: 12px;
+	color: #FFF;
+	height: 28px;
+	text-align: center;
+	min-width: 66px;
+	min-width: 46px\9;
+	margin:0;
+	padding: 0 10px;
+	line-height: 26px !important;
+	margin-right: 5px;
+	background: #0079fe;
+	border-color: #0079fe;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+	text-shadow: none;
+}
+
+.layui-layer-btn .layui-layer-btn0:hover, .form-tool-btn:focus {
+	height: 28px;
+	color: #FFF;
+	padding: 0 10px;
+	line-height: 26px;
+	background: #006efd;
+	text-shadow: none;
+	border-color: #006efd;
+}
+
+.layui-layer-btn1, .layui-layer-btn2 {
+	background-color: #ffffff !important;
+	border: 1px solid #d9d9d9 !important;
+	color: #858585 !important
+}
+
+.layui-layer-btn1:hover, .layui-layer-btn2:hover {
+	background-color: #0066cc !important;
+    border: 1px solid #0066cc !important;
+    color: #fff !important;
+}
+
+/*layout弹出框调整End*/

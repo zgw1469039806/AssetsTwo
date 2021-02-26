@@ -1,0 +1,311 @@
+/*该样式只处理后期新增跟颜色换肤相关的样式，无关布局相关样式  */
+.layui-layer-btn a:hover{
+	opacity: 1!important;
+}
+/* 发起流程换肤样式 */
+.nw-title i{
+	color:#505364!important;
+}
+.nw-list .nw-l-title span{
+	border-bottom: 1px solid #505364!important;
+}
+/* 开关样式换肤 */
+.bootstrap-switch > div > span.bootstrap-switch-primary{
+	background: #505364!important;
+}
+.bootstrap-switch.bootstrap-switch-focused {
+    border-color: #505364!important;
+    outline: 0;
+    box-shadow: none!important;
+}
+/* 定时任务按钮样式 */
+#createExpr{
+    padding: 0px 11px!important;
+    border-radius: 4px;
+}
+.toolbar-right-table{
+	border-top:1px solid #ddd!important;
+}
+.toolbar-right-table .skins{
+	margin:0 15px 0 5px;
+}
+
+/* 流程中心按钮换肤 */
+.ac-btn,
+.btnBar .listBtn{
+	background: #505364!important;
+}
+.ac-btn:hover,
+.btnBar .listBtn:hover{
+	background: #5b5e70!important;
+}
+.menu .submenu li {
+    background: #505364!important;
+}
+.menu .submenu li:hover {
+    background: #5b5e70!important;
+}
+.menuBtn .childMenu .cm-btn {
+    background: #505364!important;
+}
+.menuBtn .childMenu .cm-btn:hover {
+    background: #5b5e70!important;
+}
+
+/*流程审批页面颜色样式复写  */
+.titleBar {
+    background: #505364!important;
+    border: 1px solid #505364!important;
+}
+
+.btns .switch {
+    border: 1px solid #505364!important;
+}
+.btns .switch>div.on {
+    background: #505364!important;
+    color: #FFF!important;
+}
+.btns .switch>div {
+    background: #FFF!important;
+    color: #505364!important;
+}
+
+.goTop {
+	display: none;
+	width: 52px;
+	height: 52px;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	z-index: 9999;
+	background: #505364;
+	-khtml-opacity: 0.6;
+	-moz-opacity: 0.6;
+	filter: alpha(opacity=60);
+	filter: "alpha(opacity=60)";
+	opacity: 0.6;
+	filter: progid: DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+.icon_goTop {
+	display: block;
+	width: 52px;
+	height: 52px;
+	background: url(../../console/dashboard/images/goTop.png) no-repeat center;
+}
+.goTop:hover {
+	opacity: 1;
+	filter: progid: DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+/* 前台首页 个人中心弹层换肤样式 */
+.userinfo-list .userinfo-li:hover{
+	background: #ededef;
+}
+.userinfo-list .userinfo-li:hover a,
+.userinfo-list .userinfo-li:hover i{
+	color: #505362;
+}
+.toolbar .userinfo:hover {
+	background: #5b5e70;
+}
+.toolbar .iconbtn>ul> li:hover{
+	background: #5b5e70;
+}
+/* 上传附件换肤样式 */
+.uploader-file-picker .webuploader-pick{
+	background:#505364;
+}
+.uploader-file-picker .webuploader-pick:hover{
+	background: #5b5e70;
+}
+.uploader-file-all-download .webuploader-pick {
+	color: #505364;
+}
+.uploader-file-all-download .webuploader-pick:hover{
+	color: #474958;
+	background: #fff;
+}
+/* 复写新版流程页面换肤样式开始 */
+.top-unlock-icon i{
+	color:#969696!important;
+}
+.top-lock-icon i{
+	color:#505364!important;
+}
+#top-tool .top-btns li a:hover {
+    background-color: #505364!important;
+    color:#fff!important;
+    border-color: #505364!important;
+}
+#top-tool .top-btns li a:hover em{
+	color: #fff!important;
+}
+#nav-wrap li a:hover {
+    color: #505364!important;
+}
+#nav-wrap li a.active {
+    border-bottom: 3px solid #505364!important;
+    color: #505364!important;
+}
+.chose-panel .sub-tree-nav li.on{
+	color:#505364!important;
+}
+.checkedbox-list .cb-tool .btns li:hover{
+	background: none; 
+	color:#505364!important;
+}
+.opinion-panel .op-tools .often >li:hover{
+    border: 1px solid #505364!important;
+    color:#505364!important;
+}
+.opinion-panel .op-tools .often >li:hover em{
+	color:#505364!important;
+}
+.opinion-panel .op-btns div.like:hover,
+.opinion-panel .op-btns div.setting:hover {
+   color:#505364!important;
+   border:1px solid #505364!important;
+}
+
+.opinion-panel .op-btns div.like:hover em.icon-c-like,
+.opinion-panel .op-btns div.setting:hover em.icon-c-setting{
+	color:#505364!important;
+}
+.opinion-panel .op-btns .setting .title-tool em:hover{
+	color:#505364!important; 
+}
+.checkedbox-list .cb-checked-area .elm-checked{
+	background:#fff!important;
+	border:1px solid #505364!important;
+	color:#505364!important;
+}
+.checkedbox-list .cb-checked-area .elm-checked.on{
+	background:#505364!important;
+	border:1px solid #505364!important;
+	color:#fff!important;
+}
+.opinion-panel .setting-detail .sm-checkbox.on{
+	color:#505364!important;
+}
+.opinion-panel .op-btns .setting-detail li:hover{
+	color:#505364!important;
+	background: #f2f2f2!important;
+}
+.wf-title .btns .btn-sm:hover{
+	background-color: #fff!important;
+	border:1px solid #505364!important;
+}
+.wf-title .btns .btn-sm:hover span{
+	color:#505364!important;
+}
+.wf-title .btns .btn-sm:hover span.glyphicon-file:before{
+	color:#505364!important
+}
+#top-tool .sub-list .sub-list-li a:hover{
+	background: #ededef!important;
+	color:#505364!important;
+}
+#top-tool .sub-list.b li a:hover{
+	color:#505364!important;
+    background-color: #ededef!important;
+}
+/* 复写新版流程页面换肤样式 结束*/
+/* 发起流程页面换肤样式*/
+.nw-list li i {
+	color:#435165;
+}
+.nw-list li a {
+    color: #435165!important;
+}
+.nw-list li:hover a {
+    color: #505364!important;
+}
+.nw-list li a .sub{
+	color:#8893a2!important;
+}
+.nw-list .nw-l-cont:hover{
+	background: #ededef;
+}
+.nw-list .nw-l-cont:hover i{
+	color: #505364!important;
+}
+/* 发起流程页面换肤样式*/
+.guider .g-title,.title-box{
+	background: url("../portlet/img/title_left_black.png") no-repeat left center;
+}
+.guider .g-title a:hover{
+	background:#505364; 
+	border-color:#505364; 
+}
+.guider .g-title a:hove i{
+	color: #fff;
+}
+/* 重色按钮强调按钮样式 */
+.btn-point {
+	background: #505364!important;
+	color: #FFF!important;
+	border-color: #505364!important;
+	box-shadow:none;
+}
+
+.btn-point:hover {
+	background: #5b5e70!important;
+	border-color: #5b5e70!important;
+	color: #fff!important
+}
+.btn-point i{
+	color:#ffffff!important;
+}
+.btn-point:hover i{
+	color:#ffffff!important;
+}
+
+.navList>ul li.on{
+	color: #000000;
+}
+.subChild.on .c-title{
+	color: #000000!important;
+}
+.subChild.on .c-title i{
+	color: #000000!important;
+}
+.subChild.on{
+	background: #eceff4!important;
+}
+.navList>ul li.on, .navList>ul li:hover{
+	background: #eceff4!important;
+}
+/* 流程跟踪列表换肤样式开始 */
+.panel-main table.avicTable tbody tr:hover {
+    background: #f6f6f7!important;
+}
+.panel-main table.avicTable td.merge {
+    color: #333!important;
+    background: #ededef!important;
+}
+/* 流程跟踪列表换肤样式结束 */
+/* 附件提示下载及刪除按钮开始   */
+.uploader-file-infos-tools span.uploader-file-infos-download{
+	background: #505364;
+	border: 1px solid #505364;
+	color: #ffffff;
+}
+.uploader-file-infos-tools span:hover {
+    background: #505364;
+    border: 1px solid #505364;
+}
+/* 附件提示下载刪除按钮结束   */
+
+/*解决简约皮肤下搜索框遮挡菜单问题  */
+.rightTool .top_search{
+	background:#505364;
+	position: relative;
+	padding-left: 10px;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a{
+	background-color: #f5f5f6!important;
+    color: #505364!important;
+    background-image:none!important;
+	filter:none;
+}

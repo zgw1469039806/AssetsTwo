@@ -1,0 +1,88 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+img {
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.safe {
+	margin: 200px auto;
+	width: 454px;
+	background: url(images/safe01.png) no-repeat;
+	padding: 12px 0 15px 146px;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.safeA {
+	color: #424f72;
+}
+
+.safeB {
+	color: #ff1600;
+	padding-left: 20px;
+	background: url(images/safe03.png) 0 -332px no-repeat;
+}
+
+.safeC {
+	height: 46px;
+	margin-top: 4px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.safeInput {
+	background: url(images/safe04.jpg) no-repeat;
+	width: 235px;
+	height: 30px;
+	margin-top: 2px;
+	padding: 13px 6px 0;
+	float: left;
+	margin-right: 10px;
+}
+
+.safeInput input {
+	height: 20px;
+	line-height: 20px;
+	color: #a9a9a9;
+	width: 233px;
+	border: 0;
+	outline: none
+}
+
+.safeBtn {
+	float: left;
+	width: 144px;
+	height: 46px;
+	text-align: center;
+	color: #fff;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	line-height: 46px;
+}
+
+.safeBtn a {
+	color: #fff;
+	display: block;
+	width: 144px;
+	height: 46px;
+	background: url(images/safe02.png) no-repeat;
+}
+
+.safeBtn a:hover {
+	background: url(images/safe02.png) 0 -50px no-repeat;
+}
+
+.safeD {
+	width: 247px;
+}
+
+.safeD a {
+	color: #388fc9;
+}

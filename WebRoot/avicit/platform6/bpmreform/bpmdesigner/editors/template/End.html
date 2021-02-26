@@ -1,0 +1,262 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="end" class="prop_wrap" style="display:none">
+	<form id="jbxx" action="" class="form-horizontal">
+		<div class="avic-flow-default-theme">
+                <div class="twoTabNav" style="width: 100%">
+                    <!-- 标签主体Start -->
+                    <ul class="nav-tabs">
+                        <li class="active">
+                            <a href="javascript:void(0)">基本信息</a>
+                        </li>
+                        <!--<li class="">
+                            <a href="javascript:void(0)">权限</a>
+                        </li>-->
+                     	<li>
+                            <a href="javascript:void(0)" <c:if test="${isUflow == '2'}">style="display:none"</c:if>>事件</a>
+                        </li>
+                    </ul>
+                    <ul class="tab-cont">
+                        <li class="active">
+                            <div class="demoCont">
+                            <!-- html:[结束节点] 基本信息 开始 -->
+                            	<div class="base_info ">
+                                   <div class="row base_info_bar">
+                                        <div class="label form-process-separate-label"><span>基本</span></div>
+                                    </div>
+                                    
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1   control-label form-process-properties-label">节点名称</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="xian_shi_ming_cheng" name="xian_shi_ming_cheng">
+                                        </div>
+                                    </div>
+                                    <div class="form-group"  style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1   control-label form-process-properties-label">逻辑标识</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="luo_ji_biao_shi" name="luo_ji_biao_shi" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- html:[结束节点] 基本信息 结束 -->
+                            </div>
+                        </li>
+                         <!--<li class="">
+                            <div class="demoCont">
+                            &lt;!&ndash; html:[结束节点] 权限 开始 &ndash;&gt;
+                            	<div class="">
+                                    <div class="row base_info_bar" >
+                                        <div class="label"><span>正文</span></div>
+                                    </div>
+                                    <div class="row" name="div-wordRead">
+		                                        <div class="col-xs-6">
+		                                            <div class="form-group ">
+		                                                <label for="" class="col-xs-7 control-label form-process-properties-label">查看正文</label>
+		                                                <div class="col-xs-5 clear-left-padding ">
+		                                                    <label class="checkbox-parent-label">
+		                                                        <input name="wordRead" id="wordRead" type="checkbox" value="">
+		                                                    </label>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+                                    	</div>
+                                    	<div class="row hidden" name="container-wordRead">
+	                                    	<div class="col-xs-5 col-xs-offset-1">
+		                                            <div class="form-group ">
+		                                                <label for="" class="col-xs-7 control-label form-process-properties-label">显示清稿</label>
+		                                                <div class="col-xs-5 clear-left-padding word-auth-padding">
+		                                                 <label class="checkbox-parent-label">
+		                                                        <input name="read1" id="read1" type="checkbox" value="">
+		                                                    </label>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+		                                        <div class="col-xs-5">
+		                                            <div class="form-group ">
+		                                                <label for="" class="col-xs-7 control-label form-process-properties-label">显示留痕</label>
+		                                                <div class="col-xs-5 clear-left-padding word-auth-padding">
+		                                                 <label class="checkbox-parent-label">
+		                                                        <input name="read2" id="read2" type="checkbox" value="">
+		                                                    </label>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+		                                </div>
+	                                    <div class="row" name="div-wordPrint">
+		                                        <div class="col-xs-6">
+		                                            <div class="form-group ">
+		                                                <label for="" class="col-xs-7 control-label form-process-properties-label">打印正文</label>
+		                                                <div class="col-xs-5 clear-left-padding ">
+		                                                 <label class="checkbox-parent-label">
+		                                                        <input name="wordPrint" id="wordPrint" type="checkbox" value="">
+		                                                    </label>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+                                    	</div>
+                                    	<div class="row hidden" name="container-wordPrint">
+	                                    	<div class="col-xs-12">
+	                                    			<div class="form-group">
+			                                            <label  class="col-xs-5 col-xs-offset-1 control-label form-process-properties-label">非涉密文档打印人</label>
+			                                        </div>
+	                                    			<div class="form-group">
+			                                            <div class="col-xs-8 col-xs-offset-1 clear-right-padding">
+			                                                <input type="hidden" class="form-control" id="taskFormValuewordSecret1PrintUser" name="taskFormValuewordSecret1PrintUser" readonly>
+			                                                <input type="text" class="form-control" id="taskFormTextwordSecret1PrintUser" name="taskFormTextwordSecret1PrintUser" readonly>
+			                                            </div>
+			                                            <div class="col-xs-3 clear-right-padding">
+			                                                <button name="btnTaskFormwordSecret1PrintUser" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+			                                            </div>
+			                                        </div>
+	                                    	</div>
+	                                    	<div class="col-xs-12">
+	                                    			<div class="form-group">
+			                                            <label  class="col-xs-5 col-xs-offset-1 control-label form-process-properties-label">一般涉密文档打印人</label>
+			                                        </div>
+	                                    			<div class="form-group">
+			                                            <div class="col-xs-8 col-xs-offset-1 clear-right-padding">
+			                                                <input type="hidden" class="form-control" id="taskFormValuewordSecret2PrintUser" name="taskFormValuewordSecret2PrintUser" readonly>
+			                                                <input type="text" class="form-control" id="taskFormTextwordSecret2PrintUser" name="taskFormTextwordSecret2PrintUser" readonly>
+			                                            </div>
+			                                            <div class="col-xs-3 clear-right-padding">
+			                                                <button name="btnTaskFormwordSecret2PrintUser" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+			                                            </div>
+			                                        </div>
+	                                    	</div>
+	                                    	<div class="col-xs-12">
+	                                    			<div class="form-group">
+			                                            <label  class="col-xs-5 col-xs-offset-1 control-label form-process-properties-label">重点涉密文档打印人</label>
+			                                        </div>
+	                                    			<div class="form-group">
+			                                            <div class="col-xs-8 col-xs-offset-1 clear-right-padding">
+			                                                <input type="hidden" class="form-control" id="taskFormValuewordSecret3PrintUser" name="taskFormValuewordSecret3PrintUser" readonly>
+			                                                <input type="text" class="form-control" id="taskFormTextwordSecret3PrintUser" name="taskFormTextwordSecret3PrintUser" readonly>
+			                                            </div>
+			                                            <div class="col-xs-3 clear-right-padding">
+			                                                <button name="btnTaskFormwordSecret3PrintUser" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+			                                            </div>
+			                                        </div>
+	                                    	</div>
+	                                    	<div class="col-xs-12">
+	                                    			<div class="form-group">
+			                                            <label  class="col-xs-5 col-xs-offset-1 control-label form-process-properties-label">核心涉密文档打印人</label>
+			                                        </div>
+	                                    			<div class="form-group">
+			                                            <div class="col-xs-8 col-xs-offset-1 clear-right-padding">
+			                                                <input type="hidden" class="form-control" id="taskFormValuewordSecret4PrintUser" name="taskFormValuewordSecret4PrintUser" readonly>
+			                                                <input type="text" class="form-control" id="taskFormTextwordSecret4PrintUser" name="taskFormTextwordSecret4PrintUser" readonly>
+			                                            </div>
+			                                            <div class="col-xs-3 clear-right-padding">
+			                                                <button name="btnTaskFormwordSecret4PrintUser" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+			                                            </div>
+			                                        </div>
+	                                    	</div>
+		                                </div>
+                                </div>
+                            &lt;!&ndash; html:[结束节点] 权限 结束 &ndash;&gt;
+                            </div>
+                        </li>-->
+                       <li <c:if test="${isUflow == '2'}">style="display:none"</c:if>>
+                            <div class="demoCont">
+                                <div class="avic-digital-event-end-node">
+									<div class="form-group ">
+                                        <label class="col-xs-3 control-label form-process-properties-label">事件选择</label>
+                                        <div class="col-xs-9 form-process-properties-value">
+                                            <select class="form-control col-xs-12" name="eventSelect">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="" class="col-xs-3 control-label form-process-properties-label"><i class="required">*</i>事件名称</label>
+                                        <div class="col-xs-9 form-process-properties-value">
+                                            <input id="input-event-name" name="input-event-name" type="text"  class="form-control col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                                     <label for="" class="col-xs-3 control-label form-process-properties-label" style="text-align: left;"><i class="required">*</i>事&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件</label>
+                                        <div class="col-xs-9 form-process-properties-value">
+                                            <input id="input-event" name="input-event" type="text"  class="form-control col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-3 control-label form-process-properties-label"><i class="no_required">&nbsp;</i>事件类型</label>
+                                        <div class="col-xs-9 form-process-properties-value">
+                                            <select class="form-control" id="select-event-type" name="select-event-type">
+                                                <option value="start" selected="selected">前置事件</option>
+                                                <!--<option value="end">后置事件</option>-->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div >
+                                        <table class="table table-hover table-bordered table-fix" name="constants">
+                                            <thead>
+                                                <tr>
+                                                    <td>常量名</td>
+                                                    <td>常量值</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                   <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                   <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                  <div class="form-group" >
+                                            <div class="col-xs-3 col-xs-offset-9 start-auth-button" >
+                                            <button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-add-event">添加</button>
+                                            <button type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix hidden" name="btn-save-event">保存</button>
+                                        </div>
+                                    </div>
+                                    <div >
+                                        <table class="table table-hover table-bordered table-fix" name="table-event-value">
+                                            <thead>
+                                                <tr>
+                                                    <td style="width: 0%;display: none;"></td>
+                                                    <td>名称</td>
+                                                    <td>事件</td>
+                                                    <td>类型</td>
+                                                    <td>常量</td>
+                                                    <td>操作</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!--  <tr>
+                                                    <td>#</td>
+                                                    <td>Expr</td>
+                                                    <td>{b}='ABC'</td>
+                                                    <td>前置</td>
+                                                    <td>{b}='ABC'</td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" name="table-btn-event-delete"><i class="iconfont icon-delete"></i></a>
+                                                        <a href="javascript:void(0)" name="table-btn-event-modify" style="margin-left:5px"><i class="iconfont icon-edit"></i></a>
+                                                    </td>
+                                                </tr>  -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 标签主体End -->
+                </div>
+            </div>
+	</form>
+</div>

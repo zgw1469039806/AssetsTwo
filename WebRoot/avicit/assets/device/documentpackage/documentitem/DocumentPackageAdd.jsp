@@ -1,0 +1,441 @@
+<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="sec" uri="/WEB-INF/tags/shiro.tld" %>
+<%@taglib prefix="pt6" uri="/WEB-INF/tags/platform6.tld" %>
+<%@page import="avicit.platform6.commons.utils.ViewUtil" %>
+<%@page import="avicit.platform6.api.session.SessionHelper" %>
+<%@ page import="avicit.platform6.api.sysuser.dto.SysUser" %>
+
+<%
+	String importlibs = "common,form,table,fileupload,tree";
+	String pid = request.getParameter("id");
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ControllerPath = "assets/device/documentpackage/documentPackageController/operation/Add/null" -->
+    <title>添加</title>
+    <base href="<%=ViewUtil.getRequestPath(request)%>">
+
+	<%
+		String userId = SessionHelper.getLoginSysUserId(request);
+		SysUser user = SessionHelper.getLoginSysUser(request);
+		String userName = user.getName();
+		String userDeptId = SessionHelper.getCurrentDeptId(request);
+		String userDeptName = SessionHelper.getCurrentDeptName(request);
+	%>
+
+    <jsp:include page="/avicit/platform6/h5component/common/h5uiinclude-css.jsp">
+        <jsp:param value="<%=importlibs%>" name="importlibs"/>
+    </jsp:include>
+</head>
+<body class="easyui-layout" fit="true">
+<div data-options="region:'center',split:true,border:false" style="background-color:#F0F0F0;">
+    <form id='form'>
+        <input type="hidden" name="id"/>
+        <table class="form_commonTable">
+            <tr>
+				<th width="10%">
+					<label for="packageName">文档包名称:</label></th>
+				<td width="15%">
+					<input class="form-control input-sm" type="text" name="packageName" id="packageName"/>
+				</td>
+
+				<th width="10%">
+					<label for="creationDate">创建时间:</label></th>
+				<td width="15%">
+					<div class="input-group input-group-sm">
+						<input class="form-control date-picker hasDatepicker" type="text" name="creationDate" id="creationDate" value="(new Date()).toLocaleDateString()"/>
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</span>
+					</div>
+				</td>
+
+                <th width="10%">
+                    <label for="createdBy">创建人:</label></th>
+                <td width="15%">
+					<input type="hidden" id="createdBy" name="createdBy" value="<%=userId%>" readonly>
+					<input class="form-control" placeholder="请选择用户" type="text" id="createdByAlias" name="createdByAlias"  value="<%=userName%>" readonly>
+                </td>
+
+                <th width="10%">
+                    <label for="createdByDept">创建部门:</label></th>
+                <td width="15%">
+					<input type="hidden" id="createdByDept" name="createdByDept" value="<%=userDeptId%>">
+					<input class="form-control" placeholder="请选择部门" type="text" id="createdByDeptAlias" name="createdByDeptAlias" value="<%=userDeptName%>">
+                </td>
+            </tr>
+            <tr>
+                <th width="10%">
+                    <label for="packageDescribe">文档包描述:</label></th>
+                <td width="90%" colspan="7">
+					<textarea class="form-control input-sm" rows="3" name="packageDescribe" id="packageDescribe"></textarea>
+                </td>
+            </tr>
+        </table>
+	</form>
+	<form id='subform'>
+		<div style="border:solid 1px; margin:40px;">
+			<input type="hidden" name="documentUrl" id="documentUrl" />
+			<table class="form_commonTable">
+				<tr class="commonTableTr">
+					<th><label for="attachment">附件:</label></th>
+					<td colspan="<%=4 * 2 - 1%>">
+						<div id="attachment" class="attachment_div eform_mutiattach_auth"></div>
+					</td>
+				</tr>
+				<tr>
+					<th width="10%"><label for="documentName">文档名称:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="documentName" id="documentName" />
+					</td>
+
+					<th width="10%"><label for="documentType">文档类型:</label></th>
+					<td width="15%">
+						<input type="hidden"  id="documentType" name="documentType" types="selectLookup">
+						<input class="form-control input-sm" placeholder="请选择文档类型" type="text" id="documentTypeNames" name="documentTypeNames" readonly>
+					</td>
+
+					<th width="10%"><label for="documentCategory">文档分类:</label></th>
+					<td width="15%">
+						<input type="hidden"  id="documentCategory" name="documentCategory" types="selectLookup">
+						<input class="form-control input-sm" placeholder="请选择文档分类" type="text" id="documentCategoryNames" name="documentCategoryNames" readonly>
+					</td>
+
+					<th width="10%"><label for="lifeStage">生命阶段:</label></th>
+					<td width="15%">
+						<input type="hidden"  id="lifeStage" name="lifeStage" types="selectLookup">
+						<input class="form-control input-sm" placeholder="请选择生命阶段" type="text" id="lifeStageNames" name="lifeStageNames" readonly>
+					</td>
+				</tr>
+				<tr>
+					<th width="10%"><label for="documentAuthorAlias">作者:</label></th>
+					<td width="15%">
+						<div class="input-group  input-group-sm">
+							<input type="hidden" id="documentAuthor" name="documentAuthor">
+							<input class="form-control" placeholder="请选择用户" type="text" id="documentAuthorAlias" name="documentAuthorAlias">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+							</span>
+						</div>
+					</td>
+
+					<th width="10%"><label for="authorDeptAlias">作者所在部门:</label></th>
+					<td width="15%">
+						<div class="input-group  input-group-sm">
+							<input type="hidden" id="authorDept" name="authorDept">
+							<input class="form-control" placeholder="请选择部门" type="text" id="authorDeptAlias" name="authorDeptAlias">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-equalizer"></i>
+							</span>
+						</div>
+					</td>
+
+					<th width="10%"><label for="keyWord">关键字:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="keyWord" id="keyWord" />
+					</td>
+
+					<th width="10%"><label for="currentVersion">文档版本:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="currentVersion" id="currentVersion" />
+					</td>
+				</tr>
+				<tr>
+					<th width="10%"><label for="lastVersion">更新前版本:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="lastVersion" id="lastVersion" />
+					</td>
+
+					<th width="10%"><label for="documentState">文档状态:</label></th>
+					<td width="15%">
+						<input type="hidden"  id="documentState" name="documentState" types="selectLookup">
+						<input class="form-control input-sm" placeholder="请选择文档状态" type="text" id="documentStateNames" name="documentStateNames" readonly>
+					</td>
+
+					<th width="10%"><label for="languageCategory">语言类别:</label></th>
+					<td width="15%">
+						<input type="hidden"  id="languageCategory" name="languageCategory" types="selectLookup">
+						<input class="form-control input-sm" placeholder="请选择语言类别" type="text" id="languageCategoryNames" name="languageCategoryNames" readonly>
+					</td>
+
+					<th width="10%"><label for="secretLevel">文档密级:</label></th>
+					<td width="15%">
+						<input type="hidden"  id="secretLevel" name="secretLevel" types="selectLookup">
+						<input class="form-control input-sm" placeholder="请选择密级" type="text" id="secretLevelNames" name="secretLevelNames" readonly>
+					</td>
+				</tr>
+				<tr>
+					<th width="10%"><label for="documentAbstract">文档摘要:</label></th>
+					<td width="40%" colspan="3">
+						<textarea class="form-control input-sm" rows="3" name="documentAbstract" id="documentAbstract"></textarea>
+					</td>
+
+					<th width="10%"><label for="documentDescribe">文档描述:</label></th>
+					<td width="40%"  colspan="3">
+						<textarea class="form-control input-sm" rows="3" name="documentDescribe" id="documentDescribe"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th width="10%"><label for="personLiableAlias">责任人:</label></th>
+					<td width="15%">
+						<div class="input-group  input-group-sm">
+							<input type="hidden" id="personLiable" name="personLiable">
+							<input class="form-control" placeholder="请选择用户" type="text" id="personLiableAlias" name="personLiableAlias">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+							</span>
+						</div>
+					</td>
+
+					<th width="10%"><label for="participantsAlias">参与人:</label></th>
+					<td width="15%">
+						<div class="input-group  input-group-sm">
+							<input type="hidden" id="participants" name="participants">
+							<input class="form-control" placeholder="请选择用户" type="text" id="participantsAlias" name="participantsAlias">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+							</span>
+						</div>
+					</td>
+
+					<th width="10%"><label for="documentUpdateByAlias">更新人:</label></th>
+					<td width="15%">
+						<div class="input-group  input-group-sm">
+							<input type="hidden" id="documentUpdateBy" name="documentUpdateBy">
+							<input class="form-control" placeholder="请选择用户" type="text" id="documentUpdateByAlias" name="documentUpdateByAlias">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+							</span>
+						</div>
+					</td>
+
+					<th width="10%"><label for="documentUpdateDate">最近更新时间:</label></th>
+					<td width="15%">
+						<div class="input-group input-group-sm">
+							<input class="form-control date-picker" type="text" name="documentUpdateDate" id="documentUpdateDate" />
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th width="10%"><label for="belongProject">所属项目:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="belongProject" id="belongProject" />
+					</td>
+
+					<th width="10%"><label for="warehouseCatelog">文档仓库目录:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="warehouseCatelog" id="warehouseCatelog" />
+					</td>
+
+					<th width="10%"><label for="knowScopeAlias">知悉范围:</label></th>
+					<td width="15%">
+						<div class="input-group  input-group-sm">
+							<input type="hidden" id="knowScope" name="knowScope">
+							<input class="form-control" placeholder="请选择群组" type="text" id="knowScopeAlias" name="knowScopeAlias">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-equalizer"></i>
+							</span>
+						</div>
+					</td>
+
+					<th width="10%"><label for="documentLabel">文档标签:</label></th>
+					<td width="15%">
+						<input class="form-control input-sm" type="text" name="documentLabel" id="documentLabel" />
+					</td>
+				</tr>
+			</table>
+		</div>
+    </form>
+</div>
+<div data-options="region:'south',border:false" style="height: 60px;">
+    <div id="toolbar" class="datagrid-toolbar datagrid-toolbar-extend foot-formopera">
+        <table class="tableForm" style="border:0;cellspacing:1;width:100%">
+            <tr>
+                <td width="50%" style="padding-right:4%;" align="right">
+                    <a href="javascript:void(0)" class="btn btn-primary form-tool-btn btn-sm" role="button" title="保存" id="documentPackage_saveForm">保存</a>
+                    <a href="javascript:void(0)" class="btn btn-grey form-tool-btn btn-sm" role="button" title="返回" id="documentPackage_closeForm">返回</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<jsp:include page="/avicit/platform6/h5component/common/h5uiinclude-js.jsp">
+    <jsp:param value="<%=importlibs%>" name="importlibs"/>
+</jsp:include>
+
+<script type="text/javascript">
+    function closeForm() {
+        parent.documentPackage.closeDialog("insert");
+    }
+
+    function saveForm() {
+        var isValidate = $("#form").validate();
+        if (!isValidate.checkForm()) {
+            isValidate.showErrors();
+            $(isValidate.errorList[0].element).focus();
+            return false;
+        }
+        //限制保存按钮多次点击
+        $('#documentPackage_saveForm').addClass('disabled').unbind("click");
+        parent.documentPackage.save($('#form'), $('#subform'), "insert", callback);
+    }
+
+	//上传附件
+	function callback(id) {
+		var files = $('#attachment').uploaderExt('getUploadFiles');
+		if(files == 0){
+			closeForm();
+		}
+		else{
+			$("#id").val(id);
+			$('#attachment').uploaderExt('doUpload', id);
+		}
+	}
+
+	//附件上传完后执行
+	function afterUploadEvent(){
+		parent.documentPackage.closeDialog('insert');
+	}
+
+    $(document).ready(function () {
+        $('.date-picker').datepicker();
+        $('.time-picker').datetimepicker({
+            oneLine: true,//单行显示时分秒
+            closeText: '确定',//关闭按钮文案
+            showButtonPanel: true,//是否展示功能按钮面板
+            showSecond: false,//是否可以选择秒，默认否
+            beforeShow: function (selectedDate) {
+                if ($('#' + selectedDate.id).val() == "") {
+                    $(this).datetimepicker("setDate", new Date());
+                    $('#' + selectedDate.id).val('');
+                }
+            }
+        });
+
+        var currentDate = (new Date()).toLocaleDateString();
+		currentDate = currentDate.replaceAll('/', '-');
+		document.getElementById('creationDate').value = currentDate;
+
+        parent.documentPackage.formValidate($('#form'));
+
+		//初始化附件上传组件
+		$('#attachment').uploaderExt({
+			secretLevel: 'PLATFORM_FILE_SECRET_LEVEL',
+			afterUpload: function () {
+				return afterUploadEvent();
+			}
+		});
+
+        //保存按钮绑定事件
+        $('#documentPackage_saveForm').bind('click', function () {
+            saveForm();
+        });
+
+        //返回按钮绑定事件
+        $('#documentPackage_closeForm').bind('click', function () {
+            closeForm();
+        });
+
+		$('#documentTypeNames').on('focus', function (e) {	//文档类型绑定事件
+			//获取当前已选中的分类
+			var defaultLoadLookupId = $('#documentType').val();
+
+			new H5CommonSelect({type: 'lookupSelect', idFiled: 'documentType', textFiled: 'documentTypeNames', selectModel: 'multi', lookupcode: 'PLATFORM_FILE_TYPE', defaultLookupcodeId: defaultLoadLookupId});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#documentCategoryNames').on('focus', function (e) {	//文档分类绑定事件
+			//获取当前已选中的分类
+			var defaultLoadLookupId = $('#documentCategory').val();
+
+			new H5CommonSelect({type: 'lookupSelect', idFiled: 'documentCategory', textFiled: 'documentCategoryNames', selectModel: 'multi', lookupcode: 'PLATFORM_FILE_CATEGORY', defaultLookupcodeId: defaultLoadLookupId});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#lifeStageNames').on('focus', function (e) {	//生命阶段绑定事件
+			//获取当前已选中的分类
+			var defaultLoadLookupId = $('#lifeStage').val();
+
+			new H5CommonSelect({type: 'lookupSelect', idFiled: 'lifeStage', textFiled: 'lifeStageNames', selectModel: 'multi', lookupcode: 'PLATFORM_FILE_LIFE_STAGE', defaultLookupcodeId: defaultLoadLookupId});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#documentAuthorAlias').on('focus', function (e) {	//文档作者绑定事件
+			new H5CommonSelect({type: 'userSelect', idFiled: 'documentAuthor', textFiled: 'documentAuthorAlias'});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#authorDeptAlias').on('focus', function (e) {	//文档作者部门绑定事件
+			new H5CommonSelect({type: 'deptSelect', idFiled: 'authorDept', textFiled: 'authorDeptAlias'});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#documentStateNames').on('focus', function (e) {	//文档状态绑定事件
+			//获取当前已选中的分类
+			var defaultLoadLookupId = $('#documentState').val();
+
+			new H5CommonSelect({type: 'lookupSelect', idFiled: 'documentState', textFiled: 'documentStateNames', selectModel: 'multi', lookupcode: 'PLATFORM_FILE_STATE', defaultLookupcodeId: defaultLoadLookupId});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#languageCategoryNames').on('focus', function (e) {	//语言类别绑定事件
+			//获取当前已选中的分类
+			var defaultLoadLookupId = $('#languageCategory').val();
+
+			new H5CommonSelect({type: 'lookupSelect', idFiled: 'languageCategory', textFiled: 'languageCategoryNames', selectModel: 'multi', lookupcode: 'PLATFORM_LANGUAGE_CATEGORY', defaultLookupcodeId: defaultLoadLookupId});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#secretLevelNames').on('focus', function (e) {	//文档密级绑定事件
+			//获取当前已选中的分类
+			var defaultLoadLookupId = $('#secretLevel').val();
+
+			new H5CommonSelect({type: 'lookupSelect', idFiled: 'secretLevel', textFiled: 'secretLevelNames', selectModel: 'multi', lookupcode: 'SECRET_LEVEL', defaultLookupcodeId: defaultLoadLookupId});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#personLiableAlias').on('focus', function (e) {	//责任人绑定事件
+			new H5CommonSelect({type: 'userSelect', idFiled: 'personLiable', textFiled: 'personLiableAlias'});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#participantsAlias').on('focus', function (e) {	//参与人绑定事件
+			new H5CommonSelect({type: 'userSelect', idFiled: 'participants', textFiled: 'participantsAlias', selectModel: 'multi'});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#documentUpdateByAlias').on('focus', function (e) {	//更新人绑定事件
+			new H5CommonSelect({type: 'userSelect', idFiled: 'documentUpdateBy', textFiled: 'documentUpdateByAlias'});
+			this.blur();
+			nullInput(e);
+		});
+
+		$('#knowScopeAlias').on('focus', function (e) {	//文档知悉范围绑定事件
+			new H5CommonSelect({type: 'groupSelect', idFiled: 'knowScope', textFiled: 'knowScopeAlias', selectModel: 'multi'});
+			this.blur();
+			nullInput(e);
+		});
+
+        $('.date-picker').on('keydown', nullInput);
+        $('.time-picker').on('keydown', nullInput);
+    });
+</script>
+</body>
+</html>

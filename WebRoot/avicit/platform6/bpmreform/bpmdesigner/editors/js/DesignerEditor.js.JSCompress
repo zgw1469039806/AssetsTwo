@@ -1,0 +1,27 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="DesignerEditor.js">
+    <auto value="1" />
+    <sourcefile path=".\cell\MyBase.js" />
+    <sourcefile path=".\cell\MyCustom.js" />
+    <sourcefile path=".\cell\MyEnd.js" />
+    <sourcefile path=".\cell\MyExclusive.js" />
+    <sourcefile path=".\cell\MyForeach.js" />
+    <sourcefile path=".\cell\MyFork.js" />
+    <sourcefile path=".\cell\MyJava.js" />
+    <sourcefile path=".\cell\MyJms.js" />
+    <sourcefile path=".\cell\MyJoin.js" />
+    <sourcefile path=".\cell\MyProcess.js" />
+    <sourcefile path=".\cell\MySql.js" />
+    <sourcefile path=".\cell\MyStart.js" />
+    <sourcefile path=".\cell\MyState.js" />
+    <sourcefile path=".\cell\MySubprocess.js" />
+    <sourcefile path=".\cell\MySwimlane.js" />
+    <sourcefile path=".\cell\MyTask.js" />
+    <sourcefile path=".\cell\MyTransition.js" />
+    <sourcefile path=".\cell\MyWs.js" />
+    <sourcefile path=".\cell\MyRules.js" />
+    <sourcefile path=".\cell\MyText.js" />
+    <sourcefile path=".\cell\MyRest.js" />
+    <sourcefile path=".\DesignerEditor.src.js" />
+</combinefile>
+</jscompress>

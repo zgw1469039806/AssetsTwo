@@ -1,0 +1,143 @@
+<form id="div_ud_function">
+    <style>
+        .expressionDisplay{
+            width:100%;
+            border:1px solid #6497e9;
+            height:165px;
+            background-color: #ffffff;
+            box-shadow:3px 3px 2px #a5c7fe;
+            -moz-box-shadow:3px 3px 2px #a5c7fe;
+            -webkit-box-shadow:3px 3px 2px #a5c7fe;
+            border-bottom-left-radius:5px;
+            border-bottom-right-radius:5px;
+            margin-left:2px;
+            margin-top:-6px;
+            display:none;
+            overflow: auto;
+        }
+    </style>
+    <div class="form-group property-control">
+        <label>控件id</label><input type="text" id="id" name="id"
+                                  isnull="false" class="form-control input-sm" placeholder="控件id" readonly>
+    </div>
+    <div class="form-group property-control">
+        <label>控件名称</label><input type="text" id="name" name="name"
+                                   isnull="false" class="form-control input-sm" placeholder="控件名称">
+    </div>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>url路径</label><input type="text" id="url" name="url"
+                                   isnull="false" class="form-control input-sm" placeholder="url路径">
+    </div>
+    <div class="form-group property-control" id="formpara">
+        <label>传递参数</label><input type="hidden"  name="formpara"
+                                  isnull="false" class="form-control input-sm">
+        <input type="hidden"  name="formparatype"
+               isnull="false" class="form-control input-sm">
+        <input type="text"  name="formparaname" readonly
+               isnull="false" class="form-control input-sm" placeholder="传递参数">
+        <div id="paratree" class="expressionDisplay">
+            <ul id="exprTree" class="ztree"></ul>
+        </div>
+    </div>
+
+</form>
+<script type="text/javascript">
+    var paras = engine.getPara("iframe");
+    var showFlag = false;
+    var setting = {
+        check: {
+            enable: true,
+            nocheckInherit: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            onCheck: function (event, treeId, treeNode) {
+                var treeObj = $.fn.zTree.getZTreeObj(treeId);
+                var nodes = treeObj.getCheckedNodes(true);
+                var paraname = [];
+                var formpara = [];
+                var paratype = [];
+                for (var i in nodes){
+                    paraname.push(nodes[i].name);
+                    formpara.push(nodes[i].id);
+                    paratype.push(nodes[i].paratype);
+                }
+                $("[name='formparaname']").val(paraname.join(","));
+                $("[name='formparatype']").val(paratype.join(","));
+                $("[name='formpara']").val(formpara.join(","));
+                engine.changSave();
+            }
+        }
+    };
+
+    $(document).on("click",function(e) {
+        if (showFlag) {
+
+            var x = e.clientX;
+            var y = e.clientY;
+            if ($("#paratree").length>0) {
+                var divx1 = $("#paratree").offset().left;
+                var divy1 = $("#paratree").offset().top - 20;
+                var divx2 = $("#paratree").offset().left + $("#paratree").outerWidth();
+                var divy2 = $("#paratree").offset().top + $("#paratree").outerHeight();
+                if (x < divx1 || x > divx2 || y < divy1 || y > divy2) {
+                    $(".expressionDisplay").hide();
+                    showFlag = false;
+                }
+            }
+        }
+    });
+    $('[name="formparaname"]').click(function(){
+        initParaTree('1',$("[name='formparaname']").val());
+        $(".expressionDisplay").show();
+        showFlag = true;
+    });
+
+    function initParaTree(type,formparaname){
+        var zNodes =[];
+        formparaname = formparaname || "";
+        var formarray = formparaname.split(",");
+        for (var para in paras){
+            if (para == "clone"){
+                continue;
+            }
+            var obj = {};
+            obj.name = paras[para]._key;
+            obj.id = paras[para]._key;
+            obj.pId = 0;
+            obj.paratype = '1';
+
+            for (var s in formarray){
+                if (obj.name == formarray[s]){
+                    obj.checked = true;
+                    break;
+                }
+            }
+            zNodes.push(obj);
+        }
+
+
+        $.fn.zTree.init($("#exprTree"), setting, zNodes);
+    }
+
+    self.propertyPageInit = function(treeNode) {
+        initParaTree(treeNode.attribute.buttontype, treeNode.attribute.formparaname);
+    }
+
+self.validateForm = function(form,treeNode){
+	if(form.url == null || form.url == ""){
+ 		 layer.msg('url路径不能为空！',{
+              icon: 2,
+              area: ['220px', ''],
+              closeBtn: 0
+          });
+ 		return false;
+ 	}
+	
+   	return true;
+};
+</script>

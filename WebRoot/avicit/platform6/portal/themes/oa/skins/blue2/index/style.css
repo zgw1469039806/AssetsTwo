@@ -1,0 +1,206 @@
+@charset "utf-8";
+.header .toolbar{
+	background-color: #1182fa;
+}
+.leftAside {
+	background: #ffffff;
+}
+.logoDom{
+	background-color: #0d63d5;
+	color: #fff;
+}
+.hideLeftMenu {
+    color: #ffffff;
+}
+.hideLeftMenu:hover {
+	color:#ffffff;
+}
+.navList>ul li,.navList>ul li{
+	background: #fff;
+	border-left:3px solid #fff;
+}
+.navList>ul li.on,.navList>ul li:hover {
+	background: #e6f7ff;
+	border-left:3px solid #509af7;
+}
+.navList .subList {
+	border: 1px solid #f0f0f0;
+     
+}
+.navList>ul>li{
+	color: #333333;
+} 
+.navList>ul li:hover{
+	color: #1182fa;
+}
+.navList>ul>li > i{
+	color:#969696;
+}
+.navListClone .subList {
+	background: #FFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    border:1px solid #e5e5e5\9;
+}
+.navList>ul li.on i, .navList>ul li:hover i{
+   color:#4f98f4;
+}
+.navListClone ul li {
+    color: #333333;
+}
+.navListClone ul li:hover {
+    color: #1182fa;
+}
+.tabs-header{
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.tabs{
+	
+	border-bottom: 1px solid #cad7e3;
+}
+.layui-layer-btn a{
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+}
+.index-model .layui-layer-btn .layui-layer-btn0 {
+	background: #0079fe;
+	border: 1px solid #0079fe;
+	color:#fff;
+}
+.index-model .layui-layer-btn .layui-layer-btn0:hover {
+	background: #006efd;
+	border-color: #006efd;
+	color:#fff;
+}
+.layui-layer-title {
+    border-bottom: 1px solid #0079fe!important;
+}
+.avic-smenu li:hover {
+    background: #e6f7ff;
+    padding-left:20px;
+}
+.layui-layer-btn1, .layui-layer-btn2 {
+    background-color: #ffffff!important;
+    border: 1px solid #d9d9d9!important;
+    color: #858585!important;
+}
+.layui-layer-btn1:hover, .layui-layer-btn2:hover {
+    background-color: #ffffff!important;
+    border: 1px solid #0079fe!important;
+    color: #0079fe!important;
+}
+.tabs li a.tabs-inner{
+	border-left:0;
+	border-top:0;
+	border-right:1px solid #cad7e3;
+	line-height: 32px!important;
+}
+.tabs li.tabs-selected a.tabs-inner{
+	background-color: #f2fbff;
+    color: #509af7;
+	border:0;
+	height:33px!important;
+	line-height: 30px!important;
+	border-bottom: 0;
+	border-right: 1px solid #cad7e3;
+}
+.tabs li a.tabs-close{
+	margin-top:-7px;
+}
+/* add by 右侧顶部换肤 */
+.toolbar .search{
+    border: 1px solid #0f75e1;
+    background:#0f75e1;
+}
+.toolbar .search input[type="text"] {
+    color: #fff;
+    border: none;
+    background:#0f75e1;
+}
+.toolbar .search input[type="text"]:focus {
+    box-shadow: none;
+}
+.toolbar .search .head-search {
+    color: #b2d7ff;
+}
+.toolbar .iconbtn li i {
+    color:#fff;
+    font-size:16px;
+}
+.dropdown-menu .btns .a-btn i {
+    color:#858585!important;
+}
+.dropdown-menu .btns .a-btn:hover i,
+.dropdown-menu .btns .a-btn:hover {
+    color:#4486f4!important;
+    background: #e6f7ff;
+}
+.avic-smenu li i {
+    margin-right: 12px;
+    color:#858585;
+}
+.toolbar .iconbtn .dropdown.open>i{
+	color:#ffffff;
+}
+.avic-smenu li i {
+    margin-right: 12px;
+    color:#858585!important;
+}
+.avic-smenu li:hover>i {
+    color:#4486f6!important;
+}
+.toolbar .userinfo {
+    color:#ffffff;
+    font-size:13px;
+}
+.m-btn-downarrow{
+	color:#969696;
+	font-size:12px;
+	line-height:22px;
+}
+.tabs-selected .m-btn-downarrow{
+	color:#4385f5;
+}
+.tabs li a.tabs-inner:hover {
+    background: #e6f7ff;
+    color: #509af7;
+    filter: none;
+}
+.tabs li.tabs-first:hover .m-btn-downarrow{
+	color:#4385f5;
+}
+.l-btn-text{
+	line-height: 32px;
+}
+.guider{
+	padding: 20px 0px 20px 0px!important;
+}
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0,
+.layui-layer-btn .layui-layer-btn0 {
+	background: #0079fe!important;
+	border-color: #0079fe!important;
+	color:#fff!important;
+}
+
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0:hover,
+.layui-layer-btn .layui-layer-btn0:hover {
+	background: #006efd!important;
+	border-color: #006efd!important;
+	color:#fff!important;
+}
+
+.navList>ul li:hover span.hlist:after {
+    color:#0079fe;
+}
+.navListClone .subList .subChild .c-title:hover{
+	background: #e6f7ff;
+}
+.subList .subChild:hover .c-title i,
+.subList .subChild:hover .c-title{
+    color:#0079fe;
+}
+.subList .subChild li:hover {
+    background:  #e6f7ff;
+    color:#1182fa;
+}
+

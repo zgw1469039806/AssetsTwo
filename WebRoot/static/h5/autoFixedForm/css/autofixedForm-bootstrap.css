@@ -1,0 +1,57 @@
+.form-group {
+	width:200px;
+}
+.form-inline .form-group {
+    display: inline-block;
+    *display:inline;
+    zoom:1;
+    margin-bottom: 0;
+    vertical-align: middle;
+    padding:5px 10px;
+}
+label {
+	display: inline-block;
+    *display:inline;
+    zoom:1;
+}
+.form-inline .form-control {
+	width:86px;
+	margin-left:90px;
+	vertical-align: middle;
+    display: inline-block;
+    *display:inline;
+    zoom:1;
+}
+
+.fixed-form {
+	width:200px;
+	clear: both;
+	position: relative;
+	display: inline-block;
+}
+.fixed-form label {
+	position: relative;
+    float: left;
+    width: 80px;
+    height: 100%;
+	line-height: 32px;
+	text-align: center;
+    margin-right: -80px;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    overflow: hidden;
+    font-size: 12px;
+}
+.fixed-form .ipt {
+	float: right;
+    width: 100%;
+    height: 100%;
+}
+.fixed-form .ipt .cont {
+	margin-left:80px;
+}
+.fixed-form .form-control {
+	margin:0;
+	width:100%;
+}

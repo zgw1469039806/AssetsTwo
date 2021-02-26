@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<context:annotation-config/>
+
+    <import resource="classpath*:spring-config-exception.xml" />
+
+
+	<!-- 根据内容自动转向视图解析器配置，根据不同的类型转向到不同的视图解析器，位于视图解析器链的顶端 -->
+	<bean id="contentNegotiationManager" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="0"></property>
+        <property name="contentNegotiationManager">
+            <bean class="org.springframework.web.accept.ContentNegotiationManager">
+                <constructor-arg>
+                    <list>
+                        <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+                            <constructor-arg>
+                                <map>
+                                    <entry key="htm" value="text/html"></entry>
+                                    <entry key="html" value="text/html"></entry>
+                                    <entry key="json" value="application/json"></entry>
+                                    <entry key="js" value="application/js"></entry>
+                                    <entry key="xml" value="application/xml"></entry>
+                                </map>
+                            </constructor-arg>
+                        </bean>
+                        <bean class="org.springframework.web.accept.HeaderContentNegotiationStrategy"/>
+
+                    </list>
+
+                </constructor-arg>
+            </bean>
+        </property>
+
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+
+            </list>
+        </property>
+	</bean>
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+		    	<constructor-arg value="UTF-8" />
+			</bean>
+			<!-- 将Jackson2HttpMessageConverter的默认格式化输出设为true -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="prettyPrint" value="true"/>
+                <property name="objectMapper">
+                    <bean class="avicit.platform6.core.spring.XssObjectMapper" />
+                </property>
+            </bean>			
+  		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!--配置springMVC拦截器, 多个拦截器,顺序执行 -->
+	<mvc:interceptors>
+	    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+	    <!--<bean class=""></bean>-->
+	    <mvc:interceptor>
+	        <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+	        <mvc:mapping path="/console/user/operation/save" />
+	        <bean class="avicit.platform6.core.spring.CommonEventsHandlerInterceptor"/>
+	    </mvc:interceptor>
+	    <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+	</mvc:interceptors>
+	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->	
+	<mvc:default-servlet-handler/>
+	<mvc:resources mapping="/static/**" location="/static/" cache-period="2592000"/>
+	<mvc:resources mapping="/avicit/**/*.js" location="/avicit/" cache-period="2592000"/>
+	   
+	<!-- 国际化的消息资源文件 -->
+     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="false"/>
+		<property name="cacheSeconds" value="60"/>
+        <property name="basenames">
+            <list>
+                <value>classpath:i18n/model</value><!--注：平台建议按组件将多语言配置进来 -->
+            </list> 
+        </property>
+    </bean>    
+	   
+	<bean id="restExceptionHandler" class="avicit.platform6.core.rest.auth.RestExceptionHandler"/>
+	<bean id="multipartResolver" class="avicit.platform6.core.spring.PlatformCommonsMultipartResolver">
+		<property name="maxInMemorySize">  
+			<value>4096</value>  
+		</property>  
+	</bean> 
+	<bean class="avicit.platform6.modules.system.configmvc.AvicitMvcConfig"></bean>
+
+
+	<!--<mvc:interceptors>-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/**"/>-->
+			<!--&lt;!&ndash;             <mvc:exclude-mapping path="/**" /> &ndash;&gt;-->
+			<!--<bean class="avicit.platform6.core.spring.WatchHandlerInterceptor" />-->
+		<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+
+
+
+	</beans>

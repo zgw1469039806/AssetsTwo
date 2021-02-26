@@ -1,0 +1,13 @@
+<form>
+	<div class="form-group property-control">
+		<label>列表查询</label><input type="text" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly="readonly" placeholder="表格查询页">
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+	})
+</script>

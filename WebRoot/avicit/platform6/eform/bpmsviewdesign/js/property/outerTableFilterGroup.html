@@ -1,0 +1,15 @@
+<form>
+	<div class="form-group property-control">
+		<label>分组标识符</label><input type="text" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly="readonly" placeholder="表格查询页">
+	</div>
+	<input type="hidden" id="name" name="name"
+		   isnull="false" readonly class="form-control input-sm" value="分组">
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+	})
+</script>

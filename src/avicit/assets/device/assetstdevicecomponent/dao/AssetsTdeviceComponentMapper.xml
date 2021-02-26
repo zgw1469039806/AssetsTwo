@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetstdevicecomponent.dao.AssetsTdeviceComponentDao">
+
+<resultMap id="AssetsTdeviceComponentDTOMap" type="avicit.assets.device.assetstdevicecomponent.dto.AssetsTdeviceComponentDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="componentModel" column="COMPONENT_MODEL" jdbcType="VARCHAR" />
+		<result property="componentNum" column="COMPONENT_NUM" jdbcType="VARCHAR" />
+		<result property="componentName" column="COMPONENT_NAME" jdbcType="VARCHAR" />
+		<result property="componentManufacturer" column="COMPONENT_MANUFACTURER" jdbcType="VARCHAR" />
+		<result property="componentInstallPosition" column="COMPONENT_INSTALL_POSITION" jdbcType="VARCHAR" />
+		<result property="componentDriverId" column="COMPONENT_DRIVER_ID" jdbcType="VARCHAR" />
+		<result property="componentDriverVersion" column="COMPONENT_DRIVER_VERSION" jdbcType="VARCHAR" />
+		<result property="componentLogicId" column="COMPONENT_LOGIC_ID" jdbcType="VARCHAR" />
+		<result property="componentLogicVersion" column="COMPONENT_LOGIC_VERSION" jdbcType="VARCHAR" />
+		<result property="componentDocument" column="COMPONENT_DOCUMENT" jdbcType="VARCHAR" />
+		<result property="remarks" column="REMARKS" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="DECIMAL" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="DECIMAL" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="DECIMAL" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="DECIMAL" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="DECIMAL" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="TIMESTAMP" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="TIMESTAMP" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="TIMESTAMP" />
+</resultMap>
+<!-- 分页查询 ASSETS_TDEVICE_COMPONENT -->
+<select id="searchAssetsTdeviceComponentByPage" parameterType="java.util.Map" resultMap="AssetsTdeviceComponentDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.component_model                ,
+		t1.component_num                  ,
+		t1.component_name                 ,
+		t1.component_manufacturer         ,
+		t1.component_install_position     ,
+		t1.component_driver_id            ,
+		t1.component_driver_version       ,
+		t1.component_logic_id             ,
+		t1.component_logic_version        ,
+		t1.component_document             ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_component 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%') 
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%') 
+			</if>
+			<if test="bean.componentModel != null and bean.componentModel != ''">
+				and t1.COMPONENT_MODEL like concat(concat('%',#{bean.componentModel}),'%') 
+			</if>
+			<if test="bean.componentNum != null and bean.componentNum != ''">
+				and t1.COMPONENT_NUM like concat(concat('%',#{bean.componentNum}),'%') 
+			</if>
+			<if test="bean.componentName != null and bean.componentName != ''">
+				and t1.COMPONENT_NAME like concat(concat('%',#{bean.componentName}),'%') 
+			</if>
+			<if test="bean.componentManufacturer != null and bean.componentManufacturer != ''">
+				and t1.COMPONENT_MANUFACTURER like concat(concat('%',#{bean.componentManufacturer}),'%') 
+			</if>
+			<if test="bean.componentInstallPosition != null and bean.componentInstallPosition != ''">
+				and t1.COMPONENT_INSTALL_POSITION like concat(concat('%',#{bean.componentInstallPosition}),'%') 
+			</if>
+			<if test="bean.componentDriverId != null and bean.componentDriverId != ''">
+				and t1.COMPONENT_DRIVER_ID like concat(concat('%',#{bean.componentDriverId}),'%') 
+			</if>
+			<if test="bean.componentDriverVersion != null and bean.componentDriverVersion != ''">
+				and t1.COMPONENT_DRIVER_VERSION like concat(concat('%',#{bean.componentDriverVersion}),'%') 
+			</if>
+			<if test="bean.componentLogicId != null and bean.componentLogicId != ''">
+				and t1.COMPONENT_LOGIC_ID like concat(concat('%',#{bean.componentLogicId}),'%') 
+			</if>
+			<if test="bean.componentLogicVersion != null and bean.componentLogicVersion != ''">
+				and t1.COMPONENT_LOGIC_VERSION like concat(concat('%',#{bean.componentLogicVersion}),'%') 
+			</if>
+			<if test="bean.componentDocument != null and bean.componentDocument != ''">
+				and t1.COMPONENT_DOCUMENT like concat(concat('%',#{bean.componentDocument}),'%') 
+			</if>
+			<if test="bean.remarks != null and bean.remarks != ''">
+				and t1.REMARKS like concat(concat('%',#{bean.remarks}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null ">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null ">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null ">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null ">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null ">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null ">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_TDEVICE_COMPONENT -->
+<select id="searchAssetsTdeviceComponentByPageOr" parameterType="java.util.Map" resultMap="AssetsTdeviceComponentDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.component_model                ,
+		t1.component_num                  ,
+		t1.component_name                 ,
+		t1.component_manufacturer         ,
+		t1.component_install_position     ,
+		t1.component_driver_id            ,
+		t1.component_driver_version       ,
+		t1.component_logic_id             ,
+		t1.component_logic_version        ,
+		t1.component_document             ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_component 	t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')  
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')  
+			</if>
+			<if test="bean.componentModel != null and bean.componentModel != ''">
+				or t1.COMPONENT_MODEL like concat(concat('%',#{bean.componentModel}),'%')  
+			</if>
+			<if test="bean.componentNum != null and bean.componentNum != ''">
+				or t1.COMPONENT_NUM like concat(concat('%',#{bean.componentNum}),'%')  
+			</if>
+			<if test="bean.componentName != null and bean.componentName != ''">
+				or t1.COMPONENT_NAME like concat(concat('%',#{bean.componentName}),'%')  
+			</if>
+			<if test="bean.componentManufacturer != null and bean.componentManufacturer != ''">
+				or t1.COMPONENT_MANUFACTURER like concat(concat('%',#{bean.componentManufacturer}),'%')  
+			</if>
+			<if test="bean.componentInstallPosition != null and bean.componentInstallPosition != ''">
+				or t1.COMPONENT_INSTALL_POSITION like concat(concat('%',#{bean.componentInstallPosition}),'%')  
+			</if>
+			<if test="bean.componentDriverId != null and bean.componentDriverId != ''">
+				or t1.COMPONENT_DRIVER_ID like concat(concat('%',#{bean.componentDriverId}),'%')  
+			</if>
+			<if test="bean.componentDriverVersion != null and bean.componentDriverVersion != ''">
+				or t1.COMPONENT_DRIVER_VERSION like concat(concat('%',#{bean.componentDriverVersion}),'%')  
+			</if>
+			<if test="bean.componentLogicId != null and bean.componentLogicId != ''">
+				or t1.COMPONENT_LOGIC_ID like concat(concat('%',#{bean.componentLogicId}),'%')  
+			</if>
+			<if test="bean.componentLogicVersion != null and bean.componentLogicVersion != ''">
+				or t1.COMPONENT_LOGIC_VERSION like concat(concat('%',#{bean.componentLogicVersion}),'%')  
+			</if>
+			<if test="bean.componentDocument != null and bean.componentDocument != ''">
+				or t1.COMPONENT_DOCUMENT like concat(concat('%',#{bean.componentDocument}),'%')  
+			</if>
+			<if test="bean.remarks != null and bean.remarks != ''">
+				or t1.REMARKS like concat(concat('%',#{bean.remarks}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_TDEVICE_COMPONENT -->
+<select id="searchAssetsTdeviceComponent" parameterType="java.util.Map" resultMap="AssetsTdeviceComponentDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.component_model                ,
+		t1.component_num                  ,
+		t1.component_name                 ,
+		t1.component_manufacturer         ,
+		t1.component_install_position     ,
+		t1.component_driver_id            ,
+		t1.component_driver_version       ,
+		t1.component_logic_id             ,
+		t1.component_logic_version        ,
+		t1.component_document             ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_component 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="componentModel != null and componentModel != ''">
+				and t1.COMPONENT_MODEL =#{componentModel}
+			</if>
+			<if test="componentNum != null and componentNum != ''">
+				and t1.COMPONENT_NUM =#{componentNum}
+			</if>
+			<if test="componentName != null and componentName != ''">
+				and t1.COMPONENT_NAME =#{componentName}
+			</if>
+			<if test="componentManufacturer != null and componentManufacturer != ''">
+				and t1.COMPONENT_MANUFACTURER =#{componentManufacturer}
+			</if>
+			<if test="componentInstallPosition != null and componentInstallPosition != ''">
+				and t1.COMPONENT_INSTALL_POSITION =#{componentInstallPosition}
+			</if>
+			<if test="componentDriverId != null and componentDriverId != ''">
+				and t1.COMPONENT_DRIVER_ID =#{componentDriverId}
+			</if>
+			<if test="componentDriverVersion != null and componentDriverVersion != ''">
+				and t1.COMPONENT_DRIVER_VERSION =#{componentDriverVersion}
+			</if>
+			<if test="componentLogicId != null and componentLogicId != ''">
+				and t1.COMPONENT_LOGIC_ID =#{componentLogicId}
+			</if>
+			<if test="componentLogicVersion != null and componentLogicVersion != ''">
+				and t1.COMPONENT_LOGIC_VERSION =#{componentLogicVersion}
+			</if>
+			<if test="componentDocument != null and componentDocument != ''">
+				and t1.COMPONENT_DOCUMENT =#{componentDocument}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and t1.REMARKS =#{remarks}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null and attribute18 != ''">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null and attribute19 != ''">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null and attribute20 != ''">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_TDEVICE_COMPONENT -->
+<select id="findAssetsTdeviceComponentById" parameterType="java.util.Map" resultMap="AssetsTdeviceComponentDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.component_model                ,
+		t1.component_num                  ,
+		t1.component_name                 ,
+		t1.component_manufacturer         ,
+		t1.component_install_position     ,
+		t1.component_driver_id            ,
+		t1.component_driver_version       ,
+		t1.component_logic_id             ,
+		t1.component_logic_version        ,
+		t1.component_document             ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_component 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 ASSETS_TDEVICE_COMPONENT -->
+<insert id="insertAssetsTdeviceComponent" parameterType="avicit.assets.device.assetstdevicecomponent.dto.AssetsTdeviceComponentDTO">
+	insert into assets_tdevice_component
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="componentModel != null">
+				component_model,
+			</if>
+			<if test="componentNum != null">
+				component_num,
+			</if>
+			<if test="componentName != null">
+				component_name,
+			</if>
+			<if test="componentManufacturer != null">
+				component_manufacturer,
+			</if>
+			<if test="componentInstallPosition != null">
+				component_install_position,
+			</if>
+			<if test="componentDriverId != null">
+				component_driver_id,
+			</if>
+			<if test="componentDriverVersion != null">
+				component_driver_version,
+			</if>
+			<if test="componentLogicId != null">
+				component_logic_id,
+			</if>
+			<if test="componentLogicVersion != null">
+				component_logic_version,
+			</if>
+			<if test="componentDocument != null">
+				component_document,
+			</if>
+			<if test="remarks != null">
+				remarks,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="componentModel != null">
+				#{componentModel,jdbcType=VARCHAR},
+			</if>
+			<if test="componentNum != null">
+				#{componentNum,jdbcType=VARCHAR},
+			</if>
+			<if test="componentName != null">
+				#{componentName,jdbcType=VARCHAR},
+			</if>
+			<if test="componentManufacturer != null">
+				#{componentManufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="componentInstallPosition != null">
+				#{componentInstallPosition,jdbcType=VARCHAR},
+			</if>
+			<if test="componentDriverId != null">
+				#{componentDriverId,jdbcType=VARCHAR},
+			</if>
+			<if test="componentDriverVersion != null">
+				#{componentDriverVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="componentLogicId != null">
+				#{componentLogicId,jdbcType=VARCHAR},
+			</if>
+			<if test="componentLogicVersion != null">
+				#{componentLogicVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="componentDocument != null">
+				#{componentDocument,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DATE},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_TDEVICE_COMPONENT -->
+<insert id="insertAssetsTdeviceComponentList" parameterType="java.util.List">
+	insert into assets_tdevice_component(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			unified_id,
+			device_name,
+			component_model,
+			component_num,
+			component_name,
+			component_manufacturer,
+			component_install_position,
+			component_driver_id,
+			component_driver_version,
+			component_logic_id,
+			component_logic_version,
+			component_document,
+			remarks,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.unifiedId,jdbcType=VARCHAR},
+					#{item.deviceName,jdbcType=VARCHAR},
+					#{item.componentModel,jdbcType=VARCHAR},
+					#{item.componentNum,jdbcType=VARCHAR},
+					#{item.componentName,jdbcType=VARCHAR},
+					#{item.componentManufacturer,jdbcType=VARCHAR},
+					#{item.componentInstallPosition,jdbcType=VARCHAR},
+					#{item.componentDriverId,jdbcType=VARCHAR},
+					#{item.componentDriverVersion,jdbcType=VARCHAR},
+					#{item.componentLogicId,jdbcType=VARCHAR},
+					#{item.componentLogicVersion,jdbcType=VARCHAR},
+					#{item.componentDocument,jdbcType=VARCHAR},
+					#{item.remarks,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=DECIMAL},
+					#{item.attribute12,jdbcType=DECIMAL},
+					#{item.attribute13,jdbcType=DECIMAL},
+					#{item.attribute14,jdbcType=DECIMAL},
+					#{item.attribute15,jdbcType=DECIMAL},
+					#{item.attribute16,jdbcType=DECIMAL},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DATE},
+					#{item.attribute19,jdbcType=DATE},
+					#{item.attribute20,jdbcType=DATE}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_TDEVICE_COMPONENT -->
+<update id="updateAssetsTdeviceComponentSensitive" parameterType="avicit.assets.device.assetstdevicecomponent.dto.AssetsTdeviceComponentDTO">
+	update assets_tdevice_component 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="componentModel != null">
+				component_model                =#{componentModel,jdbcType=VARCHAR},
+			</if>
+			<if test="componentNum != null">
+				component_num                  =#{componentNum,jdbcType=VARCHAR},
+			</if>
+			<if test="componentName != null">
+				component_name                 =#{componentName,jdbcType=VARCHAR},
+			</if>
+			<if test="componentManufacturer != null">
+				component_manufacturer         =#{componentManufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="componentInstallPosition != null">
+				component_install_position     =#{componentInstallPosition,jdbcType=VARCHAR},
+			</if>
+			<if test="componentDriverId != null">
+				component_driver_id            =#{componentDriverId,jdbcType=VARCHAR},
+			</if>
+			<if test="componentDriverVersion != null">
+				component_driver_version       =#{componentDriverVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="componentLogicId != null">
+				component_logic_id             =#{componentLogicId,jdbcType=VARCHAR},
+			</if>
+			<if test="componentLogicVersion != null">
+				component_logic_version        =#{componentLogicVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="componentDocument != null">
+				component_document             =#{componentDocument,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				remarks                        =#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DATE},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_TDEVICE_COMPONENT -->
+<update id="updateAssetsTdeviceComponentAll" parameterType="avicit.assets.device.assetstdevicecomponent.dto.AssetsTdeviceComponentDTO">
+	update assets_tdevice_component 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			component_model                =#{componentModel,jdbcType=VARCHAR},
+			component_num                  =#{componentNum,jdbcType=VARCHAR},
+			component_name                 =#{componentName,jdbcType=VARCHAR},
+			component_manufacturer         =#{componentManufacturer,jdbcType=VARCHAR},
+			component_install_position     =#{componentInstallPosition,jdbcType=VARCHAR},
+			component_driver_id            =#{componentDriverId,jdbcType=VARCHAR},
+			component_driver_version       =#{componentDriverVersion,jdbcType=VARCHAR},
+			component_logic_id             =#{componentLogicId,jdbcType=VARCHAR},
+			component_logic_version        =#{componentLogicVersion,jdbcType=VARCHAR},
+			component_document             =#{componentDocument,jdbcType=VARCHAR},
+			remarks                        =#{remarks,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DATE},
+			attribute_19                   =#{attribute19,jdbcType=DATE},
+			attribute_20                   =#{attribute20,jdbcType=DATE}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_TDEVICE_COMPONENT -->
+<update id="updateAssetsTdeviceComponentList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_tdevice_component 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			component_model                =#{item.componentModel,jdbcType=VARCHAR},
+			component_num                  =#{item.componentNum,jdbcType=VARCHAR},
+			component_name                 =#{item.componentName,jdbcType=VARCHAR},
+			component_manufacturer         =#{item.componentManufacturer,jdbcType=VARCHAR},
+			component_install_position     =#{item.componentInstallPosition,jdbcType=VARCHAR},
+			component_driver_id            =#{item.componentDriverId,jdbcType=VARCHAR},
+			component_driver_version       =#{item.componentDriverVersion,jdbcType=VARCHAR},
+			component_logic_id             =#{item.componentLogicId,jdbcType=VARCHAR},
+			component_logic_version        =#{item.componentLogicVersion,jdbcType=VARCHAR},
+			component_document             =#{item.componentDocument,jdbcType=VARCHAR},
+			remarks                        =#{item.remarks,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{item.attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{item.attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{item.attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{item.attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DATE},
+			attribute_19                   =#{item.attribute19,jdbcType=DATE},
+			attribute_20                   =#{item.attribute20,jdbcType=DATE}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_TDEVICE_COMPONENT -->
+<delete id="deleteAssetsTdeviceComponentById" parameterType="java.lang.String">
+		delete from assets_tdevice_component  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_TDEVICE_COMPONENT -->
+<delete id="deleteAssetsTdeviceComponentList" parameterType="java.util.List">
+		delete from assets_tdevice_component  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

@@ -1,0 +1,46 @@
+<form>
+	<div class="form-group property-control">
+		<input type="hidden" id="id" name="id"
+			isnull="false" class="form-control input-sm" readonly="readonly" >
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>层级</label>
+		<select id="level" name="level" isnull="false" class="form-control input-sm">
+			<option value=""></option>
+			<option value="1">第一层</option>
+			<option value="2">第二层</option>
+			<option value="3">第三层</option>
+			<option value="4">第四层</option>
+			<option value="5">第五层</option>
+		</select>
+	</div>
+	<div class="form-group property-control">
+		<label>名称</label>
+		<input type="text" id="name" name="name"
+			   class="form-control input-sm" readonly="true" >
+		<input type="hidden" id="colType" name="colType" class="form-control input-sm" >
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".form-control").bind('change', function() {
+			if ($(this).attr("name") == "level"){
+
+				$("#name").val($(this).find("option:selected").text());
+			}
+			engine.changSave();
+		});
+	})
+
+	self.validateForm = function(form,treeNode){
+		if(form.level == null || form.level == ""){
+			layer.msg('层级不能为空！',{
+				icon: 2,
+				area: ['230px', ''],
+				closeBtn: 0
+			});
+			return false;
+		}
+		return true;
+	};
+</script>

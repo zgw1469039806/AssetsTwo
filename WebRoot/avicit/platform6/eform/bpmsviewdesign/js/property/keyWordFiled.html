@@ -1,0 +1,82 @@
+<form id="thisForm">
+	<div class="form-group property-control">
+		<label><i class="required">*</i>数据字段名称</label>
+		<div id="identifier-ctrl"  class="input-group input-group-sm avicselect">
+			<input type="text" class="form-control avicselect-act" readonly="readonly" name="DbFiledName" id="DbFiledName">
+			<span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+			<div class="avicselect-list"></div>
+		</div>
+	</div>
+	<div class="form-group property-control">
+		<label>数据字段标识</label>
+		<input type="text" id="id" name="id" readonly="readonly"
+			class="form-control input-sm" placeholder="字段标识">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>显示字段名称</label>
+		<input type="text" id="name" name="name"
+			class="form-control input-sm" placeholder="字段标识">
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>表单字段标识</label>
+		<input type="text" id="formFiledID" name="formFiledID"
+			class="form-control input-sm" placeholder="字段标识">
+		<input type="hidden" name="formControl" id="formControl" value="text"></input>
+	</div>
+</form>
+<script type="text/javascript">
+$(function(){
+		$(".form-control").bind('change', function() {
+			engine.changSave();
+		});
+
+		var ColDatas = engine.getColForKeyWord();
+		$("#identifier-ctrl").avicselect2({
+			findDom:$("#thisForm"),
+			type : 1,
+			showkey:'_value',
+			data : ColDatas,
+			height: '200px',
+			tpl : '<ul>'
+					+ '<@for ( var index in this ) {@>'
+					+ '<li class="av-child" data-val=\'<@ JSON.stringify(this[index])@>\'><@ this[index]["_value"] @></li>'
+					+ '<@}@>' + '</ul>',
+			 success:function(obj){
+				 $("#DbFiledName").val(obj.data[1].value);
+				 $("#id").val(obj.data[0].value);
+				 $("#formFiledID").val(obj.data[0].value);
+				 $("#name").val(obj.data[1].value);
+				 $("#formControl").val('text');
+				 $("#DbFiledName").change();
+			 }
+		});
+});
+
+self.validateForm = function(form,treeNode){
+	if(form.DbFiledName == null || form.DbFiledName == ""){
+  		 layer.msg('数据字段名称不能为空！',{
+               icon: 2,
+               area: ['240px', ''],
+               closeBtn: 0
+           });
+  		return false;
+  	}
+	if(form.name == null || form.name == ""){
+ 		 layer.msg('显示字段名称不能为空！',{
+              icon: 2,
+              area: ['240px', ''],
+              closeBtn: 0
+          });
+ 		return false;
+ 	}
+	if(form.formFiledID == null || form.formFiledID == ""){
+		 layer.msg('表单字段标识不能为空！',{
+             icon: 2,
+             area: ['240px', ''],
+             closeBtn: 0
+         });
+		return false;
+	}
+   	return true;
+};
+</script>

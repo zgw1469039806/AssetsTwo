@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#############################################################
+##
+## 	服务器门户外观样式配置文件
+##
+################################# ############################
+-->
+<avicit-config> 
+   <themes-skins> 
+      <type-name>H+</type-name>  
+      <type-key>oa</type-key>  
+      <preview>avicit/platform6/portal/themes/oa/images/preview.png</preview>
+      <!--  
+       H+支持两套风格的菜单展示方式，改配置为：二三级菜单平铺显示，V2为菜单递进显示
+      <impl>avicit.platform6.msystem.portal.skins.oa.impl.PortalThemesSkinsOAImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/oa/jsp/index.jsp</index-jsp>
+      -->
+      <impl>avicit.platform6.msystem.portal.skins.oa.impl.PortalThemesSkinsOAV2Impl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/oa/jsp/indexV2.jsp</index-jsp>  
+      <default>true</default> 
+      <skins>
+      	<skin key="blue" comment="蓝色" color="#0066cc" default="true"/>
+      	<skin key="red" comment="红色" color="#e62340" default="false"/>
+      	<skin key="purple" comment="紫色" color="#7364bf" default="false"/>
+      	<skin key="green" comment="绿色" color="#00b791" default="false"/>
+      	<skin key="black" comment="灰白" color="#505364" default="false"/>
+      </skins>
+   </themes-skins>
+   <themes-skins> 
+      <type-name>简约</type-name>  
+      <type-key>simple</type-key>  
+      <preview>avicit/platform6/portal/themes/simple/images/preview.png</preview>  
+      <impl>avicit.platform6.msystem.portal.skins.simple.impl.PortalThemesSkinsSimpleImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/simple/jsp/index.jsp</index-jsp> 
+      <default>false</default> 
+      <skins>
+      <skin key="blue" comment="蓝色" color="#0066cc" default="true"/>
+      	<skin key="red" comment="红色" color="#e62340" default="false"/>
+      	<skin key="purple" comment="紫色" color="#7364bf" default="false"/>
+      	<skin key="green" comment="绿色" color="#00b791" default="false"/>
+      	<skin key="black" comment="灰白" color="#505364" default="false"/>
+      </skins>
+   </themes-skins>
+   <themes-skins> 
+      <type-name>传统</type-name>  
+      <type-key>default</type-key>  
+      <preview>avicit/platform6/portal/themes/default/images/preview.png</preview>
+      <!--  
+                     传统支持两套风格的菜单展示方式，改配置为：二三级菜单平铺显示，V2为菜单递进显示 
+      <impl>avicit.platform6.msystem.portal.skins.def.impl.PortalThemesSkinsDefaultImpl</impl>
+      <index-jsp>avicit/platform6/portal/themes/default/jsp/index.jsp</index-jsp> 
+      -->
+      <impl>avicit.platform6.msystem.portal.skins.def.impl.PortalThemesSkinsDefaultV2Impl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/default/jsp/indexV2.jsp</index-jsp> 
+      <default>false</default> 
+      <skins>
+        <skin key="blue" comment="蓝色" color="#0066cc" default="true"/>
+      	<skin key="red" comment="红色" color="#e62340" default="false"/>
+      	<skin key="purple" comment="紫色" color="#7364bf" default="false"/>
+      	<skin key="green" comment="绿色" color="#00b791" default="false"/>
+      	<skin key="black" comment="灰白" color="#505364" default="false"/>
+      </skins>
+   </themes-skins>
+   <themes-skins> 
+      <type-name>Win</type-name>  
+      <type-key>win</type-key>  
+      <preview>avicit/platform6/portal/themes/win/images/preview.png</preview>  
+      <impl>avicit.platform6.msystem.portal.skins.win.impl.PortalThemesSkinsWinImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/win/jsp/index.jsp</index-jsp> 
+      <default>false</default> 
+      <skins>
+      <skin key="blue" comment="蓝色" color="#0066cc" default="true"/>
+      	<skin key="red" comment="红色" color="#e62340" default="false"/>
+      	<skin key="purple" comment="紫色" color="#7364bf" default="false"/>
+      	<skin key="green" comment="绿色" color="#00b791" default="false"/>
+      	<skin key="black" comment="灰白" color="#505364" default="false"/>
+      </skins>
+   </themes-skins>
+</avicit-config>

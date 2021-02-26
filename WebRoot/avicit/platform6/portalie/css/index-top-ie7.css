@@ -1,0 +1,42 @@
+.header .toolbar {
+	display: inline;
+	zoom:1;
+	position: absolute;
+	top: 0;
+}
+
+.toolbar .userinfo {
+	width:120px;
+}
+
+.header .navbar {
+	display: inline;
+	zoom:1;
+}
+
+.navbar a, .navbar .dropdown {
+	display: inline;
+	zoom:1;
+	height: 47px;
+	padding:0 10px;
+}
+
+.navbar li {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.navbar .dropdown li span {
+	line-height: 47px;
+}
+
+.toolbar .iconbtn li {
+	line-height: 40px;
+}
+
+.toolbar .iconbtn ul {
+	margin:0;
+}
+.avic-smenu li {
+	width: 158px;
+}

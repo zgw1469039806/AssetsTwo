@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lazy Load Enabled</title>
+    <!--[if lt IE 9]>
+        <script src="html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <button onClick="addpic();">1.动态添加一堆图</button>
+    <button onClick="initlazy();">2.初始化lazyload事件,先看当前屏幕内的图</button>
+    <button onClick="active();">3.手动触发图片事件,再看之前超出屏幕显示区域的图</button>
+    <div id="test"  style="width:500px;height=400px;">
+        
+    </div>
+
+
+    <script src="jquery-1.11.0.min.js"></script>
+
+    <script src="jquery.lazyload.js?v=1.9.1"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        function addpic(){
+            $("#test").append('<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-original="img/bmw_m1_side.jpg" width="400" height="300" alt="BMW M1 Side">');
+        }
+        function initlazy(){
+            $("img.lazy").lazyload({
+                effect: "fadeIn",
+                event : "event"
+            });
+        }
+        function active(){
+            $("img.lazy").trigger("event");
+        }
+    </script>
+    
+</body>
+
+</html>

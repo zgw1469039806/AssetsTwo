@@ -1,0 +1,68 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="custom" class="prop_wrap" style="display:none">
+	<form id="jbxx" action="" class="form-horizontal">
+	  <div class="avic-flow-default-theme">
+                <div class="twoTabNav" style="width: 100%">
+                    <!-- 标签主体Start -->
+                    <ul class="nav-tabs">
+                        <li class="active">
+                            <a href="javascript:void(0)">基本信息</a>
+                        </li>
+                        <!-- <li>
+                            <a href="javascript:void(0)">事件</a>
+                        </li> -->
+                    </ul>
+                    <ul class="tab-cont">
+                        <li class="active">
+                            <div class="demoCont">
+                            <!-- html:[开始节点] 基本信息 开始 -->
+                            	<div class="base_info">
+                                   <div class="row base_info_bar" >
+                                        <div class="label"><span>基本</span></div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">节点名称</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="xian_shi_ming_cheng" name="xian_shi_ming_cheng">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">逻辑标识</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="luo_ji_biao_shi" name="luo_ji_biao_shi" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">Class路径</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="node_class" name="node_class">
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="custom_class_check" value="avicit.platform6.bpm.bpmreform.event.CustomActivityForSubprocess" type="checkbox"> 判断子流程是否结束，若子流程都结束则往下流转，若未结束则暂停
+                                        </label>
+                                    </div>
+                                </div>
+                            <!-- html:[开始节点] 基本信息 结束 -->
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 标签主体End -->
+                </div>
+            </div>
+	</form>
+</div>
+<script>
+    $(function () {
+        $("input[name='custom_class_check']").on("click", function () {
+            if($(this).is(":checked")){
+                $(this).parent().parent().siblings().find("input[name='custom_class_check']").removeAttr("checked");
+                $(this).parent().parent().siblings().find("#node_class").attr("disabled", "disabled");
+                $(this).parent().parent().siblings().find("#node_class").val($(this).val());
+            }else {
+                $(this).parent().parent().siblings().find("#node_class").removeAttr("disabled");
+            }
+        });
+    });
+</script>

@@ -1,0 +1,5 @@
+/*jquery.validate默认错误提示label class="error"，此处自定义覆盖*/
+.error{
+	font-family: Microsoft YaHei;
+	color: red;
+}

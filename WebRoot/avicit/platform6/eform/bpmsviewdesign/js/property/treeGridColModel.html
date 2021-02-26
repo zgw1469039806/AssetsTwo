@@ -1,0 +1,43 @@
+<form>
+<div class="form-group property-control">
+	<label>表格列模型标识</label><input type="text" id="id" name="id"
+		isnull="false" class="form-control input-sm" readonly="readonly" placeholder="表格列模型标识">
+</div>
+<div class="form-group property-control">
+	<label>表格列模型名称</label><input type="text" id="name" name="name" 
+		isnull="false" class="form-control input-sm" placeholder="表格列模型名称">
+</div>
+<div class="form-group property-control">
+	<label>列宽度</label>
+	<div class="input-group input-group-sm spinner" data-trigger="spinner">
+		<input type="text" class="form-control" id="width" name="width" value="150"
+			isnull="false" data-min="0" data-max="999999999999" data-step="1"
+			data-precision="0"> <span class="input-group-addon">
+			<a href="javascript:;" class="spin-up" data-spin="up"><i
+				class="glyphicon glyphicon-triangle-top"></i></a> <a
+			href="javascript:;" class="spin-down" data-spin="down"><i
+				class="glyphicon glyphicon-triangle-bottom"></i></a>
+		</span>
+	</div>
+</div>
+</form>
+<script type="text/javascript">
+$(function(){
+	$(".form-control").bind('change', function(){
+		engine.changSave();
+    });
+});
+
+self.validateForm = function(form,treeNode){
+	var pattern = new RegExp("[\\\\&*<>\"'/]") ; 
+   	if(pattern.test(form.name)){
+   		 layer.msg('表格列模型名称不能包含&*<>/\"\'\\\等特殊字符！',{
+                icon: 2,
+                area: ['400px', ''],
+                closeBtn: 0
+            });
+   		return false;
+   	}
+   	return true;
+};
+</script>

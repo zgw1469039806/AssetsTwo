@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+  	<!-- JMS TOPIC MODEL -->  
+    <!-- TOPIC链接工厂 -->  
+    <bean id="topicSendConnectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">  
+        <property name="brokerURL" value="failover://(tcp://localhost:61616?tcpNoDelay=true)" />
+        <property name="useAsyncSend" value="true" />  
+    </bean>  
+      
+    <!-- 消息转换器 -->  
+    <bean id="messageConvertForSys" class="avicit.platform6.modules.system.mq.MessageConvertForSys"></bean>
+    
+    <!-- 定义主题 在线消息  订单更新-->  
+    <bean id="platform6_workflow_send_MessageTopic"  class="org.apache.activemq.command.ActiveMQTopic">
+    	 <constructor-arg value="platform6_workflow.outer-push.topic"/>
+    </bean>
+      
+    <!-- TOPIC send jms模板 在线消息  订单更新-->  
+    <bean id="platform6_workflow_RegisterMessageTopicSendJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="topicSendConnectionFactory"></property>  
+        <property name="defaultDestination" ref="platform6_workflow_send_MessageTopic" />
+        <property name="messageConverter" ref="messageConvertForSys" />  
+        <!-- 开启订阅模式 -->  
+        <property name="pubSubDomain" value="true"/>  
+        <property name="receiveTimeout" value="1000"/>  
+        <property name="explicitQosEnabled" value="true" /> <!-- deliveryMode, priority, timeToLive 的开关，要生效，必须配置为true，默认false-->  
+    </bean>
+      
+    <!-- 消息发送方 在线消息  订单更新-->  
+    <bean id="platform6_workflow_RegisterMessageTopicSender" class="avicit.platform6.modules.system.mq.MessageSender">
+        <property name="jmsTemplate" ref="platform6_workflow_RegisterMessageTopicSendJmsTemplate"></property>
+    </bean>
+
+
+
+    <!-- 定义主题 发送待办待阅-->
+    <bean id="platform6_todo_send_Message"  class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="platform6_todo_send"/>
+    </bean>
+
+    <!-- TOPIC send jms模板 发送待办待阅-->
+    <bean id="platform6_todo_sendJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="topicSendConnectionFactory"></property>
+        <property name="defaultDestination" ref="platform6_todo_send_Message" />
+        <property name="messageConverter" ref="messageConvertForSys" />
+        <!-- 开启订阅模式 -->
+        <property name="pubSubDomain" value="true"/>
+        <property name="receiveTimeout" value="1000"/>
+        <property name="explicitQosEnabled" value="true" /> <!-- deliveryMode, priority, timeToLive 的开关，要生效，必须配置为true，默认false-->
+    </bean>
+
+    <!-- 消息发送方 发送待办待阅-->
+    <bean id="platform6_todo_sendMessageTopicSender" class="avicit.platform6.modules.system.mq.MessageSender">
+        <property name="jmsTemplate" ref="platform6_todo_sendJmsTemplate"></property>
+    </bean>
+
+
+    <!-- 定义主题 发送系统消息-->
+    <bean id="platform6_sysMsg_send_Message"  class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="platform6_todo_send"/>
+    </bean>
+
+    <!-- TOPIC send jms模板 发送系统消息-->
+    <bean id="platform6_sysMsg_sendJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="topicSendConnectionFactory"></property>
+        <property name="defaultDestination" ref="platform6_sysMsg_send_Message" />
+        <property name="messageConverter" ref="messageConvertForSys" />
+        <!-- 开启订阅模式 -->
+        <property name="pubSubDomain" value="true"/>
+        <property name="receiveTimeout" value="1000"/>
+        <property name="explicitQosEnabled" value="true" /> <!-- deliveryMode, priority, timeToLive 的开关，要生效，必须配置为true，默认false-->
+    </bean>
+
+    <!-- 消息发送方 发送系统消息-->
+    <bean id="platform6_sysMsg_sendMessageTopicSender" class="avicit.platform6.modules.system.mq.MessageSender">
+        <property name="jmsTemplate" ref="platform6_sysMsg_sendJmsTemplate"></property>
+    </bean>
+</beans> 

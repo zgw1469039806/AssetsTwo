@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+>
+
+	<description>Spring公共配置文件</description> 
+	
+	<!-- 定义检测执行时间的拦截器 -->
+	<bean id="performanceInterceptor" class="avicit.platform6.core.spring.aop.PerformanceInterceptor">
+		<property name="maxAllowedTimeMillis" value="1000"></property>
+	</bean>
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* avicit..*.service.*Service*.*(..))" advice-ref="performanceInterceptor" />
+	</aop:config>
+ 
+	<!-- JSR303 Validator定义 -->
+ 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	
+
+	<!--自动加载AVICIT安全框架properties配置的文件类 -->
+	<bean id="avicit.security.propertiesConfigurationLoader" class="avicit.platform6.core.shiroSecurity.shiroUtil.PropertiesConfigurationLoader" >
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+	
+	<bean id="avicit.core.defaultFrameWorkContext"
+		class="avicit.platform6.api.sysshirolog.context.DefaultFrameworkContext"
+		scope="prototype">
+		<property name="loginFormUrl" value="${avicit.security.loginFormUrl}"></property>
+	</bean>
+	
+	<bean id="workerThreadPool" class="avicit.platform6.core.threadPool.WorkerThreadPool">
+		  <constructor-arg index="0" value="100" /> 
+		  <constructor-arg index="1" value="100" /> 
+		  <constructor-arg index="2" value="50" /> 
+  </bean>
+  
+  	<bean id="dataBaseConfig" class="avicit.platform6.core.dao.MutiDataBaseConfig" >
+  		<property name="driverDialect">
+  			<map>
+  				<entry key="oracle.jdbc.driver.OracleDriver" value="org.hibernate.dialect.Oracle10gDialect"></entry>
+  				<entry key="com.microsoft.sqlserver.jdbc.SQLServerDriver" value="org.hibernate.dialect.SQLServerDialect"></entry>
+  				<entry key="com.mysql.jdbc.Driver" value="org.hibernate.dialect.MySQLDialect"></entry>
+  				<entry key="dm.jdbc.driver.DmDriver" value="org.hibernate.dialect.DmDialect"></entry>
+				<entry key="com.kingbase8.Driver" value="org.hibernate.dialect.Kingbase8Dialect"></entry>
+				<entry key="com.oscar.Driver" value="org.hibernate.dialect.OscarDialect"></entry>
+				<!--<entry key="com.gbase.jdbc.Driver" value="org.hibernate.dialect.GBaseDialect"></entry> -->
+				<!--<entry key="com.informix.jdbc.IfxDriver" value="org.hibernate.dialect.InformixDialect"></entry>-->
+  			</map>
+  		</property>
+  	</bean>
+</beans>

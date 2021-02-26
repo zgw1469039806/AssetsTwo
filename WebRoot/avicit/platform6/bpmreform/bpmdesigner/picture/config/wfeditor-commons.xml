@@ -1,0 +1,156 @@
+<mxEditor>
+	<Array as="cycleAttributeValues">
+		<add value="#dddddd" />
+	</Array>
+	<Array as="templates">
+		<add as="text">
+			<text>
+				<mxCell vertex="1" style="text" connectable="0">	
+					<mxGeometry as="geometry" width="80" height="20"/>
+				</mxCell>
+			</text>
+		</add>
+		<add as="swimlane1">
+			<swimlane cellType="swimlane1">
+				<mxCell vertex="1" style="swimlane1" connectable="0">
+					<mxGeometry as="geometry" width="700" height="108" />
+				</mxCell>
+			</swimlane>
+		</add>
+		<add as="swimlane2">
+			<swimlane cellType="swimlane2">
+				<mxCell vertex="1" style="swimlane2" connectable="0">
+					<mxGeometry as="geometry" width="100" height="500" />
+				</mxCell>
+			</swimlane>
+		</add>
+		<add as="start">
+			<start>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/start_event_empty.png">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</start>
+		</add>
+		<add as="end">
+			<end>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/end_event_terminate.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</end>
+		</add>
+		<add as="task">
+			<task>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_human.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</task>
+		</add>
+		<add as="java">
+			<java>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_java.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</java>
+		</add>
+		<add as="sql">
+			<sql>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_sql.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</sql>
+		</add>
+		<add as="ws">
+			<ws>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_webservice.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</ws>
+		</add>
+		<add as="rest">
+			<rest>
+				<mxCell vertex="1"
+						style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_rest.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</rest>
+		</add>
+		<add as="state">
+			<state>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_wait.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</state>
+		</add>
+		<add as="fork">
+			<fork>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/gateway_fork.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</fork>
+		</add>
+		<add as="join">
+			<join>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/gateway_join.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</join>
+		</add>
+		<add as="decision">
+			<decision>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/gateway_exclusive.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</decision>
+		</add>
+		<add as="sub-process">
+			<sub-process>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_subprocess.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</sub-process>
+		</add>
+		<add as="foreach">
+			<foreach>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/gateway_foreach.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</foreach>
+		</add>
+		<add as="jms">
+			<jms>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_jms.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</jms>
+		</add>
+		<add as="custom">
+			<custom>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_custom.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</custom>
+		</add>
+		<add as="rules">
+			<rules>
+				<mxCell vertex="1"
+					style="symbol;image=avicit/platform6/bpmreform/bpmdesigner/editors/images/48/task_rule.png;">
+					<mxGeometry as="geometry" width="55" height="50" />
+				</mxCell>
+			</rules>
+		</add>
+	</Array>
+</mxEditor>

@@ -1,0 +1,13 @@
+<mxEditor>
+	<include name="avicit/platform6/bpmreform/bpmdesigner/editors/config/wfeditor-commons.xml" />
+	<ui>
+		<add as="graph" element="graph"/>
+		<add as="toolbar" element="toolbar" />
+	</ui>
+	<mxGraph as="graph">
+		<include name="avicit/platform6/bpmreform/bpmdesigner/editors/config/wfgraph-commons.xml" />
+	</mxGraph>
+	<mxDefaultToolbar as="toolbar">
+		<include name="avicit/platform6/bpmreform/bpmdesigner/editors/config/wftoolbar-commons.xml" />
+	</mxDefaultToolbar>
+</mxEditor>

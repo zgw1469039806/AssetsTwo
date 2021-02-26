@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>设置</title>
+    <link rel="stylesheet" href="../../../layui.css">
+    <style>
+		.layui-tab-title li{
+			border-left:solid 1px lightgray;
+		}
+		.layui-card-footer{
+		   text-align:right;
+		   padding-right:10px;
+		}
+		 .layui-table th{
+		   padding: 5px 5px;
+		   text-align:center;
+		   font-weight:400;
+		}
+		.layui-table td{
+	       padding: 5px 5px;
+		} 
+		.layui-table tbody {
+			display: block;
+			height: 270px;
+			overflow-y:scroll;
+		}
+		.layui-table thead tr {
+			display:block;
+		}
+		
+		.layui-form-item {
+	       margin-bottom: 10px;
+        }
+        .layim-diabled-org-dept li{
+           margin-top:5px;
+           margin-bottom:5px;
+           padding-left: 10px;
+           padding-right: 10px;
+        }
+        .layui-form-text{
+           border: 1px solid #e6e6e6;
+        }
+        #dept_block {
+			height: 320px;
+		}
+		
+		.layui-card-success {
+			border-color: #d6e9c6;
+			border-radius:2px;
+		}
+		
+		.layui-card-success>.layui-form-label {
+			color: #3c763d;
+			background-color: #dff0d8;
+			border-color: #d6e9c6;
+		}
+    </style>
+</head>
+<body>
+<div class="layui-tab layui-tab-card" lay-filter="setting" style="width: 96%;margin: 0 auto;margin-top: 4px; border: solid 1px #e6dada;box-shadow:none;">
+    <ul class="layui-tab-title">
+        <li class="layui-this" lay-id="refreshCacheLayId">缓存管理</li>
+        <li lay-id="diabledOrgDeptLayId">组织部门管理</li>
+        <li lay-id="unregisterUser">用户注册</li>
+        <li lay-id="sysSettingLayId">系统设置</li>
+    </ul>
+    <div class="layui-tab-content" style="height: 370px;">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-input-inline" style="left: 10px;width:220px;margin-top: 3px;">
+                <input class="layui-btn layui-btn-sm" type="button" id="btnRefreshGroupMember" style="width: 136px; margin-left: 10px; margin-top: 5px; margin-bottom: 5px;" value="初始化群组成员">
+                <input class="layui-btn layui-btn-sm" type="button" id="btnRefreshCache" style="width: 136px; margin-left: 10px; margin-top: 5px; margin-bottom: 5px;" value="刷新缓存">
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            <input type="hidden" id="initDiabledOrgDept">
+            <div style="overflow-y: auto">
+                <div class="layui-card">
+                   <div class="layui-card-body">
+			    	    <form class="layui-form layui-form-pane" action="#"> 
+			                <div class="layui-form-item layui-form-text layui-card-success">
+							    <label class="layui-form-label" style="display: block; position: fixed;width: 555px;">禁止使用即时通讯的部门列表</label>
+							    <div class="layui-input-block" id="dept_block" style="margin-top: 39px; overflow: auto;">
+							        <ul class="layim-diabled-org-dept"></ul>
+							    </div>
+							  </div>
+			    	    </form>
+			       </div>
+			    </div>
+            </div>
+            <div class="layui-input-inline" style="left: 336px;width:220px;margin-top: 3px;position: absolute;bottom: 17px;">
+                <input class="layui-btn layui-btn-sm" type="button" id="btnClearDisabledOrgDept" value="清空" style="left: 400px;">
+                <input class="layui-btn layui-btn-sm" type="button" id="btnAddDisabledOrgDept" value="添加" style="left: 460px;">
+                <input class="layui-btn layui-btn-sm" type="button" id="btnSaveDisabledOrgDept" value="保存" style="left: 520px;">
+            </div>
+        </div>
+		<div class="layui-tab-item">
+			<div class="layui-card">
+				<div class="layui-card-header">
+					<blockquote class="layui-elem-quote" id="unregisterUserSize">未注册用户：0</blockquote>
+				</div>
+				<div class="layui-card-body">
+					<table class="layui-table" id="register_table" style="display:block;border: solid 1px lightgray;margin:0;"
+						   lay-size="sm">
+						<thead>
+						<tr>
+							<th style="width:79px;text-align:center;">用户姓名</th>
+							<th style="width:75px;text-align:center;">登录名</th>
+							<th style="width:373px;">人员路径</th>
+						</tr>
+						</thead>
+						<tbody id="unregisterUserBody" style="overflow-y: auto"></tbody>
+					</table>
+				</div>
+				<div class="layui-card-footer" style="position: absolute;right: 33px;bottom: 17px;">
+					<button class="layui-btn layui-btn-sm" id="btnRegisterUser">注册</button>
+					<button class="layui-btn layui-btn-sm" id="btnInitUnregisterUser">刷新</button>
+				</div>
+			</div>
+		</div>
+		<div class="layui-tab-item" style="height: 370px;overflow: auto;">
+			<form class="layui-form layui-form-pane" action="#" lay-filter="sys-set-form">
+				<div class="layui-card">
+					<div class="layui-card-body">
+						<div id="sys-set-form-view">
+						</div>
+					</div>
+				</div>
+				<div class="layui-input-inline"
+					 style="left: 490px;width: 66px;margin-top: 3px;bottom: 16px;position: absolute;">
+					<button class="layui-btn" lay-submit lay-filter="sys-set-save">保存</button>
+				</div>
+			</form>
+		</div>
+    </div>
+</div>
+<script id="imSystemSettingTpl" type="text/html">
+	{{#  layui.each(d, function(index, item){ }}
+	{{# if(item.formType == 'input'){ }}
+	<div class="layui-form-item">
+		<label class="layui-form-label" style="width:230px;text-align:right;">{{= item.name }}：</label>
+		<div class="layui-input-block" style="margin-left:230px;">
+			<input type="text" id="{{ item.configCode }}" name="{{ item.configCode }}" title="{{ item.tips }}"
+				   lay-verify="{{ item.verify }}" value="{{ item.configValue }}" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	{{# } else if(item.formType == 'select'){ }}
+	<div class="layui-form-item">
+		<label class="layui-form-label" style="width:230px;text-align:right;">{{= item.name }}：</label>
+		<div class="layui-input-block" style="margin-left:230px;" title="{{ item.tips }}">
+			<select id="{{ item.configCode }}" name="{{ item.configCode }}">
+				{{# layui.each(item.formValue.split('|'), function(index1, item1){ }}
+				<option value="{{ item1.substring(0, item1.indexOf(':')) }}">{{ item1.substring(item1.indexOf(':')+1)
+					}}
+				</option>
+				{{# }); }}
+			</select>
+		</div>
+	</div>
+	{{# } else if(item.formType == 'textarea'){ }}
+	<div class="layui-form-item">
+		<label class="layui-form-label" style="width:230px;text-align:right;height: 54px; line-height: 36px;">{{=
+			item.name }}：</label>
+		<div class="layui-input-block" style="margin-left:230px;">
+			<textarea id="{{ item.configCode }}" title="{{ item.tips }}" name="{{ item.configCode }}"
+					  class="layui-textarea" style="min-height: 38px;">{{ item.configValue }}</textarea>
+		</div>
+	</div>
+	{{# } }}
+	{{# }); }}
+</script>
+</body>
+<script src="../../../../../strophejs/jquery-2.0.3.min.js"></script>
+<script src="../../../../layui.js"></script>
+<script src="../../../../../js/config.js"></script>
+<script src="../../../../../js/api.js"></script>
+<script src="../../../../../js/chat.js"></script>
+<script src="../../../../../js/UIControler.js"></script>
+<script>
+    layui.use(['layim', 'flow','form', 'element','laytpl'], function () {
+        var layim = parent.layim, 
+        layer = layui.layer, 
+        laytpl = layui.laytpl,
+        $ = layui.jquery, 
+        flow = layui.flow, 
+        element = layui.element();
+        var form = layui.form();
+        var socket = parent.socket;
+       
+                
+        // 系统设置 - 保存
+        form.on('submit(sys-set-save)', function(data){
+            var rootPath = parent.mylayim.getRootPath();
+    		$.ajax({
+                type: "post", //Post传参
+                url:rootPath+"/im/ConfigController/updateSysConfigs",
+                dataType: "json",
+                data: data.field,
+                success: function (result) {
+               	 	layer.msg('配置成功。');
+                },
+                error: function (e) {
+               	   layer.msg("配置失败，请稍后重试！");
+                }
+            });
+            return false;
+        });
+
+
+        $('body').on('contextmenu', function (event) {
+            event.cancelBubble = true;
+            event.returnValue = false;
+            return false;
+        });
+        
+        element.on('tab(setting)', function(data){
+        	if( $(this).attr('lay-id')=="diabledOrgDeptLayId"){
+        		getDisabledOrgDept();
+        	}
+        	if( $(this).attr('lay-id')=="sysSettingLayId"){
+				initSysSet();
+        	}
+        	if( $(this).attr('lay-id')=="unregisterUser"){
+        		initUnregisterUser();
+        	}
+          });
+
+        // element.on('tab(setting)', function () {
+        //     console.log($(this).text() + this.getAttribute('lay-id'));
+        // });
+
+		$("#btnRefreshGroupMember").on("click", function () {
+			refreshGroupMember();
+		});
+		$("#btnRefreshCache").on("click", function () {
+			refreshCache();
+		});
+        $("#btnSaveDisabledOrgDept").on("click", function () {
+            saveDisabledOrgDept();
+        });
+        $("#btnAddDisabledOrgDept").on("click", function () {
+            addDisabledOrgDept();
+        });
+        $("#btnClearDisabledOrgDept").on("click", function () {
+			clearDisabledOrgDept();
+        });
+		$("#btnInitUnregisterUser").on("click", function () {
+			initUnregisterUser();
+		});
+        $("#btnRegisterUser").on("click", function () {
+			registerUser();
+        });
+		$("#btnSaveSysSet").on("click", function () {
+			saveSysSet();
+		});
+
+        // 缓存管理 - 刷新缓存
+		var refreshCache = function () {
+			var rootPath = parent.mylayim.getRootPath();
+			var mask = parent.layer.msg('刷新缓存中', {icon: 16, shade: [0.3, '#393D49'],time:-1});
+			$('#refreshCache').attr("disabled","disabled");
+			$.ajax({
+				type: "post", //Post传参
+				url: rootPath + "/im/ConfigController/refreshCache",
+				dataType: "json",
+				success: function (result) {
+
+					parent.layer.close(mask);
+					if(result){
+						layer.msg('刷新成功',function () {
+							$('#refreshCache').removeAttr("disabled");
+						});
+					} else {
+						layer.msg('刷新失败，请稍后重试！',function () {
+							$('#refreshCache').removeAttr("disabled");
+						});
+					}
+				},
+				error: function (e) {
+					parent.layer.close(mask);
+					layer.msg("刷新失败，请稍后重试！",function () {
+						$('#refreshCache').removeAttr("disabled");
+					});
+				}
+			});
+		};
+
+		// 缓存管理 - 初始化群组成员
+		var refreshGroupMember = function () {
+			var confirmIndex = layer.confirm("刷新群组成员可能要消耗较长时间，您确认要创刷新吗？", {
+						btn: ['确认刷新', '取消刷新'] // 按钮
+				}, function () {
+					var rootPath = parent.mylayim.getRootPath();
+					var mask = parent.layer.msg('刷新群组成员，请稍后', {icon: 16, shade: [0.3, '#393D49']});
+					$('#refreshGroupMember').attr("disabled","disabled");
+					$.ajax({
+						type: "post", //Post传参
+						url: rootPath + "/im/ConfigController/refreshGroupMember",
+						dataType: "json",
+						success: function (result) {
+							parent.layer.close(mask);
+							if(result){
+								layer.msg('刷新群组成员成功',function () {
+									$('#refreshGroupMember').removeAttr("disabled");
+								});
+							} else {
+								layer.msg('刷新群组成员失败，请联系管理员！',function () {
+									$('#refreshGroupMember').removeAttr("disabled");
+								});
+							}
+						},
+						error: function (e) {
+							parent.layer.close(mask);
+							layer.msg("刷新失败，请稍后重试！",function () {
+								$('#refreshGroupMember').removeAttr("disabled");
+							});
+						}
+					});
+				}
+				, function () {
+
+				});
+
+		};
+
+		// 组织部门管理 - 添加
+		var addDisabledOrgDept = function () {
+			parent.Chat.getOrgDepts(parent.layui, getLiDisabledOrgDept(), function (result) {
+				$('.layim-diabled-org-dept >li').remove();
+				$.each(result, function (i, item) {
+					var title = (item.parentNames ? item.parentNames + ' &gt;&gt; ' + item.name : item.name);
+					var elem = $('<li data-id="' + item.id + '" title="' + title + '">' + item.name + '</li>');
+					$('.layim-diabled-org-dept').append(elem);
+				});
+			}, function (result) {
+
+			});
+		};
+
+		// 组织部门管理 - 保存
+		var saveDisabledOrgDept = function () {
+			var rootPath = parent.mylayim.getRootPath();
+			var mask = parent.layer.msg('正在保存配置', {icon: 16, shade: [0.3, '#393D49'],time:-1});
+			$('#save').attr("disabled","disabled");
+			$.ajax({
+				type: "post", //Post传参
+				url: rootPath + "/im/ConfigController/saveDisabledOrgDept",
+				dataType: "json",
+				data: {configValue: getLiDisabledOrgDept()},
+				success: function (result) {
+					parent.layer.close(mask);
+					if(result){
+						layer.msg('配置成功', function () {
+							var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+							parent.layer.close(index); //再执行关闭
+						});
+					} else {
+						layer.msg('配置失败，请稍后重试！',function () {
+							$('#save').removeAttr("disabled");
+						});
+					}
+				},
+				error: function (e) {
+					parent.layer.close(mask);
+					layer.msg("配置失败，请稍后重试！", function () {
+						$('#save').removeAttr("disabled");
+					});
+				}
+			});
+		};
+
+		// 组织部门管理 - 获取禁用的组织部门列表
+		var getDisabledOrgDept=function(){
+			var rootPath = parent.mylayim.getRootPath();
+			$.ajax({
+				type: "post", //Post传参
+				url: rootPath + "/im/ConfigController/getDisabledOrgDept",
+				dataType: "json",
+				success: function (result) {
+					var initDiabledOrgDepts = [];
+					$('.layim-diabled-org-dept').html("");
+					$.each(result, function (i, item) {
+						var elem = $('<li data-id="' + item.id + '" title="' + item.orgDeptNames.join(' &gt;&gt; ') + '"><span>' + item.orgDeptName + '</span></li>');
+						$('.layim-diabled-org-dept').append(elem);
+						initDiabledOrgDepts.push(item.id);
+					});
+					initDiabledOrgDepts.length && $('#initDiabledOrgDept').val(initDiabledOrgDepts.join(','));
+				},
+				error: function (e) {
+				}
+			});
+		};
+
+		var getLiDisabledOrgDept = function () {
+			var arr = [];
+			var liLst = $('.layim-diabled-org-dept').find('li');
+			$.each(liLst, function (i, item) {
+				arr.push($(item).data('id'));
+			});
+			arr.sort(function (sortA, sortB) {
+				return sortA > sortB;
+			});
+			return arr.join(',');
+		};
+
+		// 组织部门管理 - 清空
+		var clearDisabledOrgDept = function () {
+			var liLst = $('.layim-diabled-org-dept').find('li');
+			$.each(liLst, function (i, item) {
+				$(item).remove();
+			});
+		};
+
+		// 用户注册 - 初始化未注册用户列表
+		var initUnregisterUser = function (){
+			layer.msg('初始化未注册用户中......', {
+				icon: 16
+				,shade: 0.01
+			});
+			var rootPath = parent.mylayim.getRootPath();
+			$.get(rootPath + "/im/userRegister/getUnRegisterUser",{},function(res){
+				if(res && res.data && res.data.length > 0){
+					$("#unregisterUserBody").empty();
+					var count = 0;
+					$.each(res.data,function(i,e){
+						var user = parent.Chat.getUserInfoById(e);
+						if(user){
+							count = count+1;
+							var str = "";
+							str += "<tr>";
+							str += "<td style='width:79px;text-align:center;'>" + user.username + "</td>";
+							str += "<td style='width:75px;text-align:center;'>" + e + "</td>";
+							str += "<td style='width:373px;'>" + user.deptOrgs.join(">>") + ">>" + e + "</td>";
+							str += "</tr>";
+							$("#unregisterUserBody").append(str);
+							$("#unregisterUserSize").text("未注册用户：" + count);
+						}
+					});
+				} else {
+					$("#unregisterUserBody").empty();
+					$("#unregisterUserSize").text("未注册用户：0");
+				}
+				layer.closeAll('loading');
+			});
+		};
+
+		// 注册用户 - 注册
+		var registerUser = function(){
+			var rootPath = parent.mylayim.getRootPath();
+			layer.msg('注册用户中......', {
+				icon: 16
+				,shade: 0.01
+				,time:-1
+			});
+			$.ajax({
+				type: "get",
+				url:rootPath+"/im/userRegister/oneRegister",
+				dataType: "json",
+				data: {},
+				success: function (result) {
+					layer.msg('注册成功！');
+					initUnregisterUser();
+				},
+				error: function (e) {
+					layer.msg("注册失败，请稍后重试！");
+				}
+			});
+		};
+
+		// 系统设置 - 初始化
+		var initSysSet = function () {
+			var rootPath = parent.mylayim.getRootPath();
+			$.ajax({
+				type: "post", //Post传参
+				url: rootPath + "/im/ConfigController/getAllShownSysConfig",
+				dataType: "json",
+				success: function (result) {
+					var getTpl = imSystemSettingTpl.innerHTML
+							, view = $('#sys-set-form-view');
+					view.html('');
+					laytpl(getTpl).render(result, function (html) {
+						$("#sys-set-form-view").prepend(html);
+					});
+					$.each(result,function(i,e){
+						$("#" + e.configCode).val(e.configValue);
+					});
+					form.render();
+				},
+				error: function (e) {
+
+				}
+			});
+		};
+
+	});
+
+</script>
+</html>

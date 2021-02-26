@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- release v4.5.0, copyright 2014 - 2018 Kartik Visweswaran -->
+<!--suppress JSUnresolvedLibraryURL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="../bootstrap-fileinput/css//bootstrap.min.css" rel="stylesheet"/>
+    <link href="../bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../bootstrap-fileinput/font-awesome/css/font-awesome.min.css" media="all" rel="stylesheet"
+          type="text/css"/>
+    <link href="../bootstrap-fileinput/themes/explorer-fa/theme.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="../bootstrap-fileinput/js/jquery-3.2.1.min.js"></script>
+    <script src="../bootstrap-fileinput/js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="../bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
+    <script src="../bootstrap-fileinput/js/locales/zh.js" type="text/javascript"></script>
+    <script src="../bootstrap-fileinput/themes/explorer-fa/theme.js" type="text/javascript"></script>
+    <script src="../bootstrap-fileinput/themes/fa/theme.js" type="text/javascript"></script>
+    <script src="../bootstrap-fileinput/js/popper.min.js" type="text/javascript"></script>
+    <script src="../bootstrap-fileinput/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../../layui.js"></script>
+    <script src="../../../../../js/UIControler.js"></script>
+    <script src="../../../../../js/config.js"></script>
+    <script src="../../../../../js/chat.js"></script>
+    <style>
+        /*div.theme-explorer-fa{
+            height: 305px;
+            overflow-y: auto;
+        }*/
+    </style>
+</head>
+<body>
+<div class="container kv-main" style="margin-top:9px;">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="file-loading"><!-- multiple -->
+                <input type="file" id="file-upload" name="file" multiple>
+            </div>
+            <div id="errorBlock" class="help-block"></div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+
+    layui.use(['layim'], function () {
+        var layim = layui.layim
+        var imgExt = new Array("png", "jpg", "jpeg", "bmp", "gif");//图片文件的后缀名
+        var param = decodeURI(location.search) //获得URL参数。该窗口url会携带会话id和type，?id=c2&type=friend&fileType=imgaes
+        var fileType = param.split('=')[1];
+        var isImgFile = function (ext) {
+            var lowExt = ext.toLowerCase();
+            for (var i = 0; i < imgExt.length; i++) {
+                if (imgExt[i] === lowExt) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        var hasMoreFile = function (currentFile, fileArr) {
+            var hasMore = false;
+            for (var i = 0; i < fileArr.length; i++) {
+                if (fileArr[i] && fileArr[i] != currentFile) {
+                    return true;
+                }
+            }
+            return hasMore;
+        };
+        if (fileType === "images") {
+            $("#file-upload").attr("accept", "image/*");
+        }
+
+        var selectString = ' ';
+        $.ajax({
+            type: "post", //Post传参
+            url: layim.getRootPath() + "/im/ImUserController/getSecretWordList",
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                for (var i = 0; i < result.r.length; i++) {
+                    selectString += '<option value=' + result.r[i].lookupCode + '>' + result.r[i].lookupName + '</option>'
+                }
+            }
+        });
+        $("#file-upload").fileinput({
+            //theme: 'fa',
+            theme: 'explorer-fa',
+            uploadUrl: layim.getRootPath() + '/im/imFileUploadController/upload',
+            language: 'zh',
+            allowedFileExtensions: fileType === "images" ? ['jpg', 'jpeg', 'png', 'gif'] : null,
+            uploadAsync: true, //默认异步上传
+            showUpload: true, //是否显示上传按钮
+            showRemove: true, //是否显示移除按钮
+            showCancel: true, //是否显示取消按钮
+            showCaption: true,//是否显示标题
+            showPreview: true, //是否显示预览
+            uploadClass: "btn btn-primary",//设置上传按钮样式
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: true,//是否显示拖拽区域
+            initialPreviewAsData: true,
+            //minImageWidth: 50, //图片的最小宽度
+            //minImageHeight: 50,//图片的最小高度
+            //maxImageWidth: 1000,//图片的最大宽度
+            //maxImageHeight: 1000,//图片的最大高度
+            maxFileSize: 20480,//单位为kb，如果为0表示不限制文件大小
+            minFileCount: 0,
+            maxFileCount: 10, //表示允许同时上传的最大文件个数
+            //enctype: 'multipart/form-data',
+            validateInitialCount: true,
+            uploadExtraData: function (previewId, index) {
+                var chosenId = "#" + previewId + " " + "option:selected";
+                var secretLevel = $(chosenId).val();
+                var data = {
+                    secretLevel: secretLevel,
+                    fileuploadIsSaveToDatabase: parent.mylayim.cache().base.fileuploadIsSaveToDatabase
+                };
+                return data;
+            },
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            initialCaption: "请选择文件",
+            msgFilesTooMany: "选择发送的文件数量({n}) 超过允许的最大数值{m}！",
+            'elErrorContainer': '#errorBlock'
+
+        }).on("filebatchselected", function (event, files) {
+            $('button[title="发送文件"]').hide();
+            $('button[title="查看详情"]').hide();
+            if (fileType === "images") {
+                $('.file-details-cell').prepend('<div style="float:right;margin-right:20px;display:none"><span>密级</span><select><option value="1">非涉密文件</option></select></div>');
+            }
+            if (fileType === "file") {
+                for (var i = 0; i < $('.file-preview-frame').length; i++) {
+                    if ($($('.file-preview-frame')[i]).find('select').length < 1) {
+                        $($('.file-preview-frame')[i]).find('.file-details-cell').prepend('<div style="float:right;margin-right:20px"><span>密级</span><select class="selectLookup"></select></div>');
+                        $($('.file-preview-frame')[i]).find('.selectLookup').append(selectString);
+                    }
+                }
+
+
+            }
+        }).on('filepreajax', function (event, previewId, index) {
+            var chosenIds = ".kv-preview-thumb option:selected";
+            for (var i = 0; i < $(chosenIds).length; i++) {
+                var secretLevel = $($(chosenIds)[i]).val();
+                if (secretLevel == "0") {
+                    var container = $(".form-group");
+                    var processDiv = container.find('.kv-upload-progress');
+                    var process = container.find('.progress');
+                    processDiv.hide();
+                    process.hide();
+                    $('#file-upload').fileinput('enable');
+                    if (index == ($(chosenIds).length - 1)) {
+                        layer.msg("请选择文件密级！");
+                    }
+                    return false;
+
+                }
+            }
+        }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
+            var textareaObj = window.parent.$('div.layim-chat-box > div.layui-show > div.layim-chat-footer > div.layim-chat-textarea > textarea');
+            var content;
+            var uploadedFile = data["response"][0];
+            var cacheBase = parent.mylayim.cache().base;
+            var fileDownloadUrl = cacheBase.fileDownloadUrl;
+            var fileuploadIsSaveToDatabase = cacheBase.fileuploadIsSaveToDatabase;
+            if (fileType === "images") {
+                content = 'img['+fileDownloadUrl+'fileuploadIsSaveToDatabase='+fileuploadIsSaveToDatabase+'&fileId=' + uploadedFile.id + '&fileType=' + uploadedFile.file_TYPE + ']';
+            } else {
+                content = 'file('+fileDownloadUrl+'fileuploadIsSaveToDatabase='+fileuploadIsSaveToDatabase+'&fileId=' + uploadedFile.id + '&fileType=' + uploadedFile.file_TYPE + '&filesecretLevel=' + uploadedFile.secret_LEVEL + ')[' + uploadedFile.file_NAME + ']';
+            }
+            window.parent.layui.layim.sendMsg(content);
+
+            //最后一个文件上传完成后，关闭页面
+            if (!hasMoreFile(uploadedFile.file_NAME, data.filenames)) {
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.close(index); //再执行关闭
+                textareaObj.focus();
+            }
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,155 @@
+/* 左侧导航搜索 */
+.accordion{
+	padding-top:84px;
+}
+.accordion>li{
+	position: relative;
+}
+.searchBox {
+    padding: 8px 8px 8px 6px !important;
+    position: absolute;
+    left: 0;
+    top:40px;
+    width: 200px;
+    background:#fff;
+    z-index: 22;
+}
+.searchBox input {
+    color: #888888;
+    font-size: 12px;
+    padding-left: 14px;
+    border-radius: 14px;
+    background: #f3f4f9;
+    border: 1px solid #EAECF2;
+    height: 28px;
+    line-height: 32px;
+    width: 100%;
+    padding: 0 46px 0 14px;
+    outline: medium;
+}
+
+.searchBox i.clear {
+    position: absolute;
+    left: auto;
+    right: 30px;
+    top: 10px !important;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    color: #888888;
+    display: none;
+}
+
+.searchBox i.query{
+    position: absolute;
+    left: auto;
+    right: 12px;
+    top: 10px !important;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    color: #888888;
+}
+/* 菜单加new图标样式开始 */
+.menu-label{
+	position: absolute;
+	display: none!important;
+	display: block!important;
+	border-radius:3px;
+	color:#fff!important;
+	font-size:12px!important;
+	line-height:14px!important;
+	font-style:normal;
+	height:15px;
+	width:18px;
+	text-align: center;
+	background: #dd4b39;
+	z-index: 999;
+}
+.accordion > li > i.menu-bg-red{
+	right:25px;
+	left:auto;
+	top:12px;
+}
+.accordion .link{
+	text-align: left;
+}
+.submenu li{
+	text-align: left;
+}
+.lt-list li i.menu-bg-red{
+	right:-20px;
+	top:8px;
+}
+.lt-list .subtitle{
+	padding-right:25px!important;
+}
+.cl-list .submenu i.menu-bg-red{
+	right:10px;
+	top:9px;
+}
+.submenu li i.menu-bg-red{
+	left:157px;
+	top:9px;
+}
+.jump{
+	animation-duration: 2s;
+	animation-name: jump;
+}
+@keyframes jump {
+	from {
+		transform: scale3d(1, 1, 1) translateY(0)
+	}
+	5% {
+		transform: scale3d(1.03, 0.97, 1) translateY(-1px)
+	}
+	12.5% {
+		transform: scale3d(1, 1, 1) translateY(-10px)
+	}
+	20% {
+		transform: scale3d(0.98, 1.02, 1) translateY(-1px)
+	}
+	25% {
+		transform: scale3d(1.06, 0.94, 1) translateY(4px)
+	}
+	32.5% {
+		transform: scale3d(0.97, 1.03, 1) translateY(-4px)
+	}
+	40% {
+		transform: scale3d(1, 1, 1) translateY(0)
+	}
+	100% {
+		transform: scale3d(1, 1, 1) translateY(0)
+	}
+}
+/* 菜单加new图标样式结束 */
+
+/* 搜索框高度调整 */
+div.top_search_box {
+    margin: 12px 3px 0 auto;
+}
+/*前台用户首页组织、部门显示样式*/
+.dropdown-name-text span {
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
+	-webkit-box-orient: vertical
+}
+.no_tip_box .accordion{
+	padding-top: 44px;
+}
+.no_tip_box .searchBox{
+	top: 0;
+}
+.tips_box{
+	position: absolute;
+	top: 0;
+}

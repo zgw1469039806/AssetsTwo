@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.elect.dynnumplate.dao.DynNumPlateDAO">
+<resultMap id="DynNumPlateDTOMap" type="avicit.elect.dynnumplate.dto.DynNumPlateDTO">
+	<result property="num" column="NUM" jdbcType="VARCHAR" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="status" column="STATUS" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="loginStatus" column="LOGIN_STATUS" jdbcType="VARCHAR" />
+	<result property="att01" column="ATT_01" jdbcType="VARCHAR" />
+	<result property="att02" column="ATT_02" jdbcType="VARCHAR" />
+	<result property="att03" column="ATT_03" jdbcType="VARCHAR" />
+	<result property="att04" column="ATT_04" jdbcType="VARCHAR" />
+	<result property="att05" column="ATT_05" jdbcType="VARCHAR" />
+	<result property="att06" column="ATT_06" jdbcType="DECIMAL" />
+	<result property="att07" column="ATT_07" jdbcType="DECIMAL" />
+	<result property="att08" column="ATT_08" jdbcType="DECIMAL" />
+	<result property="att09" column="ATT_09" jdbcType="DECIMAL" />
+	<result property="att10" column="ATT_10" jdbcType="DECIMAL" />
+</resultMap>
+<sql id="commonColums">
+	t1.NUM,
+	t1.CREATED_BY,
+	t1.LAST_UPDATED_BY,
+	t1.STATUS,
+	t1.CREATION_DATE,
+	t1.VERSION,
+	t1.ID,
+	t1.LAST_UPDATE_DATE,
+	t1.ORG_IDENTITY,
+	t1.LAST_UPDATE_IP,
+	t1.LOGIN_STATUS,
+	t1.ATT_01,
+	t1.ATT_02,
+	t1.ATT_03,
+	t1.ATT_04,
+	t1.ATT_05,
+	t1.ATT_06,
+	t1.ATT_07,
+	t1.ATT_08,
+	t1.ATT_09,
+	t1.ATT_10</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+		and t1.org_identity = #{bean.orgIdentity}
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+    <if test="bean.num != null and bean.num != ''">
+        and t1.NUM like concat(concat('%',#{bean.num}),'%')
+    </if>
+    <if test="bean.createdBy != null and bean.createdBy != ''">
+        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+    </if>
+    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+    </if>
+    <if test="bean.status != null and bean.status != ''">
+        and t1.STATUS like concat(concat('%',#{bean.status}),'%')
+    </if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+    <if test="bean.version != null ">
+        and t1.VERSION = #{bean.version}
+    </if>
+    <if test="bean.id != null and bean.id != ''">
+        and t1.ID like concat(concat('%',#{bean.id}),'%')
+    </if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+    </if>
+    <if test="bean.loginStatus != null and bean.loginStatus != ''">
+        and t1.LOGIN_STATUS like concat(concat('%',#{bean.loginStatus}),'%')
+    </if>
+    <if test="bean.att01 != null and bean.att01 != ''">
+        and t1.ATT_01 like concat(concat('%',#{bean.att01}),'%')
+    </if>
+    <if test="bean.att02 != null and bean.att02 != ''">
+        and t1.ATT_02 like concat(concat('%',#{bean.att02}),'%')
+    </if>
+    <if test="bean.att03 != null and bean.att03 != ''">
+        and t1.ATT_03 like concat(concat('%',#{bean.att03}),'%')
+    </if>
+    <if test="bean.att04 != null and bean.att04 != ''">
+        and t1.ATT_04 like concat(concat('%',#{bean.att04}),'%')
+    </if>
+    <if test="bean.att05 != null and bean.att05 != ''">
+        and t1.ATT_05 like concat(concat('%',#{bean.att05}),'%')
+    </if>
+    <if test="bean.att06 != null ">
+        and t1.ATT_06 = #{bean.att06}
+    </if>
+    <if test="bean.att07 != null ">
+        and t1.ATT_07 = #{bean.att07}
+    </if>
+    <if test="bean.att08 != null ">
+        and t1.ATT_08 = #{bean.att08}
+    </if>
+    <if test="bean.att09 != null ">
+        and t1.ATT_09 = #{bean.att09}
+    </if>
+    <if test="bean.att10 != null ">
+        and t1.ATT_10 = #{bean.att10}
+    </if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.num != null and bean.num != ''">
+			or t1.NUM like concat(concat('%',#{bean.num}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.status != null and bean.status != ''">
+			or t1.STATUS like concat(concat('%',#{bean.status}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.version != null and bean.version != ''">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.loginStatus != null and bean.loginStatus != ''">
+			or t1.LOGIN_STATUS like concat(concat('%',#{bean.loginStatus}),'%')
+		</if>
+		<if test="bean.att01 != null and bean.att01 != ''">
+			or t1.ATT_01 like concat(concat('%',#{bean.att01}),'%')
+		</if>
+		<if test="bean.att02 != null and bean.att02 != ''">
+			or t1.ATT_02 like concat(concat('%',#{bean.att02}),'%')
+		</if>
+		<if test="bean.att03 != null and bean.att03 != ''">
+			or t1.ATT_03 like concat(concat('%',#{bean.att03}),'%')
+		</if>
+		<if test="bean.att04 != null and bean.att04 != ''">
+			or t1.ATT_04 like concat(concat('%',#{bean.att04}),'%')
+		</if>
+		<if test="bean.att05 != null and bean.att05 != ''">
+			or t1.ATT_05 like concat(concat('%',#{bean.att05}),'%')
+		</if>
+		<if test="bean.att06 != null and bean.att06 != ''">
+			or t1.ATT_06 = #{bean.att06}
+		</if>
+		<if test="bean.att07 != null and bean.att07 != ''">
+			or t1.ATT_07 = #{bean.att07}
+		</if>
+		<if test="bean.att08 != null and bean.att08 != ''">
+			or t1.ATT_08 = #{bean.att08}
+		</if>
+		<if test="bean.att09 != null and bean.att09 != ''">
+			or t1.ATT_09 = #{bean.att09}
+		</if>
+		<if test="bean.att10 != null and bean.att10 != ''">
+			or t1.ATT_10 = #{bean.att10}
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="pOrderBy != null and pOrderBy != ''">
+			order by ${pOrderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+<!-- 分页查询 DYN_NUM_PLATE -->
+<select id="searchDynNumPlateByPage" parameterType="java.util.Map" resultMap="DynNumPlateDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_NUM_PLATE t1   
+<where>
+	<if test="bean != null">
+		<choose>
+			<when test="keyWord != null and keyWord != '' ">
+				<include refid="commonWhereOr"/>
+			</when>
+			<otherwise>
+				<include refid="commonWhereAnd"/>
+			</otherwise>
+		</choose>
+		<include refid="defaultWhereAnd"/>
+	</if>
+</where>
+<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 DYN_NUM_PLATE -->
+<select id="searchDynNumPlate" parameterType="java.util.Map" resultMap="DynNumPlateDTOMap">
+	select
+	<include refid="commonColums"/>
+    from DYN_NUM_PLATE 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</if>
+	</where>
+</select>
+<!-- 主键查询对象 DYN_NUM_PLATE -->
+<select id="findDynNumPlateById" parameterType="java.lang.String" resultMap="DynNumPlateDTOMap">
+	select
+	<include refid="commonColums"/>
+	from DYN_NUM_PLATE t1
+	where t1.id = #{id}
+</select>
+<select id="searchLoginNum" parameterType="java.lang.String" resultType="integer">
+	select
+	count(t1.ID)
+	from DYN_NUM_PLATE t1
+	where t1.LOGIN_STATUS = #{loginStatus}
+</select>
+<!-- 新增对象 DYN_NUM_PLATE -->
+<insert id="insertDynNumPlate" parameterType="avicit.elect.dynnumplate.dto.DynNumPlateDTO">
+	insert into DYN_NUM_PLATE
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="num != null">
+			NUM,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="status != null">
+			STATUS,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="loginStatus != null">
+			LOGIN_STATUS,
+		</if>
+		<if test="att01 != null">
+			ATT_01,
+		</if>
+		<if test="att02 != null">
+			ATT_02,
+		</if>
+		<if test="att03 != null">
+			ATT_03,
+		</if>
+		<if test="att04 != null">
+			ATT_04,
+		</if>
+		<if test="att05 != null">
+			ATT_05,
+		</if>
+		<if test="att06 != null">
+			ATT_06,
+		</if>
+		<if test="att07 != null">
+			ATT_07,
+		</if>
+		<if test="att08 != null">
+			ATT_08,
+		</if>
+		<if test="att09 != null">
+			ATT_09,
+		</if>
+		<if test="att10 != null">
+			ATT_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="num != null">
+			#{num,jdbcType = VARCHAR},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="status != null">
+			#{status,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="loginStatus != null">
+			#{loginStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="att01 != null">
+			#{att01,jdbcType = VARCHAR},
+		</if>
+		<if test="att02 != null">
+			#{att02,jdbcType = VARCHAR},
+		</if>
+		<if test="att03 != null">
+			#{att03,jdbcType = VARCHAR},
+		</if>
+		<if test="att04 != null">
+			#{att04,jdbcType = VARCHAR},
+		</if>
+		<if test="att05 != null">
+			#{att05,jdbcType = VARCHAR},
+		</if>
+		<if test="att06 != null">
+			#{att06,jdbcType = DECIMAL},
+		</if>
+		<if test="att07 != null">
+			#{att07,jdbcType = DECIMAL},
+		</if>
+		<if test="att08 != null">
+			#{att08,jdbcType = DECIMAL},
+		</if>
+		<if test="att09 != null">
+			#{att09,jdbcType = DECIMAL},
+		</if>
+		<if test="att10 != null">
+			#{att10,jdbcType = DECIMAL},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 DYN_NUM_PLATE -->
+<insert id="insertDynNumPlateList" parameterType="java.util.List">
+	insert into DYN_NUM_PLATE(
+	NUM ,
+	CREATED_BY ,
+	LAST_UPDATED_BY ,
+	STATUS ,
+	CREATION_DATE ,
+	VERSION ,
+	ID ,
+	LAST_UPDATE_DATE ,
+	ORG_IDENTITY ,
+	LAST_UPDATE_IP ,
+	LOGIN_STATUS ,
+	ATT_01 ,
+	ATT_02 ,
+	ATT_03 ,
+	ATT_04 ,
+	ATT_05 ,
+	ATT_06 ,
+	ATT_07 ,
+	ATT_08 ,
+	ATT_09 ,
+	ATT_10 )
+<foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
+	select
+	#{item.num,jdbcType = VARCHAR} ,
+	#{item.createdBy,jdbcType = VARCHAR} ,
+	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+	#{item.status,jdbcType = VARCHAR} ,
+	#{item.creationDate,jdbcType = TIMESTAMP} ,
+	#{item.version,jdbcType = DECIMAL} ,
+	#{item.id,jdbcType = VARCHAR} ,
+	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+	#{item.orgIdentity,jdbcType = VARCHAR} ,
+	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+	#{item.loginStatus,jdbcType = VARCHAR} ,
+	#{item.att01,jdbcType = VARCHAR} ,
+	#{item.att02,jdbcType = VARCHAR} ,
+	#{item.att03,jdbcType = VARCHAR} ,
+	#{item.att04,jdbcType = VARCHAR} ,
+	#{item.att05,jdbcType = VARCHAR} ,
+	#{item.att06,jdbcType = DECIMAL} ,
+	#{item.att07,jdbcType = DECIMAL} ,
+	#{item.att08,jdbcType = DECIMAL} ,
+	#{item.att09,jdbcType = DECIMAL} ,
+	#{item.att10,jdbcType = DECIMAL} 	from dual
+</foreach>
+</insert>
+<!-- 更新对象 DYN_NUM_PLATE -->
+<update id="updateDynNumPlateSensitive" parameterType="avicit.elect.dynnumplate.dto.DynNumPlateDTO">
+	update DYN_NUM_PLATE
+	<set>
+		<if test="num != null">
+			NUM = #{num,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="status != null">
+			STATUS = #{status,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="loginStatus != null">
+			LOGIN_STATUS = #{loginStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att01 != null">
+			ATT_01 = #{att01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att02 != null">
+			ATT_02 = #{att02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att03 != null">
+			ATT_03 = #{att03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att04 != null">
+			ATT_04 = #{att04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att05 != null">
+			ATT_05 = #{att05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="att06 != null">
+			ATT_06 = #{att06,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att07 != null">
+			ATT_07 = #{att07,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att08 != null">
+			ATT_08 = #{att08,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att09 != null">
+			ATT_09 = #{att09,jdbcType = DECIMAL} ,
+		</if>
+		<if test="att10 != null">
+			ATT_10 = #{att10,jdbcType = DECIMAL} 		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 DYN_NUM_PLATE -->
+<update id="updateDynNumPlateAll" parameterType="avicit.elect.dynnumplate.dto.DynNumPlateDTO">
+	update DYN_NUM_PLATE
+	set
+	NUM = #{num,jdbcType = VARCHAR} ,
+	CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+	LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+	STATUS = #{status,jdbcType = VARCHAR} ,
+	CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+	VERSION = version+1 ,
+	ID = #{id,jdbcType = VARCHAR} ,
+	LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+	LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+	LOGIN_STATUS = #{loginStatus,jdbcType = VARCHAR} ,
+	ATT_01 = #{att01,jdbcType = VARCHAR} ,
+	ATT_02 = #{att02,jdbcType = VARCHAR} ,
+	ATT_03 = #{att03,jdbcType = VARCHAR} ,
+	ATT_04 = #{att04,jdbcType = VARCHAR} ,
+	ATT_05 = #{att05,jdbcType = VARCHAR} ,
+	ATT_06 = #{att06,jdbcType = DECIMAL} ,
+	ATT_07 = #{att07,jdbcType = DECIMAL} ,
+	ATT_08 = #{att08,jdbcType = DECIMAL} ,
+	ATT_09 = #{att09,jdbcType = DECIMAL} ,
+	ATT_10 = #{att10,jdbcType = DECIMAL} 	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   DYN_NUM_PLATE -->
+<update id="updateDynNumPlateList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+		update DYN_NUM_PLATE
+		set
+		NUM = #{item.num,jdbcType = VARCHAR} ,
+		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+		STATUS = #{item.status,jdbcType = VARCHAR} ,
+		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+		VERSION = version+1  ,
+		ID = #{item.id,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+		LOGIN_STATUS = #{item.loginStatus,jdbcType = VARCHAR} ,
+		ATT_01 = #{item.att01,jdbcType = VARCHAR} ,
+		ATT_02 = #{item.att02,jdbcType = VARCHAR} ,
+		ATT_03 = #{item.att03,jdbcType = VARCHAR} ,
+		ATT_04 = #{item.att04,jdbcType = VARCHAR} ,
+		ATT_05 = #{item.att05,jdbcType = VARCHAR} ,
+		ATT_06 = #{item.att06,jdbcType = DECIMAL} ,
+		ATT_07 = #{item.att07,jdbcType = DECIMAL} ,
+		ATT_08 = #{item.att08,jdbcType = DECIMAL} ,
+		ATT_09 = #{item.att09,jdbcType = DECIMAL} ,
+		ATT_10 = #{item.att10,jdbcType = DECIMAL} 		where id = #{item.id}
+		and version = #{version}
+	</foreach>
+</update>
+
+	<!-- 批量更新对象   DYN_NUM_PLATE -->
+	<update id="updateAllDynNumPlateLoginStatus" parameterType="java.lang.String">
+		update DYN_NUM_PLATE set LOGIN_STATUS = #{status}
+	</update>
+
+<!-- 主键删除 DYN_NUM_PLATE -->
+<delete id="deleteDynNumPlateById" parameterType="java.lang.String">
+	delete from DYN_NUM_PLATE  where id = #{id}
+</delete>
+
+	<update id="updateNumPlateLoginStatus">
+		<![CDATA[
+		UPDATE DYN_NUM_PLATE SET LOGIN_STATUS = '1' WHERE LOGIN_STATUS = '0' and id = #{id}
+		AND (SELECT COUNT(*) FROM DYN_NUM_PLATE where LOGIN_STATUS = '1') < #{maxCtn}
+		]]>
+	</update>
+</mapper>

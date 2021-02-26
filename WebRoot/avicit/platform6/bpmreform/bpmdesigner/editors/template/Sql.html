@@ -1,0 +1,137 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="sql" class="prop_wrap" style="display:none">
+	<form id="jbxx" action="" class="form-horizontal">
+	  <div class="avic-flow-default-theme">
+                <div class="twoTabNav" style="width: 100%">
+                    <!-- 标签主体Start -->
+                    <ul class="nav-tabs">
+                        <li class="active">
+                            <a href="javascript:void(0)">基本信息</a>
+                        </li>
+                     <!--    <li>
+                            <a href="javascript:void(0)">事件</a>
+                        </li> -->
+                    </ul>
+                    <ul class="tab-cont">
+                        <li class="active">
+                            <div class="demoCont">
+                            <!-- html:[开始节点] 基本信息 开始 -->
+                            	<div class="base_info">
+                                   <div class="row base_info_bar" >
+                                        <div class="label"><span>基本</span></div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">节点名称</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="xian_shi_ming_cheng" name="xian_shi_ming_cheng">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">逻辑标识</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="luo_ji_biao_shi" name="luo_ji_biao_shi" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">数据源</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="shujuyuan" name="shujuyuan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">返回变量</label>
+                                        <div class="col-xs-5 form-process-properties-value" style="padding-right: 0px;">
+                                            <input type="hidden" id="inputValueBackVar" name="inputValueBackVar">
+                                            <input type="text" class="form-control" id="inputTextBackVar" name="inputTextBackVar" readonly="">
+                                        </div>
+                                        <div class="col-xs-3 clear-right-padding">
+                                            <button name="button-BackVar" type="button" class="btn btn-default form-tool-btn btn-sm form-buttion-fix">选择</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="" class="col-xs-3  col-xs-offset-1 control-label form-process-properties-label">返回唯一值</label>
+                                        <div class="col-xs-5 form-process-properties-value">
+                                            <label class="checkbox-parent-label">
+                                                <input id="fanhuiweiyizhi" name="fanhuiweiyizhi" type="checkbox" value="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">Sql语句</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <textarea type="text" class="form-control" id="chaxuntiaojian" name="chaxuntiaojian" rows="5" ></textarea>
+                                        </div>
+                                    </div>
+                                    <!--<div class="row">
+                                        <div class="col-xs-3">
+                                            <button type="button" class="btn form-tool-btn btn-sm form-buttion-fix" id="configUpdateSql">配置更新语句</button>
+                                        </div>
+                                    </div>-->
+                                </div>
+
+                                <div class="base_info">
+                                    <div class="row base_info_bar" >
+                                        <div class="label form-process-separate-label"><span>查询参数</span></div>
+                                    </div>
+                                    <div class="form-group" >
+                                        <div class="col-xs-3   col-xs-offset-8 " >
+                                            <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="buttonAddSQLQueryParameter" >添加</button>
+                                        </div>
+                                    </div>
+                                    <div >
+                                        <table class="table table-hover table-bordered table-fix" name="table-flow-add-SQLQueryParameter" id="table-flow-add-SQLQueryParameter">
+                                            <thead>
+                                            <tr>
+                                                <td style="width:18%;">名称</td>
+                                                <td style="width:18%;">参数</td>
+                                                <td style="width:18%;">类型</td>
+                                                <td style="width:20%;">参数值</td>
+                                                <td >操作</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            <!-- html:[开始节点] 基本信息 结束 -->
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 标签主体End -->
+                </div>
+            </div>
+	</form>
+</div>
+<script>
+    $(function () {
+        $("#configUpdateSql").on("click", function () {
+            layer.open({
+                type : 2,
+                area: ["800px", "550px"],
+                title: "配置更新语句",
+                content : "avicit/platform6/bpmreform/bpmdesigner/editors/js/template/sqlConfig/updateSqlConfig.jsp",
+                btn: ['确定', '关闭'],
+                yes: function (index, layero) {
+                    var iframeWin = layero.find('iframe')[0].contentWindow;
+                    if(typeof iframeWin.checkRe =="function"){
+                        var flag = iframeWin.checkRe();
+                        //根据返回的字符串弹窗提示
+                        if(flag.indexOf("inputErr")==0 && "inputErr".indexOf(flag)==0){
+                            layer.msg('输入字段不能含有特殊字符！', {icon: 7});
+                            return;
+                        }
+                    }
+                    var sqlString = iframeWin.getSqlString();
+                    if (flowUtils.notNull(sqlString)) {
+                        $('#' + designerEditor.myCurCellId).find('#chaxuntiaojian').val(sqlString);
+                        layer.close(index);
+                    } else {
+                        layer.msg("请正确配置更新语句");
+                        return;
+                    }
+                }
+            });
+        });
+    });
+</script>

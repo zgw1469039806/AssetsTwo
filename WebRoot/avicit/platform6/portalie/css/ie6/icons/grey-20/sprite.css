@@ -1,0 +1,371 @@
+.icon {
+  width:20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(sprite.svg);
+}
+.icon-star {
+  background-position: 0 0;
+}
+.icon-icon {
+  background-position: -36px 0;
+}
+.icon-point {
+  background-position: -72px 0;
+}
+.icon-radio_current {
+  background-position: -108px 0;
+}
+.icon-right-arrow {
+  background-position: -144px 0;
+}
+.icon-left-arrow {
+  background-position: -180px 0;
+}
+.icon-box {
+  background-position: -216px 0;
+}
+.icon-yuan-copy-copy-copy-copy {
+  background-position: -252px 0;
+}
+.icon-radiooff {
+  background-position: -288px 0;
+}
+.icon-message {
+  background-position: -324px 0;
+}
+.icon-menu {
+  background-position: -360px 0;
+}
+.icon-xiajiantou {
+  background-position: -396px 0;
+}
+.icon-menu1 {
+  background-position: -432px 0;
+}
+.icon-view1 {
+  background-position: -468px 0;
+}
+.icon-new {
+  background-position: -504px 0;
+}
+.icon-tuding {
+  background-position: -540px 0;
+}
+.icon-folder_add {
+  background-position: 0 -36px;
+}
+.icon-view {
+  background-position: -36px -36px;
+}
+.icon-delete {
+  background-position: -72px -36px;
+}
+.icon-edit {
+  background-position: -108px -36px;
+}
+.icon-add {
+  background-position: -144px -36px;
+}
+.icon-check {
+  background-position: -180px -36px;
+}
+.icon-clock {
+  background-position: -216px -36px;
+}
+.icon-close {
+  background-position: -252px -36px;
+}
+.icon-calendar {
+  background-position: -288px -36px;
+}
+.icon-download {
+  background-position: -324px -36px;
+}
+.icon-first {
+  background-position: -360px -36px;
+}
+.icon-Eye {
+  background-position: -396px -36px;
+}
+.icon-Last {
+  background-position: -432px -36px;
+}
+.icon-Maximization {
+  background-position: -468px -36px;
+}
+.icon-minimize {
+  background-position: -504px -36px;
+}
+.icon-Previouspage {
+  background-position: -540px -36px;
+}
+.icon-nextpage {
+  background-position: 0 -72px;
+}
+.icon-link {
+  background-position: -36px -72px;
+}
+.icon-search2 {
+  background-position: -72px -72px;
+}
+.icon-storage {
+  background-position: -108px -72px;
+}
+.icon-search {
+  background-position: -144px -72px;
+}
+.icon-jiaosemoxing {
+  background-position: -180px -72px;
+}
+.icon-gangweimoxing {
+  background-position: -216px -72px;
+}
+.icon-denglu {
+  background-position: -252px -72px;
+}
+.icon-tuichu {
+  background-position: -288px -72px;
+}
+.icon-shezhi {
+  background-position: -324px -72px;
+}
+.icon-qunzumoxing {
+  background-position: -360px -72px;
+}
+.icon-zuzhimoxing {
+  background-position: -396px -72px;
+}
+.icon-guanximoxing {
+  background-position: -432px -72px;
+}
+.icon-gerengongzuo {
+  background-position: -468px -72px;
+}
+.icon-changyong {
+  background-position: -504px -72px;
+}
+.icon-gonggongxinxi {
+  background-position: -540px -72px;
+}
+.icon-jiantou-xia {
+  background-position: 0 -108px;
+}
+.icon-gongwenguanli {
+  background-position: -36px -108px;
+}
+.icon-jiantou-shang {
+  background-position: -72px -108px;
+}
+.icon-jiantou-you {
+  background-position: -108px -108px;
+}
+.icon-jiantou-zuo {
+  background-position: -144px -108px;
+}
+.icon-shiwuchuli {
+  background-position: -180px -108px;
+}
+.icon-richenganpai {
+  background-position: -216px -108px;
+}
+.icon-shoucang {
+  background-position: -252px -108px;
+}
+.icon-shouye {
+  background-position: -288px -108px;
+}
+.icon-shuaxin {
+  background-position: -324px -108px;
+}
+.icon-wangshangjiaoliu {
+  background-position: -360px -108px;
+}
+.icon-tongzhi {
+  background-position: -396px -108px;
+}
+.icon-wodebianqian {
+  background-position: -432px -108px;
+}
+.icon-tongxunlu {
+  background-position: -468px -108px;
+}
+.icon-wodedaiban {
+  background-position: -504px -108px;
+}
+.icon-wodeweituo {
+  background-position: -540px -108px;
+}
+.icon-wodeyoujian {
+  background-position: 0 -144px;
+}
+.icon-xinwengonggao {
+  background-position: -36px -144px;
+}
+.icon-ziyuanguanli {
+  background-position: -72px -144px;
+}
+.icon-wenjian {
+  background-position: -108px -144px;
+}
+.icon-wenjianjia_dakai {
+  background-position: -144px -144px;
+}
+.icon-wenjianjia_guanbi {
+  background-position: -180px -144px;
+}
+.icon-info {
+  background-position: -216px -144px;
+}
+.icon-biaodan {
+  background-position: -252px -144px;
+}
+.icon-biaodanfenlei {
+  background-position: -288px -144px;
+}
+.icon-bumen {
+  background-position: -324px -144px;
+}
+.icon-biaodanfenzu {
+  background-position: -360px -144px;
+}
+.icon-caidanyezijiedian {
+  background-position: -396px -144px;
+}
+.icon-caidanfenzu {
+  background-position: -432px -144px;
+}
+.icon-cunchufenlei {
+  background-position: -468px -144px;
+}
+.icon-cunchu {
+  background-position: -504px -144px;
+}
+.icon-liuchengfenlei {
+  background-position: -540px -144px;
+}
+.icon-liucheng {
+  background-position: 0 -180px;
+}
+.icon-cunchufenzu {
+  background-position: -36px -180px;
+}
+.icon-liuchengfenzu {
+  background-position: -72px -180px;
+}
+.icon-zuzhi {
+  background-position: -108px -180px;
+}
+.icon-yonghu {
+  background-position: -144px -180px;
+}
+.icon-bianji {
+  background-position: -180px -180px;
+}
+.icon-queren {
+  background-position: -216px -180px;
+}
+.icon-zhankai {
+  background-position: -252px -180px;
+}
+.icon-guanbi {
+  background-position: -288px -180px;
+}
+.icon-qingjia {
+  background-position: -324px -180px;
+}
+.icon-xinwenfabu {
+  background-position: -360px -180px;
+}
+.icon-yongyinshenqing {
+  background-position: -396px -180px;
+}
+.icon-huiyishenqing {
+  background-position: -432px -180px;
+}
+.icon-shouwenguanli {
+  background-position: -468px -180px;
+}
+.icon-urse {
+  background-position: -504px -180px;
+}
+.icon-password {
+  background-position: -540px -180px;
+}
+.icon-man {
+  background-position: 0 -216px;
+}
+.icon-woman {
+  background-position: -36px -216px;
+}
+.icon-checkbox {
+  background-position: -72px -216px;
+}
+.icon-checkbox_ {
+  background-position: -108px -216px;
+}
+.icon-radio {
+  background-position: -144px -216px;
+}
+.icon-radio_ {
+  background-position: -180px -216px;
+}
+.icon-checkbox_1 {
+  background-position: -216px -216px;
+}
+.icon-style {
+  background-position: -252px -216px;
+}
+.icon-Preservation {
+  background-position: -288px -216px;
+}
+.icon-open {
+  background-position: -324px -216px;
+}
+.icon-preview {
+  background-position: -360px -216px;
+}
+.icon-Save {
+  background-position: -396px -216px;
+}
+.icon-Preservation_ {
+  background-position: -432px -216px;
+}
+.icon-simulation {
+  background-position: -468px -216px;
+}
+.icon-Release {
+  background-position: -504px -216px;
+}
+.icon-shouquan {
+  background-position: -540px -216px;
+}
+.icon-pifu {
+  background-position: 0 -252px;
+}
+.icon-gengduo {
+  background-position: -36px -252px;
+}
+.icon-qiehuan_admin {
+  background-position: -72px -252px;
+}
+.icon-shoucang_wenjian {
+  background-position: -108px -252px;
+}
+.icon-qiehuan_qianhoutai {
+  background-position: -144px -252px;
+}
+.icon-dengpao {
+  background-position: -180px -252px;
+}
+.icon-banben {
+  background-position: -216px -252px;
+}
+.icon-xiazai {
+  background-position: -252px -252px;
+}
+.icon-book {
+  background-position: -288px -252px;
+}
+

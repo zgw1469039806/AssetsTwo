@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+.tree-folder,.tree-file{
+	background: url(images/icon-tree_df8b964.png) 0 -0 no-repeat;
+	width:22px;
+	height:22px;
+	vertical-align: middle;
+	margin-top: 2px;
+}
+.tree-folder-open{
+	background: url(images/icon-tree_df8b964.png) 0 -22px no-repeat;
+	width:22px;
+	height:22px;
+	argin-top: 2px;
+}    
+.tree-title{
+	line-height: 24px;
+	font-size: 14px;
+}
+.tree-collapsed{
+	background: url(images/icon-tree_df8b964.png) -30px -0px no-repeat;
+	margin-top:3px;
+	cursor:pointer;
+	width:15px;
+	height: 15px;
+}
+.tree-expanded{
+	background: url(images/icon-tree_df8b964.png) -30px -22px no-repeat;
+	margin-top:3px;
+	cursor:pointer;
+	width:15px;
+	height: 15px;
+}
+.tree-node{
+	height: 24px;
+}
+.tree-editor{
+	height: 18px !important;
+	font-size: 14px;
+}
+.sure{
+	background: url(images/btn_icon_17d92fd.gif) -0px -512px;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+.cancel{
+    background: url(images/btn_icon_17d92fd.gif) -27px -512px;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 0 0px 2px;
+    cursor: pointer;
+}

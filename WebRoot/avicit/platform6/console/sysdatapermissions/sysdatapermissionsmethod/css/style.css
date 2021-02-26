@@ -1,0 +1,53 @@
+.steps {
+	height: 46px;
+	position: relative;
+}
+
+.steps ol {
+	width: 50%;
+	margin: 0 auto
+}
+
+.steps ol li {
+	display: inline;
+    float: left;
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #999;
+    margin-right: 40px;
+	font-family: "\5FAE\8F6F\96C5\9ED1", "\534E\6587\7EC6\9ED1", "\9ED1\4F53", arial
+}
+
+.steps ol li i {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	margin-right: 5px;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	font-style: normal;
+	line-height: 24px;
+	font-size: 14px;
+	font-weight: 700;
+	color: #FFF;
+	border-radius: 12px;
+	background-color: #b8b5b5;
+}
+
+.steps ol li.active {
+	color: #3e3e3e;
+	border-bottom: 2px solid #2fad95
+}
+
+.steps ol li.active i {
+    border-radius: 12px;
+	background-color: #178c76;
+}
+
+.steps-4 ol li {
+	width: 150px;
+	padding-left: 30px
+}

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.classifydata.dao.ClassifyDataDao">
+
+    <resultMap id="ClassifyDataDTOMap" type="avicit.assets.device.classifydata.dto.ClassifyDataDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR"/>
+        <result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR"/>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="code" column="CODE" jdbcType="VARCHAR"/>
+        <result property="parentCode" column="PARENT_CODE" jdbcType="VARCHAR"/>
+        <result property="parentId" column="PARENT_ID" jdbcType="VARCHAR"/>
+        <result property="sn" column="SN" jdbcType="DECIMAL"/>
+        <result property="treePath" column="TREE_PATH" jdbcType="VARCHAR"/>
+        <result property="classifyState" column="CLASSIFY_STATE" jdbcType="VARCHAR"/>
+        <result property="belongCategory" column="BELONG_CATEGORY" jdbcType="VARCHAR"/>
+        <result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR"/>
+        <result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR"/>
+        <result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR"/>
+        <result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR"/>
+        <result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR"/>
+        <result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR"/>
+        <result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR"/>
+        <result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR"/>
+        <result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR"/>
+        <result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR"/>
+        <result property="attribute11" column="ATTRIBUTE_11" jdbcType="VARCHAR"/>
+        <result property="attribute12" column="ATTRIBUTE_12" jdbcType="VARCHAR"/>
+        <result property="attribute13" column="ATTRIBUTE_13" jdbcType="VARCHAR"/>
+        <result property="attribute14" column="ATTRIBUTE_14" jdbcType="VARCHAR"/>
+        <result property="attribute15" column="ATTRIBUTE_15" jdbcType="VARCHAR"/>
+        <result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL"/>
+        <result property="attribute17" column="ATTRIBUTE_17" jdbcType="DECIMAL"/>
+        <result property="attribute18" column="ATTRIBUTE_18" jdbcType="DECIMAL"/>
+        <result property="attribute19" column="ATTRIBUTE_19" jdbcType="DECIMAL"/>
+        <result property="attribute20" column="ATTRIBUTE_20" jdbcType="DECIMAL"/>
+        <result property="attribute21" column="ATTRIBUTE_21" jdbcType="DECIMAL"/>
+        <result property="attribute22" column="ATTRIBUTE_22" jdbcType="DECIMAL"/>
+        <result property="attribute23" column="ATTRIBUTE_23" jdbcType="DECIMAL"/>
+        <result property="attribute24" column="ATTRIBUTE_24" jdbcType="DECIMAL"/>
+        <result property="attribute25" column="ATTRIBUTE_25" jdbcType="DECIMAL"/>
+        <result property="attribute26" column="ATTRIBUTE_26" jdbcType="TIMESTAMP"/>
+        <result property="attribute27" column="ATTRIBUTE_27" jdbcType="TIMESTAMP"/>
+        <result property="attribute28" column="ATTRIBUTE_28" jdbcType="TIMESTAMP"/>
+        <result property="attribute29" column="ATTRIBUTE_29" jdbcType="TIMESTAMP"/>
+        <result property="attribute30" column="ATTRIBUTE_30" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="ClassifyTreeMap" type="avicit.assets.device.classifydata.dto.ClassifyTreeDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="code" column="CODE" jdbcType="VARCHAR"/>
+        <result property="parentCode" column="PARENT_CODE" jdbcType="VARCHAR"/>
+        <result property="pId" column="PARENT_ID" jdbcType="VARCHAR"/>
+        <result property="path" column="PARENT_ID" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!-- 根据所属类别获取相应的分类树 -->
+    <select id="getClassifyTree" parameterType="java.util.Map" resultMap="ClassifyTreeMap">
+        select
+            t1.id ,
+            t1.name ,
+            t1.code ,
+            t1.parent_code ,
+            t1.parent_id ,
+            t1.tree_path
+        from classify_data t1
+        <where>
+            t1.classify_state = 'Y'
+            <if test="belongCategory != null and belongCategory != ''">
+                and t1.belong_category = #{belongCategory}
+            </if>
+        </where>
+        order by t1.parent_id, t1.sn asc
+    </select>
+
+    <!-- 主键查询对象 CLASSIFY_DATA -->
+    <select id="findClassifyDataById" parameterType="java.util.Map" resultMap="ClassifyDataDTOMap">
+        select
+            t1.id                             ,
+            t1.created_by                     ,
+            t1.creation_date                  ,
+            t1.last_updated_by                ,
+            t1.last_update_date               ,
+            t1.last_update_ip                 ,
+            t1.name                           ,
+            t1.code                           ,
+            t1.parent_code                    ,
+            t1.parent_id                      ,
+            t1.sn                             ,
+            t1.tree_path                      ,
+            t1.classify_state                 ,
+            t1.belong_category                ,
+            t1.attribute_01                   ,
+            t1.attribute_02                   ,
+            t1.attribute_03                   ,
+            t1.attribute_04                   ,
+            t1.attribute_05                   ,
+            t1.attribute_06                   ,
+            t1.attribute_07                   ,
+            t1.attribute_08                   ,
+            t1.attribute_09                   ,
+            t1.attribute_10                   ,
+            t1.attribute_11                   ,
+            t1.attribute_12                   ,
+            t1.attribute_13                   ,
+            t1.attribute_14                   ,
+            t1.attribute_15                   ,
+            t1.attribute_16                   ,
+            t1.attribute_17                   ,
+            t1.attribute_18                   ,
+            t1.attribute_19                   ,
+            t1.attribute_20                   ,
+            t1.attribute_21                   ,
+            t1.attribute_22                   ,
+            t1.attribute_23                   ,
+            t1.attribute_24                   ,
+            t1.attribute_25                   ,
+            t1.attribute_26                   ,
+            t1.attribute_27                   ,
+            t1.attribute_28                   ,
+            t1.attribute_29                   ,
+            t1.attribute_30
+        from classify_data 	t1
+            where t1.id = #{id}
+    </select>
+
+    <!-- 新增对象 CLASSIFY_DATA -->
+    <insert id="insertClassifyData" parameterType="avicit.assets.device.classifydata.dto.ClassifyDataDTO">
+        insert into classify_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="creationDate != null">
+                creation_date,
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by,
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date,
+            </if>
+            <if test="lastUpdateIp != null">
+                last_update_ip,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="parentCode != null">
+                parent_code,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="sn != null">
+                sn,
+            </if>
+            <if test="treePath != null">
+                tree_path,
+            </if>
+            <if test="classifyState != null">
+                classify_state,
+            </if>
+            <if test="belongCategory != null">
+                belong_category,
+            </if>
+            <if test="attribute01 != null">
+                attribute_01,
+            </if>
+            <if test="attribute02 != null">
+                attribute_02,
+            </if>
+            <if test="attribute03 != null">
+                attribute_03,
+            </if>
+            <if test="attribute04 != null">
+                attribute_04,
+            </if>
+            <if test="attribute05 != null">
+                attribute_05,
+            </if>
+            <if test="attribute06 != null">
+                attribute_06,
+            </if>
+            <if test="attribute07 != null">
+                attribute_07,
+            </if>
+            <if test="attribute08 != null">
+                attribute_08,
+            </if>
+            <if test="attribute09 != null">
+                attribute_09,
+            </if>
+            <if test="attribute10 != null">
+                attribute_10,
+            </if>
+            <if test="attribute11 != null">
+                attribute_11,
+            </if>
+            <if test="attribute12 != null">
+                attribute_12,
+            </if>
+            <if test="attribute13 != null">
+                attribute_13,
+            </if>
+            <if test="attribute14 != null">
+                attribute_14,
+            </if>
+            <if test="attribute15 != null">
+                attribute_15,
+            </if>
+            <if test="attribute16 != null">
+                attribute_16,
+            </if>
+            <if test="attribute17 != null">
+                attribute_17,
+            </if>
+            <if test="attribute18 != null">
+                attribute_18,
+            </if>
+            <if test="attribute19 != null">
+                attribute_19,
+            </if>
+            <if test="attribute20 != null">
+                attribute_20,
+            </if>
+            <if test="attribute21 != null">
+                attribute_21,
+            </if>
+            <if test="attribute22 != null">
+                attribute_22,
+            </if>
+            <if test="attribute23 != null">
+                attribute_23,
+            </if>
+            <if test="attribute24 != null">
+                attribute_24,
+            </if>
+            <if test="attribute25 != null">
+                attribute_25,
+            </if>
+            <if test="attribute26 != null">
+                attribute_26,
+            </if>
+            <if test="attribute27 != null">
+                attribute_27,
+            </if>
+            <if test="attribute28 != null">
+                attribute_28,
+            </if>
+            <if test="attribute29 != null">
+                attribute_29,
+            </if>
+            <if test="attribute30 != null">
+                attribute_30,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                #{creationDate},
+            </if>
+            <if test="lastUpdatedBy != null">
+                #{lastUpdatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate},
+            </if>
+            <if test="lastUpdateIp != null">
+                #{lastUpdateIp,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="sn != null">
+                #{sn,jdbcType=DECIMAL},
+            </if>
+            <if test="treePath != null">
+                #{treePath,jdbcType=VARCHAR},
+            </if>
+            <if test="classifyState != null">
+                #{classifyState,jdbcType=VARCHAR},
+            </if>
+            <if test="belongCategory != null">
+                #{belongCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute01 != null">
+                #{attribute01,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute02 != null">
+                #{attribute02,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute03 != null">
+                #{attribute03,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute04 != null">
+                #{attribute04,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute05 != null">
+                #{attribute05,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute06 != null">
+                #{attribute06,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute07 != null">
+                #{attribute07,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute08 != null">
+                #{attribute08,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute09 != null">
+                #{attribute09,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute10 != null">
+                #{attribute10,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute11 != null">
+                #{attribute11,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute12 != null">
+                #{attribute12,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute13 != null">
+                #{attribute13,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute14 != null">
+                #{attribute14,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute15 != null">
+                #{attribute15,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute16 != null">
+                #{attribute16,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute17 != null">
+                #{attribute17,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute18 != null">
+                #{attribute18,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute19 != null">
+                #{attribute19,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute20 != null">
+                #{attribute20,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute21 != null">
+                #{attribute21,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute22 != null">
+                #{attribute22,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute23 != null">
+                #{attribute23,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute24 != null">
+                #{attribute24,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute25 != null">
+                #{attribute25,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute26 != null">
+                #{attribute26,jdbcType=DATE},
+            </if>
+            <if test="attribute27 != null">
+                #{attribute27,jdbcType=DATE},
+            </if>
+            <if test="attribute28 != null">
+                #{attribute28,jdbcType=DATE},
+            </if>
+            <if test="attribute29 != null">
+                #{attribute29,jdbcType=DATE},
+            </if>
+            <if test="attribute30 != null">
+                #{attribute30,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新对象 CLASSIFY_DATA -->
+    <update id="updateClassifyDataSensitive" parameterType="avicit.assets.device.classifydata.dto.ClassifyDataDTO">
+        update classify_data
+        <set>
+            <if test="id != null">
+                id =#{id,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                created_by =#{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                creation_date =#{creationDate},
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by =#{lastUpdatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date =#{lastUpdateDate},
+            </if>
+            <if test="lastUpdateIp != null">
+                last_update_ip =#{lastUpdateIp,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name =#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code =#{code,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                parent_code =#{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id =#{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="sn != null">
+                sn =#{sn,jdbcType=DECIMAL},
+            </if>
+            <if test="treePath != null">
+                tree_path =#{treePath,jdbcType=VARCHAR},
+            </if>
+            <if test="classifyState != null">
+                classify_state =#{classifyState,jdbcType=VARCHAR},
+            </if>
+            <if test="belongCategory != null">
+                belong_category =#{belongCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute01 != null">
+                attribute_01 =#{attribute01,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute02 != null">
+                attribute_02 =#{attribute02,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute03 != null">
+                attribute_03 =#{attribute03,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute04 != null">
+                attribute_04 =#{attribute04,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute05 != null">
+                attribute_05 =#{attribute05,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute06 != null">
+                attribute_06 =#{attribute06,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute07 != null">
+                attribute_07 =#{attribute07,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute08 != null">
+                attribute_08 =#{attribute08,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute09 != null">
+                attribute_09 =#{attribute09,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute10 != null">
+                attribute_10 =#{attribute10,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute11 != null">
+                attribute_11 =#{attribute11,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute12 != null">
+                attribute_12 =#{attribute12,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute13 != null">
+                attribute_13 =#{attribute13,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute14 != null">
+                attribute_14 =#{attribute14,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute15 != null">
+                attribute_15 =#{attribute15,jdbcType=VARCHAR},
+            </if>
+            <if test="attribute16 != null">
+                attribute_16 =#{attribute16,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute17 != null">
+                attribute_17 =#{attribute17,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute18 != null">
+                attribute_18 =#{attribute18,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute19 != null">
+                attribute_19 =#{attribute19,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute20 != null">
+                attribute_20 =#{attribute20,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute21 != null">
+                attribute_21 =#{attribute21,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute22 != null">
+                attribute_22 =#{attribute22,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute23 != null">
+                attribute_23 =#{attribute23,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute24 != null">
+                attribute_24 =#{attribute24,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute25 != null">
+                attribute_25 =#{attribute25,jdbcType=DECIMAL},
+            </if>
+            <if test="attribute26 != null">
+                attribute_26 =#{attribute26,jdbcType=DATE},
+            </if>
+            <if test="attribute27 != null">
+                attribute_27 =#{attribute27,jdbcType=DATE},
+            </if>
+            <if test="attribute28 != null">
+                attribute_28 =#{attribute28,jdbcType=DATE},
+            </if>
+            <if test="attribute29 != null">
+                attribute_29 =#{attribute29,jdbcType=DATE},
+            </if>
+            <if test="attribute30 != null">
+                attribute_30 =#{attribute30,jdbcType=DATE},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据父节点id获取其子节点,并按排序号降序排序 -->
+    <select id="getChildrenByPid" parameterType="java.util.Map" resultMap="ClassifyDataDTOMap">
+        select
+            t1.id                             ,
+            t1.created_by                     ,
+            t1.creation_date                  ,
+            t1.last_updated_by                ,
+            t1.last_update_date               ,
+            t1.last_update_ip                 ,
+            t1.name                           ,
+            t1.code                           ,
+            t1.parent_code                    ,
+            t1.parent_id                      ,
+            t1.sn                             ,
+            t1.tree_path                      ,
+            t1.classify_state                 ,
+            t1.belong_category                ,
+            t1.attribute_01                   ,
+            t1.attribute_02                   ,
+            t1.attribute_03                   ,
+            t1.attribute_04                   ,
+            t1.attribute_05                   ,
+            t1.attribute_06                   ,
+            t1.attribute_07                   ,
+            t1.attribute_08                   ,
+            t1.attribute_09                   ,
+            t1.attribute_10                   ,
+            t1.attribute_11                   ,
+            t1.attribute_12                   ,
+            t1.attribute_13                   ,
+            t1.attribute_14                   ,
+            t1.attribute_15                   ,
+            t1.attribute_16                   ,
+            t1.attribute_17                   ,
+            t1.attribute_18                   ,
+            t1.attribute_19                   ,
+            t1.attribute_20                   ,
+            t1.attribute_21                   ,
+            t1.attribute_22                   ,
+            t1.attribute_23                   ,
+            t1.attribute_24                   ,
+            t1.attribute_25                   ,
+            t1.attribute_26                   ,
+            t1.attribute_27                   ,
+            t1.attribute_28                   ,
+            t1.attribute_29                   ,
+            t1.attribute_30
+        from classify_data 	t1
+        where t1.parent_id = #{parentId} and t1.belong_category = #{belongCategory}
+        order by t1.sn desc
+    </select>
+
+    <!-- 根据父节点id获取其激活状态的子节点数目 -->
+    <select id="getValidChildrenCountByPid" parameterType="java.util.Map" resultType="long">
+        select count(*) from classify_data t1
+        where t1.classify_state = 'Y' and t1.parent_id = #{parentId} and t1.belong_category = #{belongCategory}
+    </select>
+
+    <!-- 根据分类名称、分类编号、分类id、所属类别获取分类的数目 -->
+    <select id="getClassifyCount" parameterType="java.util.Map" resultType="long">
+        select count(*) from classify_data 	t1
+        <where>
+            t1.belong_category = #{belongCategory,jdbcType=VARCHAR}
+            <if test="name != null and name != ''">
+                and t1.name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="code != null and code != ''">
+                and t1.code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="id != null and id != ''">
+                and not t1.id = #{id,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

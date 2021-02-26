@@ -1,0 +1,360 @@
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+#wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  padding-left: 0;
+  transition: all 0.5s ease;
+}
+#wrapper.toggled {
+  padding-left: 200px;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 220px;
+}
+#wrapper.toggled #page-content-wrapper {
+  margin-right: -200px;
+  position: absolute;
+}
+#sidebar-wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  background: #1a1a1a;
+  height: 100%;
+  left: 200px;
+  margin-left: -200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all 0.5s ease;
+  width: 0;
+  z-index: 1000;
+}
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+#page-content-wrapper {
+  padding-top: 70px;
+  width: 100%;
+}
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.toggled .sidebar-nav {
+  left:0px;
+  
+}
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50px;
+  bottom:0px;
+  background:#ffffff;
+  width: 200px;
+}
+.sidebar-nav li {
+  display: inline-block;
+  line-height: 20px;
+  position: relative;
+  width: 100%;
+}
+.navList .subList .subChild{
+	line-height:0;
+	position: relative;
+}
+.subList .subChild .c-title{
+	width:200px;
+	padding:10px 30px 10px 15px;
+	padding:10px 20px 10px 15px\9;
+    line-height:20px;
+	font-size:14px;
+}
+.subList .subChild li{
+	margin: 0;
+	width:200px;
+	display: inline-block;
+    height: 30px;
+    padding: 5px 35px 5px 43px;
+    line-height: 20px;
+    position: relative;
+}
+/*-------------------------------*/
+/*          Dark Overlay         */
+/*-------------------------------*/
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/black-bg.png) repeat left top;
+  z-index: 1;
+}
+#wrapper.toggled .navList {
+  width: 200px;
+  width: 450px\0;
+  z-index:99999;
+}
+
+.navList{
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+	margin-left:-200px;
+    left: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all 0.5s ease;
+    width: 0;
+    z-index: 1000;
+    position:fixed;
+    top: 50px;
+    bottom:0px;
+    
+}
+.sidebar-nav{
+	list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    background: #fff;
+    bottom:0px;
+    z-index: 999999;
+}
+.sidebar-nav li{
+    background: #fff;
+}
+.iconbtn{
+	margin:0
+}
+.tabs{
+	height:34px!important;
+}
+.tabs li a.tabs-inner{
+	height:34px!important;
+	line-height: 32px!important;
+	line-height: 30px\9!important;
+}
+.m-btn .l-btn-left .l-btn-text{
+	line-height:32px;
+}
+.m-btn-downarrow{
+	line-height:32px;
+}
+.tabs li.tabs-first .m-btn-downarrow{
+	float:left;
+	font-size: 14px;
+	margin-right:3px;
+}
+.tabs li.tabs-first .m-btn-downarrow:before{
+    content: "\e671";
+}
+.tabs li.tabs-first .m-btn .l-btn-left .l-btn-text{
+	margin-right:0;
+}
+/* ��ʱ����ť��ʽ */
+#createExpr{
+    padding: 0px 11px!important;
+    border-radius: 4px;
+}
+.toolbar-right-table{
+	border-top:1px solid #ddd!important;
+}
+.toolbar-right-table .skins{
+	margin:0 15px 0 5px;
+}
+.preview-guide-img{
+	width:180px;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	margin-bottom:10px;
+	
+}
+
+.layui-layer-btn .layui-layer-btn0, 
+.layui-layer-btn1, 
+.layui-layer-btn2{
+	padding:0 6px!important;
+	min-width: 66px!important;
+	min-width: 46px\9!important;
+	font-size:12px!important;
+	text-align: center!important;
+}
+/* 左侧导航搜索 */
+.searchBox{
+	display: none;
+}
+.toggled .sidebar-nav{
+	padding-top:84px;
+}
+.toggled .searchBox {
+	display:block;
+    padding: 8px 8px 8px 6px !important;
+    position: absolute;
+    left: 0;
+    top:40px;
+    width: 200px;
+    background:#fff;
+    z-index: 9999999;
+}
+.toggled .searchBox input {
+    color: #888888;
+    font-size: 12px;
+    padding-left: 14px;
+    border-radius: 14px;
+    background: #f3f4f9;
+    border: 1px solid #EAECF2;
+    height: 28px;
+    line-height: 32px;
+    width: 100%;
+    padding: 0 30px 0 14px;
+    outline: medium;
+}
+.toggled .searchBox i {
+    position: absolute;
+    left: auto;
+    right: 12px;
+    top: 10px !important;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    color: #888888;
+}
+
+
+.searchBox i.clear {
+    position: absolute;
+    left: auto;
+    right: 30px;
+    top: 10px !important;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    color: #888888;
+    display: none;
+}
+
+.searchBox i.query{
+    position: absolute;
+    left: auto;
+    right: 12px;
+    top: 10px !important;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    color: #888888;
+}
+
+.tips_box{
+	display: none;
+}
+.toggled .tips_box{
+	display: block;
+	position: absolute;
+	top: 0;
+}
+/* 菜单加new图标样式开始 */
+.navList ul li i.menu-label,
+.subList .subChild i.menu-label{
+	position: absolute;
+	/* display: none!important; */
+	display: block;
+	border-radius:3px;
+	color:#fff!important;
+	font-size:12px!important;
+	line-height:14px!important;
+	font-style:normal;
+	height:15px;
+	width:18px;
+	text-align: center;
+	background: #dd4b39;
+}
+.navList ul li i.menu-bg-red{
+	right:15px;
+	top:12px;
+}
+.subList .subChild i.menu-bg-red{
+	left:170px!important;
+	top:12px!important;
+}
+.subList .subChild ul li i.menu-bg-red{
+	left:170px!important;
+	top:7px!important;
+}
+.subList .subChild:hover .c-title i.menu-bg-red,
+.subList .subChild  i.menu-bg-red{
+	color:#ffffff!important;
+}
+.jump{
+	animation-duration: 2s;
+	animation-name: jump;
+}
+@keyframes jump {
+	from {
+		transform: scale3d(1, 1, 1) translateY(0)
+	}
+	5% {
+		transform: scale3d(1.03, 0.97, 1) translateY(-1px)
+	}
+	12.5% {
+		transform: scale3d(1, 1, 1) translateY(-10px)
+	}
+	20% {
+		transform: scale3d(0.98, 1.02, 1) translateY(-1px)
+	}
+	25% {
+		transform: scale3d(1.06, 0.94, 1) translateY(4px)
+	}
+	32.5% {
+		transform: scale3d(0.97, 1.03, 1) translateY(-4px)
+	}
+	40% {
+		transform: scale3d(1, 1, 1) translateY(0)
+	}
+	100% {
+		transform: scale3d(1, 1, 1) translateY(0)
+	}
+}
+/* 菜单加new图标样式结束 */
+/*前台用户首页组织、部门显示样式*/
+.dropdown-name-text span {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    -webkit-box-orient: vertical
+}
+.navList>ul li span.hlist {
+    padding-right: 30px!important;
+}
+#beginMenu {
+	z-index: 10004;
+}
+.tips_box{
+	z-index: 100000;
+}
+.no_tip_box .sidebar-nav{
+	padding-top: 44px;
+}
+.no_tip_box .searchBox{
+	top: 0;
+}

@@ -1,0 +1,244 @@
+@charset "utf-8";
+.header .toolbar{
+	background-color: #e62340;
+}
+.leftAside {
+	background: #ffffff;
+}
+.logoDom{
+	background-color: #e62340;
+	color: #fff;
+}
+.hideLeftMenu {
+    color: #ffffff;
+}
+.hideLeftMenu:hover {
+	color:#ffffff;
+}
+.navList>ul li,.navList>ul li{
+	background: #fff;
+}
+.navList>ul li.on,.navList>ul li:hover {
+	background: #fceaea;
+}
+.navList .subList {
+	border: 1px solid #f0f0f0;
+     
+}
+.navList>ul>li{
+	color: #3d4d65;
+} 
+.navList>ul li:hover{
+	color: #e62340;
+}
+.navList>ul>li > i{
+	color:#adb9ca;
+	font-size:14px;
+}
+.navListClone .subList {
+	background: #FFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    border:1px solid #e5e5e5\9;
+}
+.subList .subChild .c-title {
+    color: #3d4d65;
+}
+.navList>ul li.on i, .navList>ul li:hover i{
+   color:#e62340;
+}
+.navListClone ul li {
+    color: #3d4d65;
+}
+.navListClone ul li:hover {
+    color: #e62340;
+}
+.tabs-header{
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.tabs{
+	
+	border-bottom: 1px solid #cad7e3;
+}
+.layui-layer-btn a{
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+}
+.index-model .layui-layer-btn .layui-layer-btn0 {
+	background: #0079fe;
+	border: 1px solid #0079fe;
+	color:#fff;
+}
+.index-model .layui-layer-btn .layui-layer-btn0:hover {
+	background: #006efd;
+	border-color: #006efd;
+	color:#fff;
+}
+.avic-smenu li:hover {
+    background: #fceaea;
+}
+.layui-layer-btn1, .layui-layer-btn2 {
+    background-color: #ffffff!important;
+    border: 1px solid #d9d9d9!important;
+    color: #858585!important;
+}
+.layui-layer-btn1:hover, .layui-layer-btn2:hover {
+    background-color: #e62340!important;
+    border: 1px solid #e62340!important;
+    color: #fff!important;
+}
+.tabs li a.tabs-inner{
+	border-left:0;
+	border-top:0;
+	border-right:1px solid #cad7e3;
+	line-height: 30px!important;
+}
+.tabs li.tabs-selected a.tabs-inner{
+	background-color: #fceaea;
+    color: #e62340;
+	border:0;
+	height:33px!important;
+	line-height: 30px!important;
+	border-bottom: 0;
+	border-right: 1px solid #cad7e3;
+}
+.tabs li a.tabs-close{
+	margin-top:-7px;
+}
+/* add by 右侧顶部换肤 */
+.toolbar .search{
+    border: 1px solid #d22b42;
+    background:#d22b42;
+}
+.toolbar .search input[type="text"] {
+    color: #fff;
+    border: none;
+    background:#d22b42;
+}
+.toolbar .search input[type="text"]:focus {
+    box-shadow: none;
+}
+.toolbar .search .head-search {
+    color: #e995a1;
+}
+.toolbar .iconbtn li i {
+    color:#fff;
+    font-size:18px;
+}
+.dropdown-menu .btns .a-btn i {
+    color:#858585!important;
+     font-size:14px;
+}
+.dropdown-menu .btns .a-btn i.icon-close {
+    font-size:12px;
+}
+.dropdown-menu .btns .a-btn:hover i,
+.dropdown-menu .btns .a-btn:hover {
+    color:#e62340!important;
+    background: #fceaea;
+}
+.toolbar .iconbtn .dropdown.open>i{
+	color:#ffffff;
+}
+.toolbar .avic-smenu li i {
+    margin-right: 12px;
+    color:#858585!important;
+    font-size: 14px;
+}
+.avic-smenu li:hover>i {
+    color:#e62340!important;
+}
+.toolbar .userinfo {
+    color:#ffffff;
+    font-size:14px;
+}
+.m-btn-downarrow{
+	color:#969696;
+	font-size:12px;
+	line-height:22px;
+}
+.tabs-selected .m-btn-downarrow{
+	color:#e62340;
+}
+.tabs li a.tabs-inner:hover {
+    background: #fceaea;
+    color: #e62340;
+    filter: none;
+}
+.tabs li.tabs-first:hover .m-btn-downarrow{
+	color:#e62340;
+}
+.l-btn-text{
+	line-height: 34px;
+}
+.guider{
+	padding: 20px 0px 20px 0px!important;
+}
+.subList .subChild .c-title:hover {
+    color:#e62340;
+}
+.navList ul li.on {
+    color: #e62340;
+
+}
+/* 按钮换肤样式 */
+.layui-layer-btn .layui-layer-btn0,.layui-layer-btn1,.layui-layer-btn2 {
+	background:#e62340!important;
+	border-color:#e62340!important;
+}
+.layui-layer-btn .layui-layer-btn0:hover,.form-tool-btn:focus {
+	background:#f5515f!important;
+	border-color:#f5515f!important;
+}
+.layui-layer-btn1,.layui-layer-btn2 {
+	background-color: #ffffff !important;
+	border: 1px solid #d9d9d9 !important;
+	color: #858585 !important
+}
+.layui-layer-btn1:hover,.layui-layer-btn2:hover {
+	background: #e62340!important;
+	border: 1px solid #e62340 !important;
+	color: #fff !important;
+}
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0,
+.layui-layer-btn .layui-layer-btn0 {
+	background: #e62340!important;
+	border-color: #e62340!important;
+	color:#fff;
+}
+
+.layui-layer.bs-modal .layui-layer-btn .layui-layer-btn0:hover,
+.layui-layer-btn .layui-layer-btn0:hover{
+	background: #f5515f!important;
+	border-color: #f5515f!important;
+	color:#fff;
+}
+/* 按钮换肤样式end */
+/* 弹层换肤样式 */
+
+.navList>ul li:hover span.hlist:after {
+    color:#e62340;
+}
+.navListClone .subList .subChild .c-title:hover{
+	background: #fceaea;
+	width:179px\9;
+	border-right:1px solid #e5e5e5\9;
+}
+.subList .subChild:hover .c-title i,
+.subList .subChild:hover .c-title{
+    color:#e62340;
+}
+.subList .subChild li:hover {
+    background:  #fceaea;
+    color:#e62340;
+    width:179px\9;
+	border-right:1px solid #e5e5e5\9;
+}
+.tabs li.tabs-first .m-btn-downarrow{
+	float:left;
+	font-size: 14px;
+	margin-right:3px;
+}
+.tabs li.tabs-first .m-btn-downarrow:before{
+    content: "\e671";
+}

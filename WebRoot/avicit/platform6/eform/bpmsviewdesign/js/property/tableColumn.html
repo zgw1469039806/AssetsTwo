@@ -1,0 +1,462 @@
+<form>
+<div class="form-group property-control" id="idarea">
+	<label>列标识符</label>
+	<select id="id" name="id" isnull="false" class="form-control input-sm">
+	</select>
+
+</div>
+	<input type="hidden" id="dbid" name="dbid"
+		   isnull="false" class="form-control input-sm" placeholder="列所属存储">
+<div class="form-group property-control">
+	<label>主键列</label>
+	<select id="ispkfiled" name="ispkfiled" isnull="false" class="form-control input-sm">
+		<option value="N">否</option>
+		<option value="Y">是</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>列名称</label><input type="text" id="name" name="name"
+		isnull="false" class="form-control input-sm" placeholder="列名称">
+</div>
+<div class="form-group property-control">
+	<label><i class="required">*</i>字段类型</label><input type="text" id="db_filed_type" name="db_filed_type" isnull="false" readonly="readonly" 
+		class="form-control input-sm" placeholder="字段类型">
+</div>
+<div class="form-group property-control">
+	<label>列宽度</label>
+	<div class="input-group input-group-sm spinner" data-trigger="spinner">
+		<input type="text" class="form-control" id="width" name="width" 
+			isnull="false" data-min="0" data-max="999999999999" data-step="1"
+			data-precision="0"> <span class="input-group-addon">
+			<a href="javascript:;" class="spin-up" data-spin="up"><i
+				class="glyphicon glyphicon-triangle-top"></i></a> <a
+			href="javascript:;" class="spin-down" data-spin="down"><i
+				class="glyphicon glyphicon-triangle-bottom"></i></a>
+		</span>
+	</div>
+</div>
+
+<div class="form-group property-control">
+	<label>对齐方式</label>
+	<select id="align" name="align" isnull="false" class="form-control input-sm">
+		<option value="left">左对齐</option>
+		<option value="center">居中对齐</option>
+		<option value="right">右对齐</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>列显隐</label>
+	<select id="hidden" name="hidden" isnull="false" class="form-control input-sm">
+		<option value="false">显示</option>
+	    <option value="true">隐藏</option>
+	</select>
+</div>
+<div class="form-group property-control">
+	<label>列转换</label>
+	<select id="transform" name="transform" class="form-control input-sm">
+		<option value=""></option>
+		<option value="userid">用户ID转名称</option>
+		<!-- <option value="usercode">用户编码转名称</option> -->
+		<option value="orgid">组织ID转名称</option>
+	    <!-- <option value="orgcode">组织编码转名称</option> -->
+	    <option value="deptid">部门ID转名称</option>
+	    <!-- <option value="deptcode">部门编码转名称</option> -->
+	    <option value="positionid">岗位ID转名称</option>
+	  <!--   <option value="positioncode">岗位编码转名称</option> -->
+	    <option value="roleid">角色ID转名称</option>
+	    <!-- <option value="rolecode">角色编码转名称</option> -->
+	    <option value="groupid">群组ID转名称</option>
+	    <!-- <option value="groupcode">群组编码名称</option> -->
+	    <option value="lookup">通用代码</option>
+	    <option value="userdefined">自定义转换</option>
+	    <option value="customselect">自定义下拉转换</option>
+	</select>
+</div>
+<div id="div_ud_function2" class="form-group property-control" style="display:none">
+	<label><i class="required">*</i>通用代码值</label>			
+	<div id="LookupTypeSelect" class="input-group input-group-sm avicselect">
+		<input type="hidden"  name="LookupType" id="LookupType">
+		<input type="text" class="form-control" name="LookupTypeName" id="LookupTypeName">
+		<span class="input-group-addon avicselect-act"><i class="glyphicon glyphicon-list"></i></span>
+		<div class="avicselect-list"></div>
+	</div>
+</div>
+<div id="div_ud_function3" class="form-group property-control" style="display:none">
+	<label><i class="required"  >*</i>转换服务</label>
+	<!--<input type="text" id="userdefinedclass" name="userdefinedclass" isnull="false" class="form-control input-sm" placeholder="自定义转换服务">-->
+	<select id="userdefinedclass" name="userdefinedclass" isnull="false" class="form-control input-sm">	</select>
+</div>
+<div id="div_ud_function4" class="form-group property-control" style="display:none">
+	<label><i class="required"  >*</i>编码</label>
+	<input type="text" id="customselectcode" name="customselectcode" isnull="false" class="form-control input-sm" placeholder="编码">
+</div>
+<div class="form-group property-control">
+	<label>格式化</label>
+		<select id="format" name="format" isnull="false" class="form-control input-sm">
+		</select>
+</div>
+	<div id="imageproperty" style="display: none;">
+		<div class="form-group property-control">
+		<label>图片高度</label>
+		<div class="input-group input-group-sm spinner" data-trigger="spinner">
+			<input type="text" class="form-control" id="imageheight" name="imageheight"
+				   isnull="false" data-min="0" data-max="999999999999" data-step="1"
+				   data-precision="0"> <span class="input-group-addon">
+			<a href="javascript:;" class="spin-up" data-spin="up"><i
+					class="glyphicon glyphicon-triangle-top"></i></a> <a
+				href="javascript:;" class="spin-down" data-spin="down"><i
+				class="glyphicon glyphicon-triangle-bottom"></i></a>
+		</span>
+		</div>
+		</div>
+		<div class="form-group property-control">
+		<label>图片宽度</label>
+		<div class="input-group input-group-sm spinner" data-trigger="spinner">
+			<input type="text" class="form-control" id="imagewidth" name="imagewidth"
+				   isnull="false" data-min="0" data-max="999999999999" data-step="1"
+				   data-precision="0"> <span class="input-group-addon">
+			<a href="javascript:;" class="spin-up" data-spin="up"><i
+					class="glyphicon glyphicon-triangle-top"></i></a> <a
+				href="javascript:;" class="spin-down" data-spin="down"><i
+				class="glyphicon glyphicon-triangle-bottom"></i></a>
+		</span>
+		</div>
+		</div>
+	</div>
+<div class="form-group property-control" id="div_ud_function" style="display:none">
+	<label><i class="required"  >*</i>自定义函数</label><input type="text" id="ud_function" name="ud_function"
+		isnull="false" class="form-control input-sm" placeholder="自定义函数">
+</div>
+<div class="form-group property-control" id="div_detail_eform" style="display:none">
+	<label><i class="required"  >*</i>详情表单</label>
+	<div class="input-group input-group-sm">
+		<input type="text" class="form-control" name="detail_eform" id="detail_eform" isnull="false" placeholder="详情表单">
+		<input type="hidden" class="form-control" name="formid" id="formid" isnull="false"/>
+		<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+	</div>
+</div>
+	<div class="form-group property-control">
+		<label>反格式化</label>
+		<select id="unformat" name="unformat" isnull="false" class="form-control input-sm">
+			<option value=''></option>
+			<option value='function'>自定义函数</option>
+		</select>
+	</div>
+	<div class="form-group property-control" id="div_ud_function_anti" style="display:none">
+		<label><i class="required"  >*</i>自定义函数</label><input type="text" id="ud_function_anti" name="ud_function_anti"
+															  isnull="false" class="form-control input-sm" placeholder="自定义函数">
+	</div>
+    <div class="form-group property-control">
+        <label>表脚展示</label>
+        <select id="footer" name="footer" isnull="false" class="form-control input-sm">
+            <option value=''></option>
+			<option value='sum'>求和</option>
+			<option value='avg'>平均值</option>
+			<option value='max'>最大值</option>
+			<option value='min'>最小值</option>
+            <option value='function'>自定义函数</option>
+        </select>
+    </div>
+    <div class="form-group property-control" id="div_ud_function_footer" style="display:none">
+        <label><i class="required"  >*</i>自定义函数</label><input type="text" id="ud_function_footer" name="ud_function_footer"
+                                                              isnull="false" class="form-control input-sm" placeholder="自定义函数">
+    </div>
+<div class="form-group property-control" id="sorttypeDiv">
+	<label>排序类型</label>
+	<select id="sorttype" name="sorttype" isnull="false" class="form-control input-sm">
+		 <option value=""></option>
+		 <option value="asc">asc</option>
+	   	 <option value="desc">desc</option>
+	 </select>
+</div>
+<div class="form-group property-control" id="orderindexDiv">
+	<label>数据排序</label>
+	<div class="input-group input-group-sm spinner" data-trigger="spinner">
+		<input type="text" class="form-control" id="orderindex" name="orderindex" 
+			isnull="false" data-min="0" data-max="999999999999" data-step="1"
+			data-precision="0"> <span class="input-group-addon">
+			<a href="javascript:;" class="spin-up" data-spin="up"><i
+				class="glyphicon glyphicon-triangle-top"></i></a> <a
+			href="javascript:;" class="spin-down" data-spin="down"><i
+				class="glyphicon glyphicon-triangle-bottom"></i></a>
+		</span>
+	</div>
+</div>
+
+
+
+
+</form>
+<script src="static/h5/avicSelectBar/compent/lookupTypeSelect/lookupTypeSelect.js" type="text/javascript"></script>
+<script src="avicit/platform6/eform/bpmsformmanage/select/selectPublishEform/selectPublishEform.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var tableNode = engine.clickedNode.getParentNode().getParentNode();
+	var dbid = tableNode.attribute.dbid;
+	if (engine.clickedNode.attribute.hasOwnProperty("dbid") && engine.clickedNode.attribute.dbid != ""){
+		$("#idarea").find("#id").remove();
+		$("#idarea").append('<input type="text" id="id" name="id" isnull="false" class="form-control input-sm" readonly>');
+		$("#ispkfiled").attr("onfocus","this.defaultIndex=this.selectedIndedx;").attr("onchange","this.selectedIndex=this.defaultIndex;");
+	}else {
+		if (dbid) {
+			$.ajax({
+				url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+				contentType: "application/xml; charset=utf-8",
+				type: 'post',
+				dataType: 'json',
+				async: false,
+				success: function (r) {
+					if (r != null) {
+						var list = $.parseJSON(r.data);
+						var $colDom = $("#id");
+						$colDom.empty();
+						for (var i = 0; i < list.length; i++) {
+							var $option = $('<option value="' + list[i].colName + '">' + list[i].colName + '</option>');
+							$option.data("colData", list[i]);
+							$colDom.append($option);
+						}
+
+						$colDom.on("change", function () {
+							var colData = $("option:selected", this).data("colData");
+							$("#db_filed_type").val(colData.colType);
+							$("#name").val(colData.colComments);
+							$("#ispkfiled").val(colData.colIsPk);
+						});
+
+						$colDom.trigger("change");
+					}
+				}
+			});
+		}
+	}
+
+	//自定义转换下拉
+    $.ajax({
+        url: 'platform/eform/eformViewInfoController/getEformClassConfigListByType/1',
+        contentType: "application/xml; charset=utf-8",
+        type : 'post',
+        dataType : 'json',
+        async:false,
+        success : function(r){
+            if (r != null) {
+                var list = $.parseJSON(r.data);
+                var $colDom = $("#userdefinedclass");
+                $colDom.empty();
+                $colDom.append($('<option value=""></option>'));
+                for (var i=0;i<list.length;i++){
+                    var $option = $('<option value="'+list[i].classPath+'">'+list[i].className+'</option>');
+                    $colDom.append($option);
+                }
+
+                $colDom.trigger("change");
+            }
+        }
+    });
+
+	$(".form-control").bind('change', function(){
+		if(this.id == 'format' && $(this).val() == "function"){
+			$("#div_ud_function").css("display","block");
+            $("#div_detail_eform").css("display","none");
+			$("#imageproperty").css("display","none");
+		}else if(this.id == 'format' && $(this).val() == "bpmdetail"){
+            $("#div_detail_eform").css("display","block");
+            $("#div_ud_function").css("display","none");
+			$("#imageproperty").css("display","none");
+        }else if(this.id == 'format' && $(this).val() == "imageformat"){
+			$("#div_ud_function").css("display","none");
+			$("#div_detail_eform").css("display","none");
+			$("#imageproperty").css("display","block");
+		}else if(this.id == 'format' && $(this).val() != "function" && $(this).val() != "bpmdetail") {
+			$("#div_ud_function").css("display","none");
+            $("#div_detail_eform").css("display","none");
+			$("#imageproperty").css("display","none");
+		}else if(this.id == 'transform' && $(this).val() == "lookup"){
+			$("#div_ud_function2").css("display","block");
+			$("#div_ud_function3").css("display","none");
+			$("#div_ud_function4").css("display","none");
+			$("#userdefinedclass").val("");
+		}else if(this.id == 'transform' && $(this).val() == "userdefined"){
+			$("#div_ud_function3").css("display","block");
+			$("#div_ud_function2").css("display","none");
+			$("#div_ud_function4").css("display","none");
+			$("#LookupType").val("");
+            $("#LookupTypeName").val("");
+
+		}else if(this.id == 'userdefinedclass'){
+			$("#div_ud_function3").css("display","block");
+			$("#div_ud_function2").css("display","none");
+			$("#div_ud_function4").css("display","none");
+			$("#LookupType").val("");
+            $("#LookupTypeName").val("");
+		}else if(this.id == 'transform' && $(this).val() == "customselect"){
+			$("#div_ud_function2").css("display","none");
+			$("#div_ud_function3").css("display","none");
+			$("#div_ud_function4").css("display","block");
+			$("#userdefinedclass").val("");
+		}else if(this.id == 'transform' && $(this).val() != "userdefined" && $(this).val() != "lookup"){
+            $("#div_ud_function3").css("display","none");
+            $("#div_ud_function2").css("display","none");
+			$("#div_ud_function4").css("display","none");
+            $("#userdefinedclass").val("");
+            $("#LookupType").val("");
+            $("#LookupTypeName").val("");
+        }else if(this.id == 'unformat' && $(this).val() == "function"){
+			$("#div_ud_function_anti").css("display","block");
+		}else if(this.id == 'unformat' && $(this).val() != "function") {
+			$("#div_ud_function_anti").css("display","none");
+		}else if (this.id == 'footer' && $(this).val() != "function"){
+            $("#div_ud_function_footer").css("display","none");
+        }else if(this.id == 'footer' && $(this).val() == "function"){
+            $("#div_ud_function_footer").css("display","block");
+        }
+		engine.changSave();
+    });
+
+    var selectPublishEform = new SelectPublishEform("formid", "detail_eform", null, "N", "eform");
+    selectPublishEform.init(function(data) {
+            $("#detail_eform").val(data.name);
+        $("#formid").val(data.id);
+        engine.changSave();
+    });
+
+    $("#LookupTypeName").bind("click", function(){
+		new H5CommonLookupTypeSelect({type:'lookupSelect', idFiled:'LookupType',textFiled:'LookupTypeName', callBack: function(rowdata){
+			$("#LookupTypeName").val(rowdata.lookupType);
+			engine.changSave();
+				
+		}});
+	}); 
+	
+});
+self.propertyPageInit = function(treeNode){
+	if(treeNode.attribute.db_filed_type == "NUMBER"){
+		$("#format").append("<option value=''></option>");
+		$("#format").append("<option value='###,###'>###,###</option>");
+		$("#format").append("<option value='###,###.##'>###,###.##</option>");
+		$("#format").append("<option value='###,###.####'>###,###.####</option>");
+		
+		$("#align option[value='right']").attr("selected",true);
+	}else if(treeNode.attribute.db_filed_type == "DATE"){
+		$("#format").append("<option value='yyyy-mm-dd'>yyyy-mm-dd</option>");
+		$("#format").append("<option value='yyyy-mm-dd 24h:mi'>yyyy-mm-dd 24h:mi</option>");
+		
+		$("#align option[value=\"center\"]").attr("selected",true);
+	}else if(treeNode.attribute.db_filed_type == "VARCHAR2"){
+		$("#format").append("<option value=''></option>");
+	}else if(treeNode.attribute.db_filed_type == "BLOB"){
+		$("#sorttypeDiv").css("display","none");
+		$("#orderindexDiv").css("display","none");
+		$("#format").append("<option value='imageformat'>展示图片</option>");
+	}
+	else{
+		$("#format").append("<option value=''></option>");
+	}
+	if (treeNode.attribute.id != "ID"){
+		$("#format").append("<option value='bpmdetail'>表单详情页</option>");
+	}
+	$("#format").append("<option value='function'>自定义函数</option>");
+	
+	$("#format").val(treeNode.attribute.format);
+	if(treeNode.attribute.format == "function"){
+		$("#div_ud_function").css("display","block");
+	}
+	if(treeNode.attribute.format == "bpmdetail"){
+		$("#div_detail_eform").css("display","block");
+	}
+	if(treeNode.attribute.hasOwnProperty("unformat")&&treeNode.attribute.unformat == "function"){
+		$("#div_ud_function_anti").css("display","block");
+	}
+    if(treeNode.attribute.hasOwnProperty("footer")&&treeNode.attribute.footer == "function"){
+        $("#div_ud_function_footer").css("display","block");
+    }
+	if(treeNode.attribute.transform == "lookup"){
+		$("#div_ud_function2").css("display","block");
+	}
+	if(treeNode.attribute.transform == "userdefined"){
+		$("#div_ud_function3").css("display","block");
+	}
+	if(treeNode.attribute.transform == "customselect"){
+		$("#div_ud_function4").css("display","block");
+	}
+};
+
+self.validateForm = function(form,treeNode){
+   	if(form.db_filed_type == null || form.db_filed_type == ""){
+   		 layer.msg('字段类型不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+   		return false;
+   	}
+	if(form.transform == "lookup" && (form.LookupType == null || form.LookupType == "")){
+  		 layer.msg('通用代码值不能为空！',{
+               icon: 2,
+               area: ['220px', ''],
+               closeBtn: 0
+           });
+  		return false;
+  	}
+	if(form.transform == "userdefined" && (form.userdefinedclass == null || form.userdefinedclass == "")){
+ 		 layer.msg('自定义转换服务不能为空！',{
+              icon: 2,
+              area: ['250px', ''],
+              closeBtn: 0
+          });
+ 		return false;
+ 	}
+	if(form.format == "function" && (form.ud_function == null || form.ud_function == "")){
+		 layer.msg('自定义函数名称不能为空！',{
+             icon: 2,
+             area: ['250px', ''],
+             closeBtn: 0
+         });
+		return false;
+	}
+    if(form.format == "bpmdetail" && ((form.detail_eform == null || form.detail_eform == "")||(form.formid == null || form.formid == ""))){
+        layer.msg('详情表单不能为空！',{
+            icon: 2,
+            area: ['250px', ''],
+            closeBtn: 0
+        });
+        return false;
+    }
+	if(form.unformat == "function" && (form.ud_function_anti == null || form.ud_function_anti == "")){
+		layer.msg('自定义函数名称不能为空！',{
+			icon: 2,
+			area: ['250px', ''],
+			closeBtn: 0
+		});
+		return false;
+	}
+    if(form.footer == "function" && (form.ud_function_footer == null || form.ud_function_footer == "")){
+        layer.msg('自定义函数名称不能为空！',{
+            icon: 2,
+            area: ['250px', ''],
+            closeBtn: 0
+        });
+        return false;
+    }
+	if(form.transform == "customselect" && (form.customselectcode == null || form.customselectcode == "")){
+		 layer.msg('编码不能为空！',{
+            icon: 2,
+            area: ['210px', ''],
+            closeBtn: 0
+        });
+		return false;
+	}
+	if(((form.sorttype != null && form.sorttype != "")
+			&& (form.orderindex == null || form.orderindex == ""))
+			||  ((form.sorttype == null || form.sorttype == "")
+				&& (form.orderindex != null && form.orderindex != ""))){
+		 layer.msg('排序类型或数据排序必须同时为空或不为空！',{
+            icon: 2,
+            area: ['370px', ''],
+            closeBtn: 0
+        });
+		return false;
+	}
+   	return true;
+};
+</script>

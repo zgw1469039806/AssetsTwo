@@ -1,0 +1,574 @@
+<form>
+<div class="form-group property-control">
+	<label>表格列模型标识</label><input type="text" id="id" name="id"
+		isnull="false" class="form-control input-sm" readonly="readonly" placeholder="表格列模型标识">
+</div>
+<div class="form-group property-control">
+	<label>表格列模型名称</label><input type="text" id="name" name="name" 
+		isnull="false" class="form-control input-sm" placeholder="表格列模型名称">
+</div>
+</form>
+<div style="display: table;">
+
+    <a style="float:left;" id="toRefresh" href="javascript:void(0)"
+       class="btn btn-default form-tool-btn btn-sm" role="button"
+       title="刷新树数据"><i class="	glyphicon glyphicon-refresh"></i> 同步列数据</a>
+</div>
+<div id="toolbar" class="toolbar">
+    <div class="toolbar-left">
+        <a id="toShow" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="显示"><i class="glyphicon glyphicon-eye-open"></i> 显示</a>
+        <a id="toHide" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="隐藏"><i class="glyphicon glyphicon-eye-close"></i> 隐藏</a>
+        <a id="toDel" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="删除"><i class="fa fa-trash-o"></i> 删除</a>
+        <a id="toLeft" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="居左">居左</a>
+        <a id="toCenter" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="居中">居中</a>
+        <a id="toRight" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="居右">居右</a>
+        <input type="text"
+               id="allWidth" style="width: 75px;display: inline-block;"
+               class="form-control input-sm" placeholder="宽度">
+        <a id="toWidth" href="javascript:void(0)"
+           class="btn btn-default form-tool-btn btn-sm" role="button"
+           title="列宽度设置">列宽度设置</a>
+    </div>
+    <div class="toolbar-right">
+        <div class="input-group form-tool-search" style="width: 100px">
+            <input type="text"
+                   id="colPosition" style="width: 100px;display: inline-block;"
+                   class="form-control input-sm" placeholder="列标识定位"> <label
+                id="colPosition_search" style="font-size: 16px;"
+                class="icon icon-search form-tool-searchicon"></label>
+        </div>
+    </div>
+</div>
+<table id="dbCols"></table>
+<script type="text/javascript" src="static/h5/avicSelectBar/compent/lookupTypeSelect/lookupTypeSelect.js"></script>
+<script type="text/javascript">
+    var dataArray = new Array();	//jqgrid数据
+    var positionKeyword;			//定位搜索名称记录
+    var positionIndex;				//定位顺序记录
+    var classArray = new Array();  //自定义下拉选项
+    $(function () {
+        $(".form-control").bind('change', function () {
+            engine.changSave();
+        });
+
+
+        jqgridInit();
+        //自定义转换下拉
+        $.ajax({
+            url: 'platform/eform/eformViewInfoController/getEformClassConfigListByType/1',
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: false,
+            success: function (r) {
+                if (r != null) {
+                    var classValue = ':';
+                    var list = $.parseJSON(r.data);
+                    for (var i = 0; i < list.length; i++) {
+                        classValue += ";" + list[i].classPath + ":" + list[i].className;
+                        classArray.push([list[i].classPath, list[i].className])
+                    }
+                    $("#dbCols").setColProp("transValue", {
+                        editoptions: {value: classValue},
+                    });
+                }
+            }
+        });
+
+        $(".ui-jqgrid").css("position", "static");		//防止盖住按钮
+        $(engine.clickedNode.children).each(function () {
+            var transValue = "";
+            if (this.attribute.transform == "userdefined") {
+                for (var i = 0; i < classArray.length; i++) {
+                    if (classArray[i][0] == this.attribute.userdefinedclass) {
+                        transValue = classArray[i][1];
+                    }
+                }
+            } else if (this.attribute.transform == "lookup") {
+                transValue = this.attribute.LookupTypeName;
+            } else if (this.attribute.transform == "customselect") {
+                transValue = this.attribute.customselectcode;
+            }
+            dataArray.push({
+                "id": this.attribute.id,
+                "name": this.attribute.name,
+                "db_filed_type": this.attribute.db_filed_type == undefined ? "虚拟列" : this.attribute.db_filed_type,
+                "hidden": this.attribute.hidden != "true" ? "Yes" : "No",
+                // "transform":this.attribute.transform=="userid"?"用户ID转名称":this.attribute.transform=="orgid"?"组织ID转名称":this.attribute.transform=="deptid"?"部门ID转名称":this.attribute.transform=="positionid"?"岗位ID转名称":this.attribute.transform=="roleid"?"角色ID转名称":this.attribute.transform=="groupid"?"群组ID转名称":this.attribute.transform=="lookup"?"通用代码":this.attribute.transform=="userdefined"?"自定义转换":this.attribute.transform=="customselect"?"自定义下拉转换":"",
+                "transform": this.attribute.transform,
+                "LookupType": this.attribute.LookupType,
+                "transValue": transValue,
+                "ispkfiled": this.attribute.ispkfiled,
+                "customselectcode": this.attribute.customselectcode == undefined ? "" : this.attribute.customselectcode,
+                "userdefinedclass": this.attribute.userdefinedclass == undefined ? "" : this.attribute.userdefinedclass,
+                "LookupTypeName": this.attribute.LookupTypeName,
+                "width": this.attribute.width == undefined ? "" : this.attribute.width,
+                "align": this.attribute.align,
+                "sorttype": this.attribute.sorttype == undefined ? "" : this.attribute.sorttype,
+                "orderindex": this.attribute.orderindex,
+                "colId": this.id,
+                "nodeId": this.tId,
+                "hasDecimal": this.attribute.attribute02 != "" && this.attribute.attribute02 != null,
+
+            })
+        });
+        $("#dbCols").setGridParam({data: dataArray}).trigger('reloadGrid');
+
+
+        //刷新按钮绑定事件
+        $('#toRefresh').bind('click', function () {
+            toRefreshNode();
+        });
+        //显示按钮绑定事件
+        $('#toShow').bind('click', function () {
+            modifyForm("show");
+        });
+        //隐藏按钮绑定事件
+        $('#toHide').bind('click', function () {
+            modifyForm("hide");
+        });
+        //删除按钮绑定事件
+        $('#toDel').bind('click', function () {
+            modifyForm("del");
+        });
+        //居左按钮绑定事件
+        $('#toLeft').bind('click', function () {
+            modifyForm("left");
+        });
+        //居中按钮绑定事件
+        $('#toCenter').bind('click', function () {
+            modifyForm("center");
+        });
+        //居右按钮绑定事件
+        $('#toRight').bind('click', function () {
+            modifyForm("right");
+        });
+        //列宽设置按钮绑定事件
+        $('#toWidth').bind('click', function () {
+            modifyForm("width");
+        });
+        //定位按钮绑定事件
+        $('#colPosition_search').bind('click', function () {
+            modifyForm("position");
+        });
+    });
+
+    function selectLookup(jqgrid, rowid) {
+        new H5CommonLookupTypeSelect({
+            type: 'lookupSelect', callBack: function (rowdata) {
+                $("#dbCols").jqGrid('setCell', rowid, "LookupType", rowdata.id);
+                $("#dbCols").jqGrid('setCell', rowid, "LookupTypeName", rowdata.lookupType);
+                $("#dbCols").jqGrid('setCell', rowid, "transValue", rowdata.lookupType);
+
+            }
+        });
+    }
+
+self.validateForm = function(form,treeNode){
+	var pattern = new RegExp("[\\\\&*<>\"'/]") ; 
+   	if(pattern.test(form.name)){
+   		 layer.msg('表格列模型名称不能包含&*<>/\"\'\\\等特殊字符！',{
+                icon: 2,
+                area: ['400px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+        return true;
+    };
+
+    function jqgridInit() {
+        $("#dbCols").jqGrid({
+            datatype: "local",
+            toolbar: [],
+            colModel: [{
+                label: '列标识',
+                name: 'id',
+                width: 75
+            }, {
+                label: '字段类型',
+                name: 'db_filed_type',
+                width: 75
+            }, {
+                label: '列名称',
+                name: 'name',
+                editable: true,
+                edittype: "text",
+                width: 100
+            }, {
+                label: '列转换',
+                name: 'transform',
+                editable: true,
+                edittype: "select",
+                editoptions: {value: ':;userid:用户ID转名称;orgid:组织ID转名称;deptid:部门ID转名称;positionid:岗位ID转名称;roleid:角色ID转名称;groupid:群组ID转名称;lookup:通用代码;userdefined:自定义转换;customselect:自定义下拉转换'},
+                formatter: "select",
+                width: 100
+            }, {
+                label: '转换形式',
+                name: 'transValue',
+                width: 100,
+                editable: true,
+            }, {
+                label: '编码',
+                name: 'customselectcode',
+                editable: true,
+                edittype: "text",
+                hidden: true,
+            }, {
+                label: '转换类',
+                name: 'userdefinedclass',
+                editable: true,
+                edittype: "text",
+                hidden: true,
+            }, {
+                label: '通用代码',
+                name: 'LookupTypeName',
+                editable: true,
+                edittype: "text",
+                hidden: true,
+            }, {
+                label: '通用代码Id',
+                name: 'LookupType',
+                editable: true,
+                hidden: true,
+            },{
+                label: '排序类型',
+                name: 'sorttype',
+                editable: true,
+                edittype: "select",
+                editoptions: {value: ':;asc:asc;desc:desc'},
+                formatter: "select",
+                width: 50
+            }, {
+                label: '数据排序',
+                name: 'orderindex',
+                editable: true,
+                formatter: function (cellvalue) {
+                    return cellvalue < 0 ? 0 : cellvalue
+                },
+                width: 50
+            }, {
+                label: '主键',
+                name: 'ispkfiled',
+                hidden: true,
+            }, {
+                label: '字段ID',
+                name: 'colId',
+                hidden: true,
+            }, {
+                label: '树ID',
+                name: 'nodeId',
+                hidden: true,
+            }, {
+                label: '是否小数',
+                name: 'hasDecimal',
+                hidden: true,
+            }],
+            styleUI: 'Bootstrap',
+            height: $(window).height() - 390,
+            rownumbers: true,
+            rownumWidth: 30,
+            rowNum:2000,
+            autowidth: true,
+            sortable: false,
+            multiselect: true,
+            multiboxonly: true,
+            cellEdit: true,
+            cellsubmit: "clientArray",
+            afterSaveCell: function (rowid, cellname, value, iRow, iCol) {	//列转换与排序修改时清空其他相关内容
+                if (cellname == "transform") {
+                    var row = $("#dbCols").jqGrid('getRowData', rowid);
+                    if(value == 'userid'||value == 'lookup'){                   //改变对齐方式
+                        $("#dbCols").jqGrid('setCell', rowid, "align", "left");
+                    }else if(value == ''){
+                        var align = row.db_filed_type != "DATE" && row.db_filed_type != "NUMBER" ? "left" : row.hasDecimal ? "center" : "right";
+                        $("#dbCols").jqGrid('setCell', rowid, "align", align);
+                    }else{
+                        $("#dbCols").jqGrid('setCell', rowid, "align", "center");
+                    }
+                    $("#dbCols").jqGrid('setCell', rowid, "transValue", "");
+                    $("#dbCols").jqGrid("saveCell", rowid, iCol + 1);
+                } else if (cellname == "sorttype" && value == "") {
+                    $("#dbCols").jqGrid('setCell', rowid, "orderindex", "");
+                    $("#dbCols").jqGrid("saveCell", rowid, iCol + 1);
+                }
+            },
+            onCellSelect: function (rowid, iCol, cellcontent, e) {
+                $("td.success").removeClass("edit-cell success");	//清除单元格选中
+
+                $("#dbCols").setColProp("orderindex", {		//改变编辑模式以保存数字格式
+                    edittype: "text",
+                    editable: true,
+                });
+                if (iCol == 15) {		//数据排序编辑格式转换,以数字方式编辑
+                    $("#dbCols").jqGrid('endEditCell');
+                    $("tr.active").removeClass("active");			//清除行选中
+                    var row = $("#dbCols").jqGrid('getRowData', rowid);
+                    if (row.sorttype == "") {
+                        $("#dbCols").setColProp("orderindex", {
+                            editable: false,
+                        });
+                        layer.msg("请先选择排序类型");
+                        return false;
+                    } else {
+                        $("#dbCols").setColProp("orderindex", {
+                            edittype: "number",
+                            minValue: "0",
+                            editoptions: {minValue: '0'},
+                            editable: true,
+                        });
+                    }
+                } else if (iCol == 6) {		//列转换更改时改变转换形式编辑方式
+                    $("#dbCols").jqGrid('endEditCell');
+                    $("tr.active").removeClass("active");
+
+                    var row = $("#dbCols").jqGrid('getRowData', rowid);
+                    if (row.transform == "lookup") {
+                        $("#dbCols").setColProp("transValue", {
+                            editable: false,
+                        });
+                        selectLookup($("#dbCols"), rowid)
+                    } else if (row.transform == "userdefined") {
+                        $("#dbCols").setColProp("transValue", {
+                            editable: true,
+                            edittype: "select",
+                        });
+                    } else if (row.transform == "customselect") {
+                        $("#dbCols").setColProp("transValue", {
+                            editable: true,
+                            edittype: "text",
+                        });
+                    } else {
+                        $("#dbCols").setColProp("transValue", {
+                            editable: false,
+                        });
+                        layer.msg("列转换为“通用代码”,“自定义转换”,“自定义下拉转换”才可编辑此项");
+                        return false;
+                    }
+                } else if (iCol == 2 || iCol == 5 || iCol == 14) {			//虚拟列操作
+                    var row = $("#dbCols").jqGrid('getRowData', rowid);
+                    if (row.db_filed_type == "虚拟列") {
+                        $("#dbCols").setColProp("id", {
+                            editable: true,
+                        });
+                        $("#dbCols").setColProp("transform", {
+                            editable: false,
+                        });
+                        $("#dbCols").setColProp("sorttype", {
+                            editable: false,
+                        });
+                        if (iCol == 5 || iCol == 14) {
+                            layer.msg("虚拟列不可修改此项");
+                        }
+                    } else {
+                        $("#dbCols").setColProp("id", {
+                            editable: false,
+                        });
+                        $("#dbCols").setColProp("transform", {
+                            editable: true,
+                        });
+                        $("#dbCols").setColProp("sorttype", {
+                            editable: true,
+                        });
+                    }
+                }
+
+            },
+
+        });
+    }
+
+    function modifyForm(type) {
+        var ids = $("#dbCols").jqGrid('getGridParam', 'selarrrow');
+        if (type == "position") {
+            positionCol();
+            return false;
+        }
+        if (ids.length == 0) {
+            layer.alert('请选择要编辑的数据！', {
+                icon: 7,
+                area: ['400px', ''], // 宽高
+                closeBtn: 0,
+                btn: ['关闭'],
+                title: "提示"
+            });
+            return false;
+        }
+        if (type == "del") {
+            layer.confirm('确认要删除选中的数据吗?', {
+                icon: 3,
+                title: "提示",
+                area: ['400px', '']
+            }, function (index) {
+                for (var i = ids.length - 1; i >= 0; i--) {
+                    var row = $("#dbCols").jqGrid('getRowData', ids[i]);
+                    if (row.ispkfiled == "Y") {
+                        layer.msg(ids[i] + "为主键，不可删除");
+                    } else {
+                        $("#dbCols").jqGrid("delRowData", ids[i]);
+
+                        var treeObj = $.fn.zTree.getZTreeObj("viewTree");
+                        var node = treeObj.getNodeByTId(row.nodeId);
+                        treeObj.removeNode(node);
+                    }
+                }
+                layer.close(index);
+            });
+        } else {
+            for (var i = 0; i < ids.length; i++) {
+                if (type == "show") {
+                    $("#dbCols").jqGrid('setCell', ids[i], "hidden", "Yes");
+                } else if (type == "hide") {
+                    $("#dbCols").jqGrid('setCell', ids[i], "hidden", "No");
+                } else if (type == "width") {
+                    $("#dbCols").jqGrid('setCell', ids[i], "width", $("#allWidth").val(), "cellcell", "", true);
+                } else {
+                    $("#dbCols").jqGrid('setCell', ids[i], "align", type);
+                }
+            }
+        }
+    }
+
+    //列定位
+    function positionCol() {
+        if ($("#colPosition").val() == "") {
+            layer.alert('请输入列标识！', {
+                icon: 7,
+                area: ['400px', ''], // 宽高
+                closeBtn: 0,
+                btn: ['关闭'],
+                title: "提示"
+            });
+            return false;
+        }
+        var thisPosition = $("#colPosition").val();
+        var positionArray = new Array();
+        for (var i = 0; i < dataArray.length; i++) {
+            if (dataArray[i].id.toUpperCase().indexOf(thisPosition.toUpperCase()) > -1) {
+                positionArray.push(dataArray[i].id);
+            }
+        }
+        if (positionArray.length > 0) {
+            if (positionKeyword == thisPosition) {
+                if (positionIndex == positionArray.length - 1) {
+                    positionIndex = 0;
+                } else {
+                    positionIndex += 1;
+                }
+            } else {
+                positionKeyword = thisPosition;
+                positionIndex = 0;
+            }
+            var a = $("#" + positionArray[positionIndex]).position().top;
+            $(".ui-jqgrid-bdiv").animate({scrollTop: a}, 'fast');
+            var td = $("#" + positionArray[positionIndex]).find("td");
+            $(td).each(function () {
+                if ($(this).attr("aria-describedby") == "dbCols_id") {
+                    $(this).click();
+                }
+            })
+            return false;
+        } else {
+            layer.msg("无对应列标识");
+            return false
+        }
+    }
+
+	//同步列数据方法
+    function toRefreshNode() {
+        $("#dbCols").setColProp("orderindex", {
+            edittype: "text",
+            editable: true,
+        });
+        $("#dbCols").jqGrid('endEditCell');
+        $("tr.active").removeClass("active");			//清除行选中
+        var rows = $("#dbCols").jqGrid('getRowData');
+        var canSave = $(rows).each(function () {
+            if (verification(this)) {
+                return false;
+            }
+        })
+        if (canSave) {
+            $(rows).each(function () {
+                updateNode(this);
+            })
+        }
+    }
+
+    function updateNode(row) {
+        if (verification(row)) {
+            $(engine.clickedNode.children).each(function (i) {
+                if (row.colId == this.id) {
+                    this.attribute.id = row.id;
+                    this.attribute.name = row.name;
+                    this.attribute.transform = row.transform;
+
+                    if (row.transform == "lookup") {
+                        this.attribute.LookupTypeName = row.transValue;
+                        this.attribute.LookupType = row.LookupType;
+                        this.attribute.userdefinedclass = "";
+                        this.attribute.customselectcode = "";
+                    } else if (row.transform == "userdefined") {
+                        this.attribute.userdefinedclass = "";
+                        for (var i = 0; i < classArray.length; i++) {
+                            if (classArray[i][1] == row.transValue) {
+                                this.attribute.userdefinedclass = classArray[i][0];
+                            }
+                        }
+                        this.attribute.customselectcode = "";
+                        this.attribute.LookupTypeName = "";
+                        this.attribute.LookupType = "";
+                    } else if (row.transform == "customselect") {
+                        this.attribute.customselectcode = row.transValue;
+                        this.attribute.userdefinedclass = "";
+                        this.attribute.LookupTypeName = "";
+                        this.attribute.LookupType = "";
+                    }
+                    this.attribute.hidden = row.hidden != "Yes" ? "true" : "false";
+                    this.attribute.width = row.width;
+                    this.attribute.align = row.align;
+                    this.attribute.sorttype = row.sorttype;
+                    this.attribute.orderindex = row.orderindex;
+
+                    this.name = row.name;
+                    engine.viewTree.updateNode(engine.clickedNode.children[i]);
+                }
+
+            });
+            layer.msg("同步成功");
+        }
+    }
+
+    function verification(row) {
+        var falId = row.name
+        if (row.db_filed_type == "虚拟列") {
+            falId = "虚拟列" + falId;
+        }
+        if (row.transform == "lookup" && (row.LookupType == "" || row.transValue == "")) {
+            layer.msg(falId + " 请填写转换形式");
+            return false;
+        } else if (row.transform == "userdefined" && row.transValue == "") {
+            layer.msg(falId + " 请填写转换形式");
+            return false;
+        } else if (row.transform == "customselect" && row.transValue == "") {
+            layer.msg(falId + " 请填写转换形式");
+            return false;
+        } else if (row.sorttype != "" && row.orderindex == "") {
+            layer.msg(falId + " 请填写数据排序");
+            return false;
+        }
+        return true;
+    }
+</script>

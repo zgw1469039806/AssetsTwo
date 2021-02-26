@@ -1,0 +1,170 @@
+.avic-tab {
+	width:100%;
+	height: 100%;
+}
+.avic-tab .tab-bar {
+	width:100%;
+	height: 50px;
+	background: #FFF;
+	border-bottom: 1px solid #d2d2d2;
+	position: fixed;
+	z-index: 2;
+}
+.tab-bar li {
+	display: inline-block;
+	*display: inline;
+	_zoom:1;
+	padding:14px 18px 10px;
+	color:#454545;
+	cursor: pointer;
+	background: #fafafa;
+	border:1px solid #e8e8e8;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	margin:4px 0 0 3px;
+	float: left;
+}
+.tab-bar li.on {
+	display: inline-block;
+	*display: inline;
+	_zoom:1;
+	color:#333;
+	background: #FFF;
+	border-bottom-color:#FFF;
+	margin-bottom:-1px;
+}
+.avic-tab .tab-panel {
+	/*width:100%;*/
+	padding-top: 50px;
+	overflow-x:hidden;
+	border-top:1px solid #d2d2d2;
+}
+
+.tab-panel .panel-body {
+	width:100%;
+	height: 100%;
+	padding:20px;
+	*padding:10px;
+	display: none;
+	overflow: hidden;
+	z-index: 1;
+	position: relative;
+}
+.tab-panel .panel-body .panel-body {
+	display: block;
+	padding:0;
+}
+.tab-panel .panel-body.on {
+	display: block;
+}
+.tab-panel .panel-body .panel-main {
+	width:100%;
+	*width:96%;
+	height: 100%;
+	overflow: auto;
+	padding:8px 15px;
+	*padding:8px;
+	border:1px solid #d2d2d2;
+}
+.panel-main table.avicTable {
+	color:#454545;
+	text-align: center;
+	border-top:1px solid #ddd;
+}
+.panel-main table.avicTable thead {
+	background: #f6f6f6;
+}
+.panel-main table.avicTable tbody tr:nth-child(2n) {
+	background:#fbfbfb;
+}
+.panel-main table.avicTable tbody tr:hover {
+	background: #f6f6f6;
+}
+.panel-main table.avicTable tbody tr:hover td {
+	color:#333;
+}
+.panel-main table.avicTable select,.panel-main table.avicTable label,.panel-main table.avicTable button,.panel-main table.avicTable input,.panel-main table.avicTable textarea {
+	color:#454545;
+}
+.panel-main table.avicTable td.merge {
+	color:#FFF;
+	vertical-align: middle;
+	background: #2fae95;
+}
+.tab-panel .panel-body iframe {
+	border:0;
+	outline: 0;
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+
+.avic-tab .btn-bar {
+	position: fixed;
+	right: 310px;
+	top: 10px;
+	display: none;
+	z-index:3;
+}
+.avic-tab .btn-bar.on {
+	display: block;
+}
+
+.btn-bar-s {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.ac-btn {
+	padding:8px 10px;
+	background: #2fae95;
+	color:#FFF;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 14px;
+	margin-right: 10px;
+	display: inline-block;
+	*display:inline;
+	_zoom:1;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-transition:all .3s;
+	transition:all .3s;
+}
+
+.ac-btn:hover {
+	background: #17957c;
+}
+
+
+/*boostrap popover black 样式 start*/
+.btninpop {}
+.btninpop .btns {
+	cursor: pointer;
+	margin: 0 10px;
+	display: inline-block;
+}
+.btninpop .btns i {
+	margin-right: 5px;
+}
+.popover.black {
+	border-color:#5e5e5e;
+	background-color: #5e5e5e;
+}
+.popover.black   .arrow {
+	border-bottom-color: #5e5e5e;
+}
+.popover.black   .arrow:after {
+	border-bottom-color: #5e5e5e;
+}
+.black .popover-title {
+	color:#FFF;
+	background: #5e5e5e;
+	border-bottom: 1px solid #6f6f6f;
+}
+.black .popover-content {
+	color:#FFF;
+	background: #5e5e5e;
+}
+/*boostrap popover black 样式 end*/

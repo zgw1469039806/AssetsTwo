@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0; margin:0;}
+li{list-style:none;}
+img{vertical-align:middle; border:0;}
+a{text-decoration:none;}
+
+
+.menu{margin:0 auto; width:100%; height:60px; background:url(../../../images/platform/public/newWorkbench/menuBg.jpg) repeat-x; font-family:"微软雅黑"; font-size:13px; color:#0466b7}
+.menu ul{padding:5px 0 0 20px;}
+
+.menu li{width:85px; float:left; margin-right:14px; text-align:center}
+.menu li:hover,li.activeBg{background:url(../../../images/platform/public/newWorkbench/menuLiBg.png) center 0 no-repeat;}
+.menu li a{color:#0466b7; display:block; width:85px; height:23px; padding-top:30px;}
+.menu li:hover{color:#fff;cursor: pointer;}
+.menu li:hover a{color:#fff}
+
+li.activeBg{color:#fff;cursor: pointer;}
+li.activeBg a{color:#fff;}
+
+li.menu01 a{background:url(../../../images/platform/public/newWorkbench/menu01.png) center 0 no-repeat;}
+li.menu01 a:hover,li.menu01 a.active{background:url(../../../images/platform/public/newWorkbench/menu01hov.png) center 0 no-repeat;}
+
+li.menu02 a{background:url(../../../images/platform/public/newWorkbench/menu02.png) center 0 no-repeat;}
+li.menu02 a:hover,li.menu02 a.active{background:url(../../../images/platform/public/newWorkbench/menu02hov.png) center 0 no-repeat;}
+
+li.menu03 a{background:url(../../../images/platform/public/newWorkbench/menu03.png) center 0 no-repeat;}
+li.menu03 a:hover,li.menu03 a.active{background:url(../../../images/platform/public/newWorkbench/menu03hov.png) center 0 no-repeat;}
+
+li.menu04 a{background:url(../../../images/platform/public/newWorkbench/menu04.png) center 0 no-repeat;}
+li.menu04 a:hover,li.menu04 a.active{background:url(../../../images/platform/public/newWorkbench/menu04hov.png) center 0 no-repeat;}

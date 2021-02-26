@@ -1,0 +1,1288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetstdevicesoftware.dao.AssetsTdeviceSoftwareDao">
+
+<resultMap id="AssetsTdeviceSoftwareDTOMap" type="avicit.assets.device.assetstdevicesoftware.dto.AssetsTdeviceSoftwareDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="softwareName" column="SOFTWARE_NAME" jdbcType="VARCHAR" />
+		<result property="softwareBasicName" column="SOFTWARE_BASIC_NAME" jdbcType="VARCHAR" />
+		<result property="softwareId" column="SOFTWARE_ID" jdbcType="VARCHAR" />
+		<result property="softwareCode" column="SOFTWARE_CODE" jdbcType="VARCHAR" />
+		<result property="softwareVersion" column="SOFTWARE_VERSION" jdbcType="VARCHAR" />
+		<result property="softwareReleaseNum" column="SOFTWARE_RELEASE_NUM" jdbcType="VARCHAR" />
+		<result property="softwarePeriod" column="SOFTWARE_PERIOD" jdbcType="VARCHAR" />
+		<result property="softwareCodeSize" column="SOFTWARE_CODE_SIZE" jdbcType="DECIMAL" />
+		<result property="softwareLeader" column="SOFTWARE_LEADER" jdbcType="VARCHAR" />
+		<result property="softwareLanguage" column="SOFTWARE_LANGUAGE" jdbcType="VARCHAR" />
+		<result property="softwareRunEnvironment" column="SOFTWARE_RUN_ENVIRONMENT" jdbcType="VARCHAR" />
+		<result property="softwareDevEnvironment" column="SOFTWARE_DEV_ENVIRONMENT" jdbcType="VARCHAR" />
+		<result property="remarks" column="REMARKS" jdbcType="VARCHAR" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="DECIMAL" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="DECIMAL" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="DECIMAL" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="DECIMAL" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="DECIMAL" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="TIMESTAMP" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="TIMESTAMP" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="TIMESTAMP" />
+</resultMap>
+<!-- 分页查询 ASSETS_TDEVICE_SOFTWARE -->
+<select id="searchAssetsTdeviceSoftwareByPage" parameterType="java.util.Map" resultMap="AssetsTdeviceSoftwareDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.software_name                  ,
+		t1.software_basic_name            ,
+		t1.software_id                    ,
+		t1.software_code                  ,
+		t1.software_version               ,
+		t1.software_release_num           ,
+		t1.software_period                ,
+		t1.software_code_size             ,
+		t1.software_leader                ,
+		t1.software_language              ,
+		t1.software_run_environment       ,
+		t1.software_dev_environment       ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_software 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%') 
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%') 
+			</if>
+			<if test="bean.softwareName != null and bean.softwareName != ''">
+				and t1.SOFTWARE_NAME like concat(concat('%',#{bean.softwareName}),'%') 
+			</if>
+			<if test="bean.softwareBasicName != null and bean.softwareBasicName != ''">
+				and t1.SOFTWARE_BASIC_NAME like concat(concat('%',#{bean.softwareBasicName}),'%') 
+			</if>
+			<if test="bean.softwareId != null and bean.softwareId != ''">
+				and t1.SOFTWARE_ID like concat(concat('%',#{bean.softwareId}),'%') 
+			</if>
+			<if test="bean.softwareCode != null and bean.softwareCode != ''">
+				and t1.SOFTWARE_CODE like concat(concat('%',#{bean.softwareCode}),'%') 
+			</if>
+			<if test="bean.softwareVersion != null and bean.softwareVersion != ''">
+				and t1.SOFTWARE_VERSION like concat(concat('%',#{bean.softwareVersion}),'%') 
+			</if>
+			<if test="bean.softwareReleaseNum != null and bean.softwareReleaseNum != ''">
+				and t1.SOFTWARE_RELEASE_NUM like concat(concat('%',#{bean.softwareReleaseNum}),'%') 
+			</if>
+			<if test="bean.softwarePeriod != null and bean.softwarePeriod != ''">
+				and t1.SOFTWARE_PERIOD like concat(concat('%',#{bean.softwarePeriod}),'%') 
+			</if>
+			<if test="bean.softwareCodeSize != null ">
+				and t1.SOFTWARE_CODE_SIZE like concat(concat('%',#{bean.softwareCodeSize}),'%') 
+			</if>
+			<if test="bean.softwareLeader != null and bean.softwareLeader != ''">
+				and t1.SOFTWARE_LEADER like concat(concat('%',#{bean.softwareLeader}),'%') 
+			</if>
+			<if test="bean.softwareLanguage != null and bean.softwareLanguage != ''">
+				and t1.SOFTWARE_LANGUAGE like concat(concat('%',#{bean.softwareLanguage}),'%') 
+			</if>
+			<if test="bean.softwareRunEnvironment != null and bean.softwareRunEnvironment != ''">
+				and t1.SOFTWARE_RUN_ENVIRONMENT like concat(concat('%',#{bean.softwareRunEnvironment}),'%') 
+			</if>
+			<if test="bean.softwareDevEnvironment != null and bean.softwareDevEnvironment != ''">
+				and t1.SOFTWARE_DEV_ENVIRONMENT like concat(concat('%',#{bean.softwareDevEnvironment}),'%') 
+			</if>
+			<if test="bean.remarks != null and bean.remarks != ''">
+				and t1.REMARKS like concat(concat('%',#{bean.remarks}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null ">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null ">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null ">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null ">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null ">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			<if test="bean.attribute16 != null ">
+				and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%') 
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%') 
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%') 
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%') 
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%') 
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrASSETS_TDEVICE_SOFTWARE -->
+<select id="searchAssetsTdeviceSoftwareByPageOr" parameterType="java.util.Map" resultMap="AssetsTdeviceSoftwareDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.software_name                  ,
+		t1.software_basic_name            ,
+		t1.software_id                    ,
+		t1.software_code                  ,
+		t1.software_version               ,
+		t1.software_release_num           ,
+		t1.software_period                ,
+		t1.software_code_size             ,
+		t1.software_leader                ,
+		t1.software_language              ,
+		t1.software_run_environment       ,
+		t1.software_dev_environment       ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_software 	t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.unifiedId != null and bean.unifiedId != ''">
+				or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')  
+			</if>
+			<if test="bean.deviceName != null and bean.deviceName != ''">
+				or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')  
+			</if>
+			<if test="bean.softwareName != null and bean.softwareName != ''">
+				or t1.SOFTWARE_NAME like concat(concat('%',#{bean.softwareName}),'%')  
+			</if>
+			<if test="bean.softwareBasicName != null and bean.softwareBasicName != ''">
+				or t1.SOFTWARE_BASIC_NAME like concat(concat('%',#{bean.softwareBasicName}),'%')  
+			</if>
+			<if test="bean.softwareId != null and bean.softwareId != ''">
+				or t1.SOFTWARE_ID like concat(concat('%',#{bean.softwareId}),'%')  
+			</if>
+			<if test="bean.softwareCode != null and bean.softwareCode != ''">
+				or t1.SOFTWARE_CODE like concat(concat('%',#{bean.softwareCode}),'%')  
+			</if>
+			<if test="bean.softwareVersion != null and bean.softwareVersion != ''">
+				or t1.SOFTWARE_VERSION like concat(concat('%',#{bean.softwareVersion}),'%')  
+			</if>
+			<if test="bean.softwareReleaseNum != null and bean.softwareReleaseNum != ''">
+				or t1.SOFTWARE_RELEASE_NUM like concat(concat('%',#{bean.softwareReleaseNum}),'%')  
+			</if>
+			<if test="bean.softwarePeriod != null and bean.softwarePeriod != ''">
+				or t1.SOFTWARE_PERIOD like concat(concat('%',#{bean.softwarePeriod}),'%')  
+			</if>
+			<if test="bean.softwareCodeSize != null">
+				or t1.SOFTWARE_CODE_SIZE like concat(concat('%',#{bean.softwareCodeSize}),'%')  
+			</if>
+			<if test="bean.softwareLeader != null and bean.softwareLeader != ''">
+				or t1.SOFTWARE_LEADER like concat(concat('%',#{bean.softwareLeader}),'%')  
+			</if>
+			<if test="bean.softwareLanguage != null and bean.softwareLanguage != ''">
+				or t1.SOFTWARE_LANGUAGE like concat(concat('%',#{bean.softwareLanguage}),'%')  
+			</if>
+			<if test="bean.softwareRunEnvironment != null and bean.softwareRunEnvironment != ''">
+				or t1.SOFTWARE_RUN_ENVIRONMENT like concat(concat('%',#{bean.softwareRunEnvironment}),'%')  
+			</if>
+			<if test="bean.softwareDevEnvironment != null and bean.softwareDevEnvironment != ''">
+				or t1.SOFTWARE_DEV_ENVIRONMENT like concat(concat('%',#{bean.softwareDevEnvironment}),'%')  
+			</if>
+			<if test="bean.remarks != null and bean.remarks != ''">
+				or t1.REMARKS like concat(concat('%',#{bean.remarks}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			<if test="bean.attribute16 != null">
+				or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')  
+			</if>
+			<if test="bean.attribute17 != null and bean.attribute17 != ''">
+				or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')  
+			</if>
+			<if test="bean.attribute18 != null and bean.attribute18 != ''">
+				or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')  
+			</if>
+			<if test="bean.attribute19 != null and bean.attribute19 != ''">
+				or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')  
+			</if>
+			<if test="bean.attribute20 != null and bean.attribute20 != ''">
+				or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')  
+			</if>
+			</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 ASSETS_TDEVICE_SOFTWARE -->
+<select id="searchAssetsTdeviceSoftware" parameterType="java.util.Map" resultMap="AssetsTdeviceSoftwareDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.software_name                  ,
+		t1.software_basic_name            ,
+		t1.software_id                    ,
+		t1.software_code                  ,
+		t1.software_version               ,
+		t1.software_release_num           ,
+		t1.software_period                ,
+		t1.software_code_size             ,
+		t1.software_leader                ,
+		t1.software_language              ,
+		t1.software_run_environment       ,
+		t1.software_dev_environment       ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_software 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="softwareName != null and softwareName != ''">
+				and t1.SOFTWARE_NAME =#{softwareName}
+			</if>
+			<if test="softwareBasicName != null and softwareBasicName != ''">
+				and t1.SOFTWARE_BASIC_NAME =#{softwareBasicName}
+			</if>
+			<if test="softwareId != null and softwareId != ''">
+				and t1.SOFTWARE_ID =#{softwareId}
+			</if>
+			<if test="softwareCode != null and softwareCode != ''">
+				and t1.SOFTWARE_CODE =#{softwareCode}
+			</if>
+			<if test="softwareVersion != null and softwareVersion != ''">
+				and t1.SOFTWARE_VERSION =#{softwareVersion}
+			</if>
+			<if test="softwareReleaseNum != null and softwareReleaseNum != ''">
+				and t1.SOFTWARE_RELEASE_NUM =#{softwareReleaseNum}
+			</if>
+			<if test="softwarePeriod != null and softwarePeriod != ''">
+				and t1.SOFTWARE_PERIOD =#{softwarePeriod}
+			</if>
+			<if test="softwareCodeSize != null">
+				and t1.SOFTWARE_CODE_SIZE =#{softwareCodeSize}
+			</if>
+			<if test="softwareLeader != null and softwareLeader != ''">
+				and t1.SOFTWARE_LEADER =#{softwareLeader}
+			</if>
+			<if test="softwareLanguage != null and softwareLanguage != ''">
+				and t1.SOFTWARE_LANGUAGE =#{softwareLanguage}
+			</if>
+			<if test="softwareRunEnvironment != null and softwareRunEnvironment != ''">
+				and t1.SOFTWARE_RUN_ENVIRONMENT =#{softwareRunEnvironment}
+			</if>
+			<if test="softwareDevEnvironment != null and softwareDevEnvironment != ''">
+				and t1.SOFTWARE_DEV_ENVIRONMENT =#{softwareDevEnvironment}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and t1.REMARKS =#{remarks}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null and attribute18 != ''">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null and attribute19 != ''">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null and attribute20 != ''">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 ASSETS_TDEVICE_SOFTWARE -->
+<select id="findAssetsTdeviceSoftwareById" parameterType="java.util.Map" resultMap="AssetsTdeviceSoftwareDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.software_name                  ,
+		t1.software_basic_name            ,
+		t1.software_id                    ,
+		t1.software_code                  ,
+		t1.software_version               ,
+		t1.software_release_num           ,
+		t1.software_period                ,
+		t1.software_code_size             ,
+		t1.software_leader                ,
+		t1.software_language              ,
+		t1.software_run_environment       ,
+		t1.software_dev_environment       ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20                   
+	from assets_tdevice_software 	t1
+		where t1.id = #{id}
+</select>
+<!-- 统一编号查询对象 ASSETS_TDEVICE_SOFTWARE -->
+<select id="findAssetsTdeviceSoftwareByUnifiedId" parameterType="java.util.Map" resultMap="AssetsTdeviceSoftwareDTOMap">
+	select
+		t1.id                             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_name                    ,
+		t1.software_name                  ,
+		t1.software_basic_name            ,
+		t1.software_id                    ,
+		t1.software_code                  ,
+		t1.software_version               ,
+		t1.software_release_num           ,
+		t1.software_period                ,
+		t1.software_code_size             ,
+		t1.software_leader                ,
+		t1.software_language              ,
+		t1.software_run_environment       ,
+		t1.software_dev_environment       ,
+		t1.remarks                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20
+	from assets_tdevice_software 	t1
+		where t1.unified_id = #{unified_id}
+</select>
+<!-- 新增对象 ASSETS_TDEVICE_SOFTWARE -->
+<insert id="insertAssetsTdeviceSoftware" parameterType="avicit.assets.device.assetstdevicesoftware.dto.AssetsTdeviceSoftwareDTO">
+	insert into assets_tdevice_software
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="softwareName != null">
+				software_name,
+			</if>
+			<if test="softwareBasicName != null">
+				software_basic_name,
+			</if>
+			<if test="softwareId != null">
+				software_id,
+			</if>
+			<if test="softwareCode != null">
+				software_code,
+			</if>
+			<if test="softwareVersion != null">
+				software_version,
+			</if>
+			<if test="softwareReleaseNum != null">
+				software_release_num,
+			</if>
+			<if test="softwarePeriod != null">
+				software_period,
+			</if>
+			<if test="softwareCodeSize != null">
+				software_code_size,
+			</if>
+			<if test="softwareLeader != null">
+				software_leader,
+			</if>
+			<if test="softwareLanguage != null">
+				software_language,
+			</if>
+			<if test="softwareRunEnvironment != null">
+				software_run_environment,
+			</if>
+			<if test="softwareDevEnvironment != null">
+				software_dev_environment,
+			</if>
+			<if test="remarks != null">
+				remarks,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareName != null">
+				#{softwareName,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareBasicName != null">
+				#{softwareBasicName,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareId != null">
+				#{softwareId,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareCode != null">
+				#{softwareCode,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareVersion != null">
+				#{softwareVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareReleaseNum != null">
+				#{softwareReleaseNum,jdbcType=VARCHAR},
+			</if>
+			<if test="softwarePeriod != null">
+				#{softwarePeriod,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareCodeSize != null">
+				#{softwareCodeSize,jdbcType=DECIMAL},
+			</if>
+			<if test="softwareLeader != null">
+				#{softwareLeader,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareLanguage != null">
+				#{softwareLanguage,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareRunEnvironment != null">
+				#{softwareRunEnvironment,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareDevEnvironment != null">
+				#{softwareDevEnvironment,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DATE},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 ASSETS_TDEVICE_SOFTWARE -->
+<insert id="insertAssetsTdeviceSoftwareList" parameterType="java.util.List">
+	insert into assets_tdevice_software(
+			id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			unified_id,
+			device_name,
+			software_name,
+			software_basic_name,
+			software_id,
+			software_code,
+			software_version,
+			software_release_num,
+			software_period,
+			software_code_size,
+			software_leader,
+			software_language,
+			software_run_environment,
+			software_dev_environment,
+			remarks,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15,
+			attribute_16,
+			attribute_17,
+			attribute_18,
+			attribute_19,
+			attribute_20)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.unifiedId,jdbcType=VARCHAR},
+					#{item.deviceName,jdbcType=VARCHAR},
+					#{item.softwareName,jdbcType=VARCHAR},
+					#{item.softwareBasicName,jdbcType=VARCHAR},
+					#{item.softwareId,jdbcType=VARCHAR},
+					#{item.softwareCode,jdbcType=VARCHAR},
+					#{item.softwareVersion,jdbcType=VARCHAR},
+					#{item.softwareReleaseNum,jdbcType=VARCHAR},
+					#{item.softwarePeriod,jdbcType=VARCHAR},
+					#{item.softwareCodeSize,jdbcType=DECIMAL},
+					#{item.softwareLeader,jdbcType=VARCHAR},
+					#{item.softwareLanguage,jdbcType=VARCHAR},
+					#{item.softwareRunEnvironment,jdbcType=VARCHAR},
+					#{item.softwareDevEnvironment,jdbcType=VARCHAR},
+					#{item.remarks,jdbcType=VARCHAR},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=VARCHAR},
+					#{item.attribute10,jdbcType=VARCHAR},
+					#{item.attribute11,jdbcType=DECIMAL},
+					#{item.attribute12,jdbcType=DECIMAL},
+					#{item.attribute13,jdbcType=DECIMAL},
+					#{item.attribute14,jdbcType=DECIMAL},
+					#{item.attribute15,jdbcType=DECIMAL},
+					#{item.attribute16,jdbcType=DECIMAL},
+					#{item.attribute17,jdbcType=DATE},
+					#{item.attribute18,jdbcType=DATE},
+					#{item.attribute19,jdbcType=DATE},
+					#{item.attribute20,jdbcType=DATE}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 ASSETS_TDEVICE_SOFTWARE -->
+<update id="updateAssetsTdeviceSoftwareSensitive" parameterType="avicit.assets.device.assetstdevicesoftware.dto.AssetsTdeviceSoftwareDTO">
+	update assets_tdevice_software 
+	<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareName != null">
+				software_name                  =#{softwareName,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareBasicName != null">
+				software_basic_name            =#{softwareBasicName,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareId != null">
+				software_id                    =#{softwareId,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareCode != null">
+				software_code                  =#{softwareCode,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareVersion != null">
+				software_version               =#{softwareVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareReleaseNum != null">
+				software_release_num           =#{softwareReleaseNum,jdbcType=VARCHAR},
+			</if>
+			<if test="softwarePeriod != null">
+				software_period                =#{softwarePeriod,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareCodeSize != null">
+				software_code_size             =#{softwareCodeSize,jdbcType=DECIMAL},
+			</if>
+			<if test="softwareLeader != null">
+				software_leader                =#{softwareLeader,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareLanguage != null">
+				software_language              =#{softwareLanguage,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareRunEnvironment != null">
+				software_run_environment       =#{softwareRunEnvironment,jdbcType=VARCHAR},
+			</if>
+			<if test="softwareDevEnvironment != null">
+				software_dev_environment       =#{softwareDevEnvironment,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				remarks                        =#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DATE},
+			</if>
+	</set>
+		where id = #{id} and version =#{version}
+</update>
+<!-- 更新对象 ASSETS_TDEVICE_SOFTWARE -->
+<update id="updateAssetsTdeviceSoftwareAll" parameterType="avicit.assets.device.assetstdevicesoftware.dto.AssetsTdeviceSoftwareDTO">
+	update assets_tdevice_software 
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			software_name                  =#{softwareName,jdbcType=VARCHAR},
+			software_basic_name            =#{softwareBasicName,jdbcType=VARCHAR},
+			software_id                    =#{softwareId,jdbcType=VARCHAR},
+			software_code                  =#{softwareCode,jdbcType=VARCHAR},
+			software_version               =#{softwareVersion,jdbcType=VARCHAR},
+			software_release_num           =#{softwareReleaseNum,jdbcType=VARCHAR},
+			software_period                =#{softwarePeriod,jdbcType=VARCHAR},
+			software_code_size             =#{softwareCodeSize,jdbcType=DECIMAL},
+			software_leader                =#{softwareLeader,jdbcType=VARCHAR},
+			software_language              =#{softwareLanguage,jdbcType=VARCHAR},
+			software_run_environment       =#{softwareRunEnvironment,jdbcType=VARCHAR},
+			software_dev_environment       =#{softwareDevEnvironment,jdbcType=VARCHAR},
+			remarks                        =#{remarks,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DATE},
+			attribute_19                   =#{attribute19,jdbcType=DATE},
+			attribute_20                   =#{attribute20,jdbcType=DATE}
+	where id = #{id} and version =#{version}
+</update>
+<!-- 批量更新对象   ASSETS_TDEVICE_SOFTWARE -->
+<update id="updateAssetsTdeviceSoftwareList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update assets_tdevice_software 
+		set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			software_name                  =#{item.softwareName,jdbcType=VARCHAR},
+			software_basic_name            =#{item.softwareBasicName,jdbcType=VARCHAR},
+			software_id                    =#{item.softwareId,jdbcType=VARCHAR},
+			software_code                  =#{item.softwareCode,jdbcType=VARCHAR},
+			software_version               =#{item.softwareVersion,jdbcType=VARCHAR},
+			software_release_num           =#{item.softwareReleaseNum,jdbcType=VARCHAR},
+			software_period                =#{item.softwarePeriod,jdbcType=VARCHAR},
+			software_code_size             =#{item.softwareCodeSize,jdbcType=DECIMAL},
+			software_leader                =#{item.softwareLeader,jdbcType=VARCHAR},
+			software_language              =#{item.softwareLanguage,jdbcType=VARCHAR},
+			software_run_environment       =#{item.softwareRunEnvironment,jdbcType=VARCHAR},
+			software_dev_environment       =#{item.softwareDevEnvironment,jdbcType=VARCHAR},
+			remarks                        =#{item.remarks,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{item.attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{item.attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{item.attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{item.attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DATE},
+			attribute_19                   =#{item.attribute19,jdbcType=DATE},
+			attribute_20                   =#{item.attribute20,jdbcType=DATE}
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+<!-- 主键删除 ASSETS_TDEVICE_SOFTWARE -->
+<delete id="deleteAssetsTdeviceSoftwareById" parameterType="java.lang.String">
+		delete from assets_tdevice_software  where  id = #{id}
+</delete>
+<!-- 批量主键删除 ASSETS_TDEVICE_SOFTWARE -->
+<delete id="deleteAssetsTdeviceSoftwareList" parameterType="java.util.List">
+		delete from assets_tdevice_software  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

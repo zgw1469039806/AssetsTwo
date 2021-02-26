@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.device.assetsdeviceinventory.dao.AssetsDeviceInventorySubDao">
+
+	<resultMap id="AssetsDeviceInventorySubDTOMap" type="avicit.assets.device.assetsdeviceinventory.dto.AssetsDeviceInventorySubDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="parentId" column="PARENT_ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="unifiedId" column="UNIFIED_ID" jdbcType="VARCHAR" />
+		<result property="deviceId" column="DEVICE_ID" jdbcType="VARCHAR" />
+		<result property="assetId" column="ASSET_ID" jdbcType="VARCHAR" />
+		<result property="deviceName" column="DEVICE_NAME" jdbcType="VARCHAR" />
+		<result property="deviceModel" column="DEVICE_MODEL" jdbcType="VARCHAR" />
+		<result property="deviceSpec" column="DEVICE_SPEC" jdbcType="VARCHAR" />
+		<result property="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+		<result property="ownerDept" column="OWNER_DEPT" jdbcType="VARCHAR" />
+		<result property="manufacturerId" column="MANUFACTURER_ID" jdbcType="VARCHAR" />
+		<result property="supplier" column="SUPPLIER" jdbcType="VARCHAR" />
+		<result property="createdDate" column="CREATED_DATE" jdbcType="TIMESTAMP" />
+		<result property="positionId" column="POSITION_ID" jdbcType="VARCHAR" />
+		<result property="originalValue" column="ORIGINAL_VALUE" jdbcType="DECIMAL" />
+		<result property="netValue" column="NET_VALUE" jdbcType="DECIMAL" />
+		<result property="deviceState" column="DEVICE_STATE" jdbcType="VARCHAR" />
+		<result property="inventoryPerson" column="INVENTORY_PERSON" jdbcType="VARCHAR" />
+		<result property="inventoryDept" column="INVENTORY_DEPT" jdbcType="VARCHAR" />
+		<result property="inventoryDate" column="INVENTORY_DATE" jdbcType="TIMESTAMP" />
+		<result property="remarks" column="REMARKS" jdbcType="VARCHAR" />
+		<result property="flag" column="FLAG" jdbcType="VARCHAR" />
+		<result property="inventoryState" column="INVENTORY_STATE" jdbcType="VARCHAR" />
+		<result property="inventoryResult" column="INVENTORY_RESULT" jdbcType="VARCHAR" />
+		<!--		<result property="inventoryStateName" column="INVENTORY_STATE_NAME" jdbcType="VARCHAR" />-->
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="DECIMAL" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="DECIMAL" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="DECIMAL" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="DECIMAL" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="DECIMAL" />
+		<result property="attribute16" column="ATTRIBUTE_16" jdbcType="DECIMAL" />
+		<result property="attribute17" column="ATTRIBUTE_17" jdbcType="TIMESTAMP" />
+		<result property="attribute18" column="ATTRIBUTE_18" jdbcType="TIMESTAMP" />
+		<result property="attribute19" column="ATTRIBUTE_19" jdbcType="TIMESTAMP" />
+		<result property="attribute20" column="ATTRIBUTE_20" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<!-- 根据pid查询对象 ASSETS_DEVICE_INVENTORY_SUB -->
+	<select id="findAssetsDeviceInventorySubByPid" parameterType="java.util.Map" resultMap="AssetsDeviceInventorySubDTOMap">
+	select
+		t1.id                             ,
+		t1.parent_id                      ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_id                      ,
+		t1.asset_id                       ,
+		t1.device_name                    ,
+		t1.device_model                   ,
+		t1.device_spec                    ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.manufacturer_id                ,
+		t1.supplier                       ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.original_value                 ,
+		t1.net_value                      ,
+		t1.device_state                   ,
+		t1.inventory_person               ,
+		t1.inventory_dept                 ,
+		t1.inventory_date                 ,
+		t1.remarks                        ,
+		t1.flag                           ,
+		t1.inventory_state                ,
+		t1.inventory_result               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20
+	from assets_device_inventory_sub 	t1
+		where t1.parent_id = #{pid}
+</select>
+	<!-- 分页查询 ASSETS_DEVICE_INVENTORY_SUB -->
+	<select id="searchAssetsDeviceInventorySubByPage" parameterType="java.util.Map" resultMap="AssetsDeviceInventorySubDTOMap">
+		select
+		t1.id                             ,
+		t1.parent_id                      ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_id                      ,
+		t1.asset_id                       ,
+		t1.device_name                    ,
+		t1.device_model                   ,
+		t1.device_spec                    ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.manufacturer_id                ,
+		t1.supplier                       ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.original_value                 ,
+		t1.net_value                      ,
+		t1.device_state                   ,
+		t1.inventory_person               ,
+		t1.inventory_dept                 ,
+		t1.inventory_date                 ,
+		t1.remarks                        ,
+		t1.flag                           ,
+		t1.inventory_state                ,
+		t1.inventory_result               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20
+		from assets_device_inventory_sub 	t1
+		<where>
+			<if test="bean != null">
+				<if test="bean.id != null and bean.id != ''">
+					and t1.ID =#{bean.id}
+				</if>
+				<if test="bean.parentId != null and bean.parentId != ''">
+					and t1.PARENT_ID =#{bean.parentId}
+				</if>
+				<if test="bean.createdBy != null and bean.createdBy != ''">
+					and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+				</if>
+				<if test="bean.creationDate != null and bean.creationDate != ''">
+					and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')
+				</if>
+				<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+					and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+				</if>
+				<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+					and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')
+				</if>
+				<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+					and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+				</if>
+				<if test="bean.version != null ">
+					and t1.VERSION like concat(concat('%',#{bean.version}),'%')
+				</if>
+				<if test="bean.unifiedId != null and bean.unifiedId != ''">
+					and t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')
+				</if>
+				<if test="bean.deviceId != null and bean.deviceId != ''">
+					and t1.DEVICE_ID like concat(concat('%',#{bean.deviceId}),'%')
+				</if>
+				<if test="bean.assetId != null and bean.assetId != ''">
+					and t1.ASSET_ID like concat(concat('%',#{bean.assetId}),'%')
+				</if>
+				<if test="bean.deviceName != null and bean.deviceName != ''">
+					and t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')
+				</if>
+				<if test="bean.deviceModel != null and bean.deviceModel != ''">
+					and t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%')
+				</if>
+				<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+					and t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%')
+				</if>
+				<if test="bean.ownerId != null and bean.ownerId != ''">
+					and t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%')
+				</if>
+				<if test="bean.ownerDept != null and bean.ownerDept != ''">
+					and t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%')
+				</if>
+				<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+					and t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%')
+				</if>
+				<if test="bean.supplier != null and bean.supplier != ''">
+					and t1.SUPPLIER like concat(concat('%',#{bean.supplier}),'%')
+				</if>
+				<if test="bean.createdDateBegin != null and bean.createdDateBegin != ''">
+					and t1.CREATED_DATE &gt;= #{bean.createdDateBegin}
+				</if>
+				<if test="bean.createdDateEnd != null and bean.createdDateEnd != ''">
+					and t1.CREATED_DATE &lt;= #{bean.createdDateEnd}
+				</if>
+				<if test="bean.positionId != null and bean.positionId != ''">
+					and t1.POSITION_ID like concat(concat('%',#{bean.positionId}),'%')
+				</if>
+				<if test="bean.originalValue != null ">
+					and t1.ORIGINAL_VALUE like concat(concat('%',#{bean.originalValue}),'%')
+				</if>
+				<if test="bean.netValue != null ">
+					and t1.NET_VALUE like concat(concat('%',#{bean.netValue}),'%')
+				</if>
+				<if test="bean.deviceState != null and bean.deviceState != ''">
+					and t1.DEVICE_STATE like concat(concat('%',#{bean.deviceState}),'%')
+				</if>
+				<if test="bean.inventoryPerson != null and bean.inventoryPerson != ''">
+					and t1.INVENTORY_PERSON like concat(concat('%',#{bean.inventoryPerson}),'%')
+				</if>
+				<if test="bean.inventoryDept != null and bean.inventoryDept != ''">
+					and t1.INVENTORY_DEPT like concat(concat('%',#{bean.inventoryDept}),'%')
+				</if>
+				<if test="bean.inventoryDateBegin != null and bean.inventoryDateBegin != ''">
+					and t1.INVENTORY_DATE &gt;= #{bean.inventoryDateBegin}
+				</if>
+				<if test="bean.inventoryDateEnd != null and bean.inventoryDateEnd != ''">
+					and t1.INVENTORY_DATE &lt;= #{bean.inventoryDateEnd}
+				</if>
+				<if test="bean.remarks != null and bean.remarks != ''">
+					and t1.REMARKS like concat(concat('%',#{bean.remarks}),'%')
+				</if>
+				<if test="bean.flag != null and bean.flag != ''">
+					and t1.FLAG like concat(concat('%',#{bean.flag}),'%')
+				</if>
+				<if test="bean.inventoryState != null and bean.inventoryState != ''">
+					and t1.INVENTORY_STATE like concat(concat('%',#{bean.inventoryState}),'%')
+				</if>
+				<if test="bean.inventoryResult != null and bean.inventoryResult != ''">
+					and t1.INVENTORY_RESULT like concat(concat('%',#{bean.inventoryResult}),'%')
+				</if>
+
+				<if test="bean.inventoryStateName != null and bean.inventoryStateName != ''">
+					and t1.INVENTORY_STATE_NAME like concat(concat('%',#{bean.inventoryStateName}),'%')
+					-- 				</if>
+				<if test="bean.attribute01 != null and bean.attribute01 != ''">
+					and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+				</if>
+				<if test="bean.attribute02 != null and bean.attribute02 != ''">
+					and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+				</if>
+				<if test="bean.attribute03 != null and bean.attribute03 != ''">
+					and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+				</if>
+				<if test="bean.attribute04 != null and bean.attribute04 != ''">
+					and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+				</if>
+				<if test="bean.attribute05 != null and bean.attribute05 != ''">
+					and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+				</if>
+				<if test="bean.attribute06 != null and bean.attribute06 != ''">
+					and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+				</if>
+				<if test="bean.attribute07 != null and bean.attribute07 != ''">
+					and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+				</if>
+				<if test="bean.attribute08 != null and bean.attribute08 != ''">
+					and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+				</if>
+				<if test="bean.attribute09 != null and bean.attribute09 != ''">
+					and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+				</if>
+				<if test="bean.attribute10 != null and bean.attribute10 != ''">
+					and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+				</if>
+				<if test="bean.attribute11 != null ">
+					and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')
+				</if>
+				<if test="bean.attribute12 != null ">
+					and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')
+				</if>
+				<if test="bean.attribute13 != null ">
+					and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')
+				</if>
+				<if test="bean.attribute14 != null ">
+					and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')
+				</if>
+				<if test="bean.attribute15 != null ">
+					and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')
+				</if>
+				<if test="bean.attribute16 != null ">
+					and t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')
+				</if>
+				<if test="bean.attribute17 != null and bean.attribute17 != ''">
+					and t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')
+				</if>
+				<if test="bean.attribute18 != null and bean.attribute18 != ''">
+					and t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')
+				</if>
+				<if test="bean.attribute19 != null and bean.attribute19 != ''">
+					and t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')
+				</if>
+				<if test="bean.attribute20 != null and bean.attribute20 != ''">
+					and t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')
+				</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+	</select>
+	<!-- 分页查询 OrASSETS_DEVICE_INVENTORY_SUB -->
+	<select id="searchAssetsDeviceInventorySubByPageOr" parameterType="java.util.Map" resultMap="AssetsDeviceInventorySubDTOMap">
+		select
+		t1.id                             ,
+		t1.parent_id                      ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_id                      ,
+		t1.asset_id                       ,
+		t1.device_name                    ,
+		t1.device_model                   ,
+		t1.device_spec                    ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.manufacturer_id                ,
+		t1.supplier                       ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.original_value                 ,
+		t1.net_value                      ,
+		t1.device_state                   ,
+		t1.inventory_person               ,
+		t1.inventory_dept                 ,
+		t1.inventory_date                 ,
+		t1.remarks                        ,
+		t1.flag                           ,
+		t1.inventory_state                ,
+		t1.inventory_result               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20
+		from  (select * from assets_device_inventory_sub t where t.PARENT_ID= #{bean.parentId})  t1
+		<where>
+			<if test="bean != null">
+				<trim prefix="(" suffix=")" prefixOverrides="or">
+					<if test="bean.id != null and bean.id != ''">
+						or t1.ID =#{bean.id}
+					</if>
+					<if test="bean.createdBy != null and bean.createdBy != ''">
+						or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+					</if>
+					<if test="bean.creationDate != null and bean.creationDate != ''">
+						or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')
+					</if>
+					<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+						or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+					</if>
+					<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+						or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')
+					</if>
+					<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+						or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+					</if>
+					<if test="bean.version != null">
+						or t1.VERSION like concat(concat('%',#{bean.version}),'%')
+					</if>
+					<if test="bean.unifiedId != null and bean.unifiedId != ''">
+						or t1.UNIFIED_ID like concat(concat('%',#{bean.unifiedId}),'%')
+					</if>
+					<if test="bean.deviceId != null and bean.deviceId != ''">
+						or t1.DEVICE_ID like concat(concat('%',#{bean.deviceId}),'%')
+					</if>
+					<if test="bean.assetId != null and bean.assetId != ''">
+						or t1.ASSET_ID like concat(concat('%',#{bean.assetId}),'%')
+					</if>
+					<if test="bean.deviceName != null and bean.deviceName != ''">
+						or t1.DEVICE_NAME like concat(concat('%',#{bean.deviceName}),'%')
+					</if>
+					<if test="bean.deviceModel != null and bean.deviceModel != ''">
+						or t1.DEVICE_MODEL like concat(concat('%',#{bean.deviceModel}),'%')
+					</if>
+					<if test="bean.deviceSpec != null and bean.deviceSpec != ''">
+						or t1.DEVICE_SPEC like concat(concat('%',#{bean.deviceSpec}),'%')
+					</if>
+					<if test="bean.ownerId != null and bean.ownerId != ''">
+						or t1.OWNER_ID like concat(concat('%',#{bean.ownerId}),'%')
+					</if>
+					<if test="bean.ownerDept != null and bean.ownerDept != ''">
+						or t1.OWNER_DEPT like concat(concat('%',#{bean.ownerDept}),'%')
+					</if>
+					<if test="bean.manufacturerId != null and bean.manufacturerId != ''">
+						or t1.MANUFACTURER_ID like concat(concat('%',#{bean.manufacturerId}),'%')
+					</if>
+					<if test="bean.supplier != null and bean.supplier != ''">
+						or t1.SUPPLIER like concat(concat('%',#{bean.supplier}),'%')
+					</if>
+					<if test="bean.createdDateBegin != null and bean.createdDateBegin != ''">
+						or t1.CREATED_DATE &gt;= #{bean.createdDateBegin}
+					</if>
+					<if test="bean.createdDateEnd != null and bean.createdDateEnd != ''">
+						or t1.CREATED_DATE &lt;= #{bean.createdDateEnd}
+					</if>
+					<if test="bean.positionId != null and bean.positionId != ''">
+						or t1.POSITION_ID like concat(concat('%',#{bean.positionId}),'%')
+					</if>
+					<if test="bean.originalValue != null">
+						or t1.ORIGINAL_VALUE like concat(concat('%',#{bean.originalValue}),'%')
+					</if>
+					<if test="bean.netValue != null">
+						or t1.NET_VALUE like concat(concat('%',#{bean.netValue}),'%')
+					</if>
+					<if test="bean.deviceState != null and bean.deviceState != ''">
+						or t1.DEVICE_STATE like concat(concat('%',#{bean.deviceState}),'%')
+					</if>
+					<if test="bean.inventoryPerson != null and bean.inventoryPerson != ''">
+						or t1.INVENTORY_PERSON like concat(concat('%',#{bean.inventoryPerson}),'%')
+					</if>
+					<if test="bean.inventoryDept != null and bean.inventoryDept != ''">
+						or t1.INVENTORY_DEPT like concat(concat('%',#{bean.inventoryDept}),'%')
+					</if>
+					<if test="bean.inventoryDateBegin != null and bean.inventoryDateBegin != ''">
+						or t1.INVENTORY_DATE &gt;= #{bean.inventoryDateBegin}
+					</if>
+					<if test="bean.inventoryDateEnd != null and bean.inventoryDateEnd != ''">
+						or t1.INVENTORY_DATE &lt;= #{bean.inventoryDateEnd}
+					</if>
+					<if test="bean.remarks != null and bean.remarks != ''">
+						or t1.REMARKS like concat(concat('%',#{bean.remarks}),'%')
+					</if>
+					<if test="bean.flag != null and bean.flag != ''">
+						or t1.FLAG like concat(concat('%',#{bean.flag}),'%')
+					</if>
+					<if test="bean.inventoryState != null and bean.inventoryState != ''">
+						or t1.INVENTORY_STATE like concat(concat('%',#{bean.inventoryState}),'%')
+					</if>
+					<if test="bean.inventoryResult != null and bean.inventoryResult != ''">
+						or t1.INVENTORY_RESULT like concat(concat('%',#{bean.inventoryResult}),'%')
+					</if>
+
+					<if test="bean.inventoryStateName != null and bean.inventoryStateName != ''">
+						or t1.INVENTORY_STATE_NAME like concat(concat('%',#{bean.inventoryStateName}),'%')
+					</if>
+					<if test="bean.attribute01 != null and bean.attribute01 != ''">
+						or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+					</if>
+					<if test="bean.attribute02 != null and bean.attribute02 != ''">
+						or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+					</if>
+					<if test="bean.attribute03 != null and bean.attribute03 != ''">
+						or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+					</if>
+					<if test="bean.attribute04 != null and bean.attribute04 != ''">
+						or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+					</if>
+					<if test="bean.attribute05 != null and bean.attribute05 != ''">
+						or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+					</if>
+					<if test="bean.attribute06 != null and bean.attribute06 != ''">
+						or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+					</if>
+					<if test="bean.attribute07 != null and bean.attribute07 != ''">
+						or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+					</if>
+					<if test="bean.attribute08 != null and bean.attribute08 != ''">
+						or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+					</if>
+					<if test="bean.attribute09 != null and bean.attribute09 != ''">
+						or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+					</if>
+					<if test="bean.attribute10 != null and bean.attribute10 != ''">
+						or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+					</if>
+					<if test="bean.attribute11 != null">
+						or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')
+					</if>
+					<if test="bean.attribute12 != null">
+						or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')
+					</if>
+					<if test="bean.attribute13 != null">
+						or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')
+					</if>
+					<if test="bean.attribute14 != null">
+						or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')
+					</if>
+					<if test="bean.attribute15 != null">
+						or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')
+					</if>
+					<if test="bean.attribute16 != null">
+						or t1.ATTRIBUTE_16 like concat(concat('%',#{bean.attribute16}),'%')
+					</if>
+					<if test="bean.attribute17 != null and bean.attribute17 != ''">
+						or t1.ATTRIBUTE_17 like concat(concat('%',#{bean.attribute17}),'%')
+					</if>
+					<if test="bean.attribute18 != null and bean.attribute18 != ''">
+						or t1.ATTRIBUTE_18 like concat(concat('%',#{bean.attribute18}),'%')
+					</if>
+					<if test="bean.attribute19 != null and bean.attribute19 != ''">
+						or t1.ATTRIBUTE_19 like concat(concat('%',#{bean.attribute19}),'%')
+					</if>
+					<if test="bean.attribute20 != null and bean.attribute20 != ''">
+						or t1.ATTRIBUTE_20 like concat(concat('%',#{bean.attribute20}),'%')
+					</if>
+				</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+	</select>
+	<!-- 查询列表 ASSETS_DEVICE_INVENTORY_SUB -->
+	<select id="searchAssetsDeviceInventorySub" parameterType="java.util.Map" resultMap="AssetsDeviceInventorySubDTOMap">
+		select
+		t1.id                             ,
+		t1.parent_id                      ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_id                      ,
+		t1.asset_id                       ,
+		t1.device_name                    ,
+		t1.device_model                   ,
+		t1.device_spec                    ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.manufacturer_id                ,
+		t1.supplier                       ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.original_value                 ,
+		t1.net_value                      ,
+		t1.device_state                   ,
+		t1.inventory_person               ,
+		t1.inventory_dept                 ,
+		t1.inventory_date                 ,
+		t1.remarks                        ,
+		t1.flag                           ,
+		t1.inventory_state                ,
+		t1.inventory_result               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20
+		from assets_device_inventory_sub 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and t1.PARENT_ID =#{parentId}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="unifiedId != null and unifiedId != ''">
+				and t1.UNIFIED_ID =#{unifiedId}
+			</if>
+			<if test="deviceId != null and deviceId != ''">
+				and t1.DEVICE_ID =#{deviceId}
+			</if>
+			<if test="assetId != null and assetId != ''">
+				and t1.ASSET_ID =#{assetId}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and t1.DEVICE_NAME =#{deviceName}
+			</if>
+			<if test="deviceModel != null and deviceModel != ''">
+				and t1.DEVICE_MODEL =#{deviceModel}
+			</if>
+			<if test="deviceSpec != null and deviceSpec != ''">
+				and t1.DEVICE_SPEC =#{deviceSpec}
+			</if>
+			<if test="ownerId != null and ownerId != ''">
+				and t1.OWNER_ID =#{ownerId}
+			</if>
+			<if test="ownerDept != null and ownerDept != ''">
+				and t1.OWNER_DEPT =#{ownerDept}
+			</if>
+			<if test="manufacturerId != null and manufacturerId != ''">
+				and t1.MANUFACTURER_ID =#{manufacturerId}
+			</if>
+			<if test="supplier != null and supplier != ''">
+				and t1.SUPPLIER =#{supplier}
+			</if>
+			<if test="createdDateBegin != null and createdDateBegin != ''">
+				and t1.CREATED_DATE &gt;= #{createdDateBegin}
+			</if>
+			<if test="createdDateEnd != null and createdDateEnd != ''">
+				and t1.CREATED_DATE &lt;= #{createdDateEnd}
+			</if>
+			<if test="positionId != null and positionId != ''">
+				and t1.POSITION_ID =#{positionId}
+			</if>
+			<if test="originalValue != null">
+				and t1.ORIGINAL_VALUE =#{originalValue}
+			</if>
+			<if test="netValue != null">
+				and t1.NET_VALUE =#{netValue}
+			</if>
+			<if test="deviceState != null and deviceState != ''">
+				and t1.DEVICE_STATE =#{deviceState}
+			</if>
+			<if test="inventoryPerson != null and inventoryPerson != ''">
+				and t1.INVENTORY_PERSON =#{inventoryPerson}
+			</if>
+			<if test="inventoryDept != null and inventoryDept != ''">
+				and t1.INVENTORY_DEPT =#{inventoryDept}
+			</if>
+			<if test="inventoryDateBegin != null and inventoryDateBegin != ''">
+				and t1.INVENTORY_DATE &gt;= #{inventoryDateBegin}
+			</if>
+			<if test="inventoryDateEnd != null and inventoryDateEnd != ''">
+				and t1.INVENTORY_DATE &lt;= #{inventoryDateEnd}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and t1.REMARKS =#{remarks}
+			</if>
+			<if test="flag != null and flag != ''">
+				and t1.FLAG =#{flag}
+			</if>
+			<if test="inventoryState != null and inventoryState != ''">
+				and t1.INVENTORY_STATE =#{inventoryState}
+			</if>
+			<if test="inventoryResult != null and inventoryResult != ''">
+				and t1.INVENTORY_RESULT =#{inventoryResult}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+			<if test="attribute16 != null">
+				and t1.ATTRIBUTE_16 =#{attribute16}
+			</if>
+			<if test="attribute17 != null and attribute17 != ''">
+				and t1.ATTRIBUTE_17 =#{attribute17}
+			</if>
+			<if test="attribute18 != null and attribute18 != ''">
+				and t1.ATTRIBUTE_18 =#{attribute18}
+			</if>
+			<if test="attribute19 != null and attribute19 != ''">
+				and t1.ATTRIBUTE_19 =#{attribute19}
+			</if>
+			<if test="attribute20 != null and attribute20 != ''">
+				and t1.ATTRIBUTE_20 =#{attribute20}
+			</if>
+		</where>
+	</select>
+	<!-- 主键查询对象 ASSETS_DEVICE_INVENTORY_SUB -->
+	<select id="findAssetsDeviceInventorySubById" parameterType="java.util.Map" resultMap="AssetsDeviceInventorySubDTOMap">
+	select
+		t1.id                             ,
+		t1.parent_id                      ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.unified_id                     ,
+		t1.device_id                      ,
+		t1.asset_id                       ,
+		t1.device_name                    ,
+		t1.device_model                   ,
+		t1.device_spec                    ,
+		t1.owner_id                       ,
+		t1.owner_dept                     ,
+		t1.manufacturer_id                ,
+		t1.supplier                       ,
+		t1.created_date                   ,
+		t1.position_id                    ,
+		t1.original_value                 ,
+		t1.net_value                      ,
+		t1.device_state                   ,
+		t1.inventory_person               ,
+		t1.inventory_dept                 ,
+		t1.inventory_date                 ,
+		t1.remarks                        ,
+		t1.flag                           ,
+		t1.inventory_state                ,
+		t1.inventory_result               ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   ,
+		t1.attribute_16                   ,
+		t1.attribute_17                   ,
+		t1.attribute_18                   ,
+		t1.attribute_19                   ,
+		t1.attribute_20
+	from assets_device_inventory_sub 	t1
+		where t1.id = #{id}
+</select>
+	<!-- 新增对象 ASSETS_DEVICE_INVENTORY_SUB -->
+	<insert id="insertAssetsDeviceInventorySub" parameterType="avicit.assets.device.assetsdeviceinventory.dto.AssetsDeviceInventorySubDTO">
+		insert into assets_device_inventory_sub
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="unifiedId != null">
+				unified_id,
+			</if>
+			<if test="deviceId != null">
+				device_id,
+			</if>
+			<if test="assetId != null">
+				asset_id,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="deviceModel != null">
+				device_model,
+			</if>
+			<if test="deviceSpec != null">
+				device_spec,
+			</if>
+			<if test="ownerId != null">
+				owner_id,
+			</if>
+			<if test="ownerDept != null">
+				owner_dept,
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id,
+			</if>
+			<if test="supplier != null">
+				supplier,
+			</if>
+			<if test="createdDate != null">
+				created_date,
+			</if>
+			<if test="positionId != null">
+				position_id,
+			</if>
+			<if test="originalValue != null">
+				original_value,
+			</if>
+			<if test="netValue != null">
+				net_value,
+			</if>
+			<if test="deviceState != null">
+				device_state,
+			</if>
+			<if test="inventoryPerson != null">
+				inventory_person,
+			</if>
+			<if test="inventoryDept != null">
+				inventory_dept,
+			</if>
+			<if test="inventoryDate != null">
+				inventory_date,
+			</if>
+			<if test="remarks != null">
+				remarks,
+			</if>
+			<if test="flag != null">
+				flag,
+			</if>
+			<if test="inventoryState != null">
+				inventory_state,
+			</if>
+			<if test="inventoryResult != null">
+				inventory_result,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+			<if test="attribute16 != null">
+				attribute_16,
+			</if>
+			<if test="attribute17 != null">
+				attribute_17,
+			</if>
+			<if test="attribute18 != null">
+				attribute_18,
+			</if>
+			<if test="attribute19 != null">
+				attribute_19,
+			</if>
+			<if test="attribute20 != null">
+				attribute_20,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="unifiedId != null">
+				#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceId != null">
+				#{deviceId,jdbcType=VARCHAR},
+			</if>
+			<if test="assetId != null">
+				#{assetId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="supplier != null">
+				#{supplier,jdbcType=VARCHAR},
+			</if>
+			<if test="createdDate != null">
+				#{createdDate,jdbcType=DATE},
+			</if>
+			<if test="positionId != null">
+				#{positionId,jdbcType=VARCHAR},
+			</if>
+			<if test="originalValue != null">
+				#{originalValue,jdbcType=DECIMAL},
+			</if>
+			<if test="netValue != null">
+				#{netValue,jdbcType=DECIMAL},
+			</if>
+			<if test="deviceState != null">
+				#{deviceState,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryPerson != null">
+				#{inventoryPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryDept != null">
+				#{inventoryDept,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryDate != null">
+				#{inventoryDate,jdbcType=DATE},
+			</if>
+			<if test="remarks != null">
+				#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="flag != null">
+				#{flag,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryState != null">
+				#{inventoryState,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryResult != null">
+				#{inventoryResult,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				#{attribute20,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<!-- 批量新增对象 ASSETS_DEVICE_INVENTORY_SUB -->
+	<insert id="insertAssetsDeviceInventorySubList" parameterType="java.util.List">
+		insert into assets_device_inventory_sub(
+		id,
+		parent_id,
+		created_by,
+		creation_date,
+		last_updated_by,
+		last_update_date,
+		last_update_ip,
+		version,
+		unified_id,
+		device_id,
+		asset_id,
+		device_name,
+		device_model,
+		device_spec,
+		owner_id,
+		owner_dept,
+		manufacturer_id,
+		supplier,
+		created_date,
+		position_id,
+		original_value,
+		net_value,
+		device_state,
+		inventory_person,
+		inventory_dept,
+		inventory_date,
+		remarks,
+		flag,
+		inventory_state,
+		inventory_result,
+		attribute_01,
+		attribute_02,
+		attribute_03,
+		attribute_04,
+		attribute_05,
+		attribute_06,
+		attribute_07,
+		attribute_08,
+		attribute_09,
+		attribute_10,
+		attribute_11,
+		attribute_12,
+		attribute_13,
+		attribute_14,
+		attribute_15,
+		attribute_16,
+		attribute_17,
+		attribute_18,
+		attribute_19,
+		attribute_20)
+		<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+			select
+			#{item.id,jdbcType=VARCHAR},
+			#{item.parentId,jdbcType=VARCHAR},
+			#{item.createdBy,jdbcType=VARCHAR},
+			#{item.creationDate},
+			#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			#{item.lastUpdateDate},
+			#{item.lastUpdateIp,jdbcType=VARCHAR},
+			#{item.version,jdbcType=DECIMAL},
+			#{item.unifiedId,jdbcType=VARCHAR},
+			#{item.deviceId,jdbcType=VARCHAR},
+			#{item.assetId,jdbcType=VARCHAR},
+			#{item.deviceName,jdbcType=VARCHAR},
+			#{item.deviceModel,jdbcType=VARCHAR},
+			#{item.deviceSpec,jdbcType=VARCHAR},
+			#{item.ownerId,jdbcType=VARCHAR},
+			#{item.ownerDept,jdbcType=VARCHAR},
+			#{item.manufacturerId,jdbcType=VARCHAR},
+			#{item.supplier,jdbcType=VARCHAR},
+			#{item.createdDate,jdbcType=DATE},
+			#{item.positionId,jdbcType=VARCHAR},
+			#{item.originalValue,jdbcType=DECIMAL},
+			#{item.netValue,jdbcType=DECIMAL},
+			#{item.deviceState,jdbcType=VARCHAR},
+			#{item.inventoryPerson,jdbcType=VARCHAR},
+			#{item.inventoryDept,jdbcType=VARCHAR},
+			#{item.inventoryDate,jdbcType=DATE},
+			#{item.remarks,jdbcType=VARCHAR},
+			#{item.flag,jdbcType=VARCHAR},
+			#{item.inventoryState,jdbcType=VARCHAR},
+			#{item.inventoryResult,jdbcType=VARCHAR},
+			#{item.attribute01,jdbcType=VARCHAR},
+			#{item.attribute02,jdbcType=VARCHAR},
+			#{item.attribute03,jdbcType=VARCHAR},
+			#{item.attribute04,jdbcType=VARCHAR},
+			#{item.attribute05,jdbcType=VARCHAR},
+			#{item.attribute06,jdbcType=VARCHAR},
+			#{item.attribute07,jdbcType=VARCHAR},
+			#{item.attribute08,jdbcType=VARCHAR},
+			#{item.attribute09,jdbcType=VARCHAR},
+			#{item.attribute10,jdbcType=VARCHAR},
+			#{item.attribute11,jdbcType=DECIMAL},
+			#{item.attribute12,jdbcType=DECIMAL},
+			#{item.attribute13,jdbcType=DECIMAL},
+			#{item.attribute14,jdbcType=DECIMAL},
+			#{item.attribute15,jdbcType=DECIMAL},
+			#{item.attribute16,jdbcType=DECIMAL},
+			#{item.attribute17,jdbcType=DATE},
+			#{item.attribute18,jdbcType=DATE},
+			#{item.attribute19,jdbcType=DATE},
+			#{item.attribute20,jdbcType=DATE}
+			from dual
+		</foreach>
+	</insert>
+	<!-- 更新对象 ASSETS_DEVICE_INVENTORY_SUB -->
+	<update id="updateAssetsDeviceInventorySubSensitive" parameterType="avicit.assets.device.assetsdeviceinventory.dto.AssetsDeviceInventorySubDTO">
+		update assets_device_inventory_sub
+		<set>
+			<if test="id != null">
+				id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id                      =#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version                        =version+1,
+			</if>
+			<if test="unifiedId != null">
+				unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceId != null">
+				device_id                      =#{deviceId,jdbcType=VARCHAR},
+			</if>
+			<if test="assetId != null">
+				asset_id                       =#{assetId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name                    =#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceModel != null">
+				device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceSpec != null">
+				device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerId != null">
+				owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerDept != null">
+				owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturerId != null">
+				manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			</if>
+			<if test="supplier != null">
+				supplier                       =#{supplier,jdbcType=VARCHAR},
+			</if>
+			<if test="createdDate != null">
+				created_date                   =#{createdDate,jdbcType=DATE},
+			</if>
+			<if test="positionId != null">
+				position_id                    =#{positionId,jdbcType=VARCHAR},
+			</if>
+			<if test="originalValue != null">
+				original_value                 =#{originalValue,jdbcType=DECIMAL},
+			</if>
+			<if test="netValue != null">
+				net_value                      =#{netValue,jdbcType=DECIMAL},
+			</if>
+			<if test="deviceState != null">
+				device_state                   =#{deviceState,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryPerson != null">
+				inventory_person               =#{inventoryPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryDept != null">
+				inventory_dept                 =#{inventoryDept,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryDate != null">
+				inventory_date                 =#{inventoryDate,jdbcType=DATE},
+			</if>
+			<if test="remarks != null">
+				remarks                        =#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="flag != null">
+				flag                           =#{flag,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryState != null">
+				inventory_state                =#{inventoryState,jdbcType=VARCHAR},
+			</if>
+			<if test="inventoryResult != null">
+				inventory_result               =#{inventoryResult,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute01 != null">
+				attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute10 != null">
+				attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute11 != null">
+				attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute16 != null">
+				attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute17 != null">
+				attribute_17                   =#{attribute17,jdbcType=DATE},
+			</if>
+			<if test="attribute18 != null">
+				attribute_18                   =#{attribute18,jdbcType=DATE},
+			</if>
+			<if test="attribute19 != null">
+				attribute_19                   =#{attribute19,jdbcType=DATE},
+			</if>
+			<if test="attribute20 != null">
+				attribute_20                   =#{attribute20,jdbcType=DATE},
+			</if>
+		</set>
+		where id = #{id} and version =#{version}
+	</update>
+	<!-- 更新对象 ASSETS_DEVICE_INVENTORY_SUB -->
+	<update id="updateAssetsDeviceInventorySubAll" parameterType="avicit.assets.device.assetsdeviceinventory.dto.AssetsDeviceInventorySubDTO">
+	update assets_device_inventory_sub
+		set
+			id                             =#{id,jdbcType=VARCHAR},
+			parent_id                      =#{parentId,jdbcType=VARCHAR},
+			created_by                     =#{createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{unifiedId,jdbcType=VARCHAR},
+			device_id                      =#{deviceId,jdbcType=VARCHAR},
+			asset_id                       =#{assetId,jdbcType=VARCHAR},
+			device_name                    =#{deviceName,jdbcType=VARCHAR},
+			device_model                   =#{deviceModel,jdbcType=VARCHAR},
+			device_spec                    =#{deviceSpec,jdbcType=VARCHAR},
+			owner_id                       =#{ownerId,jdbcType=VARCHAR},
+			owner_dept                     =#{ownerDept,jdbcType=VARCHAR},
+			manufacturer_id                =#{manufacturerId,jdbcType=VARCHAR},
+			supplier                       =#{supplier,jdbcType=VARCHAR},
+			created_date                   =#{createdDate,jdbcType=DATE},
+			position_id                    =#{positionId,jdbcType=VARCHAR},
+			original_value                 =#{originalValue,jdbcType=DECIMAL},
+			net_value                      =#{netValue,jdbcType=DECIMAL},
+			device_state                   =#{deviceState,jdbcType=VARCHAR},
+			inventory_person               =#{inventoryPerson,jdbcType=VARCHAR},
+			inventory_dept                 =#{inventoryDept,jdbcType=VARCHAR},
+			inventory_date                 =#{inventoryDate,jdbcType=DATE},
+			remarks                        =#{remarks,jdbcType=VARCHAR},
+			flag                           =#{flag,jdbcType=VARCHAR},
+			inventory_state                =#{inventoryState,jdbcType=VARCHAR},
+			inventory_result               =#{inventoryResult,jdbcType=VARCHAR},
+			attribute_01                   =#{attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{attribute17,jdbcType=DATE},
+			attribute_18                   =#{attribute18,jdbcType=DATE},
+			attribute_19                   =#{attribute19,jdbcType=DATE},
+			attribute_20                   =#{attribute20,jdbcType=DATE}
+	where id = #{id} and version =#{version}
+</update>
+	<!-- 批量更新对象   ASSETS_DEVICE_INVENTORY_SUB -->
+	<update id="updateAssetsDeviceInventorySubList" parameterType="java.util.List">
+		<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+			update assets_device_inventory_sub
+			set
+			id                             =#{item.id,jdbcType=VARCHAR},
+			parent_id                      =#{item.parentId,jdbcType=VARCHAR},
+			created_by                     =#{item.createdBy,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_updated_by                =#{item.lastUpdatedBy,jdbcType=VARCHAR},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+			unified_id                     =#{item.unifiedId,jdbcType=VARCHAR},
+			device_id                      =#{item.deviceId,jdbcType=VARCHAR},
+			asset_id                       =#{item.assetId,jdbcType=VARCHAR},
+			device_name                    =#{item.deviceName,jdbcType=VARCHAR},
+			device_model                   =#{item.deviceModel,jdbcType=VARCHAR},
+			device_spec                    =#{item.deviceSpec,jdbcType=VARCHAR},
+			owner_id                       =#{item.ownerId,jdbcType=VARCHAR},
+			owner_dept                     =#{item.ownerDept,jdbcType=VARCHAR},
+			manufacturer_id                =#{item.manufacturerId,jdbcType=VARCHAR},
+			supplier                       =#{item.supplier,jdbcType=VARCHAR},
+			created_date                   =#{item.createdDate,jdbcType=DATE},
+			position_id                    =#{item.positionId,jdbcType=VARCHAR},
+			original_value                 =#{item.originalValue,jdbcType=DECIMAL},
+			net_value                      =#{item.netValue,jdbcType=DECIMAL},
+			device_state                   =#{item.deviceState,jdbcType=VARCHAR},
+			inventory_person               =#{item.inventoryPerson,jdbcType=VARCHAR},
+			inventory_dept                 =#{item.inventoryDept,jdbcType=VARCHAR},
+			inventory_date                 =#{item.inventoryDate,jdbcType=DATE},
+			remarks                        =#{item.remarks,jdbcType=VARCHAR},
+			flag                           =#{item.flag,jdbcType=VARCHAR},
+			inventory_state                =#{item.inventoryState,jdbcType=VARCHAR},
+			inventory_result               =#{item.inventoryResult,jdbcType=VARCHAR},
+			attribute_01                   =#{item.attribute01,jdbcType=VARCHAR},
+			attribute_02                   =#{item.attribute02,jdbcType=VARCHAR},
+			attribute_03                   =#{item.attribute03,jdbcType=VARCHAR},
+			attribute_04                   =#{item.attribute04,jdbcType=VARCHAR},
+			attribute_05                   =#{item.attribute05,jdbcType=VARCHAR},
+			attribute_06                   =#{item.attribute06,jdbcType=VARCHAR},
+			attribute_07                   =#{item.attribute07,jdbcType=VARCHAR},
+			attribute_08                   =#{item.attribute08,jdbcType=VARCHAR},
+			attribute_09                   =#{item.attribute09,jdbcType=VARCHAR},
+			attribute_10                   =#{item.attribute10,jdbcType=VARCHAR},
+			attribute_11                   =#{item.attribute11,jdbcType=DECIMAL},
+			attribute_12                   =#{item.attribute12,jdbcType=DECIMAL},
+			attribute_13                   =#{item.attribute13,jdbcType=DECIMAL},
+			attribute_14                   =#{item.attribute14,jdbcType=DECIMAL},
+			attribute_15                   =#{item.attribute15,jdbcType=DECIMAL},
+			attribute_16                   =#{item.attribute16,jdbcType=DECIMAL},
+			attribute_17                   =#{item.attribute17,jdbcType=DATE},
+			attribute_18                   =#{item.attribute18,jdbcType=DATE},
+			attribute_19                   =#{item.attribute19,jdbcType=DATE},
+			attribute_20                   =#{item.attribute20,jdbcType=DATE}
+			where id = #{item.id} and version =#{item.version};
+		</foreach>
+	</update>
+	<!-- 主键删除 ASSETS_DEVICE_INVENTORY_SUB -->
+	<delete id="deleteAssetsDeviceInventorySubById" parameterType="java.lang.String">
+		delete from assets_device_inventory_sub  where  id = #{id}
+</delete>
+	<!-- 外键批量删除 ASSETS_DEVICE_INVENTORY_SUB -->
+	<delete id="deleteAssetsDeviceInventorySubByPid" parameterType="java.lang.String">
+		delete from assets_device_inventory_sub  where  PARENT_ID = #{parentId}
+</delete>
+	<!-- 批量主键删除 ASSETS_DEVICE_INVENTORY_SUB -->
+	<delete id="deleteAssetsDeviceInventorySubList" parameterType="java.util.List">
+		delete from assets_device_inventory_sub  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+	</delete>
+</mapper>

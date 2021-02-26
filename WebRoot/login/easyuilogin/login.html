@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-stand">
+    <link rel="shortcut icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="description" content="">
+    <meta name="keywords" content="登录">
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <title>欢迎使用-业务基础平台-控制台</title>
+    <script type="text/javascript" src="../../static/h5/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../../static/h5/layer-v2.3/layer/layer.js"></script>
+    <!--[if IE 6]>
+		<script src="./js/jquery.pngFix.pack.js"></script>
+	<![endif]-->
+    <script type="text/javascript">
+    $(function() {
+        var firstLoginFalg = 0;// test
+        var userid = '123123'; // test
+        if (firstLoginFalg && firstLoginFalg == 1) {
+            modifyIndex = layer.open({
+                type: 2,
+                area: ['45%', '40%'],
+                title: '初始密码拒绝登录请修改密码！',
+                skin: 'bs-modal', // bootstrap 风格皮肤 需加载skin
+                maxmin: false, //开启最大化最小化按钮
+                content: '<%=ViewUtil.getRequestPath(request)%>' + 'avicit/platform6/console/user/modifyUserPasswordbyadmin.jsp?userId='+userid
+            });
+        }
+    });
+
+    function closeModiyPassworDilog() {
+        layer.close(modifyIndex);
+    }
+    </script>
+</head>
+
+<body>
+	<div class="login_Box">
+		<div class="Login_Top">
+			<div class="Login_Top_Logo">
+				<img width="58" height="65" class="png" src="./img/logo.gif" />
+				<h1>业务基础平台</h1>
+			</div>
+		</div>
+		<div class="Login_Con">
+			<form action="${baseurl}/admin/login" onsubmit="return check();"
+				method="post" style="height: 278px">
+				<div class="Login_Con_Urse">
+					<i class="icon-user-pic tb"></i> <input
+						type="text" id="username_" name="username_" focucmsg="请输入用户名" tabindex="1"
+						value="">
+				</div>
+				<div class="Login_Con_Password">
+					<i class="icon-pwd-pic tb"></i> <input
+						type="text" autocomplete="off" class="userinput" id="showPwd"
+						focucmsg="请输入密码" value="" tabindex="2"> <input autocomplete="off" style="display: none;"
+						id="password" size="20" tabindex="2" type="password">
+				</div>
+				<!-- <div class="Login_Con_Checkbox">
+					<input type="checkbox" />记住密码</div> -->
+				<div id="errorMsg" class="forgetPwdLine">
+					
+				</div>
+				<div class="Login_Con_Button">
+					<button>登录</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+	var path = "<%=ViewUtil.getRequestPath(request)%>";
+	 
+	function refresh(obj){
+		obj.src = path+"platform/verifyCode/show?" + Math.random();
+	}
+	function mouseover(obj){
+		obj.style.cursor = "pointer";
+	}
+	  
+	  function closeSubFrame() {
+		  $('#modify_dialog').dialog('close');
+	  }
+	  
+		var check=function(){
+		    var userName=$("#username_").val();
+            if(!userName || userName==='登录名'){
+                if($('#msgContent').length===0) {
+                    $('<span id="msgContent" style="color: Red;">'+'用户名不能为空!'+'</span>').appendTo($('#errorMsg'));
+                }
+
+                return false;
+            }
+            var password=$("#password").val();
+            if(!password || password==='密码'){
+                if($('#msgContent').length===0) {
+                    $('<span id="msgContent" style="color: Red;">' + '密码不能为空!' + '</span>').appendTo($('#errorMsg'));
+                }
+                return false;
+            }
+            // <%if(isShow){ %>
+            // var inputCode=$("#inputCode_").val();
+            // if(!inputCode || inputCode==='验证码'){
+            //     if($('#msgContent').length===0) {
+            //         $('<span id="msgContent" style="color: Red;">'+'验证码不能为空!'+'</span>').appendTo($('#errorMsg'));
+            //     }
+
+            //     return false;
+            // }
+            // <%} %>
+            return true;
+
+        };
+		$(function(){
+			$("#username_").each(function() {
+				var user = '';
+				if (user != '') {
+					$(this).val(user);
+					user = '';
+				} else {
+					$(this).val($(this).attr("focucmsg")).blur();
+					$(this).val($(this).attr("focucmsg")).css("color", "#979393");
+				}
+				$(this).focus(function() {
+				    $('#msgContent').remove();
+					if ($(this).val() == $(this).attr("focucmsg")) {
+						$(this).val('');
+						$(this).val('').css("color","#FFFFFF");
+					}
+				});
+				$(this).blur(function() {
+					if (!$(this).val()) {
+						$(this).val($(this).attr("focucmsg"));
+						$(this).val($(this).attr("focucmsg")).css("color","#979393");
+					}});
+			});
+			
+			$("#showPwd").each(function() {
+				$(this).val($(this).attr("focucmsg")).blur();
+				$(this).val($(this).attr("focucmsg")).css("color", "#979393");
+
+				$(this).focus(function() {
+        	        $('#msgContent').remove();
+						if ($(this).val() == $(this).attr("focucmsg")) {
+							 $("#showPwd").hide();
+							 $("#password").show().focus();
+						}
+				});
+				 $("#password").blur(function() {
+					if ($(this).val() == '') {
+						$("#showPwd").show();
+						$("#password").hide();
+					}});
+			});
+			
+			$("#inputCode_").each(function() {
+				$(this).val($(this).attr("focucmsg")).blur();
+				$(this).val($(this).attr("focucmsg")).css("color", "#979393");
+				$(this).focus(function() {
+				    $('#msgContent').remove();
+					if ($(this).val() == $(this).attr("focucmsg")) {
+						$(this).val('');
+						$(this).val('').css("color","#FFFFFF");
+					}
+				});
+				$(this).blur(function() {
+					if (!$(this).val()) {
+						$(this).val($(this).attr("focucmsg"));
+						$(this).val($(this).attr("focucmsg")).css("color","#979393");
+					}});
+			});
+
+			$("#password").attr("name", "password_");
+			$("#showPwd").attr("name", "Password1");
+		})
+	</script>
+</body>
+
+</html>

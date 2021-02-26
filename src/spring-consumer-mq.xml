@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+    <!-- JMS TOPIC MODEL -->
+    <bean id="topicListenConnectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="failover://(tcp://localhost:61616?tcpNoDelay=true)" />
+    </bean>
+
+    <!-- 定义主题 在线消息 订单更新-->
+    <bean id="platform6_workflow_receive_MessageTopic"  class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="platform6_workflow.outer-push.topic"/>
+    </bean>
+
+    <!-- 消息转换器 -->
+    <bean id="messageConvertForSys" class="avicit.platform6.modules.system.mq.MessageConvertForSys"></bean>
+
+    <!-- 消息接收方 在线消息 订单更新-->
+    <bean id="platform6_workflow_MessageReceiver" class="avicit.platform6.mq.Platform6WorkflowReceiverMessage"></bean>
+
+    <!--     主题消息监听容器2  You cannot create a durable subscriber without specifying a unique clientID on a Connection -->
+    <bean id="listenerContainer_orderinfo_update" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="topicListenConnectionFactory" />
+        <property name="pubSubDomain" value="true"/><!-- default is false    -->
+        <property name="destination" ref="platform6_workflow_receive_MessageTopic" />
+        <property name="subscriptionDurable" value="false"/>
+        <property name="messageListener" ref="platform6_workflow_MessageReceiver" />
+        <property name="concurrency" value="4-8"/><!-- 开启线程监听4(最小)-8(最大),默认是1 -->
+    </bean>
+</beans> 

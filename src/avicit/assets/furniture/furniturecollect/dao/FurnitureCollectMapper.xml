@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.assets.furniture.furniturecollect.dao.FurnitureCollectDao">
+
+	<resultMap id="FurnitureCollectDTOMap" type="avicit.assets.furniture.furniturecollect.dto.FurnitureCollectDTO">
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="nodeId" column="NODE_ID" jdbcType="VARCHAR" />
+		<result property="nodePid" column="NODE_PID" jdbcType="VARCHAR" />
+		<result property="newNodePid" column="NEW_NODE_PID" jdbcType="VARCHAR" />
+		<result property="nodeName" column="NODE_NAME" jdbcType="VARCHAR" />
+		<result property="nodeUrl" column="NODE_URL" jdbcType="VARCHAR" />
+		<result property="nodeSn" column="NODE_SN" jdbcType="DECIMAL" />
+		<result property="nodeTreepath" column="NODE_TREEPATH" jdbcType="VARCHAR" />
+		<result property="itemNum" column="ITEM_NUM" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="FurnitureCollectTreeMap" type="avicit.assets.furniture.furniturecollect.dto.FurnitureCollectTreeDTO">
+		<result property="id" column="NODE_ID" jdbcType="VARCHAR" />
+		<result property="pId" column="NEW_NODE_PID" jdbcType="VARCHAR" />
+		<result property="name" column="NODE_NAME" jdbcType="VARCHAR" />
+		<result property="url" column="NODE_URL" jdbcType="VARCHAR" />
+		<result property="treePath" column="NODE_TREEPATH" jdbcType="VARCHAR" />
+		<result property="itemNum" column="ITEM_NUM" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 获取收藏树 -->
+	<select id="getMyCollectList" parameterType="java.util.Map" resultMap="FurnitureCollectTreeMap">
+		select
+			t1.node_id ,
+			t1.new_node_pid ,
+			t1.node_name ,
+			t1.node_url ,
+			t1.node_treepath ,
+			t1.item_Num
+		from furniture_collect 	t1
+		where t1.user_id = #{userId} OR (t1.new_node_pid IS NULL AND t1.user_id = '-1')
+		order by t1.node_sn asc
+	</select>
+
+	<!-- 主键查询对象 Furniture_Collect -->
+	<select id="findUserCollectById" parameterType="java.util.Map" resultMap="FurnitureCollectDTOMap">
+		select
+			t1.user_id ,
+			t1.node_id ,
+			t1.node_pid ,
+			t1.new_node_pid ,
+			t1.node_name ,
+			t1.node_url ,
+			t1.node_sn ,
+			t1.node_treepath ,
+			t1.item_Num
+		from furniture_collect t1
+		where t1.user_id = #{userId} AND t1.node_id = #{nodeId}
+	</select>
+
+	<!-- 根据父节点id获取其排序最后一个直接子节点 -->
+	<select id="getLastChildNodeByPID" parameterType="java.util.Map" resultMap="FurnitureCollectDTOMap">
+		select
+			t1.user_id ,
+			t1.node_id ,
+			t1.node_sn ,
+			t1.item_Num
+		from furniture_collect 	t1
+		where t1.user_id = #{userId} AND t1.new_node_pid = #{parentId}
+		order by t1.node_sn desc
+	</select>
+
+	<!-- 新增对象 Furniture_Collect -->
+	<insert id="insertUserCollect" parameterType="avicit.assets.furniture.furniturecollect.dto.FurnitureCollectDTO">
+		insert into furniture_collect
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="nodeId != null">
+				node_id,
+			</if>
+			<if test="nodePid != null">
+				node_pid,
+			</if>
+			<if test="newNodePid != null">
+				new_node_pid,
+			</if>
+			<if test="nodeName != null">
+				node_name,
+			</if>
+			<if test="nodeUrl != null">
+				node_url,
+			</if>
+			<if test="nodeSn != null">
+				node_sn,
+			</if>
+			<if test="nodeTreepath != null">
+				node_treepath,
+			</if>
+			<if test="itemNum != null">
+				item_num,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="nodeId != null">
+				#{nodeId,jdbcType=VARCHAR},
+			</if>
+			<if test="nodePid != null">
+				#{nodePid,jdbcType=VARCHAR},
+			</if>
+			<if test="newNodePid != null">
+				#{newNodePid,jdbcType=VARCHAR},
+			</if>
+			<if test="nodeName != null">
+				#{nodeName,jdbcType=VARCHAR},
+			</if>
+			<if test="nodeUrl != null">
+				#{nodeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="nodeSn != null">
+				#{nodeSn,jdbcType=DECIMAL},
+			</if>
+			<if test="nodeTreepath != null">
+				#{nodeTreepath,jdbcType=VARCHAR},
+			</if>
+			<if test="itemNum != null">
+				#{itemNum,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量新增对象 Furniture_Collect -->
+	<insert id="insertUserCollectList" parameterType="java.util.List">
+		insert into furniture_collect(
+		user_id,
+		node_id,
+		node_pid,
+		new_node_pid,
+		node_name,
+		node_url,
+		node_sn,
+		node_treepath,
+		item_num)
+		<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+			select
+			#{item.userId,jdbcType=VARCHAR},
+			#{item.nodeId,jdbcType=VARCHAR},
+			#{item.nodePid,jdbcType=VARCHAR},
+			#{item.newNodePid,jdbcType=VARCHAR},
+			#{item.nodeName,jdbcType=VARCHAR},
+			#{item.nodeUrl,jdbcType=VARCHAR},
+			#{item.nodeSn,jdbcType=DECIMAL},
+			#{item.nodeTreepath,jdbcType=VARCHAR}
+			#{item.itemNum,jdbcType=VARCHAR}
+			from dual
+		</foreach>
+	</insert>
+
+	<!-- 更新对象 Furniture_Collect -->
+	<update id="updateUserCollect" parameterType="avicit.assets.furniture.furniturecollect.dto.FurnitureCollectDTO">
+		update furniture_collect
+		<set>
+			<if test="nodeName != null">
+				node_name = #{nodeName,jdbcType=VARCHAR},
+			</if>
+			<if test="nodeSn != null">
+				node_sn = #{nodeSn,jdbcType=DECIMAL},
+			</if>
+			<if test="itemNum != null">
+				item_num = #{itemNum,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=VARCHAR} and node_id = #{nodeId,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 主键删除 Furniture_Collect -->
+	<delete id="deleteUserCollectById" parameterType="java.lang.String">
+		delete from furniture_collect where user_id = #{userId} AND node_id = #{nodeId}
+	</delete>
+</mapper>

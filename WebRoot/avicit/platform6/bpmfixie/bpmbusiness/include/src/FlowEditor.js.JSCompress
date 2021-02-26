@@ -1,0 +1,31 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="FlowEditor.js">
+    <auto value="1" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\DefaultForm.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\FlowModel.js" />
+    <sourcefile path=".\FlowUploader.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmButton.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmAdduser.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmFocus.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmGlobalend.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmGlobaljump.js" />
+    <sourcefile path=".\buttons\BpmGlobalidea.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmGlobalresume.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmGlobalsuspend.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmRetreat.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmSave.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmStepuserdefined.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmSubmit.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmSupersede.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmPresstodo.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmSupplement.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmTaskreader.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmTransmit.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmWithdraw.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmWithdrawassignee.js" />
+    <sourcefile path=".\FlowPic.js" />
+    <sourcefile path=".\FlowTracks.js" />
+    <sourcefile path="..\..\..\..\bpmreform\bpmbusiness\include\src\buttons\BpmActor.js" />
+    <sourcefile path=".\FlowEditor.src.js" />
+</combinefile>
+</jscompress>

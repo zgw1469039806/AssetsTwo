@@ -1,0 +1,44 @@
+* {
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"SimSun";
+}
+
+.icon-list {
+	margin-bottom: 10px;
+}
+.clear {
+	display: block;
+	width:100%;
+	height: 1px;
+	clear:both;
+}
+.list-title {
+	font-size: 18px;
+    line-height: 30px;
+    padding: 0 8px;
+    color: #000;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #000;
+}
+ul {
+	margin:0;
+	padding:0;
+}
+li {
+	color:#00ff80;
+	list-style: none;
+    float: left;
+    width: 26px;
+    height: 26px;
+    margin: 2px;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+}
+li:hover {
+	color:#66ccff;
+	font-size:26px;
+}
+li:hover i {
+	color:#66ccff;
+	font-size:26px;
+}

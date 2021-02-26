@@ -1,0 +1,247 @@
+.vTree * {
+    margin: 0;
+    padding: 0;
+}
+.vTree {
+    width: 720px;
+    height: 400px;
+    overflow: auto;
+}
+
+.vTree ul {
+    width: 160px;
+    display: none;
+    position: absolute;
+}
+
+.vTree .rootUl {
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    top: 52px;
+}
+
+.vTree ul ul {
+    top: -50%;
+}
+
+.vTree li {
+    list-style-type: none;
+    position: relative;
+    padding: 16px 5px 0 5px;
+    -webkit-box-sizing: unset;
+    -moz-box-sizing: unset;
+    box-sizing: unset;
+}
+
+.vTree i.txt {
+    font-style: normal;
+    word-break: break-all;
+}
+
+.vTree li span {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    padding: 5px 20px;
+    background: #F0F0F5;
+    border-bottom:1px solid #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2D2D2D;
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+    z-index: 9999;
+    -webkit-box-sizing: unset;
+    -moz-box-sizing: unset;
+    box-sizing: unset;
+}
+
+.vTree li span.on {
+    border: 1px solid #66ccff;
+}
+
+.vTree li span.andor {
+    width: auto;
+    background: none;
+    border-bottom: 1px solid #a8a8a8;
+}
+
+.vTree li span:before {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: -12px;
+    width: 12px;
+    border-top: 2px solid #D2D2D7;
+}
+
+.vTree li::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: -9px;
+    height: 100%;
+    border-left: 2px solid #D2D2D7;
+}
+
+.vTree li.hasChild.open>span::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: -16px;
+    width: 18px;
+    border-bottom: 2px solid #D2D2D7;
+}
+
+.vTree li.hasChild.childs.open>span::after {
+    right: -4px;
+    width: 6px;
+}
+
+
+.vTree li:first-child::after {
+    height: 100%;
+    border-left: 2px solid #D2D2D7;
+    border-top: 2px solid #D2D2D7;
+    top: 34px;
+    width: 12px;
+    border-top-left-radius: 4px;
+}
+
+.vTree li:first-child::before {
+    top: 34px;
+}
+
+.vTree li:first-child>span::before,.vTree ul>li:last-child>span::before {
+    border-top: 0;
+}
+
+.vTree li:last-child::after {
+    height: 100%;
+    border-left: 2px solid #D2D2D7;
+    border-bottom: 2px solid #D2D2D7;
+    bottom: 16px;
+    width: 12px;
+    border-bottom-left-radius: 4px;
+}
+
+.vTree li:only-child::after,
+.vTree li:only-child::before {
+    display: none;
+}
+
+.vTree ul ul li:only-child::before {
+    display: inline-block;
+}
+
+.vTree ul ul li:only-child span::before {
+    display: inline-block;
+    border-top: 0;
+}
+
+.vTree em {
+    display: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 23px;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 22px;
+    cursor: pointer;
+    text-align: center;
+    position: absolute;
+    font-style: normal;
+}
+
+.vTree .add {
+    right: -20px;
+    top: 7px;
+    z-index: 1;
+    background: #66ccff;
+}
+
+.vTree .zoom {
+    right: 5px;
+    top: -6px;
+    background: #a8a8a8;
+}
+
+.vTree .delete {
+    top: 33px;
+    right: 5px;
+    background: red;
+}
+
+.vTree .hasChild>span:hover .zoom,
+.vTree span:hover .delete,
+.vTree span:hover .add {
+    display: block;
+}
+
+.vTree .nochild span .add,.vTree span.nochild .add {
+    display: none;
+}
+
+.vTree .open>ul {
+    display: block;
+    padding-right: 30px;
+}
+
+.clear {
+    clear: both;
+}
+
+.vTree .andor-slc {
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    left: 0;
+    border: 1px solid #66ccff;
+    border-bottom: 0;
+    text-align: center;
+    border-radius: 2px;
+    z-index: 9999;
+}
+.vTree .andor-slc p {
+    cursor: pointer;
+    line-height: 18px;
+    height: 18px;
+    color:#66ccff;
+    background-color: #fff;
+    border-bottom: 1px solid #66ccff;
+}
+.vTree .andor-slc p:hover {
+    color:#fff;
+    background-color: #66ccff;
+}
+
+.vTree .adder-slc {
+    position: absolute;
+    top: -1px;
+    width: 77px;
+    right: -100px;
+    border: 1px solid #66ccff;
+    border-bottom: 0;
+    text-align: center;
+    z-index: 2;
+    border-radius: 2px;
+    z-index: 9999;
+}
+.vTree .adder-slc p {
+    cursor: pointer;
+    line-height: 18px;
+    height: 18px;
+    color:#66ccff;
+    background-color: #fff;
+    border-bottom: 1px solid #66ccff;
+}
+.vTree .adder-slc p:hover {
+    color:#fff;
+    background-color: #66ccff;
+}

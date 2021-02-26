@@ -1,0 +1,129 @@
+<form>
+    <div class="form-group property-control">
+        <label><i class="required">*</i>排序类型</label>
+        <select id="sorttype" name="sorttype" isnull="false" class="form-control input-sm">
+            <option value=""></option>
+            <option value="asc">asc</option>
+            <option value="desc">desc</option>
+        </select>
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>列名称</label>
+        <select id="columnName" name="columnName" isnull="false" class="form-control input-sm">
+        </select>
+    </div>
+
+    <div class="form-group property-control">
+        <label>列中文名称</label>
+        <input type="text" id="name" name="name"
+               class="form-control input-sm" readonly="true">
+        <input type="hidden" id="colType" name="colType" class="form-control input-sm">
+    </div>
+
+    <div class="form-group property-control">
+        <label><i class="required">*</i>数据排序</label>
+        <input type="text" id="orderindex" name="orderindex"
+               class="form-control input-sm">
+    </div>
+</form>
+<script type="text/javascript">
+    var colList = null;
+    $(function() {
+        var tableNode = engine.clickedNode.getParentNode().getParentNode();
+        var dbid = tableNode.attribute.dbid;
+        setColumnSelect(dbid);
+        $(".form-control").change(function () {
+            for (var i = 0; i < colList.length; i++) {
+                if(colList[i].colName == $("#columnName").val()){
+                    $("#name").val(colList[i].colComments);
+                    $("#colType").val(colList[i].colType);
+                }
+            }
+            engine.changSave();
+        });
+
+    });
+
+    self.propertyPageInit = function (treeNode) {
+        var dbid = treeNode.getParentNode().getParentNode().attribute.dbid;
+        var columnName = treeNode.attribute.columnName;
+        setColumnSelect(dbid);
+    };
+
+    /**
+     * 设置列名称选项值
+     * */
+    function setColumnSelect(dbid){
+        avicAjax.ajax({
+            url: 'platform/eform/eformViewInfoController/getDbCol/' + dbid,
+            contentType: "application/xml; charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            async: false,
+            success: function (r) {
+                if (r != null) {
+                    colList = $.parseJSON(r.data);
+                    var $colDom = $("#columnName");
+                    $colDom.each(function () {
+                        $(this).empty();
+                        $(this).append($('<option value=""></option>'));
+                        for (var i = 0; i < colList.length; i++) {
+                            var $option = $('<option value="' + colList[i].colName + '">' + colList[i].colName + '</option>');
+                            $(this).append($option);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    self.validateForm = function(form,treeNode){
+        if(form.sorttype == null || form.sorttype == ""){
+            layer.msg('排序类型不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        if(form.columnName == null || form.columnName == ""){
+            layer.msg('列名称不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        if(form.orderindex == null || form.orderindex == ""){
+            layer.msg('数据排序不能为空！',{
+                icon: 2,
+                area: ['220px', ''],
+                closeBtn: 0
+            });
+            return false;
+        }
+
+        var node = treeNode.getParentNode();
+        var childrenA = node.children;
+        var ob = {};
+        for(var i=0; i<childrenA.length; i++){
+            var temp = childrenA[i].attribute.columnName;
+            if(ob.hasOwnProperty(temp)){
+                layer.msg('列名称[' + childrenA[i].attribute.name + ']已设置过排序类型！',{
+                    icon: 2,
+                    area: ['370px', ''],
+                    closeBtn: 0
+                });
+                return false;
+            }else{
+                ob[temp] = 1;
+            }
+        }
+        return true;
+    };
+
+</script>
+</html>

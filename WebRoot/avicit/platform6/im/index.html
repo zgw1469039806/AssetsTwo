@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>信</title>
+
+<link rel="stylesheet" href="layim/css/layui.css">
+<link rel="stylesheet" href="layim/css/topFixed.css">
+
+
+<style>
+html{background-color: #333;}
+</style>
+<head>
+    <!--<script data-main="strophejs-1.2.14/main" src="strophejs-1.2.14/requirejs/require.js"></script>-->
+    <script src="strophejs/jquery-2.0.3.min.js"></script>
+    <script src="strophejs/strophe.js"></script>
+    <script src="strophejs/strophe-plugins/chatstates.js"></script>
+    <script src="strophejs/strophe-plugins/disco.js"></script>
+    <script src="strophejs/strophe-plugins/ping.js"></script>
+    <script src="strophejs/strophe-plugins/register.js"></script>
+    <script src="strophejs/strophe-plugins/roster.js"></script>
+    <script src="strophejs/strophe-plugins/pubsub.js"></script>
+    <script src="strophejs/strophe-plugins/muc.js"></script>
+    <script src="strophejs/strophe-plugins/rsm.js"></script>
+    <script src="strophejs/strophe-plugins/mam.js"></script>
+    <script src="strophejs/strophe-plugins/bookmarks.js"></script>
+    <script src="strophejs/strophe-plugins/vcard.js"></script>
+    <script src="strophejs/strophe-plugins/mucsub_wskj.js"></script>
+    <script src="layim/layui.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/api.js"></script>
+	<script src="js/chat.js"></script>
+    <script src="js/UIControler.js"></script>
+    <script src="static/h5/jquery-ztree/3.5.12/js/jquery.ztree.core-3.5.min.js"></script>
+    <script src="static/h5/jquery-ztree/3.5.12/js/jquery.ztree.excheck-3.5.min.js"></script>
+</head>
+
+<body>
+    <!--<div style="text-align: left;">
+        <h1>测试方法</h1>
+        <li>1、打开当前页面，调出console</li>
+        <li>2、在其他xmpp客户端，用账号b 密码123456登录</li>
+        <li>3、在console执行：Chat.connect("a@121.199.30.240","123456","http://121.199.30.240:5280/http-bind") a账号登录</li>
+        <li>4、在console执行：Chat.sendMessage('b@121.199.30.240','hello','chat')  账号b会收到消息</li>
+        <li>5、b发送消息，console能看到日志</li>        
+
+    </div>-->
+    <input id="username" type="text" placeholder="账号" style="width: 200px; height: 30px;"/><br/><br/>
+    <input id="pwd" type="password" placeholder="密码" style="width: 200px; height: 30px;" value="123456"/><br/><br/>
+<!--    <input type="button" value="login" style="width: 200px;" onclick="Chat.connect(document.getElementById('username').value,document.getElementById('pwd').value);"/><br/><br/>-->
+    <input type="button" value="login" style="width: 200px;" onclick="Chat.connect(document.getElementById('username').value,document.getElementById('pwd').value);"/><br/><br/>
+    <!--<input type="button" value="login" style="width: 200px;" onclick="Chat.connect(document.getElementById('username').value,document.getElementById('pwd').value);"/><br/><br/>-->
+    
+    
+    <script>
+    </script>
+
+</body>
+</html>

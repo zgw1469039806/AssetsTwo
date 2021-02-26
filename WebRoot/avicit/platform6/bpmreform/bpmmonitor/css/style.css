@@ -1,0 +1,13 @@
+.flow-icon-big {
+    height: 16px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;    
+}
+
+.flow-icon-small {
+    height: 13px;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;  
+}

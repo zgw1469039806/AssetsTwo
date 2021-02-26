@@ -1,0 +1,168 @@
+div#rMenu {position:absolute; visibility:hidden; top:0; background-color: #555;text-align: left;padding: 2px;}
+div#rMenu a{
+    cursor: pointer;
+    list-style: none outside none;
+}
+.ztree-submenu {
+    border: 1px solid #959595;
+    position: fixed!important;
+    background: #FFF!important;
+    z-index: 1;
+}
+.ztree-submenu:before {
+    position: absolute;
+    width:36px;
+    height: 100%;
+    left: 0;
+    top:0;
+    background-color:#e7e8e8;
+    z-index: 1;
+    display: block;
+    content:' ';
+}
+.ztree-submenu a {
+    color:#454545;
+    font-size:14px;
+    border:0;
+    background: none;
+    line-height: 14px;
+    padding:8px 15px 8px 45px;
+    z-index: 2;
+}
+.ztree-submenu a:hover {
+    background-color:#cbeef5;
+}
+.formcell {
+	padding-top: 5px;
+}
+
+.celllabel {
+	position: relative !important;
+	float: left !important;
+	height: 100%;
+	line-height: 32px;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
+	overflow: hidden;
+	font-size: 12px;
+	max-width: 100%;
+	margin-bottom: 4px;
+	font-weight: bold;
+	padding:0 !important;
+}
+
+.cellcontrol {
+	padding:0 !important;
+	line-height: 29px;
+}
+
+.cellinput {
+	width: 100% !important;
+	margin: 0 !important;
+	border-radius: 3px !important;
+}
+
+.toolbar{
+    display: block !important;
+}
+
+
+.cellinput-addon {
+	width: 100% !important;
+	margin: 0 !important;
+	border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+}
+
+.ui-jqgrid-labels .ui-th-column:first-child {
+    text-align: center !important;
+}
+
+.jqg-second-row-header .ui-th-column:first-child {
+    text-align: left !important;
+}
+
+.ui-jqgrid-labels .ui-th-column .cb {
+    text-align: left !important;
+}
+
+.no_data {
+    text-align: center;
+}
+
+.no_data p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #989898;
+}
+
+.eform_datalist > .eform_row {
+    border-top: 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 10px;
+}
+
+.noborder {
+    border: 0px !important;
+}
+
+.eform_datalist{
+    list-style: none;
+}
+
+.eform_datalist > .eform_row:last-child {
+    border-bottom: 1px solid;
+}
+
+div > .eform_div_block {
+    padding: 0 15px;
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+ul > .eform_div_block {
+    height: auto;
+    float: left;
+    position: relative;
+    z-index: 1;
+    _display: inline;
+    margin-right: 30px;
+    margin-top: 15px;
+    border: 1px solid #fff;
+}
+
+.eform_div_block:hover {
+    border-color: #e9e9e9;
+    box-shadow: 0 0 2px 2px #f8f8f8;
+}
+
+.block-selected{
+    border-color: #afc0e6 !important;
+    box-shadow: 0 0 2px 2px #9c9fe4 !important;
+}
+
+
+
+.rightAlign .nav.nav-tabs > li{
+    float: right!important;
+}
+.rightAlign .tools_tab i{
+    width: 20px!important;
+}
+.nav.nav-tabs > li > a.noneBolder{
+    border: 0px;
+    background: none;
+    padding: 5px!important;
+}
+
+.jqgridnoline{
+    border : 0;
+}
+
+.jqgridnoline tbody tr.jqgrow td,.jqgridnoline .ui-jqgrid-htable thead th {
+    border : 0;
+}

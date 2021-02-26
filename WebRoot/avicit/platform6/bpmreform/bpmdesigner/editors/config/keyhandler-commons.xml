@@ -1,0 +1,15 @@
+<mxEditor>
+	<mxDefaultKeyHandler as="keyHandler">
+		<add as="46" action="delete" />
+		<add as="90" control="1" action="undo"/>
+		<add as="65" control="1" action="selectAll" />
+		<add as="37" action="goLeft" />
+		<add as="38" action="goUp" />
+		<add as="39" action="goRight" />
+		<add as="40" action="goDown" />
+		<add as="37" control="1" action="alignCellsLeft" />
+		<add as="38" control="1" action="alignCellsTop" />
+		<add as="39" control="1" action="alignCellsRight" />
+		<add as="40" control="1" action="alignCellsBottom" />
+	</mxDefaultKeyHandler>
+</mxEditor>

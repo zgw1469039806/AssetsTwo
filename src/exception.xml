@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exceptions>
+<!-- exception 异常节点 errcode异常代码 调用异常通用方法传入此值 -->
+	<exception errcode="1001">
+		<errorType>platform</errorType>
+		<moduleName>用户管理</moduleName>
+		<eventName>验证</eventName>
+		<!-- messageKey 国际化配置文件key -->
+		<messageKey>user-checkloginname</messageKey>
+		<!-- exceptionClass抛出异常类全名 -->
+		<exceptionClass>avicit.platform6.core.exception.ComponentException</exceptionClass>
+	</exception>
+	
+	
+	<exception errcode="2001" errorType="business">
+		<!-- messageKey 国际化配置文件key -->
+		<messageKey>demo-business-</messageKey>
+		<!-- exceptionClass抛出异常类全名 -->
+		<exceptionClass></exceptionClass>
+	</exception>
+</exceptions>

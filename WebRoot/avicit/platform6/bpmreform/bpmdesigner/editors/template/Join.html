@@ -1,0 +1,172 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="join" class="prop_wrap" style="display:none">
+	<form id="jbxx" action="" class="form-horizontal">
+	  <div class="avic-flow-default-theme">
+                <div class="twoTabNav" style="width: 100%">
+                    <!-- 标签主体Start -->
+                    <ul class="nav-tabs">
+                        <li class="active">
+                            <a href="javascript:void(0)">基本信息</a>
+                        </li>
+                         <li>
+                            <a href="javascript:void(0)">合并条件</a>
+                        </li> 
+                      <!--   <li>
+                            <a href="javascript:void(0)">事件</a>
+                        </li> -->
+                    </ul>
+                    <ul class="tab-cont">
+                        <li class="active">
+                            <div class="demoCont">
+                            <!-- html:[开始节点] 基本信息 开始 -->
+                            	<div class="base_info">
+                                   <div class="row base_info_bar" >
+                                        <div class="label"><span>基本</span></div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">节点名称</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="xian_shi_ming_cheng" name="xian_shi_ming_cheng">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style='padding-top: 5px;'>
+                                        <label for="" class="col-xs-3 col-xs-offset-1 control-label form-process-properties-label">逻辑标识</label>
+                                        <div class="col-xs-8 form-process-properties-value">
+                                            <input type="text" class="form-control" id="luo_ji_biao_shi" name="luo_ji_biao_shi" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- html:[开始节点] 基本信息 结束 -->
+                            </div>
+                        </li>
+                        <li>
+                          <!-- html: 路由条件 开始 -->
+                          <div class="demoCont">
+                          	 <ul class="global-attrs-tab">
+                                    <li class="active" style="margin-right: 0px; ">
+                                        <label class="form-process-properties-label">
+                                            <input type="radio" name="input-radio-merge-condition" checked value="all" />全部合并
+                                        </label>
+                                    </li>
+                                    <li style="margin-right: 0px; ">
+                                        <label class="form-process-properties-label">
+                                            <input type="radio" name="input-radio-merge-condition" value="condition" />条件合并
+                                        </label>
+                                    </li>
+                                    <li style="margin-right: 0px; ">
+                                        <label class="form-process-properties-label">
+                                            <input type="radio" name="input-radio-merge-condition" value="arbitrary" />任意合并
+                                        </label>
+                                    </li>
+                                </ul>
+                                <ul class="tab-cont">
+                                    <li class="active">
+                                    	
+                                    </li>
+                                    <li>
+                                       	<div class="demoCont">
+			                                <ul class="global-attrs-tab">
+			                                    <li class="active">
+			                                        <label class="form-process-properties-label">
+			                                            <input type="radio" name="input-radio-condition_type" checked value="Expr" />Expr类型
+			                                        </label>
+			                                    </li>
+			                                    <li>
+			                                        <label class="form-process-properties-label">
+			                                            <input type="radio" name="input-radio-condition_type" value="Class" />Class类型
+			                                        </label>
+			                                    </li>
+			                                </ul>
+			                                <ul class="tab-cont">
+			                                    <li class="active">
+			                                        <div class="row">
+			                                            <div class="col-xs-12 clear-left-right-padding">
+			                                                <textarea rows="4" class="form-control col-xs-12"></textarea>
+			                                            </div>
+			                                        </div>
+			                                        <div class="" style="margin-top: 6px;">
+			                                            <div class="col-xs-9 clear-left-right-padding">
+			                                                <select class="form-control" id="yin_ru_bian_liang" name="yin_ru_bian_liang">
+			                                                	<option selected value="0">引入变量</option>
+			                                                </select>
+			                                            </div>
+			                                            <div class="col-xs-3   button-fix">
+			                                                <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-add-start-condition" tabIndex="0">添加</button>
+			                                                <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix hidden" name="btn-save-start-condition" tabIndex="0">保存</button>
+			                                            </div>
+			                                        </div>
+			                                    </li>
+			                                    <li>
+													<div class="form-group ">
+														<label class="col-xs-3 control-label form-process-properties-label">条件选择</label>
+														<div class="col-xs-9 form-process-properties-value">
+															<select class="form-control col-xs-12" name="routeConditionSelect">
+															</select>
+														</div>
+													</div>
+			                                        <div class="form-group">
+			                                            <div class="col-xs-11 form-process-properties-value col-xs-offset-1">
+			                                                <input type="text" class="form-control col-xs-12" placeholder="">
+			                                            </div>
+			                                        </div>
+			                                        <div class="">
+			                                            <div class="col-xs-3   col-xs-offset-8 button-fix" style=" margin-left: 78%;">
+			                                                <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix" name="btn-add-start-condition" tabIndex="1">添加</button>
+			                                                <button class="btn btn-default form-tool-btn btn-sm form-buttion-fix hidden" name="btn-save-start-condition" tabIndex="1">保存</button>
+			                                            </div>
+			                                        </div>
+			                                    </li>
+			                                </ul>
+			                                <div class="" style="">
+			                                    <table class="table table-hover table-bordered table-fix" name="table-executor" id="table-executor">
+			                                        <thead>
+			                                            <tr name="title">
+			                                                <td style="width: 0%;"></td>
+			                                                <td>类型</td>
+			                                                <td>值</td>
+			                                                <td style="width: 55px;">操作</td>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                            <!--   <tr >
+			                                                <td>1</td>
+			                                                <td>Expr</td>
+			                                                <td>{b}='ABC'</td>
+			                                                <td>
+			                                                <a href="javascript:void(0)" name="btn-executor-modify">修改</a>
+			                                                    <button type="button" class="btn btn-primary btn-sm">删除</button>
+			                                                    <button type="button" class="btn btn-primary btn-sm">修改</button> 
+			                                                </td>
+			                                            </tr>  -->
+			                                        </tbody>
+			                                    </table>
+			                                </div>
+			                                <div class="form-group">
+			                                    <label for="" class="col-xs-3   control-label form-process-properties-label">执行方式</label>
+			                                    <div class="col-xs-9 form-process-properties-value">
+			                                        <select class="form-control" id="zhi_xing_fang_shi" name="zhi_xing_fang_shi">
+			                                            <option value="AND" selected="">AND</option>
+			                                            <option value="OR">OR</option>
+			                                        </select>
+			                                    </div>
+			                                </div>
+                           				 </div>
+                                    </li>
+                                     <li>
+                                       	<div class="col-xs-offset-1 ">
+                                            <div >任意合并&nbsp;
+                                                <input id="input-num" name="input-num" style="width:80px" />&nbsp;个
+                                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                          </div>
+                          
+                        <!-- html: 路由条件 结束 -->
+                        </li>
+                    </ul>
+                    <!-- 标签主体End -->
+                </div>
+            </div>
+	</form>
+</div>

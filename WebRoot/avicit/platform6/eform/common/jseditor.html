@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link type="text/css" rel="stylesheet" href="../../../../static/js/platform/component/codemirror-5.42.2/lib/codemirror.css" />
+<link type="text/css" rel="stylesheet" href="../../../../static/js/platform/component/codemirror-5.42.2/theme/eclipse.css" />
+<link type="text/css" rel="stylesheet" href="../../../../static/js/platform/component/codemirror-5.42.2/addon/hint/show-hint.css" />
+<script type="text/javascript" src="../../../../static/h5/jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="../../../../static/js/platform/component/codemirror-5.42.2/lib/codemirror.js"></script>
+<script type="text/javascript" src="../../../../static/js/platform/component/codemirror-5.42.2/mode/javascript/javascript.js"></script>
+<script type="text/javascript" src="../../../../static/js/platform/component/codemirror-5.42.2/addon/hint/show-hint.js"></script>
+<script type="text/javascript" src="../../../../static/js/platform/component/codemirror-5.42.2/addon/hint/javascript-hint.js"></script>
+<script src="../../../../static/js/platform/component/codemirror-5.42.2/lib/codeformatting.js"></script>
+<script src="../../../../static/js/platform/component/codemirror-5.42.2/addon/comment/comment.js"></script>
+<!--括号匹配-->
+<script src="../../../../static/js/platform/component/codemirror-5.42.2/addon/edit/matchbrackets.js"></script>
+<!--代码检查错误-->
+<link rel="stylesheet" href="../../../../static/js/platform/component/codemirror-5.42.2/addon/lint/lint.css">
+<script src="../../../../static/js/platform/component/codemirror-5.42.2/addon/hint/jshint.js"></script>
+<script src="../../../../static/js/platform/component/codemirror-5.42.2/addon/lint/lint.js"></script>
+<script src="../../../../static/js/platform/component/codemirror-5.42.2/addon/lint/javascript-lint.js"></script>
+<script type="text/javascript" src="../../../../static/h5/layer-v2.3/layer/layer.js"></script>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>代码框</title>
+</head>
+<body>
+<!-- begin code -->
+<textarea id="eventEditTextarea"></textarea>
+<!-- end code-->
+
+<script>
+
+    function replaceStr(str) {
+        var strTemp = ""; //新字符串
+        for(var i = 0; i < str.length; i++) {
+            if(i == 0) {
+                strTemp += str[i].toLowerCase(); //第一个
+                continue;
+            }
+            if(str[i] == " " && i < str.length - 1) { //空格后
+                strTemp += " ";
+                strTemp += str[i + 1].toLowerCase();
+                i++;
+                continue;
+            }
+            strTemp += str[i];
+        }
+
+
+        return strTemp;
+    }
+
+    function ccTypeof(cc){
+        var typeName = "string";
+        if (cc){
+            typeName = cc.constructor.name;
+        }
+
+        return replaceStr(typeName);
+    }
+
+
+    //根据DOM元素的id构造出一个编辑器
+    var editor = CodeMirror.fromTextArea(document.getElementById("eventEditTextarea"), {
+        foldGutter: true,
+        indentUnit : 2,  // 缩进单位，默认2
+        smartIndent : true,  // 是否智能缩进
+        //显示行号
+        styleActiveLine: true,
+        lineNumbers:true,
+        lineWrapping:true,
+        autofocus:true,
+        //设置主题
+        theme:"eclipse",
+        mode: {name: "javascript", globalVars: true},
+        gutters: ["CodeMirror-lint-markers"],
+        lint: true,
+        matchBrackets:true,
+        extraKeys:{
+            Tab: function(cm) {
+                var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+                cm.replaceSelection(spaces);
+            },
+            "Ctrl-/": "toggleComment",
+            "Ctrl-Z":function (editor) {
+                editor.undo();
+            },//undo
+            "Ctrl-Y":function (editor) {
+                editor.redo();
+            },//Redo
+            "F7": function autoFormat(cm) {
+                var totalLines = cm.lineCount();
+                cm.autoFormatRange({line:0, ch:0}, {line:totalLines});
+            }//代码格式化
+        }
+    });
+    CodeMirror.commands["selectAll"](editor);
+   editor.setSize('100%', '100%');     //设置代码框的长宽
+    editor.setValue("");    //先代码框的值清空
+    editor.on('cursorActivity', function(){
+        //获取用户当前的编辑器中的编写的代码
+        CodeMirror.jqkey = "";
+        var ob = editor.getCursor();
+        var ch = editor.getRange({line:ob.line,ch:ob.ch-1},ob);
+        //匹配jquery
+        if (ch == "."){
+            var line = editor.getRange({line:ob.line,ch:0},{line:ob.line,ch:ob.ch-1});
+            var lastIndex = line.lastIndexOf(' ');
+            var lastStr = line.substring(lastIndex + 1);
+
+            if (/\$\((.*?)\)/.test(lastStr)||/jQuery\((.*?)\)/.test(lastStr)){
+                CodeMirror.jqkey = lastStr;
+            }
+        }else{
+            var line = editor.getRange({line:ob.line,ch:0},{line:ob.line,ch:ob.ch-1});
+            var lastIndex = line.lastIndexOf(' ');
+            var lastStr = line.substring(lastIndex + 1);
+            var pointindex = lastStr.lastIndexOf(".");
+            var lastpointstr = lastStr.substring(pointindex + 1);
+            var firstpointstr = lastStr.substring(0,pointindex);
+            if(lastpointstr==""||/([a-z]+)/ig.test(lastpointstr)){
+                if (/\$\((.*?)\)/ig.test(firstpointstr)||/jQuery\((.*?)\)/ig.test(firstpointstr)){
+                    CodeMirror.jqkey = firstpointstr;
+                }
+            }
+        }
+
+        var words = editor.getValue() + "";
+        var variable = words.match(/var(.*?)=(.*?)(;|\r|\n)/ig);
+
+        for (var varindex in variable){
+            try {
+                eval(variable[varindex]);
+            }catch (e){
+            }
+        }
+        //利用正则取出用户输入的所有的英文的字母
+        words = words.replace(/[a-z]+[\-|\']+[a-z]+/ig, '').match(/([a-z]+)/ig);
+        //将获取到的用户的单词传入CodeMirror,并在javascript-hint中做匹配
+        var wordObj = [];
+        for (var index in words){
+            try {
+                var w = eval(words[index]);
+                var obj = {"string": words[index], "type": ccTypeof(w)};
+                wordObj[words[index]] = obj;
+            }catch (e){
+            }
+        }
+        CodeMirror.ukeys = wordObj;
+        editor.showHint();
+    });
+
+    function getEditorValue(){
+        if (JSHINT.errors.length>0){
+            for (var i in JSHINT.errors){
+                var error = JSHINT.errors[i];
+                if (!error.code.startsWith('W')){
+                    layer.msg('js代码存在错误！', {icon: 2});
+                    throw SyntaxError(error.reason);
+                }
+            }
+
+        }
+        return editor.getValue();
+    }
+
+    function setEditorValue(value){
+        value = value.replace(/&lt;/g, "<");
+        value = value.replace(/&gt;/g, ">");
+        value = value.replace(/&amp;/g, "&");
+        editor.setValue(value);
+    }
+
+    // editor.setValue(obj.scriptCode);    //给代码框赋值
+    // editor.setOption("readOnly", true);
+</script>
+</body>
+</html>

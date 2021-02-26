@@ -1,0 +1,442 @@
+<form>
+
+	<div class="form-group property-control">
+		<label>列表标识符</label>
+		<input type="text" id="id" name="id"
+			 readonly="readonly" class="form-control input-sm" placeholder="表格标识符"/>
+	</div>
+	<div class="form-group property-control">
+		<label><i class="required">*</i>数据源类型</label>
+		<select id="dataSrc" name="dataSrc"  class="form-control input-sm">
+			<option value=""></option>
+			<option value="databaseTable">存储模型</option>
+	<!-- 		<option value="sql">SQL</option> -->
+		</select>
+	</div>
+	<div  class="form-group property-control wuli">
+		<label><i class="required">*</i>存储模型名称</label>
+		<div class="input-group input-group-sm" style="display:flex;width:100%;">
+			<input type="text" id="refdb" name="refdb"  class="form-control input-sm" placeholder="请选择一个存储模型" style="width:84%">
+			<input type="hidden" id="dbtype" name="dbtype">
+			<a href="javascript:void(0)" id="creatTableModel" class="btn btn-primary form-tool-btn btn-sm" role="button" title="生成列模型">生成列模型</a>
+			<input type="hidden" name="dbid" id="dbid" />
+		</div>
+	</div>
+	<div  class="form-group property-control wuli">
+		<label>表格名称</label>			
+			<input type="text" class="form-control input-sm" name="name" id="name" placeholder="请填写表格名称">
+	</div>
+	
+	<div class="form-group property-control wuli">
+		<label>where条件</label>
+		<textarea class="form-control input-sm" rows="2" name="where" id="where"></textarea>
+	</div>
+	<div class="form-group property-control url">
+		<label>url路径取数路径</label>
+		<input type="text" id="refurl" name="refurl" class="form-control input-sm" placeholder="url路径取数路径">
+	</div>
+	<div class="form-group property-control sql">
+		<label>sql</label>
+		<textarea class="form-control input-sm" rows="2" name="refsql" id="refsql"></textarea>
+	</div>
+	<!-- <div class="form-group property-control wuli sql">
+		<label>参数</label>
+		<input type="text" id="paramet" name="paramet"  class="form-control input-sm" placeholder="参数"/>
+	</div> -->
+
+	<div class="form-group property-control">
+		<label>关联流程</label><select id="isbpm" name="isbpm" 
+			class="form-control input-sm"><option value="Y">是</option><option value="N" selected>否</option></select>
+	</div>
+
+	<div  class="form-group property-control formselect">
+		<label><i class="required">*</i>流程表单</label>			
+		<div id="bpmformselect" class="input-group input-group-sm">
+			<input type="text" class="form-control" name="formname" id="formname">
+			<input type="hidden" name="formid" id="formid" />
+			<input type="hidden" name="formcode" id="formcode" />
+			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+		</div>
+	</div>
+
+	<div  class="form-group property-control flowselect">
+		<label>流程数据过滤</label>
+		<select id="flowfilter" name="flowfilter"
+				class="form-control input-sm"><option value="1" selected>仅流程数据</option><option value="2">全部数据</option></select>
+	</div>
+
+	<div  class="form-group property-control flowselect">
+		<label>对应流程模板</label>
+		<div id="flowselect" class="input-group input-group-sm">
+			<input type="text" class="form-control" name="flowname" id="flowname">
+			<input type="hidden" name="flowid" id="flowid" />
+			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+		</div>
+	</div>
+
+	
+	<div class="form-group property-control">
+		<label>显示选择框</label><select id="ismultiple" name="ismultiple"
+			 class="form-control input-sm">
+			<option value="Y">是</option>
+			<option value="N">否</option>
+		</select>
+	</div>
+
+	<div class="form-group property-control">
+		<label>高度自适应</label><select id="fitheight" name="fitheight"
+									  class="form-control input-sm">
+		<option value="Y">是</option>
+		<option value="N">否</option>
+	</select>
+	</div>
+
+	<div class="form-group property-control">
+		<label>固定列数</label><select id="fixcol" name="fixcol"
+									class="form-control input-sm">
+		<option value="Y">是</option>
+		<option value="N" selected>否</option>
+	</select>
+	</div>
+
+	<div id="blockarea" style="display: none;position: relative;width: 100%;">
+		<div  class="form-group property-control" style="width:50%;float: left">
+			<label>块宽度</label>
+			<input type="text" class="form-control input-sm" name="blockwidth" id="blockwidth">
+		</div>
+
+		<div  class="form-group property-control" style="width:50%;float: left">
+			<label>块高度</label>
+			<input type="text" class="form-control input-sm" name="blockheight" id="blockheight">
+		</div>
+	</div>
+
+	<div class="form-group property-control" id="colnumNumArea" style="display: none">
+		<label>显示列数</label><select id="colnumNum" name="colnumNum"
+									class="form-control input-sm">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="6">6</option>
+	</select>
+	</div>
+	<div class="form-group property-control" id="rowlinearea" style="display: none">
+		<label>显示行线</label><select id="rowline" name="rowline"
+								   class="form-control input-sm">
+		<option value="1">显示</option>
+		<option value="0">隐藏</option>
+	</select>
+	</div>
+	<div class="form-group property-control">
+		<label>按组织过滤数据</label><select id="isorgfilter" name="isorgfilter"
+									class="form-control input-sm">
+		<option value="Y">是</option>
+		<option value="N">否</option>
+	</select>
+	</div>
+	<div class="form-group property-control">
+		<label>html</label>
+		<textarea class="form-control input-sm" rows="5" title="html" name="event_block_html" id="event_block_html"></textarea>
+	</div>
+	<div class="form-group property-control">
+		<label title="参数：block：块的jquery对象，data：业务数据">初始化事件<br>(block,data)</label>
+		<textarea class="form-control input-sm" rows="5" title="html" name="event_block_js" id="event_block_js"></textarea>
+	</div>
+	<div class="form-group property-control">
+		<label>表格事件</label>
+		<select id="evt" name="evt"  class="form-control input-sm">
+			<option value=""></option>
+<!--			<option value="onSelectRow" alt="行点击事件">onSelectRow(rowid,status)</option>-->
+<!--			<option value="ondblClickRow" alt="行双击事件">ondblClickRow(rowid,iRow,iCol,e)</option>-->
+<!--			<option value="onRightClickRow" alt="行右击事件">onRightClickRow(rowid,iRow,iCol,e)</option>-->
+			<!-- <option value="loadBeforeSend" alt="加载前处理事件">loadBeforeSend(xhr,settings)</option> -->
+			<option value="loadComplete" alt="数据加载完成事件">loadComplete(xhr)</option>
+			<option value="onSelectBlock" alt="卡片选中事件">onSelectBlock(rowid,rowData)</option>
+<!--			<option value="gridComplete" alt="表格数据加载完成事件">gridComplete()</option>-->
+<!--			<option value="onCellSelect" alt="单元格选中事件">onCellSelect(rowid,iCol,cellcontent,e)</option>-->
+		</select>
+	</div>
+	<div class="form-group property-control evt onSelectBlock">
+		<label>行点击事件</label>
+		<textarea class="form-control input-sm" rows="5" title="卡片选中事件" name="event_init_onSelectBlock" id="event_init_onSelectBlock"></textarea>
+	</div>
+	<div class="form-group property-control evt ondblClickRow">
+		<label>行双击事件</label>
+		<textarea class="form-control input-sm" rows="5" title="行双击事件" name="event_init_ondblClickRow" id="event_init_ondblClickRow"></textarea>
+	</div>
+	<div class="form-group property-control evt onRightClickRow">
+		<label>行右击事件</label>
+		<textarea class="form-control input-sm" rows="5" title="行右击事件" name="event_init_onRightClickRow" id="event_init_onRightClickRow"></textarea>
+	</div>
+	<div class="form-group property-control evt loadBeforeSend">
+		<label>加载前处理事件</label>
+		<textarea class="form-control input-sm" rows="5" title="加载前处理事件" name="event_init_loadBeforeSend" id="event_init_loadBeforeSend"></textarea>
+	</div>
+	<div class="form-group property-control evt loadComplete">
+		<label>数据加载完成事件</label>
+		<textarea class="form-control input-sm" rows="5" title="数据加载完成事件" name="event_init_loadComplete" id="event_init_loadComplete"></textarea>
+	</div>
+	<div class="form-group property-control evt gridComplete">
+		<label>表格数据加载完成事件</label>
+		<textarea class="form-control input-sm" rows="5" title="表格数据加载完成事件" name="event_init_gridComplete" id="event_init_gridComplete"></textarea>
+	</div>
+	<div class="form-group property-control evt onCellSelect">
+		<label>单元格选中事件</label>
+		<textarea class="form-control input-sm" rows="5" title="单元格选中事件" name="event_init_onCellSelect" id="event_init_onCellSelect"></textarea>
+	</div>
+</form>
+<script src="avicit/platform6/eform/bpmsformmanage/select/selectPublishEform/selectPublishEform.js"></script>
+<script src="avicit/platform6/db/dbselect/selectCreatedDbTable/selectCreatedDbTable.js"></script>
+<script src="avicit/platform6/bpmreform/bpmbusiness/workhand/js/BpmModuleSelect.js"></script>
+
+<style type="text/css">
+	.property-control label{
+	    white-space: pre-wrap!important;
+        text-align: center;
+	}
+</style>
+<script type="text/javascript">
+	var tablePageParam = {dbChangeFlag:false};
+
+	function vieweditdom(flag,value){
+		if (flag){
+			$("#roweditarea").html('<select id="rowedit" name="rowedit" class="form-control input-sm"><option value="Y">是</option><option value="N" selected>否</option></select>');
+			$("#rowedit").val(value);
+		}else{
+			$("#roweditarea").html('<select id="rowedit" name="rowedit" class="form-control input-sm"><option value="N" selected>否</option></select>');
+			$("#rowedit").val("N");
+		}
+		$("#rowedit").on("change",function(){
+			engine.changSave();
+		})
+	}
+
+
+	$(function() {
+		$(".wuli").css("display","none");
+		$(".url").css("display","none");
+		$(".sql").css("display","none");
+		$(".evt").css("display","none");
+		$(".formselect").css("display","none");
+        $(".flowselect").css("display","none");
+		$(".form-control").bind('change', function() {
+			if(this.id == 'evt'||this.id == 'evt-easyui'){
+				var val = $(this).val();
+				$(".evt").css("display","none");
+				if (val) {
+                    $("." + val).css("display", "block");
+                }
+			}
+            if(this.id == 'dataSrc'){
+			    if($(this).val() == "databaseTable"){
+					$(".url").css("display","none");
+					$(".sql").css("display","none");
+					$(".wuli").css("display","block");
+				}else if($(this).val() == "url"){
+					$(".wuli").css("display","none");
+					$(".sql").css("display","none");
+					$(".url").css("display","block");
+				}else if($(this).val() == "sql"){
+					$(".wuli").css("display","none");
+					$(".url").css("display","none");
+					$(".sql").css("display","block");
+				}else{
+					$(".url").css("display","none");
+					$(".sql").css("display","none");
+					$(".wuli").css("display","none");
+				}
+			}
+			if(this.id == 'fixcol'){
+				if($(this).val() == "Y"){
+					$("#colnumNumArea").css("display","block");
+					$("#rowlinearea").css("display","block");
+					$("#blockarea").css("display","none");
+				}else{
+					$("#colnumNumArea").css("display","none");
+					$("#rowlinearea").css("display","none");
+					$("#blockarea").css("display","inline-block");
+				}
+			}
+
+
+
+            if(this.id == 'isbpm') {
+                if ($(this).val() == "Y") {
+                    $(".formselect").css("display", "block");
+                    $(".flowselect").css("display","block");
+                }else{
+                    $(".formselect").css("display", "none");
+                    $(".flowselect").css("display","none");
+				}
+            }
+			engine.changSave();
+		});
+
+		var selectPublishEform = new SelectPublishEform("formid", "formname", null, "Y", "");
+		selectPublishEform.init(function(data) {
+			var formcode = data.treeNode.attribute.formCode;
+			$("#formcode").val(formcode);
+			engine.changSave();
+		});
+
+        //添加流程选择框
+        new BpmModuleSelect("flowid", "flowname", function(data){
+            $("#flowid").val(data.ids);
+            $("#flowname").val(data.texts);
+            engine.changSave();
+        },undefined, $("#flowid"),$("#flowname"));
+		
+        var selectCreatedDbTable = new SelectCreatedDbTable("dbid", "refdb","",componentViewId,"-1");
+        selectCreatedDbTable.init(function(data){
+        	$("#name").val(data.name);
+        	$("#refdb").val(data.tablename);
+        	$("#dbtype").val(data.dbtype);
+        	if (data.dbtype === "2" || data.dbtype === "3"){
+				vieweditdom(false,"N");
+			}else{
+				vieweditdom(true,"N");
+			}
+            tablePageParam.dbChangeFlag = true;
+        	engine.changSave();
+        });
+        
+        
+        $("#creatTableModel").on('click', function(e) {
+        	var dbid = $("#dbid").val();
+        	var isbpm = $("#isbpm").val();
+        	var id = $("#id").val();
+        	if (!dbid){
+        		layer.msg('请先选择存储模型！', {
+        			  icon: 7,
+        			  area: ['400px', ''], //宽高
+        			  closeBtn: 0
+  	      		});
+          		return false;
+        	}
+
+        	/* var node = engine.viewTree.getNodeByParam("type", "tableColModel", engine.clickedNode);
+        	if(node != null && node.children.length > 0 ){
+        		layer.alert('已经存在列模型！', {
+      			  icon: 7,
+      			  area: ['400px', ''], //宽高
+      			  closeBtn: 0
+	      		});
+        		return false;
+        	} */
+            var node = engine.viewTree.getNodeByParam("type","dataListColModel",engine.clickedNode);
+            if (node != null) {
+                if (tablePageParam.dbChangeFlag) {
+                    engine.viewTree.removeChildNodes(node);
+                    tablePageParam.dbChangeFlag = false;
+                }
+            }
+            var coldata = engine.getCol($("#id").val());
+        	$.ajax({
+      			 url: './eform/eformViewInfoController/creatDataListModel/' + dbid + '/'+ isbpm+'/'+id,
+      			 type : 'post',
+      			data : {data:JSON.stringify(coldata)},
+      			 dataType : 'json',
+      			 async: true,
+      			 success : function(r){
+      				if (r != null) {
+
+      					if (node != null){
+
+
+      						engine.viewTree.addNodes(node, $.parseJSON(r.data).children);
+      					}else{
+      						engine.viewTree.addNodes(engine.clickedNode, $.parseJSON(r.data));
+      					}
+      					
+      				}
+      			 }
+   	   		});
+        });
+        
+        
+		
+		self.propertyPageInit = function(treeNode){
+			if(treeNode.attribute.dataSrc == "databaseTable"){
+				$(".url").css("display","none");
+				$(".sql").css("display","none");
+				$(".wuli").css("display","block");
+				$(".formselect").css("display","none");
+                $(".flowselect").css("display","none");
+			}else if(treeNode.attribute.dataSrc == "url"){
+				$(".wuli").css("display","none");
+				$(".sql").css("display","none");
+				$(".url").css("display","block");
+				$(".formselect").css("display","none");
+                $(".flowselect").css("display","none");
+			}else if(treeNode.attribute.dataSrc == "sql"){
+				$(".wuli").css("display","none");
+				$(".url").css("display","none");
+				$(".sql").css("display","block");
+				$(".formselect").css("display","none");
+                $(".flowselect").css("display","none");
+			}else{
+				$(".wuli").css("display","none");
+				$(".url").css("display","none");
+				$(".sql").css("display","none");
+				$(".formselect").css("display","none");
+                $(".flowselect").css("display","none");
+			}
+			if(treeNode.attribute.hasOwnProperty("fixcol")){
+				if(treeNode.attribute.fixcol == "Y"){
+					$("#colnumNumArea").css("display","block");
+					$("#rowlinearea").css("display","block");
+					$("#blockarea").css("display","none");
+				}else{
+					$("#colnumNumArea").css("display","none");
+					$("#rowlinearea").css("display","none");
+					$("#blockarea").css("display","inline-block");
+				}
+			}
+
+			if(treeNode.attribute.hasOwnProperty("dbtype")&&(treeNode.attribute.dbtype === "2" || treeNode.attribute.dbtype  === "3")){
+				vieweditdom(false,treeNode.attribute.rowedit);
+			}else{
+				vieweditdom(true,treeNode.attribute.rowedit);
+			}
+			
+			if(treeNode.attribute.evt != ""){
+				$(".evt").css("display","none");
+				$("." + treeNode.attribute.evt).css("display","block");
+			}
+
+			if (treeNode.attribute.isbpm == "Y"){
+				$(".formselect").css("display","block");
+                $(".flowselect").css("display","block");
+			}
+		};
+	})
+	
+	self.validateForm = function(form,treeNode){
+       	if(form.dataSrc == null || form.dataSrc == ""){
+       		 layer.msg('数据源类型不能为空！',{
+                    icon: 2,
+                    area: ['220px', ''],
+                    closeBtn: 0
+                });
+       		return false;
+       	}
+       	if(form.refdb == null || form.refdb == ""){
+      		 layer.msg('存储模型名称不能为空！',{
+                   icon: 2,
+                   area: ['230px', ''],
+                   closeBtn: 0
+               });
+      		return false;
+       	}
+       	if(form.isbpm == 'Y' && (form.formid == null || form.formid == "")){
+     		 layer.msg('流程表单不能为空！',{
+                  icon: 2,
+                  area: ['220px', ''],
+                  closeBtn: 0
+              });
+     		return false;
+      	}
+       	return true;
+    };
+</script>

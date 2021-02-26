@@ -1,0 +1,34 @@
+.eform-nav-tabs {
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+.eform-nav-tabs li {
+    float: none !important;
+    display: inline-block !important;
+}
+
+
+.eform-tabs-scroller-left {
+    background: #E0ECFF url(../../../../avicit/platform6/console/dashboard/css/images/tabs_icons.png) no-repeat 1px center;
+    left: 0;
+}
+
+.eform-tabs-scroller-right {
+    background: #E0ECFF url(../../../../avicit/platform6/console/dashboard/css/images/tabs_icons.png) no-repeat -15px center;
+    right: 0;
+}
+
+.eform-tabs-scroller-left, .eform-tabs-scroller-right {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    width: 18px;
+    font-size: 1px;
+    display: none;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8dbdf1;
+}
