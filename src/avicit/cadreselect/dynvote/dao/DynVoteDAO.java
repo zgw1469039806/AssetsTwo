@@ -1,6 +1,8 @@
 package avicit.cadreselect.dynvote.dao;
 
 import java.util.List;
+
+import avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO;
 import avicit.platform6.core.mybatis.MyBatisRepository;
 import org.apache.ibatis.annotations.Param;
 import avicit.platform6.core.mybatis.pagehelper.Page;
@@ -88,5 +90,12 @@ public interface DynVoteDAO {
 	 * @return int
 	 */
 	public int deleteDynVoteList(List<String> idList);
+
+	/**
+	 * 根据扫码id查询投票信息
+	 * @param id
+	 * @return
+	 */
+	QueryVoteByIdDTO queryVoteById(String id);
 }
 
