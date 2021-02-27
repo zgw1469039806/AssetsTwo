@@ -264,35 +264,7 @@ input::-ms-clear, input::-ms-reveal{
 				</div>
 			</div>
 			<!-- 主页面头部工具条 End -->
-			<!-- 左侧菜单menu Start -->
-			<div class="leftAside">
-				<ul class="navList <c:if test="${not empty logoConfigDTO}">
-			               		<c:if test="${empty logoConfigDTO.extTitle}">
-			               		no_tip_box
-					               	</c:if>
-				               </c:if>">
-						<c:if test="${not empty logoConfigDTO}">
-							<c:if test="${not empty logoConfigDTO.extTitle}">
-								<div class="tips_box" title="${logoConfigDTO.extTitle }">
-									<span>${logoConfigDTO.showExtTitle}</span>
-								</div>
-							</c:if>
-						</c:if>
 
-
-
-						<div class="searchBox">
-						<input type="text" id="search" placeholder="请输入关键字"> <i class="icon icon-guanbi1 clear" id="searchClear"></i><i class="icon icon-search_ query" id="searchQuery"></i>
-						</div>
-						<div class="hideLeft">
-							<i class="icon icon-xiangzuojiantou"></i>
-						</div>
-						<div class="la-list">
-							<ul id="accordion" class="accordion">${defaultSecondMenu }
-							</ul>
-						</div>
-				</ul>
-			</div>
 			<!-- 页面内容区 Start -->
 			<div class="main">
 				<div id="tabs-panel" class="mainbody easyui-tabs" data-options="tools:'#tab-tools',fit:true,border:false,tabHeight:30">

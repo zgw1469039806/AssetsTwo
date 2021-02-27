@@ -33,6 +33,7 @@ public interface DynTemItemDAO {
 	*/
 	public List<DynTemItemDTO> searchDynTemItem(@Param("bean") DynTemItemDTO dynTemItemDTO);
 
+
 	/**
 	 * 主键查询
 	 * @param id 主键id

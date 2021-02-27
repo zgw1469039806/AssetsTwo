@@ -207,6 +207,117 @@
 	from DYN_TEMPLATE t1
 	where t1.id = #{id}
 </select>
+
+
+	<insert id="saveDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateBO">
+		insert into DYN_TEMPLATE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE,
+			</if>
+			<if test="version != null">
+				VERSION,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY,
+			</if>
+			<if test="temTitle != null">
+				TEM_TITLE,
+			</if>
+			<if test="temNotice != null">
+				TEM_NOTICE,
+			</if>
+			<if test="temText != null">
+				TEM_TEXT,
+			</if>
+			<if test="temShouldInvestNum != null">
+				TEM_SHOULD_INVEST_NUM,
+			</if>
+			<if test="temActualInvestNum != null">
+				TEM_ACTUAL_INVEST_NUM,
+			</if>
+			<if test="temLoginNum != null">
+				TEM_LOGIN_NUM,
+			</if>
+			<if test="temSceneNum != null">
+				TEM_SCENE_NUM,
+			</if>
+			<if test="temType != null">
+				TEM_TYPE,
+			</if>
+			<if test="temState != null">
+				TEM_STATE,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType = VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType = VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType = DECIMAL},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType = VARCHAR},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType = VARCHAR},
+			</if>
+			<if test="temTitle != null">
+				#{temTitle,jdbcType = VARCHAR},
+			</if>
+			<if test="temNotice != null">
+				#{temNotice,jdbcType = VARCHAR},
+			</if>
+			<if test="temText != null">
+				#{temText,jdbcType = VARCHAR},
+			</if>
+			<if test="temShouldInvestNum != null">
+				#{temShouldInvestNum,jdbcType = DECIMAL},
+			</if>
+			<if test="temActualInvestNum != null">
+				#{temActualInvestNum,jdbcType = DECIMAL},
+			</if>
+			<if test="temLoginNum != null">
+				#{temLoginNum,jdbcType = DECIMAL},
+			</if>
+			<if test="temSceneNum != null">
+				#{temSceneNum,jdbcType = DECIMAL},
+			</if>
+			<if test="temType != null">
+				#{temType,jdbcType = DECIMAL},
+			</if>
+			<if test="temState != null">
+				#{temState,jdbcType = DECIMAL},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType = VARCHAR},
+			</if>
+		</trim>
+	</insert>
     <!-- 新增对象 DYN_TEMPLATE -->
 <insert id="insertDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
 	insert into DYN_TEMPLATE

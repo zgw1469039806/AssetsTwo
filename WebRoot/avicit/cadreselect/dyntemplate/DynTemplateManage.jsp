@@ -26,7 +26,7 @@ String importlibs = "common,table,form";
     </style>
 </head>
 <body style="width: 100%;height: 100%">
-<iframe src="http://gylm.natapp1.cc/#/"  style="width:100%; height:100%" frameborder="0" align="center" allowfullscreen="true"    allow="autoplay"  ></iframe>
+<iframe src="http://gylm.natapp1.cc/#/dynTemplante"  style="width:100%; height:100%" frameborder="0" align="center" allowfullscreen="true"    allow="autoplay"  ></iframe>
 <%--<div id="tableToolbar" class="toolbar">--%>
 <%--	<div class="toolbar-left">--%>
 <%--		<sec:accesscontrollist hasPermission="3" domainObject="formdialog_dynTemplate_button_add" permissionDes="添加">--%>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import avicit.cadreselect.dyntemplate.dto.DynRecord;
+import avicit.cadreselect.dyntemplate.dto.DynTemplateBO;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,6 +84,7 @@ public class DynTemplateService implements Serializable {
 		}
 	}
 
+
 	/**
 	 * 主键查询
 	 * @param id 主键id
@@ -126,6 +128,18 @@ public class DynTemplateService implements Serializable {
 			logger.error("insertDynTemplate出错：", e);
 			throw new DaoException(e.getMessage(), e);
 		}
+	}
+
+	public void saveDynTem(DynTemplateBO dynTemplateBO) throws Exception
+	{
+		try {
+			dynTemplateDAO.saveDynTemplate(dynTemplateBO);
+		}catch (Exception e){
+			e.printStackTrace();
+			logger.error("insertDynTemplate出错：", e);
+			throw new DaoException(e.getMessage(), e);
+		}
+
 	}
 
 	/**

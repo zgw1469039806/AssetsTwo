@@ -9,11 +9,18 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import avicit.cadreselect.dynperson.dao.DynPersonDAO;
+import avicit.cadreselect.dynperson.dto.DynPersonDTO;
+import avicit.cadreselect.dyntemitem.dto.DynTemItemDTO;
+import avicit.cadreselect.dyntemitem.service.DynTemItemService;
 import avicit.cadreselect.dyntemplate.dto.DynRecord;
+import avicit.cadreselect.dyntemplate.dto.DynTemplateBO;
+import avicit.cadreselect.util.BizException;
 import avicit.cadreselect.util.ResponseData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -53,6 +60,9 @@ public class DynTemplateController implements LoaderConstant {
 	private SysApplicationAPI sysApplicationAPI;
 	@Autowired
 	private DynTemplateService dynTemplateService;
+
+	@Autowired
+	DynTemItemService dynTemItemService;
 
 	//region 自动生成
 	/**
@@ -155,6 +165,59 @@ public class DynTemplateController implements LoaderConstant {
 		return mav;
 	}
 
+
+	@PostMapping("/saveDynTemplate")
+	@ResponseBody
+	public ResponseData<Void> saveDynTemplate(@RequestBody DynTemplateBO dynTemplateBO)
+	{
+
+		dynTemplateBO.setId(ComUtil.getId());
+		try {
+			this.dynTemplateService.saveDynTem(dynTemplateBO);
+			List<DynTemItemDTO> dynPersonDAOList = dynTemplateBO.getDynTemItemDTOArrayList();
+			if (dynPersonDAOList.size() > 0 )
+			{
+				dynPersonDAOList.forEach(item ->{
+					item.setTemId(dynTemplateBO.getId());
+				});
+			}
+			dynTemItemService.insertDynTemItemList(dynPersonDAOList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BizException("出现异常:"+e);
+		}
+
+		return  new ResponseData<>();
+	}
+
+	@PostMapping("/searchById")
+	@ResponseBody
+	public ResponseData<DynTemplateBO> searchById(@RequestBody String id)
+	{
+		DynTemplateBO dynTemplateBO = new DynTemplateBO();
+		try {
+
+			DynTemplateDTO dynTemplateDTO = this.dynTemplateService.queryDynTemplateByPrimaryKey(id);
+			if (dynTemplateBO == null)
+			{
+				throw new BizException("未查到数据");
+			}
+			BeanUtils.copyProperties(dynTemplateBO,dynTemplateBO);
+			DynTemItemDTO dynTemItemDTO = new DynTemItemDTO();
+			dynTemItemDTO.setTemId(dynTemplateDTO.getId());
+			List<DynTemItemDTO> dynTemItemDTOS = this.dynTemItemService.searchDynTemItem(dynTemItemDTO);
+			if (dynTemItemDTOS.size() > 0)
+			{
+				dynTemplateBO.setDynTemItemDTOArrayList(dynTemItemDTOS);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return new ResponseData<>(dynTemplateBO);
+	}
 	/**
 	 * 保存数据
 	 * @param id 主键id

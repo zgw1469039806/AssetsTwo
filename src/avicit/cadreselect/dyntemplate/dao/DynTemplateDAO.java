@@ -3,6 +3,7 @@ package avicit.cadreselect.dyntemplate.dao;
 import java.util.List;
 
 import avicit.cadreselect.dyntemplate.dto.DynRecord;
+import avicit.cadreselect.dyntemplate.dto.DynTemplateBO;
 import avicit.platform6.core.mybatis.MyBatisRepository;
 import org.apache.ibatis.annotations.Param;
 import avicit.platform6.core.mybatis.pagehelper.Page;
@@ -48,6 +49,13 @@ public interface DynTemplateDAO {
 	* @return int
 	*/
 	public int insertDynTemplate(DynTemplateDTO dynTemplateDTO);
+
+	/**
+	 * 新增规则
+	 * @param dynTemplateBO
+	 * @return
+	 */
+	public int saveDynTemplate(DynTemplateBO dynTemplateBO);
 
 	/**
 	 * 批量新增

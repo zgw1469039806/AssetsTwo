@@ -47,18 +47,7 @@
 <body>
 	<div class="mainBody">
 		<!-- 左侧菜单menu Start -->
-		<div class="leftAside">
-			<div class="logoDom">
-				<div class="logo">
-					<img src="avicit/platform6/portal/logo.png">
-				</div>
-				<div class="title">业务基础平台</div>
-			</div>
-			<ul id="navList" class="navList">
-				<ul class="turn-dom">${menus}
-				</ul>
-			</ul>
-		</div>
+
 		<!-- 左侧菜单menu End -->
 
 		<!-- 主页面 Start-->
