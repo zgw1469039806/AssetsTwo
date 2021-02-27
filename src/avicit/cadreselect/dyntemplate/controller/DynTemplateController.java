@@ -2,6 +2,7 @@ package avicit.cadreselect.dyntemplate.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -172,6 +173,10 @@ public class DynTemplateController implements LoaderConstant {
 	{
 
 		dynTemplateBO.setId(ComUtil.getId());
+		dynTemplateBO.setCreationDate(new Date());
+		dynTemplateBO.setCreationDateEnd(new Date());
+		dynTemplateBO.setLastUpdateDate(new Date());
+		dynTemplateBO.setLastUpdateDateEnd(new Date());
 		try {
 			this.dynTemplateService.saveDynTem(dynTemplateBO);
 			List<DynTemItemDTO> dynPersonDAOList = dynTemplateBO.getDynTemItemDTOArrayList();
@@ -274,9 +279,9 @@ public class DynTemplateController implements LoaderConstant {
 	//region 开发
 	@ResponseBody
 	@PostMapping(value = "/queryRecord")
-	public List<DynRecord> toDeleteDynTemplate() {
+	public ResponseData<List<DynRecord>> toDeleteDynTemplate() {
 		List<DynRecord> list= dynTemplateService.toDeleteDynTemplate();
-		return list;
+		return new ResponseData<>(list);
 	}
 	//endregion
 }

@@ -26,7 +26,7 @@ public class DynTemplateBO {
     /**
      * 最后更新时间起
      */
-    private java.util.Date lastUpdateDateBegin;
+    private java.util.Date lastUpdateDate;
 
     /**
      * 最后更新时间止
@@ -36,7 +36,7 @@ public class DynTemplateBO {
     /**
      * 创建时间起
      */
-    private java.util.Date creationDateBegin;
+    private java.util.Date creationDate;
 
     /**
      * 创建时间止
@@ -73,6 +73,8 @@ public class DynTemplateBO {
     @FieldRemark(column="TEM_ACTUAL_INVEST_NUM", field="temActualInvestNum", name="实投数")
     private java.math.BigDecimal temActualInvestNum;
 
+    private String lastUpdateIp;
+
     /**
      * 登陆数
      */
@@ -98,6 +100,8 @@ public class DynTemplateBO {
     @FieldRemark(column="TEM_STATE", field="temState", name="0-使用中 1-暂停 2-删除")
     private java.lang.Integer temState;
 
+    private String lastUpdatedBy;
+
     /**
      * 组织ID
      */
@@ -108,20 +112,13 @@ public class DynTemplateBO {
     private List<DynTemItemDTO> dynTemItemDTOArrayList = new ArrayList<>();
 
 
+    //region get set
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Date getLastUpdateDateBegin() {
-        return lastUpdateDateBegin;
-    }
-
-    public void setLastUpdateDateBegin(Date lastUpdateDateBegin) {
-        this.lastUpdateDateBegin = lastUpdateDateBegin;
     }
 
     public Date getLastUpdateDateEnd() {
@@ -132,13 +129,6 @@ public class DynTemplateBO {
         this.lastUpdateDateEnd = lastUpdateDateEnd;
     }
 
-    public Date getCreationDateBegin() {
-        return creationDateBegin;
-    }
-
-    public void setCreationDateBegin(Date creationDateBegin) {
-        this.creationDateBegin = creationDateBegin;
-    }
 
     public Date getCreationDateEnd() {
         return creationDateEnd;
@@ -243,4 +233,38 @@ public class DynTemplateBO {
     public void setDynTemItemDTOArrayList(List<DynTemItemDTO> dynTemItemDTOArrayList) {
         this.dynTemItemDTOArrayList = dynTemItemDTOArrayList;
     }
+
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getLastUpdateIp() {
+        return lastUpdateIp;
+    }
+
+    public void setLastUpdateIp(String lastUpdateIp) {
+        this.lastUpdateIp = lastUpdateIp;
+    }
+
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
+    }
+
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = lastUpdatedBy;
+    }
+
+    //endregion
 }

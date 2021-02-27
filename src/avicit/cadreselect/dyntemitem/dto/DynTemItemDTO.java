@@ -159,6 +159,7 @@ public class DynTemItemDTO extends BeanDTO{
 	@FieldRemark(column="ORG_IDENTITY", field="orgIdentity", name="组织ID")
 	private java.lang.String orgIdentity;
 
+	private String tiUserBirth;
 
 	public java.lang.String getTemId(){
 		return temId;
@@ -379,4 +380,11 @@ public class DynTemItemDTO extends BeanDTO{
 		}
 	}
 
+	public String getTiUserBirth() {
+		return tiUserBirth;
+	}
+
+	public void setTiUserBirth(String tiUserBirth) {
+		this.tiUserBirth = tiUserBirth;
+	}
 }

@@ -218,21 +218,13 @@
 			<if test="lastUpdateDate != null">
 				LAST_UPDATE_DATE,
 			</if>
-			<if test="createdBy != null">
 				CREATED_BY,
-			</if>
 			<if test="creationDate != null">
 				CREATION_DATE,
 			</if>
-			<if test="version != null">
 				VERSION,
-			</if>
-			<if test="lastUpdateIp != null">
 				LAST_UPDATE_IP,
-			</if>
-			<if test="lastUpdatedBy != null">
 				LAST_UPDATED_BY,
-			</if>
 			<if test="temTitle != null">
 				TEM_TITLE,
 			</if>
@@ -271,21 +263,13 @@
 			<if test="lastUpdateDate != null">
 				#{lastUpdateDate,jdbcType = TIMESTAMP},
 			</if>
-			<if test="createdBy != null">
-				#{createdBy,jdbcType = VARCHAR},
-			</if>
+			1,
 			<if test="creationDate != null">
 				#{creationDate,jdbcType = TIMESTAMP},
 			</if>
-			<if test="version != null">
-				#{version,jdbcType = DECIMAL},
-			</if>
-			<if test="lastUpdateIp != null">
-				#{lastUpdateIp,jdbcType = VARCHAR},
-			</if>
-			<if test="lastUpdatedBy != null">
-				#{lastUpdatedBy,jdbcType = VARCHAR},
-			</if>
+			0,
+				123,
+				1,
 			<if test="temTitle != null">
 				#{temTitle,jdbcType = VARCHAR},
 			</if>
