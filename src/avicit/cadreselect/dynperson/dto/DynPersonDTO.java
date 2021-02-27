@@ -8,6 +8,8 @@ import avicit.platform6.core.annotation.log.LogField;
 import avicit.platform6.core.annotation.log.FieldRemark;
 import avicit.platform6.core.annotation.log.PojoRemark;
 
+import java.util.Date;
+
 /**
 * @金航数码科技有限责任公司
 * @作者：one
@@ -166,6 +168,14 @@ public class DynPersonDTO extends BeanDTO{
 		this.orgIdentity = orgIdentity;
 	}
 
+	public String getPerPost() {
+		return perPost;
+	}
+
+	public void setPerPost(String perPost) {
+		this.perPost = perPost;
+	}
+
 	@Override
 	public String getLogFormName() {
 		if (super.logFormName == null || "".equals(super.logFormName)) {
@@ -191,14 +201,6 @@ public class DynPersonDTO extends BeanDTO{
 		} else {
 			return super.logType;
 		}
-	}
-
-	public String getPerPost() {
-		return perPost;
-	}
-
-	public void setPerPost(String perPost) {
-		this.perPost = perPost;
 	}
 
 	//endregion

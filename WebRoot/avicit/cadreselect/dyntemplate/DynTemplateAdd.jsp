@@ -90,13 +90,14 @@
 					<th>
 						<label for="temType">投票类型:</label></th>
 					<td>
-						<div class="input-group input-group-sm spinner" data-trigger="spinner">
-							<input  class="form-control"  type="text" name="temType" id="temType" data-min="-9999999999999999999999" data-max="9999999999999999999999" data-step="1" data-precision="0">
-							<span class="input-group-addon">
-								<a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-triangle-top"></i></a>
-								<a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-							</span>
-						</div>
+						<pt6:h5select css_class="form-control input-sm" name="temType" id="temType" title="" isNull="true" lookupCode="template_status" />
+<%--						<div class="input-group input-group-sm spinner" data-trigger="spinner">--%>
+<%--							<input  class="form-control"  type="text" name="temType" id="temType" data-min="-9999999999999999999999" data-max="9999999999999999999999" data-step="1" data-precision="0">--%>
+<%--							<span class="input-group-addon">--%>
+<%--								<a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-triangle-top"></i></a>--%>
+<%--								<a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-triangle-bottom"></i></a>--%>
+<%--							</span>--%>
+<%--						</div>--%>
    					</td>
 				</tr>
     			<tr>
