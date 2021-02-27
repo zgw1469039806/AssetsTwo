@@ -8,7 +8,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import avicit.cadreselect.dynvote.bo.SendVoteBO;
 import avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO;
+import avicit.cadreselect.util.ResponseData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang.StringUtils;
@@ -42,7 +44,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
  * @作者：one
  * @邮箱：邮箱
  * @创建时间： 2021-02-24 12:58
- * @类说明：DYN_VOTEController
+ * @类说明：投票业务
  * @修改记录：
  */
 @Controller
@@ -164,7 +166,6 @@ public class DynVoteController implements LoaderConstant {
     /**
      * 保存数据
      *
-     * @param id      主键id
      * @param request 请求
      * @return ModelAndView
      */
@@ -225,9 +226,21 @@ public class DynVoteController implements LoaderConstant {
      */
     @ResponseBody
     @RequestMapping(value = "queryVoteById")
-    public QueryVoteByIdDTO toSaveDynPerson(@RequestBody String id) {
+    public ResponseData<QueryVoteByIdDTO> toSaveDynPerson(@RequestBody String id) {
         QueryVoteByIdDTO dto = dynVoteService.queryVoteById(id);
-        return dto;
+        return new ResponseData<>(dto);
+    }
+
+    /**
+     * 投票
+     * @param bo : 投票list
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "sendVote")
+    public ResponseData<Void> sendVote(@RequestBody SendVoteBO bo) {
+        dynVoteService.sendVote(bo);
+        return new ResponseData<>();
     }
 
 

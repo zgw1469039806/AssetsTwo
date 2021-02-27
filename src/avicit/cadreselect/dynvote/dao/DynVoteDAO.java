@@ -2,7 +2,10 @@ package avicit.cadreselect.dynvote.dao;
 
 import java.util.List;
 
+import avicit.cadreselect.dyntemitem.dto.DynTemItemDTO;
+import avicit.cadreselect.dynvote.bo.SendVoteBO;
 import avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO;
+import avicit.cadreselect.dynvote.dto.VoteItem;
 import avicit.platform6.core.mybatis.MyBatisRepository;
 import org.apache.ibatis.annotations.Param;
 import avicit.platform6.core.mybatis.pagehelper.Page;
@@ -97,5 +100,29 @@ public interface DynVoteDAO {
 	 * @return
 	 */
 	QueryVoteByIdDTO queryVoteById(String id);
+
+	/**
+	 * 候选人投票
+	 * @param bo
+	 */
+	void sendVote(@Param("bo") SendVoteBO bo);
+
+	/**
+	 * 推荐人投票
+	 * @param bo
+	 */
+	Integer queryItemByName(@Param("bo") VoteItem bo);
+
+	/**
+	 * 推荐人投票
+	 * @param bo
+	 */
+	void sendVoteRecommends(@Param("bo") VoteItem bo);
+
+	/**
+	 * 存储候选人
+	 * @param i
+	 */
+	int sendTemItem(@Param("bo") VoteItem i);
 }
 

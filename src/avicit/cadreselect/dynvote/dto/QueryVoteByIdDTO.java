@@ -6,14 +6,17 @@ import java.util.List;
 public class QueryVoteByIdDTO {
 
 
-    //投票标题
-    private String temTitle;
+    private String temTitle;//投票标题
 
-    //规则
-    private String temNotice;
+    private String temNotice;//规则
 
-    //
-    private List<VoteItem> list = new ArrayList<>();
+    private String temType;//投票类型 0-优秀干部投票开发文档(显示同意,反对) 1-XX部副部长人选推荐投票(同意,反对,弃权)
+
+    private String temId;//投票轮次
+
+    private List<VoteItem> list = new ArrayList<>();//候选人
+
+    private List<VoteItem> recommends = new ArrayList<>();//推荐人
 
     //region get set
 
@@ -39,6 +42,30 @@ public class QueryVoteByIdDTO {
 
     public void setList(List<VoteItem> list) {
         this.list = list;
+    }
+
+    public String getTemType() {
+        return temType;
+    }
+
+    public void setTemType(String temType) {
+        this.temType = temType;
+    }
+
+    public String getTemId() {
+        return temId;
+    }
+
+    public void setTemId(String temId) {
+        this.temId = temId;
+    }
+
+    public List<VoteItem> getRecommends() {
+        return recommends;
+    }
+
+    public void setRecommends(List<VoteItem> recommends) {
+        this.recommends = recommends;
     }
 
     //endregion

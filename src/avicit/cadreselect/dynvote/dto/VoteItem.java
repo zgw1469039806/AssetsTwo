@@ -10,42 +10,49 @@ public class VoteItem {
     /**
      * 模板ITEM ID
      */
-    private java.lang.String dynItId;
+    private java.lang.String dynItId;//模板ITEM ID
 
     /**
-     * 意见
+     * 意见 0：未投票  -1：同意 -2：反对 -3：弃权 正数表示分数
      */
-    private java.lang.String dynVoteOpinion;
+    private java.lang.String dynVoteOpinion;//意见 0：未投票  -1：同意 -2：反对 -3：弃权 正数表示分数
 
     /**
      * 标识
      */
-    private java.lang.String dynVoteId;
+    private java.lang.String dynVoteId;//标识
 
     /**
      * 主键
      */
-    private java.lang.String id;
+    private java.lang.String id;//主键
 
     /**
      * 候选人姓名
      */
-    private java.lang.String tiUserName;
+    private java.lang.String tiUserName;//候选人姓名
 
     /**
      * 候选人部门
      */
-    private java.lang.String tiUserDept;
+    private java.lang.String tiUserDept;//候选人部门
 
     /**
-     * 0- 女 1-男
+     * 0-女 1-男
      */
-    private java.lang.Integer tiUserSex;
+    private java.lang.Integer tiUserSex;// 0-女 1-男
 
     /**
      * 职务
      */
-    private java.lang.String tiUserPost;
+    private java.lang.String tiUserPost;//职务
+
+    /**
+     * 生日
+     */
+    private java.lang.String tiUserBirth;//生日
+
+    private String temId;//投票轮次id
 
 
     //region get set
@@ -114,6 +121,21 @@ public class VoteItem {
         this.tiUserPost = tiUserPost;
     }
 
+    public String getTiUserBirth() {
+        return tiUserBirth;
+    }
+
+    public void setTiUserBirth(String tiUserBirth) {
+        this.tiUserBirth = tiUserBirth;
+    }
+
+    public String getTemId() {
+        return temId;
+    }
+
+    public void setTemId(String temId) {
+        this.temId = temId;
+    }
 
     //endregion
 }

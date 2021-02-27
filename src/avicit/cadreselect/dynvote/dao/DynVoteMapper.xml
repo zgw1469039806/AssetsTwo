@@ -389,17 +389,21 @@
 
     <resultMap type="avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO" id="queryVoteById"
                autoMapping="true">
-        <result property="temTitle" column="ITEM_TITLE" />
-        <result property="temNotice" column="TEM_NOTICE" />
+        <result property="temTitle" column="ITEM_TITLE"/>
+        <result property="temId" column="TEM_ID"/>
+        <result property="temNotice" column="TEM_NOTICE"/>
+        <result property="temType" column="TEM_TYPE"/>
         <collection property="list" ofType="avicit.cadreselect.dynvote.dto.VoteItem" autoMapping="true">
             <result property="id" column="VOTE_ID"/>
+            <result property="temId" column="TEM_ID"/>
             <result property="dynVoteOpinion" column="DYN_VOTE_OPINION"/>
-            <result property="dynVoteId" column="DYN_VOTE_ID" />
+            <result property="dynVoteId" column="DYN_VOTE_ID"/>
             <result property="dynItId" column="DYN_IT_ID"/>
             <result property="tiUserName" column="TI_USER_NAME"/>
             <result property="tiUserDept" column="TI_USER_DEPT"/>
             <result property="tiUserSex" column="TI_USER_SEX"/>
             <result property="tiUserPost" column="TI_USER_POST"/>
+            <result property="tiUserBirth" column="TI_USER_BIRTH"/>
         </collection>
     </resultMap>
 
@@ -414,8 +418,11 @@
 		item.TI_USER_POST,
 		item.TI_USER_NAME,
 		item.TI_USER_DEPT,
+		item.TI_USER_BIRTH,
 		item.TI_NAME as "ITEM_TITLE",
-        tem.TEM_NOTICE
+        tem.TEM_NOTICE,
+        tem.TEM_TYPE,
+        tem.ID as "TEM_ID"
 		from
 		DYN_VOTE vote,
 		DYN_TEM_ITEM item,
@@ -425,5 +432,86 @@
         and tem.ID = item.TEM_ID
         and vote.DYN_VOTE_ID = #{id}
 	</select>
+    <!--候选人投票-->
+    <update id="sendVote">
+        <foreach collection="bo.list" item="item" index="index" open="begin" separator=";" close=";end;">
+            update DYN_VOTE
+            set
+            VERSION = version+1 ,
+            DYN_VOTE_OPINION =#{item.dynVoteOpinion}
+            where id = #{item.id}
+            and DYN_VOTE_ID = #{bo.id}
+        </foreach>
+    </update>
+
+    <select id="queryItemByName" resultType="java.lang.Integer">
+        select ID from DYN_TEM_ITEM
+        where TEM_ID =#{bo.temId}
+        and TI_USER_NAME = #{bo.tiUserName}
+    </select>
+
+
+    <!--   推荐人投票 -->
+    <insert id="sendVoteRecommends">
+        insert into DYN_VOTE(
+        ID ,
+        LAST_UPDATE_DATE ,
+        CREATED_BY ,
+        CREATION_DATE ,
+        VERSION ,
+        LAST_UPDATE_IP ,
+        LAST_UPDATED_BY ,
+        DYN_IT_ID ,
+        DYN_VOTE_OPINION ,
+        DYN_VOTE_ID ,
+        DYN_VOTE_IP ,
+        DYN_VOTE_TYPE ,
+        TEM_ID,
+        DYN_VOTE_LOG,
+        ORG_IDENTITY )
+        values ( DYN_VOTE_SEQ.NEXTVAL ,
+        SYSDATE,
+        1,
+        SYSDATE ,
+        0,
+        '127.0.0.1',
+        1 ,
+        #{bo.dynItId},
+        -1,
+        #{bo.dynVoteId} ,
+        '127.0.0.1',
+        1,
+        #{bo.temId},
+        1,
+        1)
+        </insert>
+    <insert id="sendTemItem" parameterType="avicit.cadreselect.dynvote.dto.VoteItem">
+        <selectKey resultType="String" keyProperty="dynItId" order="BEFORE">
+            select DYN_TEM_ITEM_SEQ.nextval from dual
+        </selectKey>
+        insert into DYN_TEM_ITEM
+        (TEM_ID,
+        ID,
+        LAST_UPDATE_DATE,
+        CREATED_BY,
+        CREATION_DATE,
+        VERSION,LAST_UPDATE_IP,
+        LAST_UPDATED_BY,
+        TI_USER_NAME,
+        TI_USER_TYPE
+        )
+        values (
+        #{bo.temId},
+        #{bo.dynItId},
+        SYSDATE,
+        1,
+        SYSDATE,
+        0,
+        '127.0.0.1',
+        1,
+        #{bo.tiUserName},
+        1
+        )
+    </insert>
 
 </mapper>
