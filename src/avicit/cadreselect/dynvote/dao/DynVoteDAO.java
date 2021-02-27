@@ -1,6 +1,7 @@
 package avicit.cadreselect.dynvote.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import avicit.cadreselect.dyntemitem.dto.DynTemItemDTO;
 import avicit.cadreselect.dynvote.bo.SendVoteBO;
@@ -111,7 +112,7 @@ public interface DynVoteDAO {
 	 * 推荐人投票
 	 * @param bo
 	 */
-	Integer queryItemByName(@Param("bo") VoteItem bo);
+	Map<String,String> queryItemByName(@Param("bo") VoteItem bo);
 
 	/**
 	 * 推荐人投票
@@ -123,6 +124,6 @@ public interface DynVoteDAO {
 	 * 存储候选人
 	 * @param i
 	 */
-	int sendTemItem(@Param("bo") VoteItem i);
+	void sendTemItem(@Param("bo") VoteItem i,@Param("name")String name);
 }
 

@@ -207,7 +207,7 @@
 	from DYN_TEMPLATE t1
 	where t1.id = #{id}
 </select>
-<!-- 新增对象 DYN_TEMPLATE -->
+    <!-- 新增对象 DYN_TEMPLATE -->
 <insert id="insertDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
 	insert into DYN_TEMPLATE
 	<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -468,4 +468,12 @@
 <delete id="deleteDynTemplateById" parameterType="java.lang.String">
 	delete from DYN_TEMPLATE  where id = #{id}
 </delete>
+
+	<select id="toDeleteDynTemplate" resultType="avicit.cadreselect.dyntemplate.dto.DynRecord">
+		select
+		 RE_ID as "reId",
+		 RE_NAME as "reName",
+		 RE_RULE as "reRule"
+		from DYN_RECORD
+	</select>
 </mapper>

@@ -1,6 +1,8 @@
 package avicit.cadreselect.dynvote.dto;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QueryVoteByIdDTO {
@@ -14,9 +16,13 @@ public class QueryVoteByIdDTO {
 
     private String temId;//投票轮次
 
+    private Integer is = 0;//是否投票 0-否 1-是
+
     private List<VoteItem> list = new ArrayList<>();//候选人
 
     private List<VoteItem> recommends = new ArrayList<>();//推荐人
+
+    private List<String> temNotices = new ArrayList<>();//推荐人
 
     //region get set
 
@@ -34,6 +40,9 @@ public class QueryVoteByIdDTO {
 
     public void setTemNotice(String temNotice) {
         this.temNotice = temNotice;
+        String[] split = temNotice.split("\\|");
+        List<String> strings = Arrays.asList(split);
+        temNotices.addAll(strings);
     }
 
     public List<VoteItem> getList() {
@@ -66,6 +75,22 @@ public class QueryVoteByIdDTO {
 
     public void setRecommends(List<VoteItem> recommends) {
         this.recommends = recommends;
+    }
+
+    public Integer getIs() {
+        return is;
+    }
+
+    public void setIs(Integer is) {
+        this.is = is;
+    }
+
+    public List<String> getTemNotices() {
+        return temNotices;
+    }
+
+    public void setTemNotices(List<String> temNotices) {
+        this.temNotices = temNotices;
     }
 
     //endregion

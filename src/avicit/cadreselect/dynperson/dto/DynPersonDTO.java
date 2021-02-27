@@ -81,86 +81,90 @@ public class DynPersonDTO extends BeanDTO{
 	@FieldRemark(column="ORG_IDENTITY", field="orgIdentity", name="组织ID")
 	private java.lang.String orgIdentity;
 
+	/**
+	 * 职务
+	 */
 	@FieldRemark(column="PER_POST", field="perPost", name="职务")
-	private String perPost;
+	private java.lang.String perPost;
 
-	public String getId() {
+	//region get set
+	public java.lang.String getId(){
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(java.lang.String id){
 		this.id = id;
 	}
 
-	public Date getLastUpdateDateBegin() {
+	public java.util.Date getLastUpdateDateBegin(){
 		return lastUpdateDateBegin;
 	}
 
-	public void setLastUpdateDateBegin(Date lastUpdateDateBegin) {
+	public void setLastUpdateDateBegin(java.util.Date lastUpdateDateBegin){
 		this.lastUpdateDateBegin = lastUpdateDateBegin;
 	}
 
-	public Date getLastUpdateDateEnd() {
+	public java.util.Date getLastUpdateDateEnd(){
 		return lastUpdateDateEnd;
 	}
 
-	public void setLastUpdateDateEnd(Date lastUpdateDateEnd) {
+	public void setLastUpdateDateEnd(java.util.Date lastUpdateDateEnd){
 		this.lastUpdateDateEnd = lastUpdateDateEnd;
 	}
 
-	public Date getCreationDateBegin() {
+	public java.util.Date getCreationDateBegin(){
 		return creationDateBegin;
 	}
 
-	public void setCreationDateBegin(Date creationDateBegin) {
+	public void setCreationDateBegin(java.util.Date creationDateBegin){
 		this.creationDateBegin = creationDateBegin;
 	}
 
-	public Date getCreationDateEnd() {
+	public java.util.Date getCreationDateEnd(){
 		return creationDateEnd;
 	}
 
-	public void setCreationDateEnd(Date creationDateEnd) {
+	public void setCreationDateEnd(java.util.Date creationDateEnd){
 		this.creationDateEnd = creationDateEnd;
 	}
 
-	public String getPerName() {
+	public java.lang.String getPerName(){
 		return perName;
 	}
 
-	public void setPerName(String perName) {
+	public void setPerName(java.lang.String perName){
 		this.perName = perName;
 	}
 
-	public String getPerDept() {
+	public java.lang.String getPerDept(){
 		return perDept;
 	}
 
-	public void setPerDept(String perDept) {
+	public void setPerDept(java.lang.String perDept){
 		this.perDept = perDept;
 	}
 
-	public Integer getPerSex() {
+	public java.lang.Integer getPerSex(){
 		return perSex;
 	}
 
-	public void setPerSex(Integer perSex) {
+	public void setPerSex(java.lang.Integer perSex){
 		this.perSex = perSex;
 	}
 
-	public String getPerBirth() {
+	public java.lang.String getPerBirth(){
 		return perBirth;
 	}
 
-	public void setPerBirth(String perBirth) {
+	public void setPerBirth(java.lang.String perBirth){
 		this.perBirth = perBirth;
 	}
 
-	public String getOrgIdentity() {
+	public java.lang.String getOrgIdentity(){
 		return orgIdentity;
 	}
 
-	public void setOrgIdentity(String orgIdentity) {
+	public void setOrgIdentity(java.lang.String orgIdentity){
 		this.orgIdentity = orgIdentity;
 	}
 
@@ -199,4 +203,5 @@ public class DynPersonDTO extends BeanDTO{
 		}
 	}
 
+	//endregion
 }

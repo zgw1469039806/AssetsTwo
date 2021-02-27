@@ -1,6 +1,8 @@
 package avicit.cadreselect.dyntemplate.dao;
 
 import java.util.List;
+
+import avicit.cadreselect.dyntemplate.dto.DynRecord;
 import avicit.platform6.core.mybatis.MyBatisRepository;
 import org.apache.ibatis.annotations.Param;
 import avicit.platform6.core.mybatis.pagehelper.Page;
@@ -88,5 +90,11 @@ public interface DynTemplateDAO {
 	 * @return int
 	 */
 	public int deleteDynTemplateList(List<String> idList);
+
+	/**
+	 * 查询记录
+	 * @return
+	 */
+    List<DynRecord> toDeleteDynTemplate();
 }
 

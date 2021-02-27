@@ -54,6 +54,8 @@ public class VoteItem {
 
     private String temId;//投票轮次id
 
+    private String dynVoteType;//0-候选人 1-推荐人
+
 
     //region get set
 
@@ -137,5 +139,12 @@ public class VoteItem {
         this.temId = temId;
     }
 
-    //endregion
+    public String getDynVoteType() {
+        return dynVoteType;
+    }
+
+    public void setDynVoteType(String dynVoteType) {
+        this.dynVoteType = dynVoteType;
+    }
+//endregion
 }

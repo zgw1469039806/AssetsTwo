@@ -3,6 +3,8 @@ package avicit.cadreselect.dyntemplate.service;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
+
+import avicit.cadreselect.dyntemplate.dto.DynRecord;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -278,5 +280,17 @@ public class DynTemplateService implements Serializable {
 			throw new DaoException(e.getMessage(), e);
 		}
 	}
+
+	//region
+
+	/**
+	 * 查询记录
+	 * @return
+	 */
+	public List<DynRecord> toDeleteDynTemplate() {
+		List<DynRecord>  list = dynTemplateDAO.toDeleteDynTemplate();
+		return list;
+	}
+	//endregion
 }
 
