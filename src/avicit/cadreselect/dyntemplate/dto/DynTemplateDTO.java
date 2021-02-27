@@ -93,8 +93,9 @@ public class DynTemplateDTO extends BeanDTO{
 	/**
 	* 投票类型
 	*/
-	@FieldRemark(column="TEM_TYPE", field="temType", name="投票类型")
+	@FieldRemark(column="TEM_TYPE", field="temType", name="投票类型",lookupType = "template_status",dataType="lookup")
 	private java.lang.Integer temType;
+	private String temTypeName;
 
 	/**
 	* 0-使用中 1-暂停 2-删除
@@ -230,6 +231,14 @@ public class DynTemplateDTO extends BeanDTO{
 		this.orgIdentity = orgIdentity;
 	}
 
+
+	public String getTemTypeName() {
+		return temTypeName;
+	}
+
+	public void setTemTypeName(String temTypeName) {
+		this.temTypeName = temTypeName;
+	}
 	@Override
 	public String getLogFormName() {
 		if (super.logFormName == null || "".equals(super.logFormName)) {

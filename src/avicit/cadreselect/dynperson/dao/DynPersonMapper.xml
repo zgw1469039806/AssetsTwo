@@ -14,6 +14,7 @@
 	<result property="perSex" column="PER_SEX" jdbcType="DECIMAL" />
 	<result property="perBirth" column="PER_BIRTH" jdbcType="VARCHAR" />
 	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="perPost" column="PER_POST" jdbcType="VARCHAR" />
 </resultMap>
 <sql id="commonColums">
 	t1.ID,
@@ -27,7 +28,8 @@
 	t1.PER_DEPT,
 	t1.PER_SEX,
 	t1.PER_BIRTH,
-	t1.ORG_IDENTITY</sql>
+	t1.ORG_IDENTITY,
+	t1.PER_POST</sql>
 <!-- 默认查询条件 -->
 <sql id="defaultWhereAnd">
 	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
@@ -207,6 +209,9 @@
 		<if test="orgIdentity != null">
 			ORG_IDENTITY,
 		</if>
+		<if test="perPost != null">
+			PER_POST,
+		</if>
 	</trim>
 	<trim prefix="values (" suffix=")" suffixOverrides=",">
 		<if test="id != null">
@@ -245,6 +250,9 @@
 		<if test="orgIdentity != null">
 			#{orgIdentity,jdbcType = VARCHAR},
 		</if>
+		<if test="perPost != null">
+			#{perPost,jdbcType = VARCHAR},
+		</if>
 	</trim>
 </insert>
 <!-- 批量新增对象 DYN_PERSON -->
@@ -275,7 +283,7 @@
 	#{item.perDept,jdbcType = VARCHAR} ,
 	#{item.perSex,jdbcType = DECIMAL} ,
 	#{item.perBirth,jdbcType = VARCHAR} ,
-	#{item.orgIdentity,jdbcType = VARCHAR} 	from dual
+	#{item.orgIdentity,jdbcType = VARCHAR},#{item.perPost,jdbcType = VARCHAR} 	from dual
 </foreach>
 </insert>
 <!-- 更新对象 DYN_PERSON -->
@@ -316,7 +324,11 @@
 			PER_BIRTH = #{perBirth,jdbcType = VARCHAR} ,
 		</if>
 		<if test="orgIdentity != null">
-			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 		</if>
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR},
+				</if>
+		<if test="perPost != null">
+			PER_POST = #{perPost,jdbcType = VARCHAR}
+		</if>
 	</set>
 	where id = #{id} 
 	and version = #{version}
@@ -336,7 +348,8 @@
 	PER_DEPT = #{perDept,jdbcType = VARCHAR} ,
 	PER_SEX = #{perSex,jdbcType = DECIMAL} ,
 	PER_BIRTH = #{perBirth,jdbcType = VARCHAR} ,
-	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 	where id = #{id}
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+	PER_POST = #{perPost,jdbcType = VARCHAR}	where id = #{id}
 	and version = #{version}
 </update>
 <!-- 批量更新对象   DYN_PERSON -->
@@ -355,7 +368,8 @@
 		PER_DEPT = #{item.perDept,jdbcType = VARCHAR} ,
 		PER_SEX = #{item.perSex,jdbcType = DECIMAL} ,
 		PER_BIRTH = #{item.perBirth,jdbcType = VARCHAR} ,
-		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} 		where id = #{item.id}
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} 	,
+		PER_POST = #{perPost,jdbcType = VARCHAR}	where id = #{item.id}
 		and version = #{version}
 	</foreach>
 </update>

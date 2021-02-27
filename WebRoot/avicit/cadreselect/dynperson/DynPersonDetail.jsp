@@ -52,6 +52,15 @@
 						<input class="form-control input-sm" type="text" name="perBirth"  id="perBirth" value="<c:out value='${dynPersonDTO.perBirth}'/>">
    					</td>
 				</tr>
+
+				<tr>
+					<th>
+						<label for="perPost">职务:</label>
+					</th>
+					<td>
+						<input class="form-control input-sm" type="text" name="perPost"  id="perPost" value="<c:out value='${dynPersonDTO.perPost}'/>">
+					</td>
+				</tr>
 			</table>
 		</form>
 	</div>

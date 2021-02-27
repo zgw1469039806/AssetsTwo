@@ -61,6 +61,7 @@ public class DynTemItemController implements LoaderConstant {
 	 */
 	@RequestMapping(value = "toDynTemItemManage")
 	public ModelAndView toDynTemItemManage() {
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("avicit/cadreselect/dyntemitem/DynTemItemManage");
 		mav.addObject("url", "platform/avicit/cadreselect/dynTemItem/dynTemItemController/operation/");

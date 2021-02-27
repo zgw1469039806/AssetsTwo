@@ -218,7 +218,7 @@ public class ElectController {
         dto.setId(updatePersonStatus.getId());
         dto.setStatus(updatePersonStatus.getStatus());
 
-        // 0:候选 1：晋级 2： 淘汰
+        // 0:候选 1： 2： 淘汰
         if ("0".equals(updatePersonStatus.getStatus())) {
             dto.setTurnNum(BigDecimal.ZERO);
         } else {

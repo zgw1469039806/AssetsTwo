@@ -79,6 +79,16 @@ String importlibs = "common,table,form";
 					<input class="form-control input-sm" type="text" name="perBirth"  id="perBirth" />
 				</td>
 			</tr>
+			<tr>
+				<th>
+					<label for="perPost">职务:</label>
+				</th>
+				<td>
+					<input class="form-control input-sm" type="text" name="perPost"  id="perPost" >
+				</td>
+
+
+			</tr>
     	</table>
 	</form>
 </div>
@@ -106,7 +116,8 @@ $(document).ready(function () {
 		{ label : '姓名', name : 'perName',formatter:formatValue,width: 150},
 		{ label : '部门', name : 'perDept',width: 150},
 		{ label : '性别', name : 'perSex',width: 150},
-		{ label : '出生年月', name : 'perBirth', width: 150}
+		{ label : '出生年月', name : 'perBirth', width: 150},
+		{ label : '职务', name : 'perPost', width: 150}
 	];
 
 	var searchNames = new Array();

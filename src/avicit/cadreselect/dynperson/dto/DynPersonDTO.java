@@ -8,6 +8,8 @@ import avicit.platform6.core.annotation.log.LogField;
 import avicit.platform6.core.annotation.log.FieldRemark;
 import avicit.platform6.core.annotation.log.PojoRemark;
 
+import java.util.Date;
+
 /**
 * @金航数码科技有限责任公司
 * @作者：one
@@ -79,85 +81,95 @@ public class DynPersonDTO extends BeanDTO{
 	@FieldRemark(column="ORG_IDENTITY", field="orgIdentity", name="组织ID")
 	private java.lang.String orgIdentity;
 
+	@FieldRemark(column="PER_POST", field="perPost", name="职务")
+	private String perPost;
 
-	public java.lang.String getId(){
+	public String getId() {
 		return id;
 	}
 
-	public void setId(java.lang.String id){
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public java.util.Date getLastUpdateDateBegin(){
+	public Date getLastUpdateDateBegin() {
 		return lastUpdateDateBegin;
 	}
 
-	public void setLastUpdateDateBegin(java.util.Date lastUpdateDateBegin){
+	public void setLastUpdateDateBegin(Date lastUpdateDateBegin) {
 		this.lastUpdateDateBegin = lastUpdateDateBegin;
 	}
 
-	public java.util.Date getLastUpdateDateEnd(){
+	public Date getLastUpdateDateEnd() {
 		return lastUpdateDateEnd;
 	}
 
-	public void setLastUpdateDateEnd(java.util.Date lastUpdateDateEnd){
+	public void setLastUpdateDateEnd(Date lastUpdateDateEnd) {
 		this.lastUpdateDateEnd = lastUpdateDateEnd;
 	}
 
-	public java.util.Date getCreationDateBegin(){
+	public Date getCreationDateBegin() {
 		return creationDateBegin;
 	}
 
-	public void setCreationDateBegin(java.util.Date creationDateBegin){
+	public void setCreationDateBegin(Date creationDateBegin) {
 		this.creationDateBegin = creationDateBegin;
 	}
 
-	public java.util.Date getCreationDateEnd(){
+	public Date getCreationDateEnd() {
 		return creationDateEnd;
 	}
 
-	public void setCreationDateEnd(java.util.Date creationDateEnd){
+	public void setCreationDateEnd(Date creationDateEnd) {
 		this.creationDateEnd = creationDateEnd;
 	}
 
-	public java.lang.String getPerName(){
+	public String getPerName() {
 		return perName;
 	}
 
-	public void setPerName(java.lang.String perName){
+	public void setPerName(String perName) {
 		this.perName = perName;
 	}
 
-	public java.lang.String getPerDept(){
+	public String getPerDept() {
 		return perDept;
 	}
 
-	public void setPerDept(java.lang.String perDept){
+	public void setPerDept(String perDept) {
 		this.perDept = perDept;
 	}
 
-	public java.lang.Integer getPerSex(){
+	public Integer getPerSex() {
 		return perSex;
 	}
 
-	public void setPerSex(java.lang.Integer perSex){
+	public void setPerSex(Integer perSex) {
 		this.perSex = perSex;
 	}
 
-	public java.lang.String getPerBirth(){
+	public String getPerBirth() {
 		return perBirth;
 	}
 
-	public void setPerBirth(java.lang.String perBirth){
+	public void setPerBirth(String perBirth) {
 		this.perBirth = perBirth;
 	}
 
-	public java.lang.String getOrgIdentity(){
+	public String getOrgIdentity() {
 		return orgIdentity;
 	}
 
-	public void setOrgIdentity(java.lang.String orgIdentity){
+	public void setOrgIdentity(String orgIdentity) {
 		this.orgIdentity = orgIdentity;
+	}
+
+	public String getPerPost() {
+		return perPost;
+	}
+
+	public void setPerPost(String perPost) {
+		this.perPost = perPost;
 	}
 
 	@Override
