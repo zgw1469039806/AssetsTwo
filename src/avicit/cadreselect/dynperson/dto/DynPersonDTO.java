@@ -79,7 +79,13 @@ public class DynPersonDTO extends BeanDTO{
 	@FieldRemark(column="ORG_IDENTITY", field="orgIdentity", name="组织ID")
 	private java.lang.String orgIdentity;
 
+	/**
+	 * 职务
+	 */
+	@FieldRemark(column="PER_POST", field="perPost", name="职务")
+	private java.lang.String perPost;
 
+	//region get set
 	public java.lang.String getId(){
 		return id;
 	}
@@ -187,4 +193,13 @@ public class DynPersonDTO extends BeanDTO{
 		}
 	}
 
+	public String getPerPost() {
+		return perPost;
+	}
+
+	public void setPerPost(String perPost) {
+		this.perPost = perPost;
+	}
+
+	//endregion
 }

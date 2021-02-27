@@ -1,8 +1,7 @@
 package avicit.cadreselect.dynvote.service;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -315,6 +314,15 @@ public class DynVoteService implements Serializable {
      */
     public QueryVoteByIdDTO queryVoteById(String id) {
         QueryVoteByIdDTO dto = dynVoteDAO.queryVoteById(id);
+        if (dto.getList()!=null){
+            List<VoteItem> recommends = dto.getList().stream().filter(l -> l.getDynVoteType().equals("1")).collect(Collectors.toList());
+            List<VoteItem> list = dto.getList().stream().filter(l -> l.getDynVoteType().equals("0")).collect(Collectors.toList());
+            dto.setList(list);
+            dto.setRecommends(recommends);
+            if (!dto.getList().get(0).getDynVoteOpinion().equals("0")){
+                dto.setIs(1);
+            }
+        }
         return dto;
     }
     //endregion
@@ -343,11 +351,14 @@ public class DynVoteService implements Serializable {
 
         bo.getRecommends().forEach(i -> {
             i.setTemId(bo.getTemId());
-            Integer integer = dynVoteDAO.queryItemByName(i);
-            if (integer == null ||  integer <= 0) {
-                integer = dynVoteDAO.sendTemItem(i);
+            Map<String, String> map = dynVoteDAO.queryItemByName(i);
+            if (map == null || map.get("ID") == null || map.get("ID").equals("")) {
+                map = new HashMap<>();
+                map.put("ID", UUID.randomUUID().toString());
+                i.setDynItId(map.get("ID"));
+                dynVoteDAO.sendTemItem(i, "投票");
             }
-            i.setDynItId(integer.toString());
+            i.setDynItId(map.get("ID"));
             i.setDynVoteId(bo.getId());
             dynVoteDAO.sendVoteRecommends(i);
         });

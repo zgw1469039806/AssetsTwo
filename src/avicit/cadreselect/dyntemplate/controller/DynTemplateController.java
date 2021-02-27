@@ -3,11 +3,14 @@ package avicit.cadreselect.dyntemplate.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import avicit.cadreselect.dyntemplate.dto.DynRecord;
+import avicit.cadreselect.util.ResponseData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang.StringUtils;
@@ -15,11 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import avicit.platform6.commons.utils.ComUtil;
@@ -55,6 +54,7 @@ public class DynTemplateController implements LoaderConstant {
 	@Autowired
 	private DynTemplateService dynTemplateService;
 
+	//region 自动生成
 	/**
 	 * 跳转到列表页面
 	 * @return ModelAndView
@@ -206,5 +206,15 @@ public class DynTemplateController implements LoaderConstant {
 		}
 		return mav;
 	}
+	//endregion
+
+	//region 开发
+	@ResponseBody
+	@PostMapping(value = "/queryRecord")
+	public List<DynRecord> toDeleteDynTemplate() {
+		List<DynRecord> list= dynTemplateService.toDeleteDynTemplate();
+		return list;
+	}
+	//endregion
 }
 

@@ -404,6 +404,7 @@
             <result property="tiUserSex" column="TI_USER_SEX"/>
             <result property="tiUserPost" column="TI_USER_POST"/>
             <result property="tiUserBirth" column="TI_USER_BIRTH"/>
+            <result property="dynVoteType" column="DYN_VOTE_TYPE"/>
         </collection>
     </resultMap>
 
@@ -414,12 +415,13 @@
 		vote.DYN_IT_ID,
 		vote.DYN_VOTE_OPINION,
 		vote.DYN_VOTE_ID,
+		vote.DYN_VOTE_TYPE,
 		item.TI_USER_SEX,
 		item.TI_USER_POST,
 		item.TI_USER_NAME,
 		item.TI_USER_DEPT,
 		item.TI_USER_BIRTH,
-		item.TI_NAME as "ITEM_TITLE",
+		tem.TEM_TITLE as "ITEM_TITLE",
         tem.TEM_NOTICE,
         tem.TEM_TYPE,
         tem.ID as "TEM_ID"
@@ -430,6 +432,8 @@
         where
             item.ID = vote.DYN_IT_ID
         and tem.ID = item.TEM_ID
+        and vote.TEM_ID = tem.ID
+        and vote.DYN_IT_ID = item.ID
         and vote.DYN_VOTE_ID = #{id}
 	</select>
     <!--候选人投票-->
@@ -444,8 +448,8 @@
         </foreach>
     </update>
 
-    <select id="queryItemByName" resultType="java.lang.Integer">
-        select ID from DYN_TEM_ITEM
+    <select id="queryItemByName" resultType="java.util.Map">
+        select ID,TI_NAME from DYN_TEM_ITEM
         where TEM_ID =#{bo.temId}
         and TI_USER_NAME = #{bo.tiUserName}
     </select>
@@ -485,10 +489,7 @@
         1,
         1)
         </insert>
-    <insert id="sendTemItem" parameterType="avicit.cadreselect.dynvote.dto.VoteItem">
-        <selectKey resultType="String" keyProperty="dynItId" order="BEFORE">
-            select DYN_TEM_ITEM_SEQ.nextval from dual
-        </selectKey>
+    <insert id="sendTemItem" parameterType="avicit.cadreselect.dynvote.dto.VoteItem" useGeneratedKeys="true" keyColumn="ID">
         insert into DYN_TEM_ITEM
         (TEM_ID,
         ID,
@@ -498,7 +499,8 @@
         VERSION,LAST_UPDATE_IP,
         LAST_UPDATED_BY,
         TI_USER_NAME,
-        TI_USER_TYPE
+        TI_USER_TYPE,
+        TI_NAME
         )
         values (
         #{bo.temId},
@@ -510,7 +512,8 @@
         '127.0.0.1',
         1,
         #{bo.tiUserName},
-        1
+        1,
+        #{name}
         )
     </insert>
 
