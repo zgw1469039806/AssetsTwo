@@ -16,12 +16,15 @@ import avicit.cadreselect.dyntemitem.dto.DynTemItemDTO;
 import avicit.cadreselect.dyntemitem.service.DynTemItemService;
 import avicit.cadreselect.dyntemplate.dto.DynRecord;
 import avicit.cadreselect.dyntemplate.dto.DynTemplateBO;
+import avicit.cadreselect.dynvote.dto.DynVoteDTO;
+import avicit.cadreselect.dynvote.service.DynVoteService;
 import avicit.cadreselect.util.BizException;
 import avicit.cadreselect.util.ResponseData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -64,6 +67,8 @@ public class DynTemplateController implements LoaderConstant {
 
 	@Autowired
 	DynTemItemService dynTemItemService;
+	@Autowired
+	DynVoteService dynVoteService;
 
 	//region 自动生成
 	/**
@@ -166,7 +171,11 @@ public class DynTemplateController implements LoaderConstant {
 		return mav;
 	}
 
-
+	/**
+	* @Author:maomao
+	* @Description: 添加规则
+	* @Date: 2021/2/28 1:04 上午
+	*/
 	@PostMapping("/saveDynTemplate")
 	@ResponseBody
 	public ResponseData<Void> saveDynTemplate(@RequestBody DynTemplateBO dynTemplateBO)
@@ -183,10 +192,22 @@ public class DynTemplateController implements LoaderConstant {
 			if (dynPersonDAOList.size() > 0 )
 			{
 				dynPersonDAOList.forEach(item ->{
+					item.setId(ComUtil.getId());
 					item.setTemId(dynTemplateBO.getId());
+					try {
+						dynTemItemService.insertDynTemItem(item);
+						for (int i = 0; i < Integer.parseInt(dynTemplateBO.getTemSceneNum().toString()); i++) {
+							DynVoteDTO dynVoteDTO = new DynVoteDTO();
+							BeanUtils.copyProperties(item,dynVoteDTO);
+							dynVoteDTO.setDynItId(item.getId());
+							dynVoteService.insertDynVote(dynVoteDTO);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				});
 			}
-			dynTemItemService.insertDynTemItemList(dynPersonDAOList);
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -196,6 +217,11 @@ public class DynTemplateController implements LoaderConstant {
 		return  new ResponseData<>();
 	}
 
+	/**
+	 * 根据规则ID查询
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/searchById")
 	@ResponseBody
 	public ResponseData<DynTemplateBO> searchById(@RequestBody String id)
