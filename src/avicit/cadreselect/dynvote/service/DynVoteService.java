@@ -314,12 +314,12 @@ public class DynVoteService implements Serializable {
      */
     public QueryVoteByIdDTO queryVoteById(String id) {
         QueryVoteByIdDTO dto = dynVoteDAO.queryVoteById(id);
-        if (dto.getList()!=null){
+        if (dto.getList() != null) {
             List<VoteItem> recommends = dto.getList().stream().filter(l -> l.getDynVoteType().equals("1")).collect(Collectors.toList());
             List<VoteItem> list = dto.getList().stream().filter(l -> l.getDynVoteType().equals("0")).collect(Collectors.toList());
             dto.setList(list);
             dto.setRecommends(recommends);
-            if (!dto.getList().get(0).getDynVoteOpinion().equals("0")){
+            if (!dto.getList().get(0).getDynVoteOpinion().equals("0")) {
                 dto.setIs(1);
             }
         }
@@ -336,18 +336,43 @@ public class DynVoteService implements Serializable {
      */
     @Transactional
     public void sendVote(SendVoteBO bo) {
-        List<VoteItem> collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("0")).collect(Collectors.toList());
-        if (collect != null && collect.size() > 0) {
-            throw new BizException("您的投票未完成，请继续投票");
-        }
-        dynVoteDAO.sendVote(bo);
-
-        if (bo.getRecommends().size() > 0) {
-            collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("-1") || l.getDynVoteOpinion().equals("0")).collect(Collectors.toList());
+        int type = dynVoteDAO.findByVoteId(bo.getId());
+        if (type == 0) {//第一套
+            List<VoteItem> collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("0")).collect(Collectors.toList());
             if (collect != null && collect.size() > 0) {
-                throw new BizException("仅所有候选人反对时，可自定义推荐");
+                throw new BizException("您的投票未完成，请继续投票");
+            }
+        } else if (type == 1) {
+            List<VoteItem> collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("-1")).collect(Collectors.toList());
+            if (collect.size() > 1) {
+                throw new BizException("仅可赞同一位候选人");
+            }
+
+            if (collect.size() == 0) {
+                collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("-2")).collect(Collectors.toList());
+                if (collect.size() > 0) {
+                    collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("-3")).collect(Collectors.toList());
+                    if (collect.size()>0){
+                        throw new BizException("只有弃权与反对属于无效票！");
+                    }else{
+                        if (bo.getRecommends().size() <= 0) {
+                            throw new BizException("全部反对时必须添加推荐人");
+                        }
+                    }
+                } else if (collect.size() == 0) {
+//                    if (bo.getRecommends().size() <= 0) {
+//                        throw new BizException("全部反对时必须添加推荐人");
+//                    }
+                }
+            }
+        } else if (type == 2) {
+            if (bo.getRecommends().size()>0){
+                throw new BizException("不可自定义推荐人");
             }
         }
+
+        dynVoteDAO.sendVote(bo);
+
 
         bo.getRecommends().forEach(i -> {
             i.setTemId(bo.getTemId());

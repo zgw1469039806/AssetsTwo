@@ -219,6 +219,9 @@
             <if test="orgIdentity != null">
                 ORG_IDENTITY,
             </if>
+            <if test="temId != null">
+                TEM_ID,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -259,6 +262,9 @@
             </if>
             <if test="orgIdentity != null">
                 #{orgIdentity,jdbcType = VARCHAR},
+            </if>
+            <if test="temId != null">
+                #{temId,jdbcType = VARCHAR},
             </if>
         </trim>
     </insert>
@@ -489,7 +495,8 @@
         1,
         1)
         </insert>
-    <insert id="sendTemItem" parameterType="avicit.cadreselect.dynvote.dto.VoteItem" useGeneratedKeys="true" keyColumn="ID">
+    <insert id="sendTemItem" parameterType="avicit.cadreselect.dynvote.dto.VoteItem" useGeneratedKeys="true"
+            keyColumn="ID">
         insert into DYN_TEM_ITEM
         (TEM_ID,
         ID,
@@ -501,6 +508,9 @@
         TI_USER_NAME,
         TI_USER_TYPE,
         TI_NAME
+        <if test="bo.tiUserDept != null">
+            ,TI_USER_DEPT
+        </if>
         )
         values (
         #{bo.temId},
@@ -514,7 +524,87 @@
         #{bo.tiUserName},
         1,
         #{name}
+        <if test="bo.tiUserDept != null">
+            , #{bo.tiUserDept}
+        </if>
         )
     </insert>
+
+    <resultMap type="avicit.cadreselect.dyntemplate.dto.QueryDetailsDTO" id="queryDetails"
+               autoMapping="true">
+        <result property="temTitle" column="ITEM_TITLE"/>
+        <result property="temId" column="TEM_ID"/>
+        <result property="temType" column="TEM_TYPE"/>
+        <result property="temShouldInvestNum" column="TEM_SHOULD_INVEST_NUM"/>
+        <collection property="list" ofType="avicit.cadreselect.dyntemplate.dto.DynTemItemDTO" autoMapping="true">
+            <result property="tiUserName" column="TI_USER_NAME"/>
+            <result property="tiUserDept" column="TI_USER_DEPT"/>
+            <result property="tiUserSex" column="TI_USER_SEX"/>
+            <result property="tiUserPost" column="TI_USER_POST"/>
+            <result property="tiUserBirth" column="TI_USER_BIRTH"/>
+            <result property="tiUserType" column="TI_USER_TYPE"/>
+            <collection property="items" ofType="avicit.cadreselect.dynvote.dto.VoteItem" autoMapping="true">
+                <result property="dynItId" column="DYN_IT_ID"/>
+                <result property="dynVoteOpinion" column="DYN_VOTE_OPINION"/>
+                <result property="dynVoteType" column="DYN_VOTE_TYPE"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="queryDetails" resultMap="queryDetails">
+        select
+		vote.ID as "VOTE_ID",
+		vote.DYN_IT_ID,
+		vote.DYN_VOTE_OPINION,
+		vote.DYN_VOTE_ID,
+		vote.DYN_VOTE_TYPE,
+		item.TI_USER_SEX,
+		item.TI_USER_POST,
+		item.TI_USER_NAME,
+		item.TI_USER_DEPT,
+		item.TI_USER_BIRTH,
+		item.TI_USER_TYPE,
+		tem.TEM_TITLE as "ITEM_TITLE",
+        tem.TEM_NOTICE,
+        tem.TEM_SHOULD_INVEST_NUM,
+        tem.TEM_TYPE,
+        tem.ID as "TEM_ID"
+		from
+		DYN_VOTE vote,
+		DYN_TEM_ITEM item,
+		DYN_TEMPLATE tem
+        where
+            item.ID = vote.DYN_IT_ID
+        and tem.ID = item.TEM_ID
+        and vote.TEM_ID = tem.ID
+        and tem.ID = #{id}
+    </select>
+
+    <resultMap type="avicit.cadreselect.dyntemplate.dto.PrintingDTO" id="printing"
+               autoMapping="true">
+        <result property="temTitle" column="TEM_TITLE"/>
+        <collection property="list" ofType="java.lang.String" autoMapping="true">
+            <result property="list" column="DYN_VOTE_ID"/>
+        </collection>
+    </resultMap>
+
+    <select id="printing" resultMap="printing">
+        select
+         vote.DYN_VOTE_ID ,
+         tem.TEM_TITLE
+         from
+         DYN_VOTE vote,
+         DYN_TEMPLATE tem
+        where
+        vote.TEM_ID = #{id}
+        and tem.id = vote.TEM_ID
+    </select>
+    <select id="findByVoteId" resultType="java.lang.Integer">
+        select TEM_TYPE from
+         DYN_TEMPLATE tem,
+         DYN_VOTE vote
+         where vote.TEM_ID = tem.ID
+         and vote.DYN_VOTE_ID = #{id}
+        and rownum=1
+    </select>
 
 </mapper>

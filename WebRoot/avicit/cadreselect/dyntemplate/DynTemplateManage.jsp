@@ -1,32 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="avicit.platform6.commons.utils.ViewUtil"%>
-<%@taglib prefix="pt6" uri="/WEB-INF/tags/platform6.tld"%>
-<%@taglib prefix="sec" uri="/WEB-INF/tags/shiro.tld"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="avicit.platform6.commons.utils.ViewUtil" %>
+<%@taglib prefix="pt6" uri="/WEB-INF/tags/platform6.tld" %>
+<%@taglib prefix="sec" uri="/WEB-INF/tags/shiro.tld" %>
 <%
-String importlibs = "common,table,form";
+    String importlibs = "common,table,form";
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- ControllerPath = "platform/avicit/cadreselect/dynTemplate/dynTemplateController/toDynTemplateManage" -->
-<title>管理</title>
-<base href="<%=ViewUtil.getRequestPath(request)%>">
-<jsp:include page="/avicit/platform6/h5component/common/h5uiinclude-css.jsp">
-<jsp:param value="<%=importlibs%>" name="importlibs"/>
-</jsp:include>
+    <!-- ControllerPath = "platform/avicit/cadreselect/dynTemplate/dynTemplateController/toDynTemplateManage" -->
+    <title>管理</title>
+    <base href="<%=ViewUtil.getRequestPath(request)%>">
+    <jsp:include page="/avicit/platform6/h5component/common/h5uiinclude-css.jsp">
+        <jsp:param value="<%=importlibs%>" name="importlibs"/>
+    </jsp:include>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        html,body{
+
+        html, body {
             width: 100%;
             height: 100%;
         }
     </style>
 </head>
 <body style="width: 100%;height: 100%">
-<iframe src="http://gylm.natapp1.cc/#/dynTemplante"  style="width:100%; height:100%" frameborder="0" align="center" allowfullscreen="true"    allow="autoplay"  ></iframe>
+<iframe src="http://houtai.natapp1.cc/#/dynTemplanteDetails" style="width:100%; height:100%" frameborder="0" align="center"
+        allowfullscreen="true" allow="autoplay"></iframe>
 <%--<div id="tableToolbar" class="toolbar">--%>
 <%--	<div class="toolbar-left">--%>
 <%--		<sec:accesscontrollist hasPermission="3" domainObject="formdialog_dynTemplate_button_add" permissionDes="添加">--%>
@@ -164,64 +166,67 @@ String importlibs = "common,table,form";
 <%--</jsp:include>--%>
 <%--<script src="avicit/cadreselect/dyntemplate/js/DynTemplate.js?v=${jsversion}" type="text/javascript"></script>--%>
 <script type="text/javascript">
-var dynTemplate;
-function formatValue(cellvalue, options, rowObject) {
-		return '<a href="javascript:void(0);" onclick="dynTemplate.detail(\''+rowObject.id+'\');">'+cellvalue+'</a>';
- }
-function formatDateForHref(cellvalue, options, rowObject){
-	var thisDate = format(cellvalue);
-	return '<a href="javascript:void(0);" onclick="dynTemplate.detail(\''+rowObject.id+'\');">'+thisDate+'</a>';
-}
-//清空日期值
-function clearCommonSelectValue(element) {
-	$(element).siblings("input").val("");
-}
+    var dynTemplate;
 
-$(document).ready(function () {
-	var dataGridColModel =  [
-		{ label : 'id', name : 'id', key : true, width : 75, hidden : true},
-		{ label : '模板名称', name : 'temTitle',formatter:formatValue,width: 150},
-		{ label : '投票须知', name : 'temNotice',width: 150},
-		{ label : '表格JSON', name : 'temText',width: 150},
-		{ label : '应投数', name : 'temShouldInvestNum',width: 150},
-		{ label : '实投数', name : 'temActualInvestNum',width: 150},
-		{ label : '登陆数', name : 'temLoginNum',width: 150},
-		{ label : '实到数', name : 'temSceneNum',width: 150},
-		{ label : '投票类型', name : 'temType',width: 150},
-		{ label : '0-使用中 1-暂停 2-删除', name : 'temState', width: 150}
-	];
+    function formatValue(cellvalue, options, rowObject) {
+        return '<a href="javascript:void(0);" onclick="dynTemplate.detail(\'' + rowObject.id + '\');">' + cellvalue + '</a>';
+    }
 
-	var searchNames = new Array();
-	var searchTips = new Array();
-	searchNames.push("temTitle");
-	searchTips.push("模板名称");
-	searchNames.push("temNotice");
-	searchTips.push("投票须知");
-	var searchC = searchTips.length == 2 ? '或' + searchTips[1] : "";
-	$('#dynTemplate_keyWord').attr('placeholder','请输入' + searchTips[0] + searchC);
+    function formatDateForHref(cellvalue, options, rowObject) {
+        var thisDate = format(cellvalue);
+        return '<a href="javascript:void(0);" onclick="dynTemplate.detail(\'' + rowObject.id + '\');">' + thisDate + '</a>';
+    }
 
-	dynTemplate= new DynTemplate('dynTemplatejqGrid','${url}','searchDialog','form','dynTemplate_keyWord',searchNames,dataGridColModel);
-	//添加按钮绑定事件
-	$('#dynTemplate_insert').bind('click', function(){
-		dynTemplate.insert();
-	});
-	//编辑按钮绑定事件
-	$('#dynTemplate_modify').bind('click', function(){
-		dynTemplate.modify();
-	});
-	//删除按钮绑定事件
-	$('#dynTemplate_del').bind('click', function(){
-		dynTemplate.del();
-	});
-	//查询按钮绑定事件
-	$('#dynTemplate_searchPart').bind('click', function(){
-		dynTemplate.searchByKeyWord();
-	});
-	//打开高级查询框
-	$('#dynTemplate_searchAll').bind('click', function(){
-		dynTemplate.openSearchForm(this);
-	});
-});
+    //清空日期值
+    function clearCommonSelectValue(element) {
+        $(element).siblings("input").val("");
+    }
+
+    $(document).ready(function () {
+        var dataGridColModel = [
+            {label: 'id', name: 'id', key: true, width: 75, hidden: true},
+            {label: '模板名称', name: 'temTitle', formatter: formatValue, width: 150},
+            {label: '投票须知', name: 'temNotice', width: 150},
+            {label: '表格JSON', name: 'temText', width: 150},
+            {label: '应投数', name: 'temShouldInvestNum', width: 150},
+            {label: '实投数', name: 'temActualInvestNum', width: 150},
+            {label: '登陆数', name: 'temLoginNum', width: 150},
+            {label: '实到数', name: 'temSceneNum', width: 150},
+            {label: '投票类型', name: 'temType', width: 150},
+            {label: '0-使用中 1-暂停 2-删除', name: 'temState', width: 150}
+        ];
+
+        var searchNames = new Array();
+        var searchTips = new Array();
+        searchNames.push("temTitle");
+        searchTips.push("模板名称");
+        searchNames.push("temNotice");
+        searchTips.push("投票须知");
+        var searchC = searchTips.length == 2 ? '或' + searchTips[1] : "";
+        $('#dynTemplate_keyWord').attr('placeholder', '请输入' + searchTips[0] + searchC);
+
+        dynTemplate = new DynTemplate('dynTemplatejqGrid', '${url}', 'searchDialog', 'form', 'dynTemplate_keyWord', searchNames, dataGridColModel);
+        //添加按钮绑定事件
+        $('#dynTemplate_insert').bind('click', function () {
+            dynTemplate.insert();
+        });
+        //编辑按钮绑定事件
+        $('#dynTemplate_modify').bind('click', function () {
+            dynTemplate.modify();
+        });
+        //删除按钮绑定事件
+        $('#dynTemplate_del').bind('click', function () {
+            dynTemplate.del();
+        });
+        //查询按钮绑定事件
+        $('#dynTemplate_searchPart').bind('click', function () {
+            dynTemplate.searchByKeyWord();
+        });
+        //打开高级查询框
+        $('#dynTemplate_searchAll').bind('click', function () {
+            dynTemplate.openSearchForm(this);
+        });
+    });
 
 </script>
 </html>

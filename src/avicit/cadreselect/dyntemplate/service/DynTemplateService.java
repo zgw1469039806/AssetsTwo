@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-import avicit.cadreselect.dyntemplate.dto.DynRecord;
-import avicit.cadreselect.dyntemplate.dto.DynTemplateBO;
+import avicit.cadreselect.dyntemplate.dto.*;
+import avicit.cadreselect.dynvote.dao.DynVoteDAO;
+import avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,6 @@ import avicit.platform6.core.mybatis.pagehelper.PageHelper;
 import avicit.platform6.core.rest.msg.QueryReqBean;
 import avicit.platform6.core.rest.msg.QueryRespBean;
 import avicit.cadreselect.dyntemplate.dao.DynTemplateDAO;
-import avicit.cadreselect.dyntemplate.dto.DynTemplateDTO;
 import avicit.platform6.modules.system.syslog.service.SysLogUtil;
 
 /**
@@ -41,6 +41,9 @@ public class DynTemplateService implements Serializable {
 
 	@Autowired
 	private DynTemplateDAO dynTemplateDAO;
+
+	@Autowired
+	private DynVoteDAO voteDAO;
 	
 	/**
 	* 查询（分页）
@@ -304,6 +307,16 @@ public class DynTemplateService implements Serializable {
 	public List<DynRecord> toDeleteDynTemplate() {
 		List<DynRecord>  list = dynTemplateDAO.toDeleteDynTemplate();
 		return list;
+	}
+
+	public QueryDetailsDTO queryDetails(String id) {
+		QueryDetailsDTO dto = voteDAO.queryDetails(id);
+		return dto;
+	}
+
+	public PrintingDTO printing(String id) {
+		PrintingDTO dto = voteDAO.printing(id);
+		return dto;
 	}
 	//endregion
 }

@@ -48,7 +48,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
  * @修改记录：
  */
 @Controller
-@Scope("prototype")
 @RequestMapping("avicit/cadreselect/dynVote/dynVoteController")
 public class DynVoteController implements LoaderConstant {
     private static final Logger LOGGER = LoggerFactory.getLogger(DynVoteController.class);

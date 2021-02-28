@@ -22,7 +22,7 @@ public class QueryVoteByIdDTO {
 
     private List<VoteItem> recommends = new ArrayList<>();//推荐人
 
-    private List<String> temNotices = new ArrayList<>();//推荐人
+    private List<String> temNotices = new ArrayList<>();//条件
 
     //region get set
 

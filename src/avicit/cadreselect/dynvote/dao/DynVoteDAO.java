@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import avicit.cadreselect.dyntemitem.dto.DynTemItemDTO;
+import avicit.cadreselect.dyntemplate.dto.PrintingDTO;
+import avicit.cadreselect.dyntemplate.dto.QueryDetailsDTO;
 import avicit.cadreselect.dynvote.bo.SendVoteBO;
 import avicit.cadreselect.dynvote.dto.QueryVoteByIdDTO;
 import avicit.cadreselect.dynvote.dto.VoteItem;
@@ -125,5 +127,16 @@ public interface DynVoteDAO {
 	 * @param i
 	 */
 	void sendTemItem(@Param("bo") VoteItem i,@Param("name")String name);
+
+	/**
+	 * 查询详情
+	 * @param id
+	 * @return
+	 */
+	QueryDetailsDTO queryDetails(@Param("id") String id);
+
+	PrintingDTO printing(@Param("id") String id);
+
+	int findByVoteId(@Param("id") String id);
 }
 
