@@ -319,5 +319,16 @@ public class DynTemplateService implements Serializable {
 		return dto;
 	}
 	//endregion
+
+	/**
+	 * 导出基本信息Execl
+	 * @param id
+	 * @return
+	 */
+	public List<DynTemAndTIMEDTO> queryTemAndTime(String id)
+	{
+		List<DynTemAndTIMEDTO> dynTemAndTIMEDTOS = this.dynTemplateDAO.queryTemAndTime(id);
+		return dynTemAndTIMEDTOS;
+	}
 }
 

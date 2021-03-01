@@ -24,6 +24,9 @@ import avicit.cadreselect.dynvote.dto.DynVoteDTO;
 import avicit.cadreselect.dynvote.service.DynVoteService;
 import avicit.cadreselect.util.BizException;
 import avicit.cadreselect.util.ResponseData;
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang.StringUtils;
@@ -359,5 +362,64 @@ public class DynTemplateController implements LoaderConstant {
         return new ResponseData<>(list);
     }
     //endregion
+
+
+    @GetMapping("/exportTem")
+    public void exportTem(HttpServletResponse response,String id)
+    {
+        try {
+            List<DynTemAndTIMEDTO> timedtos = this.dynTemplateService.queryTemAndTime(id);
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet sheet = workbook.createSheet(timedtos.get(0).getTemTitle()+"----投票基本信息");
+            String fileName = timedtos.get(0).getTemTitle()+"----投票基本信息" + ".xls";// 设置要导出的文件的名字
+            String[] headers = { "候选人", "部门", "职务", "性别", "出生年月", "同意人数", "反对人数", "弃权人数"};
+
+            CellRangeAddress region = new CellRangeAddress(0, 0, 0, 9);
+            sheet.addMergedRegion(region);
+            HSSFRow rowTitle = sheet.createRow(0);
+            Cell oneCell = rowTitle.createCell(0);
+            oneCell.setCellValue(timedtos.get(0).getTemTitle()+"----投票基本信息");// 设置标题内容
+           // 合并的单元格样式
+            HSSFCellStyle boderStyle = workbook.createCellStyle();
+            boderStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+            boderStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
+            oneCell.setCellStyle(boderStyle);
+            HSSFRow row = sheet.createRow(1);
+            // 在excel表中添加表头
+            for (int i = 0; i < headers.length; i++) {
+                HSSFCell cell = row.createCell(i);
+                HSSFRichTextString text = new HSSFRichTextString(headers[i]);
+                cell.setCellValue(text);
+            }
+            int rowNum = 2;
+            // 在表中存放查询到的数据放入对应的列
+            for (DynTemAndTIMEDTO teacher : timedtos) {
+                HSSFRow row1 = sheet.createRow(rowNum);
+                row1.createCell(0).setCellValue(teacher.getTiUserName());
+                row1.createCell(1).setCellValue(teacher.getTiUserDept());
+                row1.createCell(2).setCellValue(teacher.getTiUserPost());
+                if (teacher.getTiUserSex() == 0){
+                    row1.createCell(3).setCellValue("女");
+                }else {
+                    row1.createCell(3).setCellValue("男");
+                }
+
+
+                row1.createCell(4).setCellValue(teacher.getTiUserBirth());
+
+
+                rowNum++;
+            }
+            response.setContentType("application/octet-stream");
+            response.setHeader("Content-disposition",
+                    "attachment;filename=" + java.net.URLEncoder.encode(fileName, "UTF-8"));
+            response.flushBuffer();
+            workbook.write(response.getOutputStream());
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 

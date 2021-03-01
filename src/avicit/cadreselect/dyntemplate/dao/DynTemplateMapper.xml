@@ -571,4 +571,22 @@
 		 RE_RULE as "reRule"
 		from DYN_RECORD
 	</select>
+
+
+	<resultMap id="TemAndTime" type="avicit.cadreselect.dyntemplate.dto.DynTemAndTIMEDTO">
+		<result property="temTitle" column="TEM_TITLE" jdbcType="VARCHAR" />
+		<result property="creationDateBegin" column="TEM_START_DATE" jdbcType="DATE" />
+		<result property="creationDateEnd" column="TEM_END_DATE" jdbcType="DATE" />
+		<result property="tiUserName" column="TI_USER_NAME" jdbcType="VARCHAR" />
+		<result property="creationDateEnd" column="TEM_END_DATE" jdbcType="VARCHAR" />
+		<result property="tiUserDept" column="TI_USER_DEPT" jdbcType="VARCHAR" />
+		<result property="tiUserPost" column="TI_USER_POST" jdbcType="VARCHAR" />
+		<result property="tiUserSex" column="TI_USER_SEX" jdbcType="NUMBER" />
+		<result property="tiUserBirth" column="TI_USER_BIRTH" jdbcType="VARCHAR" />
+		<result property="dynVoteOpinion" column="DYN_VOTE_OPINION" jdbcType="VARCHAR" />
+
+	</resultMap>
+	<select id="queryTemAndTime" resultMap="TemAndTime">
+	select * from DYN_TEMPLATE dt,DYN_TEM_ITEM dti WHERE  dt.ID = dti.TEM_ID and dt.ID =#{id}
+	</select>
 </mapper>

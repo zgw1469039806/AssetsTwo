@@ -111,7 +111,7 @@ public class PortalExtendController {
 
 
         String myPersonalMenuList = searchMyPersonalMenuList(request,id);
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<String,String>();
         map.put("menuTree",menuTree);
         map.put("myPersonalMenu",myPersonalMenuList);
         String s = gson.toJson(map);

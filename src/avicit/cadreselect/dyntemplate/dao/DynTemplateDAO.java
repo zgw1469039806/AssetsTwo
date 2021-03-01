@@ -3,6 +3,7 @@ package avicit.cadreselect.dyntemplate.dao;
 import java.util.List;
 
 import avicit.cadreselect.dyntemplate.dto.DynRecord;
+import avicit.cadreselect.dyntemplate.dto.DynTemAndTIMEDTO;
 import avicit.cadreselect.dyntemplate.dto.DynTemplateBO;
 import avicit.platform6.core.mybatis.MyBatisRepository;
 import org.apache.ibatis.annotations.Param;
@@ -104,5 +105,7 @@ public interface DynTemplateDAO {
 	 * @return
 	 */
     List<DynRecord> toDeleteDynTemplate();
+
+	List<DynTemAndTIMEDTO> queryTemAndTime(@Param("id") String id);
 }
 
