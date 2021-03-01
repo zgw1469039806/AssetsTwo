@@ -27,7 +27,7 @@
     </style>
 </head>
 <body style="width: 100%;height: 100%">
-<iframe src="http://houtai.natapp1.cc/#/dynTemplanteDetails" style="width:100%; height:100%" frameborder="0" align="center"
+<iframe src="http://localhost:8081/#/dynTemplante" style="width:100%; height:100%" frameborder="0" align="center"
         allowfullscreen="true" allow="autoplay"></iframe>
 <%--<div id="tableToolbar" class="toolbar">--%>
 <%--	<div class="toolbar-left">--%>

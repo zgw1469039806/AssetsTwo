@@ -347,26 +347,8 @@ public class DynVoteService implements Serializable {
             if (collect.size() > 1) {
                 throw new BizException("仅可赞同一位候选人");
             }
-
-            if (collect.size() == 0) {
-                collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("-2")).collect(Collectors.toList());
-                if (collect.size() > 0) {
-                    collect = bo.getList().stream().filter(l -> l.getDynVoteOpinion().equals("-3")).collect(Collectors.toList());
-                    if (collect.size()>0){
-                        throw new BizException("只有弃权与反对属于无效票！");
-                    }else{
-                        if (bo.getRecommends().size() <= 0) {
-                            throw new BizException("全部反对时必须添加推荐人");
-                        }
-                    }
-                } else if (collect.size() == 0) {
-//                    if (bo.getRecommends().size() <= 0) {
-//                        throw new BizException("全部反对时必须添加推荐人");
-//                    }
-                }
-            }
         } else if (type == 2) {
-            if (bo.getRecommends().size()>0){
+            if (bo.getRecommends().size() > 0) {
                 throw new BizException("不可自定义推荐人");
             }
         }

@@ -69,8 +69,7 @@ public class DynTemplateController implements LoaderConstant {
 
     @Autowired
     DynTemItemService dynTemItemService;
-	@Autowired
-	DynTemItemService dynTemItemService;
+
 	@Autowired
 	DynVoteService dynVoteService;
 
