@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="avicit.cadreselect.dyntemplate.dao.DynTemplateDAO">
-<resultMap id="DynTemplateDTOMap" type="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
-	<result property="id" column="ID" jdbcType="VARCHAR" />
-	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
-	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
-	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
-	<result property="version" column="VERSION" jdbcType="DECIMAL" />
-	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
-	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
-	<result property="temTitle" column="TEM_TITLE" jdbcType="VARCHAR" />
-	<result property="temNotice" column="TEM_NOTICE" jdbcType="VARCHAR" />
-	<result property="temText" column="TEM_TEXT" jdbcType="VARCHAR" />
-	<result property="temShouldInvestNum" column="TEM_SHOULD_INVEST_NUM" jdbcType="DECIMAL" />
-	<result property="temActualInvestNum" column="TEM_ACTUAL_INVEST_NUM" jdbcType="DECIMAL" />
-	<result property="temLoginNum" column="TEM_LOGIN_NUM" jdbcType="DECIMAL" />
-	<result property="temSceneNum" column="TEM_SCENE_NUM" jdbcType="DECIMAL" />
-	<result property="temType" column="TEM_TYPE" jdbcType="DECIMAL" />
-	<result property="temState" column="TEM_STATE" jdbcType="DECIMAL" />
-	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
-</resultMap>
-<sql id="commonColums">
+    <resultMap id="DynTemplateDTOMap" type="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR"/>
+        <result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP"/>
+        <result property="version" column="VERSION" jdbcType="DECIMAL"/>
+        <result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR"/>
+        <result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR"/>
+        <result property="temTitle" column="TEM_TITLE" jdbcType="VARCHAR"/>
+        <result property="temNotice" column="TEM_NOTICE" jdbcType="VARCHAR"/>
+        <result property="temText" column="TEM_TEXT" jdbcType="VARCHAR"/>
+        <result property="temShouldInvestNum" column="TEM_SHOULD_INVEST_NUM" jdbcType="DECIMAL"/>
+        <result property="temActualInvestNum" column="TEM_ACTUAL_INVEST_NUM" jdbcType="DECIMAL"/>
+        <result property="temSceneNum" column="TEM_SCENE_NUM" jdbcType="DECIMAL"/>
+        <result property="temType" column="TEM_TYPE" jdbcType="DECIMAL"/>
+        <result property="temState" column="TEM_STATE" jdbcType="DECIMAL"/>
+        <result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="commonColums">
 	t1.ID,
 	t1.LAST_UPDATE_DATE,
 	t1.CREATED_BY,
@@ -33,486 +32,487 @@
 	t1.TEM_TEXT,
 	t1.TEM_SHOULD_INVEST_NUM,
 	t1.TEM_ACTUAL_INVEST_NUM,
-	t1.TEM_LOGIN_NUM,
 	t1.TEM_SCENE_NUM,
 	t1.TEM_TYPE,
 	t1.TEM_STATE,
+	t1.TEM_START_DATE,
+	t1.TEM_TYPE_NAME,
 	t1.ORG_IDENTITY</sql>
-<!-- 默认查询条件 -->
-<sql id="defaultWhereAnd">
-	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
-		and t1.org_identity = #{bean.orgIdentity}
-	</if>
-</sql>
-<sql id="commonWhereAnd">
-    <if test="bean.id != null and bean.id != ''">
-        and t1.ID like concat(concat('%',#{bean.id}),'%')
-    </if>
-	<if test="bean.lastUpdateDateBegin != null">
-		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
-	</if>
-	<if test="bean.lastUpdateDateEnd != null">
-		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
-	</if>
-    <if test="bean.createdBy != null and bean.createdBy != ''">
-        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
-    </if>
-	<if test="bean.creationDateBegin != null">
-		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
-	</if>
-	<if test="bean.creationDateEnd != null">
-		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
-	</if>
-    <if test="bean.version != null ">
-        and t1.VERSION = #{bean.version}
-    </if>
-    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
-        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
-    </if>
-    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
-        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
-    </if>
-    <if test="bean.temTitle != null and bean.temTitle != ''">
-        and t1.TEM_TITLE like concat(concat('%',#{bean.temTitle}),'%')
-    </if>
-    <if test="bean.temNotice != null and bean.temNotice != ''">
-        and t1.TEM_NOTICE like concat(concat('%',#{bean.temNotice}),'%')
-    </if>
-    <if test="bean.temText != null and bean.temText != ''">
-        and t1.TEM_TEXT like concat(concat('%',#{bean.temText}),'%')
-    </if>
-    <if test="bean.temShouldInvestNum != null ">
-        and t1.TEM_SHOULD_INVEST_NUM = #{bean.temShouldInvestNum}
-    </if>
-    <if test="bean.temActualInvestNum != null ">
-        and t1.TEM_ACTUAL_INVEST_NUM = #{bean.temActualInvestNum}
-    </if>
-    <if test="bean.temLoginNum != null ">
-        and t1.TEM_LOGIN_NUM = #{bean.temLoginNum}
-    </if>
-    <if test="bean.temSceneNum != null ">
-        and t1.TEM_SCENE_NUM = #{bean.temSceneNum}
-    </if>
-    <if test="bean.temType != null ">
-        and t1.TEM_TYPE = #{bean.temType}
-    </if>
-    <if test="bean.temState != null ">
-        and t1.TEM_STATE = #{bean.temState}
-    </if>
-</sql>
-<sql id="commonWhereOr">
-	<trim prefix="(" suffix=")" prefixOverrides="or">
-		<if test="bean.id != null and bean.id != ''">
-			or t1.ID like concat(concat('%',#{bean.id}),'%')
-		</if>
-		<if test="bean.lastUpdateDateBegin != null">
-			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
-		</if>
-		<if test="bean.lastUpdateDateEnd != null">
-			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
-		</if>
-		<if test="bean.createdBy != null and bean.createdBy != ''">
-			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
-		</if>
-		<if test="bean.creationDateBegin != null">
-			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
-		</if>
-		<if test="bean.creationDateEnd != null">
-			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
-		</if>
-		<if test="bean.version != null and bean.version != ''">
-			or t1.VERSION = #{bean.version}
-		</if>
-		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
-			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
-		</if>
-		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
-			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
-		</if>
-		<if test="bean.temTitle != null and bean.temTitle != ''">
-			or t1.TEM_TITLE like concat(concat('%',#{bean.temTitle}),'%')
-		</if>
-		<if test="bean.temNotice != null and bean.temNotice != ''">
-			or t1.TEM_NOTICE like concat(concat('%',#{bean.temNotice}),'%')
-		</if>
-		<if test="bean.temText != null and bean.temText != ''">
-			or t1.TEM_TEXT like concat(concat('%',#{bean.temText}),'%')
-		</if>
-		<if test="bean.temShouldInvestNum != null and bean.temShouldInvestNum != ''">
-			or t1.TEM_SHOULD_INVEST_NUM = #{bean.temShouldInvestNum}
-		</if>
-		<if test="bean.temActualInvestNum != null and bean.temActualInvestNum != ''">
-			or t1.TEM_ACTUAL_INVEST_NUM = #{bean.temActualInvestNum}
-		</if>
-		<if test="bean.temLoginNum != null and bean.temLoginNum != ''">
-			or t1.TEM_LOGIN_NUM = #{bean.temLoginNum}
-		</if>
-		<if test="bean.temSceneNum != null and bean.temSceneNum != ''">
-			or t1.TEM_SCENE_NUM = #{bean.temSceneNum}
-		</if>
-		<if test="bean.temType != null and bean.temType != ''">
-			or t1.TEM_TYPE = #{bean.temType}
-		</if>
-		<if test="bean.temState != null and bean.temState != ''">
-			or t1.TEM_STATE = #{bean.temState}
-		</if>
-	</trim>
-</sql>
-<sql id="commonOrderBy">
-	<choose>
-		<when test="pOrderBy != null and pOrderBy != ''">
-			order by ${pOrderBy}
-		</when>
-		<otherwise>
-			order by t1.creation_date desc
-		</otherwise>
-	</choose>
-</sql>
-<!-- 分页查询 DYN_TEMPLATE -->
-<select id="searchDynTemplateByPage" parameterType="java.util.Map" resultMap="DynTemplateDTOMap">
-	select
-	<include refid="commonColums"/>
-	from DYN_TEMPLATE t1   
-<where>
-	<if test="bean != null">
-		<choose>
-			<when test="keyWord != null and keyWord != '' ">
-				<include refid="commonWhereOr"/>
-			</when>
-			<otherwise>
-				<include refid="commonWhereAnd"/>
-			</otherwise>
-		</choose>
-		<include refid="defaultWhereAnd"/>
-	</if>
-</where>
-<include refid="commonOrderBy"></include>
-</select>
-<!-- 查询列表 DYN_TEMPLATE -->
-<select id="searchDynTemplate" parameterType="java.util.Map" resultMap="DynTemplateDTOMap">
-	select
-	<include refid="commonColums"/>
-    from DYN_TEMPLATE 	t1
-	<where>
-		<if test="bean != null">
-			<include refid="commonWhereAnd"/>
-			<include refid="defaultWhereAnd"/>
-		</if>
-	</where>
-</select>
-<!-- 主键查询对象 DYN_TEMPLATE -->
-<select id="findDynTemplateById" parameterType="java.lang.String" resultMap="DynTemplateDTOMap">
-	select
-	<include refid="commonColums"/>
-	from DYN_TEMPLATE t1
-	where t1.id = #{id}
-</select>
+    <!-- 默认查询条件 -->
+    <sql id="defaultWhereAnd">
+        <if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+            and t1.org_identity = #{bean.orgIdentity}
+        </if>
+    </sql>
+    <sql id="commonWhereAnd">
+        <if test="bean.id != null and bean.id != ''">
+            and t1.ID like concat(concat('%',#{bean.id}),'%')
+        </if>
+        <if test="bean.lastUpdateDateBegin != null">
+            and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+        </if>
+        <if test="bean.lastUpdateDateEnd != null">
+            and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+        </if>
+        <if test="bean.createdBy != null and bean.createdBy != ''">
+            and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+        </if>
+        <if test="bean.creationDateBegin != null">
+            and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+        </if>
+        <if test="bean.creationDateEnd != null">
+            and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+        </if>
+        <if test="bean.version != null ">
+            and t1.VERSION = #{bean.version}
+        </if>
+        <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+            and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+        </if>
+        <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+            and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+        </if>
+        <if test="bean.temTitle != null and bean.temTitle != ''">
+            and t1.TEM_TITLE like concat(concat('%',#{bean.temTitle}),'%')
+        </if>
+        <if test="bean.temNotice != null and bean.temNotice != ''">
+            and t1.TEM_NOTICE like concat(concat('%',#{bean.temNotice}),'%')
+        </if>
+        <if test="bean.temText != null and bean.temText != ''">
+            and t1.TEM_TEXT like concat(concat('%',#{bean.temText}),'%')
+        </if>
+        <if test="bean.temShouldInvestNum != null ">
+            and t1.TEM_SHOULD_INVEST_NUM = #{bean.temShouldInvestNum}
+        </if>
+        <if test="bean.temActualInvestNum != null ">
+            and t1.TEM_ACTUAL_INVEST_NUM = #{bean.temActualInvestNum}
+        </if>
+        <if test="bean.temSceneNum != null ">
+            and t1.TEM_SCENE_NUM = #{bean.temSceneNum}
+        </if>
+        <if test="bean.temType != null ">
+            and t1.TEM_TYPE = #{bean.temType}
+        </if>
+        <if test="bean.temState != null ">
+            and t1.TEM_STATE = #{bean.temState}
+        </if>
+    </sql>
+    <sql id="commonWhereOr">
+        <trim prefix="(" suffix=")" prefixOverrides="or">
+            <if test="bean.id != null and bean.id != ''">
+                or t1.ID like concat(concat('%',#{bean.id}),'%')
+            </if>
+            <if test="bean.lastUpdateDateBegin != null">
+                or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+            </if>
+            <if test="bean.lastUpdateDateEnd != null">
+                or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+            </if>
+            <if test="bean.createdBy != null and bean.createdBy != ''">
+                or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+            </if>
+            <if test="bean.creationDateBegin != null">
+                or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+            </if>
+            <if test="bean.creationDateEnd != null">
+                or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+            </if>
+            <if test="bean.version != null and bean.version != ''">
+                or t1.VERSION = #{bean.version}
+            </if>
+            <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+                or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+            </if>
+            <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+                or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+            </if>
+            <if test="bean.temTitle != null and bean.temTitle != ''">
+                or t1.TEM_TITLE like concat(concat('%',#{bean.temTitle}),'%')
+            </if>
+            <if test="bean.temNotice != null and bean.temNotice != ''">
+                or t1.TEM_NOTICE like concat(concat('%',#{bean.temNotice}),'%')
+            </if>
+            <if test="bean.temText != null and bean.temText != ''">
+                or t1.TEM_TEXT like concat(concat('%',#{bean.temText}),'%')
+            </if>
+            <if test="bean.temShouldInvestNum != null and bean.temShouldInvestNum != ''">
+                or t1.TEM_SHOULD_INVEST_NUM = #{bean.temShouldInvestNum}
+            </if>
+            <if test="bean.temActualInvestNum != null and bean.temActualInvestNum != ''">
+                or t1.TEM_ACTUAL_INVEST_NUM = #{bean.temActualInvestNum}
+            </if>
+            <if test="bean.temSceneNum != null and bean.temSceneNum != ''">
+                or t1.TEM_SCENE_NUM = #{bean.temSceneNum}
+            </if>
+            <if test="bean.temType != null and bean.temType != ''">
+                or t1.TEM_TYPE = #{bean.temType}
+            </if>
+            <if test="bean.temState != null and bean.temState != ''">
+                or t1.TEM_STATE = #{bean.temState}
+            </if>
+        </trim>
+    </sql>
+    <sql id="commonOrderBy">
+        <choose>
+            <when test="pOrderBy != null and pOrderBy != ''">
+                order by ${pOrderBy}
+            </when>
+            <otherwise>
+                order by t1.creation_date desc
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- 分页查询 DYN_TEMPLATE -->
+    <select id="searchDynTemplateByPage" parameterType="java.util.Map" resultMap="DynTemplateDTOMap">
+        select
+        <include refid="commonColums"/>
+        from DYN_TEMPLATE t1
+        <where>
+            <if test="bean != null">
+                <choose>
+                    <when test="keyWord != null and keyWord != '' ">
+                        <include refid="commonWhereOr"/>
+                    </when>
+                    <otherwise>
+                        <include refid="commonWhereAnd"/>
+                    </otherwise>
+                </choose>
+                <include refid="defaultWhereAnd"/>
+            </if>
+        </where>
+        <include refid="commonOrderBy"></include>
+    </select>
+    <!-- 查询列表 DYN_TEMPLATE -->
+    <select id="searchDynTemplate" parameterType="java.util.Map" resultMap="DynTemplateDTOMap">
+        select
+        <include refid="commonColums"/>
+        from DYN_TEMPLATE t1
+        <where>
+            <if test="bean != null">
+                <include refid="commonWhereAnd"/>
+                <include refid="defaultWhereAnd"/>
+            </if>
+        </where>
+    </select>
+    <!-- 主键查询对象 DYN_TEMPLATE -->
+    <select id="findDynTemplateById" parameterType="java.lang.String" resultMap="DynTemplateDTOMap">
+        select
+        <include refid="commonColums"/>
+        from DYN_TEMPLATE t1
+        where t1.id = #{id}
+    </select>
 
 
-	<insert id="saveDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateBO">
-		insert into DYN_TEMPLATE
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				ID,
-			</if>
-			<if test="lastUpdateDate != null">
-				LAST_UPDATE_DATE,
-			</if>
-				CREATED_BY,
-			<if test="creationDate != null">
-				CREATION_DATE,
-			</if>
-				VERSION,
-				LAST_UPDATE_IP,
-				LAST_UPDATED_BY,
-			<if test="temTitle != null">
-				TEM_TITLE,
-			</if>
-			<if test="temNotice != null">
-				TEM_NOTICE,
-			</if>
-			<if test="temText != null">
-				TEM_TEXT,
-			</if>
-			<if test="temShouldInvestNum != null">
-				TEM_SHOULD_INVEST_NUM,
-			</if>
-			<if test="temActualInvestNum != null">
-				TEM_ACTUAL_INVEST_NUM,
-			</if>
-			<if test="temLoginNum != null">
-				TEM_LOGIN_NUM,
-			</if>
-			<if test="temSceneNum != null">
-				TEM_SCENE_NUM,
-			</if>
-			<if test="temType != null">
-				TEM_TYPE,
-			</if>
-			<if test="temState != null">
-				TEM_STATE,
-			</if>
-			<if test="orgIdentity != null">
-				ORG_IDENTITY,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType = VARCHAR},
-			</if>
-			<if test="lastUpdateDate != null">
-				#{lastUpdateDate,jdbcType = TIMESTAMP},
-			</if>
-			1,
-			<if test="creationDate != null">
-				#{creationDate,jdbcType = TIMESTAMP},
-			</if>
-			0,
-				123,
-				1,
-			<if test="temTitle != null">
-				#{temTitle,jdbcType = VARCHAR},
-			</if>
-			<if test="temNotice != null">
-				#{temNotice,jdbcType = VARCHAR},
-			</if>
-			<if test="temText != null">
-				#{temText,jdbcType = VARCHAR},
-			</if>
-			<if test="temShouldInvestNum != null">
-				#{temShouldInvestNum,jdbcType = DECIMAL},
-			</if>
-			<if test="temActualInvestNum != null">
-				#{temActualInvestNum,jdbcType = DECIMAL},
-			</if>
-			<if test="temLoginNum != null">
-				#{temLoginNum,jdbcType = DECIMAL},
-			</if>
-			<if test="temSceneNum != null">
-				#{temSceneNum,jdbcType = DECIMAL},
-			</if>
-			<if test="temType != null">
-				#{temType,jdbcType = DECIMAL},
-			</if>
-			<if test="temState != null">
-				#{temState,jdbcType = DECIMAL},
-			</if>
-			<if test="orgIdentity != null">
-				#{orgIdentity,jdbcType = VARCHAR},
-			</if>
-		</trim>
-	</insert>
+    <insert id="saveDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateBO">
+        insert into DYN_TEMPLATE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="lastUpdateDate != null">
+                LAST_UPDATE_DATE,
+            </if>
+            CREATED_BY,
+            <if test="creationDate != null">
+                CREATION_DATE,
+            </if>
+            VERSION,
+            LAST_UPDATE_IP,
+            LAST_UPDATED_BY,
+            <if test="temTitle != null">
+                TEM_TITLE,
+            </if>
+            <if test="temNotice != null">
+                TEM_NOTICE,
+            </if>
+            <if test="temText != null">
+                TEM_TEXT,
+            </if>
+            <if test="temShouldInvestNum != null">
+                TEM_SHOULD_INVEST_NUM,
+            </if>
+            <if test="temActualInvestNum != null">
+                TEM_ACTUAL_INVEST_NUM,
+            </if>
+                TEM_SCENE_NUM,
+            <if test="temType != null">
+                TEM_TYPE,
+            </if>
+            <if test="temState != null">
+                TEM_STATE,
+            </if>
+            <if test="orgIdentity != null">
+                ORG_IDENTITY,
+            </if>
+            <if test="temTypeName != null">
+                TEM_TYPE_NAME,
+            </if>
+            <if test="temStartDate != null">
+                TEM_START_DATE,
+            </if>
+            <if test="temEndDate != null">
+                TEM_END_DATE,
+            </if>
+            <if test="temVoteNum != null">
+                temVoteNum,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType = VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate,jdbcType = TIMESTAMP},
+            </if>
+            1,
+            <if test="creationDate != null">
+                #{creationDate,jdbcType = TIMESTAMP},
+            </if>
+            0,
+            123,
+            1,
+            <if test="temTitle != null">
+                #{temTitle,jdbcType = VARCHAR},
+            </if>
+            <if test="temNotice != null">
+                #{temNotice,jdbcType = VARCHAR},
+            </if>
+            <if test="temText != null">
+                #{temText,jdbcType = VARCHAR},
+            </if>
+            <if test="temShouldInvestNum != null">
+                #{temShouldInvestNum,jdbcType = DECIMAL},
+            </if>
+            <if test="temActualInvestNum != null">
+                #{temActualInvestNum,jdbcType = DECIMAL},
+            </if>
+                0,
+            <if test="temType != null">
+                #{temType,jdbcType = DECIMAL},
+            </if>
+            <if test="temState != null">
+                #{temState,jdbcType = DECIMAL},
+            </if>
+            <if test="orgIdentity != null">
+                #{orgIdentity,jdbcType = VARCHAR},
+            </if>
+            <if test="temTypeName != null">
+                #{temTypeName,jdbcType = VARCHAR},
+            </if>
+            <if test="temStartDate != null">
+                #{temStartDate,jdbcType = VARCHAR},
+            </if>
+            <if test="temEndDate != null">
+                #{temEndDate,jdbcType = VARCHAR},
+            </if>
+            <if test="temVoteNum != null">
+                #{temVoteNum,jdbcType = VARCHAR},
+            </if>
+        </trim>
+    </insert>
     <!-- 新增对象 DYN_TEMPLATE -->
-<insert id="insertDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
-	insert into DYN_TEMPLATE
-	<trim prefix="(" suffix=")" suffixOverrides=",">
-		<if test="id != null">
-			ID,
-		</if>
-		<if test="lastUpdateDate != null">
-			LAST_UPDATE_DATE,
-		</if>
-		<if test="createdBy != null">
-			CREATED_BY,
-		</if>
-		<if test="creationDate != null">
-			CREATION_DATE,
-		</if>
-		<if test="version != null">
-			VERSION,
-		</if>
-		<if test="lastUpdateIp != null">
-			LAST_UPDATE_IP,
-		</if>
-		<if test="lastUpdatedBy != null">
-			LAST_UPDATED_BY,
-		</if>
-		<if test="temTitle != null">
-			TEM_TITLE,
-		</if>
-		<if test="temNotice != null">
-			TEM_NOTICE,
-		</if>
-		<if test="temText != null">
-			TEM_TEXT,
-		</if>
-		<if test="temShouldInvestNum != null">
-			TEM_SHOULD_INVEST_NUM,
-		</if>
-		<if test="temActualInvestNum != null">
-			TEM_ACTUAL_INVEST_NUM,
-		</if>
-		<if test="temLoginNum != null">
-			TEM_LOGIN_NUM,
-		</if>
-		<if test="temSceneNum != null">
-			TEM_SCENE_NUM,
-		</if>
-		<if test="temType != null">
-			TEM_TYPE,
-		</if>
-		<if test="temState != null">
-			TEM_STATE,
-		</if>
-		<if test="orgIdentity != null">
-			ORG_IDENTITY,
-		</if>
-	</trim>
-	<trim prefix="values (" suffix=")" suffixOverrides=",">
-		<if test="id != null">
-			#{id,jdbcType = VARCHAR},
-		</if>
-		<if test="lastUpdateDate != null">
-			#{lastUpdateDate,jdbcType = TIMESTAMP},
-		</if>
-		<if test="createdBy != null">
-			#{createdBy,jdbcType = VARCHAR},
-		</if>
-		<if test="creationDate != null">
-			#{creationDate,jdbcType = TIMESTAMP},
-		</if>
-		<if test="version != null">
-			#{version,jdbcType = DECIMAL},
-		</if>
-		<if test="lastUpdateIp != null">
-			#{lastUpdateIp,jdbcType = VARCHAR},
-		</if>
-		<if test="lastUpdatedBy != null">
-			#{lastUpdatedBy,jdbcType = VARCHAR},
-		</if>
-		<if test="temTitle != null">
-			#{temTitle,jdbcType = VARCHAR},
-		</if>
-		<if test="temNotice != null">
-			#{temNotice,jdbcType = VARCHAR},
-		</if>
-		<if test="temText != null">
-			#{temText,jdbcType = VARCHAR},
-		</if>
-		<if test="temShouldInvestNum != null">
-			#{temShouldInvestNum,jdbcType = DECIMAL},
-		</if>
-		<if test="temActualInvestNum != null">
-			#{temActualInvestNum,jdbcType = DECIMAL},
-		</if>
-		<if test="temLoginNum != null">
-			#{temLoginNum,jdbcType = DECIMAL},
-		</if>
-		<if test="temSceneNum != null">
-			#{temSceneNum,jdbcType = DECIMAL},
-		</if>
-		<if test="temType != null">
-			#{temType,jdbcType = DECIMAL},
-		</if>
-		<if test="temState != null">
-			#{temState,jdbcType = DECIMAL},
-		</if>
-		<if test="orgIdentity != null">
-			#{orgIdentity,jdbcType = VARCHAR},
-		</if>
-	</trim>
-</insert>
-<!-- 批量新增对象 DYN_TEMPLATE -->
-<insert id="insertDynTemplateList" parameterType="java.util.List">
-	insert into DYN_TEMPLATE(
-	ID ,
-	LAST_UPDATE_DATE ,
-	CREATED_BY ,
-	CREATION_DATE ,
-	VERSION ,
-	LAST_UPDATE_IP ,
-	LAST_UPDATED_BY ,
-	TEM_TITLE ,
-	TEM_NOTICE ,
-	TEM_TEXT ,
-	TEM_SHOULD_INVEST_NUM ,
-	TEM_ACTUAL_INVEST_NUM ,
-	TEM_LOGIN_NUM ,
-	TEM_SCENE_NUM ,
-	TEM_TYPE ,
-	TEM_STATE ,
-	ORG_IDENTITY )
-<foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
-	select
-	#{item.id,jdbcType = VARCHAR} ,
-	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
-	#{item.createdBy,jdbcType = VARCHAR} ,
-	#{item.creationDate,jdbcType = TIMESTAMP} ,
-	#{item.version,jdbcType = DECIMAL} ,
-	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
-	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
-	#{item.temTitle,jdbcType = VARCHAR} ,
-	#{item.temNotice,jdbcType = VARCHAR} ,
-	#{item.temText,jdbcType = VARCHAR} ,
-	#{item.temShouldInvestNum,jdbcType = DECIMAL} ,
-	#{item.temActualInvestNum,jdbcType = DECIMAL} ,
-	#{item.temLoginNum,jdbcType = DECIMAL} ,
-	#{item.temSceneNum,jdbcType = DECIMAL} ,
-	#{item.temType,jdbcType = DECIMAL} ,
-	#{item.temState,jdbcType = DECIMAL} ,
-	#{item.orgIdentity,jdbcType = VARCHAR} 	from dual
-</foreach>
-</insert>
-<!-- 更新对象 DYN_TEMPLATE -->
-<update id="updateDynTemplateSensitive" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
-	update DYN_TEMPLATE
-	<set>
-		<if test="id != null">
-			ID = #{id,jdbcType = VARCHAR} ,
-		</if>
-		<if test="lastUpdateDate != null">
-			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="createdBy != null">
-			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
-		</if>
-		<if test="creationDate != null">
-			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="version != null">
-			VERSION = version+1 ,
-		</if>
-		<if test="lastUpdateIp != null">
-			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
-		</if>
-		<if test="lastUpdatedBy != null">
-			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
-		</if>
-		<if test="temTitle != null">
-			TEM_TITLE = #{temTitle,jdbcType = VARCHAR} ,
-		</if>
-		<if test="temNotice != null">
-			TEM_NOTICE = #{temNotice,jdbcType = VARCHAR} ,
-		</if>
-		<if test="temText != null">
-			TEM_TEXT = #{temText,jdbcType = VARCHAR} ,
-		</if>
-		<if test="temShouldInvestNum != null">
-			TEM_SHOULD_INVEST_NUM = #{temShouldInvestNum,jdbcType = DECIMAL} ,
-		</if>
-		<if test="temActualInvestNum != null">
-			TEM_ACTUAL_INVEST_NUM = #{temActualInvestNum,jdbcType = DECIMAL} ,
-		</if>
-		<if test="temLoginNum != null">
-			TEM_LOGIN_NUM = #{temLoginNum,jdbcType = DECIMAL} ,
-		</if>
-		<if test="temSceneNum != null">
-			TEM_SCENE_NUM = #{temSceneNum,jdbcType = DECIMAL} ,
-		</if>
-		<if test="temType != null">
-			TEM_TYPE = #{temType,jdbcType = DECIMAL} ,
-		</if>
-		<if test="temState != null">
-			TEM_STATE = #{temState,jdbcType = DECIMAL} ,
-		</if>
-		<if test="orgIdentity != null">
-			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 		</if>
-	</set>
-	where id = #{id} 
-	and version = #{version}
-</update>
-<!-- 更新对象 DYN_TEMPLATE -->
-<update id="updateDynTemplateAll" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
+    <insert id="insertDynTemplate" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
+        insert into DYN_TEMPLATE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="lastUpdateDate != null">
+                LAST_UPDATE_DATE,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="creationDate != null">
+                CREATION_DATE,
+            </if>
+            <if test="version != null">
+                VERSION,
+            </if>
+            <if test="lastUpdateIp != null">
+                LAST_UPDATE_IP,
+            </if>
+            <if test="lastUpdatedBy != null">
+                LAST_UPDATED_BY,
+            </if>
+            <if test="temTitle != null">
+                TEM_TITLE,
+            </if>
+            <if test="temNotice != null">
+                TEM_NOTICE,
+            </if>
+            <if test="temText != null">
+                TEM_TEXT,
+            </if>
+            <if test="temShouldInvestNum != null">
+                TEM_SHOULD_INVEST_NUM,
+            </if>
+            <if test="temActualInvestNum != null">
+                TEM_ACTUAL_INVEST_NUM,
+            </if>
+                TEM_SCENE_NUM,
+            <if test="temType != null">
+                TEM_TYPE,
+            </if>
+            <if test="temState != null">
+                TEM_STATE,
+            </if>
+            <if test="temVoteNum != null">
+                TEM_VOTE_NUM,
+            </if>
+            <if test="temVoteNum != null">
+                TEM_VOTE_NUM,
+            </if>
+            <if test="orgIdentity != null">
+                ORG_IDENTITY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType = VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate,jdbcType = TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType = VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                #{creationDate,jdbcType = TIMESTAMP},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType = DECIMAL},
+            </if>
+            <if test="lastUpdateIp != null">
+                #{lastUpdateIp,jdbcType = VARCHAR},
+            </if>
+            <if test="lastUpdatedBy != null">
+                #{lastUpdatedBy,jdbcType = VARCHAR},
+            </if>
+            <if test="temTitle != null">
+                #{temTitle,jdbcType = VARCHAR},
+            </if>
+            <if test="temNotice != null">
+                #{temNotice,jdbcType = VARCHAR},
+            </if>
+            <if test="temText != null">
+                #{temText,jdbcType = VARCHAR},
+            </if>
+            <if test="temShouldInvestNum != null">
+                #{temShouldInvestNum,jdbcType = DECIMAL},
+            </if>
+            <if test="temActualInvestNum != null">
+                #{temActualInvestNum,jdbcType = DECIMAL},
+            </if>
+                0,
+            <if test="temType != null">
+                #{temType,jdbcType = DECIMAL},
+            </if>
+            <if test="temState != null">
+                #{temState,jdbcType = DECIMAL},
+            </if>
+            <if test="orgIdentity != null">
+                #{orgIdentity,jdbcType = VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!-- 批量新增对象 DYN_TEMPLATE -->
+    <insert id="insertDynTemplateList" parameterType="java.util.List">
+        insert into DYN_TEMPLATE(
+        ID ,
+        LAST_UPDATE_DATE ,
+        CREATED_BY ,
+        CREATION_DATE ,
+        VERSION ,
+        LAST_UPDATE_IP ,
+        LAST_UPDATED_BY ,
+        TEM_TITLE ,
+        TEM_NOTICE ,
+        TEM_TEXT ,
+        TEM_SHOULD_INVEST_NUM ,
+        TEM_ACTUAL_INVEST_NUM ,
+        TEM_SCENE_NUM ,
+        TEM_TYPE ,
+        TEM_STATE ,
+        ORG_IDENTITY )
+        <foreach collection="dtoList" item="item" index="index" open="(" separator="union all" close=")">
+            select
+            #{item.id,jdbcType = VARCHAR} ,
+            #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+            #{item.createdBy,jdbcType = VARCHAR} ,
+            #{item.creationDate,jdbcType = TIMESTAMP} ,
+            #{item.version,jdbcType = DECIMAL} ,
+            #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+            #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+            #{item.temTitle,jdbcType = VARCHAR} ,
+            #{item.temNotice,jdbcType = VARCHAR} ,
+            #{item.temText,jdbcType = VARCHAR} ,
+            #{item.temShouldInvestNum,jdbcType = DECIMAL} ,
+            #{item.temActualInvestNum,jdbcType = DECIMAL} ,
+            #{item.temSceneNum,jdbcType = DECIMAL} ,
+            #{item.temType,jdbcType = DECIMAL} ,
+            #{item.temState,jdbcType = DECIMAL} ,
+            #{item.orgIdentity,jdbcType = VARCHAR} from dual
+        </foreach>
+    </insert>
+    <!-- 更新对象 DYN_TEMPLATE -->
+    <update id="updateDynTemplateSensitive" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
+        update DYN_TEMPLATE
+        <set>
+            <if test="id != null">
+                ID = #{id,jdbcType = VARCHAR} ,
+            </if>
+            <if test="lastUpdateDate != null">
+                LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+            </if>
+            <if test="creationDate != null">
+                CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="version != null">
+                VERSION = version+1 ,
+            </if>
+            <if test="lastUpdateIp != null">
+                LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+            </if>
+            <if test="lastUpdatedBy != null">
+                LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+            </if>
+            <if test="temTitle != null">
+                TEM_TITLE = #{temTitle,jdbcType = VARCHAR} ,
+            </if>
+            <if test="temNotice != null">
+                TEM_NOTICE = #{temNotice,jdbcType = VARCHAR} ,
+            </if>
+            <if test="temText != null">
+                TEM_TEXT = #{temText,jdbcType = VARCHAR} ,
+            </if>
+            <if test="temShouldInvestNum != null">
+                TEM_SHOULD_INVEST_NUM = #{temShouldInvestNum,jdbcType = DECIMAL} ,
+            </if>
+            <if test="temActualInvestNum != null">
+                TEM_ACTUAL_INVEST_NUM = #{temActualInvestNum,jdbcType = DECIMAL} ,
+            </if>
+            <if test="temSceneNum != null">
+                TEM_SCENE_NUM = #{temSceneNum,jdbcType = DECIMAL} ,
+            </if>
+            <if test="temType != null">
+                TEM_TYPE = #{temType,jdbcType = DECIMAL} ,
+            </if>
+            <if test="temState != null">
+                TEM_STATE = #{temState,jdbcType = DECIMAL} ,
+            </if>
+            <if test="orgIdentity != null">
+                ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR}
+            </if>
+        </set>
+        where id = #{id}
+        and version = #{version}
+    </update>
+    <!-- 更新对象 DYN_TEMPLATE -->
+    <update id="updateDynTemplateAll" parameterType="avicit.cadreselect.dyntemplate.dto.DynTemplateDTO">
 	update DYN_TEMPLATE
 	set
 	ID = #{id,jdbcType = VARCHAR} ,
@@ -527,44 +527,42 @@
 	TEM_TEXT = #{temText,jdbcType = VARCHAR} ,
 	TEM_SHOULD_INVEST_NUM = #{temShouldInvestNum,jdbcType = DECIMAL} ,
 	TEM_ACTUAL_INVEST_NUM = #{temActualInvestNum,jdbcType = DECIMAL} ,
-	TEM_LOGIN_NUM = #{temLoginNum,jdbcType = DECIMAL} ,
 	TEM_SCENE_NUM = #{temSceneNum,jdbcType = DECIMAL} ,
 	TEM_TYPE = #{temType,jdbcType = DECIMAL} ,
 	TEM_STATE = #{temState,jdbcType = DECIMAL} ,
 	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} 	where id = #{id}
 	and version = #{version}
 </update>
-<!-- 批量更新对象   DYN_TEMPLATE -->
-<update id="updateDynTemplateList" parameterType="java.util.List">
-	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
-		update DYN_TEMPLATE
-		set
-		ID = #{item.id,jdbcType = VARCHAR} ,
-		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
-		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
-		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
-		VERSION = version+1  ,
-		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
-		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
-		TEM_TITLE = #{item.temTitle,jdbcType = VARCHAR} ,
-		TEM_NOTICE = #{item.temNotice,jdbcType = VARCHAR} ,
-		TEM_TEXT = #{item.temText,jdbcType = VARCHAR} ,
-		TEM_SHOULD_INVEST_NUM = #{item.temShouldInvestNum,jdbcType = DECIMAL} ,
-		TEM_ACTUAL_INVEST_NUM = #{item.temActualInvestNum,jdbcType = DECIMAL} ,
-		TEM_LOGIN_NUM = #{item.temLoginNum,jdbcType = DECIMAL} ,
-		TEM_SCENE_NUM = #{item.temSceneNum,jdbcType = DECIMAL} ,
-		TEM_TYPE = #{item.temType,jdbcType = DECIMAL} ,
-		TEM_STATE = #{item.temState,jdbcType = DECIMAL} ,
-		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} 		where id = #{item.id}
-		and version = #{version}
-	</foreach>
-</update>
-<!-- 主键删除 DYN_TEMPLATE -->
-<delete id="deleteDynTemplateById" parameterType="java.lang.String">
+    <!-- 批量更新对象   DYN_TEMPLATE -->
+    <update id="updateDynTemplateList" parameterType="java.util.List">
+        <foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+            update DYN_TEMPLATE
+            set
+            ID = #{item.id,jdbcType = VARCHAR} ,
+            LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+            CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+            CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+            VERSION = version+1 ,
+            LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+            LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+            TEM_TITLE = #{item.temTitle,jdbcType = VARCHAR} ,
+            TEM_NOTICE = #{item.temNotice,jdbcType = VARCHAR} ,
+            TEM_TEXT = #{item.temText,jdbcType = VARCHAR} ,
+            TEM_SHOULD_INVEST_NUM = #{item.temShouldInvestNum,jdbcType = DECIMAL} ,
+            TEM_ACTUAL_INVEST_NUM = #{item.temActualInvestNum,jdbcType = DECIMAL} ,
+            TEM_SCENE_NUM = #{item.temSceneNum,jdbcType = DECIMAL} ,
+            TEM_TYPE = #{item.temType,jdbcType = DECIMAL} ,
+            TEM_STATE = #{item.temState,jdbcType = DECIMAL} ,
+            ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} where id = #{item.id}
+            and version = #{version}
+        </foreach>
+    </update>
+    <!-- 主键删除 DYN_TEMPLATE -->
+    <delete id="deleteDynTemplateById" parameterType="java.lang.String">
 	delete from DYN_TEMPLATE  where id = #{id}
 </delete>
 
-	<select id="toDeleteDynTemplate" resultType="avicit.cadreselect.dyntemplate.dto.DynRecord">
+    <select id="toDeleteDynTemplate" resultType="avicit.cadreselect.dyntemplate.dto.DynRecord">
 		select
 		 RE_ID as "reId",
 		 RE_NAME as "reName",

@@ -1,5 +1,6 @@
 package avicit.cadreselect.dyntemplate.controller;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -204,7 +205,7 @@ public class DynTemplateController implements LoaderConstant {
                         item.setTemId(dynTemplateBO.getId());
                         item.setId(ComUtil.getId());
                         dynTemItemService.insertDynTemItem(item);
-                        for (int i = 0; i < Integer.parseInt(dynTemplateBO.getTemShouldInvestNum().toString()); i++) {
+                        for (int i = 0; i < dynTemplateBO.getTemVoteNum(); i++) {
                             if (map.get(i + "") == null || map.get(i + "").equals("")) {
                                 StringBuilder random = new StringBuilder((1 + (int) (Math.random() * 1000)) + "");
                                 int c = 4 - random.length();
@@ -280,7 +281,6 @@ public class DynTemplateController implements LoaderConstant {
     /**
      * 保存数据
      *
-     * @param id      主键id
      * @param request 请求
      * @return ModelAndView
      */
