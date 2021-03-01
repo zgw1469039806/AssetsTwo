@@ -535,6 +535,15 @@
         <result property="temTitle" column="ITEM_TITLE"/>
         <result property="temId" column="TEM_ID"/>
         <result property="temType" column="TEM_TYPE"/>
+        <result property="temNotice" column="TEM_NOTICE"/>
+        <result property="temVoteNum" column="TEM_VOTE_NUM"/>
+        <result property="temState" column="TEM_STATE"/>
+        <result property="temTypeName" column="TEM_TYPE_NAME"/>
+        <result property="temStartDate" column="TEM_START_DATE"/>
+        <result property="temEndDate" column="TEM_END_DATE"/>
+        <result property="temEndDate" column="TEM_END_DATE"/>
+        <result property="temScentNum" column="TEM_SCENE_NUM"/>
+        <result property="temActualInvestNum" column="TEM_ACTUAL_INVEST_NUM"/>
         <result property="temShouldInvestNum" column="TEM_SHOULD_INVEST_NUM"/>
         <collection property="list" ofType="avicit.cadreselect.dyntemplate.dto.DynTemItemDTO" autoMapping="true">
             <result property="tiUserName" column="TI_USER_NAME"/>
@@ -567,6 +576,13 @@
         tem.TEM_NOTICE,
         tem.TEM_SHOULD_INVEST_NUM,
         tem.TEM_TYPE,
+        tem.TEM_TEXT,
+        tem.TEM_STATE,
+        tem.TEM_TYPE_NAME,
+        tem.TEM_START_DATE,
+        tem.TEM_END_DATE,
+        tem.TEM_SCENE_NUM,
+        tem.TEM_ACTUAL_INVEST_NUM,
         tem.ID as "TEM_ID"
 		from
 		DYN_VOTE vote,

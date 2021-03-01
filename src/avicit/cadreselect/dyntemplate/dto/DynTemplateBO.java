@@ -1,14 +1,13 @@
 package avicit.cadreselect.dyntemplate.dto;
 
 
-import avicit.cadreselect.dynperson.dao.DynPersonDAO;
-import avicit.cadreselect.dynperson.dto.DynPersonDTO;
 import avicit.cadreselect.dyntemitem.dto.DynTemItemDTO;
 import avicit.platform6.core.annotation.log.FieldRemark;
 import avicit.platform6.core.annotation.log.LogField;
 
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,21 +64,18 @@ public class DynTemplateBO {
      * 应投数
      */
     @FieldRemark(column="TEM_SHOULD_INVEST_NUM", field="temShouldInvestNum", name="应投数")
-    private java.math.BigDecimal temShouldInvestNum;
+    private Integer temShouldInvestNum;
 
     /**
      * 实投数
      */
     @FieldRemark(column="TEM_ACTUAL_INVEST_NUM", field="temActualInvestNum", name="实投数")
-    private java.math.BigDecimal temActualInvestNum;
+    private Integer temActualInvestNum;
+
+    @FieldRemark(column="TEM_VOTE_NUM", field="temVoteNum", name="出票数")
+    private Integer temVoteNum;
 
     private String lastUpdateIp;
-
-    /**
-     * 登陆数
-     */
-    @FieldRemark(column="TEM_LOGIN_NUM", field="temLoginNum", name="登陆数")
-    private java.math.BigDecimal temLoginNum;
 
     /**
      * 实到数
@@ -92,6 +88,7 @@ public class DynTemplateBO {
      */
     @FieldRemark(column="TEM_TYPE", field="temType", name="投票类型",lookupType = "template_status",dataType="lookup")
     private java.lang.Integer temType;
+
     private String temTypeName;
 
     /**
@@ -108,6 +105,10 @@ public class DynTemplateBO {
     @LogField
     @FieldRemark(column="ORG_IDENTITY", field="orgIdentity", name="组织ID")
     private java.lang.String orgIdentity;
+
+    private java.util.Date temStartDate;//开始时间
+
+    private java.util.Date temEndDate;//结束时间
 
     private List<DynTemItemDTO> dynTemItemDTOArrayList = new ArrayList<>();
 
@@ -162,28 +163,20 @@ public class DynTemplateBO {
         this.temText = temText;
     }
 
-    public BigDecimal getTemShouldInvestNum() {
+    public Integer getTemShouldInvestNum() {
         return temShouldInvestNum;
     }
 
-    public void setTemShouldInvestNum(BigDecimal temShouldInvestNum) {
+    public void setTemShouldInvestNum(Integer temShouldInvestNum) {
         this.temShouldInvestNum = temShouldInvestNum;
     }
 
-    public BigDecimal getTemActualInvestNum() {
+    public Integer getTemActualInvestNum() {
         return temActualInvestNum;
     }
 
-    public void setTemActualInvestNum(BigDecimal temActualInvestNum) {
+    public void setTemActualInvestNum(Integer temActualInvestNum) {
         this.temActualInvestNum = temActualInvestNum;
-    }
-
-    public BigDecimal getTemLoginNum() {
-        return temLoginNum;
-    }
-
-    public void setTemLoginNum(BigDecimal temLoginNum) {
-        this.temLoginNum = temLoginNum;
     }
 
     public BigDecimal getTemSceneNum() {
@@ -266,5 +259,28 @@ public class DynTemplateBO {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
-    //endregion
+    public Integer getTemVoteNum() {
+        return temVoteNum;
+    }
+
+    public void setTemVoteNum(Integer temVoteNum) {
+        this.temVoteNum = temVoteNum;
+    }
+
+    public Date getTemStartDate() {
+        return temStartDate;
+    }
+
+    public void setTemStartDate(Date temStartDate) {
+        this.temStartDate = temStartDate;
+    }
+
+    public Date getTemEndDate() {
+        return temEndDate;
+    }
+
+    public void setTemEndDate(Date temEndDate) {
+        this.temEndDate = temEndDate;
+    }
+//endregion
 }

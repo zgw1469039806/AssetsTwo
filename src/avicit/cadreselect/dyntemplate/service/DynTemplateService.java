@@ -71,7 +71,6 @@ public class DynTemplateService implements Serializable {
 
 	/**
 	* 查询（不分页）
-	* @param queryReqBean 条件
 	* @return List<DynTemplateDTO>
 	* @throws Exception
 	*/

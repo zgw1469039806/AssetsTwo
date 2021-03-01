@@ -8,6 +8,8 @@ import avicit.platform6.core.annotation.log.LogField;
 import avicit.platform6.core.annotation.log.FieldRemark;
 import avicit.platform6.core.annotation.log.PojoRemark;
 
+import java.time.LocalDateTime;
+
 /**
 * @金航数码科技有限责任公司
 * @作者：one
@@ -79,12 +81,6 @@ public class DynTemplateDTO extends BeanDTO{
 	private java.math.BigDecimal temActualInvestNum;
 
 	/**
-	* 登陆数
-	*/
-	@FieldRemark(column="TEM_LOGIN_NUM", field="temLoginNum", name="登陆数")
-	private java.math.BigDecimal temLoginNum;
-
-	/**
 	* 实到数
 	*/
 	@FieldRemark(column="TEM_SCENE_NUM", field="temSceneNum", name="实到数")
@@ -109,6 +105,13 @@ public class DynTemplateDTO extends BeanDTO{
 	@LogField
 	@FieldRemark(column="ORG_IDENTITY", field="orgIdentity", name="组织ID")
 	private java.lang.String orgIdentity;
+
+	@FieldRemark(column="TEM_VOTE_NUM", field="temVoteNum", name="出票数")
+	private Integer temVoteNum;
+
+	private LocalDateTime temStartDate;//开始时间
+
+	private LocalDateTime temEndDate;//结束时间
 
 
 	public java.lang.String getId(){
@@ -191,13 +194,6 @@ public class DynTemplateDTO extends BeanDTO{
 		this.temActualInvestNum = temActualInvestNum;
 	}
 
-	public java.math.BigDecimal getTemLoginNum(){
-		return temLoginNum;
-	}
-
-	public void setTemLoginNum(java.math.BigDecimal temLoginNum){
-		this.temLoginNum = temLoginNum;
-	}
 
 	public java.math.BigDecimal getTemSceneNum(){
 		return temSceneNum;
@@ -266,4 +262,31 @@ public class DynTemplateDTO extends BeanDTO{
 		}
 	}
 
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Integer getTemVoteNum() {
+		return temVoteNum;
+	}
+
+	public void setTemVoteNum(Integer temVoteNum) {
+		this.temVoteNum = temVoteNum;
+	}
+
+	public LocalDateTime getTemStartDate() {
+		return temStartDate;
+	}
+
+	public void setTemStartDate(LocalDateTime temStartDate) {
+		this.temStartDate = temStartDate;
+	}
+
+	public LocalDateTime getTemEndDate() {
+		return temEndDate;
+	}
+
+	public void setTemEndDate(LocalDateTime temEndDate) {
+		this.temEndDate = temEndDate;
+	}
 }
